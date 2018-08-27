@@ -1,0 +1,7 @@
+menu:
+  keppler_travel:
+    name: transfers
+    current: ['admin/travel/transfers']
+    url_path: /admin/travel/transfers
+    icon: layers
+    model: KepplerTravel::Transfer

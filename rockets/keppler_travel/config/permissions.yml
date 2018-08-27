@@ -1,0 +1,9 @@
+modules:
+ transfers:
+    name: Transfer
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  

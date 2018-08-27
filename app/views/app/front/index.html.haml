@@ -1,0 +1,590 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Rufina:400,700", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900", :rel => "stylesheet"}/
+    %title Receptivo Colombia
+    / For favicon png
+    %link{:href => "assets/img/favicon.ico", :rel => "shortcut icon", :type => "image/icon"}/
+    %link{:href => "assets/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/animate.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/hover-min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/datepicker.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/owl.carousel.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/owl.theme.default.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/jquery-ui.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/bootsnav.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/style.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/responsive.css", :rel => "stylesheet"}/
+  %body.hidden-xs.hidden-sm.hidden-md
+    / main-menu Start
+    %header.top-area
+      .header-area
+        .container
+          .row
+            .information-nav
+              .container
+                .row
+                  .col-lg-6
+                    .col-lg-6.padding-null
+                      .item-head
+                        %p
+                          %img{:alt => "", :src => "assets/img/mail.svg", :width => "20px"}/
+                          %span{:style => "color: white;padding: 0 2px;"} @receptivocolombia.com
+                    .col-lg-6.padding-null
+                      .item-head
+                        %p
+                          %img{:alt => "", :src => "assets/img/whatsapp-logo.svg", :width => "18px"}/
+                          %span{:style => "color: white;padding: 0 2px;"} +57 319 2575232
+                  .col-lg-6
+                    .col-lg-4.padding-null
+                      .dropdown.pull-right
+                        %button.btn.dropdown-toggle.btn-custom{"data-toggle" => "dropdown", :type => "button"}
+                          Idioma
+                          %span.caret
+                        %ul.dropdown-menu
+                          %li
+                            %a{:href => "#"} Español
+                          %li
+                            %a{:href => "#"} Inglés
+                          %li
+                            %a{:href => "#"} Portugues
+                    .col-lg-4.padding-null
+                      .dropdown.pull-right
+                        %button.btn.dropdown-toggle.btn-custom{"data-toggle" => "dropdown", :type => "button"}
+                          Moneda
+                          %span.caret
+                        %ul.dropdown-menu
+                          %li
+                            %a{:href => "#"} COP
+                          %li
+                            %a{:href => "#"} USD
+                    .col-lg-4.padding-null
+                      .item-head.pull-right
+                        %p
+                          %img{:alt => "", :src => "assets/img/user.svg", :width => "18px"}/
+                          %span{:style => "color: white;padding: 0 2px;"} Ingresa
+            .col-lg-12{:class => ".padding-null"}
+              .home-border
+            .col-sm-2
+              .logo
+                %a{:href => "index.html"}
+                  %img{:alt => "", :src => "assets/img/logo.svg", :width => "95%"}/
+              / /.logo
+            / /.col
+            .col-sm-10
+              .main-menu
+                / Brand and toggle get grouped for better mobile display
+                .navbar-header
+                  %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+                    %i.fa.fa-bars
+                  / / button
+                / /.navbar-header
+                .collapse.navbar-collapse{:style => "padding: 0 !important; "}
+                  %ul.nav.navbar-nav.navbar-right
+                    %li.smooth-menu
+                      %a{:href => "#"} Quiénes Somos
+                    %li.smooth-menu
+                      %a{:href => "#"} Traslados
+                    %li.smooth-menu
+                      %a{:href => "#"} Circuitos
+                    %li.smooth-menu
+                      %a{:href => "#"} Tours
+                    %li.smooth-menu
+                      %a{:href => "#"} Multidestinos
+                    %li.smooth-menu
+                      %a{:href => "#"} Contacto
+    %section#home.about-us
+      /
+        <video autoplay muted loop>
+        <source id="video" src="assets/img/video.mp4#t=90" type="video/mp4" controls>
+        </video>
+      / <video width="640" height="480" src="assets/img/video.mp4" autoplay loop controls />
+      %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
+        %source{:src => "assets/img/video.mp4", :type => "video/mp4"}
+      / <div class="video-mask"></div>
+    %section.travel-box
+      .container
+        .row
+          .col-lg-1
+          .col-lg-10
+            .single-travel-boxes{:style => "border-top-left-radius: 5px;"}
+              #desc-tabs.desc-tabs
+                %ul.nav.nav-tabs{:role => "tablist", :style => "border-bottom: 0 !important"}
+                  %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
+                    %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab", :style => "border-top-left-radius: 5px;"}
+                      %i.fa.fa-car
+                      Traslados
+                  %li{:role => "presentation"}
+                    %a{"aria-controls" => "hotels", "data-toggle" => "tab", :href => "#hotels", :role => "tab"}
+                      %i.fa.fa-train
+                      Circuitos
+                  %li{:role => "presentation"}
+                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#flights", :role => "tab"}
+                      %i.fa.fa-map-o
+                      Tours
+                  %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
+                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#flights", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
+                      %i.fa.fa-plane
+                      Multidestinos
+                .tab-content
+                  #tours.tab-pane.active.fade.in{:role => "tabpanel"}
+                    .tab-para
+                      .row
+                        .col-lg-6.col-md-4.col-sm-12
+                          .single-tab-select-box
+                            %h2 Origen
+                            .travel-select-icon
+                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar origen", :type => "text"}/
+                            %h2 Destino
+                            .travel-select-icon
+                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar destino", :type => "text"}/
+                            .trip-circle
+                              .single-trip-circle
+                                %input#radio01{:name => "radio", :type => "radio"}/
+                                %label{:for => "radio01"}
+                                  %span.round-boarder>
+                                    %span.round-boarder1
+                                  Solo ida
+                              .single-trip-circle
+                                %input#radio02{:name => "radio", :type => "radio"}/
+                                %label{:for => "radio02"}
+                                  %span.round-boarder
+                                    %span.round-boarder1
+                                  Ida y vuelta
+                        .col-lg-6.col-md-4.col-sm-12
+                          .col-lg-6.col-md-1.col-sm-4
+                            .single-tab-select-box
+                              %h2 Adultos
+                              .travel-select-icon
+                                %select.form-control
+                                  %option{:value => "default"} 1
+                                  %option{:value => "2"} 2
+                                  %option{:value => "4"} 4
+                                  %option{:value => "8"} 8
+                          .col-lg-6.col-md-1.col-sm-4
+                            .single-tab-select-box
+                              %h2 Niños
+                              .travel-select-icon
+                                %select.form-control
+                                  %option{:value => "default"} 1
+                                  %option{:value => "2"} 2
+                                  %option{:value => "4"} 4
+                                  %option{:value => "8"} 8
+                          .col-lg-12.col-md-3.col-sm-4
+                            .single-tab-select-box
+                              %h2 Fecha
+                              .travel-check-icon
+                                %form{:action => "#"}
+                                  %input.form-control{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "12 -01 - 2017 ", :type => "text"}/
+                          .col-lg-12.col-md-4.col-sm-12
+                            .about-btn.travel-mrt-0.pull-right
+                              %button.about-view.travel-btn
+                                reservar
+          .col-lg-1
+    %section#services.services
+      .container
+        .gallary-header.text-center
+          %h2
+            Conoce lo que tenemos para ti
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .category-services
+        %ul
+          %li
+            %a{:href => ""}
+              %span traslados
+          %li
+            %a{:href => ""}
+              %span circuitos
+          %li
+            %a{:href => ""}
+              %span tours
+          %li
+            %a{:href => ""}
+              %span multidestinos
+      .cards-services
+        .container
+          .row
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-1.jpg)"}
+                .box-information
+                  %h3
+                    Antioquia
+                    %span.pull-right $201
+                  .more-information
+                    %p
+                      %span
+                        10 dias 5 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-2.jpg)"}
+                .box-information
+                  %h3
+                    Boyaca
+                    %span.pull-right $202
+                  .more-information
+                    %p
+                      %span
+                        15 dias 2 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .btn-hotel.btn-services
+                    %a.link-card{:href => "#"}
+                      .about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-3.jpg)"}
+                .box-information
+                  %h3
+                    Bucaramanga
+                    %span.pull-right $203
+                  .more-information
+                    %p
+                      %span
+                        12 dias 1 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-4.jpg)"}
+                .box-information
+                  %h3
+                    Santa Rosa de Cabal
+                    %span.pull-right $204
+                  .more-information
+                    %p
+                      %span
+                        5 dias 7 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-5.jpg)"}
+                .box-information
+                  %h3
+                    Barranquilla
+                    %span.pull-right $205
+                  .more-information
+                    %p
+                      %span
+                        6 dias 5 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-6.jpg)"}
+                .box-information
+                  %h3
+                    Santander
+                    %span.pull-right $206
+                  .more-information
+                    %p
+                      %span
+                        3 dias 3 noches
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+    %section#tours.tours
+      .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(assets/img/bg-tours.jpg)"}
+        .mask-tours
+          .container
+            .box-tours
+              .info-tours
+                %h3.display-4.text-center Expertos en traslados ejecutivos
+                %h3.display-4.text-center Y turismo receptivo
+                .about-btn
+                  %button.about-view.discount-offer-btn
+                    Conocer más
+    #top-tours.top-tours
+      .container
+        .gallary-header.text-center
+          %h2
+            Tours Destacados
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .cards-top-tours
+        .container
+          .row
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-1.jpg)"}
+                .box-information
+                  %h3
+                    Bucaramanga Family Tour
+                  .more-information
+                    %p
+                      %span
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-2.jpg)"}
+                .box-information
+                  %h3
+                    Cartagena Family Tour
+                  .more-information
+                    %p
+                      %span
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+            .col-md-4.col-sm-6
+              .box-card
+                .box-image{:style => "background-image: url(assets/img/bg-3.jpg)"}
+                .box-information
+                  %h3
+                    Colombia Family Tour
+                  .more-information
+                    %p
+                      %span
+                    %p
+                      %span
+                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    %p
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                      %i.fa.fa-star.fa-star-custom
+                  .about-btn
+                    %a.link-card{:href => "#"}
+                      %button.about-view.packages-btn
+                        ver más
+    %section#tips-services.tips-services
+      .container
+        .gallary-header.text-center
+          %h2
+            ¿Por qué escogernos?
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .box-tips
+        .container
+          .row
+            .col-lg-3
+              .tips
+                .box-circle.circle-yellow
+                  .circle-border
+                    %img{:alt => "", :src => "assets/img/car.svg", :width => "60px"}/
+                %h2 Te recibimos y trasladamos
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
+            .col-lg-3
+              .tips
+                .box-circle.circle-green
+                  .circle-border
+                    %img{:alt => "", :src => "assets/img/airplane.svg", :width => "50px"}/
+                %h2 Destinos de ensueño
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
+            .col-lg-3
+              .tips
+                .box-circle.circle-orange
+                  .circle-border
+                    %img{:alt => "", :src => "assets/img/face.svg", :width => "40px"}/
+                %h2 Atención especializada
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
+            .col-lg-3
+              .tips
+                .box-circle.circle-red
+                  .circle-border
+                    %img{:alt => "", :src => "assets/img/palm.svg", :width => "40px"}/
+                %h2 Expertos en turismo
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
+    %footer.footer-copyright
+      .container
+        .footer-content
+          .row
+            .col-sm-3
+              .single-footer-item
+                .footer-logo
+                  %img{:alt => "", :src => "assets/img/patron.svg"}/
+              / /.single-footer-item
+            / /.col
+            .col-sm-3
+              .single-footer-item
+                %h2 Site Map
+                .single-footer-txt
+                  %p
+                    %a{:href => "#"} Quiénes Somos
+                  %p
+                    %a{:href => "#"} Traslados
+                  %p
+                    %a{:href => "#"} Circuitos
+                  %p
+                    %a{:href => "#"} Tours
+                  %p
+                    %a{:href => "#"} Multidestinos
+                  %p
+                    %a{:href => "#"} Contacto
+                / /.single-footer-txt
+              / /.single-footer-item
+            / /.col
+            .col-sm-3
+              .single-footer-item
+                %h2 Destinos Destacados
+                .single-footer-txt
+                  %p
+                    %a{:href => "#"} Cartagena
+                  %p
+                    %a{:href => "#"} Bucaramanga
+                  %p
+                    %a{:href => "#"} Barranquilla
+                  %p
+                    %a{:href => "#"} Neiva
+                  %p
+                    %a{:href => "#"} Guajira
+                / /.single-footer-txt
+              / /.single-footer-item
+            / /.col
+            .col-sm-3
+              .single-footer-item.text-center
+                %h2.text-left Contáctanos
+                .single-footer-txt.text-left
+                  %p +57 319 2575232
+                  %p info@receptivocolombia.com
+                  %p Lorem ipsum dolor sit amet.
+                  %p Colombia
+                / /.single-footer-txt
+              .foot-icons
+                %ul.footer-social-links.list-inline.list-unstyled
+                  %li
+                    %a.foot-icon-bg-1{:href => "#", :target => "_blank"}
+                      %i.fa.fa-facebook
+                  %li
+                    %a.foot-icon-bg-2{:href => "#", :target => "_blank"}
+                      %i.fa.fa-twitter
+                  %li
+                    %a.foot-icon-bg-3{:href => "#", :target => "_blank"}
+                      %i.fa.fa-instagram
+              / /.single-footer-item
+            / /.col
+          / /.row
+        / /.footer-content
+        %hr/
+        .container
+          .copyright
+            %p
+              Copyright © Receptivo Colombia 2018  |  Powered by
+              %a.slice-group{:href => "http://www.slicegroup.xyz/", :target => "_blank"} Slice Group
+              with
+              %a.kepple-admin{:href => "http://keppleradmin.com", :target => "_blank"}
+                %img.keppler-logo{:alt => "Keppler", :src => "assets/img/keppler-logo.svg"}/
+    %script{:src => "assets/js/jquery.js"}
+    / Include all compiled plugins (below), or include individual files as needed
+    / modernizr.min.js
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"}
+    / bootstrap.min.js
+    %script{:src => "assets/js/bootstrap.min.js"}
+    / bootsnav js
+    %script{:src => "assets/js/bootsnav.js"}
+    / jquery.filterizr.min.js
+    %script{:src => "assets/js/jquery.filterizr.min.js"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"}
+    / jquery-ui.min.js
+    %script{:src => "assets/js/jquery-ui.min.js"}
+    / counter js
+    %script{:src => "assets/js/jquery.counterup.min.js"}
+    %script{:src => "assets/js/waypoints.min.js"}
+    / owl.carousel.js
+    %script{:src => "assets/js/owl.carousel.min.js"}
+    / jquery.sticky.js
+    %script{:src => "assets/js/jquery.sticky.js"}
+    / datepicker.js
+    %script{:src => "assets/js/datepicker.js"}
+    / Custom JS
+    %script{:src => "assets/js/custom.js"}
+    :javascript
+      $(document).ready(function(){
+      	document.getElementById("my-video").play();
+      });
