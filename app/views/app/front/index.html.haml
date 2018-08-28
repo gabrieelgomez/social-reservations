@@ -21,19 +21,19 @@
               #desc-tabs.desc-tabs
                 %ul.nav.nav-tabs{:role => "tablist"}
                   %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
-                    %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
+                    %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
                       %i.fa.fa-car
                       Traslados
                   %li{:role => "presentation"}
-                    %a{"aria-controls" => "hotels", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
+                    %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
                       %i.fa.fa-train
                       Circuitos
                   %li{:role => "presentation"}
-                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
+                    %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
                       %i.fa.fa-map-o
                       Tours
                   %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
-                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
+                    %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
                       %i.fa.fa-plane
                       Multidestinos
                 .tab-content
@@ -43,53 +43,55 @@
                         .col-lg-12
                           .trip-circle
                             .single-trip-circle
-                              %input#radio01{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio01"}
+                              %input#radio1{:name => "radio", :type => "radio"}/
+                              %label{:for => "radio1"}
                                 %span.round-boarder>
                                   %span.round-boarder1
                                 Desde el aeropuerto
                             .single-trip-circle
-                              %input#radio02{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio02"}
+                              %input#radio2{:name => "radio", :type => "radio"}/
+                              %label{:for => "radio2"}
                                 %span.round-boarder
                                   %span.round-boarder1
                                 Al aeropuerto
-                        .col-lg-6.col-md-4.col-sm-12
+
+                        .col-lg-6
                           .single-tab-select-box
-                            %h2 ¿A qué hora llega tu vuelo?
-                            .travel-select-icon
-                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar origen", :type => "text"}/
-                        .col-lg-6.col-md-4.col-sm-12
+                            %h2 ¿A qué aeropuerto llega tu vuelo?
+                            %select#destinations-box-one.custom-input
+                              = render 'app/front/stack-destinations'
+
+                        .col-lg-6
                           .single-tab-select-box
                             %h2 ¿Dónde quieres que te dejemos?
-                            .travel-select-icon
-                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar destino", :type => "text"}/
+                            %select#destinations-box-two.custom-input
+                              = render 'app/front/stack-destinations'
+
+                        .col-lg-12
+                          %hr
                         .col-lg-6
-                          .col-lg-6
+                          .col-lg-6.padding-widget
                             .single-tab-select-box
                               %h2 ¿Cuándo llega tu vuelo?
                               .travel-select-icon
-                                %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar origen", :type => "text"}/
-                          .col-lg-6
+                                %input.form-control.input-custom.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha ", :type => "text"}/
+                          .col-lg-6.padding-widget
                             .single-tab-select-box
                               %h2 ¿Cuándo sale tu vuelo?
                               .travel-select-icon
-                                %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar destino", :type => "text"}/
-              
-
-
-                        -#.col-lg-6.col-md-4.col-sm-12
-                          .col-lg-6.col-md-1.col-sm-4
+                                %input.form-control.input-custom.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "text"}/
+                        .col-lg-6
+                          .col-lg-6.padding-widget
                             .single-tab-select-box
                               %h2 Adultos
                               .travel-select-icon
-                                %select.form-control
+                                %select.form-control.input-custom
                                   %option{:value => "default"} 1
                                   %option{:value => "2"} 2
                                   %option{:value => "4"} 4
                                   %option{:value => "8"} 8
-                          .col-lg-6.col-md-1.col-sm-4
-                            .single-tab-select-box
+                          .col-lg-6.padding-widget
+                            .single-tab-select-box.input-custom
                               %h2 Niños
                               .travel-select-icon
                                 %select.form-control
@@ -97,30 +99,24 @@
                                   %option{:value => "2"} 2
                                   %option{:value => "4"} 4
                                   %option{:value => "8"} 8
-                          .col-lg-12.col-md-3.col-sm-4
-                            .single-tab-select-box
-                              %h2 Fecha
-                              .travel-check-icon
-                                %form{:action => "#"}
-                                  %input.form-control{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "12 -01 - 2017 ", :type => "text"}/
-                          .col-lg-12
-                            .trip-circle
-                              .single-trip-circle
-                                %input#radio01{:name => "radio", :type => "radio"}/
-                                %label{:for => "radio01"}
-                                  %span.round-boarder>
-                                    %span.round-boarder1
-                                  Solo ida
-                              .single-trip-circle
-                                %input#radio02{:name => "radio", :type => "radio"}/
-                                %label{:for => "radio02"}
-                                  %span.round-boarder
-                                    %span.round-boarder1
-                                  Ida y vuelta
-                          .col-lg-12.col-md-4.col-sm-12
-                            .about-btn.travel-mrt-0.pull-right
-                              %button.about-view.travel-btn
-                                buscar
+                        .col-lg-12
+                          .trip-circle
+                            .single-trip-circle
+                              %input#radio3{:name => "radio", :type => "radio"}/
+                              %label{:for => "radio3"}
+                                %span.round-boarder>
+                                  %span.round-boarder1
+                                Solo ida
+                            .single-trip-circle
+                              %input#radio4{:name => "radio", :type => "radio"}/
+                              %label{:for => "radio4"}
+                                %span.round-boarder
+                                  %span.round-boarder1
+                                Ida y vuelta
+                        .col-lg-12.col-md-4.col-sm-12
+                          .about-btn.travel-mrt-0.pull-right
+                            %button.about-view.travel-btn
+                              buscar
 
 
                         
@@ -303,84 +299,7 @@
                         .col-lg-12
                           %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
 
-    -#%section.travel-box
-      .container
-        .row
-          .col-lg-1
-          .col-lg-10
-            .single-travel-boxes{:style => "border-top-left-radius: 5px;"}
-              #desc-tabs.desc-tabs
-                %ul.nav.nav-tabs{:role => "tablist", :style => "border-bottom: 0 !important"}
-                  %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
-                    %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab", :style => "border-top-left-radius: 5px;"}
-                      %i.fa.fa-car
-                      Traslados
-                  %li{:role => "presentation"}
-                    %a{"aria-controls" => "hotels", "data-toggle" => "tab", :href => "#hotels", :role => "tab"}
-                      %i.fa.fa-train
-                      Circuitos
-                  %li{:role => "presentation"}
-                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#flights", :role => "tab"}
-                      %i.fa.fa-map-o
-                      Tours
-                  %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
-                    %a{"aria-controls" => "flights", "data-toggle" => "tab", :href => "#flights", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
-                      %i.fa.fa-plane
-                      Multidestinos
-                .tab-content
-                  #tours.tab-pane.active.fade.in{:role => "tabpanel"}
-                    .tab-para
-                      .row
-                        .col-lg-6.col-md-4.col-sm-12
-                          .single-tab-select-box
-                            %h2 Origen
-                            .travel-select-icon
-                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar origen", :type => "text"}/
-                            %h2 Destino
-                            .travel-select-icon
-                              %input.form-control{"aria-describedby" => "", :id => "", :placeholder => "Buscar destino", :type => "text"}/
-                            .trip-circle
-                              .single-trip-circle
-                                %input#radio01{:name => "radio", :type => "radio"}/
-                                %label{:for => "radio01"}
-                                  %span.round-boarder>
-                                    %span.round-boarder1
-                                  Solo ida
-                              .single-trip-circle
-                                %input#radio02{:name => "radio", :type => "radio"}/
-                                %label{:for => "radio02"}
-                                  %span.round-boarder
-                                    %span.round-boarder1
-                                  Ida y vuelta
-                        .col-lg-6.col-md-4.col-sm-12
-                          .col-lg-6.col-md-1.col-sm-4
-                            .single-tab-select-box
-                              %h2 Adultos
-                              .travel-select-icon
-                                %select.form-control
-                                  %option{:value => "default"} 1
-                                  %option{:value => "2"} 2
-                                  %option{:value => "4"} 4
-                                  %option{:value => "8"} 8
-                          .col-lg-6.col-md-1.col-sm-4
-                            .single-tab-select-box
-                              %h2 Niños
-                              .travel-select-icon
-                                %select.form-control
-                                  %option{:value => "default"} 1
-                                  %option{:value => "2"} 2
-                                  %option{:value => "4"} 4
-                                  %option{:value => "8"} 8
-                          .col-lg-12.col-md-3.col-sm-4
-                            .single-tab-select-box
-                              %h2 Fecha
-                              .travel-check-icon
-                                %form{:action => "#"}
-                                  %input.form-control{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "12 -01 - 2017 ", :type => "text"}/
-                          .col-lg-12.col-md-4.col-sm-12
-                            .about-btn.travel-mrt-0.pull-right
-                              %button.about-view.travel-btn
-                                reservar
+
           
     %section#services.services
       .container
@@ -685,5 +604,8 @@
 
     :javascript
       $(document).ready(function(){
-      	document.getElementById("my-video").play();
+        document.getElementById("my-video").play();
+        $('[data-toggle="datepicker"]').datepicker();
+        $('#destinations-box-one').selectize({});
+        $('#destinations-box-two').selectize({});
       });
