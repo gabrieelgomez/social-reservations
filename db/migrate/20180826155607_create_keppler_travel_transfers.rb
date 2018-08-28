@@ -6,7 +6,7 @@ class CreateKepplerTravelTransfers < ActiveRecord::Migration[5.2]
       t.string :quantity_person
       t.datetime :date
       t.datetime :time
-      t.string :price
+      t.jsonb :price
       t.integer :position
       t.datetime :deleted_at
 

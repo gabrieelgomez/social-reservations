@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_155607) do
     t.string "quantity_person"
     t.datetime "date"
     t.datetime "time"
-    t.string "price"
+    t.jsonb "price"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false

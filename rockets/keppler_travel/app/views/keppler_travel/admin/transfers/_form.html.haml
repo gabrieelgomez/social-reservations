@@ -22,23 +22,83 @@
                   .col-xs-12
                     = f.input :cover, as: :keppler_file, label: false
                   .col-xs-12
-                    = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
-                      = field.input :es, label: 'Español'
-                      = field.input :en, label: 'Inglés'
-                      = field.input :pt, label: 'Portugués'
-                  .col-xs-12
-                    = f.input :quantity_person
-                  .col-xs-12
-                    = f.input :date
-                  .col-xs-12
-                    = f.input :time
-                  .col-xs-12
-                    = f.input :price
-                  .col-xs-12
+                    .nav-tabs-custom
+                      %ul.nav.nav-tabs
+                        %li.active
+                          %a{"data-toggle" => "tab", :href => "#spanish"} Español
+                        %li
+                          %a{"data-toggle" => "tab", :href => "#english"} Inglés
+                        %li
+                          %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
+                      .tab-content
+                        #spanish.tab-pane.active
+                          = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = field.input :es, label: 'Titulo Español'
+                        #english.tab-pane
+                          = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = field.input :en, label: 'Titulo Inglés'
+                        #portugues.tab-pane
+                          = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = field.input :pt, label: 'Título Portugués'
+                  .col-xs-3
+                    = f.input :quantity_person, label: 'Cantidad de personas', input_html: { min: '1', type: 'number' }
+                  .col-xs-8
+                    = f.simple_fields_for :price, OpenStruct.new(@transfer.price) do |field|
+                      .col-xs-4
+                        = field.input :cop, label: 'Precio COP', input_html: { min: '1', type: 'number' }
+                      .col-xs-4
+                        = field.input :usd, label: 'Precio USD', input_html: { min: '1', type: 'number' }
+
+                  .col-xs-4
                     = f.input :position, as: :hidden
-                  .col-xs-12
+                  .col-xs-4
                     = f.input :deleted_at, as: :hidden
                   .col-xs-12
                     .pull-right
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+
+-# %script{:src => "/assets/js/jquery-validate.js"}
+:javascript
+
+  $(document).ready(function() {
+
+    $("#new_transfer").validate({
+     event: "blur",
+     errorClass: "error-class",
+     validClass: "valid-class",
+     rules: {
+       'transfer[quantity_person]': { required: true}
+       },
+     messages: {
+       'transfer[quantity_person]': 'No puede estar en blanco'
+       },
+     debug: true,errorElement: "label",
+     submitHandler: function(form){
+       form.submit();
+     }
+    });
+
+
+    var transfer_id = #{raw @transfer.id};
+    $(`#edit_transfer_${transfer_id}`).validate({
+     event: "blur",
+     errorClass: "error-class",
+     validClass: "valid-class",
+     rules: {
+       'transfer[quantity_person]': { required: true}
+       },
+     messages: {
+       'transfer[quantity_person]': 'No puede estar en blanco'
+       },
+     debug: true,errorElement: "label",
+     submitHandler: function(form){
+       form.submit();
+     }
+    });
+
+  });
+
+:scss
+  label.error-class{color: #e60707 !important;}

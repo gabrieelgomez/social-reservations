@@ -9,11 +9,8 @@ module KepplerTravel
     # Fields for the search form in the navbar
 
     # serialize :title, HashSerializer
-    store_accessor :title, [:es, :en, :pt]
-
-    def self.jsonb()
-
-    end
+    # attr_accessor :title, :es, :en, :pt
+    # validates :es, :en, :pt, presence: true
 
     def self.search_field
       fields = ["cover", "title", "quantity_person", "date", "time", "price", "position", "deleted_at"]
