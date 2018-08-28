@@ -1,0 +1,325 @@
+.navbar-effect {
+    transition: .3s all ease;
+}
+
+.navbar-separator {
+    border-top: 1px solid #ffffff87 !important;
+}
+
+.navbar-contact {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.item-contact {
+    width: 100%;
+}
+
+.item-contact.email p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.item-contact.email p img {
+    width: 20px;
+    display: inline-block;
+}
+
+.item-contact.email p span {
+    color: white;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.item-contact.phone p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.item-contact.phone p img {
+    width: 18px;
+    display: inline-block;
+}
+
+.item-contact.phone p span {
+    color: white;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.item-contact.login p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.item-contact.login p img {
+    width: 18px;
+    display: inline-block;
+}
+
+.item-contact.login p span {
+    color: white;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.background-hide {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.background-show {
+    background-color: #4e4e56;
+    border-color: #4e4e56;
+}
+
+.nav-padding {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.btn-dropdown-custom {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif !important;
+    padding: 0 !important;
+    font-weight: 500 !important;
+    border: 1px solid transparent !important;
+    border-radius: 0px !important;
+    color: white !important;
+    outline: 0 !important;
+    background-color: transparent !important;
+    font-size: 14px !important;
+}
+
+.btn-dropdown-custom:active,
+.btn-dropdown-custom:focus,
+.btn-dropdown-custom:hover {
+    color: white !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+.logo-navbar {
+    height: 60px;
+    width: 165px;
+}
+
+.logo-navbar svg {
+    height: 100%;
+    width: 100%;
+    transition: .1s all linear;
+    fill: #ffc600;
+}
+
+.svg-yellow {
+    fill: #ffc600;
+    transition: .1s all linear;
+}
+
+.svg-white {
+    fill: #ffffff;
+    transition: .1s all linear;
+}
+
+.item-link {
+    padding: 10px 18px;
+}
+
+.logo-separator {
+    margin: 9px 0 10px 0;
+}
+
+.items-separator {
+    margin: 8px -15px 10px 0;
+}
+
+.effect-items {
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.effect-items li {
+    position: relative;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.effect-items li a {
+    color: #fff;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    -webkit-transition: all 0.25s ease-in-out 0s;
+    -moz-transition: all 0.25s ease-in-out 0s;
+    -o-transition: all 0.25s ease-in-out 0s;
+    transition: all 0.25s ease-in-out 0s;
+}
+
+.effect-items li:nth-child(1) a:hover {
+    color: #43b7e8 !important;
+}
+
+.effect-items li:nth-child(2) a:hover {
+    color: #ffc600 !important;
+}
+
+.effect-items li:nth-child(3) a:hover {
+    color: #f5493d !important;
+}
+
+.effect-items li:nth-child(4) a:hover {
+    color: #eb6b0a !important;
+}
+
+.effect-items li:nth-child(5) a:hover {
+    color: #9dc107 !important;
+}
+
+.effect-items li:nth-child(6) a:hover {
+    color: #43b7e8 !important;
+}
+
+.effect-items li.active a,
+.effect-items li a:hover,
+.effect-items li a:focus {
+    background-color: transparent;
+}
+
+.effect-items a:before {
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 2px;
+    bottom: -10px;
+    left: 0;
+    background: transparent;
+    -webkit-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.effect-items li:nth-child(1).active a:before,
+.effect-items li:nth-child(1) a:hover:before {
+    background: #43b7e8 !important;
+    width: 100%;
+}
+
+.effect-items li:nth-child(2).active a:before,
+.effect-items li:nth-child(2) a:hover:before {
+    background: #ffc600 !important;
+    width: 100%;
+}
+
+.effect-items li:nth-child(3).active a:before,
+.effect-items li:nth-child(3) a:hover:before {
+    background: #f5493d !important;
+    width: 100%;
+}
+
+.effect-items li:nth-child(4).active a:before,
+.effect-items li:nth-child(4) a:hover:before {
+    background: #eb6b0a !important;
+    width: 100%;
+}
+
+.effect-items li:nth-child(5).active a:before,
+.effect-items li:nth-child(5) a:hover:before {
+    background: #9dc107 !important;
+    width: 100%;
+}
+
+.effect-items li:nth-child(6).active a:before,
+.effect-items li:nth-child(6) a:hover:before {
+    background: #43b7e8 !important;
+    width: 100%;
+}
+
+.nav>li.item-link>a {
+    padding: 0 !important;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .effect-items {
+        position: relative;
+        height: auto;
+        display: inherit;
+        align-items: normal;
+    }
+
+    .item-link {
+        padding: 10px 0px;
+    }
+
+    .items-separator {
+        margin: 8px 10px 10px 0;
+    }
+
+    .link-navbar {
+        display: inlines !important;
+    }
+
+    .logo-navbar {
+        height: 45px;
+        width: 170px;
+    }
+
+    .navbar-collapse {
+        box-shadow: none !important;
+        border-color: transparent !important;
+    }
+
+    .navbar-inverse .navbar-toggle:focus,
+    .navbar-inverse .navbar-toggle:hover {
+        background-color: #47c1f5 !important;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #47c1f5 !important;
+        background-color: #47c1f5 !important;
+    }
+
+    .navbar-toggle {
+        margin-top: 10px !important;
+        margin-right: 20px !important;
+        margin-bottom: 10px !important;
+        padding: 15px 10px !important;
+        border-radius: 5px !important;
+    }
+
+    .logo-separator {
+        margin: 10px 0 10px 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .logo-navbar {
+        width: 140px;
+    }
+
+    .item-link {
+        padding: 10px 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .logo-navbar {
+        width: 150px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {}
