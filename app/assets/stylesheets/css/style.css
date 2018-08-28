@@ -307,15 +307,19 @@ body {
     padding-right: 6px;
 }
 
+.input-custom {
+    width: 95%;
+}
+
 /* .desc-tabs */
 /*===ab-select-box===*/
 .tab-para {
-    padding: 43px 42px 24px;
+    padding: 25px 42px 30px 42px;
 }
 
 .single-tab-select-box h2 {
     color: #565a5c;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: normal;
@@ -356,9 +360,13 @@ body {
 
 /*.travel-select-icon .form-control*/
 /*.trip-circle*/
+.padding-widget {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .trip-circle {
     display: flex;
-    margin-bottom: 17px;
 }
 
 .single-trip-circle {
@@ -376,7 +384,7 @@ body {
 
 .single-trip-circle input[type="radio"]+label {
     color: #565a5c;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: inherit;
@@ -2196,4 +2204,29 @@ label.container .checkmark:after {
     margin: 80px 0;
 }
 
-/* About */
+.selectize-input {
+    border: 1px solid #d7d7d7 !important;
+    background: white !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#destinations-box-one-selectized {
+    font-size: 14px !important;
+    width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#destinations-box-two-selectized {
+    font-size: 14px !important;
+    width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.custom-input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #4e4e56 !important;
+    opacity: .5;
+    /* Firefox */
+}
