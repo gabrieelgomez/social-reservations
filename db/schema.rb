@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_155607) do
+ActiveRecord::Schema.define(version: 2018_08_28_192209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,9 +58,28 @@ ActiveRecord::Schema.define(version: 2018_08_26_155607) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keppler_travel_destinations", force: :cascade do |t|
+    t.string "title"
+    t.string "cover"
+    t.string "description"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_destinations_on_deleted_at"
+  end
+
+  create_table "keppler_travel_destinations_transfers", force: :cascade do |t|
+    t.bigint "destination_id"
+    t.bigint "transfer_id"
+    t.index ["destination_id"], name: "destination_id"
+    t.index ["transfer_id"], name: "transfer_id"
+  end
+
   create_table "keppler_travel_transfers", force: :cascade do |t|
     t.string "cover"
     t.jsonb "title"
+    t.jsonb "description"
     t.string "quantity_person"
     t.datetime "date"
     t.datetime "time"

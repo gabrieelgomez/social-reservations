@@ -3,6 +3,7 @@ class CreateKepplerTravelTransfers < ActiveRecord::Migration[5.2]
     create_table :keppler_travel_transfers do |t|
       t.string :cover
       t.jsonb :title
+      t.jsonb :description
       t.string :quantity_person
       t.datetime :date
       t.datetime :time
