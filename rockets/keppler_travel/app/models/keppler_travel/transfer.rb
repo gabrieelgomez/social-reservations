@@ -12,7 +12,7 @@ module KepplerTravel
     # attr_accessor :title, :es, :en, :pt
     # validates :es, :en, :pt, presence: true
     has_and_belongs_to_many :destinations
-
+    validates :destination_ids, presence: true
 
     def self.search_field
       fields = ["cover", "title", "quantity_person", "date", "time", "price", "position", "deleted_at"]
