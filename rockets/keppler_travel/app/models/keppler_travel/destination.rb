@@ -8,7 +8,7 @@ module KepplerTravel
     acts_as_list
 
     has_and_belongs_to_many :transfers
-    validates :title, uniqueness: true
+    validates :title, uniqueness: true, presence: true
 
     # Fields for the search form in the navbar
     def self.search_field

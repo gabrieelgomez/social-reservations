@@ -15,7 +15,7 @@ module KepplerTravel
     validates :cover, presence: true
 
     def self.search_field
-      fields = ["cover", "title", "quantity_person", "date", "time", "price", "position", "deleted_at"]
+      fields = ["cover", "title", "quantity_kids", "date", "time", "price", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 

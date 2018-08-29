@@ -69,8 +69,10 @@
                               = field.input :pt, label: 'Descripción Portugués', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
 
-                  .col-xs-12.col-md-3
-                    = f.input :quantity_person, label: 'Cantidad de personas', input_html: { min: '1', type: 'number' }
+                  .col-xs-12.col-md-2
+                    = f.input :quantity_adults, label: 'Cantidad de personas Adultas', input_html: { min: '1', type: 'number' }
+                  .col-xs-12.col-md-2
+                    = f.input :quantity_kids, label: 'Cantidad de personas Niños', input_html: { min: '1', type: 'number' }
                   .col-xs-12.col-md-8
                     = f.simple_fields_for :price, OpenStruct.new(@transfer.price) do |field|
                       .col-xs-4
@@ -79,32 +81,33 @@
                         = field.input :usd, label: 'Precio USD', input_html: { min: '1', type: 'number' }
 
                         -# = f.association :destinations#, label_method: lambda { |subcat| "<b>#{subcat.category.title}</b> / #{subcat.title}".html_safe }
-                  .col-xs-6
-                    %label Destinos
-                    -# %select.js-example-basic-single{style: 'width:100%;', :name => "state", multiple: "multiple"}
-                    -#   %optgroup{:label => "USA"}
-                    -#     %option{:value => "1"} New York
-                    -#     %option{:value => "2"} Kansas
-                    -#   %optgroup{:label => "Venezuela"}
-                    -#     %option{:value => "3"} Caracas
-                    -#     %option{:value => "4"} Punto Fijo
-                    %select.js-example-basic-single{id: 'destinations_transfers', style: 'width:100%;', name: 'destinations', multiple: "multiple"}
-                      - KepplerTravel::Destination.all.each do |collection|
-                        %option{ value: collection.id }= collection.title
+                  .col-xs-12
+                    .col-md-6
+                      %label Destinos
+                      -# %select.js-example-basic-single{style: 'width:100%;', :name => "state", multiple: "multiple"}
+                      -#   %optgroup{:label => "USA"}
+                      -#     %option{:value => "1"} New York
+                      -#     %option{:value => "2"} Kansas
+                      -#   %optgroup{:label => "Venezuela"}
+                      -#     %option{:value => "3"} Caracas
+                      -#     %option{:value => "4"} Punto Fijo
+                      %select.js-example-basic-single{id: 'destinations_transfers', style: 'width:100%;', name: 'destinations', multiple: "multiple"}
+                        - KepplerTravel::Destination.all.each do |collection|
+                          %option{ value: collection.id }= collection.title
 
-                    -# %select{style: 'display:none;', name: 'transfer[destinations][]', id: 'destinations_transfers', multiple: true }
-                    -#   - KepplerTravel::Destination.all.each do |collection|
-                    -#     %option{ value: collection.id }= collection.title
+                      -# %select{style: 'display:none;', name: 'transfer[destinations][]', id: 'destinations_transfers', multiple: true }
+                      -#   - KepplerTravel::Destination.all.each do |collection|
+                      -#     %option{ value: collection.id }= collection.title
 
-                  -# .col-xs-4
-                  -#   %select#destinations_transfers{:multiple => "multiple"}
-                  -#     %optgroup{:label => "test"}
-                  -#       %option{:value => "testoption"} Test Option
-                  -#       %option{:value => "testoption2"} Test Option2
+                    -# .col-xs-4
+                    -#   %select#destinations_transfers{:multiple => "multiple"}
+                    -#     %optgroup{:label => "test"}
+                    -#       %option{:value => "testoption"} Test Option
+                    -#       %option{:value => "testoption2"} Test Option2
 
 
-                    = f.input :position, as: :hidden
                   .col-xs-4
+                    = f.input :position, as: :hidden
                     = f.input :deleted_at, as: :hidden
                   .col-xs-12
                     .pull-right
@@ -127,10 +130,10 @@
        errorClass: "error-class",
        validClass: "valid-class",
        rules: {
-         'transfer[quantity_person]': { required: true}
+         'transfer[quantity_kids]': { required: true}
          },
        messages: {
-         'transfer[quantity_person]': 'No puede estar en blanco'
+         'transfer[quantity_kids]': 'No puede estar en blanco'
          },
        debug: true,errorElement: "label",
        submitHandler: function(form){
@@ -150,10 +153,10 @@
      errorClass: "error-class",
      validClass: "valid-class",
      rules: {
-       'transfer[quantity_person]': { required: true}
+       'transfer[quantity_kids]': { required: true}
        },
      messages: {
-       'transfer[quantity_person]': 'No puede estar en blanco'
+       'transfer[quantity_kids]': 'No puede estar en blanco'
        },
      debug: true,errorElement: "label",
      submitHandler: function(form){

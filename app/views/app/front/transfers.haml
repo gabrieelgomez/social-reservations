@@ -1,0 +1,42 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+
+  %body
+    %header
+      = render 'app/front/navbar'
+
+    %section#home.about-us
+      %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
+        %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
+
+
+    %section.travel-box
+      .container
+        .row
+          .col-lg-1
+          .col-lg-10
+            = render 'app/front/widget'
+
+    %section#services.services
+      .container
+        - if @results.nil?
+          %h1 Sin resultados
+        - else
+          - @results.each do |transfer|
+            %h5= transfer.title[@lang]
+            %br
+
+
+    %footer.footer-copyright
+      = render 'app/front/footer'
+
+
+    :javascript
+      $(document).ready(function(){
+        document.getElementById("my-video").play();
+        $('[data-toggle="datepicker"]').datepicker();
+        $('#destinations-box-one').selectize({});
+        $('#destinations-box-two').selectize({});
+      });

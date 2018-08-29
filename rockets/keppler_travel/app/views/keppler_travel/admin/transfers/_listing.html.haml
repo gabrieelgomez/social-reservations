@@ -15,15 +15,19 @@
     %td.hidden-xs
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
         %span
-          = transfer.title['es']
+          = transfer.title[I18n.locale.to_s]
     %td.hidden-xs
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
         %span
-          = transfer.description['es'].truncate(20)
+          = sanitize(transfer.description[I18n.locale.to_s], tags: []).truncate(20)
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
         %span
-          = transfer.quantity_person
+          = transfer.quantity_adults
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+        %span
+          = transfer.quantity_kids
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
     -#     %span

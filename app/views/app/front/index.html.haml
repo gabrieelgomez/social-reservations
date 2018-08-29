@@ -6,10 +6,10 @@
   %body
     %header
       = render 'app/front/navbar'
-      
+
     %section#home.about-us
       %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
-        %source{:src => "assets/img/video.mp4", :type => "video/mp4"}
+        %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
 
 
     %section.travel-box
@@ -17,290 +17,7 @@
         .row
           .col-lg-1
           .col-lg-10
-            .single-travel-boxes
-              #desc-tabs.desc-tabs
-                %ul.nav.nav-tabs{:role => "tablist"}
-                  %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
-                    %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
-                      %i.fa.fa-car
-                      Traslados
-                  %li{:role => "presentation"}
-                    %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
-                      %i.fa.fa-train
-                      Circuitos
-                  %li{:role => "presentation"}
-                    %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
-                      %i.fa.fa-map-o
-                      Tours
-                  %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
-                    %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
-                      %i.fa.fa-plane
-                      Multidestinos
-                .tab-content
-                  #translation.tab-pane.active.fade.in{:role => "tabpanel"}
-                    .tab-para
-                      .row
-                        .col-lg-12
-                          .trip-circle
-                            .single-trip-circle
-                              %input#radio1{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio1"}
-                                %span.round-boarder>
-                                  %span.round-boarder1
-                                Desde el aeropuerto
-                            .single-trip-circle
-                              %input#radio2{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio2"}
-                                %span.round-boarder
-                                  %span.round-boarder1
-                                Al aeropuerto
-
-                        .col-lg-6
-                          .single-tab-select-box
-                            %h2 ¿A qué aeropuerto llega tu vuelo?
-                            %select#destinations-box-one.custom-input
-                              = render 'app/front/stack-destinations'
-
-                        .col-lg-6
-                          .single-tab-select-box
-                            %h2 ¿Dónde quieres que te dejemos?
-                            %select#destinations-box-two.custom-input
-                              = render 'app/front/stack-destinations'
-
-                        .col-lg-12
-                          %hr
-                        .col-lg-6
-                          .col-lg-6.padding-widget
-                            .single-tab-select-box
-                              %h2 ¿Cuándo llega tu vuelo?
-                              .travel-select-icon
-                                %input.form-control.input-custom.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha ", :type => "text"}/
-                          .col-lg-6.padding-widget
-                            .single-tab-select-box
-                              %h2 ¿Cuándo sale tu vuelo?
-                              .travel-select-icon
-                                %input.form-control.input-custom.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "text"}/
-                        .col-lg-6
-                          .col-lg-6.padding-widget
-                            .single-tab-select-box
-                              %h2 Adultos
-                              .travel-select-icon
-                                %select.form-control.input-custom
-                                  %option{:value => "default"} 1
-                                  %option{:value => "2"} 2
-                                  %option{:value => "4"} 4
-                                  %option{:value => "8"} 8
-                          .col-lg-6.padding-widget
-                            .single-tab-select-box.input-custom
-                              %h2 Niños
-                              .travel-select-icon
-                                %select.form-control
-                                  %option{:value => "default"} 1
-                                  %option{:value => "2"} 2
-                                  %option{:value => "4"} 4
-                                  %option{:value => "8"} 8
-                        .col-lg-12
-                          .trip-circle
-                            .single-trip-circle
-                              %input#radio3{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio3"}
-                                %span.round-boarder>
-                                  %span.round-boarder1
-                                Solo ida
-                            .single-trip-circle
-                              %input#radio4{:name => "radio", :type => "radio"}/
-                              %label{:for => "radio4"}
-                                %span.round-boarder
-                                  %span.round-boarder1
-                                Ida y vuelta
-                        .col-lg-12.col-md-4.col-sm-12
-                          .about-btn.travel-mrt-0.pull-right
-                            %button.about-view.travel-btn
-                              buscar
-
-
-                        
-
-                  #circuits.tab-pane.fade.in{:role => "tabpanel"}
-                    .tab-para
-                      .row
-                        .col-lg-12
-                          %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Circuitos
-                          -#.single-tab-select-box
-                            %h2 destination
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} enter your destination country
-                                / /.option
-                                %option{:value => "turkey"} turkey
-                                / /.option
-                                %option{:value => "russia"} russia
-                                / /.option
-                                %option{:value => "egept"} egypt
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} enter your destination location
-                                / /.option
-                                %option{:value => "istambul"} istambul
-                                / /.option
-                                %option{:value => "mosko"} mosko
-                                / /.option
-                                %option{:value => "cairo"} cairo
-                        -#.col-lg-2.col-md-3.col-sm-4
-                          .single-tab-select-box
-                            %h2 check in
-                            .travel-check-icon
-                              %form{:action => "#"}
-                                %input.form-control{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "12 -01 - 2017 ", :type => "text"}/
-                        -#.col-lg-2.col-md-3.col-sm-4
-                          .single-tab-select-box
-                            %h2 check out
-                            .travel-check-icon
-                              %form{:action => "#"}
-                                %input.form-control{"data-toggle" => "datepicker", :name => "check_out", :placeholder => "22 -01 - 2017 ", :type => "text"}/
-
-                        -#.col-lg-2.col-md-1.col-sm-4
-                          .single-tab-select-box
-                            %h2 duration
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} 5
-                                / /.option
-                                %option{:value => "10"} 10
-                                / /.option
-                                %option{:value => "15"} 15
-                                / /.option
-                                %option{:value => "20"} 20
-
-                        -#.col-lg-2.col-md-1.col-sm-4
-                          .single-tab-select-box
-                            %h2 members
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} 1
-                          
-                                %option{:value => "2"} 2
-                          
-                                %option{:value => "4"} 4
-    
-                           
-                      -#.row
-                        .col-sm-5
-                        .clo-sm-7
-                          .about-btn.travel-mrt-0.pull-right
-                            %button.about-view.travel-btn
-                              search
-
-                  #tours.tab-pane.fade.in{:role => "tabpanel"}
-                    .tab-para
-                      .row
-                        .col-lg-12
-                          %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Tours
-                      -#.trip-circle
-                        .single-trip-circle
-                          %input#radio01{:name => "radio", :type => "radio"}/
-                          %label{:for => "radio01"}
-                            %span.round-boarder>
-                              %span.round-boarder1
-                            round trip
-
-                        .single-trip-circle
-                          %input#radio02{:name => "radio", :type => "radio"}/
-                          %label{:for => "radio02"}
-                            %span.round-boarder>
-                              %span.round-boarder1
-                            on way
-
-                      -#.row
-                        .col-lg-4.col-md-4.col-sm-12
-                          .single-tab-select-box
-                            %h2 from
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} enter your location
-
-                                %option{:value => "turkey"} turkey
-                                %option{:value => "russia"} russia
-                                %option{:value => "egept"} egypt
-
-                        -#.col-lg-2.col-md-3.col-sm-4
-                          .single-tab-select-box
-                            %h2 departure
-                            .travel-check-icon
-                              %form{:action => "#"}
-                                %input.form-control{"data-toggle" => "datepicker", :name => "departure", :placeholder => "12 -01 - 2017 ", :type => "text"}/
-    
-                        -#.col-lg-2.col-md-3.col-sm-4
-                          .single-tab-select-box
-                            %h2 return
-                            .travel-check-icon
-                              %form{:action => "#"}
-                                %input.form-control{"data-toggle" => "datepicker", :name => "return", :placeholder => "22 -01 - 2017 ", :type => "text"}/
-              
-                        -#.col-lg-2.col-md-1.col-sm-4
-                          .single-tab-select-box
-                            %h2 adults
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} 5
-                                / /.option
-                                %option{:value => "10"} 10
-                                / /.option
-                                %option{:value => "15"} 15
-                                / /.option
-                                %option{:value => "20"} 20
-
-                        -#.col-lg-2.col-md-1.col-sm-4
-                          .single-tab-select-box
-                            %h2 childs
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} 1
-                                / /.option
-                                %option{:value => "2"} 2
-                                / /.option
-                                %option{:value => "4"} 4
-                                / /.option
-                                %option{:value => "8"} 8
-
-                      -#.row
-                        .col-lg-4.col-md-4.col-sm-12
-                          .single-tab-select-box
-                            %h2 to
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} enter your destination location
-                                / /.option
-                                %option{:value => "istambul"} istambul
-                                / /.option
-                                %option{:value => "mosko"} mosko
-                                / /.option
-                                %option{:value => "cairo"} cairo
-                        .col-lg-3.col-md-3.col-sm-4
-                          .single-tab-select-box
-                            %h2 class
-                            .travel-select-icon
-                              %select.form-control
-                                %option{:value => "default"} enter class
-                                / /.option
-                                %option{:value => "A"} A
-                                / /.option
-                                %option{:value => "B"} B
-                                / /.option
-                                %option{:value => "C"} C
-                        .clo-sm-5
-                          .about-btn.pull-right
-                            %button.about-view.travel-btn
-                              search
-
-                  #multidestines.tab-pane.fade.in{:role => "tabpanel"}
-                    .tab-para
-                      .row
-                        .col-lg-12
-                          %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
-
-
-          
+            = render 'app/front/widget'
     %section#services.services
       .container
         .gallary-header.text-center
@@ -327,7 +44,7 @@
           .row
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-1.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
                   %h3
                     Antioquia
@@ -351,7 +68,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-2.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
                   %h3
                     Boyaca
@@ -375,7 +92,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-3.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
                   %h3
                     Bucaramanga
@@ -399,7 +116,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-4.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-4.jpg)"}
                 .box-information
                   %h3
                     Santa Rosa de Cabal
@@ -423,7 +140,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-5.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-5.jpg)"}
                 .box-information
                   %h3
                     Barranquilla
@@ -447,7 +164,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-6.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-6.jpg)"}
                 .box-information
                   %h3
                     Santander
@@ -469,9 +186,9 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-                        
+
     %section#tours.tours
-      .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(assets/img/bg-tours.jpg)"}
+      .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}
         .mask-tours
           .container
             .box-tours
@@ -494,7 +211,7 @@
           .row
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-1.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
                   %h3
                     Bucaramanga Family Tour
@@ -516,7 +233,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-2.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
                   %h3
                     Cartagena Family Tour
@@ -538,7 +255,7 @@
                         ver más
             .col-md-4.col-sm-6
               .box-card
-                .box-image{:style => "background-image: url(assets/img/bg-3.jpg)"}
+                .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
                   %h3
                     Colombia Family Tour
@@ -573,28 +290,28 @@
               .tips
                 .box-circle.circle-yellow
                   .circle-border
-                    %img{:alt => "", :src => "assets/img/car.svg", :width => "60px"}/
+                    %img{:alt => "", :src => "/assets/img/car.svg", :width => "60px"}/
                 %h2 Te recibimos y trasladamos
                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-lg-3
               .tips
                 .box-circle.circle-green
                   .circle-border
-                    %img{:alt => "", :src => "assets/img/airplane.svg", :width => "50px"}/
+                    %img{:alt => "", :src => "/assets/img/airplane.svg", :width => "50px"}/
                 %h2 Destinos de ensueño
                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-lg-3
               .tips
                 .box-circle.circle-orange
                   .circle-border
-                    %img{:alt => "", :src => "assets/img/face.svg", :width => "40px"}/
+                    %img{:alt => "", :src => "/assets/img/face.svg", :width => "40px"}/
                 %h2 Atención especializada
                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-lg-3
               .tips
                 .box-circle.circle-red
                   .circle-border
-                    %img{:alt => "", :src => "assets/img/palm.svg", :width => "40px"}/
+                    %img{:alt => "", :src => "/assets/img/palm.svg", :width => "40px"}/
                 %h2 Expertos en turismo
                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
 
