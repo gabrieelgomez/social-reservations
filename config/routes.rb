@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
     get 'transfers', to: 'app/front#transfers'
+    get 'show_transfers', to: 'app/front#show_transfers'
   end
 
   devise_for :users, skip: KepplerConfiguration.skip_module_devise

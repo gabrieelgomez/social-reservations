@@ -24,6 +24,10 @@ module App
 
 
 
+    def show_transfers
+      
+    end
+
     private
 
     def set_search

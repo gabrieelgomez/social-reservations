@@ -1,0 +1,76 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+
+  %body{style:"padding-top:0px;"}
+    %header
+      = render 'app/front/navbar'
+
+    %section#plan.plan
+      .box-plan{:style => "background-image: url(/assets/img/bg-3.jpg)"}
+        .container
+          .box-title
+            %h1 Title Plan
+
+
+
+    %section#plan-description.plan-description
+      .container
+        .col-lg-12
+
+    %section#galery.galery
+
+    %section#reservation.reservation
+      .container
+        .gallary-header.text-center
+          %h2
+            Datos de Faturación
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .box-billing
+        .container
+          .col-lg-6
+            %form{:action => "/action_page.php"}
+              .form-group
+                %label{:for => "email"} Tipo de Documento
+                %input#email.form-control{:type => "email"}/
+              .form-group
+                %label{:for => "email"} Nombre
+                %input#email.form-control{:type => "email"}/
+              .form-group
+                %label{:for => "pwd"} Género
+                %input#pwd.form-control{:type => "password"}/
+              .form-group
+                %label{:for => "pwd"} Teléfono
+                %input#pwd.form-control{:type => "password"}/
+              .checkbox
+                %label
+                  %input{:type => "checkbox"}/
+                  Remember me
+              %button.btn.btn-default{:type => "submit"} Submit
+          .col-lg-6
+            .form-group
+              %label{:for => "email"} Número de Identifación
+              %input#email.form-control{:type => "email"}/
+            .form-group
+              %label{:for => "email"} Apellido
+              %input#email.form-control{:type => "email"}/
+            .form-group
+              %label{:for => "pwd"} Nacionalidad
+              %input#pwd.form-control{:type => "password"}/
+            .form-group
+              %label{:for => "pwd"} E-mail
+              %input#pwd.form-control{:type => "password"}/
+            .checkbox
+              %label
+                %input{:type => "checkbox"}/
+                Remember me
+            %button.btn.btn-default{:type => "submit"} Submit
+
+
+    %section#featured-products.featured-products
+
+
+    %footer.footer-copyright
+      = render 'app/front/footer'

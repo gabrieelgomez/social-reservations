@@ -1,0 +1,31 @@
+.plan {
+  .box-plan {
+    width: 100%;
+    height: 500px;
+    position: relative;
+
+    .box-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.25);
+
+      h1 {
+        color: white;
+      }
+    }
+  }
+}
+
+.reservation {
+  padding: 90px 0;
+
+  .box-billing {
+    padding: 40px 0;
+  }
+}
