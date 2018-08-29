@@ -38,9 +38,9 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => "/#{@lang}/cop/#{path = request.path.split('/').drop(3).first}"} COP
+                    %a{:href => "/#{@lang}/cop/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} COP
                   %li
-                    %a{:href => "/#{@lang}/usd/#{path = request.path.split('/').drop(3).first}"} USD
+                    %a{:href => "/#{@lang}/usd/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} USD
           .col-lg-4
             .item-contact.login
               %a.pull-right{:href => ""}

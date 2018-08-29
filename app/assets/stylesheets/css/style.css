@@ -308,7 +308,7 @@ body {
 }
 
 .input-custom {
-    width: 95%;
+    width: 95% !important;
 }
 
 /* .desc-tabs */

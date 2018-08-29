@@ -12,7 +12,7 @@ module App
     end
 
     def transfers
-      if @q.nil?
+      unless @q.nil?
         destinations = params[:q][:destinations_id_in]
         adults = params[:q][:quantity_adults_lteq]
         kids = params[:q][:quantity_kids_lteq]
@@ -21,6 +21,8 @@ module App
                                .ransack(quantity_kids_gteq: kids).result
       end
     end
+
+
 
     private
 
