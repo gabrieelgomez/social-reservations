@@ -1,3 +1,7 @@
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"}
+
+
 = simple_form_for [:admin, :travel, @transfer] do |f|
   .container
     .row
@@ -75,11 +79,22 @@
                         = field.input :usd, label: 'Precio USD', input_html: { min: '1', type: 'number' }
 
                         -# = f.association :destinations#, label_method: lambda { |subcat| "<b>#{subcat.category.title}</b> / #{subcat.title}".html_safe }
-                  .col-xs-4
+                  .col-xs-6
                     %label Destinos
-                    %select{style: 'display:none;', name: 'transfer[destinations][]', id: 'destinations_transfers', multiple: true }
+                    -# %select.js-example-basic-single{style: 'width:100%;', :name => "state", multiple: "multiple"}
+                    -#   %optgroup{:label => "USA"}
+                    -#     %option{:value => "1"} New York
+                    -#     %option{:value => "2"} Kansas
+                    -#   %optgroup{:label => "Venezuela"}
+                    -#     %option{:value => "3"} Caracas
+                    -#     %option{:value => "4"} Punto Fijo
+                    %select.js-example-basic-single{id: 'destinations_transfers', style: 'width:100%;', name: 'destinations', multiple: "multiple"}
                       - KepplerTravel::Destination.all.each do |collection|
                         %option{ value: collection.id }= collection.title
+
+                    -# %select{style: 'display:none;', name: 'transfer[destinations][]', id: 'destinations_transfers', multiple: true }
+                    -#   - KepplerTravel::Destination.all.each do |collection|
+                    -#     %option{ value: collection.id }= collection.title
 
                   -# .col-xs-4
                   -#   %select#destinations_transfers{:multiple => "multiple"}
@@ -97,9 +112,11 @@
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 
 :javascript
-  $( "#destinations_transfers" ).select2();
+  // $( "#destinations_transfers" ).select2();
 
-
+  $(document).ready(function() {
+    $('#destinations_transfers').select2();
+  });
 - if action_name == 'new'
   :javascript
 
@@ -117,7 +134,10 @@
          },
        debug: true,errorElement: "label",
        submitHandler: function(form){
+         var data = $('#destinations_transfers').val();
+         $('form').append(`<input type="hidden" name="transfer[destination_ids]" value="${data}" /> `);
          form.submit();
+
        }
       });
     });
@@ -137,6 +157,8 @@
        },
      debug: true,errorElement: "label",
      submitHandler: function(form){
+       var data = $('#destinations_transfers').val();
+       $('form').append(`<input type="hidden" name="transfer[destination_ids]" value="${data}" /> `);
        form.submit();
      }
     });
