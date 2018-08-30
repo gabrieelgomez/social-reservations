@@ -129,3 +129,4 @@ gem 'keppler_ga_dashboard', path: 'rockets/keppler_ga_dashboard'
 gem 'keppler_travel', path: 'rockets/keppler_travel'
 # gem 'select2-rails'
 gem "selectize-rails"
+gem 'slick_rails'
