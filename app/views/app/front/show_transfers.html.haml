@@ -45,12 +45,12 @@
                   #2.tab-pane
                     %h3 Incluye
                     %p.plan-text
-                      = sanitize(@transfer.includes[@lang], tags: [])
+                      -#= sanitize(@transfer.includes[@lang], tags: [])
                       -# = raw @transfer.includes[@lang].html_safe
                   #3.tab-pane
                     %h3 Condiciones
                     %p.plan-text
-                      = sanitize(@transfer.conditions[@lang], tags: [])
+                      -#= sanitize(@transfer.conditions[@lang], tags: [])
                       -# = raw @transfer.conditions[@lang].html_safe
 
     %section#plan-galery.plan-galery
