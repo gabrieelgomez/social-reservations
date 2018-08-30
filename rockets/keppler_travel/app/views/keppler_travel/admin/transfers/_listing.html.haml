@@ -8,39 +8,39 @@
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
     %td
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           - unless transfer.cover.url.blank?
-            = image_tag transfer.cover.url, width: 100, height: 50
+            = image_tag transfer.cover.url, width: 100, height: 50, style: 'object-fit: cover;'
     %td.hidden-xs
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.title[I18n.locale.to_s]
     %td.hidden-xs
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = sanitize(transfer.description[I18n.locale.to_s], tags: []).truncate(20)
     %td.hidden-xs.hidden-sm
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.quantity_adults
     %td.hidden-xs.hidden-sm
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.quantity_kids
     -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
     -#     %span
     -#       = transfer.date
     -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
     -#     %span
     -#       = transfer.time
     %td.hidden-xs.hidden-sm
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.price
-    %td{ style: 'width: 15px;padding-right:15px;' }
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{transfer.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
       %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{transfer.id}" }
