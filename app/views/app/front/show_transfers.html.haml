@@ -100,27 +100,32 @@
           .col-lg-6
             %form{:action => "/action_page.php"}
               .form-group
-                %label{:for => "email"} Tipo de Documento
-                %input#email.form-control{:type => "email"}/
-              .form-group
                 %label{:for => "email"} Nombre
                 %input#email.form-control{:type => "email"}/
               .form-group
-                %label{:for => "pwd"} Género
-                %input#pwd.form-control{:type => "password"}/
-              .form-group
-                %label{:for => "pwd"} Teléfono
-                %input#pwd.form-control{:type => "password"}/
+                %label{:for => "email"} Tipo de Nacionalidad
+                %select.form-control
+                  %option{:value => "default"} Tipo de nacionalidad
+                  %option{:value => "1"} Venezolana
+                  %option{:value => "2"} Colombiana
+              .col-lg-6{style:"padding-left: 0 !important;"}
+                .form-group
+                  %label{:for => "email"} Género
+                  %select.form-control
+                    %option{:value => "default"} Género
+                    %option{:value => "1"} Masculino
+                    %option{:value => "2"} Femenino
+              .col-lg-6{style:"padding-right: 0 !important;"}
+                .form-group
+                  %label{:for => "pwd"} Teléfono
+                  %input#pwd.form-control{:type => "password"}/
           .col-lg-6
-            .form-group
-              %label{:for => "email"} Número de Identifación
-              %input#email.form-control{:type => "email"}/
             .form-group
               %label{:for => "email"} Apellido
               %input#email.form-control{:type => "email"}/
             .form-group
-              %label{:for => "pwd"} Nacionalidad
-              %input#pwd.form-control{:type => "password"}/
+              %label{:for => "email"} Número de Identifación
+              %input#email.form-control{:type => "email"}/
             .form-group
               %label{:for => "pwd"} E-mail
               %input#pwd.form-control{:type => "password"}/

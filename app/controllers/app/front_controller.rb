@@ -22,10 +22,10 @@ module App
       end
     end
 
-
-
     def show_transfers
-      
+    end
+
+    def login
     end
 
     private

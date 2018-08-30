@@ -248,14 +248,26 @@
     padding: 40px 0;
 
     .form-group {
-
-      label,
       input {
         color: #4e4e56 !important;
-        font-family: 'Poppins', sans-serif !important;
+        font-family: 'Poppins',
+          sans-serif !important;
         font-size: 14px !important;
         font-weight: 400 !important;
       }
+
+      label {
+        padding: 4px 0;
+        color: #4e4e56 !important;
+        font-family: 'Poppins',
+          sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+      }
+    }
+
+    .form-separator {
+      width: 50%;
     }
 
     .box-billing-btn {
