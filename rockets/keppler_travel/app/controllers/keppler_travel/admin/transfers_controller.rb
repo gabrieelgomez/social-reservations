@@ -46,7 +46,8 @@ module KepplerTravel
       # POST /transfers
       def create
         @transfer = Transfer.new(transfer_params)
-        @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
+        # @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
+        byebug
         if @transfer.save
           redirect(@transfer, params)
         else
@@ -56,8 +57,10 @@ module KepplerTravel
 
       # PATCH/PUT /transfers/1
       def update
-        @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
-        if @transfer.update(transfer_params)
+        # @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
+        @transfer.update_images(params[:transfer])
+        @transfer.update(transfer_params)
+        if @transfer.save
           redirect(@transfer, params)
         else
           render :edit
@@ -138,8 +141,8 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def transfer_params
-        params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :date, :time, :position, :deleted_at,
-          price: [:cop, :usd], title: @language, description: @language, destination_ids:[])
+        params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :date, :time, :position, :deleted_at, {files:[]},
+          price: [:cop, :usd], title: @language, description: @language)
       end
 
       def show_history

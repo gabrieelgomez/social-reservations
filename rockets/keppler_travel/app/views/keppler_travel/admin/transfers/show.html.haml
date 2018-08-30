@@ -33,10 +33,32 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @transfer.as_json(only: ["title", "description", "quantity_adults", "quantity_kids", "price", "position", "deleted_at"]).each do |attribute, value|
+                - @transfer.as_json(only: ["title", "description", "quantity_adults", "date", "time", "quantity_kids", "price", "position", "deleted_at"]).each do |attribute, value|
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destination_ids")
                   %td.display-value.fs-body-1.tc-black-2.text-overflow= @transfer.destinations.blank? ? '-----------' : @transfer.destinations.map(&:title)
+
+
+      .col-md-6
+        - @transfer.files.each_with_index do |img, index|
+          %img{src: img.url, style: 'width:200px;height:200px;'}
+        -# .box.box-solid
+        -#   .box-header.with-border
+        -#     %h3.box-title Galería de Imágenes
+        -#   .box-body
+        -#     #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+        -#       -# %ol.carousel-indicators
+        -#       -#   %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+        -#       -#   %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+        -#       -#   %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+        -#       .carousel-inner
+        -#         - @transfer.files.each_with_index do |img, index|
+        -#           .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
+        -#             %img{alt: 'Galery', src: img.url}
+        -#       %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+        -#         %span.fa.fa-angle-left
+        -#       %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+        -#         %span.fa.fa-angle-right

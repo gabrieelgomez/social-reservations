@@ -78,7 +78,7 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.action_mailer.default_url_options =
-    { host: Rails.application.secrets.domain_name }
+    { host: Rails.application.secrets.host }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -86,13 +86,13 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     address:              Rails.application.secrets.address,
-    port:                 Rails.application.secrets.port,
-    domain:               Rails.application.secrets.domain_name,
+    port:                 587,
+    domain:               Rails.application.secrets.domain,
     user_name:            Rails.application.secrets.email,
     password:             Rails.application.secrets.password,
     authentication:   'plain',
-    enable_starttls_auto: true,
-    ssl: true }
+    enable_starttls_auto: true
+  }
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

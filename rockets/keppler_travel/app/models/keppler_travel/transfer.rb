@@ -5,18 +5,37 @@ module KepplerTravel
     include CloneRecord
     require 'csv'
     mount_uploader :cover, AttachmentUploader
+    mount_uploaders :files, AttachmentUploader
     acts_as_list
     # Fields for the search form in the navbar
 
-    # serialize :title, HashSerializer
-    # attr_accessor :title, :es, :en, :pt
-    # validates :es, :en, :pt, presence: true
-    has_and_belongs_to_many :destinations
     validates :cover, presence: true
 
     def self.search_field
       fields = ["cover", "title", "quantity_kids", "date", "time", "price", "position", "deleted_at"]
       build_query(fields, :or, :cont)
+    end
+
+    def update_images(images_list)
+      unless images_list[:files].nil? || images_list[:files].empty?
+        imgs = self.files
+        imgs += images_list[:files]
+        self.files = imgs
+        self.save
+      end
+
+      unless images_list[:files_delete].nil? || images_list[:files_delete].empty?
+        idx_arr = images_list[:files_delete]
+        remain_images = self.files # copy the array
+        idx_arr.size.times do |time|
+          deleted_image = remain_images.delete_at(idx_arr[time].to_i)
+          deleted_image.try(:remove!)
+          # images[images_list[time].to_i].remove!
+          # images[idx_arr[time].to_i].model[:files].delete_at(idx_arr[time].to_i)
+          # self.save
+        end
+        self.files = remain_images
+      end
     end
 
     def self.upload(file)

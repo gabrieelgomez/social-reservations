@@ -22,27 +22,6 @@ function collectImages(id_input, edit_input, name_input){
     changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag&Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn blue">Browse Files</a></div></div>',
     showThumbs: true,
     theme: "dragdropbox",
-    uploadFile: {
-       url: "./php/upload.php",
-       data: {},
-       type: 'POST',
-       enctype: 'multipart/form-data',
-       beforeSend: function(){},
-
-       success: function(data, el){
-       },
-
-       error: function(el){
-         var parent = el.find(".jFiler-jProgressBar").parent();
-
-         el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
-            $("<div class = \"jFiler-item-others text-success\"><i class = \"icon-jfi-check-circle\"> </i> Success</div>").hide().appendTo(parent).fadeIn("slow");
-         });
-       },
-
-       statusCode: {},
-       onProgress: function(){},
-    },
     dragDrop: {
         dragEnter: null,
         dragLeave: null,
