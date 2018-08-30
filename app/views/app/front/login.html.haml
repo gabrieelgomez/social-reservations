@@ -23,11 +23,11 @@
           #3.tab-pane
             = render 'app/front/login/recovery'
           .copyright-login
-            %p.mt-5.mb-3.text-muted.text-center Receptivo Colombia © | 2017-2018
-          .go-back-home
-            %span 
-              %i.icon-home.icons
+            .go-back-home
+              = link_to root_path do
+                %span 
+                  %i.icon-home.icons
                 Ir a Home
-
+            %p.text-center Receptivo Colombia © | 2017-2018
 
 
