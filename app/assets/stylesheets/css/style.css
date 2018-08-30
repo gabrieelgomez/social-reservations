@@ -18,7 +18,7 @@ font-family: 'Poppins', sans-serif;
 6.  Gallery
 7.  Discount-offer
 8.  Packages
-9.  Testemonial 
+9.  Testemonial
 10. Special Offer
 11. Blog
 12. Subscribe
@@ -784,11 +784,10 @@ body {
     border: 1px solid #47c1f5;
     margin-top: -3px;
 }
-}
 
 /*.discount-offer-btn*/
 /*-------------------------------------
-        8. Packages 
+        8. Packages
 --------------------------------------*/
 .packages {
     padding: 120px 0 90px;
@@ -886,7 +885,7 @@ body {
 
 /*single-package-item */
 /*-------------------------------------
-        9. Testemonial 
+        9. Testemonial
 --------------------------------------*/
 .testemonial {
     position: relative;
