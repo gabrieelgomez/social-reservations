@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/', to: 'app/front#index'
     get 'transfers', to: 'app/front#transfers'
     get 'show_transfers', to: 'app/front#show_transfers'
+    get 'login', to: 'app/front#login'
   end
 
   devise_for :users, skip: KepplerConfiguration.skip_module_devise
