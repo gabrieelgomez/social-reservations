@@ -4,9 +4,9 @@
 #= require jquery-ui/widgets/datepicker
 #= require jquery-ui/widgets/sortable
 #= require jquery_ujs
-#= require turbolinks
+# require turbolinks
 #= require nprogress
-#= require nprogress-turbolinks
+# require nprogress-turbolinks
 #= require ckeditor/init
 #= require cocoon
 #= require bootstrap-sprockets
