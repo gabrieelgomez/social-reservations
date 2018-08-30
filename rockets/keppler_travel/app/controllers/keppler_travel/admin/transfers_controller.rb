@@ -47,7 +47,7 @@ module KepplerTravel
       def create
         @transfer = Transfer.new(transfer_params)
         # @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
-        byebug
+        # byebug
         if @transfer.save
           redirect(@transfer, params)
         else

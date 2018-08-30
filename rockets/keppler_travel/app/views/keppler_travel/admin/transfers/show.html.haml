@@ -37,9 +37,9 @@
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
-                %tr.list-row
-                  %th.display-label= t("activerecord.attributes.destination_ids")
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @transfer.destinations.blank? ? '-----------' : @transfer.destinations.map(&:title)
+                -# %tr.list-row
+                -#   %th.display-label= t("activerecord.attributes.destination_ids")
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @transfer.destinations.blank? ? '-----------' : @transfer.destinations.map(&:title)
 
 
       .col-md-6

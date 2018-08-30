@@ -23,6 +23,8 @@ module App
     end
 
     def show_transfers
+      @transfer = KepplerTravel::Transfer.find params[:id]
+      @destacados = KepplerTravel::Transfer.all.sample(10)
     end
 
     def login

@@ -23,7 +23,7 @@
         - unless @results.nil?
           .gallary-header.text-center
             %h2
-              Seleccione el tipo de vehículo que desea 
+              Seleccione el tipo de vehículo que desea
             %p
               Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
       .content-transfers
@@ -44,31 +44,31 @@
               - @results.each do |transfer|
                 .col-lg-4
                   .cars
-                    .cars__img{style:"background-image: url('#{transfer.cover.url}')"} 
+                    .cars__img{style:"background-image: url('#{transfer.cover.url}')"}
                     .cars__inf
-                      .box-title 
+                      .box-title
                         %span.title= transfer.title[@lang]
                         %span.price
                           = transfer.price[@currency]
                           = @currency == 'cop' ? '$ COP' : '$ USD'
-                      %p.amount-people 
-                        %span 
+                      %p.amount-people
+                        %span
                           %i.icon-people.icons
-                          Máximo de Personas: 
+                          Máximo de Personas:
                           = transfer.quantity_adults
                           Adultos
                           = transfer.quantity_kids
                           Niños
-                      %p.date-time 
-                        %span 
+                      %p.date-time
+                        %span
                           %i.icon-calendar.icons
                           Fecha: 12/02/2018
                       %p.date-time
-                        %span 
+                        %span
                           %i.icon-clock.icons
                           Hora: 12:00pm
                       .box-btn
-                        = link_to show_transfers_path do
+                        = link_to show_transfers_path(@lang, @currency, transfer) do
                           %button.about-view.packages-btn
                             ver más
 
