@@ -54,11 +54,16 @@
                       %p.amount-people
                         %span
                           %i.icon-people.icons
-                          Máximo de Personas:
+                          Máx de Personas:
                           = transfer.quantity_adults
                           Adultos
                           = transfer.quantity_kids
                           Niños
+                      %p.amount-people
+                        %span
+                          %i.icon-bag.icons
+                          Máx de Maletas: 5
+                          -#= transfer.quantity_bag   
                       %p.date-time
                         %span
                           %i.icon-calendar.icons
