@@ -43,10 +43,11 @@
                     %a{:href => "/#{@lang}/usd/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} USD
           .col-lg-4
             .item-contact.login
-              %a.pull-right{:href => ""}
+              = link_to login_path, class:"pull-right" do
                 %p
                   %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
                   %span Ingresa
+
   .container
     .navbar-header
       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
