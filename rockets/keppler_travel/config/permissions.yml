@@ -1,4 +1,12 @@
 modules:
+ destinations:
+    name: Destination
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
  transfers:
     name: Transfer
     actions: [

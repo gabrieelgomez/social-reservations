@@ -1,0 +1,4 @@
+- @locale = request.protocol + request.host_with_port
+:javascript
+  var lang = '#{raw @locale}'
+  window.location.href = `${lang}/es/cop`;

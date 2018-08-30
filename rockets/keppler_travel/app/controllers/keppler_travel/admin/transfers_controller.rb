@@ -46,7 +46,7 @@ module KepplerTravel
       # POST /transfers
       def create
         @transfer = Transfer.new(transfer_params)
-
+        @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
         if @transfer.save
           redirect(@transfer, params)
         else
@@ -56,6 +56,7 @@ module KepplerTravel
 
       # PATCH/PUT /transfers/1
       def update
+        @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
         if @transfer.update(transfer_params)
           redirect(@transfer, params)
         else
@@ -127,6 +128,7 @@ module KepplerTravel
       def set_attachments
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
+        @language = [:en, :es, :pt]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -136,8 +138,8 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def transfer_params
-        params.require(:transfer).permit(:cover, :quantity_person, :date, :time, :position, :deleted_at,
-          price: [:cop, :usd], title: [:en, :es, :pt])
+        params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :date, :time, :position, :deleted_at,
+          price: [:cop, :usd], title: @language, description: @language, destination_ids:[])
       end
 
       def show_history

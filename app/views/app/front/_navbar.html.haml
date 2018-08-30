@@ -6,12 +6,12 @@
           .col-lg-6
             .item-contact.email
               %p.pull-left
-                %img{:alt => "icon-email", :src => "assets/img/mail.svg"}/
+                %img{:alt => "icon-email", :src => "/assets/img/mail.svg"}/
                 %span @receptivocolombia.com
           .col-lg-6
             .item-contact.phone
               %p.pull-left
-                %img{:alt => "icon-phone", :src => "assets/img/whatsapp-logo.svg"}/
+                %img{:alt => "icon-phone", :src => "/assets/img/whatsapp-logo.svg"}/
                 %span +57 319 2575232
         .col-lg-6.nav-padding
           .col-lg-4.nav-padding
@@ -21,12 +21,15 @@
                   Idioma
                   %span.caret
                 %ul.dropdown-menu
+                  - path = request.path.split('/')
+                  - path.third.replace(@currency)
+                  - path = path.drop(2).join('/')
                   %li
-                    %a{:href => "#"} Español
+                    %a{:href => "/es/#{path}"} Español
                   %li
-                    %a{:href => "#"} Inglés
+                    %a{:href => "/en/#{path}"} Inglés
                   %li
-                    %a{:href => "#"} Portugues
+                    %a{:href => "/pt/#{path}"} Portugues
           .col-lg-4.nav-padding
             .item-contact.money
               .dropdown.pull-right
@@ -35,14 +38,14 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => "#"} COP
+                    %a{:href => "/#{@lang}/cop/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} COP
                   %li
-                    %a{:href => "#"} USD
+                    %a{:href => "/#{@lang}/usd/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} USD
           .col-lg-4
             .item-contact.login
               %a.pull-right{:href => ""}
                 %p
-                  %img{:alt => "icon-login", :src => "assets/img/user.svg", :width => "18px"}/
+                  %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
                   %span Ingresa
   .container
     .navbar-header
@@ -52,7 +55,7 @@
         %span.icon-bar
         %span.icon-bar
       .logo-navbar.logo-separator
-        %a{:href => "index.html"}
+        %a{:href => "/#{@lang}/#{@currency}"}
           %svg{:height => "300px", :style => "enable-background:new 0 0 830.7 300;", :version => "1.1", :viewbox => "0 0 830.7 300", :width => "830.7px", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:a" => "http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
             %defs
             %g
