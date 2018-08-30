@@ -47,7 +47,7 @@ module KepplerTravel
       def create
         @transfer = Transfer.new(transfer_params)
         # @transfer.destination_ids = params[:transfer][:destination_ids].split(',').map(&:to_i)
-        byebug
+        # byebug
         if @transfer.save
           redirect(@transfer, params)
         else
@@ -141,8 +141,9 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def transfer_params
-        params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :date, :time, :position, :deleted_at, {files:[]},
-          price: [:cop, :usd], title: @language, description: @language)
+        params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
+          :date, :time, {files:[]}, price: [:cop, :usd],
+          title: @language, description: @language, includes: @language, conditions: @language)
       end
 
       def show_history

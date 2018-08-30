@@ -68,13 +68,11 @@
     = render "description"
   %aside#index-show.control-sidebar
 
-  - if KepplerTravel::Destination.first
-    .mixed-btn
-      - if can?(KepplerTravel::Transfer).create?
-        = link_to new_admin_travel_transfer_path, class: "btn-float" do
-          +
-  - else
-    %span Agregue destinos para agregar traslados
+  .mixed-btn
+    - if can?(KepplerTravel::Transfer).create?
+      = link_to new_admin_travel_transfer_path, class: "btn-float" do
+        +
+
 
 :javascript
   $(document).ready(function(){

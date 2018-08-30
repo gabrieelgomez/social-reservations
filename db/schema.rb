@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.string "cover"
     t.jsonb "title"
     t.jsonb "description"
+    t.jsonb "includes"
+    t.jsonb "conditions"
     t.jsonb "files"
     t.integer "quantity_adults"
     t.integer "quantity_kids"
