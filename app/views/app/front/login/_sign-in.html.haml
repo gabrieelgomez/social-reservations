@@ -1,7 +1,4 @@
-.text-center.mb-4
-  %img.mb-4{:alt => "", :src => "/assets/img/login/logo.svg", :width => "150px"}/
-  %hr/
-  %h1.h3.mb-3 Sign in
+
 .form-label-group
   %label{:for => "inputEmail"} Email address
   %input#inputEmail.form-control{:autofocus => "", :placeholder => "Email address", :required => "", :type => "email"}/
@@ -12,5 +9,5 @@
   %label
     %input{:type => "checkbox", :value => "remember-me"}/
     Remember me
-%button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Login
-%p.mt-5.mb-3.text-muted.text-center Receptivo Colombia © | 2017-2018
+.box-login-btn
+  %button.btn.btn-lg.btn-primary.btn-block.btn-login{:type => "submit"} Login

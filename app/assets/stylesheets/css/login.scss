@@ -15,7 +15,7 @@
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: gray;
+  background-color: #393b3c;
   height: 100%;
   width: 100%;
 }
@@ -23,16 +23,56 @@
 .form-signin {
   width: 100%;
   max-width: 420px;
-  padding: 50px 25px;
+  width: 420px;
+  padding: 30px 25px;
+  min-height: 535px;
   margin: 0 auto;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   background-color: #fff;
+  position: relative;
+
+  .nav-tabs {
+    li {
+      a {
+        color: $color-blue;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 0 0 25px 0;
+
+    .tab-pane {
+      padding: 15px 0;
+
+      .box-login-btn {
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .copyright-login {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 100%;
+  }
 }
 
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
+
+  label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
 }
 
 .mb-3,
@@ -52,4 +92,10 @@
 
 .text-muted {
   color: #6c757d !important;
+}
+
+.btn-login {
+  color: #fff !important;
+  background-color: $color-blue !important;
+  border-color: $color-blue !important;
 }
