@@ -21,15 +21,12 @@
                   Idioma
                   %span.caret
                 %ul.dropdown-menu
-                  - path = request.path.split('/')
-                  - path.third.replace(@currency)
-                  - path = path.drop(2).join('/')
                   %li
-                    %a{:href => "/es/#{path}"} Español
+                    %a{:href => UrlService.url_lang('es', @currency, request)} Español
                   %li
-                    %a{:href => "/en/#{path}"} Inglés
+                    %a{:href => UrlService.url_lang('en', @currency, request)} Inglés
                   %li
-                    %a{:href => "/pt/#{path}"} Portugues
+                    %a{:href => UrlService.url_lang('pt', @currency, request)} Portugues
           .col-lg-4.nav-padding
             .item-contact.money
               .dropdown.pull-right
@@ -38,9 +35,9 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => "/#{@lang}/cop/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} COP
+                    %a{:href => UrlService.url_lang(@lang,'cop', request)} COP
                   %li
-                    %a{:href => "/#{@lang}/usd/#{path = request.path.split('/').drop(3).first}/?#{request.url.split('?').last}"} USD
+                    %a{:href => UrlService.url_lang(@lang, 'usd', request)} USD
           .col-lg-4
             .item-contact.login
               = link_to login_path, class:"pull-right" do

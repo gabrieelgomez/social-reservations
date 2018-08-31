@@ -20,7 +20,8 @@
               %tbody
                 .form-padding
                   .col-xs-12
-                    = f.input :title
+                    -# = f.input :title
+                    = f.input :title, :placeholder => 'Start typing a place name...'
                   -# .col-xs-12
                   -#   = f.input :cover, as: :keppler_file, label: false
                   -# .col-xs-12
@@ -33,3 +34,29 @@
                     .pull-right
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+
+
+  %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
+  :javascript
+    function initialize() {
+
+     var options = {
+      types: ['(cities)'],
+      componentRestrictions: {country: "col"}
+     };
+
+      var input = document.getElementById('destination_title');
+      var autocomplete = new google.maps.places.Autocomplete(input, options);
+      google.maps.event.addListener(autocomplete, 'place_changed', function () {
+          var place = autocomplete.getPlace();
+          console.log('Latitude', place.geometry.location.lat());
+          console.log('Longitude', place.geometry.location.lng());
+          // document.getElementById('city2').value = place.name;
+          // document.getElementById('cityLat').value = place.geometry.location.lat();
+          // document.getElementById('cityLng').value = place.geometry.location.lng();
+
+      });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
