@@ -27,6 +27,10 @@ module App
       @destacados = KepplerTravel::Transfer.all.sample(10)
     end
 
+    def reservation_transfers
+      
+    end
+
     def login
     end
 

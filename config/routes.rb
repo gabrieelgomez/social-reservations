@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'transfers', to: 'app/front#transfers'
     get 'show_transfers/:id', to: 'app/front#show_transfers', as: :show_transfers
     get 'login', to: 'app/front#login'
+    get 'reservation_transfers', to: 'app/front#reservation_transfers'
   end
 
   devise_for :users, skip: KepplerConfiguration.skip_module_devise
