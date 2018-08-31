@@ -20,7 +20,7 @@
 
     %section#transfers.transfers
       .container
-        - unless @results.nil?
+        - unless @results.blank?
           .gallary-header.text-center
             %h2
               Seleccione el tipo de vehículo que desea
@@ -29,7 +29,7 @@
       .content-transfers
         .container
           .row
-            - if @results.nil?
+            - if @results.blank?
               .col-lg-12
                 .box-results
                   .image-search
@@ -63,7 +63,7 @@
                         %span
                           %i.icon-bag.icons
                           Máx de Maletas: 5
-                          -#= transfer.quantity_bag   
+                          -#= transfer.quantity_bag
                       %p.date-time
                         %span
                           %i.icon-calendar.icons
