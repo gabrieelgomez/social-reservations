@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.jsonb "includes"
     t.jsonb "conditions"
     t.jsonb "files"
+    t.jsonb "kit"
     t.integer "quantity_adults"
     t.integer "quantity_kids"
     t.datetime "date"

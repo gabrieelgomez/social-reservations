@@ -28,6 +28,10 @@
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.quantity_kids
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
+        %span
+          = transfer.kit
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
     -#     %span
@@ -39,7 +43,7 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
-          = transfer.price
+          = transfer.price['cop']
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{transfer.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical

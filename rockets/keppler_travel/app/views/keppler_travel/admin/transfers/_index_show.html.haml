@@ -9,7 +9,7 @@
   %h3.control-sidebar-heading
     = t("keppler.modules.#{controller_path.underscore}")
   %ul.timeline
-    - @transfer.as_json(only: ["cover", "title", "description", "quantity_adults", "quantity_kids", "date", "time", "price", "position", "deleted_at"]).each do |attribute, value|
+    - @transfer.as_json(only: ["cover", "title", "description", "quantity_adults", "quantity_kids", "kit", "date", "time", "price", "position", "deleted_at"]).each do |attribute, value|
       -unless attribute.eql?('position') || attribute.eql?('deleted_at')
         %li.list-row
           .timeline-item

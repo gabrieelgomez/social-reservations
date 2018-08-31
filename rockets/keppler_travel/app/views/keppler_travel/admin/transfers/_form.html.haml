@@ -34,6 +34,14 @@
                     = f.input :quantity_adults, label: 'Cantidad de personas Adultas', input_html: { min: '1', type: 'number' }
                   .col-xs-12.col-md-2
                     = f.input :quantity_kids, label: 'Cantidad de personas Niños', input_html: { min: '1', type: 'number' }
+
+                  .col-xs-12.col-md-8
+                    = f.simple_fields_for :kit, OpenStruct.new(@transfer.kit) do |field|
+                      .col-xs-4
+                        = field.input :quantity, label: 'Piezas max. Equipaje', input_html: { min: '1', type: 'number' }
+                      .col-xs-4
+                        = field.input :weight, label: 'Peso max. Equipaje', input_html: { min: '1', type: 'number' }
+
                   .col-xs-12.col-md-8
                     = f.simple_fields_for :price, OpenStruct.new(@transfer.price) do |field|
                       .col-xs-4
@@ -41,10 +49,10 @@
                       .col-xs-4
                         = field.input :usd, label: 'Precio USD', input_html: { min: '1', type: 'number' }
                   .col-xs-12{style: 'margin-bottom: 20px;'}
-                    .col-xs-4
-                      = f.input :time, as: :time, html5: true
-                    .col-xs-4
-                      = f.input :date, as: :date, html5: true
+                    -# .col-xs-4
+                    -#   = f.input :time, as: :time, html5: true
+                    -# .col-xs-4
+                    -#   = f.input :date, as: :date, html5: true
 
                   // Field multilanguage
                   .col-xs-12.col-md-12

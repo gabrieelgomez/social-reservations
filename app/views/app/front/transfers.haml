@@ -62,8 +62,10 @@
                       %p.amount-people
                         %span
                           %i.icon-bag.icons
-                          Máx de Maletas: 5
-                          -#= transfer.quantity_bag
+                          Máx de Maletas:
+                          = transfer.kit['quantity']
+                          Piezas
+                          (#{transfer.kit['weight']}kg)
                       %p.date-time
                         %span
                           %i.icon-calendar.icons
