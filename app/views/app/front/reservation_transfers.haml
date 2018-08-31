@@ -55,9 +55,11 @@
                             %span.round-boarder1
                           Ida y vuelta
                   .form-group
-                    %label{:for => "destinations-booking_a"} Seleccione Origen
-                    %select#destinations-booking_a.custom-input.form-control{placeholder: 'Enter your origin'}
+                    -#%label{:for => "destinations-booking_a"} Seleccione Origen
+                    -#%select#destinations-booking_a.custom-input.form-control{placeholder: 'Enter your origin'}
                       = render 'app/front/stack-destinations'
+                    %label{:for => "origin_transfer_booking"} Seleccione Origen
+                    %input.google-input.form-control{id: 'origin_transfer_booking', name: 'origin_transfer_booking', :placeholder => "Enter the origin"}
                   .form-group
                     %label{:for => ""}  ¿Cuándo sale tu vuelo?
                     %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "date"}/       
@@ -78,9 +80,8 @@
                             %span.round-boarder1
                           Al aeropuerto
                   .form-group
-                    %label{:for => "destinations-booking_b"} Seleccione Destino
-                    %select#destinations-booking_b.custom-input.form-control{name: ''}
-                      = render 'app/front/stack-destinations'
+                    %label{:for => "arrival_transfer_booking"} Seleccione Destino
+                    %input.google-input.form-control{id: 'arrival_transfer_booking', name: 'arrival_transfer_booking', :placeholder => "Enter the destination"}
                   .form-group
                     %label{:for => ""}  ¿Cuándo llega tu vuelo?
                     %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Enter the arrival date", :type => "date"}/
@@ -158,6 +159,7 @@
 
     %footer.footer-copyright
       = render 'app/front/footer'
+    %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
 
     :javascript
       $('.navigation-front').removeClass('background-hide');
