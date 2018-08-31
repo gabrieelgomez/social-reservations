@@ -28,7 +28,7 @@
       font-weight: 400;
     }
 
-    input {
+    input, select {
       border-radius: 0 !important;
     }
 
@@ -40,14 +40,24 @@
       }
     }
 
-    .box-btn {
+    .box-btn-reservation {
       padding: 40px 0;
       height: 50px;
       display: flex;
       justify-content: center;
 
       .btn-reservation {
-        width: 300px;
+        height: 40px;
+      }
+    }
+
+    .box-btn-payment {
+      height: 50px;
+
+      .btn-payment {
+        height: 40px;
+        float: right !important;
+        margin-right: 0 !important;
       }
     }
   }

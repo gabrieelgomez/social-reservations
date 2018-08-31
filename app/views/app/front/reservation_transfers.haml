@@ -56,7 +56,7 @@
                           Ida y vuelta
                   .form-group
                     %label Seleccione Origen
-                    %select#destinations-booking_a.custom-input{name: ''}
+                    %select#destinations-booking_a.custom-input.form-control{name: ''}
                       = render 'app/front/stack-destinations'
                   .form-group
                     %label ¿Cuándo sale tu vuelo?
@@ -79,7 +79,7 @@
                           Al aeropuerto
                   .form-group
                     %label Seleccione Destino
-                    %select#destinations-booking_b.custom-input{name: ''}
+                    %select#destinations-booking_b.custom-input.form-control{name: ''}
                       = render 'app/front/stack-destinations'
                   .form-group
                     %label ¿Cuándo llega tu vuelo?
@@ -144,11 +144,16 @@
                     %li.list-group-item.d-flex.justify-content-between
                       %span Total (COP)
                       %strong $ 100
+                  .box-btn-payment
+                    .about-btn.travel-mrt-0
+                      %button.about-view.travel-btn.btn-payment
+                        pagar
+
             .col-lg-8
-              .box-btn
+              .box-btn-reservation
                 .about-btn.travel-mrt-0
                   %button.about-view.travel-btn.btn-reservation
-                    reservar
+                    continuar
 
 
     %footer.footer-copyright
