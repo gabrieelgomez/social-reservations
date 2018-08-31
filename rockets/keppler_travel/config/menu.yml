@@ -6,9 +6,9 @@ menu:
     icon: layers
     model: KepplerTravel::Transfer
 
-  # keppler_travel_destination:
-  #   name: destinations
-  #   current: ['admin/travel/destinations']
-  #   url_path: /admin/travel/destinations
-  #   icon: layers
-  #   model: KepplerTravel::Destination
+  keppler_travel_destination:
+    name: destinations
+    current: ['admin/travel/destinations']
+    url_path: /admin/travel/destinations
+    icon: layers
+    model: KepplerTravel::Destination
