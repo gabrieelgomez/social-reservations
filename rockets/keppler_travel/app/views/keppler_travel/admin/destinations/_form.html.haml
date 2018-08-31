@@ -32,9 +32,35 @@
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 
+-# #map
+-# :javascript
+-#   var map;
+-#   function initMap() {
+-#     map = new google.maps.Map(document.getElementById('map'), {
+-#       center: {lat: -34.397, lng: 150.644},
+-#       zoom: 8
+-#     });
+-#   }
+-#
+-# :css
+-#   /* Always set the map height explicitly to define the size of the div
+-#    * element that contains the map. */
+-#   #map {:id => "selector"
+-#     height: 100%;
+-#   }
+-#   /* Optional: Makes the sample page fill the window. */
+-#   html, body {
+-#     height: 100%;
+-#     margin: 0;
+-#     padding: 0;
+-#   }
 
 
-%script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
+%script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyD9w9-mgKwJX-UFhMKr47T7mwPtGvCnKwI"}
+
+-# %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDygXOeaApGz7182tuDtvlBShRHWf6alI4&callback=initMap", :type => "text/javascript"}
+
+
 :javascript
 
   var map;
