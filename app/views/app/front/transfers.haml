@@ -3,15 +3,15 @@
   %head
     = render 'app/layouts/head'
 
-  %body
+  %body{style:"padding-top:120px;"}
     %header
       = render 'app/front/navbar'
 
-    %section#home.about-us
+    -#%section#home.about-us
       %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
         %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
 
-    %section.travel-box
+    -#%section.travel-box
       .container
         .row
           .col-lg-1
@@ -81,12 +81,15 @@
 
     %footer.footer-copyright
       = render 'app/front/footer'
-    %script{:src => "/assets/js/navbar.js"}
+    -#%script{:src => "/assets/js/navbar.js"}
 
-    :javascript
+    -#:javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
         $('[data-toggle="datepicker"]').datepicker();
         $('#destinations-box-one').selectize({});
         $('#destinations-box-two').selectize({});
       });
+    :javascript
+      $('.navigation-front').removeClass('background-hide');
+      $('.navigation-front').addClass('background-show');
