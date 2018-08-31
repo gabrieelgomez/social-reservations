@@ -7,19 +7,28 @@
             %input{ type:"checkbox", id: "checkbox-#{destination.id}", 'checklist-model' => 'check', 'checklist-value' => "#{destination.id}", '@click' => "listDelete(#{destination.id})"}
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
-    %td
-      = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
-        %span
-          - unless destination.cover.url.blank?
-            = image_tag destination.cover.url
+    -# %td
+    -#   = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       - unless destination.cover.url.blank?
+    -#         = image_tag destination.cover.url
     %td.hidden-xs
       = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
         %span
           = destination.title
-    %td.hidden-xs.hidden-sm
+
+    %td.hidden-xs
       = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
         %span
-          = destination.description
+          = destination.latitude
+    %td.hidden-xs
+      = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
+        %span
+          = destination.longitude
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = destination.description
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{destination.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
