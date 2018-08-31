@@ -2229,3 +2229,7 @@ label.container .checkmark:after {
     opacity: .5;
     /* Firefox */
 }
+
+.google-input {
+    border-radius: 0 !important;
+}

@@ -24,17 +24,17 @@
                 .col-lg-6
                   .form-group.form-custom
                     %label{:for => "name"} Nombre
-                    %input#name.form-control{:type => "text", :placeholder => "Nombre"}/
+                    %input#name.form-control{:type => "text", :placeholder => "Enter your name"}/
                   .form-group
                     %label{:for => "phone"} Teléfono
-                    %input#phone.form-control{:type => "number", :placeholder => "Teléfono"}/
+                    %input#phone.form-control{:type => "number", :placeholder => "Enter your phone"}/
                 .col-lg-6
                   .form-group.form-custom
                     %label{:for => "email"} Correo electrónico
-                    %input#email.form-control{:type => "email", :placeholder => "Correo electrónico"}/
+                    %input#email.form-control{:type => "email", :placeholder => "enter your email"}/
                   .form-group
                     %label{:for => "dni"} Identificación
-                    %input#dni.form-control{:type => "number", :placeholder => "Identifcación"}/
+                    %input#dni.form-control{:type => "number", :placeholder => "Enter your identification"}/
               %hr
               %h3 Datos de Reserva
               .row
@@ -55,11 +55,11 @@
                             %span.round-boarder1
                           Ida y vuelta
                   .form-group
-                    %label Seleccione Origen
-                    %select#destinations-booking_a.custom-input.form-control{name: ''}
+                    %label{:for => "destinations-booking_a"} Seleccione Origen
+                    %select#destinations-booking_a.custom-input.form-control{placeholder: 'Enter your origin'}
                       = render 'app/front/stack-destinations'
                   .form-group
-                    %label ¿Cuándo sale tu vuelo?
+                    %label{:for => ""}  ¿Cuándo sale tu vuelo?
                     %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "date"}/       
                 .col-lg-6
                   .form-group.form-custom.form-reservation
@@ -78,26 +78,26 @@
                             %span.round-boarder1
                           Al aeropuerto
                   .form-group
-                    %label Seleccione Destino
+                    %label{:for => "destinations-booking_b"} Seleccione Destino
                     %select#destinations-booking_b.custom-input.form-control{name: ''}
                       = render 'app/front/stack-destinations'
                   .form-group
-                    %label ¿Cuándo llega tu vuelo?
-                    %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "date"}/
+                    %label{:for => ""}  ¿Cuándo llega tu vuelo?
+                    %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Enter the arrival date", :type => "date"}/
                 .col-lg-12
                   .row
                     .col-lg-4
                       .form-group
                         %label{:for => "adults"} Cantidad adultos
-                        %input#adults.form-control{:type => "number", :placeholder => "Cantidad adultos"}/
+                        %input#adults.form-control{:type => "number", :placeholder => "Enter number of children"}/
                     .col-lg-4
                       .form-group
                         %label{:for => "children"} Cantidad niños
-                        %input#children.form-control{:type => "number", :placeholder => "Cantidad niños"}/
+                        %input#children.form-control{:type => "number", :placeholder => "Enter number of adults"}/
                     .col-lg-4
                       .form-group
                         %label{:for => "luggage"} Cantidad equipaje
-                        %input#luggage.form-control{:type => "number",:placeholder => "Cantidad equipaje"}/
+                        %input#luggage.form-control{:type => "number",:placeholder => "Enter amount of luggage"}/
             .col-lg-4
               %h3 Resumen
               .row
