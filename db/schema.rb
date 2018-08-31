@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
 
   create_table "keppler_travel_destinations", force: :cascade do |t|
     t.string "title"
+    t.float "latitude"
+    t.float "longitude"
     t.string "cover"
     t.string "description"
     t.integer "position"

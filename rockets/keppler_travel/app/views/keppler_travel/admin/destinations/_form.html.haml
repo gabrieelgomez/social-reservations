@@ -19,44 +19,77 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-                  .col-xs-12
-                    -# = f.input :title
-                    = f.input :title, :placeholder => 'Start typing a place name...'
-                  -# .col-xs-12
-                  -#   = f.input :cover, as: :keppler_file, label: false
-                  -# .col-xs-12
-                  -#   = f.input :description
-                  .col-xs-12
-                    = f.input :position, as: :hidden
+                  .col-xs-12.col-lg-6
+                    = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
+                    = f.error :latitude, message: 'Hola', label: 'Latitud ya registrada'
+                    = f.error :longitude
+                  .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
+                    -# = f.input :position, as: :hidden
                   .col-xs-12
                     = f.input :deleted_at, as: :hidden
                   .col-xs-12
-                    .pull-right
+                    .pull-left
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 
 
 
-  %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
-  :javascript
-    function initialize() {
+%script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
+:javascript
 
-     var options = {
+  var map;
+  var marker = [];
+  var lantitude_edit = #{raw @destination.try(:latitude) || 4.710988599}
+  var longitude_edit = #{raw @destination.try(:longitude) || -74.072092}
+
+  function initialize() {
+
+    var myLatlng = new google.maps.LatLng(lantitude_edit, longitude_edit);
+    var options = {
+      zoom:5,
+      center: myLatlng,
       types: ['(cities)'],
-      componentRestrictions: {country: "col"}
-     };
+      componentRestrictions: {country: "col"},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-      var input = document.getElementById('destination_title');
-      var autocomplete = new google.maps.places.Autocomplete(input, options);
-      google.maps.event.addListener(autocomplete, 'place_changed', function () {
-          var place = autocomplete.getPlace();
-          console.log('Latitude', place.geometry.location.lat());
-          console.log('Longitude', place.geometry.location.lng());
-          // document.getElementById('city2').value = place.name;
-          // document.getElementById('cityLat').value = place.geometry.location.lat();
-          // document.getElementById('cityLng').value = place.geometry.location.lng();
+    map = new google.maps.Map(document.getElementById("gmap"), options);
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(lantitude_edit, longitude_edit),
+      map: map
+    });
 
-      });
+
+    var input = document.getElementById('destination_title');
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    autocomplete.addListener('place_changed', onPlaceChanged);
+
+    // When the user selects a city on input search, get the place details for the city and
+    // zoom the map in on the city.
+    function onPlaceChanged() {
+      var place = autocomplete.getPlace();
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();
+      console.log('Latitude', latitude);
+      console.log('Longitude', longitude);
+
+       $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
+       $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
+
+      if (place.geometry) {
+        map.panTo(place.geometry.location);
+        map.setZoom(12);
+         marker = new google.maps.Marker({
+          position: new google.maps.LatLng(latitude,longitude),
+          map: map
+        });
+      } else {
+        document.getElementById('autocomplete').placeholder = 'Enter a city';
+      }
+
     }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);

@@ -49,9 +49,11 @@
                 - else
                   %tr
                     %th
-                    %th= t('activerecord.attributes.cover')
+                    -# %th= t('activerecord.attributes.cover')
                     %th.hidden-xs= t('activerecord.attributes.title')
-                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.description')
+                    -# %th.hidden-xs.hidden-sm= t('activerecord.attributes.description')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.latitude')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.longitude')
                     %th.center Menu
                     %th
               %tbody#objects-container
