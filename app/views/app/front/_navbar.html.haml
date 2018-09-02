@@ -40,10 +40,16 @@
                     %a{:href => UrlService.url_lang(@lang, 'usd', request)} USD
           .col-lg-4
             .item-contact.login
-              = link_to login_path, class:"pull-right" do
-                %p
-                  %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
-                  %span Ingresa
+              - if user_signed_in?
+                %h5{style:'color:#f9c600'}= current_user.email
+                = link_to t('devise.sign_out'), destroy_session_path(current_user)
+                -# = link_to destroy_user_session_path, method: :delete do
+                -#   %span Cerrar Sesión
+              - else
+                = link_to new_user_session_path, class:"pull-right" do
+                  %p
+                    %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
+                    %span Ingresa
 
   .container
     .navbar-header

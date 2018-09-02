@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # mount_uploader :avatar, TemplateUploader
   before_save :create_permalink, if: :new_record?
   rolify
-  validates_presence_of :name, :role_ids, :email
+  validates_presence_of :name, :email #role_ids
   mount_uploader :avatar, AttachmentUploader
   acts_as_paranoid
 

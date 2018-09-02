@@ -12,9 +12,10 @@ module DeviseParams
 
   def devise_new
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: %I[name email
-                                               password
-                                               password_confirmation])
+                                      keys: [:name, :email,
+                                               :password,
+                                               :password_confirmation,
+                                               roles:[]])
     devise_parameter_sanitizer.permit(:account_update,
                                       keys: %I[name email
                                                password

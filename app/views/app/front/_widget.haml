@@ -63,7 +63,7 @@
                       %option{:value => "4"} 4
                     .form-group
                       -#%label{:for => "adults"} Cantidad adultos
-                      %input#adults.form-control{:type => "number", :placeholder => "Enter number of adults"}/
+                      %input#adults.form-control{name: 'q[quantity_adults_lteq]', :type => "number", :placeholder => "Enter number of adults"}/
 
               .col-lg-6
                 .single-tab-select-box
@@ -77,7 +77,7 @@
                       %option{:value => "4"} 4
                     .form-group
                       -#%label{:for => "adults"} Cantidad adultos
-                      %input#adults.form-control{:type => "number", :placeholder => "Enter number of children"}/
+                      %input#adults.form-control{name: 'q[quantity_kids_lteq]', :type => "number", :placeholder => "Enter number of children"}/
 
               .col-lg-12.col-md-4.col-sm-12
                 .about-btn.travel-mrt-0.pull-right
