@@ -21,7 +21,7 @@
                 .form-padding
                   .col-xs-12.col-lg-6
                     = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
-                    = f.error :latitude, message: 'Hola', label: 'Latitud ya registrada'
+                    = f.error :latitude
                     = f.error :longitude
                   .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
                     -# = f.input :position, as: :hidden
@@ -60,6 +60,9 @@
 
 -# %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDygXOeaApGz7182tuDtvlBShRHWf6alI4&callback=initMap", :type => "text/javascript"}
 
+
+-# %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&libraries=places"}
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
 
 :javascript
 

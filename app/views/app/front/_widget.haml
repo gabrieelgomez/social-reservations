@@ -40,37 +40,44 @@
               .col-lg-6
                 .single-tab-select-box
                   %h2 ¿A qué aeropuerto llega tu vuelo?
-                  %input.custom-input{id: 'origin_transfer', name: 'destination_transfer'}
+                  %input.google-input.form-control{id: 'origin_transfer', name: 'destination_transfer'}
                     -# = render 'app/front/stack-destinations'
 
               .col-lg-6
                 .single-tab-select-box
                   %h2 ¿Dónde quieres que te dejemos?
-                  %input.custom-input{id: 'arrival_transfer', name: 'other_destinations'}
+                  %input.custom-input.form-control{id: 'arrival_transfer', name: 'other_destinations'}
                     -# = render 'app/front/stack-destinations'
 
               .col-lg-12
                 %hr
               .col-lg-6
                 .single-tab-select-box
-                  %h2 Adultos
+                  %h2 Cantidad de Adultos
                   .travel-select-icon
-                    %select.form-control{name: 'q[quantity_adults_lteq]'}
+                    -#%select.form-control{name: 'q[quantity_adults_lteq]'}
                       %option{:value => "default"} Seleccionar Cantidad
                       %option{:value => "1"} 1
                       %option{:value => "2"} 2
                       %option{:value => "3"} 3
                       %option{:value => "4"} 4
+                    .form-group
+                      -#%label{:for => "adults"} Cantidad adultos
+                      %input#adults.form-control{:type => "number", :placeholder => "Enter number of adults"}/
+
               .col-lg-6
                 .single-tab-select-box
-                  %h2 Niños
+                  %h2 Cantidad de Niños
                   .travel-select-icon
-                    %select.form-control{name: 'q[quantity_kids_lteq]'}
+                    -#%select.form-control{name: 'q[quantity_kids_lteq]'}
                       %option{:value => "default"} Seleccionar Cantidad
                       %option{:value => "1"} 1
                       %option{:value => "2"} 2
                       %option{:value => "3"} 3
                       %option{:value => "4"} 4
+                    .form-group
+                      -#%label{:for => "adults"} Cantidad adultos
+                      %input#adults.form-control{:type => "number", :placeholder => "Enter number of children"}/
 
               .col-lg-12.col-md-4.col-sm-12
                 .about-btn.travel-mrt-0.pull-right
@@ -95,6 +102,6 @@
             .col-lg-12
               %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
 
--# %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyD9w9-mgKwJX-UFhMKr47T7mwPtGvCnKwI"}
+-# %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
 
-%script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyD9w9-mgKwJX-UFhMKr47T7mwPtGvCnKwI"}
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}

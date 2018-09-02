@@ -1,14 +1,22 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var map;
+
   function initialize() {
     var options = {
       types: ['(cities)'],
-      componentRestrictions: {country: "col"},
+      componentRestrictions: {
+        country: "col"
+      },
     };
 
-    inputSearchTransfer('origin_transfer')
+    inputSearchTransfer('origin_transfer');
 
     inputSearchTransfer('arrival_transfer');
+
+    inputSearchTransfer('origin_transfer_booking');
+
+    inputSearchTransfer('arrival_transfer_booking');
+
 
     function inputSearchTransfer(id_input) {
       var input = document.getElementById(id_input);
@@ -22,8 +30,8 @@ $(document).ready(function() {
         var longitude = place.geometry.location.lng();
         console.log('Latitude', latitude);
         console.log('Longitude', longitude);
-         // $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
-         // $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
+        // $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
+        // $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
       }
     }
 
