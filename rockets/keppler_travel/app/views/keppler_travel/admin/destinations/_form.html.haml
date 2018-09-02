@@ -21,7 +21,7 @@
                 .form-padding
                   .col-xs-12.col-lg-6
                     = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
-                    = f.error :latitude, message: 'Hola', label: 'Latitud ya registrada'
+                    = f.error :latitude
                     = f.error :longitude
                   .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
                     -# = f.input :position, as: :hidden
