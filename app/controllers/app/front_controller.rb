@@ -13,9 +13,9 @@ module App
 
     def transfers
       unless @q.nil?
-        destinations = params[:q][:destinations_id_in]
-        adults = params[:q][:quantity_adults_lteq]
-        kids = params[:q][:quantity_kids_lteq]
+        destinations =  nil
+        adults =  nil
+        kids = nil
         @results = KepplerTravel::Transfer.ransack(destinations_id_in: destinations).result
                                .ransack(quantity_adults_gteq: adults).result
                                .ransack(quantity_kids_gteq: kids).result
@@ -28,7 +28,7 @@ module App
     end
 
     def reservation_transfers
-      
+
     end
 
     def login
