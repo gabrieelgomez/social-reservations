@@ -1,6 +1,9 @@
-.body-logn {
-  height: 100%;
-  width: 100%;
+@import 'variables';
+
+.body-login {
+  height: 100% !important;
+  width: 100% !important;
+  font-family: $font-primary;
 }
 
 .login-front {
@@ -85,7 +88,30 @@
   label {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+
+    &:focus {
+      color: $color-gray;
+    }
   }
+
+  input {
+    font-family: 'Poppins', sans-serif;
+
+    &:focus {
+      color: $color-gray !important;
+      border-color: #43b7e8 !important;
+    }
+  }
+}
+
+.box-link-recovery {
+  text-align: center;
+  color: $color-gray;
+  text-decoration: underline;
+}
+
+.register {
+  padding: 10px 0 40px 0 !important;
 }
 
 .mb-3,
