@@ -130,4 +130,3 @@ gem 'keppler_travel', path: 'rockets/keppler_travel'
 # gem 'select2-rails'
 gem "selectize-rails"
 gem 'slick_rails'
-# gem 'friendly_id', '~> 5.2.0'
