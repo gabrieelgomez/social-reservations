@@ -7,7 +7,11 @@ module KepplerTravel
     end
 
     config.to_prepare do
+      Dir.glob(Engine.root + 'app/decorators/**/*_decorator*.rb').each do |c|
+        require_dependency(c)
+      end
       ApplicationController.helper(ApplicationHelper)
     end
+
   end
 end
