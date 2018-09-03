@@ -7,18 +7,10 @@ Rails.application.routes.draw do
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
     get 'transfers', to: 'app/front#transfers'
-    get 'show_transfers/:id', to: 'app/front#show_transfers', as: :show_transfers
-    get 'login', to: 'app/front#login'
-    get 'reservation_transfers', to: 'app/front#reservation_transfers'
-
-
+    get 'reservations/:transfer_id', to: 'app/front#reservations', as: :reservations_transfer
+    # get 'show_transfers/:id', to: 'app/front#show_transfers', as: :show_transfers
+    # get 'login', to: 'app/front#login'
   end
-
-
-  # devise_scope :user do
-  #   get "/sign_in" => "devise/sessions#new", as: :app_sign_in # custom path to login/sign_in
-  #   get "/sign_up" => "devise/registrations#new", as: :app_sign_up # custom path to sign_up/registration
-  # end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role

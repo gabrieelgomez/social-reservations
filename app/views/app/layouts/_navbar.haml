@@ -22,11 +22,11 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => UrlService.url_lang('es', @currency, request)} Español
+                    = url_lang('es', @currency, request, 'Español')
                   %li
-                    %a{:href => UrlService.url_lang('en', @currency, request)} Inglés
+                    = url_lang('en', @currency, request, 'Inglés')
                   %li
-                    %a{:href => UrlService.url_lang('pt', @currency, request)} Portugues
+                    = url_lang('pt', @currency, request, 'Portugués')
           .col-lg-4.nav-padding
             .item-contact.money
               .dropdown.pull-right
@@ -35,9 +35,9 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => UrlService.url_lang(@lang,'cop', request)} COP
+                    = url_lang(@lang, 'cop', request, 'COP')
                   %li
-                    %a{:href => UrlService.url_lang(@lang, 'usd', request)} USD
+                    = url_lang(@lang, 'usd', request, 'USD')
           .col-lg-4
             .item-contact.login
               - if user_signed_in?

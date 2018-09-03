@@ -14,10 +14,12 @@ class CreateKepplerTravelTransfers < ActiveRecord::Migration[5.2]
       t.datetime :time
       t.jsonb :price
       t.integer :position
+      t.string :slug
       t.datetime :deleted_at
 
       t.timestamps
     end
+    add_index :keppler_travel_transfers, :slug, unique: true
     add_index :keppler_travel_transfers, :deleted_at
   end
 end

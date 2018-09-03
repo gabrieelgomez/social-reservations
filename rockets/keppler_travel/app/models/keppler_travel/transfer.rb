@@ -9,7 +9,11 @@ module KepplerTravel
     acts_as_list
     # Fields for the search form in the navbar
 
+    # extend FriendlyId
+    # friendly_id :title, use: [:slugged, :finders]
+
     validates :cover, presence: true
+    validates :title, uniqueness: true
 
     def self.search_field
       fields = ["cover", "title", "quantity_kids", "date", "time", "price", "position", "deleted_at"]

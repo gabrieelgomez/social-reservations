@@ -5,7 +5,7 @@
 
   %body
     %header
-      = render 'app/front/navbar'
+      = render 'app/layouts/navbar'
 
     %section#home.about-us
       %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
@@ -16,7 +16,7 @@
         .row
           .col-lg-1
           .col-lg-10
-            = render 'app/front/widget'
+            = render 'app/layouts/widget'
             
     %section#services.services
       .container
@@ -316,7 +316,7 @@
                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
 
     %footer.footer-copyright
-      = render 'app/front/footer'
+      = render 'app/layouts/footer'
     %script{:src => "/assets/js/navbar.js"}
     :javascript
       $(document).ready(function(){

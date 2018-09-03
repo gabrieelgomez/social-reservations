@@ -2,7 +2,8 @@ module App
   # FrontsController
   class FrontController < AppController
     layout 'layouts/templates/application'
-    before_action :set_search
+    before_action :set_search, only: :index
+    before_action :set_transfer, only: :reservations
 
     def set_locale
       @locale = request.protocol + request.host_with_port + '/es'
@@ -20,23 +21,26 @@ module App
                                         .ransack(quantity_kids_gteq: kids).result
     end
 
-    def show_transfers
-      @transfer = KepplerTravel::Transfer.find params[:id]
-      @destacados = KepplerTravel::Transfer.all.sample(10)
+    def reservations
     end
 
-    def reservation_transfers
+    # def show_transfers
+    #   @transfer = KepplerTravel::Transfer.find params[:id]
+    #   @destacados = KepplerTravel::Transfer.all.sample(10)
+    # end
 
-    end
-
-    def login
-    end
+    # def login
+    # end
 
     private
 
     def set_search
       @destinations = KepplerTravel::Destination.all
       @q = KepplerTravel::Transfer.ransack(params[:q])
+    end
+
+    def set_transfer
+      @transfer = KepplerTravel::Transfer.find params[:transfer_id]
     end
 
     def set_locale

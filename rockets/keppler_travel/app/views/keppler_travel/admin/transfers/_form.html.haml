@@ -71,45 +71,45 @@
                           .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
                               = field.input :es, label: 'Titulo'
-                          .col-xs-12
-                            = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
-                              = field.input :es, label: 'Descripción', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
-                              = field.input :es, label: '¿Qúe Incluye?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
-                              = field.input :es, label: 'Condiciones', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
+                          -#     = field.input :es, label: 'Descripción', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
+                          -#     = field.input :es, label: '¿Qúe Incluye?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
+                          -#     = field.input :es, label: 'Condiciones', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
                         // INGLÉS
                         #english.tab-pane
                           .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
                               = field.input :en, label: 'Title'
-                          .col-xs-12
-                            = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
-                              = field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
-                              = field.input :en, label: 'What includes?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
-                              = field.input :en, label: 'Terms', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
+                          -#     = field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
+                          -#     = field.input :en, label: 'What includes?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
+                          -#     = field.input :en, label: 'Terms', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
                         // PORTUGUÉS
                         #portugues.tab-pane
                           .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
                               = field.input :pt, label: 'Titulo'
-                          .col-xs-12
-                            = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
-                              = field.input :pt, label: 'Descrição', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
-                              = field.input :pt, label: 'Que inclui?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-12
-                            = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
-                              = field.input :pt, label: 'Condições', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :description, OpenStruct.new(@transfer.description) do |field|
+                          -#     = field.input :pt, label: 'Descrição', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :includes, OpenStruct.new(@transfer.includes) do |field|
+                          -#     = field.input :pt, label: 'Que inclui?', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+                          -# .col-xs-12
+                          -#   = f.simple_fields_for :conditions, OpenStruct.new(@transfer.conditions) do |field|
+                          -#     = field.input :pt, label: 'Condições', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
                   -# .col-xs-12
                   -#   .col-md-6
@@ -118,11 +118,11 @@
                   -#       - KepplerTravel::Destination.all.each do |collection|
                   -#         %option{ value: collection.id }= collection.title
 
-                  .col-xs-12.col-md-12
-                    %label Galería de Imágenes
-                    %input#transfer_files{:multiple => "", :name => "transfer[files][]", :type => "file"}
-                  #helper_que_busco
-                    = files_exist(1, f.object.files, 'transfer[files][]')
+                  -# .col-xs-12.col-md-12
+                  -#   %label Galería de Imágenes
+                  -#   %input#transfer_files{:multiple => "", :name => "transfer[files][]", :type => "file"}
+                  -# #helper
+                  -#   = files_exist(1, f.object.files, 'transfer[files][]')
 
                   .col-xs-4
                     = f.input :position, as: :hidden

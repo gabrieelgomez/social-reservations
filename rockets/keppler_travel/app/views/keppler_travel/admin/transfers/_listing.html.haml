@@ -16,10 +16,10 @@
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.title[I18n.locale.to_s]
-    %td.hidden-xs
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-        %span
-          = sanitize(transfer.description[I18n.locale.to_s], tags: []).truncate(20)
+    -# %td.hidden-xs
+    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
+    -#     %span
+    -#       = sanitize(transfer.description[I18n.locale.to_s], tags: []).truncate(20)
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
@@ -28,10 +28,10 @@
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.quantity_kids
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-        %span
-          = transfer.kit
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
+    -#     %span
+    -#       = transfer.kit
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
     -#     %span
