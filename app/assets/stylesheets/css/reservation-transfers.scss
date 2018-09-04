@@ -26,9 +26,15 @@
       padding: 1px 0;
       font-family: $font-primary;
       font-weight: 400;
+      display: block;
     }
 
-    input, select {
+    .title {
+      font-weight: 500;
+    }
+
+    input,
+    select {
       border-radius: 0 !important;
     }
 

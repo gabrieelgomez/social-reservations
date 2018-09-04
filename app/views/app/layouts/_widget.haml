@@ -25,13 +25,13 @@
               .col-lg-12
                 .trip-circle
                   .single-trip-circle
-                    %input#radio1{:name => "radio", :type => "radio"}/
+                    %input#radio1.micheckbox{:name => "radio", :type => "radio"}/
                     %label{:for => "radio1"}
                       %span.round-boarder>
                         %span.round-boarder1
                       Solo ida
                   .single-trip-circle
-                    %input#radio2{:name => "radio", :type => "radio"}/
+                    %input#radio2.micheckbox{:name => "radio", :type => "radio"}/
                     %label{:for => "radio2"}
                       %span.round-boarder
                         %span.round-boarder1
@@ -39,35 +39,50 @@
 
               .col-lg-6
                 .single-tab-select-box
-                  %h2 ¿A qué aeropuerto llega tu vuelo?
+                  %h2 Origen
                   %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
                   %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
 
               .col-lg-6
                 .single-tab-select-box
-                  %h2 ¿Dónde quieres que te dejemos?
+                  %h2 Destino
                   %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
                   %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
 
               .col-lg-12
                 %hr
-              .col-lg-6
-                .single-tab-select-box
-                  %h2 Cantidad de Adultos
-                  .travel-select-icon
-                    .form-group
-                      %input#adults.form-control{name: 'quantity_adults', :type => "number", :placeholder => "Enter number of adults"}/
 
-              .col-lg-6
+
+              .col-lg-3
                 .single-tab-select-box
-                  %h2 Cantidad de Niños
-                  .travel-select-icon
-                    .form-group
-                      %input#kids.form-control{name: 'quantity_kids', :type => "number", :placeholder => "Enter number of children"}/
+                  %h2 Fecha de Ida
+                  .form-group
+                    %input#date_one.custom-input.form-control{name: 'date_one', :type => "date", :placeholder => "Enter date"}/
+
+              .col-lg-3#date-input
+                .single-tab-select-box
+                  %h2 Fecha de Vuelta
+                  .form-group
+                    %input#date_two.custom-input.form-control{name: 'date_two', :type => "date", :placeholder => "Enter date"}/
+
+              
+              .col-lg-3
+                .single-tab-select-box
+                  %h2 Adultos
+                  .form-group
+                    %input#adults.custom-input.form-control{name: 'quantity_adults', :type => "number", :placeholder => "Enter number of adults"}/
+
+              .col-lg-3
+                .single-tab-select-box
+                  %h2 Niños
+                  .form-group
+                    %input#kids.custom-input.form-control{name: 'quantity_kids', :type => "number", :placeholder => "Enter number of children"}/
+
+
 
               .col-lg-12.col-md-4.col-sm-12
-                .about-btn.travel-mrt-0.pull-right
-                  %button.about-view.travel-btn
+                .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
+                  %button.about-view.travel-btn{style:"margin-right: 0;"}
                     buscar
 
       #circuits.tab-pane.fade.in{:role => "tabpanel"}
@@ -95,6 +110,13 @@
 
 :javascript
   validateForm('#search-input');
-
-:scss
-  label.error-class{color: #e60707 !important;}
+  $('#date-input').addClass('hidden-input');
+  $( '.micheckbox' ).on( 'click', function() {
+      if( $('#radio2').is(':checked') ){
+          $('#date-input').removeClass('hidden-input');
+          $('#date-input').addClass('show-input');
+      } else {
+          $('#date-input').removeClass('show-input');
+          $('#date-input').addClass('hidden-input');
+      }
+  });

@@ -248,7 +248,7 @@ body {
     border: transparent;
     padding: 0 0 15px 0;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    min-height: 380px;
+    min-height: 400px;
 }
 
 .desc-tabs .nav-tabs {
@@ -314,7 +314,7 @@ body {
 /* .desc-tabs */
 /*===ab-select-box===*/
 .tab-para {
-    padding: 25px 42px 30px 42px;
+    padding: 10px 42px 0px 43px;
 }
 
 .single-tab-select-box h2 {
@@ -324,6 +324,11 @@ body {
     font-family: 'Poppins', sans-serif;
     text-transform: normal;
     margin-bottom: 17px;
+}
+
+.fix-m {
+    margin-top: 20px;
+    margin-right: 0;
 }
 
 .travel-select-icon {
@@ -2232,4 +2237,16 @@ label.container .checkmark:after {
 
 .google-input {
     border-radius: 0 !important;
+}
+
+.custom-input {
+    border-radius: 0 !important;
+}
+
+.hidden-input {
+    display: none !important;
+}
+
+.show-input {
+    display: block !important;
 }
