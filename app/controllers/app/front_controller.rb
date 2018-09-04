@@ -22,6 +22,7 @@ module App
     end
 
     def reservations
+      @reservation = KepplerTravel::Reservation.new
     end
 
     # def show_transfers

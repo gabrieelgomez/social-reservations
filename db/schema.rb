@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
     t.bigint "flight_arrival"
     t.integer "quantity_adults"
     t.integer "quantity_kids"
-    t.integer "quantity_kid"
+    t.integer "quantity_kit"
     t.boolean "roud_trip"
     t.boolean "airport_origin"
     t.bigint "user_id"

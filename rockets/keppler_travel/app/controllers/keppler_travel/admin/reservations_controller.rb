@@ -45,6 +45,7 @@ module KepplerTravel
 
       # POST /reservations
       def create
+        byebug
         @reservation = Reservation.new(reservation_params)
 
         if @reservation.save
@@ -136,7 +137,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def reservation_params
-        params.require(:reservation).permit(:origin, :arrival, :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :quantity_kid, :roud_trip, :airport_origin, :user_id, :position, :deleted_at)
+        params.require(:reservation).permit(:origin, :arrival, :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :quantity_kit, :roud_trip, :airport_origin, :user_id, :position, :deleted_at)
       end
 
       def show_history
