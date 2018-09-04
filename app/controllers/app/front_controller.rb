@@ -13,12 +13,13 @@ module App
     end
 
     def transfers
-      destinations = params[:q][:destinations_id_in]
-      adults = params[:q][:quantity_adults_lteq]
-      kids = params[:q][:quantity_kids_lteq]
-      @results = KepplerTravel::Transfer.ransack(destinations_id_in: destinations).result
-                                        .ransack(quantity_adults_gteq: adults).result
-                                        .ransack(quantity_kids_gteq: kids).result
+      # destinations = params[:q][:destinations_id_in]
+      # adults = params[:q][:quantity_adults_lteq]
+      # kids = params[:q][:quantity_kids_lteq]
+      # @results = KepplerTravel::Transfer.ransack(destinations_id_in: destinations).result
+      #                                   .ransack(quantity_adults_gteq: adults).result
+      #                                   .ransack(quantity_kids_gteq: kids).result
+      @results = KepplerTravel::Transfer.all
     end
 
     def reservations
