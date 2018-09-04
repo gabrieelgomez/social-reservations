@@ -46,9 +46,7 @@ module KepplerTravel
 
       # POST /reservations
       def create
-        byebug
         @reservation = Reservation.new(reservation_params)
-
         if @reservation.save
           redirect(@reservation, params)
         else
@@ -69,7 +67,7 @@ module KepplerTravel
         @reservation = Reservation.clone_record params[:reservation_id]
 
         if @reservation.save
-          redirect_to admin_travel_reservations_path
+          redirect(@reservation, params)
         else
           render :new
         end
@@ -138,8 +136,8 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def reservation_params
-        params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, 
-                                            :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, 
+        params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
+                                            :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
                                             :quantity_kit, :roud_trip, :airport_origin, :user_id, :position, :deleted_at)
       end
 
