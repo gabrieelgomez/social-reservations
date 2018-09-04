@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   function initialize() {
     var options = {
-      types: ['(cities)'],
+      types: [],
       componentRestrictions: {
         country: "col"
       },
@@ -13,9 +13,9 @@ $(document).ready(function () {
 
     inputSearchTransfer('arrival_transfer');
 
-    inputSearchTransfer('origin_transfer_booking');
-
-    inputSearchTransfer('arrival_transfer_booking');
+    // inputSearchTransfer('origin_transfer_booking');
+    //
+    // inputSearchTransfer('arrival_transfer_booking');
 
 
     function inputSearchTransfer(id_input) {
@@ -28,8 +28,8 @@ $(document).ready(function () {
         var place = autocomplete.getPlace();
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
-        console.log('Latitude', latitude);
-        console.log('Longitude', longitude);
+        // console.log('Latitude', latitude);
+        // console.log('Longitude', longitude);
         // $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
         // $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
       }
