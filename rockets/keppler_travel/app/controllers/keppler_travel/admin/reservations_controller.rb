@@ -48,7 +48,8 @@ module KepplerTravel
       def create
         @reservation = Reservation.new(reservation_params)
         if @reservation.save
-          redirect(@reservation, params)
+          # redirect(@reservation, params)
+          redirect_to main_app.root_path
         else
           render :new
         end

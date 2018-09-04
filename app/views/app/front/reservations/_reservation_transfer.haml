@@ -136,69 +136,6 @@
                   %textarea{:id => "", :name => "reservation[description]", :rows => "2", style:"width: 100%;"}
 
 
-              .col-lg-12
-                .form-group.form-custom.form-reservation
-                  %label.title Seleccion una opción
-                  .trip-circle
-                    .single-trip-circle
-                      %input#radio_001{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_001"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Ida
-                    .single-trip-circle
-                      %input#radio_002{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_002"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Ida y Vuelta
-
-              -#.col-lg-6
-                .form-group.form-custom.form-reservation
-                  %label.title Seleccion una opción
-                  .trip-circle
-                    .single-trip-circle
-                      %input#radio_003{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_003"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Al aeropuerto
-                    .single-trip-circle
-                      %input#radio_004{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_004"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Desde el Aeropuerto
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  Fecha de Ida
-                  -#input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  Fecha de Vuelta
-                  -#%input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-
-
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  Aerolinea
-                  %input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  N° de Vuelo
-                  %input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-
-              .col-lg-12
-                .form-group
-                  %label.title{:for => ""}  Detalles del Traslados (Observaciones)
-                  -#%input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-                  %textarea{:id => "", :name => "", :rows => "2", style:"width: 100%;"}
-
-
-
-
           .col-lg-4
             %h3 Resumen
             .row
@@ -261,6 +198,9 @@
                 %button.about-view.travel-btn.btn-reservation{type: 'submit'}
                   Reservar
 
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+
+
 :javascript
   $('#new_reservation').validate({
    event: "blur",
@@ -297,7 +237,14 @@
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-     form.submit();
+
+    swal({
+    type: 'success',
+    title: '¡Listo!',
+    text: '¡Tu reservación ha sido enviada exitosamente!'
+    })
+
+    form.submit();
    }
   });
 
