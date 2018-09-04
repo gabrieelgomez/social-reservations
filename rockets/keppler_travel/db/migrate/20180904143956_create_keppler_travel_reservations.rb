@@ -3,19 +3,19 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
     create_table :keppler_travel_reservations do |t|
       t.string :origin
       t.string :arrival
-      t.string :latitude
-      t.string :longitude
+      t.string :origin_location
+      t.string :arrival_location
       t.bigint :flight_origin
       t.bigint :flight_arrival
       t.integer :quantity_adults
       t.integer :quantity_kids
+      t.integer :quantity_kit
       t.boolean :roud_trip
       t.boolean :airport_origin
-      t.text :description
-      t.string :address_invoice
       t.references :user, foreign_key: true
       t.integer :position
       t.datetime :deleted_at
+
       t.timestamps
     end
     add_index :keppler_travel_reservations, :deleted_at

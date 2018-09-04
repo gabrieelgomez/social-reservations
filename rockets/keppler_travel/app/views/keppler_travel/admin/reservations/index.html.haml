@@ -66,10 +66,10 @@
     = render "description"
   %aside#index-show.control-sidebar
 
-  .mixed-btn
-    - if can?(KepplerTravel::Reservation).create?
-      = link_to new_admin_travel_reservation_path, class: "btn-float" do
-        +
+  -# .mixed-btn
+  -#   - if can?(KepplerTravel::Reservation).create?
+  -#     = link_to new_admin_travel_reservation_path, class: "btn-float" do
+  -#       +
 
 :javascript
   $(document).ready(function(){

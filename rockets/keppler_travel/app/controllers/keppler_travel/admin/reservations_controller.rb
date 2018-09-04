@@ -3,7 +3,8 @@ module KepplerTravel
   module Admin
     # ReservationsController
     class ReservationsController < ApplicationController
-      layout 'keppler_travel/admin/layouts/application'
+      layout 'keppler_travel/admin/layouts/application', except: [:new]
+      before_action :authenticate_user!, except: [:create]
       before_action :set_reservation, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
       before_action :set_attachments
@@ -137,7 +138,9 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def reservation_params
-        params.require(:reservation).permit(:origin, :arrival, :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :quantity_kit, :roud_trip, :airport_origin, :user_id, :position, :deleted_at)
+        params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, 
+                                            :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, 
+                                            :quantity_kit, :roud_trip, :airport_origin, :user_id, :position, :deleted_at)
       end
 
       def show_history
