@@ -8,8 +8,7 @@ class CreateKepplerTravelTransfers < ActiveRecord::Migration[5.2]
       t.jsonb :conditions
       t.jsonb :files
       t.jsonb :kit
-      t.integer :quantity_adults
-      t.integer :quantity_kids
+      t.integer :seat
       t.datetime :date
       t.datetime :time
       t.jsonb :price

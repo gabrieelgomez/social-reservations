@@ -1,4 +1,4 @@
-#index-container{ :controller => "destinations" }
+#index-container{ :controller => "reservations" }
   .container
     .row
       .listing.col-lg-12.col-xs-12
@@ -7,18 +7,18 @@
             = t("keppler.modules.#{controller_path.underscore}")
           = entries(@total, @objects)
           .toolbar
-            - if can?(KepplerTravel::Destination).download?
+            - if can?(KepplerTravel::Reservation).download?
               .toolbar-item
-                = link_to admin_travel_destination_download_path(KepplerTravel::Destination, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
+                = link_to admin_travel_reservation_download_path(KepplerTravel::Reservation, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
                   %i.icon-cloud-download
-            - if can?(KepplerTravel::Destination).upload?
+            - if can?(KepplerTravel::Reservation).upload?
               .toolbar-item
-                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "destination" do
+                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "reservation" do
                   %i.icon-cloud-upload
             .toolbar-item
-              = link_to reload_admin_travel_destinations_path, class: "tool-btn", remote: true do
+              = link_to reload_admin_travel_reservations_path, class: "tool-btn", remote: true do
                 %i.icon-reload
-            - if can?(KepplerTravel::Destination).destroy_multiple?
+            - if can?(KepplerTravel::Reservation).destroy_multiple?
               .toolbar-item
                 .checkbox
                   %label{ for: 'checkbox-all' }
@@ -29,8 +29,8 @@
               %a.tool-btn{"data-confirm" => "¿Estás seguro?", "data-method" => "delete", "v-bind:href" => "link", :rel => "nofollow", ":class" => "{disabled: !checks}" }
                 %i.icon-trash
           .hide
-            = form_tag admin_travel_destination_upload_path(@objects), id: "upload_form_destinations", multipart: true, method: :post do
-              = file_field_tag :file, id: "upload_file_destination"
+            = form_tag admin_travel_reservation_upload_path(@objects), id: "upload_form_reservations", multipart: true, method: :post do
+              = file_field_tag :file, id: "upload_file_reservation"
           %ol.breadcrumb
             %li
               %a{ href: '#' }
@@ -45,15 +45,16 @@
                 - if @objects.size.zero?
                   %tr
                     %th{style: 'text-align: center;'}
-                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.destinations"))
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.reservations"))
                 - else
                   %tr
                     %th
-                    -# %th= t('activerecord.attributes.cover')
-                    %th.hidden-xs= t('activerecord.attributes.title')
-                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.custom_title')
-                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.latitude')
-                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.longitude')
+                    %th.hidden-xs= t('activerecord.attributes.origin')
+                    %th.hidden-xs= t('activerecord.attributes.arrival')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.flight_origin')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.flight_arrival')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.quantity_adults')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.quantity_kids')
                     %th.center Menu
                     %th
               %tbody#objects-container
@@ -66,17 +67,17 @@
   %aside#index-show.control-sidebar
 
   .mixed-btn
-    - if can?(KepplerTravel::Destination).create?
-      = link_to new_admin_travel_destination_path, class: "btn-float" do
+    - if can?(KepplerTravel::Reservation).create?
+      = link_to new_admin_travel_reservation_path, class: "btn-float" do
         +
 
 :javascript
   $(document).ready(function(){
-    $('#destination').click(function() {
-      $('#upload_file_destination').click()
-      $('#upload_file_destination').change(function() {
+    $('#reservation').click(function() {
+      $('#upload_file_reservation').click()
+      $('#upload_file_reservation').change(function() {
         $('.waiting').css('display', 'block')
-        $('#upload_form_destination').submit()
+        $('#upload_form_reservation').submit()
       })
     });
 

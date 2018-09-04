@@ -16,7 +16,7 @@ module KepplerTravel
     validates :title, uniqueness: true
 
     def self.search_field
-      fields = ["cover", "title", "quantity_kids", "date", "time", "price", "position", "deleted_at"]
+      fields = ["title", "date", "time", "price", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 

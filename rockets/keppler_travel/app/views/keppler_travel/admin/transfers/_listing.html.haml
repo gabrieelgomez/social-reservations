@@ -16,30 +16,10 @@
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
           = transfer.title[I18n.locale.to_s]
-    -# %td.hidden-xs
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-    -#     %span
-    -#       = sanitize(transfer.description[I18n.locale.to_s], tags: []).truncate(20)
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
-          = transfer.quantity_adults
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-        %span
-          = transfer.quantity_kids
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-    -#     %span
-    -#       = transfer.kit
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-    -#     %span
-    -#       = transfer.date
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
-    -#     %span
-    -#       = transfer.time
+          = transfer.seat
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_transfer_path(transfer, search: @query), remote: true, class: 'list-rows' do
         %span
@@ -58,11 +38,6 @@
             = link_to edit_admin_travel_transfer_path(transfer), class: 'new-menu', title: t('keppler.actions.edit') do
               %i.icon-pencil
               = t('keppler.actions.edit')
-        - if can?(KepplerTravel::Transfer).clone?
-          %li
-            = link_to admin_travel_transfer_clone_path(transfer), class: 'new-menu', title: t('keppler.actions.clone') do
-              %i.icon-docs
-              = t('keppler.actions.clone')
         - if can?(KepplerTravel::Transfer).destroy?
           %li
             = link_to admin_travel_transfer_path(transfer), class: 'new-menu', title: t('keppler.actions.delete'), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do

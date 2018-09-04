@@ -31,9 +31,9 @@
                       = f.input :cover, as: :keppler_file, label: false, max_size: 800
 
                   .col-xs-12.col-md-2
-                    = f.input :quantity_adults, label: 'Cantidad de personas Adultas', input_html: { min: '1', type: 'number' }
-                  .col-xs-12.col-md-2
-                    = f.input :quantity_kids, label: 'Cantidad de personas Niños', input_html: { min: '1', type: 'number' }
+                    = f.input :seat, label: 'Cantidad max. Asientos', input_html: { min: '1', type: 'number' }
+                  -# .col-xs-12.col-md-2
+                  -#   = f.input :quantity_kids, label: 'Cantidad de personas Niños', input_html: { min: '1', type: 'number' }
 
                   .col-xs-12.col-md-8
                     = f.simple_fields_for :kit, OpenStruct.new(@transfer.kit) do |field|

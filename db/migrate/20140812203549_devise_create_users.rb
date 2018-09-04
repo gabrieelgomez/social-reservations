@@ -6,7 +6,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :permalink
       t.string :username
-      t.string :avatar
+      t.string :phone
+      t.string :dni
       t.datetime :deleted_at
 
       ## Database authenticatable

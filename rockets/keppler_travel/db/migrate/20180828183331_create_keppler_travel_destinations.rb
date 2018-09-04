@@ -4,15 +4,16 @@ class CreateKepplerTravelDestinations < ActiveRecord::Migration[5.2]
       t.string :title
       t.float :latitude
       t.float :longitude
+      t.string :custom_title
       t.string :cover
       t.string :description
       t.integer :position
-      t.string :slug
+      # t.string :slug
       t.datetime :deleted_at
 
       t.timestamps
     end
-    add_index :keppler_travel_destinations, :slug, unique: true
+    # add_index :keppler_travel_destinations, :slug, unique: true
     add_index :keppler_travel_destinations, :deleted_at
   end
 end

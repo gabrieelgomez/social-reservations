@@ -142,7 +142,7 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def transfer_params
         params.require(:transfer).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
-          :date, :time, {files:[]}, price: [:cop, :usd], kit: [:quantity, :weight],
+          :date, :time, :seat, {files:[]}, price: [:cop, :usd], kit: [:quantity, :weight],
           title: @language, description: @language, includes: @language, conditions: @language)
       end
 
