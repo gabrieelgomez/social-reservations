@@ -14,22 +14,21 @@
             .row
               .col-lg-6
                 .form-group.form-custom
-                  %label{:for => "name"} Nombre
+                  %label.title{:for => "name"} Nombre
                   %input#name.form-control{:type => "text", :placeholder => "Enter your name"}/
                 .form-group
-                  %label{:for => "phone"} Teléfono
+                  %label.title{:for => "phone"} Teléfono
                   %input#phone.form-control{:type => "number", :placeholder => "Enter your phone"}/
               .col-lg-6
                 .form-group.form-custom
-                  %label{:for => "email"} Correo electrónico
+                  %label.title{:for => "email"} Correo electrónico
                   %input#email.form-control{:type => "email", :placeholder => "enter your email"}/
                 .form-group
-                  %label{:for => "dni"} Identificación
+                  %label.title{:for => "dni"} Identificación
                   %input#dni.form-control{:type => "number", :placeholder => "Enter your identification"}/
             %hr
             %h3 Datos de Reserva
             .row
-
               .col-lg-6
                 -# .form-group.form-custom.form-reservation
                 -#   %label Seleccion una opción
@@ -46,63 +45,95 @@
                 -#         %span.round-boarder
                 -#           %span.round-boarder1
                 -#         Ida y vuelta
-                .form-group
+                .form-group.form-custom
                   %label{:for => "origin_transfer_booking"} Seleccione Origen
                   %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
                   %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
-
-                .form-group
-                  %label{:for => ""}  ¿Cuándo sale tu vuelo?
-                  = f.hidden_field :flight_origin
-                  %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-
-
               .col-lg-6
-                -# .form-group.form-custom.form-reservation
-                -#   %label Seleccion una opción
-                -#   .trip-circle
-                -#     .single-trip-circle
-                -#       %input#radio_03{:name => "radio", :type => "radio"}/
-                -#       %label{:for => "radio_03"}
-                -#         %span.round-boarder
-                -#           %span.round-boarder1
-                -#         Desde el Aeropuerto
-                -#     .single-trip-circle
-                -#       %input#radio_04{:name => "radio", :type => "radio"}/
-                -#       %label{:for => "radio_04"}
-                -#         %span.round-boarder
-                -#           %span.round-boarder1
-                -#         Al aeropuerto
-
-                .form-group
+                .form-group.form-custom
                   %label{:for => "arrival_transfer_booking"} Seleccione Destino
                   %input{name: 'reservation[arrival]', value: params[:arr_name], type: 'hidden'}
                   %input.google-input.form-control{disabled: 'disabled', value: params[:arr_name]}
-
-                .form-group
-                  %label{:for => ""}  ¿Cuándo llega tu vuelo?
-                  = f.hidden_field :flight_arrival
-                  %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
               .col-lg-12
                 .row
                   .col-lg-4
                     .form-group
                       %label{:for => "adults"} Cantidad adultos
-                      = f.input :quantity_adults, label: false, placeholder: 'Cantidad de Adultos'
-
-                      -# %input#adults.form-control{:type => "number", :placeholder => "Enter number of children"}/
+                      %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
+                      %input.form-control{value: params[:adults], disabled: 'disabled'}
                   .col-lg-4
                     .form-group
-                      %label{:for => "children"} Cantidad niños
-                      = f.input :quantity_kids, label: false, placeholder: 'Cantidad de Niños'
-
-                      -# %input#children.form-control{:type => "number", :placeholder => "Enter number of adults"}/
+                      %label{:for => "kids"} Cantidad niños
+                      %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
+                      %input.form-control{value: params[:kids], disabled: 'disabled'}
                   .col-lg-4
                     .form-group
-                      %label{:for => "luggage"} Cantidad equipaje
-                      = f.input :quantity_kit, label: false, placeholder: 'Cantidad de Equipaje'
-                      -# %input#luggage.form-control{:type => "number",:placeholder => "Enter amount of luggage"}/
+                      %label{:for => "kids"} Cantidad de Equipaje
+                      = f.input :quantity_kit, label: false
+
+
+              .col-lg-12
+                .form-group.form-custom.form-reservation
+                  %label.title Seleccion una opción
+                  .trip-circle
+                    .single-trip-circle
+                      %input#radio_001{:name => "radio", :type => "radio"}/
+                      %label{:for => "radio_001"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Ida
+                    .single-trip-circle
+                      %input#radio_002{:name => "radio", :type => "radio"}/
+                      %label{:for => "radio_002"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Ida y Vuelta
+
+              -#.col-lg-6
+                .form-group.form-custom.form-reservation
+                  %label.title Seleccion una opción
+                  .trip-circle
+                    .single-trip-circle
+                      %input#radio_003{:name => "radio", :type => "radio"}/
+                      %label{:for => "radio_003"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Al aeropuerto
+                    .single-trip-circle
+                      %input#radio_004{:name => "radio", :type => "radio"}/
+                      %label{:for => "radio_004"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Desde el Aeropuerto
+              .col-lg-6
+                .form-group
+                  %label{:for => ""}  Fecha Origen
+                  = f.hidden_field :flight_origin
+                  %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+
+
+              .col-lg-6
+                .form-group
+                  %label{:for => ""} Fecha Destino
+                  = f.hidden_field :flight_arrival
+                  %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+
+              .col-lg-6
+                .form-group
+                  %label.title{:for => ""}  Aerolinea
+                  %input.form-control.custom-input{name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
+
+              .col-lg-6
+                .form-group
+                  %label.title{:for => ""}  N° de Vuelo
+                  %input.form-control.custom-input{name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
+
+              .col-lg-12
+                .form-group
+                  %label.title{:for => ""}  Detalles del Traslados (Observaciones)
+                  -#%input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
+                  %textarea{:id => "", :name => "reservation[description]", :rows => "2", style:"width: 100%;"}
 
 
           .col-lg-4
@@ -182,6 +213,10 @@
      'reservation[quantity_adults]': { required: true},
      'reservation[quantity_kids]': { required: true},
      'reservation[quantity_kit]': { required: true},
+     'reservation[airline]': { required: true},
+     'reservation[flight_number]': { required: true},
+     'reservation[description]': { required: true}
+
      },
    messages: {
      'reservation[origin]': 'No puede estar en blanco',
@@ -193,6 +228,9 @@
      'reservation[quantity_adults]': 'No puede estar en blanco',
      'reservation[quantity_kids]': 'No puede estar en blanco',
      'reservation[quantity_kit]': 'No puede estar en blanco',
+     'reservation[airline]': 'No puede estar en blanco',
+     'reservation[flight_number]': 'No puede estar en blanco',
+     'reservation[description]': 'No puede estar en blanco'
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){

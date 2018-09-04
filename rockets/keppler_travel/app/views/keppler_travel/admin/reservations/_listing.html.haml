@@ -18,11 +18,14 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
-          = reservation.flight_origin.round(3)
+          = Time.at(reservation.flight_origin).strftime("%d/%m/2018")
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
-          = reservation.flight_arrival.round(3)
+          = Time.at(reservation.flight_arrival).strftime("%d/%m/2018")
+
+    -# ACOMODAR TIEMPOS DEL DATAPICKER ESTAN MALOS
+
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span

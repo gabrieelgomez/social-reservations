@@ -24,6 +24,8 @@ module App
       @origin_name      = params[:origin_transfer]
       @arrival_location = params[:arrival_hidden]
       @arrival_name     = params[:arrival_transfer]
+      @adults = params[:quantity_adults]
+      @kids   = params[:quantity_kids]
     end
 
     def reservations
