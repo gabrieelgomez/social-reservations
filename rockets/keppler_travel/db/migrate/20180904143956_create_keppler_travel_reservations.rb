@@ -14,6 +14,7 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
       t.boolean :airport_origin
       t.string :airline
       t.string :flight_number
+      t.text   :description
       t.references :user, foreign_key: true
       t.integer :position
       t.datetime :deleted_at
