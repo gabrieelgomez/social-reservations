@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
   create_table "keppler_travel_reservations", force: :cascade do |t|
     t.string "origin"
     t.string "arrival"
-    t.string "latitude"
-    t.string "longitude"
+    t.string "origin_location"
+    t.string "arrival_location"
     t.bigint "flight_origin"
     t.bigint "flight_arrival"
     t.integer "quantity_adults"

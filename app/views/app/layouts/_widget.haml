@@ -41,11 +41,13 @@
                 .single-tab-select-box
                   %h2 Origen
                   %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
+                  %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
 
               .col-lg-6
                 .single-tab-select-box
                   %h2 Destino
                   %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
+                  %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
 
               .col-lg-12
                 %hr
@@ -79,8 +81,8 @@
 
 
               .col-lg-12.col-md-4.col-sm-12
-                .about-btn.travel-mrt-0.pull-right
-                  %button.about-view.travel-btn.fix-m
+                .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
+                  %button.about-view.travel-btn{style:"margin-right: 0;"}
                     buscar
 
       #circuits.tab-pane.fade.in{:role => "tabpanel"}

@@ -32,13 +32,13 @@
                   .col-xs-12
                     = f.input :quantity_kids, input_html: { min: 0 }
                   .col-xs-12
-                    = f.input :quantity_kid, input_html: { min: 0 }
+                    = f.input :quantity_kit, input_html: { min: 0 }
                   .col-xs-12
                     = f.input :roud_trip, as: :keppler_boolean
                   .col-xs-12
                     = f.input :airport_origin, as: :keppler_boolean
-                  .col-xs-12
-                    = f.association :user, include_blank: false
+                  -# .col-xs-12
+                  -#   = f.association :user, include_blank: false
                   .col-xs-12
                     = f.input :position, as: :hidden
                   .col-xs-12
