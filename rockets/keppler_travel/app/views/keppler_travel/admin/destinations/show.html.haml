@@ -8,19 +8,7 @@
 
   .show-section
     .row
-
-      .col-lg-5
-        - @destination.as_json(only: ["cover"]).each do |attribute, value|
-          .box.slice-box
-            .box-header.with-border
-              %h3.box-title= attribute.capitalize
-              .box-tools.pull-right
-                %a.btn.btn-box-tool{"data-widget" => "collapse", type: "button"}
-                  %i.fa.fa-minus
-            .box-body.box-body-no-padding
-              - unless value.url.blank?
-                = image_tag value.url, class: 'img-show'
-      .col-lg-7
+      .col-lg-6
         .box.slice-box
           .box-header.with-border
             %h3.box-title= t("keppler.modules.#{controller_path.underscore}")
@@ -34,7 +22,85 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @destination.as_json(only: ["title", "latitude", "longitude", "position", "deleted_at"]).each do |attribute, value|
+                - @destination.as_json(only: ["title", "latitude", "longitude", "custom_title"]).each do |attribute, value|
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
+      .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
+
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
+
+:javascript
+
+  var map;
+  var marker = [];
+  var lantitude_edit = #{raw @destination.try(:latitude) || 4.710988599}
+  var longitude_edit = #{raw @destination.try(:longitude) || -74.072092}
+
+  function initialize() {
+
+    var myLatlng = new google.maps.LatLng(lantitude_edit, longitude_edit);
+    var options = {
+      zoom:5,
+      center: myLatlng,
+      types: [],
+      componentRestrictions: {country: "col"},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("gmap"), options);
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(lantitude_edit, longitude_edit),
+      map: map
+    });
+
+
+    var input = document.getElementById('destination_title');
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    autocomplete.addListener('place_changed', onPlaceChanged);
+
+    // When the user selects a city on input search, get the place details for the city and
+    // zoom the map in on the city.
+    function onPlaceChanged() {
+      var place = autocomplete.getPlace();
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();
+      console.log('Latitude', latitude);
+      console.log('Longitude', longitude);
+
+      $("#destination_lang").val(latitude);
+      $("input[name='destination[latitude]']").val(latitude);
+
+      // $("input[name='destination[latitude]']").attr("value", parseFloat(latitude));
+      $("#destination_long").val(longitude);
+      $("input[name='destination[longitude]']").val(longitude);
+
+      // $("input[name='destination[longitude]']").attr("value", parseFloat(longitude));
+       // $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
+       // $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
+
+      if (place.geometry) {
+        map.panTo(place.geometry.location);
+        map.setZoom(12);
+         marker = new google.maps.Marker({
+          position: new google.maps.LatLng(latitude,longitude),
+          map: map
+        });
+      } else {
+        document.getElementById('autocomplete').placeholder = 'Enter a city';
+      }
+
+    }
+
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+
+:scss
+  #destination_latitude, #destination_longitude{
+    cursor: not-allowed;
+    background-color: #eeeeee;
+    opacity: 1;
+   }

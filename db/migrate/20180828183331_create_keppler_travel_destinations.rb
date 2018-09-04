@@ -4,6 +4,7 @@ class CreateKepplerTravelDestinations < ActiveRecord::Migration[5.2]
       t.string :title
       t.float :latitude
       t.float :longitude
+      t.string :custom_title
       t.string :cover
       t.string :description
       t.integer :position

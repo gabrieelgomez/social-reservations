@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_192209) do
+ActiveRecord::Schema.define(version: 2018_09_04_143721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.string "title"
     t.float "latitude"
     t.float "longitude"
+    t.string "custom_title"
     t.string "cover"
     t.string "description"
     t.integer "position"
@@ -78,6 +79,27 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.index ["transfer_id"], name: "transfer_id"
   end
 
+  create_table "keppler_travel_reservations", force: :cascade do |t|
+    t.string "origin"
+    t.string "arrival"
+    t.string "latitude"
+    t.string "longitude"
+    t.bigint "flight_origin"
+    t.bigint "flight_arrival"
+    t.integer "quantity_adults"
+    t.integer "quantity_kids"
+    t.integer "quantity_kid"
+    t.boolean "roud_trip"
+    t.boolean "airport_origin"
+    t.bigint "user_id"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_reservations_on_user_id"
+  end
+
   create_table "keppler_travel_transfers", force: :cascade do |t|
     t.string "cover"
     t.jsonb "title"
@@ -86,8 +108,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.jsonb "conditions"
     t.jsonb "files"
     t.jsonb "kit"
-    t.integer "quantity_adults"
-    t.integer "quantity_kids"
+    t.integer "seat"
     t.datetime "date"
     t.datetime "time"
     t.jsonb "price"
@@ -196,6 +217,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.string "name"
     t.string "permalink"
     t.string "username"
+    t.string "phone"
+    t.string "dni"
     t.datetime "deleted_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -221,5 +244,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_192209) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "keppler_travel_reservations", "users"
   add_foreign_key "permissions", "roles"
 end

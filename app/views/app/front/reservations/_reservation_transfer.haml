@@ -28,22 +28,23 @@
           %hr
           %h3 Datos de Reserva
           .row
+
             .col-lg-6
-              .form-group.form-custom.form-reservation
-                %label Seleccion una opción
-                .trip-circle
-                  .single-trip-circle
-                    %input#radio_01{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio_01"}
-                      %span.round-boarder>
-                        %span.round-boarder1
-                      Solo ida
-                  .single-trip-circle
-                    %input#radio_02{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio_02"}
-                      %span.round-boarder
-                        %span.round-boarder1
-                      Ida y vuelta
+              -# .form-group.form-custom.form-reservation
+              -#   %label Seleccion una opción
+              -#   .trip-circle
+              -#     .single-trip-circle
+              -#       %input#radio_01{:name => "radio", :type => "radio"}/
+              -#       %label{:for => "radio_01"}
+              -#         %span.round-boarder>
+              -#           %span.round-boarder1
+              -#         Solo ida
+              -#     .single-trip-circle
+              -#       %input#radio_02{:name => "radio", :type => "radio"}/
+              -#       %label{:for => "radio_02"}
+              -#         %span.round-boarder
+              -#           %span.round-boarder1
+              -#         Ida y vuelta
               .form-group
                 -#%label{:for => "destinations-booking_a"} Seleccione Origen
                 -#%select#destinations-booking_a.custom-input.form-control{placeholder: 'Enter your origin'}
@@ -53,22 +54,25 @@
               .form-group
                 %label{:for => ""}  ¿Cuándo sale tu vuelo?
                 %input.form-control.custom-input{"data-toggle" => "datepicker", :name => "check_in", :placeholder => "Fecha", :type => "date"}/
+
+
             .col-lg-6
-              .form-group.form-custom.form-reservation
-                %label Seleccion una opción
-                .trip-circle
-                  .single-trip-circle
-                    %input#radio_03{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio_03"}
-                      %span.round-boarder
-                        %span.round-boarder1
-                      Desde el Aeropuerto
-                  .single-trip-circle
-                    %input#radio_04{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio_04"}
-                      %span.round-boarder
-                        %span.round-boarder1
-                      Al aeropuerto
+              -# .form-group.form-custom.form-reservation
+              -#   %label Seleccion una opción
+              -#   .trip-circle
+              -#     .single-trip-circle
+              -#       %input#radio_03{:name => "radio", :type => "radio"}/
+              -#       %label{:for => "radio_03"}
+              -#         %span.round-boarder
+              -#           %span.round-boarder1
+              -#         Desde el Aeropuerto
+              -#     .single-trip-circle
+              -#       %input#radio_04{:name => "radio", :type => "radio"}/
+              -#       %label{:for => "radio_04"}
+              -#         %span.round-boarder
+              -#           %span.round-boarder1
+              -#         Al aeropuerto
+              
               .form-group
                 %label{:for => "arrival_transfer_booking"} Seleccione Destino
                 %input.google-input.form-control{id: 'arrival_transfer_booking', name: 'arrival_transfer_booking', :placeholder => "Enter the destination"}
@@ -115,14 +119,14 @@
                   -#%span.text-muted $5
                 %li.list-group-item.d-flex.justify-content-between.bg-light
                   .row
-                    .col-lg-4
-                      .text-muted
-                        %h6.my-0 Adultos
-                        %small= @transfer.quantity_adults
-                    .col-lg-4
-                      .text-muted
-                        %h6.my-0 Niños
-                        %small= @transfer.quantity_kids
+                    -# .col-lg-4
+                    -#   .text-muted
+                    -#     %h6.my-0 Adultos
+                    -#     %small= @transfer.quantity_adults
+                    -# .col-lg-4
+                    -#   .text-muted
+                    -#     %h6.my-0 Niños
+                    -#     %small= @transfer.quantity_kids
                     .col-lg-4
                       .text-muted
                         %h6.my-0 Equipaje

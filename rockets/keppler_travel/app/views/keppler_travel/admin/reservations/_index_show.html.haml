@@ -1,7 +1,7 @@
 .tab-content
   %h6.actions
-    - if can?(KepplerTravel::Transfer).update?
-      = link_to edit_admin_travel_transfer_path(@transfer), title: t("keppler.actions.edit"), class: 'pull-left' do
+    - if can?(KepplerTravel::Reservation).update?
+      = link_to edit_admin_travel_reservation_path(@reservation), title: t("keppler.actions.edit"), class: 'pull-left' do
         %i.icon-pencil
         %span= t('keppler.actions.edit')
     %a#close-index-show.pull-right
@@ -9,7 +9,7 @@
   %h3.control-sidebar-heading
     = t("keppler.modules.#{controller_path.underscore}")
   %ul.timeline
-    - @transfer.as_json(only: ["cover", "title", "seat", "kit", "price", "position"]).each do |attribute, value|
+    - @reservation.as_json(only: ["origin", "arrival", "flight_origin", "flight_arrival", "quantity_adults", "quantity_kids", "quantity_kid", "roud_trip", "airport_origin", "user", "position", "deleted_at"]).each do |attribute, value|
       -unless attribute.eql?('position') || attribute.eql?('deleted_at')
         %li.list-row
           .timeline-item
