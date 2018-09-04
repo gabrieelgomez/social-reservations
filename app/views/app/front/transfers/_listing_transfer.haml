@@ -28,9 +28,6 @@
                 .cars__inf
                   .box-title
                     %span.title= transfer.title[@lang]
-                    %span.price
-                      = transfer.price[@currency]
-                      = @currency == 'cop' ? '$ COP' : '$ USD'
                   %p.amount-people
                     %span
                       %i.icon-people.icons
@@ -52,7 +49,12 @@
                     %span
                       %i.icon-clock.icons
                       Hora: 12:00pm
-                  .box-btn
-                    = link_to reservations_transfer_path(@lang, @currency, transfer) do
-                      %button.about-view.packages-btn
-                        reservar
+                  .box-items
+                    .box-price
+                      %span.price
+                        = transfer.price[@currency]
+                        = @currency == 'cop' ? '$ COP' : '$ USD'
+                    .box-btn
+                      = link_to reservations_transfer_path(@lang, @currency, transfer) do
+                        %button.about-view.packages-btn
+                          reservar
