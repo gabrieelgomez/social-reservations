@@ -10,28 +10,25 @@ $(document).ready(function () {
     };
 
     inputSearchTransfer('origin_transfer');
-
     inputSearchTransfer('arrival_transfer');
-
-    // inputSearchTransfer('origin_transfer_booking');
-    //
-    // inputSearchTransfer('arrival_transfer_booking');
-
 
     function inputSearchTransfer(id_input) {
       var input = document.getElementById(id_input);
       var autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.addListener('place_changed', onPlaceChanged);
-      // When the user selects a city on input search, get the place details for the city and
-      // zoom the map in on the city.
       function onPlaceChanged() {
         var place = autocomplete.getPlace();
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
-        // console.log('Latitude', latitude);
-        // console.log('Longitude', longitude);
-        // $('form').append(`<input type="hidden" name="destination[latitude]" value="${latitude}" /> `);
-        // $('form').append(`<input type="hidden" name="destination[longitude]" value="${longitude}" /> `);
+
+        if (id_input == 'origin_transfer'){
+          let field = $('#origin_hidden');
+          field.val([latitude, latitude]);
+        }else if(id_input == 'arrival_transfer'){
+          let field = $('#arrival_hidden');
+          field.val([latitude, latitude]);
+        }
+
       }
     }
 

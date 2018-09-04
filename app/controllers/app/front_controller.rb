@@ -20,6 +20,10 @@ module App
       #                                   .ransack(quantity_adults_gteq: adults).result
       #                                   .ransack(quantity_kids_gteq: kids).result
       @results = KepplerTravel::Transfer.all
+      @origin_location  = params[:origin_hidden]
+      @origin_name      = params[:origin_transfer]
+      @arrival_location = params[:arrival_hidden]
+      @arrival_name     = params[:arrival_transfer]
     end
 
     def reservations

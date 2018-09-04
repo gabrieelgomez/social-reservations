@@ -41,11 +41,13 @@
                 .single-tab-select-box
                   %h2 ¿A qué aeropuerto llega tu vuelo?
                   %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
+                  %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
 
               .col-lg-6
                 .single-tab-select-box
                   %h2 ¿Dónde quieres que te dejemos?
                   %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
+                  %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
 
               .col-lg-12
                 %hr
@@ -61,7 +63,7 @@
                   %h2 Cantidad de Niños
                   .travel-select-icon
                     .form-group
-                      %input#adults.form-control{name: 'quantity_kids', :type => "number", :placeholder => "Enter number of children"}/
+                      %input#kids.form-control{name: 'quantity_kids', :type => "number", :placeholder => "Enter number of children"}/
 
               .col-lg-12.col-md-4.col-sm-12
                 .about-btn.travel-mrt-0.pull-right

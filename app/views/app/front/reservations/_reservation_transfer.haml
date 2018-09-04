@@ -48,7 +48,7 @@
                 -#         Ida y vuelta
                 .form-group
                   %label{:for => "origin_transfer_booking"} Seleccione Origen
-                  = f.input :origin, label: false, placeholder: 'Introduzca Dirección de Origen'
+                  = f.input :origin, label: false, input_html: { value: params[:org_name] }
                   -# %input.google-input.form-control{id: 'origin_transfer_booking', name: 'origin_transfer_booking', :placeholder => "Enter the origin"}
 
                 .form-group
@@ -76,7 +76,7 @@
 
                 .form-group
                   %label{:for => "arrival_transfer_booking"} Seleccione Destino
-                  = f.input :arrival, label: false, placeholder: 'Introduzca Dirección de Destino'
+                  = f.input :arrival, label: false, input_html: { value: params[:arr_name] }
 
                   -# %input.google-input.form-control{id: 'arrival_transfer_booking', name: 'arrival_transfer_booking', :placeholder => "Enter the destination"}
 
