@@ -25,13 +25,13 @@
               .col-lg-12
                 .trip-circle
                   .single-trip-circle
-                    %input#radio1.micheckbox{:name => "radio", :type => "radio"}/
+                    %input#radio1.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
                     %label{:for => "radio1"}
                       %span.round-boarder>
                         %span.round-boarder1
                       Solo ida
                   .single-trip-circle
-                    %input#radio2.micheckbox{:name => "radio", :type => "radio"}/
+                    %input#radio2.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
                     %label{:for => "radio2"}
                       %span.round-boarder
                         %span.round-boarder1
@@ -52,19 +52,17 @@
               .col-lg-12
                 %hr
 
-
               .col-lg-3
                 .single-tab-select-box
                   %h2 Fecha de Ida
                   .form-group
                     %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
 
-              .col-lg-3#date-input
+              .col-lg-3#vuelo_vuelta
                 .single-tab-select-box
                   %h2 Fecha de Vuelta
                   .form-group
                     %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
 
               .col-lg-2{style: 'margin-left:18px'}
                 .single-tab-select-box
@@ -77,8 +75,6 @@
                   %h2 Niños
                   .form-group
                     %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
-
-
 
               .col-lg-12.col-md-4.col-sm-12
                 .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
@@ -103,21 +99,18 @@
             .col-lg-12
               %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
 
--# %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
-
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
-
 
 :javascript
   validateForm('#search-input');
-  $('#date-input').addClass('hidden-input');
-  $( '.micheckbox' ).on( 'click', function() {
+  $('#vuelo_vuelta').addClass('hidden-input');
+  $( '.radio-fecha-vuelos' ).on( 'click', function() {
       if( $('#radio2').is(':checked') ){
-          $('#date-input').removeClass('hidden-input');
-          $('#date-input').addClass('show-input');
+          $('#vuelo_vuelta').removeClass('hidden-input');
+          $('#vuelo_vuelta').addClass('show-input');
       } else {
-          $('#date-input').removeClass('show-input');
-          $('#date-input').addClass('hidden-input');
+          $('#vuelo_vuelta').removeClass('show-input');
+          $('#vuelo_vuelta').addClass('hidden-input');
       }
   });
 
