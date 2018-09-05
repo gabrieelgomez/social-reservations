@@ -2238,7 +2238,6 @@ label.container .checkmark:after {
     width: 100% !important;
     font-family: 'Poppins', sans-serif !important;
 } */
-
 .custom-input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #4e4e56 !important;
@@ -2260,4 +2259,40 @@ label.container .checkmark:after {
 
 .show-input {
     display: block !important;
+}
+
+#seach-widget {
+    padding: 15px 0 0 0;
+}
+
+.box-search {
+    width: 100%;
+    height: 50px;
+    background: #cccccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.button-search {
+    width: 200px !important;
+}
+
+.reservation-resumen {
+    display: flex;
+    flex-direction: column;
+    min-height: 1200px;
+}
+
+.sticky {
+    position: sticky;
+    top: 85px;
+}
+
+.js-show-widget {
+    display: block;
+}
+
+.js-hide-widget {
+    display: none;
 }
