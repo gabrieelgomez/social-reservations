@@ -19,10 +19,10 @@
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
           = Time.at(reservation.flight_origin).strftime("%d/%m/2018")
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = Time.at(reservation.flight_arrival).strftime("%d/%m/2018")
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = Time.at(reservation.flight_arrival).strftime("%d/%m/2018")
 
     -# ACOMODAR TIEMPOS DEL DATAPICKER ESTAN MALOS
 
@@ -30,10 +30,10 @@
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
           = reservation.quantity_adults
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = reservation.quantity_kids
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = reservation.quantity_kids
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{reservation.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
