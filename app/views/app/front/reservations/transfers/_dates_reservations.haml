@@ -39,7 +39,7 @@
       .col-lg-12
         .form-group.form-custom.form-reservation
           %label.title Su selección ha sido
-          %input{name: 'reservation[round_trip]', value: params[:round_trip], type: 's'}
+          %input{name: 'reservation[round_trip]', value: params[:round_trip], type: 'hidden'}
           .trip-circle
             .single-trip-circle
               %input#solo_ida{:name => "radio", :type => "radio"}/
