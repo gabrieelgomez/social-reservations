@@ -1,3 +1,125 @@
+
+
+%section#seach-widget
+  .container
+    - unless @results.blank?
+      .box-search
+        .col-lg-6
+          %span 
+            Su búsqueda:
+          %span 
+            Origen: El Dorando 1
+          %span 
+            Destino: El Dorado 2
+        .col-lg-6
+          %p
+            %a.pull-right.link-widget Volver a relizar la búsqueda
+
+
+  .container.js-widget.js-hide-widget
+    .row
+      .col-lg-12
+        %hr
+        %ul.nav.nav-tabs{:role => "tablist"}
+          %li.item-widget.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
+            %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
+              %i.fa.fa-car
+              Traslados
+          %li.item-widget{:role => "presentation"}
+            %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
+              %i.fa.fa-train
+              Circuitos
+          %li.item-widget{:role => "presentation"}
+            %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
+              %i.fa.fa-map-o
+              Tours
+          %li.item-widget{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
+            %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;     margin-right: 0 !important;"}
+              %i.fa.fa-plane
+              Multidestinos
+        .tab-content
+          #translation.tab-pane.active.fade.in{:role => "tabpanel"}
+            -#= search_form_for @q, url: "/#{@lang}/#{@currency}/transfers", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+            %input#round_trip{name: 'round_trip', type: 'hidden'}
+            .tab-para
+              .row
+                .col-lg-12
+                  .trip-circle
+                    .single-trip-circle
+                      %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                      %label.solo_ida{:for => "solo_ida"}
+                        %span.round-boarder>
+                          %span.round-boarder1
+                        Solo ida
+                    .single-trip-circle
+                      %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                      %label.ida_vuelta{:for => "ida_vuelta"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Ida y vuelta
+
+                .col-lg-6
+                  .single-tab-select-box
+                    %h2 Origen
+                    %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
+                    %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
+
+                .col-lg-6
+                  .single-tab-select-box
+                    %h2 Destino
+                    %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
+                    %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
+
+                .col-lg-12
+                  %hr
+
+                .col-lg-3
+                  .single-tab-select-box
+                    %h2 Fecha de Ida
+                    .form-group
+                      %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+
+                .col-lg-3#vuelo_vuelta
+                  .single-tab-select-box
+                    %h2 Fecha de Vuelta
+                    .form-group
+                      %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+                .col-lg-2{style: 'margin-left:18px'}
+                  .single-tab-select-box
+                    %h2 Adultos
+                    .form-group
+                      %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', :type => "number", style: 'width:55%!important'}/
+
+                .col-lg-2{style: 'margin-left:-35px'}
+                  .single-tab-select-box
+                    %h2 Niños
+                    .form-group
+                      %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
+
+                .col-lg-12.col-md-4.col-sm-12
+                  .about-btn.travel-mrt-0.pull-right
+                    %button.about-view.travel-btn
+                      buscar
+
+          #circuits.tab-pane.fade.in{:role => "tabpanel"}
+            .tab-para
+              .row
+                .col-lg-12
+                  %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Circuitos
+
+          #tours.tab-pane.fade.in{:role => "tabpanel"}
+            .tab-para
+              .row
+                .col-lg-12
+                  %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Tours
+
+          #multidestines.tab-pane.fade.in{:role => "tabpanel"}
+            .tab-para
+              .row
+                .col-lg-12
+                  %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
+
 %section#transfers.transfers
   .container
     - unless @results.blank?
@@ -18,7 +140,9 @@
                 %h2
                   ¡Lo sentimos! No hemos encontrado ningún resultado.
                 %p
-                  Intente volver realizar su búsqueda
+                  = link_to root_path do
+                    Volver a relizar la búsqueda
+                
 
         - else
           - @results.each do |transfer|
@@ -61,3 +185,9 @@
                         flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do
                         %button.about-view.packages-btn
                           seleccionar
+:javascript
+
+  $( '.link-widget' ).on( 'click', function() {
+      $('.js-widget').removeClass('js-hide-widget');
+      $('.js-widget').addClass('js-show-widget');
+  });
