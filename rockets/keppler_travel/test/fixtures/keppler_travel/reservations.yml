@@ -8,7 +8,7 @@ one:
   quantity_adults: 1
   quantity_kids: 1
   quantity_kid: 1
-  roud_trip: false
+  round_trip: false
   airport_origin: false
   user: one
   position: 1
@@ -22,7 +22,7 @@ two:
   quantity_adults: 1
   quantity_kids: 1
   quantity_kid: 1
-  roud_trip: false
+  round_trip: false
   airport_origin: false
   user: two
   position: 1

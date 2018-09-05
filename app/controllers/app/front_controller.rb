@@ -17,6 +17,8 @@ module App
       @origin_name      = params[:origin_transfer]
       @arrival_location = params[:arrival_hidden]
       @arrival_name     = params[:arrival_transfer]
+      @flight_origin_picker  = params[:flight_origin_picker]
+      @flight_arrival_picker = params[:flight_arrival_picker]
       @round_trip = params[:round_trip]
       @adults = params[:quantity_adults]
       @kids   = params[:quantity_kids]
