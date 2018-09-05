@@ -84,39 +84,32 @@
               %input.check_transfer#transfer_origin{name: 'transfer_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
           // End --- Checkbox Traslado al/desde Aeropuerto
           // Inputs informacion de vuelo aeropuerto
-        .col-lg-6.desde_aero_inputs
-          .form-group
-            %label.title{:for => ""}  Aerolinea
-            %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
+        .row
+          .col-lg-6.desde_aero_inputs
+            .form-group
+              %label.title{:for => ""}  Aerolinea
+              %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
 
-        .col-lg-6.desde_aero_inputs
-          .form-group
-            %label.title{:for => ""}  N° de Vuelo
-            %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
-
-
-      .col-lg-12
-        .col-lg-12.al_aero
-          .checkbox
-            %label
-              %input.check_transfer#transfer_arrival{name: 'transfer_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
-
-        .col-lg-6.al_aero_inputs
-          .form-group
-            %label.title{:for => ""}  Aerolinea
-            %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_arrival]', id: 'flight_origin', autocomplete: 'off'}
-
-        .col-lg-6.al_aero_inputs
-          .form-group
-            %label.title{:for => ""}  N° de Vuelo
-            %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_arrival]', id: 'flight_number', autocomplete: 'off'}/
+          .col-lg-6.desde_aero_inputs
+            .form-group
+              %label.title{:for => ""}  N° de Vuelo
+              %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
 
 
+  .col-lg-12
+    .row
+      .col-lg-12.al_aero
+        .checkbox
+          %label
+            %input.check_transfer#transfer_arrival{name: 'transfer_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
+
+  .col-lg-12
+    .row
       .col-lg-12
         .form-group
           %label.title{:for => ""}  Detalles del Traslados (Observaciones)
           %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "4", style:"width: 100%;"}
-      // End --- Inputs informacion de vuelo aeropuerto
+    // End --- Inputs informacion de vuelo aeropuerto
 
 :javascript
   var round_trip = #{raw params[:round_trip]};
