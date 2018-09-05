@@ -14,10 +14,8 @@
     %section.travel-box
       .container
         .row
-          .col-lg-1
-          .col-lg-10
-            = render 'app/layouts/widget'
-            
+          = render 'app/layouts/widget'
+
     %section#services.services
       .container
         .gallary-header.text-center
@@ -321,7 +319,5 @@
     :javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
-        $('[data-toggle="datepicker"]').datepicker();
-        $('#destinations-box-one').selectize({});
-        $('#destinations-box-two').selectize({});
+        // $('[data-toggle="datepicker"]').datepicker();
       });

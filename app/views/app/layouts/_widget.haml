@@ -1,103 +1,107 @@
-.single-travel-boxes
-  #desc-tabs.desc-tabs
-    %ul.nav.nav-tabs{:role => "tablist"}
-      %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
-        %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
-          %i.fa.fa-car
-          Traslados
-      %li{:role => "presentation"}
-        %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
-          %i.fa.fa-train
-          Circuitos
-      %li{:role => "presentation"}
-        %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
-          %i.fa.fa-map-o
-          Tours
-      %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
-        %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
-          %i.fa.fa-plane
-          Multidestinos
-    .tab-content
-      #translation.tab-pane.active.fade.in{:role => "tabpanel"}
-        = search_form_for @q, url: "/#{@lang}/#{@currency}/transfers", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+.col-lg-1
+.col-lg-10
+  .single-travel-boxes
+    #desc-tabs.desc-tabs
+      %ul.nav.nav-tabs{:role => "tablist"}
+        %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
+          %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
+            %i.fa.fa-car
+            Traslados
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
+            %i.fa.fa-train
+            Circuitos
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
+            %i.fa.fa-map-o
+            Tours
+        %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
+          %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
+            %i.fa.fa-plane
+            Multidestinos
+      .tab-content
+        #translation.tab-pane.active.fade.in{:role => "tabpanel"}
+          = search_form_for @q, url: "/#{@lang}/#{@currency}/transfers", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+
+            %input#round_trip{name: 'round_trip', type: 'hidden'}
+            .tab-para
+              .row
+                .col-lg-12
+                  .trip-circle
+                    .single-trip-circle
+                      %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                      %label.solo_ida{:for => "solo_ida"}
+                        %span.round-boarder>
+                          %span.round-boarder1
+                        Solo ida
+                    .single-trip-circle
+                      %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                      %label.ida_vuelta{:for => "ida_vuelta"}
+                        %span.round-boarder
+                          %span.round-boarder1
+                        Ida y vuelta
+
+                .col-lg-6
+                  .single-tab-select-box
+                    %h2 Origen
+                    %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
+                    %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
+
+                .col-lg-6
+                  .single-tab-select-box
+                    %h2 Destino
+                    %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
+                    %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
+
+                .col-lg-12
+                  %hr
+
+                .col-lg-3
+                  .single-tab-select-box
+                    %h2 Fecha de Ida
+                    .form-group
+                      %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+
+                .col-lg-3#vuelo_vuelta
+                  .single-tab-select-box
+                    %h2 Fecha de Vuelta
+                    .form-group
+                      %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+                .col-lg-2{style: 'margin-left:18px'}
+                  .single-tab-select-box
+                    %h2 Adultos
+                    .form-group
+                      %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', :type => "number", style: 'width:55%!important'}/
+
+                .col-lg-2{style: 'margin-left:-35px'}
+                  .single-tab-select-box
+                    %h2 Niños
+                    .form-group
+                      %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
+
+                .col-lg-12.col-md-4.col-sm-12
+                  .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
+                    %button.about-view.travel-btn{style:"margin-right: 0;"}
+                      buscar
+
+        #circuits.tab-pane.fade.in{:role => "tabpanel"}
           .tab-para
             .row
               .col-lg-12
-                .trip-circle
-                  .single-trip-circle
-                    %input#solo_ida.radio-fecha-vuelos{:name => "ida_or_vuelta", :type => "radio"}/
-                    %label{:for => "solo_ida"}
-                      %span.round-boarder>
-                        %span.round-boarder1
-                      Solo ida
-                  .single-trip-circle
-                    %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_or_vuelta", :type => "radio"}/
-                    %label{:for => "ida_vuelta"}
-                      %span.round-boarder
-                        %span.round-boarder1
-                      Ida y vuelta
+                %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Circuitos
 
-              .col-lg-6
-                .single-tab-select-box
-                  %h2 Origen
-                  %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
-                  %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
-
-              .col-lg-6
-                .single-tab-select-box
-                  %h2 Destino
-                  %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
-                  %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
-
+        #tours.tab-pane.fade.in{:role => "tabpanel"}
+          .tab-para
+            .row
               .col-lg-12
-                %hr
+                %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Tours
 
-              .col-lg-3
-                .single-tab-select-box
-                  %h2 Fecha de Ida
-                  .form-group
-                    %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-
-              .col-lg-3#vuelo_vuelta
-                .single-tab-select-box
-                  %h2 Fecha de Vuelta
-                  .form-group
-                    %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
-              .col-lg-2{style: 'margin-left:18px'}
-                .single-tab-select-box
-                  %h2 Adultos
-                  .form-group
-                    %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', :type => "number", style: 'width:55%!important'}/
-
-              .col-lg-2{style: 'margin-left:-35px'}
-                .single-tab-select-box
-                  %h2 Niños
-                  .form-group
-                    %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
-
-              .col-lg-12.col-md-4.col-sm-12
-                .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
-                  %button.about-view.travel-btn{style:"margin-right: 0;"}
-                    buscar
-
-      #circuits.tab-pane.fade.in{:role => "tabpanel"}
-        .tab-para
-          .row
-            .col-lg-12
-              %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Circuitos
-
-      #tours.tab-pane.fade.in{:role => "tabpanel"}
-        .tab-para
-          .row
-            .col-lg-12
-              %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Tours
-
-      #multidestines.tab-pane.fade.in{:role => "tabpanel"}
-        .tab-para
-          .row
-            .col-lg-12
-              %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
+        #multidestines.tab-pane.fade.in{:role => "tabpanel"}
+          .tab-para
+            .row
+              .col-lg-12
+                %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
 
@@ -105,11 +109,14 @@
   validateForm('#search-input');
   $('#vuelo_vuelta').addClass('hidden-input');
   $( "#solo_ida").prop('checked', true);
+  $('#round_trip').val(false);
   $( '.radio-fecha-vuelos' ).on( 'click', function() {
       if( $('#ida_vuelta').is(':checked') ){
+          $('#round_trip').val(true);
           $('#vuelo_vuelta').removeClass('hidden-input');
           $('#vuelo_vuelta').addClass('show-input');
       } else {
+          $('#round_trip').val(false);
           $('#vuelo_vuelta').removeClass('show-input');
           $('#vuelo_vuelta').addClass('hidden-input');
       }

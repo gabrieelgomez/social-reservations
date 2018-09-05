@@ -2,7 +2,7 @@ module App
   # FrontsController
   class FrontController < AppController
     layout 'layouts/templates/application'
-    before_action :set_search, only: :index
+    before_action :set_search, only: [:index, :reservations]
     before_action :set_transfer, only: :reservations
 
     def set_locale
@@ -17,6 +17,7 @@ module App
       @origin_name      = params[:origin_transfer]
       @arrival_location = params[:arrival_hidden]
       @arrival_name     = params[:arrival_transfer]
+      @round_trip = params[:round_trip]
       @adults = params[:quantity_adults]
       @kids   = params[:quantity_kids]
       @seats = @adults.to_i + @kids.to_i
