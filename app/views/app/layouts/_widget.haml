@@ -25,14 +25,14 @@
               .col-lg-12
                 .trip-circle
                   .single-trip-circle
-                    %input#radio1.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio1"}
+                    %input#solo_ida.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
+                    %label{:for => "solo_ida"}
                       %span.round-boarder>
                         %span.round-boarder1
                       Solo ida
                   .single-trip-circle
-                    %input#radio2.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
-                    %label{:for => "radio2"}
+                    %input#ida_vuelta.radio-fecha-vuelos{:name => "radio", :type => "radio"}/
+                    %label{:for => "ida_vuelta"}
                       %span.round-boarder
                         %span.round-boarder1
                       Ida y vuelta
@@ -104,8 +104,9 @@
 :javascript
   validateForm('#search-input');
   $('#vuelo_vuelta').addClass('hidden-input');
+  $( "#solo_ida").prop('checked', true);
   $( '.radio-fecha-vuelos' ).on( 'click', function() {
-      if( $('#radio2').is(':checked') ){
+      if( $('#ida_vuelta').is(':checked') ){
           $('#vuelo_vuelta').removeClass('hidden-input');
           $('#vuelo_vuelta').addClass('show-input');
       } else {
