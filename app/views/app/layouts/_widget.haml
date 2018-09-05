@@ -103,6 +103,8 @@
                 %h2.text-center{style:"color: #4e4e56 !important"} Sin información - Multidestinos
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
+%link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
 :javascript
   validateForm('#search-input');
@@ -131,7 +133,11 @@
         changeMonth: true,
         changeYear: true,
         yearRange: "c-10:c+20",
-        numberOfMonths: 1
+        numberOfMonths: 1,
+        minDate: 1,
+        onClose: function( selectedDate ) {
+          $( "#flight_arrival_picker" ).datepicker( "option", "minDate", selectedDate );
+        }
       }).on( "change", function() {
         console.log('La fecha inicio a cambiado', origin.datepicker('getDate') * 1)
         let date = origin.datepicker('getDate') * 1

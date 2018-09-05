@@ -7,11 +7,12 @@ $('#new_reservation').validate({
    'reservation[arrival]': { required: true},
    'reservation[flight_origin]': { required: true},
    'flight_origin_picker': { required: true},
-   // 'reservation[flight_arrival]': { required: true},
-   // 'flight_arrival_picker': { required: true},
+   'reservation[flight_arrival]': { required: true},
+   'flight_arrival_picker': { required: true},
    'reservation[quantity_adults]': { required: true},
    'reservation[quantity_kids]': { required: true},
    'reservation[quantity_kit]': { required: true},
+   'reservation[invoice_address]': { required: true},
    // 'reservation[airline]': { required: true},
    // 'reservation[flight_number]': { required: true},
    'reservation[description]': { required: true}
@@ -22,11 +23,12 @@ $('#new_reservation').validate({
    'reservation[arrival]': 'No puede estar en blanco',
    'reservation[flight_origin]': 'No puede estar en blanco',
    'flight_origin_picker': 'No puede estar en blanco',
-   // 'reservation[flight_arrival]': 'No puede estar en blanco',
-   // 'flight_arrival_picker': 'No puede estar en blanco',
+   'reservation[flight_arrival]': 'No puede estar en blanco',
+   'flight_arrival_picker': 'No puede estar en blanco',
    'reservation[quantity_adults]': 'No puede estar en blanco',
    'reservation[quantity_kids]': 'No puede estar en blanco',
    'reservation[quantity_kit]': 'No puede estar en blanco',
+   'reservation[invoice_address]': 'No puede estar en blanco',
    // 'reservation[airline]': 'No puede estar en blanco',
    // 'reservation[flight_number]': 'No puede estar en blanco',
    'reservation[description]': 'No puede estar en blanco'
@@ -48,7 +50,9 @@ $('#new_reservation').validate({
 $(function() {
   $( "#datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
 
-  $( "#flight_origin_picker" ).datepicker({
+  // Datapicker from Fecha Origen ( Ida / Origin)
+  var origin = $("#flight_origin_picker");
+  origin.datepicker({
     // defaultDate: "+1w",
     // changeMonth: true,
     numberOfMonths: 1,
@@ -56,17 +60,28 @@ $(function() {
     format : 'd.m.Y',
     minDate : 1,
     onClose: function( selectedDate ) {
+      console.log('La fecha inicio a cambiado', origin.datepicker('getDate') * 1);
+      let date = origin.datepicker('getDate') * 1;
+      $('#reservation_flight_origin').val(date);
       $( "#flight_arrival_picker" ).datepicker( "option", "minDate", selectedDate );
     }
+  }).on( "change", function() {
   });
 
-  $( "#flight_arrival_picker" ).datepicker({
+  // Datapicker from Fecha Destino ( Vuelta / Arrival)
+  var arrival = $("#flight_arrival_picker");
+  arrival.datepicker({
     defaultDate: "+1w",
     changeMonth: true,
     numberOfMonths: 1,
+    minDate: 1,
     onClose: function( selectedDate ) {
+      console.log('La fecha inicio a cambiado', arrival.datepicker('getDate') * 1);
+      let date = arrival.datepicker('getDate') * 1;
+      $('#reservation_flight_arrival').val(date);
       // $( "#flight_origin_picker" ).datepicker( "option", "maxDate", selectedDate );
     }
+  }).on( "change", function() {
   });
 
 });
