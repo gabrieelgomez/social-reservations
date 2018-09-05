@@ -8,10 +8,10 @@ function validateForm(id_form) {
         required: true,
         min: 1
       },
-      'origin_transfer': {
+      'origin_vehicle': {
         required: true
       },
-      'arrival_transfer': {
+      'arrival_vehicle': {
         required: true
       },
       'flight_origin_picker': {
@@ -26,8 +26,8 @@ function validateForm(id_form) {
         required: 'No puede estar en blanco',
         min: 'Introduce un valor mayor que 1'
       },
-      'origin_transfer': 'No puede estar en blanco',
-      'arrival_transfer': 'No puede estar en blanco',
+      'origin_vehicle': 'No puede estar en blanco',
+      'arrival_vehicle': 'No puede estar en blanco',
       'flight_origin_picker': 'No puede estar en blanco',
       'flight_arrival_picker': 'No puede estar en blanco'
     },

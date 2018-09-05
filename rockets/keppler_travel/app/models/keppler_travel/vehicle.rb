@@ -1,6 +1,6 @@
-# Transfer Model
+# Vehicle Model
 module KepplerTravel
-  class Transfer < ActiveRecord::Base
+  class Vehicle < ActiveRecord::Base
     include ActivityHistory
     include CloneRecord
     require 'csv'

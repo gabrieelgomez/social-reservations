@@ -1,4 +1,4 @@
 module KepplerTravel
-  module TransfersHelper
+  module VehiclesHelper
   end
 end

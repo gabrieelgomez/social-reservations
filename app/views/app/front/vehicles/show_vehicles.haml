@@ -11,7 +11,7 @@
       .box-plan{:style => "background-image: url(/assets/img/bg-3.jpg)"}
         .container
           .box-title
-            %h1= @transfer.title[@lang]
+            %h1= @vehicle.title[@lang]
 
     %section#plan-description.plan-description
       .container
@@ -38,19 +38,19 @@
                   #1.tab-pane.active
                     %h3 Descripción
                     %p.plan-text
-                      -# = raw @transfer.description[@lang].html_safe
-                      = sanitize(@transfer.description[@lang], tags: [])
+                      -# = raw @vehicle.description[@lang].html_safe
+                      = sanitize(@vehicle.description[@lang], tags: [])
                       -# = sanitize(post.body, tags: []).truncate(300)
                   #2.tab-pane
                     %h3 Incluye
                     %p.plan-text
-                      -#= sanitize(@transfer.includes[@lang], tags: [])
-                      -# = raw @transfer.includes[@lang].html_safe
+                      -#= sanitize(@vehicle.includes[@lang], tags: [])
+                      -# = raw @vehicle.includes[@lang].html_safe
                   #3.tab-pane
                     %h3 Condiciones
                     %p.plan-text
-                      -#= sanitize(@transfer.conditions[@lang], tags: [])
-                      -# = raw @transfer.conditions[@lang].html_safe
+                      -#= sanitize(@vehicle.conditions[@lang], tags: [])
+                      -# = raw @vehicle.conditions[@lang].html_safe
 
     %section#plan-galery.plan-galery
       .container
@@ -63,7 +63,7 @@
         .container
           .carrusel-galery
             .galery
-              - @transfer.files.each do |img|
+              - @vehicle.files.each do |img|
                 .galery__item
                   %img{src: img.url, class:"img-responsive"}
 
@@ -111,7 +111,7 @@
               %input#pwd.form-control{:type => "password"}/
           .col-lg-12
             .box-billing-btn
-              = link_to show_transfers_path do
+              = link_to show_vehicles_path do
                 %button.about-view.packages-btn.btn-billing
                   reservar
 
@@ -126,9 +126,9 @@
         .container
           .carrusel-product
             .product
-              - @destacados.each do |transfer_prominent|
+              - @destacados.each do |vehicle_prominent|
                 .product__item
-                  %img{src:transfer_prominent.cover.url, class:"img-responsive"}
+                  %img{src:vehicle_prominent.cover.url, class:"img-responsive"}
 
 
     %footer.footer-copyright

@@ -1,6 +1,6 @@
 module KepplerTravel
-  # Policy for Transfer model
-  class TransferPolicy < ControllerPolicy
+  # Policy for Vehicle model
+  class VehiclePolicy < ControllerPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

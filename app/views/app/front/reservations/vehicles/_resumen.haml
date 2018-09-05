@@ -28,25 +28,25 @@
         -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
           %div
             %h6.my-0 Tipo de Vehiculo
-            %small.text-muted= @transfer.title[@lang].capitalize
+            %small.text-muted= @vehicle.title[@lang].capitalize
         %li.list-group-item.d-flex.justify-content-between.bg-light
           .row
             -# .col-lg-4
             -#   .text-muted
             -#     %h6.my-0 Adultos
-            -#     %small= @transfer.quantity_adults
+            -#     %small= @vehicle.quantity_adults
             -# .col-lg-4
             -#   .text-muted
             -#     %h6.my-0 Niños
-            -#     %small= @transfer.quantity_kids
+            -#     %small= @vehicle.quantity_kids
             .col-lg-12
               .text-muted
                 %h6.my-0 Equipaje
                 %small
-                  = @transfer.kit['quantity']
+                  = @vehicle.kit['quantity']
                   pzas.
-                  (#{@transfer.kit['weight']}kg) ->
-                  = @transfer.title[@lang]
+                  (#{@vehicle.kit['weight']}kg) ->
+                  = @vehicle.title[@lang]
         -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
           %div
             %h6.my-0 Tipo de Moneda
@@ -58,9 +58,9 @@
             %h6.my-0 Sub-total
             %small.text-muted
               - multiple = params[:round_trip] == 'true' ? '2' : '1'
-              - price    = params[:round_trip] == 'true' ? @transfer.price[@currency].to_f*2 : @transfer.price[@currency].to_f
+              - price    = params[:round_trip] == 'true' ? @vehicle.price[@currency].to_f*2 : @vehicle.price[@currency].to_f
               = "#{multiple} x "
-              = number_to_currency(@transfer.price[@currency].to_f, locale: @locale)
+              = number_to_currency(@vehicle.price[@currency].to_f, locale: @locale)
               = "="
               = number_to_currency(price, locale: @locale)
         %li.list-group-item.d-flex.justify-content-between
@@ -71,7 +71,7 @@
               = @currency.upcase
               = number_to_currency(price, locale: @locale)
           -#(#{@currency.upcase})
-          -#%strong= "$ #{@transfer.price[@currency]}"
+          -#%strong= "$ #{@vehicle.price[@currency]}"
         %hr
         .box-btn-payment
           .about-btn.travel-mrt-0{style:"float: right;"}

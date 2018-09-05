@@ -3,11 +3,11 @@
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/themes/jquery.filer-dragdropbox-theme.css", :rel => "stylesheet", :type => "text/css"}/
 %script{:src => "https://www.tutorialspoint.com/jquery/src/filer/js/jquery.filer.min.js", :type => "text/javascript"}
 
-= simple_form_for [:admin, :travel, @transfer] do |f|
+= simple_form_for [:admin, :travel, @vehicle] do |f|
   .container
     .row
       .col-lg-2
-        = link_to admin_travel_transfers_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        = link_to admin_travel_vehicles_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
           .arrow-back.btn.btn-default
             %i.fa.fa-angle-left
             = t('keppler.actions.back')
@@ -40,22 +40,22 @@
                         // ESPAÑOL
                         #spanish.tab-pane.active
                           .col-xs-12
-                            = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = f.simple_fields_for :title, OpenStruct.new(@vehicle.title) do |field|
                               = field.input :es, label: 'Titulo'
                         // INGLÉS
                         #english.tab-pane
                           .col-xs-12
-                            = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = f.simple_fields_for :title, OpenStruct.new(@vehicle.title) do |field|
                               = field.input :en, label: 'Title'
                         // PORTUGUÉS
                         #portugues.tab-pane
                           .col-xs-12
-                            = f.simple_fields_for :title, OpenStruct.new(@transfer.title) do |field|
+                            = f.simple_fields_for :title, OpenStruct.new(@vehicle.title) do |field|
                               = field.input :pt, label: 'Titulo'
 
                     .col-xs-12.col-md-12
                       .row
-                        = f.simple_fields_for :price, OpenStruct.new(@transfer.price) do |field|
+                        = f.simple_fields_for :price, OpenStruct.new(@vehicle.price) do |field|
                           .col-lg-6
                             = field.input :cop, label: 'Precio COP', input_html: { min: '1', type: 'number' }
                           .col-lg-6
@@ -63,7 +63,7 @@
 
                     .col-xs-12.col-md-12
                       .row
-                        = f.simple_fields_for :kit, OpenStruct.new(@transfer.kit) do |field|
+                        = f.simple_fields_for :kit, OpenStruct.new(@vehicle.kit) do |field|
                           .col-lg-6
                             = field.input :quantity, label: 'Piezas Máx. Equipaje', input_html: { min: '1', type: 'number' }
                           .col-lg-6
@@ -94,16 +94,16 @@
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"}
 
 :javascript
-  $('#destinations_transfers').select2();
-  collectImages("#transfer_files", ".edit_transfer", "transfer[files_delete][]");
+  $('#destinations_vehicles').select2();
+  collectImages("#vehicle_files", ".edit_vehicle", "vehicle[files_delete][]");
 
 - if action_name == 'new'
   :javascript
-    validateForm('#new_transfer');
+    validateForm('#new_vehicle');
 - else
   :javascript
-    var transfer_id = #{raw @transfer.id};
-    validateForm(`#edit_transfer_${transfer_id}`);
+    var vehicle_id = #{raw @vehicle.id};
+    validateForm(`#edit_vehicle_${vehicle_id}`);
 
 :scss
   label.error-class{color: #e60707 !important;}

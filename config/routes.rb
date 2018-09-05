@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   root to: 'app/front#set_locale'
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
-    get 'transfers', to: 'app/front#transfers'
-    get 'reservations/:transfer_id', to: 'app/front#reservations', as: :reservations_transfer
-    # get 'show_transfers/:id', to: 'app/front#show_transfers', as: :show_transfers
+    get 'vehicles', to: 'app/front#vehicles'
+    get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
+    # get 'show_vehicles/:id', to: 'app/front#show_vehicles', as: :show_vehicles
     # get 'login', to: 'app/front#login'
   end
 

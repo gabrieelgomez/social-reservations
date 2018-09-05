@@ -4,13 +4,13 @@
   // Inputs datos de reservas desactivados
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "origin_transfer_booking"} Seleccione Origen
+      %label{:for => "origin_vehicle_booking"} Seleccione Origen
       %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
       %input{name: 'reservation[origin_location]', value: params[:org_loc], type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "arrival_transfer_booking"} Seleccione Destino
+      %label{:for => "arrival_vehicle_booking"} Seleccione Destino
       %input{name: 'reservation[arrival]', value: params[:arr_name], type: 'hidden'}
       %input{name: 'reservation[arrival_location]', value: params[:arr_loc], type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: params[:arr_name]}
@@ -29,7 +29,7 @@
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad de Equipaje
-          = f.input :quantity_kit, label: false, placeholder: 'Equipaje', input_html: { min: 1, max: @transfer.kit['quantity'].to_i }
+          = f.input :quantity_kit, label: false, placeholder: 'Equipaje', input_html: { min: 1, max: @vehicle.kit['quantity'].to_i }
   // End --- Inputs datos de reservas desactivados
 
 
@@ -81,7 +81,7 @@
         .col-lg-12.desde_el_aero
           .checkbox
             %label
-              %input.check_transfer#transfer_origin{name: 'transfer_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
+              %input.check_vehicle#vehicle_origin{name: 'vehicle_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
           // End --- Checkbox Traslado al/desde Aeropuerto
           // Inputs informacion de vuelo aeropuerto
         .col-lg-6.desde_aero_inputs
@@ -99,7 +99,7 @@
         .col-lg-12.al_aero
           .checkbox
             %label
-              %input.check_transfer#transfer_arrival{name: 'transfer_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
+              %input.check_vehicle#vehicle_arrival{name: 'vehicle_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
 
         .col-lg-6.al_aero_inputs
           .form-group
@@ -137,7 +137,7 @@
     $(".solo_ida").css('text-decoration','line-through')
   }
 
-  $('#transfer_origin').on( 'click', function() {
+  $('#vehicle_origin').on( 'click', function() {
     if($(this).is(':checked')){
       $('.desde_aero_inputs').show();
      }
@@ -147,7 +147,7 @@
   });
 
 
-  $('#transfer_arrival').on( 'click', function() {
+  $('#vehicle_arrival').on( 'click', function() {
     if($(this).is(':checked')){
       $('.al_aero_inputs').show();
      }

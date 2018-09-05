@@ -18,7 +18,7 @@ module KepplerTravel
       def index
         @q = Reservation.ransack(params[:q])
         reservations = @q.result(distinct: true)
-        @objects = reservations.page(@current_page).order(position: :asc)
+        @objects = reservations.page(@current_page).order(id: :desc)
         @total = reservations.size
         @reservations = @objects.all
         if !@objects.first_page? && @objects.size.zero?

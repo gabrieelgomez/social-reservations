@@ -39,7 +39,7 @@ KepplerTravel::Engine.routes.draw do
         )
       end
 
-      resources :transfers do
+      resources :vehicles do
         get '(page/:page)', action: :index, on: :collection, as: ''
         get '/clone', action: 'clone'
         post '/sort', action: :sort, on: :collection

@@ -1,7 +1,7 @@
 .container
   .row
     .col-lg-2
-      = link_to admin_travel_transfers_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+      = link_to admin_travel_vehicles_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
         .arrow-back.btn.btn-default
           %i.fa.fa-angle-left
           = t('keppler.actions.back')
@@ -9,7 +9,7 @@
   .show-section
     .row
       .col-lg-5
-        - @transfer.as_json(only: ["cover"]).each do |attribute, value|
+        - @vehicle.as_json(only: ["cover"]).each do |attribute, value|
           .box.slice-box
             .box-header.with-border
               %h3.box-title= attribute.capitalize
@@ -24,26 +24,26 @@
           .box-header.with-border
             %h3.box-title= t("keppler.modules.#{controller_path.underscore}")
             .box-tools.pull-right
-              = link_to edit_admin_travel_transfer_path(@transfer), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+              = link_to edit_admin_travel_vehicle_path(@vehicle), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
                 %i.icon-pencil
-              = link_to admin_travel_transfer_path(@transfer), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+              = link_to admin_travel_vehicle_path(@vehicle), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
                 %i.icon-trash
               %a.btn.btn-box-tool{"data-widget" => "collapse", type: "button"}
                 %i.fa.fa-minus
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @transfer.as_json(only: ["title", "seat", "kit", "price"]).each do |attribute, value|
+                - @vehicle.as_json(only: ["title", "seat", "kit", "price"]).each do |attribute, value|
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
                 -# %tr.list-row
                 -#   %th.display-label= t("activerecord.attributes.destination_ids")
-                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @transfer.destinations.blank? ? '-----------' : @transfer.destinations.map(&:title)
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.destinations.blank? ? '-----------' : @vehicle.destinations.map(&:title)
 
 
       -# .col-md-6
-      -#   -# - @transfer.files.each_with_index do |img, index|
+      -#   -# - @vehicle.files.each_with_index do |img, index|
       -#   -#   %img{src: img.url, style: 'width:200px;height:200px;'}
       -#   .box.box-solid
       -#     .box-header.with-border
@@ -55,7 +55,7 @@
       -#         -#   %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
       -#         -#   %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
       -#         .carousel-inner
-      -#           - @transfer.files.each_with_index do |img, index|
+      -#           - @vehicle.files.each_with_index do |img, index|
       -#             .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
       -#               %img{alt: 'Galery', src: img.url}
       -#         %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}

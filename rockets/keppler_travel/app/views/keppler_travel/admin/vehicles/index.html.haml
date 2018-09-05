@@ -1,4 +1,4 @@
-#index-container{ :controller => "transfers" }
+#index-container{ :controller => "vehicles" }
   .container
     .row
       .listing.col-lg-12.col-xs-12
@@ -7,18 +7,18 @@
             = t("keppler.modules.#{controller_path.underscore}")
           = entries(@total, @objects)
           .toolbar
-            - if can?(KepplerTravel::Transfer).download?
+            - if can?(KepplerTravel::Vehicle).download?
               .toolbar-item
-                = link_to admin_travel_transfer_download_path(KepplerTravel::Transfer, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
+                = link_to admin_travel_vehicle_download_path(KepplerTravel::Vehicle, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
                   %i.icon-cloud-download
-            - if can?(KepplerTravel::Transfer).upload?
+            - if can?(KepplerTravel::Vehicle).upload?
               .toolbar-item
-                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "transfer" do
+                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "vehicle" do
                   %i.icon-cloud-upload
             .toolbar-item
-              = link_to reload_admin_travel_transfers_path, class: "tool-btn", remote: true do
+              = link_to reload_admin_travel_vehicles_path, class: "tool-btn", remote: true do
                 %i.icon-reload
-            - if can?(KepplerTravel::Transfer).destroy_multiple?
+            - if can?(KepplerTravel::Vehicle).destroy_multiple?
               .toolbar-item
                 .checkbox
                   %label{ for: 'checkbox-all' }
@@ -29,8 +29,8 @@
               %a.tool-btn{"data-confirm" => "¿Estás seguro?", "data-method" => "delete", "v-bind:href" => "link", :rel => "nofollow", ":class" => "{disabled: !checks}" }
                 %i.icon-trash
           .hide
-            = form_tag admin_travel_transfer_upload_path(@objects), id: "upload_form_transfers", multipart: true, method: :post do
-              = file_field_tag :file, id: "upload_file_transfer"
+            = form_tag admin_travel_vehicle_upload_path(@objects), id: "upload_form_vehicles", multipart: true, method: :post do
+              = file_field_tag :file, id: "upload_file_vehicle"
           %ol.breadcrumb
             %li
               %a{ href: '#' }
@@ -45,7 +45,7 @@
                 - if @objects.size.zero?
                   %tr
                     %th{style: 'text-align: center;'}
-                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.transfers"))
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.vehicles"))
                 - else
                   %tr
                     %th
@@ -65,18 +65,18 @@
   %aside#index-show.control-sidebar
 
   .mixed-btn
-    - if can?(KepplerTravel::Transfer).create?
-      = link_to new_admin_travel_transfer_path, class: "btn-float" do
+    - if can?(KepplerTravel::Vehicle).create?
+      = link_to new_admin_travel_vehicle_path, class: "btn-float" do
         +
 
 
 :javascript
   $(document).ready(function(){
-    $('#transfer').click(function() {
-      $('#upload_file_transfer').click()
-      $('#upload_file_transfer').change(function() {
+    $('#vehicle').click(function() {
+      $('#upload_file_vehicle').click()
+      $('#upload_file_vehicle').change(function() {
         $('.waiting').css('display', 'block')
-        $('#upload_form_transfer').submit()
+        $('#upload_form_vehicle').submit()
       })
     });
 

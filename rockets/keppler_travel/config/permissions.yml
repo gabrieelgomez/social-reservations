@@ -15,8 +15,8 @@ modules:
       'clone'
     ]
   
- transfers:
-    name: Transfer
+ vehicles:
+    name: Vehicle
     actions: [
       'index', 'create', 'update',
       'destroy', 'download', 'upload',

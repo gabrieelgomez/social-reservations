@@ -9,10 +9,10 @@ $(document).ready(function () {
       },
     };
 
-    inputSearchTransfer('origin_transfer');
-    inputSearchTransfer('arrival_transfer');
+    inputSearchVehicle('origin_vehicle');
+    inputSearchVehicle('arrival_vehicle');
 
-    function inputSearchTransfer(id_input) {
+    function inputSearchVehicle(id_input) {
       var input = document.getElementById(id_input);
       var autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.addListener('place_changed', onPlaceChanged);
@@ -21,10 +21,10 @@ $(document).ready(function () {
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
 
-        if (id_input == 'origin_transfer'){
+        if (id_input == 'origin_vehicle'){
           let field = $('#origin_hidden');
           field.val([latitude, latitude]);
-        }else if(id_input == 'arrival_transfer'){
+        }else if(id_input == 'arrival_vehicle'){
           let field = $('#arrival_hidden');
           field.val([latitude, latitude]);
         }

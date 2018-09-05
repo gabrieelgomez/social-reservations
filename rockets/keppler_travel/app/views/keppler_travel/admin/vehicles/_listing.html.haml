@@ -1,0 +1,49 @@
+- objects.each do |vehicle|
+  %tr{ id: "row-#{vehicle.id}" }
+    %td.item-check{ style: 'width: 10%' }
+      - if can?(KepplerTravel::Vehicle).destroy_multiple?
+        .checkbox
+          %label{ for: "checkbox-#{vehicle.id}" }
+            %input{ type:"checkbox", id: "checkbox-#{vehicle.id}", 'checklist-model' => 'check', 'checklist-value' => "#{vehicle.id}", '@click' => "listDelete(#{vehicle.id})"}
+            %span.cr
+              %i.cr-icon.glyphicon.glyphicon-ok
+    %td
+      = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
+        %span
+          - unless vehicle.cover.url.blank?
+            = image_tag vehicle.cover.url, width: 100, height: 50, style: 'object-fit: cover;'
+    %td.hidden-xs
+      = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
+        %span
+          = vehicle.title[I18n.locale.to_s]
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
+        %span
+          = vehicle.seat
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
+        %span
+          = vehicle.price['cop']
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
+      %a.action-btn.pull-right{:id => "menu-#{vehicle.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+        %i.icon-options-vertical
+      %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{vehicle.id}" }
+        - if can?(KepplerTravel::Vehicle).index?
+          %li
+            = link_to admin_travel_vehicle_path(vehicle), class: 'new-menu', title: t('keppler.actions.show') do
+              %i.icon-eye
+              = t('keppler.actions.show')
+        - if can?(KepplerTravel::Vehicle).update?
+          %li
+            = link_to edit_admin_travel_vehicle_path(vehicle), class: 'new-menu', title: t('keppler.actions.edit') do
+              %i.icon-pencil
+              = t('keppler.actions.edit')
+        - if can?(KepplerTravel::Vehicle).destroy?
+          %li
+            = link_to admin_travel_vehicle_path(vehicle), class: 'new-menu', title: t('keppler.actions.delete'), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+              %i.icon-trash
+              = t('keppler.actions.delete')
+
+    %td{:style => 'width: 5%;'}
+      %a.drop{:href=>"#"}
+        %i.icon-cursor-move

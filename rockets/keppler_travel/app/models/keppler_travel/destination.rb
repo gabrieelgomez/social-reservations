@@ -7,7 +7,7 @@ module KepplerTravel
     mount_uploader :cover, AttachmentUploader
     acts_as_list
 
-    has_and_belongs_to_many :transfers
+    has_and_belongs_to_many :vehicles
     validates :title, :latitude, :longitude, uniqueness: true, presence: true
 
     # Fields for the search form in the navbar

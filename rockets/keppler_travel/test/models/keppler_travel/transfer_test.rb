@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module KepplerTravel
-  class TransferTest < ActiveSupport::TestCase
+  class VehicleTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
     # end

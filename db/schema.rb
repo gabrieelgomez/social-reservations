@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
     t.index ["deleted_at"], name: "index_keppler_travel_destinations_on_deleted_at"
   end
 
-  create_table "keppler_travel_destinations_transfers", force: :cascade do |t|
+  create_table "keppler_travel_destinations_vehicles", force: :cascade do |t|
     t.bigint "destination_id"
-    t.bigint "transfer_id"
+    t.bigint "vehicle_id"
     t.index ["destination_id"], name: "destination_id"
-    t.index ["transfer_id"], name: "transfer_id"
+    t.index ["vehicle_id"], name: "vehicle_id"
   end
 
   create_table "keppler_travel_reservations", force: :cascade do |t|
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
     t.index ["user_id"], name: "index_keppler_travel_reservations_on_user_id"
   end
 
-  create_table "keppler_travel_transfers", force: :cascade do |t|
+  create_table "keppler_travel_vehicles", force: :cascade do |t|
     t.string "cover"
     t.jsonb "title"
     t.jsonb "description"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_keppler_travel_transfers_on_deleted_at"
+    t.index ["deleted_at"], name: "index_keppler_travel_vehicles_on_deleted_at"
   end
 
   create_table "meta_tags", force: :cascade do |t|
