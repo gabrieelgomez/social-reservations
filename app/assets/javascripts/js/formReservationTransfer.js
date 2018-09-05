@@ -45,35 +45,97 @@ $('#new_reservation').validate({
 });
 
 
-$( function() {
+$(function() {
+  $( "#datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
 
-  var origin = $("#flight_origin_picker");
+  $( "#flight_origin_picker" ).datepicker({
+    // defaultDate: "+1w",
+    // changeMonth: true,
+    numberOfMonths: 1,
+    timepicker : false,
+    format : 'd.m.Y',
+    minDate : 1,
+    onClose: function( selectedDate ) {
+      $( "#flight_arrival_picker" ).datepicker( "option", "minDate", selectedDate );
+    }
+  });
 
-  origin.datepicker({
-      defaultDate: "+1w",
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "c-10:c+20",
-      numberOfMonths: 1
-    }).on( "change", function() {
-      console.log('La fecha inicio a cambiado', origin.datepicker('getDate') * 1)
-      let date = origin.datepicker('getDate') * 1
-      $('#reservation_flight_origin').val(date)
-    })
+  $( "#flight_arrival_picker" ).datepicker({
+    defaultDate: "+1w",
+    changeMonth: true,
+    numberOfMonths: 1,
+    onClose: function( selectedDate ) {
+      // $( "#flight_origin_picker" ).datepicker( "option", "maxDate", selectedDate );
+    }
+  });
+
+});
+
+// $( function() {
+//
+//   var origin = $("#flight_origin_picker");
+//
+//   origin.datepicker({
+//       defaultDate: "+1w",
+//       changeMonth: true,
+//       changeYear: true,
+//       yearRange: "c-10:c+20",
+//       numberOfMonths: 1
+//     }).on( "change", function() {
+//       console.log('La fecha inicio a cambiado', origin.datepicker('getDate') * 1)
+//       let date = origin.datepicker('getDate') * 1
+//       $('#reservation_flight_origin').val(date)
+//     })
+//
+//
+//   var arrival = $("#flight_arrival_picker");
+//
+//   arrival.datepicker({
+//       defaultDate: "+1w",
+//       changeMonth: true,
+//       changeYear: true,
+//       yearRange: "c-10:c+20",
+//       numberOfMonths: 1
+//     }).on( "change", function() {
+//       console.log('La fecha inicio a cambiado', arrival.datepicker('getDate') * 1)
+//       let date = arrival.datepicker('getDate') * 1
+//       $('#reservation_flight_arrival').val(date)
+//     })
+//
+// } );
 
 
-  var arrival = $("#flight_arrival_picker");
 
-  arrival.datepicker({
-      defaultDate: "+1w",
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "c-10:c+20",
-      numberOfMonths: 1
-    }).on( "change", function() {
-      console.log('La fecha inicio a cambiado', arrival.datepicker('getDate') * 1)
-      let date = arrival.datepicker('getDate') * 1
-      $('#reservation_flight_arrival').val(date)
-    })
-
-} );
+// :javascript
+//   $( function() {
+//   	var dateFormat = "mm/dd/yy",
+//   		from = $( "#from" )
+//   			.datepicker({
+//   				defaultDate: "+1w",
+//   				changeMonth: true,
+//   				numberOfMonths: 1,
+//           minDate: 1
+//   			})
+//   			.on( "change", function() {
+//   				to.datepicker( "option", "minDate", getDate( this ));
+//   			}),
+//   		to = $( "#to" ).datepicker({
+//   			defaultDate: "+1w",
+//   			changeMonth: true,
+//   			numberOfMonths: 1
+//   		})
+//   		.on( "change", function() {
+//   			from.datepicker( "option", "maxDate", getDate( this ));
+//   		});
+//
+//   	function getDate( element ) {
+//   		var date;
+//   		try {
+//   			date = $.datepicker.parseDate( dateFormat, element.value );
+//   		} catch( error ) {
+//   			date = null;
+//   		}
+//
+//   		return date;
+//   	}
+//   } );

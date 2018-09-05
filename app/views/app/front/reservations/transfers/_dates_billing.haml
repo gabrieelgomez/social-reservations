@@ -1,0 +1,21 @@
+%hr
+%h3 Datos de Facturación
+.row
+  .col-lg-6
+    .form-group.form-custom
+      %label.title{:for => "name"} Nombre
+      %input#name.form-control{:type => "text", :placeholder => "Ingrese nombre"}/
+    .form-group
+      %label.title{:for => "phone"} Teléfono
+      %input#phone.form-control{:type => "number", :placeholder => "Ingrese teléfono"}/
+  .col-lg-6
+    .form-group.form-custom
+      %label.title{:for => "dni"} Identificación
+      %input#dni.form-control{:type => "number", :placeholder => "Ingrese identificación"}/
+    .form-group
+      %label.title{:for => "email"} Correo electrónico
+      %input#email.form-control{:type => "email", :placeholder => "Ingrese correo electrónico"}/
+  .col-lg-12
+    .form-group
+      %label.title{:for => ""}  Dirección de Facturación
+      %textarea{placeholder: 'Ingrese dirección de facturación', :id => "", :name => "reservation[description]", :rows => "4", style:"width: 100%;"}

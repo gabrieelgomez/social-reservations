@@ -2227,7 +2227,7 @@ label.container .checkmark:after {
     font-family: 'Poppins', sans-serif !important;
 }
 
-#destinations-box-one-selectized {
+/* #destinations-box-one-selectized {
     font-size: 14px !important;
     width: 100% !important;
     font-family: 'Poppins', sans-serif !important;
@@ -2237,7 +2237,7 @@ label.container .checkmark:after {
     font-size: 14px !important;
     width: 100% !important;
     font-family: 'Poppins', sans-serif !important;
-}
+} */
 
 .custom-input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
