@@ -69,14 +69,14 @@
         }
 
         .box-price {
-          width: 50%;
+          width: 100%;
 
           span {
             text-align: left;
             float: left;
             color: $color-blue;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 17px;
           }
         }
 
@@ -86,6 +86,10 @@
           align-items: center;
           justify-content: flex-end;
           width: 100%;
+
+          button {
+            width: 125px !important;
+          }
         }
       }
     }

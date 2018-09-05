@@ -52,11 +52,11 @@
                   .box-items
                     .box-price
                       %span.price
-                        = transfer.price[@currency]
-                        = @currency == 'cop' ? '$ COP' : '$ USD'
+                        = @currency.upcase
+                        = number_to_currency(transfer.price[@currency], locale: @locale)  
                     .box-btn
                       = link_to reservations_transfer_path(@lang, @currency, transfer, org_name: @origin_name,
                         org_loc:@origin_location, arr_name: @arrival_name, arr_loc:@arrival_location,
                         adults: @adults, kids: @kids, round_trip: @round_trip) do
                         %button.about-view.packages-btn
-                          reservar
+                          seleccionar

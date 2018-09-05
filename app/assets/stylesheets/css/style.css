@@ -235,7 +235,7 @@ body {
 		4. 	Travel-box
 --------------------------------------*/
 .single-travel-boxes {
-    margin-top: -125px;
+    margin-top: -189px;
     background: #fff;
 }
 
@@ -248,19 +248,23 @@ body {
     border: transparent;
     padding: 0 0 15px 0;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    min-height: 400px;
+    min-height: 320px;
 }
 
 .desc-tabs .nav-tabs {
     display: inline-block;
     border-right: 1px solid #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .desc-tabs .nav-tabs>li.active>a {
     color: #fff;
     background: #47c1f5;
     cursor: default;
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
@@ -269,6 +273,12 @@ body {
     -ms-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
+}
+
+.item-widget {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
 }
 
 .desc-tabs .nav-tabs>li.active>a:focus,
@@ -281,7 +291,8 @@ body {
     color: #fff;
     background: #47c1f5;
     cursor: default;
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
@@ -314,7 +325,7 @@ body {
 /* .desc-tabs */
 /*===ab-select-box===*/
 .tab-para {
-    padding: 10px 42px 0px 43px;
+    padding: 25px 42px;
 }
 
 .single-tab-select-box h2 {
