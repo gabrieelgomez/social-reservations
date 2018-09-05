@@ -4,15 +4,19 @@
   .container
     - unless @results.blank?
       .box-search
-        .col-lg-6
-          %span
-            Su búsqueda:
-          %span
-            = @origin_name
-          %span= "-> #{@arrival_name}"
-        .col-lg-6
-          %p
-            %a.pull-right.link-widget Volver a relizar la búsqueda
+        .container
+          .row
+            .col-lg-9
+              %p.result
+                %span
+                  Su búsqueda:
+                %span
+                  ="#{@origin_name}" 
+                %span
+                  = " > #{@arrival_name}"
+            .col-lg-3
+              %p
+                %a.pull-right.link-widget Volver a relizar la búsqueda
 
 
   .container.js-widget.js-hide-widget
