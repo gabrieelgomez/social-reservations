@@ -12,9 +12,9 @@
           %span 
             Destino: El Dorado 2
         .col-lg-6
-          
-          = link_to '#'root_path'', class:"pull-right link-widget" do
-            Volver a relizar la búsqueda
+          %p
+            %a.pull-right.link-widget Volver a relizar la búsqueda
+
 
   .container.js-widget.js-hide-widget
     .row
@@ -188,5 +188,5 @@
 
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
-      $('.js-widget').addClass('js-hide-widget');
+      $('.js-widget').addClass('js-show-widget');
   });

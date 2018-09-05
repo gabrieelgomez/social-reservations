@@ -2296,3 +2296,7 @@ label.container .checkmark:after {
 .js-hide-widget {
     display: none;
 }
+
+.link-widget {
+    cursor: pointer;
+}
