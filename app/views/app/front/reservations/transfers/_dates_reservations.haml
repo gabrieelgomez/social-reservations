@@ -29,7 +29,7 @@
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad de Equipaje
-          = f.input :quantity_kit, label: false, placeholder: 'Equipaje'
+          = f.input :quantity_kit, label: false, placeholder: 'Equipaje', input_html: { min: 1, max: @transfer.kit['quantity'].to_i }
   // End --- Inputs datos de reservas desactivados
 
 
