@@ -10,7 +10,6 @@
       .row
         = simple_form_for @reservation, url: '/admin/travel/reservations', method: :post do |f|
           .col-lg-8
-            %h3 Datos de Reserva
 
             // Datos de Reservación
             = render 'app/front/reservations/transfers/dates_reservations', f: f
@@ -18,14 +17,13 @@
             // Datos Personales
             = render 'app/front/reservations/transfers/dates_personal', f: f
 
-          // Cuadro de Resumen
-          = render 'app/front/reservations/transfers/resumen'
+            //Datos de Facturación
+            = render 'app/front/reservations/transfers/dates_billing'
+            
+          .col-lg-4
+            // Cuadro de Resumen
+            = render 'app/front/reservations/transfers/resumen'
 
-          .col-lg-8
-            .box-btn-reservation
-              .about-btn.travel-mrt-0
-                %button.about-view.travel-btn.btn-reservation{type: 'submit'}
-                  confirmar
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
