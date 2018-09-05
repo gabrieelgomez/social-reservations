@@ -70,27 +70,28 @@
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
 
 
-    // Checkbox Traslado al/desde Aeropuerto
+
   .col-lg-12
     .row
+      // Checkbox Traslado al/desde Aeropuerto
       .col-lg-12
         .col-lg-6#desde_el_aero
           .checkbox
             %label
-              %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
+              %input.check_transfer#transfer_origin{name: 'transfer_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
         .col-lg-6#al_aero
           .checkbox
             %label
-              %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
-      .col-lg-6
-        .form-group
-          %label.title{:for => ""}  Aerolinea
-          %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
+              %input.check_transfer#transfer_arrival{name: 'transfer_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
       // End --- Checkbox Traslado al/desde Aeropuerto
 
-
       // Inputs informacion de vuelo aeropuerto
-      .col-lg-6
+      .col-lg-6.information_airline
+        .form-group
+          %label.title{:for => ""}  Aerolinea
+          %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}
+
+      .col-lg-6.information_airline
         .form-group
           %label.title{:for => ""}  N° de Vuelo
           %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
@@ -99,9 +100,10 @@
         .form-group
           %label.title{:for => ""}  Detalles del Traslados (Observaciones)
           %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "4", style:"width: 100%;"}
-        // End --- Inputs informacion de vuelo aeropuerto
+      // End --- Inputs informacion de vuelo aeropuerto
 
 :javascript
+  $('.information_airline').hide();
   var round_trip = #{raw params[:round_trip]};
   if (round_trip == false){
     $("#solo_ida").prop('checked', true);
@@ -116,3 +118,22 @@
     $("#desde_el_aero").hide();
     $(".solo_ida").css('text-decoration','line-through')
   }
+
+  $('#transfer_origin').on( 'click', function() {
+    if($(this).is(':checked')){
+      $('.information_airline').show();
+     }
+     else{
+      $('.information_airline').hide();
+      }
+  });
+
+
+  $('#transfer_arrival').on( 'click', function() {
+    if($(this).is(':checked')){
+      $('.information_airline').show();
+     }
+     else{
+      $('.information_airline').hide();
+      }
+  });
