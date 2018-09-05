@@ -66,17 +66,17 @@
                     %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
 
 
-              .col-lg-3
+              .col-lg-2{style: 'margin-left:18px'}
                 .single-tab-select-box
                   %h2 Adultos
                   .form-group
-                    %input#adults.custom-input.form-control{name: 'quantity_adults', :type => "number", :placeholder => "Enter number of adults"}/
+                    %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', :type => "number", style: 'width:55%!important'}/
 
-              .col-lg-3
+              .col-lg-2{style: 'margin-left:-35px'}
                 .single-tab-select-box
                   %h2 Niños
                   .form-group
-                    %input#kids.custom-input.form-control{name: 'quantity_kids', :type => "number", :placeholder => "Enter number of children"}/
+                    %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
 
 
 

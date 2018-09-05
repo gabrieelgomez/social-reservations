@@ -13,12 +13,6 @@ module App
     end
 
     def transfers
-      # destinations = params[:q][:destinations_id_in]
-      # adults = params[:q][:quantity_adults_lteq]
-      # kids = params[:q][:quantity_kids_lteq]
-      # @results = KepplerTravel::Transfer.ransack(destinations_id_in: destinations).result
-      #                                   .ransack(quantity_adults_gteq: adults).result
-      #                                   .ransack(quantity_kids_gteq: kids).result
       @origin_location  = params[:origin_hidden]
       @origin_name      = params[:origin_transfer]
       @arrival_location = params[:arrival_hidden]
@@ -32,14 +26,6 @@ module App
     def reservations
       @reservation = KepplerTravel::Reservation.new
     end
-
-    # def show_transfers
-    #   @transfer = KepplerTravel::Transfer.find params[:id]
-    #   @destacados = KepplerTravel::Transfer.all.sample(10)
-    # end
-
-    # def login
-    # end
 
     private
 

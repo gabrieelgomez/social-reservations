@@ -2,195 +2,24 @@
   .container
     .gallary-header.text-center
       %h2
-        Reservación
+        Reserva de Traslado
       %p
-        Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+        Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
       .row
         = simple_form_for @reservation, url: '/admin/travel/reservations', method: :post do |f|
           .col-lg-8
-            %h3 Datos Personales
-            .row
-              .col-lg-6
-                .form-group.form-custom
-                  %label.title{:for => "name"} Nombre
-                  %input#name.form-control{:type => "text", :placeholder => "Enter your name"}/
-                .form-group
-                  %label.title{:for => "phone"} Teléfono
-                  %input#phone.form-control{:type => "number", :placeholder => "Enter your phone"}/
-              .col-lg-6
-                .form-group.form-custom
-                  %label.title{:for => "email"} Correo electrónico
-                  %input#email.form-control{:type => "email", :placeholder => "enter your email"}/
-                .form-group
-                  %label.title{:for => "dni"} Identificación
-                  %input#dni.form-control{:type => "number", :placeholder => "Enter your identification"}/
-            %hr
             %h3 Datos de Reserva
-            .row
-              .col-lg-6
-                -# .form-group.form-custom.form-reservation
-                -#   %label Seleccion una opción
-                -#   .trip-circle
-                -#     .single-trip-circle
-                -#       %input#radio_01{:name => "radio", :type => "radio"}/
-                -#       %label{:for => "radio_01"}
-                -#         %span.round-boarder>
-                -#           %span.round-boarder1
-                -#         Solo ida
-                -#     .single-trip-circle
-                -#       %input#radio_02{:name => "radio", :type => "radio"}/
-                -#       %label{:for => "radio_02"}
-                -#         %span.round-boarder
-                -#           %span.round-boarder1
-                -#         Ida y vuelta
-                .form-group.form-custom
-                  %label{:for => "origin_transfer_booking"} Seleccione Origen
-                  %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
-                  %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
-              .col-lg-6
-                .form-group.form-custom
-                  %label{:for => "arrival_transfer_booking"} Seleccione Destino
-                  %input{name: 'reservation[arrival]', value: params[:arr_name], type: 'hidden'}
-                  %input.google-input.form-control{disabled: 'disabled', value: params[:arr_name]}
-              .col-lg-12
-                .row
-                  .col-lg-4
-                    .form-group
-                      %label{:for => "adults"} Cantidad adultos
-                      %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
-                      %input.form-control{value: params[:adults], disabled: 'disabled'}
-                  .col-lg-4
-                    .form-group
-                      %label{:for => "kids"} Cantidad niños
-                      %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
-                      %input.form-control{value: params[:kids], disabled: 'disabled'}
-                  .col-lg-4
-                    .form-group
-                      %label{:for => "kids"} Cantidad de Equipaje
-                      = f.input :quantity_kit, label: false
 
+            // Datos de Reservación
+            = render 'app/front/reservations/transfers/dates_reservations', f: f
 
-              .col-lg-12
-                .form-group.form-custom.form-reservation
-                  %label.title Seleccion una opción
-                  .trip-circle
-                    .single-trip-circle
-                      %input#radio_001{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_001"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Ida
-                    .single-trip-circle
-                      %input#radio_002{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_002"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Ida y Vuelta
+            // Datos Personales
+            = render 'app/front/reservations/transfers/dates_personal', f: f
 
-              -#.col-lg-6
-                .form-group.form-custom.form-reservation
-                  %label.title Seleccion una opción
-                  .trip-circle
-                    .single-trip-circle
-                      %input#radio_003{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_003"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Al aeropuerto
-                    .single-trip-circle
-                      %input#radio_004{:name => "radio", :type => "radio"}/
-                      %label{:for => "radio_004"}
-                        %span.round-boarder
-                          %span.round-boarder1
-                        Desde el Aeropuerto
-              .col-lg-6
-                .form-group
-                  %label{:for => ""}  Fecha Origen
-                  = f.hidden_field :flight_origin
-                  %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-
-
-              .col-lg-6
-                .form-group
-                  %label{:for => ""} Fecha Destino
-                  = f.hidden_field :flight_arrival
-                  %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
-
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  Aerolinea
-                  %input.form-control.custom-input{name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
-
-              .col-lg-6
-                .form-group
-                  %label.title{:for => ""}  N° de Vuelo
-                  %input.form-control.custom-input{name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
-
-              .col-lg-12
-                .form-group
-                  %label.title{:for => ""}  Detalles del Traslados (Observaciones)
-                  -#%input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
-                  %textarea{:id => "", :name => "reservation[description]", :rows => "2", style:"width: 100%;"}
-
-
-          .col-lg-4
-            %h3 Resumen
-            .row
-              .col-lg-12
-                %ul.list-group.mb-3
-                  %li.list-group-item.d-flex.justify-content-between.lh-condensed
-                    %div
-                      %h6.my-0 Responsable
-                      %small.text-muted - - - -
-                    -#%span.text-muted $5
-                  %li.list-group-item.d-flex.justify-content-between.lh-condensed
-                    %div
-                      %h6.my-0 Origen
-                      %small.text-muted= params[:org_name]
-                    -#%span.text-muted $12
-                  %li.list-group-item.d-flex.justify-content-between.lh-condensed
-                    %div
-                      %h6.my-0 Destino
-                      %small.text-muted= params[:arr_name]
-                  %li.list-group-item.d-flex.justify-content-between.lh-condensed
-                    %div
-                      %h6.my-0 Tipo de Vehiculo
-                      %small.text-muted= @transfer.title[@lang].capitalize
-                    -#%span.text-muted $5
-                  %li.list-group-item.d-flex.justify-content-between.bg-light
-                    .row
-                      -# .col-lg-4
-                      -#   .text-muted
-                      -#     %h6.my-0 Adultos
-                      -#     %small= @transfer.quantity_adults
-                      -# .col-lg-4
-                      -#   .text-muted
-                      -#     %h6.my-0 Niños
-                      -#     %small= @transfer.quantity_kids
-                      .col-lg-4
-                        .text-muted
-                          %h6.my-0 Equipaje
-                          %small
-                            = @transfer.kit['quantity']
-                            pzas.
-                            (#{@transfer.kit['weight']}kg)
-                  %li.list-group-item.d-flex.justify-content-between.lh-condensed
-                    %div
-                      %h6.my-0 Tipo de Moneda
-                      %small.text-muted= @currency.upcase
-                    -#%span.text-muted $5
-                  %li.list-group-item.d-flex.justify-content-between
-                    %span
-                    Total
-                    (#{@currency.upcase})
-                    %strong= "$ #{@transfer.price[@currency]}"
-                .box-btn-payment
-                  .about-btn.travel-mrt-0
-                    -# %button.about-view.travel-btn.btn-payment
-                    -#   pagar
+          // Cuadro de Resumen
+          = render 'app/front/reservations/transfers/resumen'
 
           .col-lg-8
             .box-btn-reservation
@@ -199,89 +28,6 @@
                   Reservar
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
-
-
-:javascript
-  $('#new_reservation').validate({
-   event: "blur",
-   errorClass: "error-class",
-   validClass: "valid-class",
-   rules: {
-     'reservation[origin]': { required: true},
-     'reservation[arrival]': { required: true},
-     'reservation[flight_origin]': { required: true},
-     'flight_origin_picker': { required: true},
-     'flight_arrival_picker': { required: true},
-     'reservation[flight_arrival]': { required: true},
-     'reservation[quantity_adults]': { required: true},
-     'reservation[quantity_kids]': { required: true},
-     'reservation[quantity_kit]': { required: true},
-     'reservation[airline]': { required: true},
-     'reservation[flight_number]': { required: true},
-     'reservation[description]': { required: true}
-
-     },
-   messages: {
-     'reservation[origin]': 'No puede estar en blanco',
-     'reservation[arrival]': 'No puede estar en blanco',
-     'reservation[flight_origin]': 'No puede estar en blanco',
-     'flight_origin_picker': 'No puede estar en blanco',
-     'flight_arrival_picker': 'No puede estar en blanco',
-     'reservation[flight_arrival]': 'No puede estar en blanco',
-     'reservation[quantity_adults]': 'No puede estar en blanco',
-     'reservation[quantity_kids]': 'No puede estar en blanco',
-     'reservation[quantity_kit]': 'No puede estar en blanco',
-     'reservation[airline]': 'No puede estar en blanco',
-     'reservation[flight_number]': 'No puede estar en blanco',
-     'reservation[description]': 'No puede estar en blanco'
-     },
-   debug: true,errorElement: "label",
-   submitHandler: function(form){
-
-    swal({
-    type: 'success',
-    title: '¡Listo!',
-    text: '¡Tu reservación ha sido enviada exitosamente!'
-    })
-
-    form.submit();
-   }
-  });
-
-
-  $( function() {
-
-    var origin = $("#flight_origin_picker");
-
-    origin.datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "c-10:c+20",
-        numberOfMonths: 1
-      }).on( "change", function() {
-        console.log('La fecha inicio a cambiado', origin.datepicker('getDate') * 1)
-        let date = origin.datepicker('getDate') * 1
-        $('#reservation_flight_origin').val(date)
-      })
-
-
-    var arrival = $("#flight_arrival_picker");
-
-    arrival.datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "c-10:c+20",
-        numberOfMonths: 1
-      }).on( "change", function() {
-        console.log('La fecha inicio a cambiado', arrival.datepicker('getDate') * 1)
-        let date = arrival.datepicker('getDate') * 1
-        $('#reservation_flight_arrival').val(date)
-      })
-
-  } );
-
-
+%script{:src => '/assets/js/formReservationTransfer.js'}
 :scss
   label.error-class{color: #e60707 !important;}

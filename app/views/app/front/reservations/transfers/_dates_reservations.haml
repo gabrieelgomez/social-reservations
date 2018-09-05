@@ -1,0 +1,105 @@
+.row
+  .col-lg-6
+    -# .form-group.form-custom.form-reservation
+    -#   %label Seleccion una opción
+    -#   .trip-circle
+    -#     .single-trip-circle
+    -#       %input#radio_01{:name => "radio", :type => "radio"}/
+    -#       %label{:for => "radio_01"}
+    -#         %span.round-boarder>
+    -#           %span.round-boarder1
+    -#         Solo ida
+    -#     .single-trip-circle
+    -#       %input#radio_02{:name => "radio", :type => "radio"}/
+    -#       %label{:for => "radio_02"}
+    -#         %span.round-boarder
+    -#           %span.round-boarder1
+    -#         Ida y vuelta
+    .form-group.form-custom
+      %label{:for => "origin_transfer_booking"} Seleccione Origen
+      %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
+  .col-lg-6
+    .form-group.form-custom
+      %label{:for => "arrival_transfer_booking"} Seleccione Destino
+      %input{name: 'reservation[arrival]', value: params[:arr_name], type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: params[:arr_name]}
+  .col-lg-12
+    .row
+      .col-lg-4
+        .form-group
+          %label{:for => "adults"} Cantidad adultos
+          %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
+          %input.form-control{value: params[:adults], disabled: 'disabled'}
+      .col-lg-4
+        .form-group
+          %label{:for => "kids"} Cantidad niños
+          %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
+          %input.form-control{value: params[:kids], disabled: 'disabled'}
+      .col-lg-4
+        .form-group
+          %label{:for => "kids"} Cantidad de Equipaje
+          = f.input :quantity_kit, label: false, placeholder: 'Equipaje'
+
+  .col-lg-12
+    .form-group.form-custom.form-reservation
+      %label.title Seleccion una opción
+      .trip-circle
+        .single-trip-circle
+          %input#radio_001{:name => "radio", :type => "radio"}/
+          %label{:for => "radio_001"}
+            %span.round-boarder
+              %span.round-boarder1
+            Ida
+        .single-trip-circle
+          %input#radio_002{:name => "radio", :type => "radio"}/
+          %label{:for => "radio_002"}
+            %span.round-boarder
+              %span.round-boarder1
+            Ida y Vuelta
+
+  -#.col-lg-6
+    .form-group.form-custom.form-reservation
+      %label.title Seleccion una opción
+      .trip-circle
+        .single-trip-circle
+          %input#radio_003{:name => "radio", :type => "radio"}/
+          %label{:for => "radio_003"}
+            %span.round-boarder
+              %span.round-boarder1
+            Al aeropuerto
+        .single-trip-circle
+          %input#radio_004{:name => "radio", :type => "radio"}/
+          %label{:for => "radio_004"}
+            %span.round-boarder
+              %span.round-boarder1
+            Desde el Aeropuerto
+  .col-lg-6
+    .form-group
+      %label{:for => ""}  Fecha Origen
+      = f.hidden_field :flight_origin
+      %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+
+
+  .col-lg-6
+    .form-group
+      %label{:for => ""} Fecha Destino
+      = f.hidden_field :flight_arrival
+      %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+
+  .col-lg-6
+    .form-group
+      %label.title{:for => ""}  Aerolinea
+      %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
+
+  .col-lg-6
+    .form-group
+      %label.title{:for => ""}  N° de Vuelo
+      %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
+
+  .col-lg-12
+    .form-group
+      %label.title{:for => ""}  Detalles del Traslados (Observaciones)
+      -#%input.form-control.custom-input{name: 'reservation[flight_origin]', id: 'flight_origin', autocomplete: 'off'}/
+      %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "2", style:"width: 100%;"}

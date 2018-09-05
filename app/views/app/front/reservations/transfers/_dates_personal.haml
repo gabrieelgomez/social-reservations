@@ -1,0 +1,21 @@
+%hr
+%h3 Datos Personales
+.row
+  .col-lg-6
+    .form-group.form-custom
+      %label.title{:for => "name"} Nombre
+      %input#name.form-control{:type => "text", :placeholder => "Introduce tú nombre"}/
+    .form-group
+      %label.title{:for => "phone"} Teléfono
+      %input#phone.form-control{:type => "number", :placeholder => "Introduce un teléfono móvil"}/
+    .form-group
+      %label.title{:for => "phone"} Dirección de Facturación
+      %input#invoice_address.form-control{name: 'reservation[invoice_address]', placeholder: 'Dirección de Facturación', :type => "text"}/
+
+  .col-lg-6
+    .form-group.form-custom
+      %label.title{:for => "email"} Correo electrónico
+      %input#email.form-control{:type => "email", :placeholder => "Introduce tu e-mail"}/
+    .form-group
+      %label.title{:for => "dni"} Identificación
+      %input#dni.form-control{:type => "number", :placeholder => "Introduce tu identificación"}/

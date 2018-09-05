@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_143721) do
     t.boolean "airport_origin"
     t.string "airline"
     t.string "flight_number"
+    t.text "invoice_address"
     t.text "description"
     t.bigint "user_id"
     t.integer "position"
