@@ -62,7 +62,11 @@
             %strong{style:"float: right;"} COP $ 1.000.000
           -#(#{@currency.upcase})
           -#%strong= "$ #{@transfer.price[@currency]}"
-      .box-btn-payment
-        .about-btn.travel-mrt-0
-          -# %button.about-view.travel-btn.btn-payment
-          -#   pagar
+        %hr
+        .box-btn-payment
+          .about-btn.travel-mrt-0{style:"float: right;"}
+            %button.about-view.travel-btn Confirmar
+        //Falta condicionar      
+        -#.box-btn-payment
+          .about-btn.travel-mrt-0
+            %button.about-view.travel-btn.btn Pagar
