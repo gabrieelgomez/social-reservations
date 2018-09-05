@@ -33,68 +33,73 @@
 
   // Radio Buttons Ida - Vuelta
   .col-lg-12
-    .col-lg-12
-      .form-group.form-custom.form-reservation
-        %label.title Su selección ha sido
-        .trip-circle
-          .single-trip-circle
-            %input#solo_ida{:name => "radio", :type => "radio"}/
-            %label.solo_ida{:for => "solo_ida"}
-              %span.round-boarder
-                %span.round-boarder1
-              Ida
-          .single-trip-circle
-            %input#ida_vuelta{:name => "radio", :type => "radio"}/
-            %label.ida_vuelta{:for => "ida_vuelta"}
-              %span.round-boarder
-                %span.round-boarder1
-              Ida y Vuelta
+    .row
+      .col-lg-12
+        .form-group.form-custom.form-reservation
+          %label.title Su selección ha sido
+          .trip-circle
+            .single-trip-circle
+              %input#solo_ida{:name => "radio", :type => "radio"}/
+              %label.solo_ida{:for => "solo_ida"}
+                %span.round-boarder
+                  %span.round-boarder1
+                Ida
+            .single-trip-circle
+              %input#ida_vuelta{:name => "radio", :type => "radio"}/
+              %label.ida_vuelta{:for => "ida_vuelta"}
+                %span.round-boarder
+                  %span.round-boarder1
+                Ida y Vuelta
     // End -- Radio Buttons Ida - Vuelta
 
 
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
-    .col-lg-6
-      .form-group#fecha_origen_ida
-        %label{:for => ""}  Fecha Origen
-        = f.hidden_field :flight_origin
-        %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-    .col-lg-6
-      .form-group#fecha_destino_vuelta
-        %label{:for => ""} Fecha Destino
-        = f.hidden_field :flight_arrival
-        %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+  .col-lg-12
+    .row
+      .col-lg-6
+        .form-group#fecha_origen_ida
+          %label{:for => ""}  Fecha Origen
+          = f.hidden_field :flight_origin
+          %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+      .col-lg-6
+        .form-group#fecha_destino_vuelta
+          %label{:for => ""} Fecha Destino
+          = f.hidden_field :flight_arrival
+          %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
 
 
-  .col-lg-12
     // Checkbox Traslado al/desde Aeropuerto
-    .col-lg-12
-      .col-lg-6#desde_el_aero
-        .checkbox
-          %label
-            %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
-      .col-lg-6#al_aero
-        .checkbox
-          %label
-            %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
-    .col-lg-6
-      .form-group
-        %label.title{:for => ""}  Aerolinea
-        %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
-    // End --- Checkbox Traslado al/desde Aeropuerto
+  .col-lg-12
+    .row
+      .col-lg-12
+        .col-lg-6#desde_el_aero
+          .checkbox
+            %label
+              %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
+        .col-lg-6#al_aero
+          .checkbox
+            %label
+              %input#type_transfer{name: 'type_transfer', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
+      .col-lg-6
+        .form-group
+          %label.title{:for => ""}  Aerolinea
+          %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline]', id: 'flight_origin', autocomplete: 'off'}/
+          // End --- Checkbox Traslado al/desde Aeropuerto
 
 
-    // Inputs informacion de vuelo aeropuerto
-    .col-lg-6
-      .form-group
-        %label.title{:for => ""}  N° de Vuelo
-        %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
+      // Inputs informacion de vuelo aeropuerto
+      .col-lg-6
+        .form-group
+          %label.title{:for => ""}  N° de Vuelo
+          %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number]', id: 'flight_number', autocomplete: 'off'}/
 
-    .col-lg-12
-      .form-group
-        %label.title{:for => ""}  Detalles del Traslados (Observaciones)
-        %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "2", style:"width: 100%;"}
-    // End --- Inputs informacion de vuelo aeropuerto
+      .col-lg-12
+        .form-group
+          %label.title{:for => ""}  Detalles del Traslados (Observaciones)
+          %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "4", style:"width: 100%;"}
+        // End --- Inputs informacion de vuelo aeropuerto
 
 :javascript
   var round_trip = #{raw params[:round_trip]};

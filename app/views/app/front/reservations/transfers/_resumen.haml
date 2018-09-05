@@ -1,72 +1,72 @@
-.col-lg-4
-  %h3 Resumen
-  .row
-    .col-lg-12
-      %ul.list-group.mb-3
-        %li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Responsable
-            %small.text-muted Slice Group
-        %li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Origen
-            %small.text-muted= params[:org_name]
-        %li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Destino
-            %small.text-muted= params[:arr_name]
-        %li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Fecha de Ida
-            %small.text-muted 05/09/2018
-        //Se debe condicionar ¡Pendiente acá!
-        %li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Fecha de Vuelta
-            %small.text-muted 10/09/2018
-        -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Tipo de Vehiculo
-            %small.text-muted= @transfer.title[@lang].capitalize
-        %li.list-group-item.d-flex.justify-content-between.bg-light
-          .row
-            -# .col-lg-4
-            -#   .text-muted
-            -#     %h6.my-0 Adultos
-            -#     %small= @transfer.quantity_adults
-            -# .col-lg-4
-            -#   .text-muted
-            -#     %h6.my-0 Niños
-            -#     %small= @transfer.quantity_kids
-            .col-lg-4
-              .text-muted
-                %h6.my-0 Equipaje
-                %small
-                  = @transfer.kit['quantity']
-                  pzas.
-                  (#{@transfer.kit['weight']}kg)
-        -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Tipo de Moneda
-            %small.text-muted= @currency.upcase
-          -#%span.text-muted $5
-        %li.list-group-item.d-flex.justify-content-between
-          %div
-            //Esto es el concepto (facturación)
-            %h6.my-0 Sub-total
-            %small.text-muted Cantidad x Traslados (Vans) 
-        %li.list-group-item.d-flex.justify-content-between
-          %div
-            %span 
-              Precio Total
-            %strong{style:"float: right;"} COP $ 1.000.000
-          -#(#{@currency.upcase})
-          -#%strong= "$ #{@transfer.price[@currency]}"
-        %hr
-        .box-btn-payment
-          .about-btn.travel-mrt-0{style:"float: right;"}
-            %button.about-view.travel-btn Confirmar
-        //Falta condicionar      
-        -#.box-btn-payment
-          .about-btn.travel-mrt-0
-            %button.about-view.travel-btn.btn Pagar
+-#%hr
+%h3 Resumen
+.row
+  .col-lg-12
+    %ul.list-group.mb-3
+      %li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Responsable
+          %small.text-muted Slice Group
+      %li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Origen
+          %small.text-muted= params[:org_name]
+      %li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Destino
+          %small.text-muted= params[:arr_name]
+      %li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Fecha de Ida
+          %small.text-muted 05/09/2018
+      //Se debe condicionar ¡Pendiente acá!
+      %li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Fecha de Vuelta
+          %small.text-muted 10/09/2018
+      -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Tipo de Vehiculo
+          %small.text-muted= @transfer.title[@lang].capitalize
+      %li.list-group-item.d-flex.justify-content-between.bg-light
+        .row
+          -# .col-lg-4
+          -#   .text-muted
+          -#     %h6.my-0 Adultos
+          -#     %small= @transfer.quantity_adults
+          -# .col-lg-4
+          -#   .text-muted
+          -#     %h6.my-0 Niños
+          -#     %small= @transfer.quantity_kids
+          .col-lg-4
+            .text-muted
+              %h6.my-0 Equipaje
+              %small
+                = @transfer.kit['quantity']
+                pzas.
+                (#{@transfer.kit['weight']}kg)
+      -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
+        %div
+          %h6.my-0 Tipo de Moneda
+          %small.text-muted= @currency.upcase
+        -#%span.text-muted $5
+      %li.list-group-item.d-flex.justify-content-between
+        %div
+          //Esto es el concepto (facturación)
+          %h6.my-0 Sub-total
+          %small.text-muted Cantidad x Traslados (Vans) 
+      %li.list-group-item.d-flex.justify-content-between
+        %div
+          %span 
+            Precio Total
+          %strong{style:"float: right;"} COP $ 1.000.000
+        -#(#{@currency.upcase})
+        -#%strong= "$ #{@transfer.price[@currency]}"
+      %hr
+      .box-btn-payment
+        .about-btn.travel-mrt-0{style:"float: right;"}
+          %button.about-view.travel-btn Confirmar
+      //Falta condicionar      
+      -#.box-btn-payment
+        .about-btn.travel-mrt-0
+          %button.about-view.travel-btn.btn Pagar
