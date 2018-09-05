@@ -16,6 +16,9 @@ function validateForm(id_form) {
       },
       'flight_origin_picker': {
         required: true
+      },
+      'flight_arrival_picker': {
+        required: true
       }
     },
     messages: {
@@ -25,7 +28,8 @@ function validateForm(id_form) {
       },
       'origin_transfer': 'No puede estar en blanco',
       'arrival_transfer': 'No puede estar en blanco',
-      flight_origin_picker: 'No puede estar en blanco'
+      'flight_origin_picker': 'No puede estar en blanco',
+      'flight_arrival_picker': 'No puede estar en blanco'
     },
     debug: true,
     errorElement: "label",

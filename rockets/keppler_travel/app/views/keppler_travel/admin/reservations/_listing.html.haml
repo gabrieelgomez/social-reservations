@@ -15,10 +15,10 @@
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
           = reservation.arrival.truncate(20)
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = Time.at(reservation.flight_origin).strftime("%d/%m/2018")
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = Time.at(reservation.flight_origin).strftime("%d/%m/2018")
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
     -#     %span

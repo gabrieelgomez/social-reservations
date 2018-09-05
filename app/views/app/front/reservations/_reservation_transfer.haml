@@ -9,24 +9,24 @@
     .container
       .row
         = simple_form_for @reservation, url: '/admin/travel/reservations', method: :post do |f|
+
           .col-lg-8
+            .reservation-data
+              // Datos de Reservación
+              = render 'app/front/reservations/transfers/dates_reservations', f: f
 
-            // Datos de Reservación
-            = render 'app/front/reservations/transfers/dates_reservations', f: f
+              // Datos Personales
+              = render 'app/front/reservations/transfers/dates_personal', f: f
 
-            // Datos Personales
-            = render 'app/front/reservations/transfers/dates_personal', f: f
+              //Datos de Facturación
+              = render 'app/front/reservations/transfers/dates_billing'
 
-            //Datos de Facturación
-            = render 'app/front/reservations/transfers/dates_billing'
-            
           .col-lg-4
             // Cuadro de Resumen
             = render 'app/front/reservations/transfers/resumen'
 
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
-%link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{:src => '/assets/js/formReservationTransfer.js'}

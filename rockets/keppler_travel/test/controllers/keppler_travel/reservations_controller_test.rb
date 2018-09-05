@@ -20,7 +20,7 @@ module KepplerTravel
 
     test "should create reservation" do
       assert_difference('Reservation.count') do
-        post reservations_url, params: { reservation: { airport_origin: @reservation.airport_origin, arrival: @reservation.arrival, deleted_at: @reservation.deleted_at, flight_arrival: @reservation.flight_arrival, flight_origin: @reservation.flight_origin, origin: @reservation.origin, position: @reservation.position, quantity_adults: @reservation.quantity_adults, quantity_kid: @reservation.quantity_kid, quantity_kids: @reservation.quantity_kids, roud_trip: @reservation.roud_trip, user_id: @reservation.user_id } }
+        post reservations_url, params: { reservation: { airport_origin: @reservation.airport_origin, arrival: @reservation.arrival, deleted_at: @reservation.deleted_at, flight_arrival: @reservation.flight_arrival, flight_origin: @reservation.flight_origin, origin: @reservation.origin, position: @reservation.position, quantity_adults: @reservation.quantity_adults, quantity_kid: @reservation.quantity_kid, quantity_kids: @reservation.quantity_kids, round_trip: @reservation.round_trip, user_id: @reservation.user_id } }
       end
 
       assert_redirected_to reservation_url(Reservation.last)
@@ -37,7 +37,7 @@ module KepplerTravel
     end
 
     test "should update reservation" do
-      patch reservation_url(@reservation), params: { reservation: { airport_origin: @reservation.airport_origin, arrival: @reservation.arrival, deleted_at: @reservation.deleted_at, flight_arrival: @reservation.flight_arrival, flight_origin: @reservation.flight_origin, origin: @reservation.origin, position: @reservation.position, quantity_adults: @reservation.quantity_adults, quantity_kid: @reservation.quantity_kid, quantity_kids: @reservation.quantity_kids, roud_trip: @reservation.roud_trip, user_id: @reservation.user_id } }
+      patch reservation_url(@reservation), params: { reservation: { airport_origin: @reservation.airport_origin, arrival: @reservation.arrival, deleted_at: @reservation.deleted_at, flight_arrival: @reservation.flight_arrival, flight_origin: @reservation.flight_origin, origin: @reservation.origin, position: @reservation.position, quantity_adults: @reservation.quantity_adults, quantity_kid: @reservation.quantity_kid, quantity_kids: @reservation.quantity_kids, round_trip: @reservation.round_trip, user_id: @reservation.user_id } }
       assert_redirected_to reservation_url(@reservation)
     end
 

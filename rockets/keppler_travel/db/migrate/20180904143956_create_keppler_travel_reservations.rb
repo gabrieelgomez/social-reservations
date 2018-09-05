@@ -10,7 +10,7 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
       t.integer :quantity_adults
       t.integer :quantity_kids
       t.integer :quantity_kit
-      t.boolean :roud_trip
+      t.boolean :round_trip
       t.boolean :airport_origin
       t.string :airline
       t.string :flight_number

@@ -25,7 +25,7 @@ module KepplerTravel
       fill_in "Quantity Adults", with: @reservation.quantity_adults
       fill_in "Quantity Kid", with: @reservation.quantity_kid
       fill_in "Quantity Kids", with: @reservation.quantity_kids
-      fill_in "Roud Trip", with: @reservation.roud_trip
+      fill_in "Roud Trip", with: @reservation.round_trip
       fill_in "User", with: @reservation.user_id
       click_on "Create Reservation"
 
@@ -47,7 +47,7 @@ module KepplerTravel
       fill_in "Quantity Adults", with: @reservation.quantity_adults
       fill_in "Quantity Kid", with: @reservation.quantity_kid
       fill_in "Quantity Kids", with: @reservation.quantity_kids
-      fill_in "Roud Trip", with: @reservation.roud_trip
+      fill_in "Roud Trip", with: @reservation.round_trip
       fill_in "User", with: @reservation.user_id
       click_on "Update Reservation"
 
