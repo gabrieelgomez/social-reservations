@@ -1,20 +1,20 @@
 .single-travel-boxes
   #desc-tabs.desc-tabs
     %ul.nav.nav-tabs{:role => "tablist"}
-      %li.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
+      %li.item-widget.active{:role => "presentation", :style => "border-top-left-radius: 5px;"}
         %a{"aria-controls" => "translation", "data-toggle" => "tab", :href => "#translation", :role => "tab", :style => "border-top-left-radius: 5px;"}
           %i.fa.fa-car
           Traslados
-      %li{:role => "presentation"}
+      %li.item-widget{:role => "presentation"}
         %a{"aria-controls" => "circuits", "data-toggle" => "tab", :href => "#circuits", :role => "tab"}
           %i.fa.fa-train
           Circuitos
-      %li{:role => "presentation"}
+      %li.item-widget{:role => "presentation"}
         %a{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"}
           %i.fa.fa-map-o
           Tours
-      %li{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
-        %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;"}
+      %li.item-widget{:role => "presentation", :style => "border-bottom-right-radius: 5px;"}
+        %a{"aria-controls" => "multidestines", "data-toggle" => "tab", :href => "#multidestines", :role => "tab", :style => "border-bottom-right-radius: 5px;     margin-right: 0 !important;"}
           %i.fa.fa-plane
           Multidestinos
     .tab-content
@@ -77,8 +77,8 @@
                     %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number", style: 'width:55%!important'}/
 
               .col-lg-12.col-md-4.col-sm-12
-                .about-btn.travel-mrt-0.pull-right{style:"margin-top: 25px;"}
-                  %button.about-view.travel-btn{style:"margin-right: 0;"}
+                .about-btn.travel-mrt-0.pull-right
+                  %button.about-view.travel-btn
                     buscar
 
       #circuits.tab-pane.fade.in{:role => "tabpanel"}
