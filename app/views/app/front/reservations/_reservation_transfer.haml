@@ -10,13 +10,14 @@
       .row
         = simple_form_for @reservation, url: '/admin/travel/reservations', method: :post do |f|
           .col-lg-8
-            %h3 Datos de Reserva
-
             // Datos de Reservación
             = render 'app/front/reservations/transfers/dates_reservations', f: f
 
             // Datos Personales
             = render 'app/front/reservations/transfers/dates_personal', f: f
+
+            //Datos de Facturación
+            = render 'app/front/reservations/transfers/dates_billing'
 
           // Cuadro de Resumen
           = render 'app/front/reservations/transfers/resumen'
