@@ -22,15 +22,18 @@ module App
         params[:user].each do |user|
           @user = User.find_by(email: user[:email])
           unless @user
+            password = Devise.friendly_token.first(8)
             @user = User.create(
               name: user[:name],
               email: user[:email],
               dni: user[:dni],
               phone: user[:phone],
-              password: Devise.friendly_token.first(8)
+              password: '123123123',
+              password_confirmation: password,
+              password: password
             )
             @user.add_role :client
-            @user.format_accessable_passwd(user[:password])
+            @user.format_accessable_passwd(password)
           end
         end
 
