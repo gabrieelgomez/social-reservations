@@ -10,6 +10,9 @@ module App
       @reservation.user = @user
       if @reservation.save!
         create_travellers
+        # KepplerTravel::ReservationMailer.send_password(@user)
+        ApplicationMailer.testing
+        ContactMailer.client_contact
         # redirect(@reservation, params)
         # redirect_to main_app.root_path
       else
@@ -57,7 +60,7 @@ module App
     def reservation_params
       params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :invoice_address,
                                           :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
-                                          :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
+                                          :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :description,
                                           :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
                                           travellers_attributes: [:name, :dni])
     end
