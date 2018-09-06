@@ -8,6 +8,7 @@ module App
       @reservation = KepplerTravel::Reservation.new(reservation_params)
       find_or_create_user
       @reservation.user = @user
+      @reservation.vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
       if @reservation.save!
         create_travellers
         # KepplerTravel::ReservationMailer.send_password(@user)
