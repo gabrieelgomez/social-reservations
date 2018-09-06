@@ -129,7 +129,7 @@ qq.extend(qq.FileUploaderInput.prototype, {
             onDrop: function(e){
                 dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);
-                self._uploadFileList(e.dataTransfer.files);
+                self._uploadFileList(e.dataVehicle.files);
             }
         });
 

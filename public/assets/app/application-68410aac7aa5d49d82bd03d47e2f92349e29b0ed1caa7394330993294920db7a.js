@@ -23021,10 +23021,10 @@ $(document).ready(function () {
       },
     };
 
-    inputSearchTransfer('origin_transfer');
-    inputSearchTransfer('arrival_transfer');
+    inputSearchVehicle('origin_transfer');
+    inputSearchVehicle('arrival_transfer');
 
-    function inputSearchTransfer(id_input) {
+    function inputSearchVehicle(id_input) {
       var input = document.getElementById(id_input);
       var autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.addListener('place_changed', onPlaceChanged);

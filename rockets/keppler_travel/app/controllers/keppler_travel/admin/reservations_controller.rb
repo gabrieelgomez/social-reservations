@@ -12,23 +12,20 @@ module KepplerTravel
       include KepplerTravel::Concerns::Commons
       include KepplerTravel::Concerns::History
       include KepplerTravel::Concerns::DestroyMultiple
+      include ObjectQuery
 
 
       # GET /reservations
       def index
         @q = Reservation.ransack(params[:q])
         reservations = @q.result(distinct: true)
-        @objects = reservations.page(@current_page).order(position: :asc)
+        @objects = reservations.page(@current_page).order(id: :desc)
         @total = reservations.size
         @reservations = @objects.all
         if !@objects.first_page? && @objects.size.zero?
           redirect_to reservations_path(page: @current_page.to_i.pred, search: @query)
         end
-        respond_to do |format|
-          format.html
-          format.xls { send_data(@reservations.to_xls) }
-          format.json { render :json => @objects }
-        end
+        respond_to_formats(@reservations)
       end
 
       # GET /reservations/1
@@ -48,10 +45,21 @@ module KepplerTravel
       def create
         @reservation = Reservation.new(reservation_params)
         if @reservation.save!
+          create_travellers
           redirect(@reservation, params)
           # redirect_to main_app.root_path
         else
           render :new
+        end
+      end
+
+      def create_travellers
+        params[:travellers].each do |traveller|
+          Traveller.create(
+            name: traveller[:name],
+            dni: traveller[:dni],
+            reservation: @reservation
+          )
         end
       end
 
@@ -140,7 +148,8 @@ module KepplerTravel
         params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :invoice_address,
                                             :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
                                             :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
-                                            :quantity_kit, :round_trip, :airport_origin, :user_id, :position, :deleted_at)
+                                            :quantity_kit, :round_trip, :airport_origin, :user_id, :position, :deleted_at,
+                                            travellers_attributes: [:name, :dni])
       end
 
       def show_history

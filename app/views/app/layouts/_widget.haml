@@ -21,7 +21,7 @@
             Multidestinos
       .tab-content
         #translation.tab-pane.active.fade.in{:role => "tabpanel"}
-          = search_form_for @q, url: "/#{@lang}/#{@currency}/transfers", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+          = search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
             %input#round_trip{name: 'round_trip', type: 'hidden'}
             .tab-para
               .row
@@ -43,13 +43,13 @@
                 .col-lg-6
                   .single-tab-select-box
                     %h2 Origen
-                    %input.google-input.form-control{id: 'origin_transfer', name: 'origin_transfer'}
+                    %input.google-input.form-control{id: 'origin_vehicle', name: 'origin_vehicle'}
                     %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
 
                 .col-lg-6
                   .single-tab-select-box
                     %h2 Destino
-                    %input.custom-input.form-control{id: 'arrival_transfer', name: 'arrival_transfer'}
+                    %input.custom-input.form-control{id: 'arrival_vehicle', name: 'arrival_vehicle'}
                     %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
 
                 .col-lg-12
