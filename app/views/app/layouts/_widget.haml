@@ -15,7 +15,7 @@
           %i.fa.fa-map-o
           Tours
       %li
-        %a{"data-toggle" => "tab", :href => "#multidestines"} 
+        %a.fix{"data-toggle" => "tab", :href => "#multidestines"} 
           %i.fa.fa-plane
           Multidestinos
     .tab-content
@@ -202,7 +202,7 @@
 :javascript
   validateForm('#search-input');
 
-  //$('#vuelo_vuelta').addClass('show-input');
+  $('#vuelo_vuelta').addClass('show-input');
   //$( "#solo_ida").prop('checked', true);
   $( "#ida_vuelta").prop('checked', true);
   $('#round_trip').val(false);
