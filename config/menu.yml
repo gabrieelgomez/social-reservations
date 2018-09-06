@@ -18,11 +18,11 @@ menu:
     model: MetaTag
     url_path: /admin/meta_tags
   # keppler_travel:
-  #   name: transfers
-  #   current: ['admin/travel/transfer']
-  #   url_path: /admin/travel/transfer
+  #   name: vehicles
+  #   current: ['admin/travel/vehicle']
+  #   url_path: /admin/travel/vehicle
   #   icon: layers
-  #   model: KepplerTravel::Transfer
+  #   model: KepplerTravel::Vehicle
   user:
     name: users
     icon: user

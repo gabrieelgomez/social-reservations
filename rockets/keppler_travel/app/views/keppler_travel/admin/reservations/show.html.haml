@@ -22,7 +22,7 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @reservation.as_json(only: ["origin", "arrival", 'origin_location', 'arrival_location', 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'quantity_kit', 'round_trip', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'invoice_address', 'user']).each do |attribute, value|
+                - @reservation.as_json(only: ["origin", "arrival", 'origin_location', 'arrival_location', 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'quantity_kit', 'round_trip', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description', 'invoice_address', 'user']).each do |attribute, value|
                   - unless attribute.eql?('position') || attribute.eql?('deleted_at')
                     %tr.list-row
                       %th.display-label= t("activerecord.attributes.#{attribute}")

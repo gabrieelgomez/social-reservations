@@ -1,10 +1,10 @@
 menu:
-  keppler_travel_transfer:
-    name: transfers
-    current: ['admin/travel/transfers']
-    url_path: /admin/travel/transfers
+  keppler_travel_vehicle:
+    name: vehicles
+    current: ['admin/travel/vehicles']
+    url_path: /admin/travel/vehicles
     icon: layers
-    model: KepplerTravel::Transfer
+    model: KepplerTravel::Vehicle
 
   keppler_travel_reservation:
     name: reservations

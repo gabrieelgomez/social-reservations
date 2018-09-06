@@ -1,59 +1,59 @@
 require "application_system_test_case"
 
 module KepplerTravel
-  class TransfersTest < ApplicationSystemTestCase
+  class VehiclesTest < ApplicationSystemTestCase
     setup do
-      @transfer = keppler_travel_transfers(:one)
+      @vehicle = keppler_travel_vehicles(:one)
     end
 
     test "visiting the index" do
-      visit transfers_url
-      assert_selector "h1", text: "Transfers"
+      visit vehicles_url
+      assert_selector "h1", text: "Vehicles"
     end
 
-    test "creating a Transfer" do
-      visit transfers_url
-      click_on "New Transfer"
+    test "creating a Vehicle" do
+      visit vehicles_url
+      click_on "New Vehicle"
 
-      fill_in "Cover", with: @transfer.cover
-      fill_in "Date", with: @transfer.date
-      fill_in "Deleted At", with: @transfer.deleted_at
-      fill_in "Position", with: @transfer.position
-      fill_in "Price", with: @transfer.price
-      fill_in "Quantity Person", with: @transfer.quantity_person
-      fill_in "Time", with: @transfer.time
-      fill_in "Title", with: @transfer.title
-      click_on "Create Transfer"
+      fill_in "Cover", with: @vehicle.cover
+      fill_in "Date", with: @vehicle.date
+      fill_in "Deleted At", with: @vehicle.deleted_at
+      fill_in "Position", with: @vehicle.position
+      fill_in "Price", with: @vehicle.price
+      fill_in "Quantity Person", with: @vehicle.quantity_person
+      fill_in "Time", with: @vehicle.time
+      fill_in "Title", with: @vehicle.title
+      click_on "Create Vehicle"
 
-      assert_text "Transfer was successfully created"
+      assert_text "Vehicle was successfully created"
       click_on "Back"
     end
 
-    test "updating a Transfer" do
-      visit transfers_url
+    test "updating a Vehicle" do
+      visit vehicles_url
       click_on "Edit", match: :first
 
-      fill_in "Cover", with: @transfer.cover
-      fill_in "Date", with: @transfer.date
-      fill_in "Deleted At", with: @transfer.deleted_at
-      fill_in "Position", with: @transfer.position
-      fill_in "Price", with: @transfer.price
-      fill_in "Quantity Person", with: @transfer.quantity_person
-      fill_in "Time", with: @transfer.time
-      fill_in "Title", with: @transfer.title
-      click_on "Update Transfer"
+      fill_in "Cover", with: @vehicle.cover
+      fill_in "Date", with: @vehicle.date
+      fill_in "Deleted At", with: @vehicle.deleted_at
+      fill_in "Position", with: @vehicle.position
+      fill_in "Price", with: @vehicle.price
+      fill_in "Quantity Person", with: @vehicle.quantity_person
+      fill_in "Time", with: @vehicle.time
+      fill_in "Title", with: @vehicle.title
+      click_on "Update Vehicle"
 
-      assert_text "Transfer was successfully updated"
+      assert_text "Vehicle was successfully updated"
       click_on "Back"
     end
 
-    test "destroying a Transfer" do
-      visit transfers_url
+    test "destroying a Vehicle" do
+      visit vehicles_url
       page.accept_confirm do
         click_on "Destroy", match: :first
       end
 
-      assert_text "Transfer was successfully destroyed"
+      assert_text "Vehicle was successfully destroyed"
     end
   end
 end

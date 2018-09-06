@@ -1,0 +1,135 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+
+  %body{style:"padding-top:0px;"}
+    %header
+      = render 'app/layouts/navbar'
+
+    %section#plan.plan
+      .box-plan{:style => "background-image: url(/assets/img/bg-3.jpg)"}
+        .container
+          .box-title
+            %h1= @vehicle.title[@lang]
+
+    %section#plan-description.plan-description
+      .container
+        .gallary-header.text-center
+          %h2
+            Descripción
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      .box-information
+        .container
+          .category-plan
+            .col-lg-12
+              .category-plan
+                %ul.nav.nav-tabs
+                  %li.active
+                    %a{"data-toggle" => "tab", :href => "#1"}
+                      %span Descripción
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#2"}
+                      %span Incluye
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#3"}
+                      %span Condiciones
+                .tab-content
+                  #1.tab-pane.active
+                    %h3 Descripción
+                    %p.plan-text
+                      -# = raw @vehicle.description[@lang].html_safe
+                      = sanitize(@vehicle.description[@lang], tags: [])
+                      -# = sanitize(post.body, tags: []).truncate(300)
+                  #2.tab-pane
+                    %h3 Incluye
+                    %p.plan-text
+                      -#= sanitize(@vehicle.includes[@lang], tags: [])
+                      -# = raw @vehicle.includes[@lang].html_safe
+                  #3.tab-pane
+                    %h3 Condiciones
+                    %p.plan-text
+                      -#= sanitize(@vehicle.conditions[@lang], tags: [])
+                      -# = raw @vehicle.conditions[@lang].html_safe
+
+    %section#plan-galery.plan-galery
+      .container
+        .gallary-header.text-center
+          %h2
+            Galería
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .box-slider-galery
+        .container
+          .carrusel-galery
+            .galery
+              - @vehicle.files.each do |img|
+                .galery__item
+                  %img{src: img.url, class:"img-responsive"}
+
+
+    %section#reservation.plan-reservation
+      .container
+        .gallary-header.text-center
+          %h2
+            Reserva
+          %p
+            Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+      .box-billing
+        .container
+          .col-lg-6
+            %form{:action => "/action_page.php"}
+              .form-group
+                %label{:for => "email"} Nombre
+                %input#email.form-control{:type => "email"}/
+              .form-group
+                %label{:for => "email"} Tipo de Nacionalidad
+                %select.form-control
+                  %option{:value => "default"} Tipo de nacionalidad
+                  %option{:value => "1"} Venezolana
+                  %option{:value => "2"} Colombiana
+              .col-lg-6{style:"padding-left: 0 !important;"}
+                .form-group
+                  %label{:for => "email"} Género
+                  %select.form-control
+                    %option{:value => "default"} Género
+                    %option{:value => "1"} Masculino
+                    %option{:value => "2"} Femenino
+              .col-lg-6{style:"padding-right: 0 !important;"}
+                .form-group
+                  %label{:for => "pwd"} Teléfono
+                  %input#pwd.form-control{:type => "password"}/
+          .col-lg-6
+            .form-group
+              %label{:for => "email"} Apellido
+              %input#email.form-control{:type => "email"}/
+            .form-group
+              %label{:for => "email"} Número de Identifación
+              %input#email.form-control{:type => "email"}/
+            .form-group
+              %label{:for => "pwd"} E-mail
+              %input#pwd.form-control{:type => "password"}/
+          .col-lg-12
+            .box-billing-btn
+              = link_to show_vehicles_path do
+                %button.about-view.packages-btn.btn-billing
+                  reservar
+
+    %section#plan-featured-products.plan-featured-products
+      .container
+        .gallary-header.text-center
+          %h2
+            Productos Destacados
+          %p
+            Expertos en traslados ejecutivos y turismo receptivo
+      .box-slider-featured-products
+        .container
+          .carrusel-product
+            .product
+              - @destacados.each do |vehicle_prominent|
+                .product__item
+                  %img{src:vehicle_prominent.cover.url, class:"img-responsive"}
+
+
+    %footer.footer-copyright
+      = render 'app/layouts/footer'
