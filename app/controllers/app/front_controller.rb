@@ -28,6 +28,9 @@ module App
 
     def reservations
       @reservation = KepplerTravel::Reservation.new
+      @adults = params[:adults]
+      @kids   = params[:kids]
+      @seats = @adults.to_i + @kids.to_i
     end
 
     private

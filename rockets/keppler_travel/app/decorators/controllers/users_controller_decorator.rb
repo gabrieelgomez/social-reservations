@@ -1,19 +1,19 @@
-Admin::UsersController.class_eval do
-
-  def create
-    byebug
-  end
-
-  def update
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(
-      :name, :email, :phone, :dni,
-      reservation_attributes: [:id, :origin, :arrival]
-    )
-  end
-
-end
+# Admin::UsersController.class_eval do
+#
+#   def create
+#     byebug
+#   end
+#
+#   def update
+#   end
+#
+#   private
+#
+#   def user_params
+#     params.require(:user).permit(
+#       :name, :email, :phone, :dni,
+#       reservation_attributes: [:id, :origin, :arrival]
+#     )
+#   end
+#
+# end

@@ -13,10 +13,8 @@ $('#new_reservation').validate({
    'reservation[quantity_kids]': { required: true},
    'reservation[quantity_kit]': { required: true},
    'reservation[invoice_address]': { required: true},
-   // 'reservation[airline]': { required: true},
-   // 'reservation[flight_number]': { required: true},
-   'reservation[description]': { required: true}
-
+   'travellers[][name]': { required: true},
+   'travellers[][dni]': { required: true}
    },
  messages: {
    'reservation[origin]': 'No puede estar en blanco',
@@ -29,9 +27,8 @@ $('#new_reservation').validate({
    'reservation[quantity_kids]': 'No puede estar en blanco',
    'reservation[quantity_kit]': 'No puede estar en blanco',
    'reservation[invoice_address]': 'No puede estar en blanco',
-   // 'reservation[airline]': 'No puede estar en blanco',
-   // 'reservation[flight_number]': 'No puede estar en blanco',
-   'reservation[description]': 'No puede estar en blanco'
+   'travellers[][name]': 'No puede estar en blanco',
+   'travellers[][dni]': 'No puede estar en blanco'
    },
  debug: true,errorElement: "label",
  submitHandler: function(form){

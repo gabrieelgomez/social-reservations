@@ -8,6 +8,8 @@ module KepplerTravel
 
     # Relationships
     # belongs_to :user
+    has_many :travellers
+    accepts_nested_attributes_for :travellers
 
     # Fields for the search form in the navbar
     def self.search_field
