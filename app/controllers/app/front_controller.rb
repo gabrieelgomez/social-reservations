@@ -2,7 +2,7 @@ module App
   # FrontsController
   class FrontController < AppController
     layout 'layouts/templates/application'
-    before_action :set_search, only: [:index, :reservations]
+    before_action :set_search, only: [:index, :vehicles, :reservations]
     before_action :set_vehicle, only: :reservations
 
     def set_locale

@@ -8,101 +8,22 @@
               %span
                 Su búsqueda:
               %span
-                ="#{@origin_name}" 
+                ="#{params[:org_name]}"
               %span
-                = " > #{@arrival_name}"
+                = " > #{params[:arr_name]}"
           .col-lg-3
             %p
               %span
                 -#%i.icon.icon-magnifier
-                %a.pull-right.link-widget 
+                %a.pull-right.link-widget
                   Volver a relizar la búsqueda
 
 
   .container.js-widget.js-hide-widget.widget-results
     .row
       .col-lg-12
-        .widget-results__search
-          %ul.nav.nav-tabs.widget-results__search--items
-            %li.active
-              %a{"data-toggle" => "tab", :href => "#transfers"} 
-                %i.fa.fa-car
-                Traslados
-            -#%li
-              %a{"data-toggle" => "tab", :href => "#circuits"}
-                %i.fa.fa-train
-                Circuitos
-            -#%li
-              %a{"data-toggle" => "tab", :href => "#tours"} 
-                %i.fa.fa-map-o
-                Tours
-            -#%li
-              %a.fix{"data-toggle" => "tab", :href => "#multidestines"} 
-                %i.fa.fa-plane
-                Multidestinos
-          .tab-content
-            //#transfers
-            #transfers.tab-pane.fade.in.active
-              .box-transfers
-                .row
-                  .col-lg-12
-                    .trip-circle
+        = render 'app/layouts/widget'
 
-                      .single-trip-circle
-                        %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-                        %label.ida_vuelta{:for => "ida_vuelta"}
-                          %span.round-boarder
-                            %span.round-boarder1
-                          Ida y vuelta
-
-                      .single-trip-circle
-                        %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-                        %label.solo_ida{:for => "solo_ida"}
-                          %span.round-boarder>
-                            %span.round-boarder1
-                          Solo ida
-
-                  .col-lg-3
-                    .box-item
-                      %h2 Origen
-                      %input.google-input.form-control{id: 'origin_vehicle', name: 'origin_vehicle'}
-                      %input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
-
-                  .col-lg-3
-                    .box-item
-                      %h2 Destino
-                      %input.custom-input.form-control{id: 'arrival_vehicle', name: 'arrival_vehicle'}
-                      %input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
-
-
-                  .col-lg-2
-                    .box-item
-                      %h2 Fecha de Ida
-                      .form-group
-                        %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-
-                  .col-lg-2#vuelo_vuelta
-                    .box-item
-                      %h2 Fecha de Vuelta
-                      .form-group
-                        %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
-                  .col-lg-1
-                    .box-item
-                      %h2 Adultos
-                      .form-group
-                        %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', :type => "number"}/
-
-                  .col-lg-1
-                    .box-item
-                      %h2 Niños
-                      .form-group
-                        %input#kids.custom-input.form-control{min: 1, name: 'quantity_kids', :type => "number"}/
-
-                  .col-lg-12
-                    .about-btn.travel-mrt-0.pull-right.box-btn
-                      %button.about-view.travel-btn
-                        buscar
 
 
 %section.reservation-vehicles#reservation-vehicles
