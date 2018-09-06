@@ -14,7 +14,11 @@ $('#new_reservation').validate({
    'reservation[quantity_kit]': { required: true},
    'reservation[invoice_address]': { required: true},
    'travellers[][name]': { required: true},
-   'travellers[][dni]': { required: true}
+   'travellers[][dni]': { required: true},
+   'user[][name]': { required: true},
+   'user[][phone]': { required: true},
+   'user[][dni]': { required: true},
+   'user[][email]': { required: true, email: true}
    },
  messages: {
    'reservation[origin]': 'No puede estar en blanco',
@@ -28,7 +32,11 @@ $('#new_reservation').validate({
    'reservation[quantity_kit]': 'No puede estar en blanco',
    'reservation[invoice_address]': 'No puede estar en blanco',
    'travellers[][name]': 'No puede estar en blanco',
-   'travellers[][dni]': 'No puede estar en blanco'
+   'travellers[][dni]': 'No puede estar en blanco',
+   'user[][name]': 'No puede estar en blanco',
+   'user[][phone]': 'No puede estar en blanco',
+   'user[][dni]': 'No puede estar en blanco',
+   'user[][email]': {required: 'No puede estar en blanco', email: 'E-mail inválido'}
    },
  debug: true,errorElement: "label",
  submitHandler: function(form){

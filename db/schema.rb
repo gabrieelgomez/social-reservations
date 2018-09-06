@@ -236,6 +236,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_124755) do
     t.datetime "deleted_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "accessable_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

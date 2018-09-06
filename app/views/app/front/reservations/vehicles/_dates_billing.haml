@@ -1,21 +1,46 @@
 %hr
 %h3 Datos de Facturación
-.row
-  .col-lg-6
-    .form-group.form-custom
-      %label.title{:for => "name"} Nombre
-      %input#name.form-control{:type => "text", :placeholder => "Ingrese nombre"}/
-    .form-group
-      %label.title{:for => "phone"} Teléfono
-      %input#phone.form-control{:type => "number", :placeholder => "Ingrese teléfono"}/
-  .col-lg-6
-    .form-group.form-custom
-      %label.title{:for => "dni"} Identificación
-      %input#dni.form-control{:type => "number", :placeholder => "Ingrese identificación"}/
-    .form-group
-      %label.title{:for => "email"} Correo electrónico
-      %input#email.form-control{:type => "email", :placeholder => "Ingrese correo electrónico"}/
-  .col-lg-12
-    .form-group
-      %label.title{:for => ""}  Dirección de Facturación
-      %textarea{placeholder: 'Ingrese dirección de facturación', :id => "", :name => "reservation[invoice_address]", :rows => "4", style:"width: 100%;"}
+%br
+%br
+%span Estimado usuario/a, al momento de ingresar los siguientes datos el sistema de Receptivo Colombia, creará un usuario con los siguientes datos y le enviaremos un correo con la información que detalle a continuación:
+
+- if user_signed_in?
+  .row
+    .col-lg-6
+      .form-group.form-custom
+        %label.title{for: "name"} Nombre
+        %input#name_user.form-control{disabled: 'disabled', value: current_user.name}/
+      .form-group
+        %label.title{for: "phone"} Teléfono
+        %input#phone_user.form-control{disabled: 'disabled', value: current_user.phone}/
+    .col-lg-6
+      .form-group.form-custom
+        %label.title{for: "dni"} Identificación
+        %input#dni_user.form-control{disabled: 'disabled', value: current_user.dni}/
+      .form-group
+        %label.title{for: "email"} Correo electrónico
+        %input#email_user.form-control{disabled: 'disabled', value: current_user.email}/
+    .col-lg-12
+      .form-group
+        %label.title{for: ""}  Dirección de Facturación
+        %textarea{placeholder: 'Ingrese dirección de facturación', id: "", name: "reservation[invoice_address]", rows: "4", style:"width: 100%;"}
+- else
+  .row
+    .col-lg-6
+      .form-group.form-custom
+        %label.title{for: "name"} Nombre
+        %input#name_user.form-control{name: 'user[][name]', type: "text", placeholder: "Ingrese nombre"}/
+      .form-group
+        %label.title{for: "phone"} Teléfono
+        %input#phone_user.form-control{name: 'user[][phone]', type: "text", placeholder: "Ingrese teléfono"}/
+    .col-lg-6
+      .form-group.form-custom
+        %label.title{for: "dni"} Identificación
+        %input#dni_user.form-control{name: 'user[][dni]', type: "text", placeholder: "Ingrese identificación"}/
+      .form-group
+        %label.title{for: "email"} Correo electrónico
+        %input#email_user.form-control{name: 'user[][email]', type: "email", placeholder: "Ingrese correo electrónico"}/
+    .col-lg-12
+      .form-group
+        %label.title{for: ""}  Dirección de Facturación
+        %textarea{placeholder: 'Ingrese dirección de facturación', id: "", name: "reservation[invoice_address]", rows: "4", style:"width: 100%;"}
