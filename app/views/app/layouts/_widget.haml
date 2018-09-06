@@ -203,8 +203,13 @@
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
 :javascript
-
   validateForm('#search-input');
+<<<<<<< HEAD
+=======
+
+  $('#vuelo_vuelta').addClass('show-input');
+  //$( "#solo_ida").prop('checked', true);
+>>>>>>> 7bbf81308c51538c1a956426eee52cc2d873d05a
   $( "#ida_vuelta").prop('checked', true);
   $('#round_trip').val(false);
   $( '.radio-fecha-vuelos' ).on( 'click', function() {
@@ -219,7 +224,16 @@
       }
   });
 
+  $( '.radio-fecha-vuelos' ).on( 'click', function() {
+      if( $('#solo_ida').is(':checked') ){
+          $('#round_trip').val(true);
+          $('#vuelo_vuelta').addClass('hidden-input');
 
+      } else {
+        $('#vuelo_vuelta').removeClass('hidden-input');
+        $('#vuelo_vuelta').addClass('show-input');
+      }
+  });
 
 
   $( function() {
