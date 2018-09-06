@@ -20,7 +20,7 @@ User.create(
   password_confirmation: '+12345678+', role_ids: '1'
 )
 
-puts 'admin@keppler.io has been created'
+puts 'admin@keppleradmin.com has been created'
 
 Customize.create(file: '', installed: true)
 puts 'Keppler Template has been created'

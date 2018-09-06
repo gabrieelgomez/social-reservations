@@ -56,8 +56,26 @@ class User < ApplicationRecord
     roles.first.permissions.first.modules
   end
 
+  def format_accessable_passwd(psswd)
+    set_env_var
+    encrypted_data = @crypt.encrypt_and_sign(psswd)
+    update(accessable_password: encrypted_data)
+  end
+
+  def real_password
+    set_env_var
+    @crypt.decrypt_and_verify(accessable_password)
+  end
+
   private
 
+  def set_env_var
+    key        = Rails.application.secrets[:key]
+    salt       = Rails.application.secrets[:salt]
+    passphrase = ActiveSupport::KeyGenerator.new(key).generate_key(salt, 32)
+    @crypt     = ActiveSupport::MessageEncryptor.new(passphrase)
+  end
+  
   def create_permalink
     self.permalink = name.downcase.parameterize + '-' + SecureRandom.hex(4)
   end

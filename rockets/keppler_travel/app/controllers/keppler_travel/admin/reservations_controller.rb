@@ -44,6 +44,8 @@ module KepplerTravel
       # POST /reservations
       def create
         @reservation = Reservation.new(reservation_params)
+        find_or_create_user
+        @reservation.user = @user
         if @reservation.save!
           create_travellers
           redirect(@reservation, params)
@@ -51,6 +53,24 @@ module KepplerTravel
         else
           render :new
         end
+      end
+
+      def find_or_create_user
+        params[:user].each do |user|
+          @user = User.find_by(email: user[:email])
+          unless @user
+            @user = User.create(
+              name: user[:name],
+              email: user[:email],
+              dni: user[:dni],
+              phone: user[:phone],
+              password: Devise.friendly_token.first(8)
+            )
+            @user.add_role :client
+            @user.format_accessable_passwd(user[:password])
+          end
+        end
+
       end
 
       def create_travellers
@@ -148,7 +168,7 @@ module KepplerTravel
         params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :invoice_address,
                                             :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
                                             :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
-                                            :quantity_kit, :round_trip, :airport_origin, :user_id, :position, :deleted_at,
+                                            :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
                                             travellers_attributes: [:name, :dni])
       end
 

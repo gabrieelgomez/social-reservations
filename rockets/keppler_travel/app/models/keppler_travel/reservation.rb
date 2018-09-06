@@ -7,7 +7,7 @@ module KepplerTravel
     acts_as_list
 
     # Relationships
-    # belongs_to :user
+    belongs_to :user
     has_many :travellers
     accepts_nested_attributes_for :travellers
 
