@@ -1,0 +1,99 @@
+.widget {
+  margin-top: -95px;
+
+  &__search {
+    background-color: #ffffff;
+    padding-bottom: 20px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+
+    &--items {
+      display: flex;
+
+      li {
+        flex: 1;
+        cursor: pointer;
+
+        a {
+          text-align: center;
+          background-color: $color-blue;
+          color: #ffffff;
+
+          &:hover {
+            text-decoration: none;
+            border-color: $color-blue !important;
+            background-color: $color-blue !important;
+          }
+
+          &:active {
+            color: #ffffff !important;
+            border-color: $color-blue !important;
+            background-color: $color-blue !important;
+          }
+        }
+
+        .fix {
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    margin-top: 10px;
+    min-height: 170px;
+  }
+
+  .box-transfers {
+    padding: 15px 25px 0 25px;
+    width: 100%;
+
+    .box-btn {
+      margin-top: 10px;
+
+      button {
+        width: 120px;
+        margin-right: 0;
+        height: 35px;
+        color: #4e4e56;
+        font-weight: 500;
+        font-size: 13px;
+
+        &:hover {
+          color: #fff !important;
+          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+            0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+          background: #47c1f5;
+          border: 1px solid #47c1f5;
+          margin-top: -3px;
+        }
+      }
+    }
+  }
+
+  .box-item {
+    h2 {
+      color: #565a5c;
+      font-size: 10px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    input {
+      font-size: 12px;
+    }
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

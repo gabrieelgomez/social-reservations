@@ -400,31 +400,32 @@ body {
 
 .single-trip-circle input[type="radio"]+label {
     color: #565a5c;
-    font-size: 15px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Poppins',
+        sans-serif;
     text-transform: inherit;
-    margin-bottom: 17px;
+    margin-bottom: 14px;
     margin-left: 0px;
     cursor: pointer;
 }
 
 .single-trip-circle input[type="radio"]+label span.round-boarder {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     margin: -1px 4px 0 0;
     vertical-align: middle;
     cursor: pointer;
     -moz-border-radius: 50%;
-    border-radius: 50%;
+    border-radius: 50%
 }
 
 .single-trip-circle input[type="radio"]+label span.round-boarder1 {
     display: inline-block;
-    width: 9px;
-    height: 9px;
-    margin: -13px 0px 0 1px;
+    width: 8px;
+    height: 8px;
+    margin: -12px 0px 0 0px;
     vertical-align: middle;
     cursor: pointer;
     -moz-border-radius: 50%;
@@ -1781,7 +1782,7 @@ a.keppler-admin:hover .svg-keppler {
 }
 
 .services {
-    padding: 90px 0 90px 0;
+    padding: 45px 0 90px 0;
 }
 
 .services .box-info h2 {
@@ -2262,7 +2263,11 @@ label.container .checkmark:after {
 }
 
 #seach-widget {
-    padding: 15px 0 0 0;
+    padding: 25px 0 0 0;
+}
+
+.result {
+    color: black;
 }
 
 .box-search {
