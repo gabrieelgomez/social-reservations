@@ -17,26 +17,27 @@
             .col-lg-3
               %p
                 %a.pull-right.link-widget Volver a relizar la búsqueda
+                  %i.
 
 
-  .container.js-widget.js-hide-widget
+  .container.js-widget.js-hide-widget.widget-results
     .row
       .col-lg-12
-        .widget__search
-          %ul.nav.nav-tabs.widget__search--items
+        .widget-results__search
+          %ul.nav.nav-tabs.widget-results__search--items
             %li.active
               %a{"data-toggle" => "tab", :href => "#transfers"} 
                 %i.fa.fa-car
                 Traslados
-            %li
+            -#%li
               %a{"data-toggle" => "tab", :href => "#circuits"}
                 %i.fa.fa-train
                 Circuitos
-            %li
+            -#%li
               %a{"data-toggle" => "tab", :href => "#tours"} 
                 %i.fa.fa-map-o
                 Tours
-            %li
+            -#%li
               %a.fix{"data-toggle" => "tab", :href => "#multidestines"} 
                 %i.fa.fa-plane
                 Multidestinos
@@ -170,9 +171,41 @@
                         flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do
                         %button.about-view.packages-btn
                           seleccionar
-:javascript
 
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
+%link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
+
+:javascript
+  validateForm('#search-input');
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
   });
+  $('#vuelo_vuelta').addClass('show-input');
+  //$( "#solo_ida").prop('checked', true);
+  $( "#ida_vuelta").prop('checked', true);
+  $('#round_trip').val(false);
+  /*$( '.radio-fecha-vuelos' ).on( 'click', function() {
+      if( $('#ida_vuelta').is(':checked') ){
+          $('#round_trip').val(true);
+          $('#vuelo_vuelta').removeClass('hidden-input');
+          $('#vuelo_vuelta').addClass('show-input');
+      } else {
+          $('#round_trip').val(false);
+          $('#vuelo_vuelta').removeClass('show-input');
+          $('#vuelo_vuelta').addClass('hidden-input');
+      }
+  });*/
+
+  $( '.radio-fecha-vuelos' ).on( 'click', function() {
+      if( $('#solo_ida').is(':checked') ){
+          $('#round_trip').val(true);
+          $('#vuelo_vuelta').addClass('hidden-input');
+
+      } else {
+        $('#vuelo_vuelta').removeClass('hidden-input');
+        $('#vuelo_vuelta').addClass('show-input');
+      }
+  });
+
