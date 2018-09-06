@@ -206,21 +206,8 @@
 
   validateForm('#search-input');
   $( "#ida_vuelta").prop('checked', true);
+  $('#round_trip').val(false);
   $( '.radio-fecha-vuelos' ).on( 'click', function() {
-      if( $('#solo_ida').is(':checked') ){
-          $('#round_trip').val(true);
-          $('#vuelo_vuelta').addClass('hidden-input');
-      } else {
-        $('#vuelo_vuelta').removeClass('hidden-input');
-        $('#vuelo_vuelta').addClass('show-input');
-      }
-  });
-
-  
-
- 
-  /*$('#round_trip').val(false);
-  /*$( '.radio-fecha-vuelos' ).on( 'click', function() {
       if( $('#ida_vuelta').is(':checked') ){
           $('#round_trip').val(true);
           $('#vuelo_vuelta').removeClass('hidden-input');
@@ -230,7 +217,7 @@
           $('#vuelo_vuelta').removeClass('show-input');
           $('#vuelo_vuelta').addClass('hidden-input');
       }
-  });*/
+  });
 
 
 
