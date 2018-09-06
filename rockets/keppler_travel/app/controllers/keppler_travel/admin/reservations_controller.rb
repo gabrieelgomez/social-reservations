@@ -4,7 +4,7 @@ module KepplerTravel
     # ReservationsController
     class ReservationsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application', except: [:new]
-      before_action :authenticate_user!, except: [:create, :find_or_create_user, :create_travellers]
+      before_action :authenticate_user!, except: [:create]
       before_action :set_reservation, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
       before_action :set_attachments
@@ -44,47 +44,11 @@ module KepplerTravel
       # POST /reservations
       def create
         @reservation = Reservation.new(reservation_params)
-        find_or_create_user
-        @reservation.user = @user
-        if @reservation.save!
-          create_travellers
+        if @reservation.save
           redirect(@reservation, params)
           # redirect_to main_app.root_path
         else
           render :new
-        end
-      end
-
-      def find_or_create_user
-        unless current_user
-          params[:user].each do |user|
-            @user = User.find_by(email: user[:email])
-            unless @user
-              @user = User.create(
-                name: user[:name],
-                email: user[:email],
-                dni: user[:dni],
-                phone: user[:phone],
-                password: Devise.friendly_token.first(8)
-              )
-              @user.add_role :client
-              @user.format_accessable_passwd(user[:password])
-            end
-          end
-
-        else
-          @user = current_user
-        end
-
-      end
-
-      def create_travellers
-        params[:travellers].each do |traveller|
-          Traveller.create(
-            name: traveller[:name],
-            dni: traveller[:dni],
-            reservation: @reservation
-          )
         end
       end
 
