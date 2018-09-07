@@ -39,6 +39,10 @@
         = simple_form_for @reservation, url: '/reservations_transfers', method: :post do |f|
 
           %input{value: @vehicle.id, type: 'hidden', name: 'vehicle_id'}
+          %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
+          %input{value: @lang, type: 'hidden', name: 'lang'}
+          %input{value: @currency, type: 'hidden', name: 'currency'}
+          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'token'}
           .col-lg-8
             .reservation-data
               // Datos de Reservación

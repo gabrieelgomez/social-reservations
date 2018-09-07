@@ -1,28 +1,39 @@
 module App
   # FrontsController
-  class ReservationsTransfersController < AppController
+  class ReservationsTransfersController < FrontController
     layout 'layouts/templates/application'
 
     # POST /reservations
     def create_reservations_transfers
-      @reservation = KepplerTravel::Reservation.new(reservation_params)
-      find_or_create_user
-      @reservation.user = @user
-      @reservation.vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
-      if @reservation.save!
-        create_travellers
-        ReservationMailer.transfer_status(@reservation, @user).deliver_now
-        # redirect(@reservation, params)
-        # redirect_to main_app.root_path
-      else
-        render :new
-      end
+      session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
+      session[:travellers]  = params[:travellers]
+      session[:user]        = params[:user]
+      session[:vehicle]     = KepplerTravel::Vehicle.find params[:vehicle_id]
+      session[:reservation_token] = params[:token]
+      redirect_to invoice_transfer_path(params[:lang], params[:currency])
+      # @reservation = KepplerTravel::Reservation.new(reservation_params)
+      # find_or_create_user
+      # @reservation.user = @user
+      # @reservation.vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
+      # if @reservation.save!
+      #   create_travellers
+      #   ReservationMailer.transfer_status(@reservation, @user).deliver_now
+      #   # redirect(@reservation, params)
+      #   # redirect_to main_app.root_path
+      # else
+      #   render :new
+      # end
     end
 
     def find_or_create_user
+      # if user not loggeding
       unless current_user
+
+        # each params user
         params[:user].each do |user|
           @user = User.find_by(email: user[:email])
+
+          # if user.nil?
           unless @user
             password = Devise.friendly_token.first(8)
             @user = User.create(
@@ -38,6 +49,7 @@ module App
             @user.format_accessable_passwd(password)
             ReservationMailer.send_password(@user).deliver_now
           end
+
         end
 
       else
@@ -55,6 +67,8 @@ module App
         )
       end
     end
+
+    private
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
