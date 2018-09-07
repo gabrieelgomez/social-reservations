@@ -59,10 +59,11 @@
 
     .box-btn-payment {
       height: 50px;
+      display: flex;
+      flex-direction: column;
 
       .btn-payment {
-        height: 40px;
-        float: right !important;
+        height: 25px;
         margin-right: 0 !important;
       }
     }

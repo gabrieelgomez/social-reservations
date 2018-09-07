@@ -2284,9 +2284,7 @@ label.container .checkmark:after {
 }
 
 .reservation-resumen {
-    display: flex;
-    flex-direction: column;
-    min-height: 1500px;
+    min-height: 1200px;
 }
 
 .sticky {
@@ -2300,4 +2298,10 @@ label.container .checkmark:after {
 
 .js-hide-widget {
     display: none;
+}
+
+.btn-reser {
+    width: 205px !important;
+    height: 40px !important;
+    margin-right: 0px !important;
 }
