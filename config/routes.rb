@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/', to: 'app/front#index'
     get 'vehicles', to: 'app/front#vehicles'
     get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
+    get 'invoice', to: 'app/front#invoice'
     # get 'show_vehicles/:id', to: 'app/front#show_vehicles', as: :show_vehicles
     # get 'login', to: 'app/front#login'
   end
