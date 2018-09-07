@@ -38,18 +38,18 @@
         .col-lg-2
         .col-lg-8
           .invoice-transfers__box
-            .row 
+            .row
               .col-xs-12
                 .row
                   .col-lg-2
                     %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
                   .col-lg-6
-                    
+
                     %h2 Receptivo Colombia
                     %p Operador turístico - Bogotá, Colombia
                   .col-lg-4
                     %h3.pull-right N° de Factura
-                    %h3.pull-right T-10005
+                    %h3.pull-right= @token
                 %hr/
                 .row
                   .col-xs-12
@@ -57,30 +57,32 @@
                       -# dates billing
                       %strong Datos Personales
                       %br/
-                      Gabriel Gómez
+                      = @user['name']
+                      -# %br/
+                      -# 12345678-A
                       %br/
-                      12345678-A
+                      = @user['phone']
                       %br/
-                      +58 412 5891414
+                      = @user['email']
                       %br/
-                      gabrieldev@gmail.com
-                      %br/
-                      Falcón, Venezuela.
+                      = @reservation['invoice_address']
                 .row
                   .col-xs-6
                     %address
                       %strong Método de Pago
                       %br/
                       Pĺataforma: EnLineaPagos
-                      %br/  
-                      MasterCard terminada **** 4242
+                      -# %br/
+                      -# MasterCard terminada **** 4242
                       %br/
-                      gabrielgomez@gmail.com
+                      = @user['name']
+                      %br/
+                      = @user['email']
                   .col-xs-6.text-right
                     %address
-                      %strong N°. Transacción
+                      %strong N°. Factura
                       %br/
-                      0000700058
+                      = @token
                       %br/
                       %br/
                 .row
@@ -91,15 +93,15 @@
                     %address
                       %strong Origen
                       %br/
-                      Aeropuerto El Dorado
+                      = @reservation['origin']
                       %br/
                       %strong Destino
                       %br/
-                      Hotel El Dorado
+                      = @reservation['arrival']
                       %br/
                       %strong Aerolinea
                       %br/
-                      Avior Airlines
+                      = @reservation['airline_origin'].blank? ? '-----------' : @reservation['airline_origin']
                       %br/
                   .col-xs-4
                     %address
@@ -108,26 +110,26 @@
                       Ida/Vuelta
                       %br/
                       %strong Adultos/Niños
-                      %br/
-                      5/1
+                      %br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
                       %br/
                       %strong N° de Vuelo
                       %br/
-                      R-7545211
+                      = @reservation['flight_number_origin'].blank? ? '-----------' : @reservation['flight_number_origin']
                       %br/
                   .col-xs-4
                     %address
                       %strong Fecha/Hora de Ida
                       %br/
-                      12/10/2018 - 10:00am 
+                      = @reservation['flight_origin']
                       %br/
                       %strong Fecha/Hora de Vuelta
                       %br/
-                      12/11/2018 - 12:00pm
+                      = @reservation['flight_arrival']
                       %br
-                      %strong Máx. Equipaje
+                      %strong Equipaje
                       %br/
-                      (5) piezas/1Kg
+                      = @reservation['quantity_kit']
+                      piezas
                 .row
                   .col-md-12
                     .panel.panel-default
@@ -149,11 +151,11 @@
                                   %strong Total
                             %tbody
                               %tr
-                                %td Traslado Vans (Ida/Vuelta)
-                                %td.text-center $ USD 200,00
-                                %td.text-center 2
-                                %td.text-right  $ USD 400,00
+                                %td= @vehicle['title'][@lang]
+                                %td.text-center= number_to_currency(@vehicle['price'][@currency].to_f, locale: @locale)
+                                %td.text-center= @multiple
+                                %td.text-right= number_to_currency(@price_total, locale: @locale)
                 .row
                   .col-lg-12
-                    .invoice-transfers__box--payment  
-                      = render 'app/front/button_payment'
+                    .invoice-transfers__box--payment
+                      = render 'app/front/invoice/vehicles/button_payment'
