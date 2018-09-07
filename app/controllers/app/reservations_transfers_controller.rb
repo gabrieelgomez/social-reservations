@@ -11,9 +11,8 @@ module App
       @reservation.vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
       if @reservation.save!
         create_travellers
-        # KepplerTravel::ReservationMailer.send_password(@user)
-        ApplicationMailer.testing
-        ContactMailer.client_contact
+        ReservationMailer.send_password(@user).deliver_now
+        ReservationMailer.transfer_status(@reservation, @user).deliver_now
         # redirect(@reservation, params)
         # redirect_to main_app.root_path
       else

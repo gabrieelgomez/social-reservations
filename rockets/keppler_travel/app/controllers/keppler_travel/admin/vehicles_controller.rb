@@ -43,7 +43,6 @@ module KepplerTravel
       def create
         @vehicle = Vehicle.new(vehicle_params)
         # @vehicle.destination_ids = params[:vehicle][:destination_ids].split(',').map(&:to_i)
-        # byebug
         if @vehicle.save
           redirect(@vehicle, params)
         else
