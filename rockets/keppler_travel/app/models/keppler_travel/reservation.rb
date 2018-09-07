@@ -8,6 +8,7 @@ module KepplerTravel
 
     # Relationships
     belongs_to :user
+    belongs_to :vehicle
     has_many :travellers
     accepts_nested_attributes_for :travellers
 

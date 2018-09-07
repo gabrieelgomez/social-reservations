@@ -97,12 +97,14 @@ ActiveRecord::Schema.define(version: 2018_09_06_124755) do
     t.text "invoice_address"
     t.text "description"
     t.bigint "user_id"
+    t.bigint "vehicle_id"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["user_id"], name: "index_keppler_travel_reservations_on_user_id"
+    t.index ["vehicle_id"], name: "index_keppler_travel_reservations_on_vehicle_id"
   end
 
   create_table "keppler_travel_travellers", force: :cascade do |t|

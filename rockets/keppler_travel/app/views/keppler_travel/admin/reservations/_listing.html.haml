@@ -7,6 +7,10 @@
             %input{ type:"checkbox", id: "checkbox-#{reservation.id}", 'checklist-model' => 'check', 'checklist-value' => "#{reservation.id}", '@click' => "listDelete(#{reservation.id})"}
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
+
+    %td.hidden-xs
+      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+        %span Traslado
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span

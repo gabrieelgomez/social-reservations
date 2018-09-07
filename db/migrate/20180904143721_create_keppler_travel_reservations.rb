@@ -18,6 +18,7 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
       t.text :invoice_address
       t.text   :description
       t.references :user, foreign_key: true
+      t.belongs_to :vehicle#, index: {name: 'vehicle_id'}
       t.integer :position
       t.datetime :deleted_at
 
