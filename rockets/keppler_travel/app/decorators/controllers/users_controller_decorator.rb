@@ -1,7 +1,6 @@
 # Admin::UsersController.class_eval do
 #
 #   def create
-#     byebug
 #   end
 #
 #   def update

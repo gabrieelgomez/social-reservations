@@ -33,6 +33,11 @@ module App
       @seats = @adults.to_i + @kids.to_i
     end
 
+
+    def invoice
+    
+    end
+
     private
 
     def set_search

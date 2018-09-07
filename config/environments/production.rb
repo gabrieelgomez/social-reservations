@@ -85,13 +85,13 @@ Rails.application.configure do
   config.action_mailer.default charset: 'utf-8'
 
   config.action_mailer.smtp_settings = {
-    address:              Rails.application.secrets.address,
-    port:                 587,
-    domain:               Rails.application.secrets.domain,
-    user_name:            Rails.application.secrets.email,
-    password:             Rails.application.secrets.password,
-    authentication:   'plain',
-    enable_starttls_auto: true
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    user_name: 'society.dev.test@gmail.com',
+    password: 'sawders.dev'
   }
 
   # Disable automatic flushing of the log to improve performance.
