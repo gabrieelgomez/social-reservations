@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
-  post '/reservations_transfers', to: 'app/reservations_transfers#create_reservations_transfers'
+  post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
+  post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
+
 
   namespace :admin do
     root to: 'admin#root'

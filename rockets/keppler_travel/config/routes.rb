@@ -1,6 +1,5 @@
 KepplerTravel::Engine.routes.draw do
   # Resources Reservations
-  # post '/reservations/transfers', to: 'reservations/transfers#create_reservations_transfers', as: :reservations_transfers
 
   namespace :admin do
     scope :travel, as: :travel do

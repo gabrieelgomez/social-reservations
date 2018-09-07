@@ -5,7 +5,7 @@ module App
     before_action :set_search, only: [:index, :vehicles, :reservations]
     before_action :set_vehicle, only: :reservations
     before_action :set_lang_currency
-    before_action :delete_session, except: [:invoice, :create_reservations_transfers]
+    before_action :delete_session, except: [:invoice, :create_reservation_transfer, :session_reservation_transfer]
 
 
     def set_locale_lang
@@ -38,6 +38,7 @@ module App
 
 
     def invoice
+      @reservation = KepplerTravel::Reservation.new
       @reservation = session[:reservation]
       @travellers  = session[:travellers].first
       @user        = session[:user].try(:first) || current_user
@@ -68,6 +69,7 @@ module App
       session.delete(:travellers)
       session.delete(:user)
       session.delete(:vehicle)
+      session.delete(:reservation_token)
     end
 
   end
