@@ -48,6 +48,10 @@ module App
       @price_total = @reservation['round_trip'] == 'true' ? @vehicle['price'][@currency].to_f*2 : @vehicle['price'][@currency].to_f
     end
 
+    def elp_redirect
+      byebug
+    end
+
     private
 
     def set_search

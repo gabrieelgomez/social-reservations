@@ -22,7 +22,7 @@ module App
         # create_travellers
         ReservationMailer.transfer_status(@reservation, @user).deliver_now
         # redirect(@reservation, params)
-        redirect_to main_app.root_path
+        redirect_to elp_redirect_path(@reservation.id, '1')
       else
         render :new
       end

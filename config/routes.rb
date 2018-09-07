@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
   post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
   post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
-
+  get  '/invoice/elp/:reservation_id/:invoice_id', to: 'app/reservations_transfers#elp_redirect', as: :elp_redirect
 
   namespace :admin do
     root to: 'admin#root'
