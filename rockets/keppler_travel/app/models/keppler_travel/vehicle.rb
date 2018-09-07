@@ -7,14 +7,14 @@ module KepplerTravel
     mount_uploader :cover, AttachmentUploader
     mount_uploaders :files, AttachmentUploader
     acts_as_list
-    # Fields for the search form in the navbar
 
-    # extend FriendlyId
-    # friendly_id :title, use: [:slugged, :finders]
+    # Relationships
+    has_many :reservations
 
     validates :cover, presence: true
     validates :title, uniqueness: true
 
+    # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "date", "time", "price", "position", "deleted_at"]
       build_query(fields, :or, :cont)
