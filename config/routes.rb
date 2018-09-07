@@ -3,12 +3,12 @@ Rails.application.routes.draw do
     get '/index', to: 'app/front#index', as: :app_index
   end
 
-  root to: 'app/front#set_locale'
+  root to: 'app/front#set_locale_lang'
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
     get 'vehicles', to: 'app/front#vehicles'
     get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
-    get 'invoice', to: 'app/front#invoice'
+    get 'invoice', to: 'app/front#invoice', as: :invoice_transfer
     # get 'show_vehicles/:id', to: 'app/front#show_vehicles', as: :show_vehicles
     # get 'login', to: 'app/front#login'
   end

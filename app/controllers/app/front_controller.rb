@@ -4,8 +4,11 @@ module App
     layout 'layouts/templates/application'
     before_action :set_search, only: [:index, :vehicles, :reservations]
     before_action :set_vehicle, only: :reservations
+    before_action :set_lang_currency
+    before_action :delete_session, except: [:invoice, :create_reservations_transfers]
 
-    def set_locale
+
+    def set_locale_lang
       @locale = request.protocol + request.host_with_port + '/es'
     end
 
@@ -35,7 +38,13 @@ module App
 
 
     def invoice
-    
+      @reservation = session[:reservation]
+      @travellers  = session[:travellers].first
+      @user        = session[:user].try(:first) || current_user
+      @vehicle     = session[:vehicle]
+      @token       = session[:reservation_token]
+      @multiple    = @reservation['round_trip'] == 'true' ? '2' : '1'
+      @price_total = @reservation['round_trip'] == 'true' ? @vehicle['price'][@currency].to_f*2 : @vehicle['price'][@currency].to_f
     end
 
     private
@@ -49,9 +58,17 @@ module App
       @vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
     end
 
-    def set_locale
+    def set_lang_currency
       @currency = params[:currency]
       @lang     = params[:locale]
     end
+
+    def delete_session
+      session.delete(:reservation)
+      session.delete(:travellers)
+      session.delete(:user)
+      session.delete(:vehicle)
+    end
+
   end
 end

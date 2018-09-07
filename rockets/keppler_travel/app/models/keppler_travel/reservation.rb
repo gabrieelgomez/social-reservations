@@ -9,7 +9,8 @@ module KepplerTravel
     # Relationships
     belongs_to :user
     belongs_to :vehicle
-    has_many :travellers
+    has_one    :invoice
+    has_many   :travellers
     accepts_nested_attributes_for :travellers
 
     # Fields for the search form in the navbar
