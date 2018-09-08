@@ -1,0 +1,809 @@
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles {
+  padding: 90px 0 90px 0;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles {
+  padding: 40px 0;
+  width: 100%;
+}
+/* line 8, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars {
+  height: auto;
+  width: 100%;
+  border: 1px solid #00000014;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+/* line 15, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__img {
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 23, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf {
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+/* line 30, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-title {
+  color: #4e4e56;
+  margin: 0;
+  padding: 0 0 15px 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  margin-bottom: 38px;
+}
+/* line 39, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-title .title {
+  text-align: left;
+  float: left;
+  box-shadow: 0px 2px 0px #43b7e8;
+}
+/* line 46, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf p {
+  text-align: left;
+  padding: 3px 0;
+}
+/* line 50, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf p span {
+  color: #4e4e56;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  margin: 5px 0;
+  font-size: 15px;
+}
+/* line 59, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf p span i {
+  margin-right: 5px;
+}
+/* line 65, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* line 71, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-price {
+  width: 100%;
+}
+/* line 74, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-price span {
+  text-align: left;
+  float: left;
+  color: #43b7e8;
+  font-weight: 500;
+  font-size: 17px;
+}
+/* line 83, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-btn {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+/* line 90, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .cars__inf .box-btn button {
+  width: 125px !important;
+}
+/* line 97, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .box-results {
+  width: 100%;
+}
+/* line 100, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .box-results .image-search {
+  padding: 40px 0;
+}
+/* line 103, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/vehicles.scss */
+.vehicles .content-vehicles .box-results .image-search img {
+  width: 170px;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan {
+  padding: 0 0 90px 0;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan .box-plan {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+/* line 9, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan .box-plan .box-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+}
+/* line 20, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan .box-plan .box-title h1 {
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+}
+
+/* line 30, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description {
+  padding: 0 0 90px 0;
+}
+/* line 33, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .box-information {
+  width: 100%;
+}
+/* line 37, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan {
+  width: 100%;
+  padding: 15px 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* line 49, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul {
+  list-style: 0;
+  border: 0;
+  margin: 0 auto;
+}
+/* line 54, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li {
+  display: inline-block;
+  border: 1px solid #47c1f5;
+  border-radius: 5px;
+  padding: 8px 0px;
+  width: 140px;
+  text-align: center;
+  margin: 0px 5px;
+  transition: .5s;
+  cursor: pointer;
+}
+/* line 65, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li:hover {
+  background-color: #47c1f5;
+  color: white;
+}
+/* line 70, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li a {
+  text-decoration: none;
+  color: transparent;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  line-height: normal;
+  cursor: pointer;
+}
+/* line 80, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li a:hover {
+  text-decoration: none;
+  color: transparent !important;
+  cursor: pointer !important;
+  background-color: transparent !important;
+  border: 0 solid transparent !important;
+  border-bottom-color: transparent !important;
+}
+/* line 89, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li a:focus {
+  color: transparent !important;
+  cursor: pointer !important;
+  background-color: transparent !important;
+  border: 0 solid transparent !important;
+  border-bottom-color: transparent !important;
+}
+/* line 97, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li a span {
+  font-size: 14px;
+  color: #5d5a5a;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+/* line 105, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan ul li:hover span {
+  color: white;
+}
+/* line 111, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan .tab-content {
+  padding: 25px 0;
+}
+/* line 115, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan .tab-content .tab-pane h3 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-size: 30px;
+  color: #4e4e56;
+  padding: 10px 0;
+  display: inline-block;
+  box-shadow: 0px 2px 0px #43b7e8;
+}
+/* line 127, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-description .category-plan .tab-content .tab-pane .plan-text {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-size: 14px;
+  padding: 25px 0;
+}
+
+/* line 140, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery {
+  padding: 0 0 90px 0;
+}
+/* line 143, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery {
+  width: 100%;
+}
+/* line 147, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-prev {
+  left: -50px !important;
+  z-index: 2;
+}
+/* line 151, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-prev:before {
+  font-size: 25px;
+  color: #43b7e8;
+}
+/* line 157, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-next {
+  right: -50px !important;
+  z-index: 2;
+}
+/* line 161, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-next:before {
+  font-size: 25px;
+  color: #43b7e8;
+}
+/* line 167, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-dots {
+  bottom: 10px;
+  z-index: 2;
+}
+/* line 173, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-dots .slick-active button:before {
+  color: #f50000;
+  opacity: 0.75;
+}
+/* line 182, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-dots li button:before {
+  color: #ffffff;
+  font-size: 10px;
+}
+/* line 187, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-dots li button:hover:before, .plan-galery .carrusel-galery .galery .slick-dots li button:focus:before {
+  color: #f50000;
+}
+/* line 195, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-slide {
+  height: 300px;
+  margin: 0px 10px;
+}
+/* line 199, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-slide img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* line 208, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-slide .mask-item {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+/* line 218, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-slide .banner-info {
+  height: 100%;
+  width: 100%;
+}
+/* line 222, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .carrusel-galery .galery .slick-slide .banner-info h1 {
+  color: white;
+  font-family: monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+/* line 238, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-galery .box-slider-galery {
+  padding: 40px 0;
+  width: 100%;
+}
+
+/* line 244, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation {
+  padding: 0 0 90px 0;
+}
+/* line 247, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing {
+  padding: 40px 0;
+}
+/* line 251, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing .form-group input {
+  color: #4e4e56 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+/* line 259, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing .form-group label {
+  padding: 4px 0;
+  color: #4e4e56 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+/* line 269, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing .form-separator {
+  width: 50%;
+}
+/* line 273, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing .box-billing-btn {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 20px 0 0 0;
+}
+/* line 281, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-reservation .box-billing .box-billing-btn .btn-billing {
+  width: 150px !important;
+  height: 50px !important;
+}
+
+/* line 289, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products {
+  padding: 0 0 90px 0;
+}
+/* line 293, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product {
+  width: 100%;
+}
+/* line 296, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-prev {
+  left: -50px !important;
+  z-index: 2;
+}
+/* line 300, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-prev:before {
+  font-size: 25px;
+  color: #43b7e8;
+}
+/* line 306, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-next {
+  right: -50px !important;
+  z-index: 2;
+}
+/* line 310, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-next:before {
+  font-size: 25px;
+  color: #43b7e8;
+}
+/* line 316, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-dots {
+  bottom: 10px;
+  z-index: 2;
+}
+/* line 322, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-dots .slick-active button:before {
+  color: #f50000;
+  opacity: 0.75;
+}
+/* line 331, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-dots li button:before {
+  color: #ffffff;
+  font-size: 10px;
+}
+/* line 336, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-dots li button:hover:before, .plan-featured-products .carrusel-product .product .slick-dots li button:focus:before {
+  color: #f50000;
+}
+/* line 344, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-slide {
+  height: 300px;
+  margin: 0px 10px;
+}
+/* line 348, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-slide img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* line 354, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-slide .mask-item {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+/* line 364, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-slide .banner-info {
+  height: 100%;
+  width: 100%;
+}
+/* line 368, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .carrusel-product .product .slick-slide .banner-info h1 {
+  color: white;
+  font-family: monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+/* line 384, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/show_vehicles.scss */
+.plan-featured-products .box-slider-featured-products {
+  padding: 40px 0;
+  width: 100%;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/input-validate.scss */
+.error-class {
+  color: #e60707 !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles {
+  padding: 90px 0;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation {
+  padding: 45px 0;
+}
+/* line 7, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .form-custom {
+  padding: 20px 0 0 0;
+}
+/* line 11, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .form-reservation {
+  margin-bottom: 0 !important;
+}
+/* line 15, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation h3 {
+  color: #4e4e56;
+  text-align: left;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 0;
+  display: inline-block;
+  box-shadow: 0px 2px 0px #43b7e8;
+}
+/* line 25, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation label {
+  padding: 1px 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  display: block;
+}
+/* line 32, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .title {
+  font-weight: 500;
+}
+/* line 36, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation input,
+.reservation-vehicles .box-reservation select {
+  border-radius: 0 !important;
+}
+/* line 41, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation ul {
+  padding: 40px 0;
+}
+/* line 44, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation ul li {
+  border-radius: 0;
+}
+/* line 49, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .box-btn-reservation {
+  padding: 40px 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+/* line 55, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .box-btn-reservation .btn-reservation {
+  height: 40px;
+}
+/* line 60, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .box-btn-payment {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+}
+/* line 65, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-reservation .box-btn-payment .btn-payment {
+  height: 25px;
+  margin-right: 0 !important;
+}
+/* line 72, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/reservation-vehicles.scss */
+.reservation-vehicles .box-search {
+  width: 100%;
+  height: 300px;
+  background: rebeccapurple;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget {
+  margin-top: -95px;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search {
+  background-color: #ffffff;
+  padding-bottom: 20px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+/* line 13, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items {
+  display: flex;
+}
+/* line 16, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items li {
+  flex: 1;
+  cursor: pointer;
+}
+/* line 20, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items li a {
+  text-align: center;
+  background-color: #43b7e8;
+  color: #ffffff;
+}
+/* line 25, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items li a:hover {
+  text-decoration: none;
+  border-color: #43b7e8 !important;
+  background-color: #43b7e8 !important;
+}
+/* line 31, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items li a:active {
+  color: #ffffff !important;
+  border-color: #43b7e8 !important;
+  background-color: #43b7e8 !important;
+}
+/* line 38, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget__search--items li .fix {
+  margin-right: 0 !important;
+}
+/* line 45, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .tab-content {
+  margin-top: 10px;
+  min-height: 170px;
+}
+/* line 50, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-transfers {
+  padding: 15px 25px 0 25px;
+  width: 100%;
+}
+/* line 54, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-transfers .box-btn {
+  margin-top: 25px;
+}
+/* line 57, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-transfers .box-btn button {
+  width: 120px;
+  margin-right: 0;
+  height: 35px;
+  color: #4e4e56;
+  font-weight: 500;
+  font-size: 13px;
+}
+/* line 65, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-transfers .box-btn button:hover {
+  color: #fff !important;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  background: #47c1f5;
+  border: 1px solid #47c1f5;
+  margin-top: -3px;
+}
+/* line 79, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-item h2 {
+  color: #565a5c;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+}
+/* line 89, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+.widget .box-item input {
+  font-size: 12px;
+}
+
+/* line 95, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget.scss */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results {
+  margin-top: 20px;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  padding-bottom: 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+/* line 13, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items {
+  display: flex;
+  border-bottom: 1px solid transparent !important;
+}
+/* line 17, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items li {
+  cursor: pointer;
+}
+/* line 20, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items li a {
+  text-align: center;
+  background-color: #43b7e8;
+  color: #ffffff;
+}
+/* line 25, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items li a:hover {
+  text-decoration: none;
+  border-color: #43b7e8 !important;
+  background-color: #43b7e8 !important;
+}
+/* line 31, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items li a:active {
+  color: #ffffff !important;
+  border-color: #43b7e8 !important;
+  background-color: #43b7e8 !important;
+}
+/* line 38, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results__search--items li .fix {
+  margin-right: 0 !important;
+}
+/* line 45, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .tab-content {
+  margin-top: 10px;
+  min-height: 170px;
+}
+/* line 50, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-transfers {
+  padding: 15px 25px 0 25px;
+  width: 100%;
+}
+/* line 54, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-transfers .box-btn {
+  margin-top: 25px;
+}
+/* line 57, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-transfers .box-btn button {
+  width: 120px;
+  margin-right: 0;
+  height: 35px;
+  color: #4e4e56;
+  font-weight: 500;
+  font-size: 13px;
+}
+/* line 65, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-transfers .box-btn button:hover {
+  color: #fff !important;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  background: #47c1f5;
+  border: 1px solid #47c1f5;
+  margin-top: -3px;
+}
+/* line 79, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-item h2 {
+  color: #565a5c;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+}
+/* line 89, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.widget-results .box-item input {
+  font-size: 12px;
+}
+
+/* line 95, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* line 101, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/widget-results.scss */
+.link-widget {
+  cursor: pointer;
+  color: #e53124;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* line 1, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-transfers {
+  padding: 90px 0;
+}
+/* line 4, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-transfers__box {
+  background: #ffffff;
+  border-radius: 5px;
+  margin-top: 51px;
+  padding: 50px 30px;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
+/* line 12, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-transfers__box h2 {
+  color: #4e4e56;
+}
+/* line 16, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-transfers__box h3 {
+  color: #4e4e56;
+}
+/* line 20, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-transfers__box--payment {
+  height: 50px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 30, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.invoice-title h2,
+.invoice-title h3 {
+  display: inline-block;
+}
+
+/* line 35, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.table > tbody > tr > .no-line {
+  border-top: none;
+}
+
+/* line 39, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.table > thead > tr > .no-line {
+  border-bottom: none;
+}
+
+/* line 43, /home/gabriel/Proyectos/SliceGroup/receptivo-colombia-w/app/assets/stylesheets/css/invoice-transfers.scss */
+.table > tbody > tr > .thick-line {
+  border-top: 2px solid;
+}

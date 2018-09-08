@@ -41,11 +41,11 @@ $('#new_reservation').validate({
  debug: true,errorElement: "label",
  submitHandler: function(form){
 
-  swal({
-  type: 'success',
-  title: '¡Listo!',
-  text: '¡Tu reservación ha sido enviada exitosamente!'
-  })
+  // swal({
+  // type: 'success',
+  // title: '¡Listo!',
+  // text: '¡Tu reservación ha sido enviada exitosamente!'
+  // })
 
   form.submit();
  }
