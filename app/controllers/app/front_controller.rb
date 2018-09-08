@@ -49,7 +49,6 @@ module App
     end
 
     def elp_redirect
-      byebug
     end
 
     private
