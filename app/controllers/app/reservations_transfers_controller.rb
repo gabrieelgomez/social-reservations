@@ -20,7 +20,7 @@ module App
       @reservation.reservationable = KepplerTravel::Vehicle.find session[:vehicle]['id']
       build_invoice
       if @reservation.save!
-        # create_travellers
+        create_travellers
         ReservationMailer.transfer_status(@reservation, @user).deliver_now
         # redirect(@reservation, params)
         redirect_to elp_redirect_path(@reservation.id, '1')
@@ -31,8 +31,8 @@ module App
 
     def build_invoice
       @reservation.build_invoice(
-        token: @invoice['token'],
-        address: @invoice['address']
+        token: session[:invoice].first['token'],
+        address: session[:invoice].first['address']
       )
     end
 
@@ -67,13 +67,11 @@ module App
     end
 
     def create_travellers
-      session[:travellers].first.each do |traveller|
-        KepplerTravel::Traveller.create(
-          name: traveller[:name],
-          dni: traveller[:dni],
-          reservation: @reservation
-        )
-      end
+      KepplerTravel::Traveller.create(
+        name: session[:travellers].first['name'],
+        dni: session[:travellers].first['dni'],
+        reservation: @reservation
+      )
     end
 
     private

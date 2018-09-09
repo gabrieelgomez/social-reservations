@@ -22,7 +22,7 @@
                       %p Operador turístico - Bogotá, Colombia
                     .col-lg-4
                       %h3.pull-right N° de Factura
-                      %h3.pull-right= @token
+                      %h3.pull-right= @invoice['token']
                   %hr/
                   .row
                     .col-xs-12
@@ -38,7 +38,7 @@
                         %br/
                         = @user['email']
                         %br/
-                        = "@reservation['invoice_address']"
+                        = @invoice['address']
                   .row
                     .col-xs-6
                       %address
@@ -55,7 +55,7 @@
                       %address
                         %strong N°. Factura
                         %br/
-                        = @token
+                        = @invoice['token']
                         %br/
                         %br/
                   .row

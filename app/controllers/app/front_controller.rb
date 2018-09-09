@@ -40,10 +40,10 @@ module App
     def invoice
       @reservation = KepplerTravel::Reservation.new
       @reservation = session[:reservation]
-      @travellers  = session[:travellers].first
+      @travellers  = session[:travellers].try(:first)
       @user        = session[:user].try(:first) || current_user
       @vehicle     = session[:vehicle]
-      @invoice     = session[:invoice]
+      @invoice     = session[:invoice].try(:first)
       @multiple    = @reservation['round_trip'] == 'true' ? '2' : '1'
       @price_total = @reservation['round_trip'] == 'true' ? @vehicle['price'][@currency].to_f*2 : @vehicle['price'][@currency].to_f
     end
