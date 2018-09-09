@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
 
   create_table "keppler_travel_invoices", force: :cascade do |t|
     t.string "token"
+    t.text "address"
     t.bigint "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,17 +103,18 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
     t.string "airline_arrival"
     t.string "flight_number_origin"
     t.string "flight_number_arrival"
-    t.text "invoice_address"
     t.text "description"
     t.bigint "user_id"
-    t.bigint "vehicle_id"
+    t.integer "reservationable_id"
+    t.string "reservationable_type"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
+    t.index ["reservationable_id"], name: "reservationable_id"
+    t.index ["reservationable_type"], name: "reservationable_type"
     t.index ["user_id"], name: "index_keppler_travel_reservations_on_user_id"
-    t.index ["vehicle_id"], name: "index_keppler_travel_reservations_on_vehicle_id"
   end
 
   create_table "keppler_travel_travellers", force: :cascade do |t|

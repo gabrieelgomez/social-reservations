@@ -6,10 +6,10 @@ module App
     # POST /reservations
     def session_reservation_transfer
       session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
-      session[:travellers]  = params[:travellers]
-      session[:user]        = params[:user]
       session[:vehicle]     = KepplerTravel::Vehicle.find params[:vehicle_id]
-      session[:reservation_token] = params[:token]
+      session[:user]        = params[:user]
+      session[:invoice]     = params[:invoice]
+      session[:travellers]  = params[:travellers]
       redirect_to invoice_transfer_path(params[:lang], params[:currency])
     end
 
@@ -17,7 +17,8 @@ module App
       @reservation = KepplerTravel::Reservation.new(session[:reservation])
       find_or_create_user
       @reservation.user = @user
-      @reservation.vehicle = KepplerTravel::Vehicle.find session[:vehicle]['id']
+      @reservation.reservationable = KepplerTravel::Vehicle.find session[:vehicle]['id']
+      build_invoice
       if @reservation.save!
         # create_travellers
         ReservationMailer.transfer_status(@reservation, @user).deliver_now
@@ -26,6 +27,13 @@ module App
       else
         render :new
       end
+    end
+
+    def build_invoice
+      @reservation.build_invoice(
+        token: @invoice['token'],
+        address: @invoice['address']
+      )
     end
 
     def find_or_create_user
@@ -72,7 +80,7 @@ module App
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
-      params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :invoice_address,
+      params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
                                           :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
                                           :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :description,
                                           :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,

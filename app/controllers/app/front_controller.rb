@@ -43,7 +43,7 @@ module App
       @travellers  = session[:travellers].first
       @user        = session[:user].try(:first) || current_user
       @vehicle     = session[:vehicle]
-      @token       = session[:reservation_token]
+      @invoice     = session[:invoice]
       @multiple    = @reservation['round_trip'] == 'true' ? '2' : '1'
       @price_total = @reservation['round_trip'] == 'true' ? @vehicle['price'][@currency].to_f*2 : @vehicle['price'][@currency].to_f
     end
@@ -72,7 +72,7 @@ module App
       session.delete(:travellers)
       session.delete(:user)
       session.delete(:vehicle)
-      session.delete(:reservation_token)
+      session.delete(:invoice)
     end
 
   end

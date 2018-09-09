@@ -41,7 +41,7 @@
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
-          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'token'}
+          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           .col-lg-8
             .reservation-data
               // Datos de Reservación

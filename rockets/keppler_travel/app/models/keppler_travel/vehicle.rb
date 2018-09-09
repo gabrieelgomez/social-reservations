@@ -9,7 +9,8 @@ module KepplerTravel
     acts_as_list
 
     # Relationships
-    has_many :reservations
+    # has_many :reservations
+    has_many :reservations, as: :reservationable, dependent: :delete_all
 
     validates :cover, presence: true
     validates :title, uniqueness: true
