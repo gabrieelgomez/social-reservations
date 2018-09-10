@@ -202,6 +202,10 @@
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
+%link{:href => "http://trentrichardson.com/examples/timepicker/jquery-ui-timepicker-addon.css", :rel => "stylesheet"}/
+%script{:src => "http://trentrichardson.com/examples/timepicker/jquery-ui-timepicker-addon.js"}
+
+
 :javascript
   validateForm('#search-input');
 
@@ -235,13 +239,13 @@
 
   $( function() {
     function populateEndDate() {
-      var date2 = $('#flight_origin_picker').datepicker('getDate');
+      var date2 = $('#flight_origin_picker').datetimepicker('getDate');
       date2.setDate(date2.getDate() + 1);
-      $('#flight_arrival_picker').datepicker('setDate', date2);
-      $("#flight_arrival_picker").datepicker("option", "minDate", date2);
+      $('#flight_arrival_picker').datetimepicker('setDate', date2);
+      $("#flight_arrival_picker").datetimepicker("option", "minDate", date2);
     }
 
-    $("#flight_origin_picker").datepicker({
+    $("#flight_origin_picker").datetimepicker({
       dateFormat: "dd-mm-yy",
       minDate: 1,
       onSelect: function(date) {
@@ -249,19 +253,19 @@
         var date = $('#flight_origin_picker').val()
         $('#reservation_flight_origin').val(date);
       }
-    }).datepicker("setDate", new Date());
-    $('#flight_arrival_picker').datepicker({
+    }).datetimepicker("setDate", new Date());
+    $('#flight_arrival_picker').datetimepicker({
       dateFormat: "dd-mm-yy",
       minDate: 2,
       onClose: function() {
-        var dt1 = $('#flight_origin_picker').datepicker('getDate');
-        var dt2 = $('#flight_arrival_picker').datepicker('getDate');
+        var dt1 = $('#flight_origin_picker').datetimepicker('getDate');
+        var dt2 = $('#flight_arrival_picker').datetimepicker('getDate');
         if (dt2 <= dt1) {
-          var minDate = $('#flight_arrival_picker').datepicker('option', 'minDate');
-          $('#flight_arrival_picker').datepicker('setDate', minDate);
+          var minDate = $('#flight_arrival_picker').datetimepicker('option', 'minDate');
+          $('#flight_arrival_picker').datetimepicker('setDate', minDate);
         }
         var date = $('#flight_arrival_picker').val()
         $('#reservation_flight_arrival').val(date);
       }
-    }).datepicker("setDate", new Date());
+    }).datetimepicker("setDate", new Date());
   } );
