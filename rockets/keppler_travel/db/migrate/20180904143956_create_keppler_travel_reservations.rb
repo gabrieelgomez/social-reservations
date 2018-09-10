@@ -18,6 +18,7 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
       t.string :flight_number_arrival
       # End fields -- normalizar
       t.text   :description
+      t.string :status
       t.belongs_to :user, foreign_key: true
       t.integer :reservationable_id, index: {name: 'reservationable_id'}
       t.string :reservationable_type, index: {name: 'reservationable_type'}

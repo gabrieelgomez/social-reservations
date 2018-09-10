@@ -16,6 +16,7 @@ module App
     def create_reservation_transfer
       @reservation = KepplerTravel::Reservation.new(session[:reservation])
       find_or_create_user
+      @reservation.status = :pending
       @reservation.user = @user
       @reservation.reservationable = KepplerTravel::Vehicle.find session[:vehicle]['id']
       build_invoice
@@ -32,7 +33,10 @@ module App
     def build_invoice
       @reservation.build_invoice(
         token: session[:invoice].first['token'],
-        address: session[:invoice].first['address']
+        address: session[:invoice].first['address'],
+        amount: nil,
+        currency: nil,
+        status: :pending
       )
     end
 

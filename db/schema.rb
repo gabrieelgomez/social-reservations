@@ -81,6 +81,9 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
 
   create_table "keppler_travel_invoices", force: :cascade do |t|
     t.string "token"
+    t.string "amount"
+    t.string "currency"
+    t.string "status"
     t.text "address"
     t.bigint "reservation_id"
     t.datetime "created_at", null: false
@@ -104,6 +107,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
     t.string "flight_number_origin"
     t.string "flight_number_arrival"
     t.text "description"
+    t.string "status"
     t.bigint "user_id"
     t.integer "reservationable_id"
     t.string "reservationable_type"
