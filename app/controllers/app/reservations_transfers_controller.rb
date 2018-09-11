@@ -10,7 +10,7 @@ module App
       session[:user]        = params[:user]
       session[:invoice]     = params[:invoice]
       session[:travellers]  = params[:travellers]
-      redirect_to invoice_transfer_path(params[:lang], params[:currency])
+      redirect_to checkout_path(params[:lang], params[:currency])
     end
 
     def create_reservation_transfer
@@ -24,7 +24,7 @@ module App
         create_travellers
         ReservationMailer.transfer_status(@reservation, @user).deliver_now
         # redirect(@reservation, params)
-        redirect_to elp_redirect_path(@reservation.id, @reservation.invoice.id)
+        redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
       else
         render :new
       end
