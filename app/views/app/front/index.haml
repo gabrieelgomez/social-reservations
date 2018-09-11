@@ -189,7 +189,7 @@
                         ver más
 
 
-                        
+
     %section#tours.tours
       .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}
         .mask-tours
@@ -279,7 +279,7 @@
                       %button.about-view.packages-btn
                         ver más
 
-    %section#tips-services.tips-services
+    %section#tips-services.tips-services.wow.fadeInDown.animated{"data-wow-duration" => "3s", :style => "visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;"}
       .container
         .gallary-header.text-center
           %h2
@@ -321,6 +321,8 @@
     %footer.footer-copyright
       = render 'app/layouts/footer'
     %script{:src => "/assets/js/navbar.js"}
+    %script{:src => "/assets/js/wow-settings.js"}
+    
     :javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
