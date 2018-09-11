@@ -24,18 +24,19 @@ module App
         create_travellers
         ReservationMailer.transfer_status(@reservation, @user).deliver_now
         # redirect(@reservation, params)
-        redirect_to elp_redirect_path(@reservation.id, '1')
+        redirect_to elp_redirect_path(@reservation.id, @reservation.invoice.id)
       else
         render :new
       end
     end
 
     def build_invoice
+      currency = session[:invoice].first['currency']
       @reservation.build_invoice(
         token: session[:invoice].first['token'],
         address: session[:invoice].first['address'],
-        amount: nil,
-        currency: nil,
+        amount: @reservation.reservationable.price[currency],
+        currency: currency,
         status: :pending
       )
     end

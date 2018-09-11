@@ -49,6 +49,10 @@ module App
     end
 
     def elp_redirect
+      @reservation = KepplerTravel::Reservation.find params[:reservation_id]
+      @invoice     = @reservation.invoice
+      @reservationable     = @reservation.reservationable
+      @user = @reservation.user
     end
 
     private
