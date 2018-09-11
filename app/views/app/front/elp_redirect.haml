@@ -10,10 +10,8 @@
           .animation  
             = render 'app/front/loader_svg'
       .loader__notify
-      .loader__info
-        = render 'app/front/form_payment'
-        -#%h4 Espere, mientra lo rediccionamos a la plataforma de pago...
-
+    .payment
+      = render 'app/front/form_payment'
 
 :javascript
   // Form submit function.
@@ -26,9 +24,7 @@
 
   $(window).load(function () {
     setTimeout(function () {
-      $('.loader').fadeOut(500, function () {
-        $(this).remove();
-      });
+      $('.loader').fadeOut();
     }, 1000);
   });
 

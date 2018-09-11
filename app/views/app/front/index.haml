@@ -26,21 +26,27 @@
       .category-services
         %ul
           %li
-            %a{:href => ""}
+            %a.filter-btn{"data-filter" => "all"}
+              %span todos
+          %li
+            %a.filter-btn{"data-filter" => ".transfers"}
               %span traslados
           %li
-            %a{:href => ""}
+            %a.filter-btn{"data-filter" => ".circuits"}
               %span circuitos
           %li
-            %a{:href => ""}
+            %a.filter-btn{"data-filter" => ".tours"}
               %span tours
           %li
-            %a{:href => ""}
+            %a.filter-btn{"data-filter" => ".multidestines"}
               %span multidestinos
+            
+
+
       .cards-services
-        .container
+        .container#mix-wrapper
           .row
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.transfers
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
@@ -64,7 +70,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.circuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
@@ -88,7 +94,7 @@
                     %a.link-card{:href => "#"}
                       .about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.tours
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
@@ -112,7 +118,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.multidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-4.jpg)"}
                 .box-information
@@ -136,7 +142,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.circuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-5.jpg)"}
                 .box-information
@@ -160,7 +166,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.multidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-6.jpg)"}
                 .box-information
@@ -321,3 +327,22 @@
         document.getElementById("my-video").play();
         // $('[data-toggle="datepicker"]').datepicker();
       });
+      $('#mix-wrapper').mixItUp({
+            load: {
+              sort: 'order:asc'
+            },
+            animation: {
+              
+              duration: 700
+            },
+            selectors: {
+              target: '.mix-target',
+              filter: '.filter-btn',
+              sort: '.sort-btn'
+            },
+            callbacks: {
+              onMixEnd: function(state){
+                console.log(state)
+              }
+            }
+          });
