@@ -5,7 +5,7 @@ module App
     before_action :set_search, only: [:index, :vehicles, :reservations]
     before_action :set_vehicle, only: :reservations
     before_action :set_lang_currency
-    before_action :delete_session, except: [:invoice, :create_reservations_transfers]
+    before_action :delete_session, except: [:checkout, :create_reservation_transfer, :session_reservation_transfer]
 
 
     def set_locale_lang
@@ -37,14 +37,25 @@ module App
     end
 
 
-    def invoice
+    def checkout
       @reservation = session[:reservation]
-      @travellers  = session[:travellers].first
-      @user        = session[:user].first
+      @travellers  = session[:travellers].try(:first)
+      @user        = session[:user].try(:first) || current_user
       @vehicle     = session[:vehicle]
-      @token       = session[:reservation_token]
+      @invoice     = session[:invoice].try(:first)
       @multiple    = @reservation['round_trip'] == 'true' ? '2' : '1'
       @price_total = @reservation['round_trip'] == 'true' ? @vehicle['price'][@currency].to_f*2 : @vehicle['price'][@currency].to_f
+    end
+
+    def invoice
+      byebug
+    end
+
+    def elp_redirect
+      @reservation = KepplerTravel::Reservation.find params[:reservation_id]
+      @invoice     = @reservation.invoice
+      @reservationable     = @reservation.reservationable
+      @user = @reservation.user
     end
 
     private
@@ -68,6 +79,7 @@ module App
       session.delete(:travellers)
       session.delete(:user)
       session.delete(:vehicle)
+      session.delete(:invoice)
     end
 
   end

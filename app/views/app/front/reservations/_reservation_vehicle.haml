@@ -35,14 +35,15 @@
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
-      .row
-        = simple_form_for @reservation, url: '/reservations_transfers', method: :post do |f|
-
+      = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post do |f|
+        .row{style:"display:flex;"}
           %input{value: @vehicle.id, type: 'hidden', name: 'vehicle_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
-          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'token'}
+          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
+          %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
+
           .col-lg-8
             .reservation-data
               // Datos de Reservación
@@ -54,28 +55,10 @@
               //Datos de Facturación
               = render 'app/front/reservations/vehicles/dates_billing'
 
-          -# %form#form1{:action => "https://www.enlineapagos.com/secure/gangway/index.do", :method => "post", :name => "form1"}
-          -#   %input#usuario{:name => "usuario", :type => "hidden", :value => "RECEPTIVO"}/
-          -#   %input#llavemd5{:name => "llavemd5", :type => "hidden", :value => "31469c35dfdb7c708d29a1cfe66f6aa9lahs85Xpa12572602401898393042587850772"}/
-          -#   %input#referencia{:name => "referencia", :type => "hidden", :value => "10001"}/
-          -#   %input#moneda{:name => "moneda", :type => "hidden", :value => "COP"}/
-          -#   %input#valor{:name => "valor", :type => "hidden", :value => "1000"}/
-          -#   %input#iva{:name => "iva", :type => "hidden", :value => "160"}/
-          -#   %input#baseiva{:name => "baseiva", :type => "hidden", :value => "840"}/
-          -#   %input#descripcion{:name => "descripcion", :type => "hidden", :value => "Primera Transacci�n"}/
-          -#   %input#urlback{:name => "urlback", :type => "hidden", :value => "http://www.midominio.com/respuesta/reciberespuesta.php"}/
-          -#   %input#documentonumero{:name => "documentonumero", :type => "hidden", :value => "72345600"}/
-          -#   %input#nombres{:name => "nombres", :type => "hidden", :value => "JUAN MANUEL"}/
-          -#   %input#apellidos{:name => "apellidos", :type => "hidden", :value => "PEREZ RODRIGUEZ"}/
-          -#   %input#email{:name => "email", :type => "hidden", :value => "pruebas@sudominio.com"}/
-          -#   %input#direccion{:name => "direccion", :type => "hidden", :value => "CRA 15 NRO 34 56"}/
-          -#   %input#telefono{:name => "telefono", :type => "hidden", :value => "3346070"}/
-          -#   %input#button{:name => "button", :type => "submit", :value => "Iniciar Transacci�n"}/
-
-
           .col-lg-4
             // Cuadro de Resumen
-            = render 'app/front/reservations/vehicles/resumen'
+            .reservation-resumen
+              = render 'app/front/reservations/vehicles/resumen'
 
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/

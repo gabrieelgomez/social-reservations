@@ -4,52 +4,65 @@ module App
     layout 'layouts/templates/application'
 
     # POST /reservations
-    def create_reservations_transfers
+    def session_reservation_transfer
       session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
-      session[:travellers]  = params[:travellers]
-      session[:user]        = params[:user]
       session[:vehicle]     = KepplerTravel::Vehicle.find params[:vehicle_id]
-      session[:reservation_token] = params[:token]
-      redirect_to invoice_transfer_path(params[:lang], params[:currency])
-      # @reservation = KepplerTravel::Reservation.new(reservation_params)
-      # find_or_create_user
-      # @reservation.user = @user
-      # @reservation.vehicle = KepplerTravel::Vehicle.find params[:vehicle_id]
-      # if @reservation.save!
-      #   create_travellers
-      #   ReservationMailer.transfer_status(@reservation, @user).deliver_now
-      #   # redirect(@reservation, params)
-      #   # redirect_to main_app.root_path
-      # else
-      #   render :new
-      # end
+      session[:user]        = params[:user]
+      session[:invoice]     = params[:invoice]
+      session[:travellers]  = params[:travellers]
+      redirect_to checkout_path(params[:lang], params[:currency])
+    end
+
+    def create_reservation_transfer
+      @reservation = KepplerTravel::Reservation.new(session[:reservation])
+      find_or_create_user
+      @reservation.status = :pending
+      @reservation.user = @user
+      @reservation.reservationable = KepplerTravel::Vehicle.find session[:vehicle]['id']
+      build_invoice
+      if @reservation.save!
+        create_travellers
+        ReservationMailer.transfer_status(@reservation, @user).deliver_now
+        # redirect(@reservation, params)
+        redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+      else
+        render :new
+      end
+    end
+
+    def build_invoice
+      currency = session[:invoice].first['currency']
+      @reservation.build_invoice(
+        token: session[:invoice].first['token'],
+        address: session[:invoice].first['address'],
+        amount: @reservation.reservationable.price[currency],
+        currency: currency,
+        status: :pending
+      )
     end
 
     def find_or_create_user
       # if user not loggeding
       unless current_user
-
         # each params user
-        params[:user].each do |user|
-          @user = User.find_by(email: user[:email])
+        @user_session = session[:user].first
+        @user = User.find_by(email: @user_session['email'])
 
-          # if user.nil?
-          unless @user
-            password = Devise.friendly_token.first(8)
-            @user = User.create(
-              name: user[:name],
-              email: user[:email],
-              dni: user[:dni],
-              phone: user[:phone],
-              password: '123123123',
-              password_confirmation: password,
-              password: password
-            )
-            @user.add_role :client
-            @user.format_accessable_passwd(password)
-            ReservationMailer.send_password(@user).deliver_now
-          end
-
+        # if user.nil?
+        unless @user
+          password = Devise.friendly_token.first(8)
+          @user = User.create(
+            name: @user_session['name'],
+            email: @user_session['email'],
+            dni: @user_session['dni'],
+            phone: @user_session['phone'],
+            password: '123123123',
+            password_confirmation: password,
+            password: password
+          )
+          @user.add_role :client
+          @user.format_accessable_passwd(password)
+          ReservationMailer.send_password(@user).deliver_now
         end
 
       else
@@ -59,20 +72,18 @@ module App
     end
 
     def create_travellers
-      params[:travellers].each do |traveller|
-        KepplerTravel::Traveller.create(
-          name: traveller[:name],
-          dni: traveller[:dni],
-          reservation: @reservation
-        )
-      end
+      KepplerTravel::Traveller.create(
+        name: session[:travellers].first['name'],
+        dni: session[:travellers].first['dni'],
+        reservation: @reservation
+      )
     end
 
     private
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
-      params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :invoice_address,
+      params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
                                           :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
                                           :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :description,
                                           :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,

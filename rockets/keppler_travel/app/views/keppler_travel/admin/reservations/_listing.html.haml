@@ -10,7 +10,12 @@
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span Traslado
+        %span= reservation.reservationable.class.to_s.split('::').last
+        
+    %td.hidden-xs
+      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+        %span= reservation.invoice.status
+
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
