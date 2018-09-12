@@ -2316,3 +2316,7 @@ label.container .checkmark:after {
 .mix-target {
     display: none;
 }
+
+.items-orders th {
+    text-align: center !important;
+}
