@@ -1,0 +1,13 @@
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="300px" height="300.4px" viewBox="0 0 300 300.4" style="enable-background:new 0 0 300 300.4;"
+	 xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#ffc600;}
+</style>
+<defs>
+</defs>
+<path class="st0" d="M225.1,201.8v-15h70.6c2.3-9.4,3.8-19.1,4.3-29h-74.9v-15H300c-0.5-10-2-19.7-4.3-29h-70.6v-15h66
+	C270.1,41.1,214.8,0,150,0S29.9,41.1,8.9,98.6h66v15H4.3C2,123,0.5,132.7,0,142.7h74.9v15H0c0.5,10,2,19.7,4.3,29h70.6v15h-66
+	c21,57.5,76.3,98.6,141.1,98.6s120.1-41.1,141.1-98.6H225.1z M150,183.1l-32.9-32.9l32.9-32.9l32.9,32.9L150,183.1z"/>
+</svg>
