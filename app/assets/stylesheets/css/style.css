@@ -2311,3 +2311,7 @@ label.container .checkmark:after {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+.mix-target {
+    display: none;
+}

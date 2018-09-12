@@ -16,7 +16,7 @@
         .row
           = render 'app/layouts/widget'
 
-    %section#services.services
+    %section#services.services.wow.fadeInDown.animated{"data-wow-duration" => "3s", :style => "visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;"}
       .container
         .gallary-header.text-center
           %h2
@@ -25,22 +25,25 @@
             Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
       .category-services
         %ul
-          %li
-            %a{:href => ""}
+          %li.filter-btn{"data-filter" => "all"}
+            %a
+              %span todos
+          %li.filter-btn{"data-filter" => ".transfers"}
+            %a
               %span traslados
-          %li
-            %a{:href => ""}
+          %li.filter-btn{"data-filter" => ".circuits"}
+            %a
               %span circuitos
-          %li
-            %a{:href => ""}
+          %li.filter-btn{"data-filter" => ".tours"}
+            %a
               %span tours
-          %li
-            %a{:href => ""}
+          %li.filter-btn{"data-filter" => ".multidestines"}
+            %a
               %span multidestinos
       .cards-services
-        .container
+        .container#mix-wrapper
           .row
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.transfers
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
@@ -64,7 +67,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.circuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
@@ -88,7 +91,7 @@
                     %a.link-card{:href => "#"}
                       .about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.tours
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
@@ -112,7 +115,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.multidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-4.jpg)"}
                 .box-information
@@ -136,7 +139,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.circuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-5.jpg)"}
                 .box-information
@@ -160,7 +163,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.mix-target.multidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-6.jpg)"}
                 .box-information
@@ -185,6 +188,8 @@
                       %button.about-view.packages-btn
                         ver más
 
+
+
     %section#tours.tours
       .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}
         .mask-tours
@@ -207,7 +212,7 @@
       .cards-top-tours
         .container
           .row
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
@@ -229,7 +234,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
@@ -251,7 +256,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6
+            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
@@ -274,7 +279,7 @@
                       %button.about-view.packages-btn
                         ver más
 
-    %section#tips-services.tips-services
+    %section#tips-services.tips-services.wow.fadeInDown.animated{"data-wow-duration" => "3s", :style => "visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;"}
       .container
         .gallary-header.text-center
           %h2
@@ -316,8 +321,29 @@
     %footer.footer-copyright
       = render 'app/layouts/footer'
     %script{:src => "/assets/js/navbar.js"}
+    %script{:src => "/assets/js/wow-settings.js"}
+    
     :javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
         // $('[data-toggle="datepicker"]').datepicker();
       });
+      $('#mix-wrapper').mixItUp({
+            load: {
+              sort: 'order:asc'
+            },
+            animation: {
+              
+              duration: 700
+            },
+            selectors: {
+              target: '.mix-target',
+              filter: '.filter-btn',
+              sort: '.sort-btn'
+            },
+            callbacks: {
+              onMixEnd: function(state){
+                console.log(state)
+              }
+            }
+          });
