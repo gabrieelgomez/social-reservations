@@ -57,10 +57,7 @@ module App
       @reservationable     = @reservation.reservationable
       @user = @reservation.user
     end
-
-    def admin_dashboard
-
-    end
+    
 
     private
 

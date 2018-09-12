@@ -48,10 +48,11 @@
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to t('devise.sign_out'), destroy_session_path(current_user)
-                    %li
                       = link_to dashboard_path, class:"" do
                         %span Dashboard
+                    %li
+                      = link_to t('devise.sign_out'), destroy_session_path(current_user)
+
               - else
                 = link_to new_user_session_path, class:"pull-right" do
                   %p

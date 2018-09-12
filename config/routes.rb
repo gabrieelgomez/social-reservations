@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   localized do
     get '/index', to: 'app/front#index', as: :app_index
   end
-
   root to: 'app/front#set_locale_lang'
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
@@ -10,7 +9,9 @@ Rails.application.routes.draw do
     get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
     get '/checkout', to: 'app/front#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
-    get '/admin_dashboard', to: 'app/front#admin_dashboard', as: :admin_dashboard
+    get '/dashboard', to: 'app/front#dashboard', as: :dashboard
+    get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
+    
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
@@ -158,7 +159,7 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#internal_server_error', via: :all
 
   # Dashboard routes engine
-  mount KepplerGaDashboard::Engine, at: 'admin/dashboard', as: 'dashboard'
+  mount KepplerGaDashboard::Engine, at: 'admin/dashboard', as: 'admin_dashboard'
 
   # Travel routes engine
   mount KepplerTravel::Engine, at: '/', as: 'travel'
