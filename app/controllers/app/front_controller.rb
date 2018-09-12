@@ -51,11 +51,15 @@ module App
       byebug
     end
 
-    def elp_redirect
+    def transaction_payment
       @reservation = KepplerTravel::Reservation.find params[:reservation_id]
       @invoice     = @reservation.invoice
       @reservationable     = @reservation.reservationable
       @user = @reservation.user
+    end
+
+    def admin_dashboard
+
     end
 
     private

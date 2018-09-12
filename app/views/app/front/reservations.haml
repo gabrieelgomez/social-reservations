@@ -6,18 +6,18 @@
   %body{style:"padding-top:120px;"}
     %header
       = render 'app/layouts/navbar'
+      .loader
+        = render 'app/front/loader/loader'
+
+
 
     = render 'app/front/reservations/reservation_vehicle'
 
     %footer.footer-copyright
       = render 'app/layouts/footer'
-    %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
 
+    %script{:src => "/assets/js/loader.js"}
+    %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
     :javascript
       $('.navigation-front').removeClass('background-hide');
       $('.navigation-front').addClass('background-show');
-      $(document).ready(function(){
-        // $('[data-toggle="datepicker"]').datepicker();
-        // $('#destinations-booking_a').selectize({});
-        // $('#destinations-booking_b').selectize({});
-      });

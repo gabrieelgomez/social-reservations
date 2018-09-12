@@ -10,16 +10,14 @@ Rails.application.routes.draw do
     get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
     get '/checkout', to: 'app/front#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
-
-    # get 'show_vehicles/:id', to: 'app/front#show_vehicles', as: :show_vehicles
-    # get 'login', to: 'app/front#login'
+    get '/admin_dashboard', to: 'app/front#admin_dashboard', as: :admin_dashboard
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
   post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
   post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
-  get  '/checkout/elp/:reservation_id/:invoice_id', to: 'app/reservations_transfers#elp_redirect', as: :checkout_elp_redirect
+  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations_transfers#transaction_payment', as: :checkout_elp_redirect
 
   namespace :admin do
     root to: 'admin#root'
