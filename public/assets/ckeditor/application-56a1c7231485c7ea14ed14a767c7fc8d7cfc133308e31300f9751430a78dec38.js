@@ -612,7 +612,7 @@ qq.extend(qq.FileUploader.prototype, {
             onDrop: function(e){
                 dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);
-                self._uploadFileList(e.dataVehicle.files);    
+                self._uploadFileList(e.dataTransfer.files);    
             }
         });
                 
@@ -732,8 +732,8 @@ qq.UploadDropZone.prototype = {
         if (!qq.UploadDropZone.dropOutsideDisabled ){
 
             qq.attach(document, 'dragover', function(e){
-                if (e.dataVehicle){
-                    e.dataVehicle.dropEffect = 'none';
+                if (e.dataTransfer){
+                    e.dataTransfer.dropEffect = 'none';
                     e.preventDefault(); 
                 }           
             });
@@ -747,11 +747,11 @@ qq.UploadDropZone.prototype = {
         qq.attach(self._element, 'dragover', function(e){
             if (!self._isValidFileDrag(e)) return;
             
-            var effect = e.dataVehicle.effectAllowed;
+            var effect = e.dataTransfer.effectAllowed;
             if (effect == 'move' || effect == 'linkMove'){
-                e.dataVehicle.dropEffect = 'move'; // for FF (only move allowed)    
+                e.dataTransfer.dropEffect = 'move'; // for FF (only move allowed)    
             } else {                    
-                e.dataVehicle.dropEffect = 'copy'; // for Chrome
+                e.dataTransfer.dropEffect = 'copy'; // for Chrome
             }
                                                      
             e.stopPropagation();
@@ -784,7 +784,7 @@ qq.UploadDropZone.prototype = {
         });          
     },
     _isValidFileDrag: function(e){
-        var dt = e.dataVehicle,
+        var dt = e.dataTransfer,
             // do not check dt.types.contains in webkit, because it crashes safari 4            
             isWebkit = navigator.userAgent.indexOf("AppleWebKit") > -1;                        
 
@@ -2115,7 +2115,7 @@ qq.extend(qq.FileUploaderInput.prototype, {
             onDrop: function(e){
                 dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);
-                self._uploadFileList(e.dataVehicle.files);
+                self._uploadFileList(e.dataTransfer.files);
             }
         });
 

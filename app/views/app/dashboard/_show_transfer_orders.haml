@@ -1,0 +1,85 @@
+%section.content-header
+  %h1
+    Ordenes
+    %small Traslados
+  -#%ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Level
+    %li.active Here
+%section.content.container-fluid
+  .container
+    .col-lg-12
+      .row
+        .table-responsive
+          %table.table.table-bordered.table-condensed
+            %thead
+              %tr.items-orders
+                %th Order N°
+                %th Origen
+                %th Destino
+                %th People
+                %th Status del Pago
+                %th Pago
+                %th Usuario
+            %tbody{style:'text-align: center;'}
+              %tr
+                %td 12345678
+                %td Aeropuerto El Dorado
+                %td Hotel El Dorado
+                %td 5
+                %td{style:"text-align: center;"}
+                  %span.label.label-info Pending
+                %td{style:"text-align: center;"}
+                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                    %button.btn.btn-primary.btn-xs{:disabled => "disabled","data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                      %span
+                        %i.icon-credit-card.icons
+                      Pay
+
+                %td info@slicegroup.xyz
+
+              %tr
+                %td 12345678
+                %td Aeropuerto El Dorado
+                %td Hotel El Dorado
+                %td 5
+                %td{style:"text-align: center;"}
+                  %span.label.label-success Approved
+                %td{style:"text-align: center;"}
+                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                    %span
+                      %i.icon-plane.icons
+                %td info@slicegroup.xyz
+
+
+              %tr
+                %td 12345678
+                %td Aeropuerto El Dorado
+                %td Hotel El Dorado
+                %td 5
+                %td{style:"text-align: center;"}
+                  %span.label.label-danger Canceled
+                %td{style:"text-align: center;"}
+                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                    %button.btn.btn-primary.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                      %span
+                        %i.icon-credit-card.icons
+                      Pay
+                %td info@slicegroup.xyz
+
+              %tr
+                %td 12345678
+                %td Aeropuerto El Dorado
+                %td Hotel El Dorado
+                %td 5
+                %td{style:"text-align: center;"}
+                  %span.label.label-warning Rejected
+                %td{style:"text-align: center;"}
+                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                    %button.btn.btn-primary.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                      %span
+                        %i.icon-credit-card.icons
+                      Pay
+                %td info@slicegroup.xyz

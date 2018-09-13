@@ -6,6 +6,9 @@
   %body
     %header
       = render 'app/layouts/navbar'
+      .loader
+        = render 'app/front/loader/loader'
+
 
     %section#home.about-us
       %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
@@ -16,9 +19,10 @@
         .row
           = render 'app/layouts/widget'
 
-    %section#services.services.wow.fadeInDown.animated{"data-wow-duration" => "3s", :style => "visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;"}
+    %section#services.services
       .container
-        .gallary-header.text-center
+        .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
+
           %h2
             Conoce lo que tenemos para ti
           %p
@@ -28,7 +32,7 @@
           %li.filter-btn{"data-filter" => "all"}
             %a
               %span todos
-          %li.filter-btn{"data-filter" => ".transfers"}
+          -#%li.filter-btn{"data-filter" => ".transfers"}
             %a
               %span traslados
           %li.filter-btn{"data-filter" => ".circuits"}
@@ -43,7 +47,7 @@
       .cards-services
         .container#mix-wrapper
           .row
-            .col-md-4.col-sm-6.mix-target.transfers
+            .col-md-4.col-sm-6.mix-target.circuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
@@ -320,30 +324,13 @@
 
     %footer.footer-copyright
       = render 'app/layouts/footer'
+    
+    %script{:src => "/assets/js/loader.js"}
     %script{:src => "/assets/js/navbar.js"}
+    %script{:src => "/assets/js/mixitup-setting.js"}
     %script{:src => "/assets/js/wow-settings.js"}
     
     :javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
-        // $('[data-toggle="datepicker"]').datepicker();
       });
-      $('#mix-wrapper').mixItUp({
-            load: {
-              sort: 'order:asc'
-            },
-            animation: {
-              
-              duration: 700
-            },
-            selectors: {
-              target: '.mix-target',
-              filter: '.filter-btn',
-              sort: '.sort-btn'
-            },
-            callbacks: {
-              onMixEnd: function(state){
-                console.log(state)
-              }
-            }
-          });
