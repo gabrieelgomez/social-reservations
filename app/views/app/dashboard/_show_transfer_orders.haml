@@ -4,26 +4,25 @@
     %small Traslados
 %section.content.container-fluid
   .container
-    .col-lg-12
-      .row
+    .row
+      .col-lg-12
         .table-responsive
-          %table.table.table-bordered.table-condensed
+          %table.table.table-condensed
             %thead
               %tr.items-orders
                 %th Order N°
                 %th Origen
                 %th Destino
                 %th Pasajeros
-                %th Estatus del Pago
-                %th Pay
+                %th Estatus
+                %th Pago
                 %th Usuario
             %tbody{style:'text-align: center;'}
               - current_user.reservations.each do |reservation|
-                -# - next unless reservation.reservationable_type == 'KepplerTravel::Vehicle'
                 %tr
                   %td= reservation.invoice.token
-                  %td= reservation.origin
-                  %td= reservation.arrival
+                  %td= truncate(reservation.origin, :length => 25)
+                  %td= truncate(reservation.arrival, :length => 25)
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
