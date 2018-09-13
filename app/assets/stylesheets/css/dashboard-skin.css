@@ -3,7 +3,8 @@
  * ----------
  */
 .skin-blue .main-header .navbar {
-  background-color: #4e4e56;
+  background-color: #74747F;
+
 }
 
 .skin-blue .main-header .navbar .nav>li>a {
@@ -59,7 +60,7 @@
 }
 
 .skin-blue .main-header .logo:hover {
-  background-color: #357ca5;
+  /*background-color: #357ca5;*/
 }
 
 .skin-blue .main-header li.user-header {
@@ -73,7 +74,8 @@
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background-color: #222d32;
+
+  background-color: #3A3A40;
 }
 
 .skin-blue .user-panel>.info,
@@ -83,11 +85,11 @@
 
 .skin-blue .sidebar-menu>li.header {
   color: #ffffff;
-  background: #1a2226;
+  background: #43b7e8;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-
+  font-weight: bold;
 
 }
 
@@ -99,7 +101,7 @@
 .skin-blue .sidebar-menu>li.active>a,
 .skin-blue .sidebar-menu>li.menu-open>a {
   color: #ffffff;
-  background: #1e282c;
+  background: #777777;
 }
 
 .skin-blue .sidebar-menu>li.active>a {
@@ -108,7 +110,7 @@
 
 .skin-blue .sidebar-menu>li>.treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: rgba(0, 0, 0, 0.20);
 }
 
 .skin-blue .sidebar a {
@@ -137,7 +139,7 @@
 .skin-blue .sidebar-form input[type="text"],
 .skin-blue .sidebar-form .btn {
   box-shadow: none;
-  background-color: #374850;
+  /*background-color: #374850;*/
   border: 1px solid transparent;
   height: 35px;
 }
