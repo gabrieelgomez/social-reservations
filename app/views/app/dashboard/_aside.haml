@@ -5,7 +5,7 @@
     .pull-left.image
       %img.user-image{:alt => "", :src => "/assets/img/user.png"}/
     .pull-left.info
-      %p Keppler Admin
+      %p= current_user.name
       / Status
       -#%a{:href => "#"}
         %i.fa.fa-circle.text-success
@@ -33,25 +33,25 @@
     %li.treeview
       %a{:href => "#"}
         %i.icon-docs.icons
-        %span Orders
+        %span Ordenes
         %span.pull-right-container
           %i.fa.fa-angle-left.pull-right
       %ul.treeview-menu
         %li
           = link_to transfer_orders_path, class:"" do
-            Transfers
+            Traslados / Vehículos
         %li
-          %a{:href => "#"} Circuits
+          %a{:href => "#"} Circuitos
         %li
           %a{:href => "#"} Tours
         %li
-          %a{:href => "#"} Multidestines
+          %a{:href => "#"} Multidestinos
     %li.treeview
       %a{:href => "#"}
         %i.icon-user.icons
-        %span Profile
+        %span Perfil
         %span.pull-right-container
           %i.fa.fa-angle-left.pull-right
       %ul.treeview-menu
         %li
-          %a{:href => "#"} Information
+          %a{:href => "#"} Información

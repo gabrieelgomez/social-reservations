@@ -48,7 +48,7 @@
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to dashboard_path, class:"" do
+                      = link_to transfer_orders_path(@lang, @currency), class:"" do
                         %span Dashboard
                     %li
                       = link_to t('devise.sign_out'), destroy_session_path(current_user)

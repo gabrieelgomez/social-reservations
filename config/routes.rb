@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
     get '/checkout', to: 'app/front#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
-    get '/dashboard', to: 'app/front#dashboard', as: :dashboard
+    # get '/dashboard', to: 'app/front#dashboard', as: :dashboard
     get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
-    
+
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise

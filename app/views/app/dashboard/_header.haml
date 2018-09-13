@@ -1,4 +1,4 @@
-= link_to dashboard_path, class:"logo", style:"margin-top: 0px !important;" do
+= link_to "/#{@lang}/#{@currency}", class:"logo", style:"margin-top: 0px !important;" do
   %span Receptivo Colombia
   %span.logo-mini
     %b> RC
@@ -90,7 +90,7 @@
           -#%img{:alt => "User Image", :src => "dist/img/user2-160x160.jpg"}/
           %img.user-image{:alt => "", :src => "/assets/img/user.png"}/
           / hidden-xs hides the username on small devices so only the image appears.
-          %span.hidden-xs Keppler Admin
+          %span.hidden-xs= current_user.name
         %ul.dropdown-menu
           / The user image in the menu
           %li.user-header

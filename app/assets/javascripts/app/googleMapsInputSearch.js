@@ -20,6 +20,7 @@ $(document).ready(function () {
         var place = autocomplete.getPlace();
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
+        // debugger
 
         if (id_input == 'origin_vehicle'){
           let field = $('#origin_hidden');

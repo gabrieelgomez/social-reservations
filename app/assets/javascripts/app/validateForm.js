@@ -11,7 +11,13 @@ function validateForm(id_form) {
       'origin_vehicle': {
         required: true
       },
+      'origin_hidden': {
+        required: true
+      },
       'arrival_vehicle': {
+        required: true
+      },
+      'arrival_hidden': {
         required: true
       },
       'flight_origin_picker': {
@@ -28,6 +34,8 @@ function validateForm(id_form) {
       },
       'origin_vehicle': 'No puede estar en blanco',
       'arrival_vehicle': 'No puede estar en blanco',
+      'origin_hidden': 'No puede estar en blanco',
+      'arrival_hidden': 'No puede estar en blanco',
       'flight_origin_picker': 'No puede estar en blanco',
       'flight_arrival_picker': 'No puede estar en blanco'
     },
