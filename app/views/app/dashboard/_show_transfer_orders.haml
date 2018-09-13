@@ -26,13 +26,15 @@
                   %td= reservation.arrival
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
-                    %span.label.label-info= reservation.status
+                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
                   %td{style:"text-align: center;"}
                     - if reservation.invoice.status_pay? :pending
                       %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Pagar factura"}
-                        %a.btn.btn-primary.btn-xs{href: 'https://www.google.co.ve/'}
+                        %a.btn.btn-primary.btn-xs{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id)}
                           %span
                             %i.icon-credit-card.icons
                           Pay
+                    - else
+                      %h6 Pagado
 
                   %td= current_user.email
