@@ -8,7 +8,7 @@ module App
     end
 
     private
-    
+
     def set_lang_currency
       @currency = params[:currency]
       @lang     = params[:locale]

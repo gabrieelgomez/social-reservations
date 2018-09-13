@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get '/invoice', to: 'app/front#invoice', as: :invoice
     # get '/dashboard', to: 'app/front#dashboard', as: :dashboard
     get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
-
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
@@ -159,7 +158,7 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#internal_server_error', via: :all
 
   # Dashboard routes engine
-  mount KepplerGaDashboard::Engine, at: 'admin/dashboard', as: 'admin_dashboard'
+  mount KepplerGaDashboard::Engine, at: 'admin/dashboard', as: 'dashboard'
 
   # Travel routes engine
   mount KepplerTravel::Engine, at: '/', as: 'travel'
