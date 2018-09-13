@@ -103,7 +103,7 @@
 %link{:href => "/assets/css/jquery-ui-timepicker-addon.css", :rel => "stylesheet"}/
 
 :javascript
-  validateForm('#search-input');
+  validateWidgetForm('#search-input');
 
   $('#vuelo_vuelta').addClass('show-input');
   //$( "#solo_ida").prop('checked', true);
@@ -168,3 +168,9 @@
       }
     }).datetimepicker("setDate", new Date());
   } );
+
+  $( "#origin_vehicle" ).blur(function() {
+    // alert( "Handler for .blur() called." );}
+    // debugger
+    $('.pac-container').children()[0].click();
+  });
