@@ -2319,6 +2319,8 @@ label.container .checkmark:after {
 
 .items-orders th {
     text-align: center !important;
+    font-weight: 600;
+    color: #777777;
 }
 
 
@@ -2326,4 +2328,9 @@ label.container .checkmark:after {
     position: absolute;
     bottom: -100px;
     width: 100%;
+}
+
+
+.table>tbody>tr>td {
+    color: #74747F;
 }

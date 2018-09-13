@@ -13,14 +13,14 @@
     .col-lg-12
       .row
         .table-responsive
-          %table.table.table-bordered.table-condensed
+          %table.table.table-condensed.table-hover
             %thead
               %tr.items-orders
                 %th Order N°
                 %th Origen
                 %th Destino
-                %th People
-                %th Status del Pago
+                %th Personas
+                %th Estatus Reserva
                 %th Pago
                 %th Usuario
             %tbody{style:'text-align: center;'}
@@ -30,14 +30,13 @@
                 %td Hotel El Dorado
                 %td 5
                 %td{style:"text-align: center;"}
-                  %span.label.label-info Pending
+                  %span.label.label-info Pendiente
                 %td{style:"text-align: center;"}
                   %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-primary.btn-xs{:disabled => "disabled","data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                    %button.btn.btn-success.btn-xs{:disabled => "disabled","data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
                       %span
                         %i.icon-credit-card.icons
-                      Pay
-
+                      Pagar
                 %td info@slicegroup.xyz
 
               %tr
@@ -46,7 +45,7 @@
                 %td Hotel El Dorado
                 %td 5
                 %td{style:"text-align: center;"}
-                  %span.label.label-success Approved
+                  %span.label.label-success Aprobada
                 %td{style:"text-align: center;"}
                   %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
                     %span
@@ -60,13 +59,13 @@
                 %td Hotel El Dorado
                 %td 5
                 %td{style:"text-align: center;"}
-                  %span.label.label-danger Canceled
+                  %span.label.label-danger Cancelada
                 %td{style:"text-align: center;"}
                   %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-primary.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                    %button.btn.btn-success.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
                       %span
                         %i.icon-credit-card.icons
-                      Pay
+                      Pagar
                 %td info@slicegroup.xyz
 
               %tr
@@ -75,11 +74,11 @@
                 %td Hotel El Dorado
                 %td 5
                 %td{style:"text-align: center;"}
-                  %span.label.label-warning Rejected
+                  %span.label.label-warning Rechazada
                 %td{style:"text-align: center;"}
                   %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-primary.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
+                    %button.btn.btn-success.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
                       %span
                         %i.icon-credit-card.icons
-                      Pay
+                      Pagar
                 %td info@slicegroup.xyz
