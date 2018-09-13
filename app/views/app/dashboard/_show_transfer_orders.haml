@@ -2,86 +2,33 @@
   %h1
     Ordenes
     %small Traslados
-  -#%ol.breadcrumb
-    %li
-      %a{:href => "#"}
-        %i.fa.fa-dashboard
-        Level
-    %li.active Here
-
-        <div class="container">
-
 %section.content.container-fluid
   .container
     .row
       .col-lg-12
         .table-responsive
-          %table.table.table-condensed.table-hover
+          %table.table.table-condensed
             %thead
               %tr.items-orders
                 %th Order N°
                 %th Origen
                 %th Destino
-                %th Personas
-                %th Estatus Reserva
+                %th Pasajeros
+                %th Estatus
                 %th Pago
                 %th Usuario
             %tbody{style:'text-align: center;'}
-              %tr
-                %td 12345678
-                %td Aeropuerto El Dorado
-                %td Hotel El Dorado
-                %td 5
-                %td{style:"text-align: center;"}
-                  %span.label.label-info Pendiente
-                %td{style:"text-align: center;"}
-                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-success.btn-xs{:disabled => "disabled","data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
-                      %span
-                        %i.icon-credit-card.icons
-                      Pagar
-                %td info@slicegroup.xyz
+              - current_user.reservations.each do |reservation|
+                %tr
+                  %td= reservation.invoice.token
+                  %td= truncate(reservation.origin, :length => 25)
+                  %td= truncate(reservation.arrival, :length => 25)
+                  %td= reservation.travellers.count
+                  %td{style:"text-align: center;"}
+                    %span.label.label-info= reservation.status
+                  %td{style:"text-align: center;"}
+                    - if reservation.invoice.status_pay? :pending
+                      %a
+                        %button.btn.btn-primary.btn-xs{:type => "button"} Pagar
 
-              %tr
-                %td 12345678
-                %td Aeropuerto El Dorado
-                %td Hotel El Dorado
-                %td 5
-                %td{style:"text-align: center;"}
-                  %span.label.label-success Aprobada
-                %td{style:"text-align: center;"}
-                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %span
-                      %i.icon-plane.icons
-                %td info@slicegroup.xyz
-
-
-              %tr
-                %td 12345678
-                %td Aeropuerto El Dorado
-                %td Hotel El Dorado
-                %td 5
-                %td{style:"text-align: center;"}
-                  %span.label.label-danger Cancelada
-                %td{style:"text-align: center;"}
-                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-success.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
-                      %span
-                        %i.icon-credit-card.icons
-                      Pagar
-                %td info@slicegroup.xyz
-
-              %tr
-                %td 12345678
-                %td Aeropuerto El Dorado
-                %td Hotel El Dorado
-                %td 5
-                %td{style:"text-align: center;"}
-                  %span.label.label-warning Rechazada
-                %td{style:"text-align: center;"}
-                  %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
-                    %button.btn.btn-success.btn-xs{"data-target" => "#edit", "data-title" => "Edit", "data-toggle" => "modal"}
-                      %span
-                        %i.icon-credit-card.icons
-                      Pagar
-                %td info@slicegroup.xyz
+                  %td= current_user.email

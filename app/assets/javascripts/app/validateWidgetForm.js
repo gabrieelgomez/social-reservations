@@ -1,4 +1,4 @@
-function validateForm(id_form) {
+function validateWidgetForm(id_form) {
   $(id_form).validate({
     event: "blur",
     errorClass: "error-class",
@@ -42,7 +42,13 @@ function validateForm(id_form) {
     debug: true,
     errorElement: "label",
     submitHandler: function (form) {
-      form.submit();
+      let origin = $('#origin_hidden');
+      let arrival = $('#arrival_hidden');
+      if (arrival.val() == '' || origin.val() == ''){
+        alert('Origen o Destino inválidos')
+      }else{
+        form.submit();
+      }
     }
   });
 }
