@@ -4,35 +4,36 @@
     %small Traslados
 %section.content.container-fluid
   .container
-    .col-lg-12
-      .row
+    .row
+      .col-lg-12
         .table-responsive
-          %table.table.table-bordered.table-condensed
+          %table.table.table-condensed
             %thead
               %tr.items-orders
                 %th Order N°
                 %th Origen
                 %th Destino
                 %th Pasajeros
-                %th Estatus del Pago
-                %th Pay
+                %th Estatus
+                %th Pago
                 %th Usuario
             %tbody{style:'text-align: center;'}
               - current_user.reservations.each do |reservation|
-                -# - next unless reservation.reservationable_type == 'KepplerTravel::Vehicle'
                 %tr
                   %td= reservation.invoice.token
-                  %td= reservation.origin
-                  %td= reservation.arrival
+                  %td= truncate(reservation.origin, :length => 25)
+                  %td= truncate(reservation.arrival, :length => 25)
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
-                    %span.label.label-info= reservation.status
+                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
                   %td{style:"text-align: center;"}
                     - if reservation.invoice.status_pay? :pending
                       %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Pagar factura"}
-                        %a.btn.btn-primary.btn-xs{href: 'https://www.google.co.ve/'}
+                        %a.btn.btn-primary.btn-xs{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id)}
                           %span
                             %i.icon-credit-card.icons
                           Pay
+                    - else
+                      %h6 Pagado
 
                   %td= current_user.email
