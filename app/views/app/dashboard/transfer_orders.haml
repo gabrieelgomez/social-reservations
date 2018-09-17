@@ -9,11 +9,11 @@
       = render 'app/front/loader/loader'
     .wrapper
       %header.main-header
-        = render 'app/dashboard/header'
+        = render 'app/dashboard/layouts/header'
       %aside.main-sidebar
-        = render 'app/dashboard/aside'
+        = render 'app/dashboard/layouts/aside'
       .content-wrapper
-        = render 'app/dashboard/show_transfer_orders'
+        = render 'app/dashboard/transfers/show_orders'
 
     %script{:src => "/assets/js/loader.js"}
     %script{:src => "/assets/js/navbar.js"}
