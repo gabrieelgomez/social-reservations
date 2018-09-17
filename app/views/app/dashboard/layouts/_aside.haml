@@ -1,0 +1,57 @@
+
+%section.sidebar
+  / Sidebar user panel (optional)
+  .user-panel
+    .pull-left.image
+      %img.user-image{:alt => "", :src => "/assets/img/user.png"}/
+    .pull-left.info
+      %p= current_user.name
+      / Status
+      -#%a{:href => "#"}
+        %i.fa.fa-circle.text-success
+        Online
+  / search form (Optional)
+  -# %form.sidebar-form{:action => "#", :method => "get"}
+  -#   .input-group
+  -#     %input.form-control{:name => "q", :placeholder => "Buscar...", :type => "text"}/
+  -#     %span.input-group-btn
+  -#       %button#search-btn.btn.btn-flat{:name => "search", :type => "submit"}
+  -#         %i.fa.fa-search
+  / /.search form
+  / Sidebar Menu
+  %ul.sidebar-menu{"data-widget" => "tree"}
+    %li.header Consultas
+    / Optionally, you can add icons to the links
+    -#%li.active
+      %a{:href => "#"}
+        %i.fa.fa-link
+        %span Link
+    -#%li
+      %a{:href => "#"}
+        %i.fa.fa-link
+        %span Another Link
+    %li.treeview
+      %a{:href => "#"}
+        %i.icon-docs.icons
+        %span Ordenes
+        %span.pull-right-container
+          %i.fa.fa-angle-left.pull-right
+      %ul.treeview-menu
+        %li
+          = link_to transfer_orders_path, class:"" do
+            Traslados / Vehículos
+        -#%li
+          %a{:href => "#"} Circuitos
+        -#%li
+          %a{:href => "#"} Tours
+        -#%li
+          %a{:href => "#"} Multidestinos
+    %li.treeview
+      %a{:href => "#"}
+        %i.icon-user.icons
+        %span Perfil
+        %span.pull-right-container
+          %i.fa.fa-angle-left.pull-right
+      %ul.treeview-menu
+        %li
+          %a{:href => users_details_path} Información

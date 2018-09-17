@@ -1,0 +1,28 @@
+= simple_form_for @user, url: user_update_path, method: :post do |f|
+  .col-lg-12.form-contact-us-p
+    %h1= "Hola! #{@user.name}"
+    .col-lg-8
+      .col-lg-6
+        .form-group
+          = f.input :name, :autofocus => true, class: 'form-control'
+          = f.input :username, class: 'form-control'
+          = f.input :dni, disabled: true, class: 'form-control'
+          = f.input :email, class: 'form-control'
+          = f.input :phone, class: 'form-control'
+      .col-lg-6
+        .form-group
+          = f.input :password, :autocomplete => 'off', class: 'form-control'
+          = f.input :password_confirmation, class: 'form-control'
+        %br/
+        .form-group
+          = f.input :current_password, class: 'form-control'
+    .col-lg-4
+      .box-header.with-border
+        %h3.box-title Avatar
+      .box-body.box-profile
+        = f.input :avatar, as: :keppler_file, label: false
+  .col-lg-12
+    .col-lg-8
+      .col-lg-6
+        %br/
+        = f.submit
