@@ -37,17 +37,17 @@ menu:
           name: roles
           url_path: /admin/roles
           current: ['admin/roles']
-  customize:
-    name: keppler design
-    icon: pencil
-    current: ['admin/customizes', 'settings/appearance']
-    model: Customize
-    submenu:
-      - customize:
-          name: frontend templates
-          url_path: /admin/customizes
-          current: ['admin/customizes']
-      - appearance:
-          name: admin appearance
-          url_path: /admin/settings/appearance
-          current: ['appearance']
+  # customize:
+  #   name: keppler design
+  #   icon: pencil
+  #   current: ['admin/customizes', 'settings/appearance']
+  #   model: Customize
+  #   submenu:
+  #     - customize:
+  #         name: frontend templates
+  #         url_path: /admin/customizes
+  #         current: ['admin/customizes']
+  #     - appearance:
+  #         name: admin appearance
+  #         url_path: /admin/settings/appearance
+  #         current: ['appearance']

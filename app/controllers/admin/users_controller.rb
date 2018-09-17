@@ -4,10 +4,10 @@ module Admin
   # UsersController
   class UsersController < AdminController
     before_action :set_user, only: %i[show edit update destroy]
-    before_action :set_roles, only: %i[index new edit create update]
-    before_action :show_history, only: %i[index]
-    before_action :authorization, except: %i[reload filter_by_role]
-    before_action :set_users, only: %i[index filter_by_role reload]
+    before_action :set_roles, only: %i[index new edit create update assign_partner]
+    before_action :show_history, only: %i[index assign_partner]
+    before_action :authorization, except: %i[reload filter_by_role assign_partner]
+    before_action :set_users, only: %i[index filter_by_role reload assign_partner]
     include ObjectQuery
 
     def index
@@ -19,6 +19,14 @@ module Admin
     def filter_by_role
       return @users = User.all.drop(1) if params[:role].eql?('all')
       @users = User.filter_by_role(@objects, params[:role])
+    end
+
+    def assign_partner
+      user = User.find(params[:user_id])
+      partner = params[:partner]
+      user.add_role    :partner if partner.eql?('false')
+      user.remove_role :partner if partner.eql?('true')
+      @users = User.filter_by_role(@objects, 'client')
     end
 
     def new

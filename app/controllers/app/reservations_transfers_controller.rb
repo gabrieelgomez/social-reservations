@@ -68,7 +68,7 @@ module App
       else
         @user = current_user
       end
-
+      @user.add_role :client
     end
 
     def create_travellers

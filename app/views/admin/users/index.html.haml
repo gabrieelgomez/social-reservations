@@ -36,8 +36,12 @@
           = simple_form_for Role.last, url: filter_by_role_path, method: :post, remote: true do
             %select.form-control.form-control#filter_by_role{ name: 'role', onchange: '$(this).parent().submit()' }
               %option{ name: 'role', value: 'all' } Todos
-              - @roles.each do |role|
-                %option{ name: 'role', value: role.first.downcase }= role.first
+              %option{ name: 'role', value: 'admin' } Admin
+              %option{ name: 'role', value: 'client' } Cliente
+              %option{ name: 'role', value: 'partner' } Agencia de Viaje
+
+              -# - @roles.each do |role|
+              -#   %option{ name: 'role', value: role.first.downcase }= role.first
         .box.slice-box
           .box-body.no-padding
             %table.table.table-striped
@@ -53,6 +57,7 @@
                     %th.visible-lg.visible-md= t('activerecord.attributes.name')
                     %th= t('activerecord.attributes.email')
                     %th.visible-lg.visible-md= t('activerecord.attributes.role')
+                    %th ¿Agencia de Viaje?
                     %th
               %tbody.objects-container
                 = render 'admin/layouts/listing_preloader'
