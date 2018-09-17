@@ -4,24 +4,22 @@
     %b> RC
   %span.logo-lg
     Receptivo Colombia
-%nav.navbar.navbar-static-top{:role => "navigation"}
-  %a.sidebar-toggle{"data-toggle" => "push-menu", :href => "#", :role => "button"}
+%nav.navbar.navbar-static-top{role: "navigation"}
+  %a.sidebar-toggle{"data-toggle"=> "push-menu", href: "#", role: "button"}
     %span.sr-only Toggle navigation
   .navbar-custom-menu
     %ul.nav.navbar-nav
       / User Account Menu
       %li.dropdown.user.user-menu
         / Menu Toggle Button
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          / The user image in the navbar
-          -#%img{:alt => "User Image", :src => "dist/img/user2-160x160.jpg"}/
-          %img.user-image{:alt => "", :src => "/assets/img/user.png"}/
+        %a.dropdown-toggle{"data-toggle"=> "dropdown", href: "#"}
+          %img.user-image{alt: "", src:  current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}/
           / hidden-xs hides the username on small devices so only the image appears.
           %span.hidden-xs= current_user.name
         %ul.dropdown-menu
           / The user image in the menu
           %li.user-header
-            %img.img-circle{:alt => "User Image", :src => "dist/img/user2-160x160.jpg"}/
+            %img.img-circle{alt: "User Image", src: "dist/img/user2-160x160.jpg"}/
             %p
               Alexander Pierce - Web Developer
               %small Member since Nov. 2012
@@ -29,22 +27,20 @@
           %li.user-body
             .row
               .col-xs-4.text-center
-                %a{:href => "#"} Followers
+                %a{href: "#"} Followers
               .col-xs-4.text-center
-                %a{:href => "#"} Sales
+                %a{href: "#"} Sales
               .col-xs-4.text-center
-                %a{:href => "#"} Friends
+                %a{href: "#"} Friends
             / /.row
           / Menu Footer
           %li.user-footer
             .pull-left
-              %a.btn.btn-default.btn-flat{:href => "#"} Profile
+              %a.btn.btn-default.btn-flat{href: "#"} Profile
             .pull-right
-              %a.btn.btn-default.btn-flat{:href => "#"} Sign out
+              %a.btn.btn-default.btn-flat{href: "#"} Sign out
       / Control Sidebar Toggle Button
       %li
         = link_to destroy_session_path(current_user), class:"" do
-          %i.icon-login.icons
-        -#%a{"data-toggle" => "control-sidebar", :href => "#"}
           %i.icon-login.icons
 / Left side column. contains the logo and sidebar

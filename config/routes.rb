@@ -87,6 +87,7 @@ Rails.application.routes.draw do
     resources :users do
       get '(page/:page)', action: :index, on: :collection, as: ''
       get '/delete_avatar', action: :delete_avatar
+      get '/assign_partner', action: :assign_partner
       get(
         '/reload',
         action: :reload,

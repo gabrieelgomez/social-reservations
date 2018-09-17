@@ -23,8 +23,8 @@ class User < ApplicationRecord
     roles.first.permissions?
   end
 
-  def self.filter_by_role(obj, role_id)
-    obj.select { |u| u.rol.eql?(role_id) }
+  def self.filter_by_role(obj, role)
+    obj.select { |u| u.has_role? role.to_sym }
   end
 
   # Get the page number that the object belongs to
@@ -75,7 +75,7 @@ class User < ApplicationRecord
     passphrase = ActiveSupport::KeyGenerator.new(key).generate_key(salt, 32)
     @crypt     = ActiveSupport::MessageEncryptor.new(passphrase)
   end
-  
+
   def create_permalink
     self.permalink = name.downcase.parameterize + '-' + SecureRandom.hex(4)
   end
