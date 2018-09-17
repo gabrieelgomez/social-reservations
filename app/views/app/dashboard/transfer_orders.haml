@@ -5,34 +5,15 @@
     %link{:href => "/assets/css/dashboard.css", :rel => "stylesheet"}/
     %link{:href => "/assets/css/dashboard-skin.css", :rel => "stylesheet"}/
   %body.hold-transition.skin-blue.sidebar-mini.fixed
-    -#.loader
-      = render 'app/front/loader/loader'
     .wrapper
       %header.main-header
-        = render 'app/dashboard/header'
+        = render 'app/dashboard/layouts/header'
       %aside.main-sidebar
-        = render 'app/dashboard/aside'
+        = render 'app/dashboard/layouts/aside'
       .content-wrapper
-        = render 'app/dashboard/show_transfer_orders'
+        = render 'app/dashboard/transfers/show'
 
     %script{:src => "/assets/js/loader.js"}
     %script{:src => "/assets/js/navbar.js"}
     %script{:src => "/assets/js/dashboard.min.js"}
     %script{:src => "/assets/app/googlefontAsync.js"}
-
-
--#%span.label.label-default Default Label
--#%span.label.label-primary Primary Label
--#%span.label.label-success Success Label
--#%span.label.label-info Info Label
--#%span.label.label-warning Warning Label
--#%span.label.label-danger Danger Label
-
--#In process
--#Approved
--#Canceled
--#Rejected
-///
--#pendiente rojo
--#aprobado verde
--#cancelada - naranja
