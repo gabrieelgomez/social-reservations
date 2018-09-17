@@ -5,16 +5,20 @@ module App
     before_action :set_user, only: %i[update]
 
     def update
-      # byebug
-      # update_attributes = user_params.delete_if do |_, value|
-      #   value.blank?
-      # end
-      #
-      # if @user.update_attributes(update_attributes)
-      #   redirect(@user, params)
-      # else
-      #   render action: 'edit'
-      # end
+      update_attributes = user_params.delete_if do |_, value|
+        value.blank?
+      end
+      if current_user.update_attributes(update_attributes)
+        update_password
+        redirect_to users_details_path, notice: 'success'
+      else
+        render action: 'users'
+      end
+    end
+
+    def update_password
+      return if user_params[:password].blank?
+      current_user.format_accessable_passwd(user_params[:password])
     end
 
     private
@@ -25,8 +29,8 @@ module App
 
     def user_params
       params.require(:user).permit(
-        :name, :email, :password, :password_confirmation,
-        :role_ids, :encrypted_password, :avatar
+        :name, :username, :dni, :email, :phone, :avatar,
+        :password, :password_confirmation, :encrypted_password
       )
     end
 
