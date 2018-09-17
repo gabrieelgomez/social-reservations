@@ -1,0 +1,27 @@
+-#%hr
+%h3 Reembolsos y Cancelaciones
+.row
+  -#.col-lg-6
+    .form-group.form-custom
+      %label{:for => "origin_vehicle_booking"} Seleccione Origen
+      %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
+      %input{name: 'reservation[origin_location]', value: params[:org_loc], type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
+  .col-lg-12
+    .form-group.form-custom
+      -#%label.col-xs-3.control-label Terms of use
+      -#%label{:for => ""} Términos y Condiciones
+      %div{:style => "border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;"}
+        %p Lorem ipsum dolor sit amet, veniam numquam has te. No suas nonumes recusabo mea, est ut graeci definitiones. His ne melius vituperata scriptorem, cum paulo copiosae conclusionemque at. Facer inermis ius in, ad brute nominati referrentur vis. Dicat erant sit ex. Phaedrum imperdiet scribentur vix no, ad latine similique forensibus vel.
+        %p Dolore populo vivendum vis eu, mei quaestio liberavisse ex. Electram necessitatibus ut vel, quo at probatus oportere, molestie conclusionemque pri cu. Brute augue tincidunt vim id, ne munere fierent rationibus mei. Ut pro volutpat praesent qualisque, an iisque scripta intellegebat eam.
+        %p Mea ea nonumy labores lobortis, duo quaestio antiopam inimicus et. Ea natum solet iisque quo, prodesset mnesarchum ne vim. Sonet detraxit temporibus no has. Omnium blandit in vim, mea at omnium oblique.
+        %p Eum ea quidam oportere imperdiet, facer oportere vituperatoribus eu vix, mea ei iisque legendos hendrerit. Blandit comprehensam eu his, ad eros veniam ridens eum. Id odio lobortis elaboraret pro. Vix te fabulas partiendo.
+        %p Natum oportere et qui, vis graeco tincidunt instructior an, autem elitr noster per et. Mea eu mundi qualisque. Quo nemore nusquam vituperata et, mea ut abhorreant deseruisse, cu nostrud postulant dissentias qui. Postea tincidunt vel eu.
+        %p Ad eos alia inermis nominavi, eum nibh docendi definitionem no. Ius eu stet mucius nonumes, no mea facilis philosophia necessitatibus. Te eam vidit iisque legendos, vero meliore deserunt ius ea. An qui inimicus inciderint.
+  -#.col-lg-12
+    .form-group
+      .col-xs-12.pull-left
+        .checkbox
+          %label
+            %input{:name => "agree", :type => "checkbox", :value => "agree"}/
+            Agree with the terms and conditions
