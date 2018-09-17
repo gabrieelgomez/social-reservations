@@ -26,3 +26,16 @@
       .col-lg-6
         %br/
         = f.submit
+
+%script{:src => "/assets/js/jquery-validate.js"}
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+:javascript
+  var notice = "#{notice}";
+
+  if (notice == 'success'){
+   swal({
+    type: 'success',
+    title: '¡Listo!',
+    text: '¡Cambios guardados exitosamente!'
+   })
+  }
