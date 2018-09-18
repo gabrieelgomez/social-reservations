@@ -38,3 +38,25 @@ function validateForm(id_form){
    }
   });
 }
+
+
+function validateTour(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'tour[price]': { required: true},
+     },
+   messages: {
+     'tour[price]': 'No puede estar en blanco',
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+     var data = $('#destinations_tours').val();
+     $('form').append(`<input type="hidden" name="tour[destination_ids]" value=${data} /> `);
+     form.submit();
+     // debugger1
+   }
+  });
+}
