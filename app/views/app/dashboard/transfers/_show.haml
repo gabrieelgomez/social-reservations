@@ -1,14 +1,22 @@
 %section.content-header
   %h1
-    Ordenes
-    %small Traslados
-%section.content.container-fluid
-  .container
-    .row
-      .col-lg-12
-        .table-responsive
-          %table.table.table-condensed
-            %thead
+    Órdenes de Reserva
+    -#%small Traslados
+%section.content
+  .row
+    .col-xs-12
+      .box
+        .box-header
+          %h3.box-title Traslados
+          .box-tools
+            .input-group.input-group-sm{:style => "width: 150px;"}
+              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
+              .input-group-btn
+                %button.btn.btn-default{:type => "submit"}
+                  %i.fa.fa-search
+        .box-body.table-responsive.no-padding
+          %table.table.table-hover
+            %tbody
               %tr.items-orders
                 %th Order N°
                 %th Origen
@@ -17,7 +25,6 @@
                 %th Estatus
                 %th Pago
                 %th Usuario
-            %tbody{style:'text-align: center;'}
               - current_user.reservations.each do |reservation|
                 %tr
                   %td= reservation.invoice.token
@@ -28,12 +35,12 @@
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
                   %td{style:"text-align: center;"}
                     - if reservation.invoice.status_pay? :pending
-                      %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Pagar factura"}
-                        %a.btn.btn-primary.btn-xs{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id)}
+                      %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id)}
+                        %button.btn.btn-primary.btn-xs{:type => "button"}
                           %span
                             %i.icon-credit-card.icons
-                          Pay
+                          Pagar
                     - else
                       %h6 Pagado
-
                   %td= current_user.email
+

@@ -6,7 +6,7 @@
   %body
     %header
       = render 'app/layouts/navbar'
-      -#.loader
+      .loader
         = render 'app/front/loader/loader'
 
 
@@ -207,7 +207,7 @@
 
     #top-tours.top-tours
       .container
-        .gallary-header.text-center
+        .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
           %h2
             Tours Destacados
           %p
@@ -282,14 +282,14 @@
                       %button.about-view.packages-btn
                         ver más
 
-    %section#tips-services.tips-services.wow.fadeInDown.animated{"data-wow-duration" => "3s", :style => "visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;"}
+    %section#tips-services.tips-services
       .container
-        .gallary-header.text-center
+        .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
           %h2
             ¿Por qué escogernos?
           %p
             Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
-      .box-tips
+      .box-tips.wow.fadeInRight.animated{"data-wow-delay" => "0.2s", :style => "visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;"}
         .container
           .row
             .col-lg-3
@@ -329,8 +329,6 @@
     %script{:src => "/assets/js/mixitup-setting.js"}
     %script{:src => "/assets/js/wow-settings.js"}
 
-    
-    
     :javascript
       $(document).ready(function(){
         document.getElementById("my-video").play();
