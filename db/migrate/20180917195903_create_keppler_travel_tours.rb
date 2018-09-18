@@ -1,0 +1,16 @@
+class CreateKepplerTravelTours < ActiveRecord::Migration[5.2]
+  def change
+    create_table :keppler_travel_tours do |t|
+      t.jsonb :name
+      t.jsonb :description
+      t.jsonb :task
+      t.jsonb :files
+      t.float :price
+      t.integer :position
+      t.datetime :deleted_at
+
+      t.timestamps
+    end
+    add_index :keppler_travel_tours, :deleted_at
+  end
+end

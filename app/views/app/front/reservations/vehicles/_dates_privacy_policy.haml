@@ -1,7 +1,16 @@
 -#%hr
-%h3 Términos y Condiciones
+%h3 Política de Privacidad
 .row
-<<<<<<< HEAD
+  .col-lg-12
+    .form-custom
+    .form-group
+      .col-xs-12.pull-left
+        %label.checkbox-inline
+          %input{:type => "checkbox", :value => "agree"}/
+          Acepto
+          = succeed "." do
+            = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
+            -#%a#js-privacyPolicy{:type => "button"} 
   -#.col-lg-6
     .form-group.form-custom
       %label{:for => "origin_vehicle_booking"} Seleccione Origen
@@ -19,21 +28,11 @@
         %p Eum ea quidam oportere imperdiet, facer oportere vituperatoribus eu vix, mea ei iisque legendos hendrerit. Blandit comprehensam eu his, ad eros veniam ridens eum. Id odio lobortis elaboraret pro. Vix te fabulas partiendo.
         %p Natum oportere et qui, vis graeco tincidunt instructior an, autem elitr noster per et. Mea eu mundi qualisque. Quo nemore nusquam vituperata et, mea ut abhorreant deseruisse, cu nostrud postulant dissentias qui. Postea tincidunt vel eu.
         %p Ad eos alia inermis nominavi, eum nibh docendi definitionem no. Ius eu stet mucius nonumes, no mea facilis philosophia necessitatibus. Te eam vidit iisque legendos, vero meliore deserunt ius ea. An qui inimicus inciderint.
-  .col-lg-12
+  -#.col-lg-12
     .form-group
       .col-xs-12.pull-left
         .checkbox
           %label
             %input{:name => "agree", :type => "checkbox", :value => "agree"}/
             Agree with the terms and conditions
-=======
-  .col-lg-12
-    .form-custom
-    .form-group
-      .col-xs-12.pull-left
-        %label.checkbox-inline
-          %input{:type => "checkbox", :value => "agree"}/
-          Acepto
-          = succeed "." do
-            = link_to 'Términos y Condiciones', '#' , :class => '', :id => 'js_termsConditions', :type => 'button'
->>>>>>> 95ff8e0146e95616a1ec5ced0b77cb077d7de3eb
+

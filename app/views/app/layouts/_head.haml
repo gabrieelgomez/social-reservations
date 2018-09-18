@@ -6,12 +6,9 @@
 = stylesheet_link_tag 'css/application', media: 'all', 'data-turbolinks-track' => true
 
 //Styles front
-
 %link{:href => "/assets/css/style.css", :rel => "stylesheet"}/
 %link{:href => "/assets/css/responsive.css", :rel => "stylesheet"}/
 %link{:href => "/assets/css/navbar.css", :rel => "stylesheet"}/
-
-
 -#%link{:href => "/assets/css/animate.css", :rel => "stylesheet"}/
 -#%link{:href => "/assets/css/datepicker.css", :rel => "stylesheet"}/
 -#%link{:href => "/assets/css/font-awesome.min.css", :rel => "stylesheet"}/
@@ -21,10 +18,10 @@
 -#%link{:href => "/assets/css/hover-min.css", :rel => "stylesheet"}/
 -#%link{:href => "/assets/css/jquery-ui.min.css", :rel => "stylesheet"}/
 
-
 // Javascripts
 = javascript_include_tag 'app/application', 'data-turbolinks-track' => true
+%script{:src => "/assets/js/bootstrap.min.js"}
 
-//
+
 // Google Analytics
 = render 'app/layouts/google_analytics'
