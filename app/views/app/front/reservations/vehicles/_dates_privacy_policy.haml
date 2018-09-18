@@ -1,13 +1,23 @@
 -#%hr
-%h3 Reembolsos y Cancelaciones
+%h3 Política de Privacidad
 .row
+  .col-lg-12
+    .form-custom
+    .form-group
+      .col-xs-12.pull-left
+        %label.checkbox-inline
+          %input{:type => "checkbox", :value => "agree"}/
+          Acepto
+          = succeed "." do
+            = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
+            -#%a#js-privacyPolicy{:type => "button"} 
   -#.col-lg-6
     .form-group.form-custom
       %label{:for => "origin_vehicle_booking"} Seleccione Origen
       %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
       %input{name: 'reservation[origin_location]', value: params[:org_loc], type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
-  .col-lg-12
+  -#.col-lg-12
     .form-group.form-custom
       -#%label.col-xs-3.control-label Terms of use
       -#%label{:for => ""} Términos y Condiciones
@@ -25,3 +35,4 @@
           %label
             %input{:name => "agree", :type => "checkbox", :value => "agree"}/
             Agree with the terms and conditions
+

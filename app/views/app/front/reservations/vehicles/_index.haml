@@ -24,8 +24,6 @@
       .col-lg-12
         = render 'app/layouts/widget'
 
-
-
 %section.reservation-vehicles#reservation-vehicles
   .container
     .gallary-header.text-center
@@ -43,29 +41,33 @@
           %input{value: @currency, type: 'hidden', name: 'currency'}
           %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
-
           .col-lg-8
             .reservation-data
-              // Datos de Reservación
+              //Reservation Data
               = render 'app/front/reservations/vehicles/dates_reservations', f: f
 
-              // Datos Personales
+              //Personal Data
               = render 'app/front/reservations/vehicles/dates_personal', f: f
 
-              //Datos de Facturación
+              //Billing Data
               = render 'app/front/reservations/vehicles/dates_billing'
 
-              //Condiciones Reembolsos/Cancelaciones
-              = render 'app/front/reservations/vehicles/dates_refunds_cancellations'
-            
-              //Términos y Condiciones
+              //Terms & Conditions
               = render 'app/front/reservations/vehicles/dates_terms_conditions'
+              
+              //Privacy Policy
+              = render 'app/front/reservations/vehicles/dates_privacy_policy'
 
           .col-lg-4
-            // Cuadro de Resumen
+            // Reservation Summary
             .reservation-resumen
               = render 'app/front/reservations/vehicles/resumen'
-
+    .container
+      //Modal - Privacy Policy
+      = render 'app/front/reservations/vehicles/modal/privacy_policy'
+    .container
+      //Modal - Terms & Conditions
+      = render 'app/front/reservations/vehicles/modal/terms_conditions'
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -81,4 +83,12 @@
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
+  });
+  $(document).ready(function(){
+      $("#js_privacyPolicy").click(function(){
+          $("#modalPrivacyPolicy").modal();
+      });
+      $("#js_termsConditions").click(function(){
+          $("#modalTermsConditions").modal();
+      });
   });
