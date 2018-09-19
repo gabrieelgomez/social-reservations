@@ -27,6 +27,12 @@
       = f.input :mobile, input_html: { class: 'form-control' }, required: false, label: t('activerecord.attributes.phone_two'), placeholder: '+582123536869'
       .pull-right
         = f.button :submit, t('keppler.actions.apply'), class: 'btn-primary'
+.col-lg-6
+  = f.input :terms_conditions, label: 'Términos y Condiciones', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+.col-lg-6
+  = f.input :privacy_policies, label: 'Políticas de Privacidad', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
 :javascript
   $(document).ready(function(){
     $("#setting_logo").change(function(){

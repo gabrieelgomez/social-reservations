@@ -226,6 +226,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.string "email"
     t.string "logo"
     t.string "favicon"
+    t.text "terms_conditions"
+    t.text "privacy_policies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
