@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_173728) do
+ActiveRecord::Schema.define(version: 2018_09_17_200107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
     t.index ["deleted_at"], name: "index_keppler_travel_destinations_on_deleted_at"
   end
 
+  create_table "keppler_travel_destinations_tours", force: :cascade do |t|
+    t.bigint "destination_id"
+    t.bigint "tour_id"
+    t.index ["destination_id"], name: "index_keppler_travel_destinations_tours_on_destination_id"
+    t.index ["tour_id"], name: "index_keppler_travel_destinations_tours_on_tour_id"
+  end
+
   create_table "keppler_travel_destinations_vehicles", force: :cascade do |t|
     t.bigint "destination_id"
     t.bigint "vehicle_id"
@@ -119,6 +126,19 @@ ActiveRecord::Schema.define(version: 2018_09_07_173728) do
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"
     t.index ["user_id"], name: "index_keppler_travel_reservations_on_user_id"
+  end
+
+  create_table "keppler_travel_tours", force: :cascade do |t|
+    t.jsonb "name"
+    t.jsonb "description"
+    t.jsonb "task"
+    t.jsonb "files"
+    t.float "price"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_tours_on_deleted_at"
   end
 
   create_table "keppler_travel_travellers", force: :cascade do |t|

@@ -1,0 +1,110 @@
+= simple_form_for [:admin, :travel, @tour] do |f|
+	.container
+		.row
+			.col-lg-2
+				= link_to admin_travel_tours_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+					.arrow-back.btn.btn-default
+						%i.fa.fa-angle-left
+						= t('keppler.actions.back')
+
+		.row
+			.col-lg-12
+				.box.slice-box
+					.box-header.with-border
+						%h3.box-title= t("keppler.modules.#{action_name.underscore}")
+						.box-tools.pull-right
+							%a.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+								%i.fa.fa-minus
+					.box-body
+						%table.table.table-bordered
+							%tbody
+								.form-padding
+									.col-xs-12
+										.nav-tabs-custom
+											%ul.nav.nav-tabs
+												%li.active
+													%a{"data-toggle" => "tab", :href => "#spanish"} Español
+												%li
+													%a{"data-toggle" => "tab", :href => "#english"} Inglés
+												%li
+													%a{"data-toggle" => "tab", :href => "#portugues"} Portugués
+											.tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+
+												// ESPAÑOL
+												#spanish.tab-pane.active
+													.col-xs-12
+														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+															= field.input :es, label: 'Titulo'
+													.col-xs-6
+														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
+															= field.input :es, label: 'Descripción', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+													.col-xs-6
+														= f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
+															= field.input :es, label: 'Actividades', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+												// INGLÉS
+												#english.tab-pane
+													.col-xs-12
+														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+															= field.input :en, label: 'Title'
+													.col-xs-6
+														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
+															= field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+													.col-xs-6
+														= f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
+															= field.input :en, label: 'Activities', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+												// PORTUGUÉS
+												#portugues.tab-pane
+													.col-xs-12
+														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+															= field.input :pt, label: 'Titulo'
+													.col-xs-6
+														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
+															= field.input :pt, label: 'Descrição', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+													.col-xs-6
+														= f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
+															= field.input :pt, label: 'Atividades', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+									.col-xs-2
+										= f.input :price, input_html: { min: 1, type: 'number' }
+
+									.col-xs-8
+										%label Destinos
+										%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_tours', name: 'tour[destination_ids]', multiple: "multiple"}
+											- KepplerTravel::Destination.all.each do |destination|
+												%option{ value: destination.id, selected: @tour.selected(destination.id)}= destination.custom_title
+
+									.col-xs-12.col-md-12
+										%label Galería de Imágenes
+										-# %input#tour_files{:multiple => "", :name => "tour[files][]", :type => "file"}
+										= f.file_field :files, multiple: true
+									#helper_que_busco
+										= files_exist(1, f.object.files, 'tour[files][]')
+
+									.col-xs-12
+										= f.input :position, as: :hidden
+									.col-xs-12
+										= f.input :deleted_at, as: :hidden
+									.col-xs-12
+										.pull-right
+											= f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+											= f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+
+
+%link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/jquery.filer.css", :rel => "stylesheet", :type => "text/css"}/
+%link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/themes/jquery.filer-dragdropbox-theme.css", :rel => "stylesheet", :type => "text/css"}/
+%script{:src => "https://www.tutorialspoint.com/jquery/src/filer/js/jquery.filer.min.js", :type => "text/javascript"}
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
+
+:javascript
+	collectImages("#tour_files", ".edit_tour", "tour[files_delete][]");
+
+- if action_name == 'new'
+	:javascript
+		validateTour('#new_tour');
+- else
+	:javascript
+		var tour_id = #{raw @tour.id};
+		validateTour(`#edit_tour_${tour_id}`);
