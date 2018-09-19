@@ -66,7 +66,10 @@
 														= f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
 															= field.input :pt, label: 'Atividades', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 									.col-xs-2
-										= f.input :price, input_html: { min: 1, type: 'number' }
+										= f.input :price_adults, input_html: { min: 1, type: 'number' }
+
+									.col-xs-2
+										= f.input :price_kids, input_html: { min: 1, type: 'number' }
 
 									.col-xs-8
 										%label Destinos

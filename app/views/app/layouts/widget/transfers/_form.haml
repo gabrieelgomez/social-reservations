@@ -1,0 +1,122 @@
+= search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+	%input#round_trip{name: 'round_trip', type: 'hidden'}
+	.box-transfers
+		.row
+			.col-lg-12
+				.trip-circle
+
+					.single-trip-circle
+						%input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+						%label.ida_vuelta{:for => "ida_vuelta"}
+							%span.round-boarder
+								%span.round-boarder1
+							Ida y vuelta
+
+					.single-trip-circle
+						%input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+						%label.solo_ida{:for => "solo_ida"}
+							%span.round-boarder>
+								%span.round-boarder1
+							Solo ida
+
+			.col-lg-3
+				.box-item
+					%h2 Origen
+					%input.google-input.form-control{id: 'origin_vehicle', name: 'origin_vehicle'}
+					%input{name: 'origin_hidden', id: 'origin_hidden', type: 'hidden'}
+
+			.col-lg-3
+				.box-item
+					%h2 Destino
+					%input.custom-input.form-control{id: 'arrival_vehicle', name: 'arrival_vehicle'}
+					%input{name: 'arrival_hidden', id: 'arrival_hidden', type: 'hidden'}
+
+
+			.col-lg-2
+				.box-item
+					%h2 Fecha de Ida
+					.form-group
+						%input.form-control.custom-input{name: 'flight_origin_tour_picker', id: 'flight_origin_tour_picker', autocomplete: 'off'}/
+
+			.col-lg-2#vuelo_vuelta
+				.box-item
+					%h2 Fecha de Vuelta
+					.form-group
+						%input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+			.col-lg-1
+				.box-item
+					%h2 Adultos
+					.form-group
+						%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
+
+			.col-lg-1
+				.box-item
+					%h2 Niños
+					.form-group
+						%input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
+
+			.col-lg-12
+				#errors
+				.about-btn.travel-mrt-0.pull-right.box-btn
+					%button.about-view.travel-btn{type: 'submit'}
+						buscar
+
+:javascript
+	// Transfers / Vehicles
+	validateWidgetForm('#search-input');
+	$('#vuelo_vuelta').addClass('show-input');
+	//$( "#solo_ida").prop('checked', true);
+	$( "#ida_vuelta").prop('checked', true);
+	$('#round_trip').val(true);
+	$( '.radio-fecha-vuelos' ).on( 'click', function() {
+			if( $('#ida_vuelta').is(':checked') ){
+					$('#round_trip').val(true);
+					console.log($('#round_trip').val());
+					$('#vuelo_vuelta').removeClass('hidden-input');
+					$('#vuelo_vuelta').addClass('show-input');
+			} else {
+					$('#round_trip').val(false);
+					console.log($('#round_trip').val());
+					$('#vuelo_vuelta').removeClass('show-input');
+					$('#vuelo_vuelta').addClass('hidden-input');
+			}
+	});
+
+	$( function() {
+		function populateEndDate() {
+			var date2 = $('#flight_origin_picker').datetimepicker('getDate');
+			date2.setDate(date2.getDate() + 1);
+			$('#flight_arrival_picker').datetimepicker('setDate', date2);
+			$("#flight_arrival_picker").datetimepicker("option", "minDate", date2);
+		}
+
+		$("#flight_origin_picker").datetimepicker({
+			dateFormat: "dd-mm-yy",
+			minDate: 1,
+			onSelect: function(date) {
+				populateEndDate();
+				var date = $('#flight_origin_picker').val()
+				$('#reservation_flight_origin').val(date);
+			}
+		}).datetimepicker("setDate", new Date());
+		$('#flight_arrival_picker').datetimepicker({
+			dateFormat: "dd-mm-yy",
+			minDate: 2,
+			onClose: function() {
+				var dt1 = $('#flight_origin_picker').datetimepicker('getDate');
+				var dt2 = $('#flight_arrival_picker').datetimepicker('getDate');
+				if (dt2 <= dt1) {
+					var minDate = $('#flight_arrival_picker').datetimepicker('option', 'minDate');
+					$('#flight_arrival_picker').datetimepicker('setDate', minDate);
+				}
+				var date = $('#flight_arrival_picker').val()
+				$('#reservation_flight_arrival').val(date);
+			}
+		}).datetimepicker("setDate", new Date());
+	} );
+
+	$( "#origin_vehicle" ).blur(function() {
+		$('.pac-container').children()[0].click();
+	});
+	// End --- Transfers / Vehicles

@@ -6,11 +6,11 @@
     .form-group
       .col-xs-12.pull-left
         %label.checkbox-inline
-          %input{:type => "checkbox", :value => "agree"}/
+          %input{name: 'privacy_policy', :type => "checkbox", :value => "agree"}/
           Acepto
           = succeed "." do
             = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
-            -#%a#js-privacyPolicy{:type => "button"} 
+            -#%a#js-privacyPolicy{:type => "button"}
   -#.col-lg-6
     .form-group.form-custom
       %label{:for => "origin_vehicle_booking"} Seleccione Origen
@@ -35,4 +35,3 @@
           %label
             %input{:name => "agree", :type => "checkbox", :value => "agree"}/
             Agree with the terms and conditions
-

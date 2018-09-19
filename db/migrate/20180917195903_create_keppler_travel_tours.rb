@@ -5,7 +5,8 @@ class CreateKepplerTravelTours < ActiveRecord::Migration[5.2]
       t.jsonb :description
       t.jsonb :task
       t.jsonb :files
-      t.float :price
+      t.float :price_adults
+      t.float :price_kids
       t.integer :position
       t.datetime :deleted_at
 

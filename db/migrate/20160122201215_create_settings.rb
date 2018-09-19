@@ -8,6 +8,8 @@ class CreateSettings < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :logo
       t.string :favicon
+      t.text   :terms_conditions
+      t.text   :privacy_policies
 
       t.timestamps null: false
     end
