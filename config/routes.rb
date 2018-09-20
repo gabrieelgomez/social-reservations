@@ -21,9 +21,15 @@ Rails.application.routes.draw do
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
-  post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
-  post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
-  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations_transfers#transaction_payment', as: :checkout_elp_redirect
+
+  # Reservations Transfers / Vehicles
+    post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
+    post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
+  # Reservations Tours
+    post '/session_reservation_tour', to: 'app/reservations_tours#session_reservation_tour'
+    post '/create_reservation_tour', to: 'app/reservations_tours#create_reservation_tour'
+
+  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/front#transaction_payment', as: :checkout_elp_redirect
 
   namespace :admin do
     root to: 'admin#root'

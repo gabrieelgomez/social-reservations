@@ -6,7 +6,7 @@ module App
     before_action :set_params_widget, only: [:vehicles, :tours]
     before_action :set_reservationable, only: :reservations
     before_action :set_lang_currency
-    before_action :delete_session, except: [:checkout, :create_reservation_transfer, :session_reservation_transfer]
+    before_action :delete_session, except: [:checkout, :create_reservation_transfer, :session_reservation_transfer, :create_reservation_tour, :session_reservation_tour]
 
     def set_locale_lang
       @locale = request.protocol + request.host_with_port + '/es'
@@ -84,6 +84,9 @@ module App
       @adults                = params[:quantity_adults]
       @kids                  = params[:quantity_kids]
       @seats                 = @adults.to_i + @kids.to_i
+
+      # Tours
+      @flight_origin_tour_picker  = params[:flight_origin_tour_picker]
     end
 
     def set_lang_currency
@@ -96,6 +99,7 @@ module App
       session.delete(:travellers)
       session.delete(:user)
       session.delete(:vehicle)
+      session.delete(:tour)
       session.delete(:invoice)
     end
 

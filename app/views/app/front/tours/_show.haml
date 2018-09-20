@@ -51,7 +51,7 @@
               .content-tours__description--summary
                 %p= raw @results.description[@lang]
             .box-btn
-              = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, adults: @adults, kids: @kids, flight_origin_picker: @flight_origin_picker) do
+              = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, flight_origin_tour_picker: @flight_origin_tour_picker, adults: @adults, kids: @kids) do
                 %button.about-view.packages-btn
                   Reservar
 

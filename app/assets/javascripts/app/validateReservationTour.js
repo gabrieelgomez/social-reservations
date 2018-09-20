@@ -1,18 +1,14 @@
-function validateReservationVehicle(id_form, kit_quantity) {
+function validateReservationTour(id_form) {
   $(id_form).validate({
    event: "blur",
    errorClass: "error-class",
    validClass: "valid-class",
    rules: {
      'reservation[origin]': { required: true},
-     'reservation[arrival]': { required: true},
      'reservation[flight_origin]': { required: true},
-     'flight_origin_picker': { required: true},
-     'reservation[flight_arrival]': { required: true},
-     'flight_arrival_picker': { required: true},
+     'flight_origin_tour_picker': { required: true},
      'reservation[quantity_adults]': { required: true},
      'reservation[quantity_kids]': { required: true},
-     'reservation[quantity_kit]': { required: true, digits: true, number: true, max: kit_quantity},
      'invoice[][address]': { required: true},
      'travellers[][name]': { required: true},
      'travellers[][dni]': { required: true, digits: true, number: true},
@@ -25,14 +21,10 @@ function validateReservationVehicle(id_form, kit_quantity) {
      },
    messages: {
      'reservation[origin]': 'No puede estar en blanco',
-     'reservation[arrival]': 'No puede estar en blanco',
      'reservation[flight_origin]': 'No puede estar en blanco',
-     'flight_origin_picker': 'No puede estar en blanco',
-     'reservation[flight_arrival]': 'No puede estar en blanco',
-     'flight_arrival_picker': 'No puede estar en blanco',
+     'flight_origin_tour_picker': 'No puede estar en blanco',
      'reservation[quantity_adults]': 'No puede estar en blanco',
      'reservation[quantity_kids]': 'No puede estar en blanco',
-     'reservation[quantity_kit]': {required: 'No puede estar en blanco', digits: 'Sólo números válidos', number: 'Sólo números', max: `Máximo equipaje es de ${kit_quantity}`},
      'invoice[][address]': 'No puede estar en blanco',
      'travellers[][name]': 'No puede estar en blanco',
      'travellers[][dni]': {required: 'No puede estar en blanco', digits: 'Sólo números válidos', number: 'Sólo números'},
