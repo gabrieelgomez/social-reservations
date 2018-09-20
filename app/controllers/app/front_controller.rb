@@ -74,16 +74,16 @@ module App
     end
 
     def set_params_widget
-      @origin_location  = params[:origin_hidden]
-      @origin_name      = params[:origin_vehicle]
-      @arrival_location = params[:arrival_hidden]
-      @arrival_name     = params[:arrival_vehicle]
+      @origin_location       = params[:origin_hidden]
+      @origin_name           = params[:origin_vehicle]
+      @arrival_location      = params[:arrival_hidden]
+      @arrival_name          = params[:arrival_vehicle]
       @flight_origin_picker  = params[:flight_origin_picker]
       @flight_arrival_picker = params[:flight_arrival_picker]
-      @round_trip = params[:round_trip]
-      @adults = params[:quantity_adults]
-      @kids   = params[:quantity_kids]
-      @seats = @adults.to_i + @kids.to_i
+      @round_trip            = params[:round_trip]
+      @adults                = params[:quantity_adults]
+      @kids                  = params[:quantity_kids]
+      @seats                 = @adults.to_i + @kids.to_i
     end
 
     def set_lang_currency

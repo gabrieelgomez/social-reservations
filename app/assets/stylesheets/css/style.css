@@ -2403,3 +2403,11 @@ label.container .checkmark:after {
 }
 
 Checkbox - Customize */
+
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+}

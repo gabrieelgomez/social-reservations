@@ -179,7 +179,17 @@
       }
     }
 
+    .box-results {
+      width: 100%;
 
+      .image-search {
+        padding: 40px 0;
+
+        img {
+          width: 170px;
+        }
+      }
+    }
 
 
   }
