@@ -7,10 +7,7 @@
             %p.result
               %span
                 Su búsqueda:
-              %span
-                ="#{params[:org_name]}"
-              %span
-                = " > #{params[:arr_name]}"
+              %span= @tour.name[@lang].titleize
           .col-lg-3
             %p
               %span
@@ -24,18 +21,18 @@
       .col-lg-12
         = render 'app/layouts/widget'
 
-%section.reservation-vehicles#reservation-vehicles
+%section.reservation-tours#reservation-tours
   .container
     .gallary-header.text-center
       %h2
-        Reserva de Traslado
+        Reserva de Tour
       %p
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post do |f|
         .row{style:"display:flex;"}
-          %input{value: @vehicle.id, type: 'hidden', name: 'reservationable_id'}
+          %input{value: @tour.id, type: 'hidden', name: 'tour_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
@@ -44,39 +41,30 @@
           .col-lg-8
             .reservation-data
               //Reservation Data
-              = render 'app/front/reservations/vehicles/dates_reservations', f: f
+              = render 'app/front/reservations/tours/dates_reservations', f: f
 
               //Personal Data
-              = render 'app/front/reservations/vehicles/dates_personal', f: f
+              = render 'app/front/reservations/tours/dates_personal', f: f
 
               //Billing Data
-              = render 'app/front/reservations/vehicles/dates_billing'
+              = render 'app/front/reservations/tours/dates_billing'
 
-<<<<<<< HEAD
-              //Condiciones Reembolsos/Cancelaciones
-              = render 'app/front/reservations/vehicles/dates_refunds_cancellations'
-
-              //Términos y Condiciones
-              = render 'app/front/reservations/vehicles/dates_terms_conditions'
-            
-=======
               //Terms & Conditions
-              = render 'app/front/reservations/vehicles/dates_terms_conditions'
+              = render 'app/front/reservations/tours/dates_terms_conditions'
 
               //Privacy Policy
-              = render 'app/front/reservations/vehicles/dates_privacy_policy'
->>>>>>> 95ff8e0146e95616a1ec5ced0b77cb077d7de3eb
+              = render 'app/front/reservations/tours/dates_privacy_policy'
 
           .col-lg-4
             // Reservation Summary
             .reservation-resumen
-              = render 'app/front/reservations/vehicles/resumen'
+              = render 'app/front/reservations/tours/resumen'
     .container
       //Modal - Privacy Policy
-      = render 'app/front/reservations/vehicles/modal/privacy_policy'
+      = render 'app/front/reservations/tours/modal/privacy_policy'
     .container
       //Modal - Terms & Conditions
-      = render 'app/front/reservations/vehicles/modal/terms_conditions'
+      = render 'app/front/reservations/tours/modal/terms_conditions'
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -87,8 +75,7 @@
 
 
 :javascript
-  var kit_quantity = #{raw @kit_quantity};
-  validateReservationVehicle('#new_reservation', kit_quantity)
+  // validateReservationVehicle('#new_reservation')
   validateWidgetForm('#search-input');
 
   $( '.link-widget' ).on( 'click', function() {

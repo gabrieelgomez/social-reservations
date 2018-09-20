@@ -5,14 +5,18 @@ Rails.application.routes.draw do
   root to: 'app/front#set_locale_lang'
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
+
     get 'vehicles', to: 'app/front#vehicles'
-    get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
+    get 'tours', to: 'app/front#tours'
+
+    get 'reservations/:reservationable_type/:reservationable_id', to: 'app/front#reservations', as: :reservations_poly
     get '/checkout', to: 'app/front#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
-    # get '/dashboard', to: 'app/front#dashboard', as: :dashboard
+
     get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
     get '/dashboard/users', to: 'app/dashboard#users', as: :users_details
     post '/dashboard/users/edit', to: 'app/users#update', as: :user_update
+
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
