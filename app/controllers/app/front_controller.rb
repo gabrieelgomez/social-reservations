@@ -59,6 +59,8 @@ module App
       @user = @reservation.user
     end
 
+   def tours
+   end
 
     private
 

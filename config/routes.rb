@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
     get '/dashboard/users', to: 'app/dashboard#users', as: :users_details
     post '/dashboard/users/edit', to: 'app/users#update', as: :user_update
+
+    get 'tours', to: 'app/front#tours'
+    
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
