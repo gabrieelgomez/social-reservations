@@ -20,6 +20,7 @@ module App
     end
 
     def tours
+      byebug
       @results = KepplerTravel::Tour.find(params[:tour_id])
     end
 
@@ -50,8 +51,8 @@ module App
       @reservationable     = @reservation.reservationable
       @user = @reservation.user
     end
+   
 
-    private
 
     def set_search
       @destinations = KepplerTravel::Destination.all
@@ -59,6 +60,7 @@ module App
     end
 
     def set_reservationable
+      byebug
       @render = params[:reservationable_type].downcase.pluralize
       case params[:reservationable_type]
       when 'Vehicle'
