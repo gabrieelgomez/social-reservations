@@ -14,7 +14,6 @@ function collectImages(id_input, edit_input, name_input){
       imagesAdd.push(imagesFiles)
     });
   }
-  console.log(imagesAdd);
   $(id_input).filer({
     limit: null,
     maxSize: 3,

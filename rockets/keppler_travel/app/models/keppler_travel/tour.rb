@@ -10,6 +10,9 @@ module KepplerTravel
     # Relationships
     has_and_belongs_to_many :destinations
 
+    validates :name, :description, :task, :price_adults, presence: true
+    validates :name, uniqueness: true
+
     def update_images(images_list)
       unless images_list[:files].nil? || images_list[:files].empty?
         imgs = self.files
