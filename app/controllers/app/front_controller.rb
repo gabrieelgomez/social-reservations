@@ -34,6 +34,7 @@ module App
       @adults = params[:adults]
       @kids   = params[:kids]
       @seats = @adults.to_i + @kids.to_i
+      @kit_quantity = @vehicle.kit['quantity']
     end
 
 
@@ -57,7 +58,7 @@ module App
       @reservationable     = @reservation.reservationable
       @user = @reservation.user
     end
-    
+
 
     private
 

@@ -133,7 +133,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.jsonb "description"
     t.jsonb "task"
     t.jsonb "files"
-    t.float "price"
+    t.float "price_adults"
+    t.float "price_kids"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -225,6 +226,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.string "email"
     t.string "logo"
     t.string "favicon"
+    t.text "terms_conditions"
+    t.text "privacy_policies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

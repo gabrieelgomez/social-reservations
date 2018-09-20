@@ -22,7 +22,7 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @tour.as_json(only: ["name", "description", "task", "price", "activities", "position", "deleted_at"]).each do |attribute, value|
+                - @tour.as_json(only: ["name", "description", "task", "price_adults", "price_kids", "activities", "position", "deleted_at"]).each do |attribute, value|
                   - unless attribute.eql?('position') || attribute.eql?('deleted_at')
                     %tr.list-row
                       %th.display-label= t("activerecord.attributes.#{attribute}")
