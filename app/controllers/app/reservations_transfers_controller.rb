@@ -6,7 +6,7 @@ module App
     # POST /reservations
     def session_reservation_transfer
       session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
-      session[:vehicle]     = KepplerTravel::Vehicle.find params[:vehicle_id]
+      session[:vehicle]     = KepplerTravel::Vehicle.find params[:reservationable_id]
       session[:user]        = params[:user]
       session[:invoice]     = params[:invoice]
       session[:travellers]  = params[:travellers]

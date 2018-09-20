@@ -31,10 +31,7 @@ function validateForm(id_form){
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-     // var data = $('#destinations_vehicles').val();
-     // $('form').append(`<input type="hidden" name="vehicle[destination_ids]" value="${data}" /> `);
      form.submit();
-
    }
   });
 }
@@ -47,16 +44,29 @@ function validateTour(id_form){
    validClass: "valid-class",
    rules: {
      'tour[price]': { required: true},
+     'tour[destination_ids]': { required: true},
      },
    messages: {
      'tour[price]': 'No puede estar en blanco',
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-     var data = $('#destinations_tours').val();
-     $('form').append(`<input type="hidden" name="tour[destination_ids]" value=${data} /> `);
-     form.submit();
-     // debugger1
+
+     var tour_files = $('#tour_files').val();
+     var destinations = $('#destinations_tours').val();
+
+     $('form').append(`<input type="hidden" name="tour[destination_ids]" value=${destinations} /> `);
+
+     if (tour_files  == ''){
+       alert('Agregue mínimo una imagen');
+     }
+     else if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
    }
   });
 }
