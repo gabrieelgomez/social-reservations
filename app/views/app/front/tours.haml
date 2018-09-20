@@ -6,119 +6,16 @@
   %body{style:"padding-top:120px;"}
     %header
       = render 'app/layouts/navbar'
-      -#.loader
+      .loader
         = render 'app/front/loader/loader'
 
-%section#seach-widget
-  .container
-    -#- unless @results.blank?
-    .box-search
-      .container
-        .row
-          .col-lg-9
-            %p.result
-              %span
-                Su búsqueda:
-              %span
-                ="#{@origin_name}"
-              %span
-                = " > #{@arrival_name}"
-          .col-lg-3
-            %p
-              %span
-                %a.pull-right.link-widget
-                  Volver a relizar la búsqueda
-
-  .container.js-widget.js-hide-widget.widget-results
-    .row
-      .col-lg-12
-        -#= render 'app/layouts/widget'
-
-%section#tours_.tours_
-  .container
-    -#- unless @results.blank?
-    .gallary-header.text-center
-      %h2
-        //title del tours
-        Cartagena de Indias
-      %p
-        //Description tours 
-        Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
-  .content-tours
-    .container
-      .row
-        -#- if @results.blank?
-        -#.col-lg-12
-          .box-results
-            .image-search
-              = image_tag '/assets/img/loupe.svg'
-            .gallary-header.text-center
-              %h2
-                ¡Lo sentimos! No hemos encontrado ningún resultado.
-              %p
-                = link_to root_path do
-                  Volver a relizar la búsqueda
-
-
-        -#- else
-          -#- @results.each do |vehicle|
-        .col-lg-6
-          .content-tours__description
-            %h3 Descripción del Tour
-            .content-tours__description--summary
-              %p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ratione, modi amet voluptates aspernatur quam ea quisquam optio aut velit, assumenda voluptas vero impedit? Blanditiis fugit natus officiis aliquid dolorem! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ratione, modi amet voluptates aspernatur quam ea quisquam optio aut velit, assumenda voluptas vero impedit? Blanditiis fugit natus officiis aliquid dolorem!
-        .col-lg-6
-          .content-tours__image
-            .carrusel-galery
-              .galery
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-1.jpg", :class => "img-responsive"}/
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-2.jpg", :class => "img-responsive"}/
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-3.jpg", :class => "img-responsive"}/
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-4.jpg", :class => "img-responsive"}/
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-5.jpg", :class => "img-responsive"}/
-                .galery__item
-                  %img{:alt => "", :src => "/assets/img/bg-6.jpg", :class => "img-responsive"}/
-
-        .col-lg-12
-          .content-tours__tab
-            .content-tours__tab--box
-              %ul.nav.nav-tabs
-                %li.active
-                  %a{"data-toggle" => "tab", :href => "#includes"} Incluye
-                %li
-                  %a{"data-toggle" => "tab", :href => "#description"} Descripción
-                -#%li
-                  %a{"data-toggle" => "tab", :href => "#observation"} Observaciones
-              .tab-content
-                #includes.tab-pane.active
-                  .box-includes
-                    %h4 Incluye
-                    %ul.items
-                      %li Lorem ipsum dolor sit amet
-                      %li Consectetur adipiscing elit
-                      %li Integer molestie lorem at massa
-                      %li Facilisis in pretium nisl aliquet
-                      %li Faucibus porta lacus fringilla vel
-                      %li Aenean sit amet erat nunc
-                      %li Eget porttitor lorem
-                #description.tab-pane
-                  .box-description
-                    %h4 Descripción
-                    %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae impedit cum fugit cupiditate aspernatur adipisci distinctio repellendus, illum id totam molestias expedita temporibus magnam autem fuga! Architecto, officiis repellat! Ulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deserunt labore, ipsa nobis dolor consequuntur explicabo ratione veritatis omnis, at cupiditate! Voluptas exercitationem inventore illum tempora obcaecati maiores minus excepturi.
-                -#observation.tab-pane
-                  %h3 Obeservaciones
+    = render 'app/front/tours/show'
     
-
-               
-%footer.footer-copyright
-  = render 'app/layouts/footer'
+    %footer.footer-copyright
+      = render 'app/layouts/footer'
 
 %script{:src => "/assets/js/loader.js"}
+
 :javascript
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
