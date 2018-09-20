@@ -1,32 +1,27 @@
 -#%hr
 %h3 Datos de Reserva
 .row
-  // Inputs datos de reservas desactivados
-  .col-lg-6
+  .col-lg-4
     .form-group.form-custom
       %label{:for => "origin_tour_booking"} Seleccione Origen
       %input{name: 'reservation[origin]', value: @tour.name[@lang].titleize, type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: @tour.name[@lang].titleize}
-  .col-lg-12
-    .row
-      .col-lg-4
-        .form-group
-          %label{:for => "adults"} Cantidad adultos
-          %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
-          %input.form-control{value: params[:adults], disabled: 'disabled'}
-      .col-lg-4
-        .form-group
-          %label{:for => "kids"} Cantidad niños
-          %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
-          %input.form-control{value: params[:kids], disabled: 'disabled'}
-  // End --- Inputs datos de reservas desactivados
-
-  // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
-  .col-lg-12
-    .row
-      .col-lg-6
-        .form-group#fecha_origen_ida
-          %label{:for => ""}  Fecha Origen
-          %input{name: 'reservation[flight_origin]', value: params[:flight_origin_picker], type: 'hidden'}
-          %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off', disabled: 'disabled', value: params[:flight_origin_picker]}/
+  .col-lg-4
+    // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
+    .form-group.form-custom#fecha_origen_ida
+      %label{:for => ""}  Fecha Origen
+      %input{name: 'reservation[flight_origin]', value: params[:flight_origin_picker], type: 'hidden'}
+      %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off', disabled: 'disabled', value: params[:flight_origin_picker]}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
+  .col-lg-2
+    .form-group.form-custom
+      %label{:for => "adults"} N° Adultos
+      %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
+      %input.form-control{value: params[:adults], disabled: 'disabled'}
+  .col-lg-2
+    .form-group.form-custom
+      %label{:for => "kids"} N° Niños
+      %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
+      %input.form-control{value: params[:kids], disabled: 'disabled'}
+ 
+
