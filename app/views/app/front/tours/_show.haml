@@ -68,14 +68,10 @@
                         %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
             %br
             .content-tours__button
-              %center
+              -#%center
                 = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, adults: @adults, kids: @kids, flight_origin_picker: @flight_origin_picker) do
                   %button.about-view.packages-btn.btn-reservation
                     Reservar
-            .box-btn
-              = link_to reservations_path(@lang, @currency, 'tour', @results, flight_origin_tour_picker: @flight_origin_tour_picker, adults: @adults, kids: @kids) do
-                %button.about-view.packages-btn
-                  Reservar
 
           .col-lg-5
             .content-tours__image
