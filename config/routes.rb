@@ -5,21 +5,32 @@ Rails.application.routes.draw do
   root to: 'app/front#set_locale_lang'
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index'
+
     get 'vehicles', to: 'app/front#vehicles'
-    get 'reservations/:vehicle_id', to: 'app/front#reservations', as: :reservations_vehicle
-    get '/checkout', to: 'app/front#checkout', as: :checkout
+    get 'tours', to: 'app/front#tours'
+
+    get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
+
+    get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
-    # get '/dashboard', to: 'app/front#dashboard', as: :dashboard
+
     get '/dashboard/orders/transfers', to: 'app/dashboard#transfer_orders', as: :transfer_orders
     get '/dashboard/users', to: 'app/dashboard#users', as: :users_details
     post '/dashboard/users/edit', to: 'app/users#update', as: :user_update
+
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
-  post '/session_reservation_transfer', to: 'app/reservations_transfers#session_reservation_transfer'
-  post '/create_reservation_transfer', to: 'app/reservations_transfers#create_reservation_transfer'
-  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations_transfers#transaction_payment', as: :checkout_elp_redirect
+
+  # Reservations Transfers / Vehicles
+    post '/session_reservation_transfer', to: 'app/reservations/transfers/transfers#session_reservation_transfer'
+    post '/create_reservation_transfer', to: 'app/reservations/transfers/transfers#create_reservation_transfer'
+  # Reservations Tours
+    post '/session_reservation_tour', to: 'app/reservations/tours/tours#session_reservation_tour'
+    post '/create_reservation_tour', to: 'app/reservations/tours/tours#create_reservation_tour'
+
+  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations/reservations#transaction_payment', as: :checkout_elp_redirect
 
   namespace :admin do
     root to: 'admin#root'

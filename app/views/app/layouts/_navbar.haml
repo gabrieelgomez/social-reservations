@@ -48,10 +48,20 @@
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to transfer_orders_path(@lang, @currency), class:"" do
-                        %span Dashboard
+                      = link_to transfer_orders_path(@lang, @currency), class:'' do
+                        %span
+                          %i.icon-list.icons
+                          Mi Tablero
                     %li
-                      = link_to t('devise.sign_out'), destroy_session_path(current_user)
+                      = link_to users_details_path(@lang, @currency), class:'' do
+                        %span
+                          %i.icon-user.icons 
+                          Mi Perfil
+                    %li
+                      = link_to destroy_session_path(current_user), class:''  do
+                        %span 
+                          %i.icon-logout.icons
+                          Cerrar Sesión
 
               - else
                 = link_to new_user_session_path, class:"pull-right" do

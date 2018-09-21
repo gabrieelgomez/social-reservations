@@ -9,9 +9,7 @@
       .loader
         = render 'app/front/loader/loader'
 
-
-
-    = render 'app/front/reservations/vehicles/index'
+    = render "app/front/reservations/#{@render}/index"
 
     %footer.footer-copyright
       = render 'app/layouts/footer'

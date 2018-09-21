@@ -1,31 +1,50 @@
+.edit_perfile{style:"width: 100%; padding-top: 25px;"}
 = simple_form_for @user, url: user_update_path, method: :post do |f|
-  .col-lg-12.form-contact-us-p
-    %h1= "Hola! #{@user.name}"
-    .col-lg-8
-      .col-lg-6
+  .container
+    %h1 Editar Perfil
+    %hr/
+    .row
+
+      .col-lg-9
+        %h3="¡Hola! #{@user.name}"
+        %form.form-horizontal{:role => "form"}
+          .col-lg-6
+            .form-group
+              %label.control-label Nombre:
+              = f.input :name, :autofocus => true, class: 'form-control', label: false
+
+            .form-group
+              %label.control-label Correo electrónico:
+              = f.input :email, class: 'form-control', label: false
+          .col-lg-6
+            .form-group
+              %label.control-label Identificación:
+              = f.input :dni, class: 'form-control', label: false
+
+            .form-group
+              %label.control-label Teléfono:
+              = f.input :phone, class: 'form-control', label: false
+
+          .col-lg-6
+            .form-group
+              %label.control-label Contraseña
+              = f.input :password, :autocomplete => 'off', class: 'form-control', label: false
+          .col-lg-6
+            .form-group
+              %label.control-label Confirmar contraseña
+              = f.input :password_confirmation, class: 'form-control', label: false
+
+      .col-md-3
         .form-group
-          = f.input :name, :autofocus => true, class: 'form-control'
-          = f.input :username, class: 'form-control'
-          = f.input :dni, class: 'form-control'
-          = f.input :email, class: 'form-control'
-          = f.input :phone, class: 'form-control'
-      .col-lg-6
+          %label Subir Imagen
+          %center
+            %img.avatar.img-circle{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
+            = f.input :avatar, as: :keppler_file, label: false
+            
+      .col-lg-12
         .form-group
-          = f.input :password, :autocomplete => 'off', class: 'form-control'
-          = f.input :password_confirmation, class: 'form-control'
-        %br/
-        .form-group
-          = f.input :current_password, class: 'form-control'
-    .col-lg-4
-      .box-header.with-border
-        %h3.box-title Avatar
-      .box-body.box-profile
-        = f.input :avatar, as: :keppler_file, label: false
-  .col-lg-12
-    .col-lg-8
-      .col-lg-6
-        %br/
-        = f.submit
+          %input.btn.btn-primary{:type => "button", :value => "Guadar"}/
+
 
 %script{:src => "/assets/js/jquery-validate.js"}
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}

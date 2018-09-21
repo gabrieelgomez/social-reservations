@@ -5,6 +5,8 @@
     %link{:href => "/assets/css/dashboard.css", :rel => "stylesheet"}/
     %link{:href => "/assets/css/dashboard-skin.css", :rel => "stylesheet"}/
   %body.hold-transition.skin-blue.sidebar-mini.fixed
+    .loader
+      = render 'app/front/loader/loader'
     .wrapper
       %header.main-header
         = render 'app/dashboard/layouts/header'

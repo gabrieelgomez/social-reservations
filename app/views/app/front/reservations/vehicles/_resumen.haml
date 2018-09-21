@@ -3,10 +3,6 @@
   .col-lg-12
     .reservation-resumen
       %ul.list-group.mb-3.sticky
-        -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Responsable
-            %small.text-muted Slice Group
         %li.list-group-item.d-flex.justify-content-between.lh-condensed
           %div
             %h6.my-0 Origen
@@ -18,26 +14,13 @@
         %li.list-group-item.d-flex.justify-content-between.lh-condensed
           %div
             %h6.my-0 Fecha de Ida
-            %small.text-muted 05/09/2018
-        //Se debe condicionar ¡Pendiente acá!
+            %small.text-muted= params[:flight_origin_picker]
         %li.list-group-item.d-flex.justify-content-between.lh-condensed
           %div
             %h6.my-0 Fecha de Vuelta
-            %small.text-muted 10/09/2018
-        -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Tipo de Vehiculo
-            %small.text-muted= @vehicle.title[@lang].capitalize
+            %small.text-muted= params[:flight_arrival_picker]
         %li.list-group-item.d-flex.justify-content-between.bg-light
           .row
-            -# .col-lg-4
-            -#   .text-muted
-            -#     %h6.my-0 Adultos
-            -#     %small= @vehicle.quantity_adults
-            -# .col-lg-4
-            -#   .text-muted
-            -#     %h6.my-0 Niños
-            -#     %small= @vehicle.quantity_kids
             .col-lg-12
               .text-muted
                 %h6.my-0 Equipaje máximo permitido
@@ -46,14 +29,8 @@
                   pzas.
                   (#{@vehicle.kit['weight']}kg) ->
                   = @vehicle.title[@lang]
-        -#%li.list-group-item.d-flex.justify-content-between.lh-condensed
-          %div
-            %h6.my-0 Tipo de Moneda
-            %small.text-muted= @currency.upcase
-          -#%span.text-muted $5
         %li.list-group-item.d-flex.justify-content-between
           %div
-            //Esto es el concepto (facturación)
             %h6.my-0 Sub-total
             %small.text-muted
               - multiple = params[:round_trip] == 'true' ? '2' : '1'
@@ -69,14 +46,11 @@
             %strong{style:"float: right;"}
               = @currency.upcase
               = number_to_currency(price, locale: @locale)
-          -#(#{@currency.upcase})
-          -#%strong= "$ #{@vehicle.price[@currency]}"
         %hr
         .box-btn-payment
           %span
             %p.text-center.title-reser ¡Paga tu reserva!
             %br/
-            %img{:alt => "", :src => "/assets/img/colombia-enlineapagos.png", :width => "150px"}/
-          %center  
+          %center
             .about-btn.travel-mrt-0
               %button.about-view.travel-btn.btn-reser Confirmar

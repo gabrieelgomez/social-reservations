@@ -1,41 +1,13 @@
-module App
-  # FrontsController
-  class ReservationsTransfersController < FrontController
-    layout 'layouts/templates/application'
-
-    # POST /reservations
-    def session_reservation_transfer
-      session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
-      session[:vehicle]     = KepplerTravel::Vehicle.find params[:vehicle_id]
-      session[:user]        = params[:user]
-      session[:invoice]     = params[:invoice]
-      session[:travellers]  = params[:travellers]
-      redirect_to checkout_path(params[:lang], params[:currency])
-    end
-
-    def create_reservation_transfer
-      @reservation = KepplerTravel::Reservation.new(session[:reservation])
-      find_or_create_user
-      @reservation.status = :pending
-      @reservation.user = @user
-      @reservation.reservationable = KepplerTravel::Vehicle.find session[:vehicle]['id']
-      build_invoice
-      if @reservation.save!
-        create_travellers
-        ReservationMailer.transfer_status(@reservation, @user).deliver_now
-        # redirect(@reservation, params)
-        redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-      else
-        render :new
-      end
-    end
+module App::Reservations
+  class CreateController < ReservationsController
+    # layout 'app/layouts/application'
 
     def build_invoice
       currency = session[:invoice].first['currency']
       @reservation.build_invoice(
         token: session[:invoice].first['token'],
         address: session[:invoice].first['address'],
-        amount: @reservation.reservationable.price[currency],
+        amount: @price_total,
         currency: currency,
         status: :pending
       )
@@ -56,13 +28,12 @@ module App
             email: @user_session['email'],
             dni: @user_session['dni'],
             phone: @user_session['phone'],
-            password: '123123123',
-            password_confirmation: password,
-            password: password
+            password: password,
+            password_confirmation: password
           )
           @user.add_role :client
           @user.format_accessable_passwd(password)
-          ReservationMailer.send_password(@user).deliver_now
+          # ReservationMailer.send_password(@user).deliver_now
         end
 
       else
@@ -80,7 +51,6 @@ module App
     end
 
     private
-
     # Only allow a trusted parameter "white list" through.
     def reservation_params
       params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,

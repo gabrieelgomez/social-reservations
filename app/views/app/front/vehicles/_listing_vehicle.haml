@@ -1,5 +1,3 @@
-
-
 %section#seach-widget
   .container
     - unless @results.blank?
@@ -86,7 +84,7 @@
                         = @currency.upcase
                         = number_to_currency(vehicle.price[@currency], locale: @locale)
                     .box-btn
-                      = link_to reservations_vehicle_path(@lang, @currency, vehicle, org_name: @origin_name,
+                      = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, org_name: @origin_name,
                         org_loc:@origin_location, arr_name: @arrival_name, arr_loc:@arrival_location,
                         adults: @adults, kids: @kids, round_trip: @round_trip,
                         flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do

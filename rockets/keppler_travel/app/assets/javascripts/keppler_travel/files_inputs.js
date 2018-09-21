@@ -14,10 +14,9 @@ function collectImages(id_input, edit_input, name_input){
       imagesAdd.push(imagesFiles)
     });
   }
-  console.log(imagesAdd);
   $(id_input).filer({
     limit: null,
-    maxSize: 0.5,
+    maxSize: 3,
     extensions: ['jpg', 'png', 'jpeg', 'pdf', 'svg', 'doc', 'docx', 'ppt', 'pptx'],
     changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag&Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn blue">Browse Files</a></div></div>',
     showThumbs: true,

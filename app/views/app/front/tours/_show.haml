@@ -1,0 +1,82 @@
+%section#seach-widget
+  .container
+    - unless @results.blank?
+      .box-search
+        .container
+          .row
+            .col-lg-9
+              %p.result
+                %span
+                  Su búsqueda:
+                %span
+                  ="#{@results.title[@lang]}".titleize
+            .col-lg-3
+              %p
+                %span
+                  %a.pull-right.link-widget
+                    Volver a relizar la búsqueda
+
+  .container.js-widget.js-hide-widget.widget-results
+    .row
+      .col-lg-12
+        = render 'app/layouts/widget'
+
+%section#tours_.tours_
+  .container
+    - unless @results.blank?
+      .gallary-header.text-center
+        %h2= @results.title[@lang].titleize
+        %p
+          //Description tours
+          Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+  .content-tours
+    .container
+      .row
+        - if @results.blank?
+          .col-lg-12
+            .box-results
+              .image-search
+                = image_tag '/assets/img/loupe.svg'
+              .gallary-header.text-center
+                %h2
+                  ¡Lo sentimos! No hemos encontrado ningún resultado.
+                %p
+                  = link_to root_path do
+                    Volver a relizar la búsqueda
+
+        - else
+          .col-lg-6
+            .content-tours__description
+              %h3 Descripción del Tour
+              .content-tours__description--summary
+                %p= raw @results.description[@lang]
+            .box-btn
+              = link_to reservations_path(@lang, @currency, 'tour', @results, flight_origin_tour_picker: @flight_origin_tour_picker, adults: @adults, kids: @kids) do
+                %button.about-view.packages-btn
+                  Reservar
+
+          .col-lg-6
+            .content-tours__image
+              .carrusel-galery
+                .galery
+                  - @results.files.each_with_index do |image|
+                    .galery__item
+                      %img{:alt => "", :src => image.url, :class => "img-responsive"}/
+
+          .col-lg-12
+            .content-tours__tab
+              .content-tours__tab--box
+                %ul.nav.nav-tabs
+                  %li.active
+                    %a{"data-toggle" => "tab", :href => "#includes"} Actividades
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#description"} Descripción
+                .tab-content
+                  #includes.tab-pane.active
+                    .box-includes
+                      %h4 Incluye
+                      %p= raw @results.task[@lang]
+                  #description.tab-pane
+                    .box-description
+                      %h4 Descripción
+                      = raw @results.description[@lang]

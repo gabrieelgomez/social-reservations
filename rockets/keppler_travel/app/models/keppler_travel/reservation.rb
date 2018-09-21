@@ -14,6 +14,14 @@ module KepplerTravel
     has_many   :travellers
     accepts_nested_attributes_for :travellers
 
+    def self.multiple(object)
+      object['round_trip'] == 'true' ? '2' : '1'
+    end
+
+    def self.price_total(object, objectable, currency)
+      object['round_trip'] == 'true' ? objectable['price'][currency].to_f*2 : objectable['price'][currency].to_f
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["origin", "arrival"]

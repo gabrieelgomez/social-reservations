@@ -49,6 +49,7 @@ module Admin
     def setting_params
       params.require(:setting).permit(
         :name, :description, :email, :phone, :mobile, :logo,
+        :terms_conditions, :privacy_policies,
         :favicon, :logo_cache, :favicon_cache,
         smtp_setting_attributes: smpt_setting_permit_attributes,
         google_analytics_setting_attributes: ga_setting_permit_attributes,
