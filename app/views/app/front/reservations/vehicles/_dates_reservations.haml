@@ -5,27 +5,27 @@
   .col-lg-6
     .form-group.form-custom
       %label{:for => "origin_vehicle_booking"} Seleccione Origen
-      %input{name: 'reservation[origin]', value: params[:org_name], type: 'hidden'}
-      %input{name: 'reservation[origin_location]', value: params[:org_loc], type: 'hidden'}
-      %input.google-input.form-control{disabled: 'disabled', value: params[:org_name]}
+      %input{name: 'reservation[origin]', value: @origin_name, type: 'hidden'}
+      %input{name: 'reservation[origin_location]', value: @origin_location, type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: @origin_name}
   .col-lg-6
     .form-group.form-custom
       %label{:for => "arrival_vehicle_booking"} Seleccione Destino
-      %input{name: 'reservation[arrival]', value: params[:arr_name], type: 'hidden'}
-      %input{name: 'reservation[arrival_location]', value: params[:arr_loc], type: 'hidden'}
-      %input.google-input.form-control{disabled: 'disabled', value: params[:arr_name]}
+      %input{name: 'reservation[arrival]', value: @arrival_name, type: 'hidden'}
+      %input{name: 'reservation[arrival_location]', value: @arrival_location, type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: @arrival_name}
   .col-lg-12
     .row
       .col-lg-4
         .form-group
           %label{:for => "adults"} Cantidad adultos
-          %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
-          %input.form-control{value: params[:adults], disabled: 'disabled'}
+          %input{name: 'reservation[quantity_adults]', value: @adults, type: 'hidden'}
+          %input.form-control{value: @adults, disabled: 'disabled'}
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad niños
-          %input{name: 'reservation[quantity_kids]', value: params[:kids].to_i, type: 'hidden'}
-          %input.form-control{value: params[:kids].to_i, disabled: 'disabled'}
+          %input{name: 'reservation[quantity_kids]', value: @kids, type: 'hidden'}
+          %input.form-control{value: @kids, disabled: 'disabled'}
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad de Equipaje
