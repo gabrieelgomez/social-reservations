@@ -30,9 +30,9 @@
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
-      = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post do |f|
+      = simple_form_for @reservation, url: '/session_reservation_tour', method: :post do |f|
         .row{style:"display:flex;"}
-          %input{value: @tour.id, type: 'hidden', name: 'tour_id'}
+          %input{value: @tour.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
@@ -75,7 +75,7 @@
 
 
 :javascript
-  // validateReservationVehicle('#new_reservation')
+  validateReservationTour('#new_reservation')
   validateWidgetForm('#search-input');
 
   $( '.link-widget' ).on( 'click', function() {

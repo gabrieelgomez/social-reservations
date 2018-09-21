@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
   end
 
   create_table "keppler_travel_tours", force: :cascade do |t|
-    t.jsonb "name"
+    t.jsonb "title"
     t.jsonb "description"
     t.jsonb "task"
     t.jsonb "files"

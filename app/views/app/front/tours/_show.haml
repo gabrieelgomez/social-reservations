@@ -9,7 +9,7 @@
                 %span
                   Su búsqueda:
                 %span
-                  ="#{@results.name[@lang]}".titleize
+                  ="#{@results.title[@lang]}".titleize
             .col-lg-3
               %p
                 %span
@@ -25,7 +25,7 @@
   .container
     - unless @results.blank?
       .gallary-header.text-center
-        %h2= @results.name[@lang].titleize
+        %h2= @results.title[@lang].titleize
         %p
           //Description tours
           Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
@@ -51,7 +51,7 @@
               .content-tours__description--summary
                 %p= raw @results.description[@lang]
             .box-btn
-              = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, adults: @adults, kids: @kids, flight_origin_picker: @flight_origin_picker) do
+              = link_to reservations_path(@lang, @currency, 'tour', @results, flight_origin_tour_picker: @flight_origin_tour_picker, adults: @adults, kids: @kids) do
                 %button.about-view.packages-btn
                   Reservar
 
