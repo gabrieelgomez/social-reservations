@@ -10,8 +10,8 @@ module KepplerTravel
     # Relationships
     has_and_belongs_to_many :destinations
 
-    validates :name, :description, :task, :price_adults, presence: true
-    validates :name, uniqueness: true
+    validates :title, :description, :task, :price_adults, presence: true
+    validates :title, uniqueness: true
 
     def update_images(images_list)
       unless images_list[:files].nil? || images_list[:files].empty?
@@ -41,7 +41,7 @@ module KepplerTravel
 
     # Fields for the search form in the navbar
     def self.search_field
-      fields = ["name", "description", "files", "task", "position", "deleted_at"]
+      fields = ["title", "description", "files", "task", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 
