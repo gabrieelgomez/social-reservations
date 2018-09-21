@@ -33,7 +33,7 @@
 												// ESPAÑOL
 												#spanish.tab-pane.active
 													.col-xs-12
-														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+														= f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
 															= field.input :es, label: 'Titulo'
 													.col-xs-6
 														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
@@ -45,7 +45,7 @@
 												// INGLÉS
 												#english.tab-pane
 													.col-xs-12
-														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+														= f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
 															= field.input :en, label: 'Title'
 													.col-xs-6
 														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
@@ -57,7 +57,7 @@
 												// PORTUGUÉS
 												#portugues.tab-pane
 													.col-xs-12
-														= f.simple_fields_for :name, OpenStruct.new(@tour.name) do |field|
+														= f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
 															= field.input :pt, label: 'Titulo'
 													.col-xs-6
 														= f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
