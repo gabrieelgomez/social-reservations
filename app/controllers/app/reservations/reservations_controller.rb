@@ -7,9 +7,10 @@ module App
       # Step 1
       def reservations
         @reservation = KepplerTravel::Reservation.new
-        @adults      = params[:adults]
-        @kids        = params[:kids]
-        @seats       = @adults.to_i + @kids.to_i
+        @adults      = params[:adults].to_i
+        @kids        = params[:kids].to_i
+        @seats       = @adults + @kids
+        @flight_origin_tour_picker = params[:flight_origin_tour_picker]
       end
 
       # Step 2
