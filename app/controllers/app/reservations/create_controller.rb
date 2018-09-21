@@ -28,9 +28,8 @@ module App::Reservations
             email: @user_session['email'],
             dni: @user_session['dni'],
             phone: @user_session['phone'],
-            password: '123123123',
-            password_confirmation: password,
-            password: password
+            password: password,
+            password_confirmation: password
           )
           @user.add_role :client
           @user.format_accessable_passwd(password)

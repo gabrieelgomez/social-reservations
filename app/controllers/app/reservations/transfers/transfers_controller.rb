@@ -17,11 +17,12 @@ module App::Reservations::Transfers
       @reservation.status = :pending
       @reservation.user = @user
       @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
-      @price_total = @reservation.reservationable.price[currency]
+      @currency = session[:invoice].first['currency']
+      @price_total = @reservation.reservationable.price[@currency]
       build_invoice
       if @reservation.save!
         create_travellers
-        # ReservationMailer.transfer_status(@reservation, @user).deliver_now
+        ReservationMailer.transfer_status(@reservation, @user).deliver_now
         redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
       else
         render :new

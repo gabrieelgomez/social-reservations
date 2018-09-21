@@ -2,10 +2,10 @@ module App
   # FrontsController
   class FrontController < AppController
     layout 'layouts/templates/application'
-    before_action :set_search, only: [:index, :vehicles, :tours, :reservations]
-    before_action :set_params_widget, only: [:vehicles, :tours]
+    before_action :set_search, only: %i[index vehicles tours reservations]
+    before_action :set_params_widget, only: %i[vehicles tours]
     before_action :set_lang_currency
-    before_action :delete_session, except: [:checkout, :create_reservation_transfer, :session_reservation_transfer, :create_reservation_tour, :session_reservation_tour]
+    before_action :delete_session, except: %i[checkout create_reservation_transfer session_reservation_transfer create_reservation_tour session_reservation_tour]
 
     def set_locale_lang
       @locale = request.protocol + request.host_with_port + '/es'
