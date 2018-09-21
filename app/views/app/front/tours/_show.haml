@@ -57,19 +57,19 @@
                     .col-lg-4
                       .form-group
                         %label Fecha de Reserva
-                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+                        %input.form-control.custom-input{value: @flight_origin_tour_picker, disabled: 'disabled'}/
                     .col-lg-4
                       .form-group
                         %label Cantidad de Adultos
-                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+                        %input.form-control.custom-input{value: @adults, disabled: 'disabled'}/
                     .col-lg-4
                       .form-group
                         %label Cantidad de Niños
-                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+                        %input.form-control.custom-input{value: @kids.to_i, disabled: 'disabled'}/
             %br
             .content-tours__button
               %center
-                = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, adults: @adults, kids: @kids, flight_origin_picker: @flight_origin_picker) do
+                = link_to reservations_path(@lang, @currency, 'tour', @results, adults: @adults, kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
                   %button.about-view.packages-btn.btn-reservation
                     Reservar
 
