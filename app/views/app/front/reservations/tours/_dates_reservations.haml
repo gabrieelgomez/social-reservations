@@ -10,16 +10,16 @@
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
     .form-group.form-custom#fecha_origen_ida
       %label{:for => ""}  Fecha Origen
-      %input{name: 'reservation[flight_origin]', value: params[:flight_origin_tour_picker], type: 'hidden'}
-      %input.form-control.custom-input{name: 'flight_origin_tour_picker', id: 'flight_origin_tour_picker', autocomplete: 'off', disabled: 'disabled', value: params[:flight_origin_tour_picker]}/
+      %input{name: 'reservation[flight_origin]', value: @flight_origin_tour_picker, type: 'hidden'}
+      %input.form-control.custom-input{name: 'flight_origin_tour_picker', id: 'flight_origin_tour_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_tour_picker}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
   .col-lg-2
     .form-group.form-custom
       %label{:for => "adults"} N° Adultos
-      %input{name: 'reservation[quantity_adults]', value: params[:adults], type: 'hidden'}
-      %input.form-control{value: params[:adults], disabled: 'disabled'}
+      %input{name: 'reservation[quantity_adults]', value: @adults, type: 'hidden'}
+      %input.form-control{value: @adults, disabled: 'disabled'}
   .col-lg-2
     .form-group.form-custom
       %label{:for => "kids"} N° Niños
-      %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
-      %input.form-control{value: params[:kids], disabled: 'disabled'}
+      %input{name: 'reservation[quantity_kids]', value: @kids, type: 'hidden'}
+      %input.form-control{value: @kids, disabled: 'disabled'}
