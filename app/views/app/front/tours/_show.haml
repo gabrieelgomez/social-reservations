@@ -45,17 +45,35 @@
                     Volver a relizar la búsqueda
 
         - else
-          .col-lg-6
+          .col-lg-7
             .content-tours__description
               %h3 Descripción del Tour
               .content-tours__description--summary
                 %p= raw @results.description[@lang]
-            .box-btn
-              = link_to reservations_path(@lang, @currency, 'tour', @results, flight_origin_tour_picker: @flight_origin_tour_picker, adults: @adults, kids: @kids) do
-                %button.about-view.packages-btn
-                  Reservar
+            .content-tours__data
+              .row
+                .col-lg-12
+                  .row
+                    .col-lg-4
+                      .form-group
+                        %label Fecha de Reserva
+                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+                    .col-lg-4
+                      .form-group
+                        %label Cantidad de Adultos
+                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+                    .col-lg-4
+                      .form-group
+                        %label Cantidad de Niños
+                        %input.form-control.custom-input{name: '', id: '', autocomplete: '', disabled: 'disabled'}/
+            %br
+            .content-tours__button
+              %center
+                = link_to reservations_poly_path(@lang, @currency, 'Tour', @results, adults: @adults, kids: @kids, flight_origin_picker: @flight_origin_picker) do
+                  %button.about-view.packages-btn.btn-reservation
+                    Reservar
 
-          .col-lg-6
+          .col-lg-5
             .content-tours__image
               .carrusel-galery
                 .galery

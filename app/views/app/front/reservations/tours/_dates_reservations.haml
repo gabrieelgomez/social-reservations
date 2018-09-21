@@ -4,8 +4,8 @@
   .col-lg-4
     .form-group.form-custom
       %label{:for => "origin_tour_booking"} Seleccione Origen
-      %input{name: 'reservation[origin]', value: @tour.name[@lang].titleize, type: 'hidden'}
-      %input.google-input.form-control{disabled: 'disabled', value: @tour.name[@lang].titleize}
+      %input{name: 'reservation[origin]', value: @tour.title[@lang].titleize, type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: @tour.title[@lang].titleize}
   .col-lg-4
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
     .form-group.form-custom#fecha_origen_ida
@@ -23,5 +23,3 @@
       %label{:for => "kids"} N° Niños
       %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
       %input.form-control{value: params[:kids], disabled: 'disabled'}
- 
-
