@@ -24,8 +24,8 @@
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad niños
-          %input{name: 'reservation[quantity_kids]', value: params[:kids], type: 'hidden'}
-          %input.form-control{value: params[:kids], disabled: 'disabled'}
+          %input{name: 'reservation[quantity_kids]', value: params[:kids].to_i, type: 'hidden'}
+          %input.form-control{value: params[:kids].to_i, disabled: 'disabled'}
       .col-lg-4
         .form-group
           %label{:for => "kids"} Cantidad de Equipaje
