@@ -40,10 +40,10 @@
           %center
             %img.avatar.img-circle{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
             = f.input :avatar, as: :keppler_file, label: false
-            
+
       .col-lg-12
         .form-group
-          %input.btn.btn-primary{:type => "button", :value => "Guadar"}/
+          %input.btn.btn-primary{:type => "submit", :value => "Guadar"}/
 
 
 %script{:src => "/assets/js/jquery-validate.js"}
