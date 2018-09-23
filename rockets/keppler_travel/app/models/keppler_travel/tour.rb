@@ -13,6 +13,15 @@ module KepplerTravel
     validates :title, :description, :task, :price_adults, presence: true
     validates :title, uniqueness: true
 
+    def calculate_kids(kids)
+      case self.price_kids.to_f.positive?
+        when true
+          self.price_kids.to_f
+        when false
+          self.price_adults
+      end
+    end
+
     def update_images(images_list)
       unless images_list[:files].nil? || images_list[:files].empty?
         imgs = self.files

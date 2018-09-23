@@ -53,13 +53,13 @@
                           %i.icon-list.icons
                           Mi Tablero
                     %li
-                      = link_to users_details_path(@lang, @currency), class:'' do
+                      = link_to users_details_path(@lang, @currency, current_user.email), class:'' do
                         %span
-                          %i.icon-user.icons 
+                          %i.icon-user.icons
                           Mi Perfil
                     %li
                       = link_to destroy_session_path(current_user), class:''  do
-                        %span 
+                        %span
                           %i.icon-logout.icons
                           Cerrar Sesión
 

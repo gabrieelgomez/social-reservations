@@ -14,23 +14,27 @@ module App
         end
 
         def create_reservation_transfer
-          @reservation = KepplerTravel::Reservation.new(session[:reservation])
-          find_or_create_user
-          @reservation.status = :pending
-          @reservation.user = @user
-          @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
-          @currency = session[:invoice].first['currency']
-          @price_total = @reservation.reservationable.price[@currency]
-          build_invoice
-          if @reservation.save!
-            create_travellers
-            ReservationMailer.transfer_status(@reservation, @user).deliver_now
-            redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+          if session[:reservation].nil?
+            redirect_to errors_checkout_path(@lang, @currency)
           else
-            render :new
+            @reservation = KepplerTravel::Reservation.new(session[:reservation])
+            find_or_create_user
+            @reservation.status = :pending
+            @reservation.user = @user
+            @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
+            @currency = session[:invoice].first['currency']
+            @price_total = @reservation.reservationable.price[@currency]
+            build_invoice
+            if @reservation.save!
+              create_travellers
+              ReservationMailer.transfer_status(@reservation, @user).deliver_now
+              redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+            else
+              render :new
+            end
           end
-
         end
+
       end
 
     end

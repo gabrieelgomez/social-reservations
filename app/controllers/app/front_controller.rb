@@ -22,6 +22,9 @@ module App
       @results = KepplerTravel::Tour.find(params[:tour_id])
     end
 
+    def errors
+    end
+
     private
 
     def set_search
