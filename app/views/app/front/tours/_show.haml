@@ -69,7 +69,7 @@
             %br
             .content-tours__button
               %center
-                = link_to reservations_path(@lang, @currency, 'tour', @results, adults: @adults, kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
                   %button.about-view.packages-btn.btn-reservation
                     Reservar
 

@@ -86,7 +86,7 @@
                     .box-btn
                       = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, origin_name: @origin_name,
                         origin_location:@origin_location, arrival_name: @arrival_name, arrival_location:@arrival_location,
-                        adults: @adults, kids: @kids, round_trip: @round_trip,
+                        quantity_adults: @adults, quantity_kids: @kids, round_trip: @round_trip,
                         flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do
                         %button.about-view.packages-btn
                           seleccionar

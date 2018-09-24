@@ -2,12 +2,14 @@ module App
   module Reservations
     class ReservationsController < FrontController
       # layout 'app/layouts/application'
+      before_action :set_search, only: :reservations
+      before_action :set_params_widget, only: :reservations
       before_action :set_reservationable, only: :reservations
+      # before_action :delete_session, except: %i[checkout]
 
       # Step 1
       def reservations
         @reservation = KepplerTravel::Reservation.new
-        @flight_origin_tour_picker = params[:flight_origin_tour_picker]
       end
 
       # Step 2
@@ -27,7 +29,6 @@ module App
               set_vehicle_checkout
             when 'tour'
               set_tour_checkout
-              # set_price_tour
             when 'circuits'
               nil
             when 'multidestinations'
@@ -40,11 +41,15 @@ module App
 
       # Step 3
       def transaction_payment
-        @reservation         = KepplerTravel::Reservation.find params[:reservation_id]
-        @invoice             = @reservation.invoice
-        @user                = @reservation.user
-        @reservationable     = @reservation.reservationable
-        redirect_to root_path if @invoice.status_pay? :approved
+        @reservation         = KepplerTravel::Reservation.find(params[:reservation_id]) rescue nil
+        @invoice             = @reservation.try(:invoice)
+        @user                = @reservation.try(:user)
+        @reservationable     = @reservation.try(:reservationable)
+        if @reservation.nil?
+          redirect_to errors_checkout_path('cop')
+        else
+          redirect_to root_path if @invoice.status_pay? :approved
+        end
       end
 
       # Step 4
@@ -53,13 +58,9 @@ module App
       end
 
       private
-
       # Set by Step 1
       def set_reservationable
         @render = params[:reservationable_type].downcase.pluralize
-        @adults      = params[:adults].to_i
-        @kids        = params[:kids].to_i
-        @seats       = @adults + @kids
         case params[:reservationable_type]
           when 'vehicle'
             @vehicle      = KepplerTravel::Vehicle.find params[:reservationable_id]

@@ -6,12 +6,18 @@ module KepplerTravel
     require 'csv'
     mount_uploaders :files, AttachmentUploader
     acts_as_list
+    acts_as_paranoid
 
     # Relationships
     has_and_belongs_to_many :destinations
+    has_many :reservations, as: :reservationable
 
     validates :title, :description, :task, :price_adults, presence: true
     validates :title, uniqueness: true
+
+    def class_str
+      self.class.to_s.split('::').last
+    end
 
     def calculate_kids(kids)
       case self.price_kids.to_f.positive?

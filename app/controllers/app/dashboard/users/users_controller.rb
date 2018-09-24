@@ -11,7 +11,7 @@ module App
           end
           if current_user.update_attributes(update_attributes)
             update_password
-            redirect_to users_details_path(@lang, @currency, current_user.email), notice: 'success'
+            redirect_to users_details_path(@lang, @currency), notice: 'success'
           else
             render action: 'users'
           end

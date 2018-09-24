@@ -15,8 +15,10 @@ Rails.application.routes.draw do
     get '/invoice', to: 'app/front#invoice', as: :invoice
 
     get '/dashboard/orders/transfers', to: 'app/dashboard/dashboard#transfer_orders', as: :transfer_orders
-    get '/dashboard/user/:email', to: 'app/dashboard/dashboard#users', as: :users_details
-    post '/dashboard/user/:email/edit', to: 'app/dashboard/users/users#update', as: :user_update
+    get '/dashboard/orders/tours', to: 'app/dashboard/dashboard#tour_orders', as: :tour_orders
+
+    get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
+    post '/dashboard/user/edit', to: 'app/dashboard/users/users#update', as: :user_update
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end

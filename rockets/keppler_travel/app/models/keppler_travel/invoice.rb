@@ -1,5 +1,7 @@
 module KepplerTravel
   class Invoice < ApplicationRecord
+    acts_as_paranoid
+    
     belongs_to :reservation
 
     def status_pay? status
