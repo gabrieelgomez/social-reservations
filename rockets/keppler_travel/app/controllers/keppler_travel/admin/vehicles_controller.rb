@@ -137,7 +137,7 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def vehicle_params
         params.require(:vehicle).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
-          :date, :time, :seat, {files:[]}, price: [:cop, :usd], kit: [:quantity, :weight],
+          :date, :time, :seat, {files:[]}, inner_price: [:cop, :usd], outer_price: [:cop, :usd], kit: [:quantity, :weight],
           title: @language, description: @language, includes: @language, conditions: @language)
       end
 

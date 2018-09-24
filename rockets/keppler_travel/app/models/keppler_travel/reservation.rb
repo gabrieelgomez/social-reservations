@@ -20,7 +20,7 @@ module KepplerTravel
     end
 
     def self.price_total(object, objectable, currency)
-      object['round_trip'] == 'true' ? objectable['price'][currency].to_f*2 : objectable['price'][currency].to_f
+      object['round_trip'] == 'true' ? objectable['inner_price'][currency].to_f*2 : objectable['inner_price'][currency].to_f
     end
 
     # Fields for the search form in the navbar

@@ -55,11 +55,19 @@
 
                     .col-xs-12.col-md-12
                       .row
-                        = f.simple_fields_for :price, OpenStruct.new(@vehicle.price) do |field|
+                        = f.simple_fields_for :inner_price, OpenStruct.new(@vehicle.inner_price) do |field|
                           .col-lg-6
-                            = field.input :cop, label: 'Precio COP', input_html: { min: '1', type: 'number' }
+                            = field.input :cop, label: 'Precio Dentro Perimetro COP', input_html: { min: '1', type: 'number' }
                           .col-lg-6
-                            = field.input :usd, label: 'Precio USD', input_html: { min: '1', type: 'number' }
+                            = field.input :usd, label: 'Precio Dentro Perimetro USD', input_html: { min: '1', type: 'number' }
+
+                    .col-xs-12.col-md-12
+                      .row
+                        = f.simple_fields_for :outer_price, OpenStruct.new(@vehicle.outer_price) do |field|
+                          .col-lg-6
+                            = field.input :cop, label: 'Precio Fuera Perimetro COP', input_html: { min: '1', type: 'number' }
+                          .col-lg-6
+                            = field.input :usd, label: 'Precio Fuera Perimetro USD', input_html: { min: '1', type: 'number' }
 
                     .col-xs-12.col-md-12
                       .row
@@ -68,7 +76,7 @@
                             = field.input :quantity, label: 'Piezas Máx. Equipaje', input_html: { min: '1', type: 'number' }
                           .col-lg-6
                             = field.input :weight, label: 'Peso Máx. Equipaje', input_html: { min: '1', type: 'number' }
- 
+
                     .col-xs-12.col-md-12
                       .row
                         .col-lg-6
@@ -80,7 +88,7 @@
                       .col-lg-12
                         = f.input :cover, as: :keppler_file, label: false, max_size: 800
 
-                  
+
                   .col-xs-4
                     = f.input :position, as: :hidden
                     = f.input :deleted_at, as: :hidden

@@ -33,7 +33,7 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @vehicle.as_json(only: ["title", "seat", "kit", "price"]).each do |attribute, value|
+                - @vehicle.as_json(only: ["title", "seat", "kit", "inner_price", "outer_price"]).each do |attribute, value|
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
