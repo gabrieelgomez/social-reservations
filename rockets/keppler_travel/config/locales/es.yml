@@ -3,6 +3,7 @@ es:
     sidebar-menu:
       reservations: Reservaciones
       destinations: Destinos
+      circuits: Circuitos
       tours: Tours
       vehicles: Vehículos
       keppler-travel-submenu:
@@ -11,16 +12,19 @@ es:
         keppler_travel/reservation: reservación
         keppler_travel/destination: destino
         keppler_travel/tour: tour
+        keppler_travel/circuit: circuito
         keppler_travel/vehicle: vehículo
       pluralize:
         reservations: reservaciones
         destinations: destinos
         tours: tours
+        circuits: circuitos
         vehicles: vehículos
     modules:
       keppler_travel/admin/reservations: 'KepplerTravel → Reservaciones'
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
       keppler_travel/admin/tours: 'KepplerTravel → Tours'
+      keppler_travel/admin/circuits: 'KepplerTravel → Circuitos'
       keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
     settings:
     actions:

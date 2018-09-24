@@ -1,0 +1,60 @@
+.container
+  .row
+    .col-lg-2
+      = link_to admin_travel_circuits_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        .arrow-back.btn.btn-default
+          %i.fa.fa-angle-left
+          = t('keppler.actions.back')
+
+  .show-section
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= t("keppler.modules.#{controller_path.underscore}")
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Circuit).update?
+                = link_to edit_admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                  %i.icon-pencil
+              - if can?(KepplerTravel::Circuit).destroy?
+                = link_to admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                  %i.icon-trash
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                - @circuit.as_json(only: ["title", "quantity_days", "description", "include", "exclude", "price", "position", "deleted_at"]).each do |attribute, value|
+                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
+                    %tr.list-row
+                      %th.display-label= t("activerecord.attributes.#{attribute}")
+                      %td.display-value.fs-body-1.tc-black-2
+                        - if @attachments.include?(attribute)
+                          = image_tag value.url unless value.url.blank?
+                        - else
+                          = value.blank? ? '-----------' : value
+
+                %tr.list-row
+                  %th.display-label Destinations
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @circuit.destination_ids.blank? ? '-----------' : @circuit.destinations.collect{|des| des.custom_title}
+
+
+      .col-md-6
+        -# - @circuit.files.each_with_index do |img, index|
+        -#   %img{src: img.url, style: 'width:200px;height:200px;'}
+        .box.box-solid
+          .box-header.with-border
+            %h3.box-title Galería de Imágenes
+          .box-body
+            #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+              -# %ol.carousel-indicators
+              -#   %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+              -#   %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+              -#   %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+              .carousel-inner
+                - @circuit.files.each_with_index do |img, index|
+                  .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
+                    %img{alt: 'Galery', src: img.url}
+              %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+                %span.fa.fa-angle-left
+              %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+                %span.fa.fa-angle-right

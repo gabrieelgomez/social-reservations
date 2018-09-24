@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  quantity_days: 1
+  description: 
+  include: 
+  exclude: 
+  price: 1.5
+  files: 
+  position: 1
+  deleted_at: 2018-09-24 15:34:23
+
+two:
+  title: 
+  quantity_days: 1
+  description: 
+  include: 
+  exclude: 
+  price: 1.5
+  files: 
+  position: 1
+  deleted_at: 2018-09-24 15:34:23

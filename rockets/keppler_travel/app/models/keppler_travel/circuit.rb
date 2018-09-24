@@ -1,21 +1,25 @@
-# Destination Model
+# Circuit Model
 module KepplerTravel
-  class Destination < ActiveRecord::Base
+  class Circuit < ActiveRecord::Base
     include ActivityHistory
     include CloneRecord
     require 'csv'
-    mount_uploader :cover, AttachmentUploader
+    mount_uploaders :files, AttachmentUploader
     acts_as_list
     acts_as_paranoid
 
-    has_and_belongs_to_many :circuits
-    has_and_belongs_to_many :tours
-    has_and_belongs_to_many :vehicles
-    validates :title, :latitude, :longitude, :custom_title, uniqueness: true, presence: true
+    # Relationships
+    has_and_belongs_to_many :destinations
+    has_many :reservations, as: :reservationable
+
+
+    def selected(destination)
+      self.destination_ids.include?(destination) ? 'selected' : false
+    end
 
     # Fields for the search form in the navbar
     def self.search_field
-      fields = ["title", "cover", "description", "position", "deleted_at"]
+      fields = ["title", "quantity_days", "description", "include", "exclude", "price", "files", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 
