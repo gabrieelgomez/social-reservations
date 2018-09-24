@@ -93,8 +93,10 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.string "status"
     t.text "address"
     t.bigint "reservation_id"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_invoices_on_deleted_at"
     t.index ["reservation_id"], name: "index_keppler_travel_invoices_on_reservation_id"
   end
 
@@ -146,8 +148,10 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.string "name"
     t.string "dni"
     t.bigint "reservation_id"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_travellers_on_deleted_at"
     t.index ["reservation_id"], name: "reservation_id"
   end
 

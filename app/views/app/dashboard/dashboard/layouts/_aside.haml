@@ -27,8 +27,9 @@
         %li
           = link_to transfer_orders_path, class:"" do
             Traslados / Vehículos
-        -#%li
-          %a{href: "#"} Circuitos
+        %li
+          = link_to tour_orders_path, class:"" do
+            Tours
     %li.treeview
       %a{href: "#"}
         %i.icon-user.icons
@@ -37,5 +38,4 @@
           %i.fa.fa-angle-left.pull-right
       %ul.treeview-menu
         %li
-          %a{href: users_details_path} Editar perfil
-
+          %a{href: users_details_path(@lang, @currency)} Editar perfil

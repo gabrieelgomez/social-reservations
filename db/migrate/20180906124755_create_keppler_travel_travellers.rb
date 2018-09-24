@@ -4,7 +4,9 @@ class CreateKepplerTravelTravellers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :dni
       t.belongs_to :reservation, index: {name: 'reservation_id'}
+      t.datetime :deleted_at
       t.timestamps
     end
+    add_index :keppler_travel_travellers, :deleted_at
   end
 end

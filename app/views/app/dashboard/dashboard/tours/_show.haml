@@ -7,7 +7,7 @@
     .col-xs-12
       .box
         .box-header
-          %h3.box-title Traslados
+          %h3.box-title Tours
           .box-tools
             .input-group.input-group-sm{:style => "width: 150px;"}
               %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
@@ -20,18 +20,16 @@
               %tr.items-orders
                 %th Order N°
                 %th Tipo de Orden
-                %th Origen
-                %th Destino
+                %th Tour
                 %th Pasajeros
                 %th Estatus
                 %th Pago
                 %th Usuario
-              - current_user.reservations_where('vehicle').each do |reservation|
+              - current_user.reservations_where('tour').each do |reservation|
                 %tr
                   %td= reservation.invoice.token
                   %td= reservation.reservationable.class_str
                   %td= truncate(reservation.origin, :length => 25)
-                  %td= truncate(reservation.arrival, :length => 25)
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status

@@ -7,7 +7,9 @@ class CreateKepplerTravelInvoices < ActiveRecord::Migration[5.2]
       t.string :status
       t.text :address
       t.belongs_to :reservation, index: true
+      t.datetime :deleted_at
       t.timestamps
     end
+    add_index :keppler_travel_invoices, :deleted_at
   end
 end

@@ -4,13 +4,13 @@
   // Inputs datos de reservas desactivados
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "origin_vehicle_booking"} Seleccione Origen
+      %label{:for => "origin_name_booking"} Seleccione Origen
       %input{name: 'reservation[origin]', value: @origin_name, type: 'hidden'}
       %input{name: 'reservation[origin_location]', value: @origin_location, type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: @origin_name}
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "arrival_vehicle_booking"} Seleccione Destino
+      %label{:for => "arrival_name_booking"} Seleccione Destino
       %input{name: 'reservation[arrival]', value: @arrival_name, type: 'hidden'}
       %input{name: 'reservation[arrival_location]', value: @arrival_location, type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: @arrival_name}
@@ -39,7 +39,7 @@
       .col-lg-12
         .form-group.form-custom.form-reservation
           %label.title Su selección ha sido
-          %input{name: 'reservation[round_trip]', value: params[:round_trip], type: 'hidden'}
+          %input{name: 'reservation[round_trip]', value: @round_trip, type: 'hidden'}
           .trip-circle
             .single-trip-circle
               %input#ida_vuelta_form{:name => "radio", :type => "radio"}/
@@ -63,13 +63,13 @@
       .col-lg-6
         .form-group#fecha_origen_ida
           %label{:for => ""}  Fecha Origen
-          %input{name: 'reservation[flight_origin]', value: params[:flight_origin_picker], type: 'hidden'}
-          %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off', disabled: 'disabled', value: params[:flight_origin_picker]}/
+          %input{name: 'reservation[flight_origin]', value: @flight_origin_picker, type: 'hidden'}
+          %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_picker}/
       .col-lg-6
         .form-group#fecha_destino_vuelta
           %label{:for => ""} Fecha Destino
-          %input{name: 'reservation[flight_arrival]', value: params[:flight_arrival_picker], type: 'hidden'}
-          %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off', disabled: 'disabled', value: params[:flight_arrival_picker]}/
+          %input{name: 'reservation[flight_arrival]', value: @flight_arrival_picker, type: 'hidden'}
+          %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_arrival_picker}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
 
 

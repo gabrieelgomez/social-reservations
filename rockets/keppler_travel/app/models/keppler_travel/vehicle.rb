@@ -7,13 +7,17 @@ module KepplerTravel
     mount_uploader :cover, AttachmentUploader
     mount_uploaders :files, AttachmentUploader
     acts_as_list
+    acts_as_paranoid
 
     # Relationships
-    # has_many :reservations
-    has_many :reservations, as: :reservationable, dependent: :delete_all
+    has_many :reservations, as: :reservationable
 
     validates :cover, presence: true
     validates :title, uniqueness: true
+
+    def class_str
+      self.class.to_s.split('::').last
+    end
 
     # Fields for the search form in the navbar
     def self.search_field
