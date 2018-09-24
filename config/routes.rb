@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
     get 'vehicles', to: 'app/front#vehicles'
     get 'tours', to: 'app/front#tours'
+    get 'circuits', to: 'app/front#circuits'
+    
 
     get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
