@@ -5,11 +5,12 @@ module KepplerTravel
     include CloneRecord
     require 'csv'
     acts_as_list
+    acts_as_paranoid
 
     # Relationships
     belongs_to :user
     # belongs_to :vehicle
-    belongs_to :reservationable, polymorphic: true
+    belongs_to :reservationable, -> { with_deleted }, polymorphic: true
     has_one    :invoice
     has_many   :travellers
     accepts_nested_attributes_for :travellers

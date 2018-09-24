@@ -9,8 +9,8 @@ $(document).ready(function () {
       },
     };
 
-    inputSearchVehicle('origin_vehicle');
-    inputSearchVehicle('arrival_vehicle');
+    inputSearchVehicle('origin_name');
+    inputSearchVehicle('arrival_name');
 
     function inputSearchVehicle(id_input) {
       var input = document.getElementById(id_input);
@@ -22,11 +22,11 @@ $(document).ready(function () {
         var longitude = place.geometry.location.lng();
         // debugger
 
-        if (id_input == 'origin_vehicle'){
-          let field = $('#origin_hidden');
+        if (id_input == 'origin_name'){
+          let field = $('#origin_location');
           field.val([latitude, latitude]);
-        }else if(id_input == 'arrival_vehicle'){
-          let field = $('#arrival_hidden');
+        }else if(id_input == 'arrival_name'){
+          let field = $('#arrival_location');
           field.val([latitude, latitude]);
         }
 

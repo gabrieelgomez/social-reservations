@@ -7,6 +7,11 @@
             %input{ type:"checkbox", id: "checkbox-#{tour.id}", 'checklist-model' => 'check', 'checklist-value' => "#{tour.id}", '@click' => "listDelete(#{tour.id})"}
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
+    %td
+      = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'list-rows' do
+        %span
+          - unless tour.files.first.url.blank?
+            = image_tag tour.files.first.url, width: 100, height: 50, style: 'object-fit: cover;'
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
@@ -14,11 +19,13 @@
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          = tour.description[I18n.locale.to_s]
+          -# = sanitize(tour.description[I18n.locale.to_s]).truncate(300)
+          = tour.description[I18n.locale.to_s].html_safe.truncate(300)
+
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          = tour.task[I18n.locale.to_s]
+          = sanitize(tour.task[I18n.locale.to_s]).truncate(300)
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
     -#     %span

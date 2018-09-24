@@ -1,3 +1,9 @@
+- adults = session[:reservation]['quantity_adults']
+- kids   = session[:reservation]['quantity_kids']
+- seats  = adults.to_i + kids.to_i
+- @total_adults    = @reservationable.price_adults * adults
+- @total_kids      = @reservationable.calculate_kids(kids) * kids
+- @total_price     = @total_adults + @total_kids
 %section.invoice-transfers#invoice-transfers
   .container
     .gallary-header.text-center
@@ -95,9 +101,14 @@
                               %tbody
                                 %tr
                                   %td= @reservationable['title'][@lang]
-                                  %td.text-center= 10
-                                  %td.text-center= 1
-                                  %td.text-right= 10
+                                  %td.text-center
+                                    Adultos
+                                    = number_to_currency(@reservationable.price_adults, locale: @locale)
+                                    = "/"
+                                    Niños
+                                    = number_to_currency(@reservationable.calculate_kids(kids), locale: @locale)
+                                  %td.text-center= seats
+                                  %td.text-right= number_to_currency(@total_price, locale: @locale)
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment

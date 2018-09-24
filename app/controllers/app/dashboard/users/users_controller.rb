@@ -1,7 +1,7 @@
 module App
   module Dashboard
     module Users
-    
+
       class UsersController < DashboardController
         before_action :set_user, only: %i[update]
 
@@ -11,7 +11,7 @@ module App
           end
           if current_user.update_attributes(update_attributes)
             update_password
-            redirect_to users_details_path, notice: 'success'
+            redirect_to users_details_path(@lang, @currency), notice: 'success'
           else
             render action: 'users'
           end
@@ -36,7 +36,7 @@ module App
         end
 
       end
-    
+
     end
   end
 end

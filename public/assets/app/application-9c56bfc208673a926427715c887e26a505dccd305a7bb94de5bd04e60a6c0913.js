@@ -21202,8 +21202,8 @@ $(document).ready(function () {
       },
     };
 
-    inputSearchVehicle('origin_vehicle');
-    inputSearchVehicle('arrival_vehicle');
+    inputSearchVehicle('origin_name');
+    inputSearchVehicle('arrival_name');
 
     function inputSearchVehicle(id_input) {
       var input = document.getElementById(id_input);
@@ -21214,11 +21214,11 @@ $(document).ready(function () {
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
 
-        if (id_input == 'origin_vehicle'){
-          let field = $('#origin_hidden');
+        if (id_input == 'origin_name'){
+          let field = $('#origin_location');
           field.val([latitude, latitude]);
-        }else if(id_input == 'arrival_vehicle'){
-          let field = $('#arrival_hidden');
+        }else if(id_input == 'arrival_name'){
+          let field = $('#arrival_location');
           field.val([latitude, latitude]);
         }
 
@@ -22870,10 +22870,10 @@ function validateForm(id_form) {
         required: true,
         min: 1
       },
-      'origin_vehicle': {
+      'origin_name': {
         required: true
       },
-      'arrival_vehicle': {
+      'arrival_name': {
         required: true
       },
       'flight_origin_picker': {
@@ -22888,8 +22888,8 @@ function validateForm(id_form) {
         required: 'No puede estar en blanco',
         min: 'Introduce un valor mayor que 1'
       },
-      'origin_vehicle': 'No puede estar en blanco',
-      'arrival_vehicle': 'No puede estar en blanco',
+      'origin_name': 'No puede estar en blanco',
+      'arrival_name': 'No puede estar en blanco',
       'flight_origin_picker': 'No puede estar en blanco',
       'flight_arrival_picker': 'No puede estar en blanco'
     },

@@ -6,6 +6,7 @@ module KepplerTravel
     require 'csv'
     mount_uploader :cover, AttachmentUploader
     acts_as_list
+    acts_as_paranoid
 
     has_and_belongs_to_many :vehicles
     has_and_belongs_to_many :tours
