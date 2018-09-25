@@ -166,7 +166,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_200107) do
     t.integer "seat"
     t.datetime "date"
     t.datetime "time"
-    t.jsonb "price"
+    t.jsonb "inner_price"
+    t.jsonb "outer_price"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false

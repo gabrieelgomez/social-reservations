@@ -23,7 +23,7 @@ module App
             @reservation.user = @user
             @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
             @currency = session[:invoice].first['currency']
-            @price_total = @reservation.reservationable.price[@currency]
+            @price_total = @reservation.reservationable.inner_price[@currency]
             build_invoice
             if @reservation.save!
               create_travellers
