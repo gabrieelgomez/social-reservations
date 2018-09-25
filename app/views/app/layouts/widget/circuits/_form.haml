@@ -1,39 +1,60 @@
--#= search_form_for @q, url: "/#{@lang}/#{@currency}/tours", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
-.box-transfers
-  .row
-    -#- unless KepplerTravel::Tour.count.positive?
-      .col-lg-12
-        %h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran tours disponible.
-    -#- else
-    .col-lg-12
-    .col-lg-5
-      .box-item
-        .form-group
-          %h2 Circuitos
-          %select#sel1.form-control{name: 'tour_id', style:'border-radius: 0 !important;'}
-            = render 'app/layouts/stack_destinations'
+= search_form_for @q, url: "/#{@lang}/#{@currency}/circuits", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+	.box-transfers
+		.row
+			- unless KepplerTravel::Circuit.count.positive?
+				.col-lg-12
+					%h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran circuitos disponible.
+			- else
+				.col-lg-12
+				.col-lg-5
+					.box-item
+						.form-group
+							%h2 Circuitos
+							%select#sel1.form-control{name: 'circuit_id', style:'border-radius: 0 !important;'}
+								- KepplerTravel::Circuit.all.each do |circuit|
+									%option{ value: circuit.id}= circuit.title[@lang].titleize
 
-    .col-lg-3
-      .box-item
-        %h2 Fecha
-        .form-group
-          %input.form-control.custom-input{name: 'flight_origin_tour_picker', id: 'flight_origin_tour_picker', autocomplete: 'off'}/
 
-    .col-lg-2
-      .box-item
-        %h2 Adultos
-        .form-group
-          %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
+				.col-lg-3
+					.box-item
+						%h2 Fecha
+						.form-group
+							%input.form-control.custom-input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off'}/
 
-    .col-lg-2
-      .box-item
-        %h2 Niños
-        .form-group
-          %input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
+				.col-lg-2
+					.box-item
+						%h2 Adultos
+						.form-group
+							%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-    .col-lg-12
-      #errors
-      .about-btn.travel-mrt-0.pull-right.box-btn
-        %button.about-view.travel-btn{type: 'submit'}
-          buscar
+				.col-lg-2
+					.box-item
+						%h2 Niños
+						.form-group
+							%input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
 
+				.col-lg-12
+					#errors
+					.about-btn.travel-mrt-0.pull-right.box-btn
+						%button.about-view.travel-btn{type: 'submit'}
+							buscar
+
+:javascript
+	// Tours
+	$( function() {
+		function populateEndDate() {
+			var date2 = $('#flight_origin_circuit_picker').datetimepicker('getDate');
+			date2.setDate(date2.getDate() + 1);
+		}
+
+		$("#flight_origin_circuit_picker").datetimepicker({
+			dateFormat: "dd-mm-yy",
+			minDate: 1,
+			onSelect: function(date) {
+				populateEndDate();
+				var date = $('#flight_origin_circuit_picker').val();
+				$('#reservation_flight_origin').val(date);
+			}
+		}).datetimepicker("setDate", new Date());
+	} );
+	// End --- Tours

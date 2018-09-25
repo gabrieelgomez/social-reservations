@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'circuits', to: 'app/front#circuits'
 
      get 'reservations/circuits', to: 'app/front#circuits'
-    
+
 
     get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   # Reservations Tours
     post '/session_reservation_tour', to: 'app/reservations/tours/tours#session_reservation_tour'
     post '/create_reservation_tour', to: 'app/reservations/tours/tours#create_reservation_tour'
+  # Reservations Tours
+    post '/session_reservation_circuit', to: 'app/reservations/circuits/circuits#session_reservation_circuit'
+    post '/create_reservation_circuit', to: 'app/reservations/circuits/circuits#create_reservation_circuit'
 
   get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations/reservations#transaction_payment', as: :checkout_elp_redirect
 

@@ -3,15 +3,15 @@
 .row
   .col-lg-4
     .form-group.form-custom
-      %label{:for => "origin_tour_booking"} Seleccione Origen
-      %input{name: 'reservation[origin]', value: @tour.title[@lang].titleize, type: 'hidden'}
-      %input.google-input.form-control{disabled: 'disabled', value: @tour.title[@lang].titleize}
+      %label{:for => "origin_circuit_booking"} Seleccione Origen
+      %input{name: 'reservation[origin]', value: @circuit.title[@lang].titleize, type: 'hidden'}
+      %input.google-input.form-control{disabled: 'disabled', value: @circuit.title[@lang].titleize}
   .col-lg-4
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
     .form-group.form-custom#fecha_origen_ida
       %label{:for => ""}  Fecha Origen
-      %input{name: 'reservation[flight_origin]', value: @flight_origin_tour_picker, type: 'hidden'}
-      %input.form-control.custom-input{name: 'flight_origin_tour_picker', id: 'flight_origin_tour_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_tour_picker}/
+      %input{name: 'reservation[flight_origin]', value: @flight_origin_circuit_picker, type: 'hidden'}
+      %input.form-control.custom-input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_circuit_picker}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
   .col-lg-2
     .form-group.form-custom

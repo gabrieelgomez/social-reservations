@@ -7,7 +7,7 @@
             %p.result
               %span
                 Su búsqueda:
-              %span= @tour.title[@lang].titleize
+              %span= @circuit.title[@lang].titleize
           .col-lg-3
             %p
               %span
@@ -21,18 +21,18 @@
       .col-lg-12
         = render 'app/layouts/widget'
 
-%section.reservation-tours#reservation-tours
+%section.reservation-circuits#reservation-circuits
   .container
     .gallary-header.text-center
       %h2
-        Reserva de Tour
+        Reserva de Circuito
       %p
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
-      = simple_form_for @reservation, url: '/session_reservation_tour', method: :post do |f|
+      = simple_form_for @reservation, url: '/session_reservation_circuit', method: :post do |f|
         .row{style:"display:flex;"}
-          %input{value: @tour.id, type: 'hidden', name: 'reservationable_id'}
+          %input{value: @circuit.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
@@ -41,30 +41,30 @@
           .col-lg-8
             .reservation-data
               //Reservation Data
-              = render 'app/front/reservations/tours/dates_reservations', f: f
+              = render 'app/front/reservations/circuits/dates_reservations', f: f
 
               //Personal Data
-              = render 'app/front/reservations/tours/dates_personal', f: f
+              = render 'app/front/reservations/circuits/dates_personal', f: f
 
               //Billing Data
-              = render 'app/front/reservations/tours/dates_billing'
+              = render 'app/front/reservations/circuits/dates_billing'
 
               //Terms & Conditions
-              = render 'app/front/reservations/tours/dates_terms_conditions'
+              = render 'app/front/reservations/circuits/dates_terms_conditions'
 
               //Privacy Policy
-              = render 'app/front/reservations/tours/dates_privacy_policy'
+              = render 'app/front/reservations/circuits/dates_privacy_policy'
 
           .col-lg-4
             // Reservation Summary
             .reservation-resumen
-              = render 'app/front/reservations/tours/resumen'
+              = render 'app/front/reservations/circuits/resumen'
     .container
       //Modal - Privacy Policy
-      = render 'app/front/reservations/tours/modal/privacy_policy'
+      = render 'app/front/reservations/circuits/modal/privacy_policy'
     .container
       //Modal - Terms & Conditions
-      = render 'app/front/reservations/tours/modal/terms_conditions'
+      = render 'app/front/reservations/circuits/modal/terms_conditions'
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -75,7 +75,7 @@
 
 
 :javascript
-  validateReservationTour('#new_reservation')
+  validateReservationCircuit('#new_reservation')
   validateWidgetForm('#search-input');
 
   $( '.link-widget' ).on( 'click', function() {
