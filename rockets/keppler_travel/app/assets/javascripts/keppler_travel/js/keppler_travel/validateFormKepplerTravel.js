@@ -70,3 +70,39 @@ function validateTour(id_form){
    }
   });
 }
+
+
+function validateCircuit(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'circuit[price]': { required: true},
+     'circuit[quantity_days]': { required: true, digits: true, number: true},
+     'circuit[destination_ids]': { required: true}
+     },
+   messages: {
+     'circuit[destination_ids]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var circuit_files = $('#circuit_files').val();
+     var destinations = $('#destinations_circuits').val();
+
+     $('form').append(`<input type="hidden" name="circuit[destination_ids]" value=${destinations} /> `);
+
+     if (circuit_files  == ''){
+       alert('Agregue mínimo una imagen');
+     }
+     else if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}

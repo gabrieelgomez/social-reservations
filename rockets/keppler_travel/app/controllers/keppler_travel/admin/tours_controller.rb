@@ -56,9 +56,10 @@ module KepplerTravel
 
       # PATCH/PUT /tours/1
       def update
-        params[:tour][:destination_ids] = params[:tour][:destination_ids].split(',').map(&:to_i)
+        ids = params[:tour][:destination_ids].split(',').map(&:to_i)
         @tour.update_images(params[:tour])
         if @tour.update(tour_params)
+          @tour.update(destination_ids: ids)
           redirect(@tour, params)
         else
           render :edit

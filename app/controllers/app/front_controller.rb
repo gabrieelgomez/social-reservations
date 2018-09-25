@@ -3,8 +3,8 @@ module App
   class FrontController < AppController
     layout 'layouts/templates/application'
     before_action :set_lang_currency
-    before_action :set_search,        only: %i[index reservations tours vehicles]
-    before_action :set_params_widget, only: %i[tours vehicles]
+    before_action :set_search,        only: %i[index circuits reservations tours vehicles]
+    before_action :set_params_widget, only: %i[circuits tours vehicles]
     before_action :delete_session,    except: %i[checkout create_reservation_transfer session_reservation_transfer create_reservation_tour session_reservation_tour]
 
     def set_locale_lang
@@ -20,6 +20,10 @@ module App
 
     def tours
       @results = KepplerTravel::Tour.find(params[:tour_id])
+    end
+
+    def circuits
+      @results = KepplerTravel::Circuit.find(params[:circuit_id])
     end
 
     def errors
@@ -44,6 +48,7 @@ module App
       @kids                  = params[:quantity_kids].to_i
       @seats                 = @adults + @kids
       @flight_origin_tour_picker = params[:flight_origin_tour_picker]
+      @flight_origin_circuit_picker = params[:flight_origin_circuit_picker]
     end
 
     def set_lang_currency

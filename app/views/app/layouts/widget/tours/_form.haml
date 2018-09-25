@@ -3,7 +3,7 @@
 		.row
 			- unless KepplerTravel::Tour.count.positive?
 				.col-lg-12
-					%h4 No hay Tours disponibles
+					%h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran tours disponible.
 			- else
 				.col-lg-12
 				.col-lg-5

@@ -29,9 +29,9 @@ module App
               set_vehicle_checkout
             when 'tour'
               set_tour_checkout
-            when 'circuits'
-              nil
-            when 'multidestinations'
+            when 'circuit'
+              set_circuit_checkout
+            when 'multidestination'
               nil
           end
           # -----
@@ -68,9 +68,9 @@ module App
           when 'tour'
             @tour = KepplerTravel::Tour.find params[:reservationable_id]
             set_price_tour
-          when 'circuits'
-            nil
-          when 'multidestinations'
+          when 'circuit'
+            @circuit = KepplerTravel::Circuit.find params[:reservationable_id]
+          when 'multidestination'
             nil
         end
       end
@@ -94,6 +94,12 @@ module App
       def set_tour_checkout
         @render          = 'tours'
         @reservationable = KepplerTravel::Tour.find(@reservationable['id'])
+      end
+
+      # Set by Step 2 Circuit
+      def set_circuit_checkout
+        @render          = 'circuits'
+        @reservationable = KepplerTravel::Circuit.find(@reservationable['id'])
       end
 
     end

@@ -21,15 +21,15 @@
       .col-lg-12
         = render 'app/layouts/widget'
 
-%section#tours_.tours_
+%section#circuits.circuits
   .container
     - unless @results.blank?
       .gallary-header.text-center
-        %h2= @results.title[@lang].titleize
+        %h2 Show de Circuitos
         %p
-          //Description tours
+          //Description circuits
           Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
-  .content-tours
+  .content-circuits
     .container
       .row
         - if @results.blank?
@@ -46,18 +46,18 @@
 
         - else
           .col-lg-7
-            .content-tours__description
-              %h3 Descripción del Tour
-              .content-tours__description--summary
+            .content-circuits__description
+              %h3 Descripción del Circuitos
+              .content-circuits__description--summary
                 %p= raw @results.description[@lang]
-            .content-tours__data
+            .content-circuits__data
               .row
                 .col-lg-12
                   .row
                     .col-lg-4
                       .form-group
                         %label Fecha de Reserva
-                        %input.form-control.custom-input{value: @flight_origin_tour_picker, disabled: 'disabled'}/
+                        %input.form-control.custom-input{value: @flight_origin_circuit_picker, disabled: 'disabled'}/
                     .col-lg-4
                       .form-group
                         %label Cantidad de Adultos
@@ -67,14 +67,13 @@
                         %label Cantidad de Niños
                         %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
             %br
-            .content-tours__button
+            .content-circuits__button
               %center
-                = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
                   %button.about-view.packages-btn.btn-reservation
                     Reservar
-
           .col-lg-5
-            .content-tours__image
+            .content-circuits__image
               .carrusel-galery
                 .galery
                   - @results.files.each_with_index do |image|
@@ -83,18 +82,24 @@
 
           .content-tours__tab
             .col-lg-12
-              .content-tours__tab--box
+              .content-circuits__tab--box
                 %ul.nav.nav-tabs
                   %li.active
-                    %a{"data-toggle" => "tab", :href => "#includes"} Actividades
-                  %li
                     %a{"data-toggle" => "tab", :href => "#description"} Descripción
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#includes"} Incluye
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#excludes"} No Incluye
                 .tab-content
-                  #includes.tab-pane.active
+                  #description.tab-pane.active
+                    .box-includes
+                      %h4 Descripción
+                      %p= raw @results.description[@lang]
+                  #includes.tab-pane
                     .box-includes
                       %h4 Incluye
-                      %p= raw @results.task[@lang]
-                  #description.tab-pane
+                      %p= raw @results.include[@lang]
+                  #excludes.tab-pane
                     .box-description
-                      %h4 Descripción
-                      = raw @results.description[@lang]
+                      %h4 No Incluye
+                      = raw @results.exclude[@lang]
