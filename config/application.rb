@@ -34,7 +34,7 @@ module InyxmaterRails
       '*.{rb,yml}'
     ).to_s]
 
-    I18n.available_locales = %i[en es]
+    I18n.available_locales = %i[en es pt]
 
     config.i18n.default_locale = :es
 

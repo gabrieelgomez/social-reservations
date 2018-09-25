@@ -13,7 +13,7 @@ gem 'vuejs-rails', '2.5.13' # VueJS library
 
 # Server
 gem 'puma', '~> 3.11', '>= 3.11.3'
-
+# master
 # Documentation
 gem 'sdoc', '1.0.0'
 

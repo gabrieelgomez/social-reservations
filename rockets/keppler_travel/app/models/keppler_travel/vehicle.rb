@@ -21,7 +21,7 @@ module KepplerTravel
 
     # Fields for the search form in the navbar
     def self.search_field
-      fields = ["title", "date", "time", "price", "position", "deleted_at"]
+      fields = ["title", "date", "time", "inner_price", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 

@@ -82,7 +82,7 @@
                     .box-price
                       %span.price
                         = @currency.upcase
-                        = number_to_currency(vehicle.price[@currency], locale: @locale)
+                        = number_to_currency(vehicle.inner_price[@currency], locale: @locale)
                     .box-btn
                       = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, origin_name: @origin_name,
                         origin_location:@origin_location, arrival_name: @arrival_name, arrival_location:@arrival_location,
