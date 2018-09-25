@@ -1,10 +1,10 @@
+%input#round_trip{name: 'round_trip', type: 'hidden'}
 = search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
-	%input#round_trip{name: 'round_trip', type: 'hidden'}
 	.box-transfers
 		.row
 			- unless KepplerTravel::Vehicle.count.positive?
 				.col-lg-12
-					%h4 No hay Traslados disponibles
+					%h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran traslados disponible.
 			- else
 				.col-lg-12
 					.trip-circle

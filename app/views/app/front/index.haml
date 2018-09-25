@@ -34,19 +34,19 @@
           -#%li.filter-btn{"data-filter" => ".transfers"}
             %a
               %span traslados
-          %li.filter-btn{"data-filter" => ".circuits"}
+          %li.filter-btn{"data-filter" => ".js_filterCircuits"}
             %a
               %span circuitos
-          %li.filter-btn{"data-filter" => ".tours"}
+          %li.filter-btn{"data-filter" => ".js_filterTours"}
             %a
               %span tours
-          %li.filter-btn{"data-filter" => ".multidestines"}
+          %li.filter-btn{"data-filter" => ".js_filterMultidestines"}
             %a
               %span multidestinos
       .cards-services
         .container#mix-wrapper
           .row
-            .col-md-4.col-sm-6.mix-target.circuits
+            .col-md-4.col-sm-6.mix-target.js_filterCircuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
                 .box-information
@@ -70,7 +70,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6.mix-target.circuits
+            .col-md-4.col-sm-6.mix-target.js_filterTours
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
                 .box-information
@@ -94,7 +94,7 @@
                     %a.link-card{:href => "#"}
                       .about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6.mix-target.tours
+            .col-md-4.col-sm-6.mix-target.js_filterMultidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
                 .box-information
@@ -118,7 +118,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6.mix-target.multidestines
+            .col-md-4.col-sm-6.mix-target.js_filterCircuits
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-4.jpg)"}
                 .box-information
@@ -142,7 +142,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6.mix-target.circuits
+            .col-md-4.col-sm-6.mix-target.js_filterMultidestines
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-5.jpg)"}
                 .box-information
@@ -166,7 +166,7 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-            .col-md-4.col-sm-6.mix-target.multidestines
+            .col-md-4.col-sm-6.mix-target.js_filterTours
               .box-card
                 .box-image{:style => "background-image: url(/assets/img/bg-6.jpg)"}
                 .box-information
@@ -190,8 +190,6 @@
                     %a.link-card{:href => "#"}
                       %button.about-view.packages-btn
                         ver más
-
-
 
     %section#tours.tours
       .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}

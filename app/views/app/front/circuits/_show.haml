@@ -1,0 +1,100 @@
+%section#seach-widget
+  .container
+    -#- unless @results.blank?
+    .box-search
+      .container
+        .row
+          .col-lg-9
+            %p.result
+              %span
+                Su búsqueda:
+              %span
+                -#="#{@results.title[@lang]}".titleize
+          .col-lg-3
+            %p
+              %span
+                %a.pull-right.link-widget
+                  Volver a relizar la búsqueda
+
+  .container.js-widget.js-hide-widget.widget-results
+    .row
+      .col-lg-12
+        -#= render 'app/layouts/widget'
+
+%section#circuits.circuits
+  .container
+    -#- unless @results.blank?
+    .gallary-header.text-center
+      %h2 Show de Circuitos
+      %p
+        //Description tours
+        Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+  .content-circuits
+    .container
+      .row
+        -#- if @results.blank?
+        -#.col-lg-12
+          .box-results
+            .image-search
+              = image_tag '/assets/img/loupe.svg'
+            .gallary-header.text-center
+              %h2
+                ¡Lo sentimos! No hemos encontrado ningún resultado.
+              %p
+                = link_to root_path do
+                  Volver a relizar la búsqueda
+
+        -#- else
+        .col-lg-7
+          .content-circuits__description
+            -#%h3 Descripción del Tour
+            -#.content-circuits__description--summary
+              -#%p= raw @results.description[@lang]
+          .content-circuits__data
+            .row
+              .col-lg-12
+                -#.row
+                  .col-lg-4
+                    .form-group
+                      %label Fecha de Reserva
+                      %input.form-control.custom-input{value: @flight_origin_tour_picker, disabled: 'disabled'}/
+                  .col-lg-4
+                    .form-group
+                      %label Cantidad de Adultos
+                      %input.form-control.custom-input{value: @adults, disabled: 'disabled'}/
+                  .col-lg-4
+                    .form-group
+                      %label Cantidad de Niños
+                      %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
+          %br
+          .content-circuits__button
+            %center
+              -#= link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                %button.about-view.packages-btn.btn-reservation
+                  Reservar
+
+        .col-lg-5
+          .content-circuits__image
+            .carrusel-galery
+              .galery
+                -#- @results.files.each_with_index do |image|
+                .galery__item
+                  -#%img{:alt => "", :src => image.url, :class => "img-responsive"}/
+
+        .content-tours__tab
+          .col-lg-12
+            -#.content-circuits__tab--box
+              -#%ul.nav.nav-tabs
+                %li.active
+                  %a{"data-toggle" => "tab", :href => "#includes"} Actividades
+                %li
+                  %a{"data-toggle" => "tab", :href => "#description"} Descripción
+              -#.tab-content
+                #includes.tab-pane.active
+                  .box-includes
+                    %h4 Incluye
+                    -#%p= raw @results.task[@lang]
+                #description.tab-pane
+                  .box-description
+                    %h4 Descripción
+                    -#= raw @results.description[@lang]

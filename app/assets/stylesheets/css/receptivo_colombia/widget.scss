@@ -33,7 +33,13 @@
             border-color: $color-blue !important;
             background-color: $color-blue !important;
           }
+
+          &.active {
+            color: red;
+          }
         }
+
+
 
         .fix {
           margin-right: 0 !important;
