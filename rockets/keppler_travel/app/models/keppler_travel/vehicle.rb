@@ -19,6 +19,14 @@ module KepplerTravel
       self.class.to_s.split('::').last
     end
 
+    def set_price(locality, currency)
+      if locality[0] == locality[1]
+        self.inner_price[currency]
+      elsif locality[0] != locality[1]
+        self.outer_price[currency]
+      end
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "date", "time", "inner_price", "position", "deleted_at"]

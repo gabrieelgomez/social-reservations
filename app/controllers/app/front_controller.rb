@@ -37,6 +37,7 @@ module App
     end
 
     def set_params_widget
+      @locality              = [params[:origin_locality], params[:arrival_locality]]
       @origin_location       = params[:origin_location]
       @origin_name           = params[:origin_name]
       @arrival_location      = params[:arrival_location]

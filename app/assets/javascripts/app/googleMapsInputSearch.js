@@ -1,18 +1,31 @@
 $(document).ready(function () {
   var map;
 
+  $("#origin_name").focus(function() {
+     $(this).select();
+  });
+
+  $("#arrival_name").focus(function() {
+     $(this).select();
+  });
+
+
   function initialize() {
     var options = {
-      types: [],
+      // type: ['city', 'locality', 'political'],
+      // types: ['geocode'],
+      // types: ['(cities)'],
+      // types: ['(regions)'],
+      // types: ['establishment'],
       componentRestrictions: {
         country: "col"
       },
     };
 
-    inputSearchVehicle('origin_name');
-    inputSearchVehicle('arrival_name');
+    inputSearchWidget('origin_name');
+    inputSearchWidget('arrival_name');
 
-    function inputSearchVehicle(id_input) {
+    function inputSearchWidget(id_input) {
       var input = document.getElementById(id_input);
       var autocomplete = new google.maps.places.Autocomplete(input, options);
       autocomplete.addListener('place_changed', onPlaceChanged);
@@ -20,7 +33,45 @@ $(document).ready(function () {
         var place = autocomplete.getPlace();
         var latitude = place.geometry.location.lat();
         var longitude = place.geometry.location.lng();
-        // debugger
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        var val;
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types;
+          if (addressType.includes('locality')){
+            val = place.address_components[i].long_name;
+            if (id_input == 'origin_name'){
+              let field = $('#origin_locality').val(val);
+              $('.origin_name').text(`Desde: Localidad, ${val}`);
+            }
+            else{
+              let field = $('#arrival_locality').val(val);
+              $('.arrival_name').text(`Hasta: Localidad, ${val}`);
+            }
+            // alert(val);
+            break;
+          }
+        }
+
+        if (!val){
+          for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types;
+            if (addressType.includes('political')){
+              // debugger;
+              val = place.address_components[i].long_name;
+              if (id_input == 'origin_name'){
+                let field = $('#origin_locality').val(val);
+                $('.origin_name').text(`Desde: Localidad, ${val}`);
+              }
+              else{
+                let field = $('#arrival_locality').val(val);
+                $('.arrival_name').text(`Hasta: Localidad, ${val}`);
+              }
+              break;
+            }
+          }
+        }
 
         if (id_input == 'origin_name'){
           let field = $('#origin_location');
@@ -37,3 +88,25 @@ $(document).ready(function () {
 
   google.maps.event.addDomListener(window, 'load', initialize);
 });
+
+
+// var latlng 	 = new google.maps.LatLng(latitude, longitude);
+// var geocoder = new google.maps.Geocoder();
+// geocoder.geocode({'latLng': latlng}, function(results, status) {
+//
+//   var findResult = function(results, name){
+//       var result =  _.find(results, function(obj){
+//           return obj.types[0] == name && obj.types[1] == "political";
+//       });
+//       return result ? result.short_name : null;
+//   };
+//
+//   if (status == google.maps.GeocoderStatus.OK && results.length) {
+//       debugger
+//       results = results[0].address_components;
+//       var city = findResult(results, "locality");
+//       var state = findResult(results, "administrative_area_level_1");
+//       var country = findResult(results, "country");
+//   }
+// });
+// debugger;
