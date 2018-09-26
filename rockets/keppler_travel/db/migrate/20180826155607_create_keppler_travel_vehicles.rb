@@ -11,7 +11,8 @@ class CreateKepplerTravelVehicles < ActiveRecord::Migration[5.2]
       t.integer :seat
       t.datetime :date
       t.datetime :time
-      t.jsonb :price
+      t.jsonb :inner_price
+      t.jsonb :outer_price
       t.integer :position
       # t.string :slug
       t.datetime :deleted_at

@@ -106,3 +106,33 @@ function validateCircuit(id_form){
    }
   });
 }
+
+
+function validateLodgment(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'lodgment[title]': { required: true}
+     },
+   messages: {
+     'lodgment[title]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var destinations = $('#destinations_lodgments').val();
+
+     $('form').append(`<input type="hidden" name="lodgment[destination_ids]" value=${destinations} /> `);
+
+     if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}

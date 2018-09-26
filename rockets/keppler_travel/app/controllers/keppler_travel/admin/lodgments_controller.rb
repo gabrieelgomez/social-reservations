@@ -1,10 +1,10 @@
 require_dependency "keppler_travel/application_controller"
 module KepplerTravel
   module Admin
-    # ToursController
-    class ToursController < ApplicationController
+    # LodgmentsController
+    class LodgmentsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_tour, only: [:show, :edit, :update, :destroy]
+      before_action :set_lodgment, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -13,118 +13,114 @@ module KepplerTravel
       include KepplerTravel::Concerns::DestroyMultiple
 
 
-      # GET /tours
+      # GET /lodgments
       def index
-        @q = Tour.ransack(params[:q])
-        tours = @q.result(distinct: true)
-        @objects = tours.page(@current_page).order(position: :asc)
-        @total = tours.size
-        @tours = @objects.all
+        @q = Lodgment.ransack(params[:q])
+        lodgments = @q.result(distinct: true)
+        @objects = lodgments.page(@current_page).order(position: :asc)
+        @total = lodgments.size
+        @lodgments = @objects.all
         if !@objects.first_page? && @objects.size.zero?
-          redirect_to tours_path(page: @current_page.to_i.pred, search: @query)
+          redirect_to lodgments_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to do |format|
           format.html
-          format.xls { send_data(@tours.to_xls) }
+          format.xls { send_data(@lodgments.to_xls) }
           format.json { render :json => @objects }
         end
       end
 
-      # GET /tours/1
+      # GET /lodgments/1
       def show
       end
 
-      # GET /tours/new
+      # GET /lodgments/new
       def new
-        @tour = Tour.new
+        @lodgment = Lodgment.new
       end
 
-      # GET /tours/1/edit
+      # GET /lodgments/1/edit
       def edit
       end
 
-      # POST /tours
+      # POST /lodgments
       def create
-        @tour = Tour.new(tour_params)
-        @tour.destination_ids = params[:tour][:destination_ids].split(',').map(&:to_i)
-        if @tour.save
-          redirect(@tour, params)
+        @lodgment = Lodgment.new(lodgment_params)
+        if @lodgment.save
+          redirect(@lodgment, params)
         else
           render :new
         end
       end
 
-      # PATCH/PUT /tours/1
+      # PATCH/PUT /lodgments/1
       def update
-        ids = params[:tour][:destination_ids].split(',').map(&:to_i)
-        @tour.update_images(params[:tour])
-        if @tour.update(tour_params)
-          @tour.update(destination_ids: ids)
-          redirect(@tour, params)
+        if @lodgment.update(lodgment_params)
+          redirect(@lodgment, params)
         else
           render :edit
         end
       end
 
       def clone
-        @tour = Tour.clone_record params[:tour_id]
+        @lodgment = Lodgment.clone_record params[:lodgment_id]
 
-        if @tour.save
-          redirect_to admin_travel_tours_path
+        if @lodgment.save
+          redirect_to admin_travel_lodgments_path
         else
           render :new
         end
       end
 
-      # DELETE /tours/1
+      # DELETE /lodgments/1
       def destroy
-        @tour.destroy
-        redirect_to admin_travel_tours_path, notice: actions_messages(@tour)
+        @lodgment.destroy
+        redirect_to admin_travel_lodgments_path, notice: actions_messages(@lodgment)
       end
 
       def destroy_multiple
-        Tour.destroy redefine_ids(params[:multiple_ids])
+        Lodgment.destroy redefine_ids(params[:multiple_ids])
         redirect_to(
-          admin_travel_tours_path(page: @current_page, search: @query),
-          notice: actions_messages(Tour.new)
+          admin_travel_lodgments_path(page: @current_page, search: @query),
+          notice: actions_messages(Lodgment.new)
         )
       end
 
       def upload
-        Tour.upload(params[:file])
+        Lodgment.upload(params[:file])
         redirect_to(
-          admin_tours_path(page: @current_page, search: @query),
-          notice: actions_messages(Tour.new)
+          admin_lodgments_path(page: @current_page, search: @query),
+          notice: actions_messages(Lodgment.new)
         )
       end
 
       def download
-        @tours = Tour.all
+        @lodgments = Lodgment.all
         respond_to do |format|
           format.html
-          format.xls { send_data(@tours.to_xls) }
-          format.json { render json: @tours }
+          format.xls { send_data(@lodgments.to_xls) }
+          format.json { render json: @lodgments }
         end
       end
 
       def reload
-        @q = Tour.ransack(params[:q])
-        tours = @q.result(distinct: true)
-        @objects = tours.page(@current_page).order(position: :desc)
+        @q = Lodgment.ransack(params[:q])
+        lodgments = @q.result(distinct: true)
+        @objects = lodgments.page(@current_page).order(position: :desc)
       end
 
       def sort
-        Tour.sorter(params[:row])
-        @q = Tour.ransack(params[:q])
-        tours = @q.result(distinct: true)
-        @objects = tours.page(@current_page)
+        Lodgment.sorter(params[:row])
+        @q = Lodgment.ransack(params[:q])
+        lodgments = @q.result(distinct: true)
+        @objects = lodgments.page(@current_page)
         render :index
       end
 
       private
 
       def authorization
-        authorize Tour
+        authorize Lodgment
       end
 
       def set_attachments
@@ -134,17 +130,17 @@ module KepplerTravel
       end
 
       # Use callbacks to share common setup or constraints between actions.
-      def set_tour
-        @tour = Tour.find(params[:id])
+      def set_lodgment
+        @lodgment = Lodgment.find(params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
-      def tour_params
-        params.require(:tour).permit(:price_adults, :price_kids, :position, :deleted_at, files:[], title: @language, description: @language, task: @language)
+      def lodgment_params
+        params.require(:lodgment).permit(:position, :deleted_at, :destination_id, title: @language)
       end
 
       def show_history
-        get_history(Tour)
+        get_history(Lodgment)
       end
 
       def get_history(model)

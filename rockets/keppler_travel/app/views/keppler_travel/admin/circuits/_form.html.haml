@@ -78,15 +78,10 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :pt, label: 'Excluir', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
-										.col-xs-6
+										.col-xs-6.col-lg-6
 											= f.input :quantity_days, input_html: { min: 0 }
-										.col-xs-6
+										.col-xs-6.col-lg-6
 											= f.input :price, input_html: { min: 0 }
-										.col-xs-6
-											%label Destinos
-											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}
-												- KepplerTravel::Destination.all.each do |destination|
-													%option{ value: destination.id, selected: @circuit.selected(destination.id)}= destination.custom_title
 
 									.col-xs-12.col-md-12
 										%label Galería de Imágenes
@@ -94,10 +89,31 @@
 										= f.file_field :files, multiple: true
 									#helper_que_busco
 										= files_exist(1, f.object.files, 'circuit[files][]')
+
+									.col-xs-12.col-md-12
+										.col-md-6
+											%label Destinos
+											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}
+												- KepplerTravel::Destination.all.each do |destination|
+													%option{ value: destination.id, selected: @circuit.selected(destination.id)}= destination.custom_title
+
 										.col-xs-12
 											= f.input :position, as: :hidden
 										.col-xs-12
 											= f.input :deleted_at, as: :hidden
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
+										%br
 									.col-xs-12
 										.pull-right
 											= f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
@@ -110,6 +126,11 @@
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
 
 :javascript
+
+	$("#destinations_circuits").change(function() {
+
+	});
+
 	collectImages("#circuit_files", ".edit_circuit", "circuit[files_delete][]");
 
 - if action_name == 'new'
@@ -117,8 +138,8 @@
 		validateCircuit('#new_circuit');
 - else
 	:javascript
-		var circuit_i = #{raw @circuit.id};
-		validateCircuit(`#edit_circuit_${circuit_i}`);
+		var circuit_id = #{raw @circuit.id};
+		validateCircuit(`#edit_circuit_${circuit_id}`);
 
 :scss
 	label.error-class{color: #e60707 !important;}
