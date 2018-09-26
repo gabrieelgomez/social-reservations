@@ -10,6 +10,7 @@ module KepplerTravel
 
     # Relationships
     has_and_belongs_to_many :destinations
+    has_and_belongs_to_many :lodgments
     has_many :reservations, as: :reservationable
 
 

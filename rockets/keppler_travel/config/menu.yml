@@ -13,6 +13,14 @@ menu:
     icon: location-pin
     model: KepplerTravel::Destination
 
+  keppler_travel_lodgment:
+    name: lodgments
+    current: ['admin/travel/lodgments']
+    url_path: /admin/travel/lodgments
+    icon: layers
+    model: KepplerTravel::Lodgment
+
+
   keppler_travel_circuit:
     name: circuits
     current: ['admin/travel/circuits']

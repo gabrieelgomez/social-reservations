@@ -9,7 +9,6 @@ module KepplerTravel
 
     # Relationships
     belongs_to :user
-    # belongs_to :vehicle
     belongs_to :reservationable, -> { with_deleted }, polymorphic: true
     has_one    :invoice
     has_many   :travellers

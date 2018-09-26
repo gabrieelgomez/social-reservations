@@ -45,11 +45,11 @@
             = link_to edit_admin_travel_circuit_path(circuit), class: 'new-menu', title: t('keppler.actions.edit') do
               %i.icon-pencil
               = t('keppler.actions.edit')
-        - if can?(KepplerTravel::Circuit).clone?
-          %li
-            = link_to admin_travel_circuit_clone_path(circuit), class: 'new-menu', title: t('keppler.actions.clone') do
-              %i.icon-docs
-              = t('keppler.actions.clone')
+        -# - if can?(KepplerTravel::Circuit).clone?
+        -#   %li
+        -#     = link_to admin_travel_circuit_clone_path(circuit), class: 'new-menu', title: t('keppler.actions.clone') do
+        -#       %i.icon-docs
+        -#       = t('keppler.actions.clone')
         - if can?(KepplerTravel::Circuit).destroy?
           %li
             = link_to admin_travel_circuit_path(circuit), class: 'new-menu', title: t('keppler.actions.delete'), method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
