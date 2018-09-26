@@ -12,6 +12,7 @@
                   ="#{@origin_name}"
                 %span
                   = " > #{@arrival_name}"
+              %p= "Desde #{@locality[0]}, Hasta #{@locality[1]}"
             .col-lg-3
               %p
                 %span
@@ -82,12 +83,9 @@
                     .box-price
                       %span.price
                         = @currency.upcase
-                        = number_to_currency(vehicle.inner_price[@currency], locale: @locale)
+                        = number_to_currency(vehicle.set_price(@locality, @currency), locale: @locale)
                     .box-btn
-                      = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, origin_name: @origin_name,
-                        origin_location:@origin_location, arrival_name: @arrival_name, arrival_location:@arrival_location,
-                        quantity_adults: @adults, quantity_kids: @kids, round_trip: @round_trip,
-                        flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do
+                      = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, origin_locality: @locality[0], arrival_locality: @locality[1], origin_name: @origin_name, origin_location: @origin_location, arrival_name: @arrival_name, arrival_location: @arrival_location, quantity_adults: @adults, quantity_kids: @kids, round_trip: @round_trip, flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker) do
                         %button.about-view.packages-btn
                           seleccionar
 

@@ -9,7 +9,12 @@ module App
           session[:user]        = params[:user]
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
-          session[:reservationable]  = {type:'vehicle', id:params[:reservationable_id]}
+          session[:reservationable]  = {
+            type: 'vehicle',
+            id: params[:reservationable_id],
+            origin_locality: params[:origin_locality],
+            arrival_locality: params[:arrival_locality]
+          }
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 
@@ -23,7 +28,7 @@ module App
             @reservation.user = @user
             @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
             @currency = session[:invoice].first['currency']
-            @price_total = @reservation.reservationable.inner_price[@currency]
+            set_price
             build_invoice
             if @reservation.save!
               create_travellers
@@ -32,6 +37,19 @@ module App
             else
               render :new
             end
+          end
+        end
+
+
+        private
+
+        def set_price
+          org = session[:reservationable]['origin_locality']
+          arr = session[:reservationable]['arrival_locality']
+          if org == arr
+            @price_total = @reservation.reservationable.inner_price[@currency]
+          elsif org != arr
+            @price_total = @reservation.reservationable.outer_price[@currency]
           end
         end
 

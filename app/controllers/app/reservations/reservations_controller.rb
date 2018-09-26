@@ -85,9 +85,10 @@ module App
       # Set by Step 2 Vehicle
       def set_vehicle_checkout
         @render          = 'vehicles'
+        @locality        = [@reservationable['origin_locality'], @reservationable['arrival_locality']]
         @reservationable = KepplerTravel::Vehicle.find(@reservationable['id'])
         @multiple        = KepplerTravel::Reservation.multiple(@reservation)
-        @price_total     = KepplerTravel::Reservation.price_total(@reservation, @reservationable, @currency)
+        @price_total     = KepplerTravel::Reservation.price_total(@locality, @reservation, @reservationable, @currency)
       end
 
       # Set by Step 2 Tour

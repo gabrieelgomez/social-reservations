@@ -125,7 +125,7 @@
                               %tbody
                                 %tr
                                   %td= @reservationable['title'][@lang]
-                                  %td.text-center= number_to_currency(@reservationable['inner_price'][@currency].to_f, locale: @locale)
+                                  %td.text-center= number_to_currency(@reservationable.set_price(@locality, @currency).to_f, locale: @locale)
                                   %td.text-center= @multiple
                                   %td.text-right= number_to_currency(@price_total, locale: @locale)
                   .row
