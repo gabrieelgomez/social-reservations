@@ -19,8 +19,14 @@ module KepplerTravel
       object['round_trip'] == 'true' ? '2' : '1'
     end
 
-    def self.price_total(object, objectable, currency)
-      object['round_trip'] == 'true' ? objectable['inner_price'][currency].to_f*2 : objectable['inner_price'][currency].to_f
+    def self.price_total(locality, object, objectable, currency)
+      if locality[0] == locality[1]
+        price = objectable.inner_price[currency]
+      elsif locality[0] != locality[1]
+        price = objectable.outer_price[currency]
+      end
+      object['round_trip'] == 'true' ? price = price.to_f*2 : price = price.to_f
+      return price
     end
 
     # Fields for the search form in the navbar

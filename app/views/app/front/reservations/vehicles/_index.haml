@@ -11,6 +11,7 @@
                 ="#{@origin_name}"
               %span
                 = " > #{@arrival_name}"
+            %p= "Desde #{@locality[0]}, Hasta #{@locality[1]}"
           .col-lg-3
             %p
               %span
@@ -38,6 +39,8 @@
           %input{value: @vehicle.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
+          %input{value: @locality[0], type: 'hidden', name: 'origin_locality'}
+          %input{value: @locality[1], type: 'hidden', name: 'arrival_locality'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
           %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
