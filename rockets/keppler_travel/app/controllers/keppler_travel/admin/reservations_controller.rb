@@ -135,10 +135,10 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def reservation_params
         params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
-                                            :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
-                                            :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
-                                            :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
-                                            travellers_attributes: [:name, :dni])
+        :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
+        :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
+        :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
+        travellers_attributes: [:name, :dni])
       end
 
       def show_history

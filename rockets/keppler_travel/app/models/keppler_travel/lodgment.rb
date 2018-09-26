@@ -1,22 +1,23 @@
-# Destination Model
+# Lodgment Model
 module KepplerTravel
-  class Destination < ActiveRecord::Base
+  class Lodgment < ActiveRecord::Base
     include ActivityHistory
     include CloneRecord
     require 'csv'
-    mount_uploader :cover, AttachmentUploader
     acts_as_list
     acts_as_paranoid
 
-    has_many :lodgments
-    has_and_belongs_to_many :circuits
-    has_and_belongs_to_many :tours
-    has_and_belongs_to_many :vehicles
-    validates :title, :latitude, :longitude, :custom_title, uniqueness: true, presence: true
+    # Relationships
+    has_many :rooms
+    belongs_to :destination
+
+    def selected(destination)
+      self.destination_id.eql?(destination) ? 'selected' : false
+    end
 
     # Fields for the search form in the navbar
     def self.search_field
-      fields = ["title", "cover", "description", "position", "deleted_at"]
+      fields = ["title", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 
