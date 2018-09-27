@@ -12,6 +12,67 @@
       margin-bottom: 0 !important;
     }
 
+    .reservation-data {
+      .box-type-room {
+        padding: 20px 0 10px 0;
+
+        h4 {
+          color: $color-gray;
+        }
+      }
+
+      .box-hotel-room {
+        padding: 20px 0 10px 0;
+
+        h4 {
+          color: $color-gray;
+        }
+      }
+
+      .btn-room {
+        max-width: 300px;
+        border-radius: 5px;
+        padding: 6px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        background: #0000000f;
+
+        &:active {
+          box-shadow: none;
+        }
+
+        center {
+          .icon-room {
+            background-size: 55px;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            min-height: 70px;
+            max-width: 70px;
+            padding-bottom: 10px;
+
+            input {
+              width: 100%;
+              padding: 10px;
+              background-color: #D4D4D4;
+              color: black;
+              border: 13px solid white;
+              border-radius: 0;
+              outline: none;
+              visibility: hidden;
+            }
+          }
+        }
+
+        p {
+          text-align: center;
+          color: #00000096;
+        }
+      }
+    }
+
     h3 {
       color: $color-gray;
       text-align: left;

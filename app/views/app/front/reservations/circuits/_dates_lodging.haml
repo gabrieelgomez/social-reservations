@@ -1,0 +1,89 @@
+-#%hr
+%h3 Datos de Alojamiento
+.row
+  .col-lg-12
+    .box-hotel-room
+      %h4 Hoteles disponibles
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
+          %input.js-hotel-room{:name => "hotel1", :type => "checkbox", :value => "Gran Hotel'"}/
+      %p Gran Hotel
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
+          %input.js-hotel-room{:name => "hotel2", :type => "checkbox", :value => "Conquest"}/
+      %p Conquest
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
+          %input.js-hotel-room{:name => "hotel3", :type => "checkbox", :value => "Ibis"}/
+      %p Ibis
+.row
+  .col-lg-12
+    .box-type-room
+      %h4 Tipo de Habitación
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "simple"}/
+      %p Habitación
+      %p Simple
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "double"}/
+      %p Habitación
+      %p Doble
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "triple"}/
+      %p Habitación
+      %p Triple
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "quadruple"}/
+      %p Habitación
+      %p Cuadruple
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
+      %p Habitación
+      %p Quintuple
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %inpu.js-type-room{:name => "event[assembly_type]", :type => "radio", :value => "children"}/
+      %p Habitación
+      %p Niño
+:javascript
+  $( '.js-hotel-room' ).on( 'click', function() {
+      if( $(this).is(':checked') ){
+          // checkbox seleccionado
+          alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+      } else {
+          // checkbox deseleccionado
+          alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+      }
+  });
+  $( '.js-type-room' ).on( 'click', function() {
+    if( $(this).is(':checked') ){
+        // checkbox seleccionado
+        alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+    } else {
+        // checkbox deseleccionado
+        alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+    }
+  });
