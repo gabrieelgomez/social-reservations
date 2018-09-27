@@ -36,7 +36,7 @@
         width: 100%;
         margin-top: 10px;
         margin-bottom: 20px;
-        background: #0000000f;
+
 
         &:active {
           box-shadow: none;
@@ -70,6 +70,18 @@
           text-align: center;
           color: #00000096;
         }
+      }
+
+      .bg-active {
+        background-color: #4e4e56;
+      }
+
+      .bg-disabled {
+        background-color: #0000000f;
+      }
+
+      .bg-room-active {
+        background-color: #0000000f;
       }
     }
 

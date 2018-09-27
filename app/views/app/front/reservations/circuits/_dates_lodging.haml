@@ -65,16 +65,15 @@
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %inpu.js-type-room{:name => "event[assembly_type]", :type => "radio", :value => "children"}/
+          %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
       %p Habitación
       %p Niño
+
 :javascript
   $( '.js-hotel-room' ).on( 'click', function() {
       if( $(this).is(':checked') ){
-          // checkbox seleccionado
           alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
       } else {
-          // checkbox deseleccionado
           alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
       }
   });
