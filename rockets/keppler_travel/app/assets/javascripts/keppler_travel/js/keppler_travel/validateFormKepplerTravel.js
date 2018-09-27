@@ -123,8 +123,12 @@ function validateLodgment(id_form){
    submitHandler: function(form){
 
      var destinations = $('#destinations_lodgments').val();
+     var rooms = $('#type_rooms').val();
 
+     debugger;
      $('form').append(`<input type="hidden" name="lodgment[destination_ids]" value=${destinations} /> `);
+     $('form').append(`<input type="hidden" name="lodgment[type_rooms]" value=${rooms} /> `);
+
 
      if (destinations == null){
        alert('Agregue mínimo un destino');

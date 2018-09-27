@@ -35,3 +35,8 @@
                   %th.display-label Destinations
                   %td.display-value.fs-body-1.tc-black-2
                     = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title
+
+                %tr.list-row
+                  %th.display-label Tipos de Habitaciones
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @lodgment.type_rooms.blank? ? '-----------' : @lodgment.name_type_rooms

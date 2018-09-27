@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
 
   create_table "keppler_travel_lodgments", force: :cascade do |t|
     t.jsonb "title"
+    t.string "type_rooms", array: true
     t.integer "position"
     t.datetime "deleted_at"
     t.bigint "destination_id"

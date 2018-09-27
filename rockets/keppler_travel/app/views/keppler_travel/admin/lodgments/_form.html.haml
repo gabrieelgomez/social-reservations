@@ -50,6 +50,17 @@
 											- KepplerTravel::Destination.all.each do |destination|
 												%option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title
 
+									.col-xs-6
+										%label Tipos de Habitaciones
+										%select.selectpicker{"data-style" => "btn-primary", id: 'type_rooms', name: 'lodgment[type_rooms]', multiple: 'multiple'}
+											%option{ value: '1', selected: @lodgment.str('1')} Simple
+											%option{ value: '2', selected: @lodgment.str('2')} Niños
+											%option{ value: '3', selected: @lodgment.str('3')} Dobles
+											%option{ value: '4', selected: @lodgment.str('4')} Triples
+											%option{ value: '5', selected: @lodgment.str('5')} Cuadruples
+											%option{ value: '6', selected: @lodgment.str('6')} Quintuples
+											%option{ value: '7', selected: @lodgment.str('7')} Sextuples
+
 									.col-xs-12
 										= f.input :position, as: :hidden
 									.col-xs-12

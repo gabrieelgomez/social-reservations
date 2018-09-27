@@ -7,5 +7,9 @@ module KepplerTravel
       @user = user
       @objects = objects
     end
+
+    def rooms_tables?
+      true
+    end
   end
 end

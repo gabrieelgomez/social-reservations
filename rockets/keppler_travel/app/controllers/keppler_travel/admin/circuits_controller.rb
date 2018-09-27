@@ -4,7 +4,7 @@ module KepplerTravel
     # CircuitsController
     class CircuitsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_circuit, only: [:show, :edit, :update, :destroy]
+      before_action :set_circuit, only: [:show, :edit, :update, :destroy, :rooms_tables]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -30,6 +30,9 @@ module KepplerTravel
         end
       end
 
+      def rooms_tables
+      end
+
       # GET /circuits/1
       def show
       end
@@ -48,7 +51,8 @@ module KepplerTravel
         @circuit = Circuit.new(circuit_params)
         @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
         if @circuit.save
-          redirect(@circuit, params)
+          # redirect(@circuit, params)
+          redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
         else
           render :new
         end
@@ -134,7 +138,7 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_circuit
-        @circuit = Circuit.find(params[:id])
+        @circuit = Circuit.find(params[:id]) rescue Circuit.find(params[:circuit_id])
       end
 
       # Only allow a trusted parameter "white list" through.

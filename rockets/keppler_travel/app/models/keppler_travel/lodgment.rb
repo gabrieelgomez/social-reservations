@@ -15,6 +15,30 @@ module KepplerTravel
       self.destination_id.eql?(destination) ? 'selected' : false
     end
 
+    def str(room)
+      self.type_rooms.try(:include?, room) ? 'selected' : false
+    end
+
+    def disabled_room(room)
+      self.type_rooms.try(:exclude?, room) ? true : false
+    end
+
+    def name_type_rooms
+      @name = []
+      [
+        ['1', 'Simple'],
+        ['2', 'Niños'],
+        ['3', 'Dobles'],
+        ['4', 'Triples'],
+        ['5', 'Cuadruples'],
+        ['6', 'Quintuples'],
+        ['7', 'Sextuples']
+      ].each do |type|
+        @name.push(type[1]) if self.type_rooms.include?(type[0])
+      end
+      return @name
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "position", "deleted_at"]

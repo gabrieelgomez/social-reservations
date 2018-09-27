@@ -46,6 +46,7 @@ module KepplerTravel
       # POST /lodgments
       def create
         @lodgment = Lodgment.new(lodgment_params)
+        @lodgment.type_rooms = params[:lodgment][:type_rooms].split(',').map(&:to_i)
         if @lodgment.save
           redirect(@lodgment, params)
         else
@@ -55,7 +56,9 @@ module KepplerTravel
 
       # PATCH/PUT /lodgments/1
       def update
+        ids = params[:lodgment][:type_rooms].split(',').map(&:to_i)
         if @lodgment.update(lodgment_params)
+          @lodgment.update(type_rooms: ids)
           redirect(@lodgment, params)
         else
           render :edit
@@ -136,7 +139,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def lodgment_params
-        params.require(:lodgment).permit(:position, :deleted_at, :destination_id, title: @language)
+        params.require(:lodgment).permit(:position, :deleted_at, :destination_id, :type_rooms, title: @language)
       end
 
       def show_history
