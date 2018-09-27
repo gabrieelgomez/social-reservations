@@ -66,16 +66,16 @@
                       .form-group
                         %label Cantidad de Niños
                         %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
-            %br
             .content-circuits__button
-              %center
-                = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
-                  %button.about-view.packages-btn.btn-reservation
-                    Reservar
+              .row
+                .col-lg-12.pull-left
+                  = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
+                    %button.about-view.packages-btn.btn-reservation
+                      Reservar
           .col-lg-5
             .content-circuits__image
               .carrusel-galery
-                .galery
+                .galery_circuits
                   - @results.files.each_with_index do |image|
                     .galery__item
                       %img{:alt => "", :src => image.url, :class => "img-responsive"}/
@@ -83,7 +83,7 @@
           .content-circuits__tab
             .col-lg-12
               .content-circuits__tab--box
-                %ul.nav.nav-tabs
+                %ul.nav.nav-tabs.nav-item-circuits
                   %li.active
                     %a{"data-toggle" => "tab", :href => "#information"} Información
                   %li
@@ -144,11 +144,12 @@
                       
                   #rooms_prices.tab-pane
                     .box-description
-                      %h4 Habitaciones/Precios
+                      %h4.text-center Habitaciones
                       -#%p= raw @results.exclude[@lang]
                       .row
-                        .col-lg-12
-                          %table.table.table-bordered
+                        .col-lg-2
+                        .col-lg-8
+                          %table.table.table-room
                             %thead
                               %tr
                                 %th Hotel
@@ -158,13 +159,13 @@
                                 %th Hab. Cuadruple
                             %tbody
                               %tr
-                                %td Hotel Mare Mare Inn
+                                %td Mare Mare Inn
                                 %td $ 1000,00 USD
                                 %td $ 2500,00 USD
                                 %td $ 3800,00 USD
                                 %td $ 5000,00 USD
                               %tr
-                                %td Hotel Casa Blanca
+                                %td Casa Blanca
                                 %td $ 1200,00 USD
                                 %td $ 2700,00 USD
                                 %td $ 4000,00 USD
