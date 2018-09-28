@@ -23,7 +23,7 @@
                 .card-body.table-responsive.p-0
                   %table.table.table-hover
                     %tr
-                      %th ¿Habilitado?
+                      %th
                       %th Destino
                       %th Alojamiento
                       %th Simple
@@ -33,26 +33,32 @@
                       %th Cuadruples
                       %th Quintuples
                       %th Sextuples
-                    - @circuit.destinations.each do |destination|
-                      - destination.lodgments.each do |lodgment|
-                        %tr
-                          %td Check
-                          %td= destination.custom_title
-                          %td= lodgment.title['es']
+                    - @circuit.circuitables.each do |circuitable|
+                      - lodgment = circuitable.lodgment
+                      - destination = circuitable.destination
+                      - circuit = circuitable.circuit
+                      -# - circuitable.lodgment.each do |lodgment|
+                      %tr
+                        %td Check
+                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= lodgment.title['es']
+                        - circuitable.circuitable_rooms.each do |cr|
                           %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('1'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('2'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('3'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('4'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('5'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('6'), type: 'number', min: 1, style: 'width:85%'}
-                          %td
-                            %input{name: 'type_room', disabled: lodgment.disabled_room('7'), type: 'number', min: 1, style: 'width:85%'}
+                            %input{value: cr.price['cop'], name: 'type_room', disabled: lodgment.disabled_room(cr), min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('1'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('2'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('3'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('4'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('5'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('6'), type: 'number', min: 1, style: 'width:85%'}
+                        -# %td
+                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('7'), type: 'number', min: 1, style: 'width:85%'}
 
                 .form-padding
                   .col-xs-12

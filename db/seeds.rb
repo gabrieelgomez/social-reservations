@@ -62,3 +62,9 @@ if defined?(KepplerContactUs) && KepplerContactUs.is_a?(Class)
   )
   puts 'KepplerContactUs mailer_to and mailer_from has been created'
 end
+
+
+%i[single doubles triples quadruples quintuples sextuples children].each do |name|
+  KepplerTravel::Room.create type_room: name
+  puts "Room #{name} has been created"
+end

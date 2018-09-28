@@ -49,10 +49,10 @@ module KepplerTravel
       # POST /circuits
       def create
         @circuit = Circuit.new(circuit_params)
-        @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
-        if @circuit.save
-          # redirect(@circuit, params)
+        if @circuit.save!
+          @circuitable = CircuitableService.create(@circuit, params)
           redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
+          # redirect(@circuit, params)
         else
           render :new
         end
@@ -60,9 +60,7 @@ module KepplerTravel
 
       # PATCH/PUT /circuits/1
       def update
-        ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
         if @circuit.update(circuit_params)
-          @circuit.update(destination_ids: ids)
           redirect(@circuit, params)
         else
           render :edit
@@ -171,3 +169,6 @@ module KepplerTravel
     end
   end
 end
+
+#(byebug) room = KepplerTravel::Room.new(type: 'simpless', price: {cop: '123', usd: '34'})
+#*** ActiveRecord::SubclassNotFound Exception: The single-table inheritance mechanism failed to locate the subclass: 'simpless'. This error is raised because the column 'type' is reserved for storing the class in case of inheritance. Please rename this column if you didn't intend it to be used for storing the inheritance class or overwrite KepplerTravel::Room.inheritance_column to use another column for that information.#

@@ -123,11 +123,11 @@ function validateLodgment(id_form){
    submitHandler: function(form){
 
      var destinations = $('#destinations_lodgments').val();
-     var rooms = $('#type_rooms').val();
+     var rooms = $('#lodgments_rooms').val();
 
      debugger;
      $('form').append(`<input type="hidden" name="lodgment[destination_ids]" value=${destinations} /> `);
-     $('form').append(`<input type="hidden" name="lodgment[type_rooms]" value=${rooms} /> `);
+     $('form').append(`<input type="hidden" name="lodgment[room_ids]" value=${rooms} /> `);
 
 
      if (destinations == null){

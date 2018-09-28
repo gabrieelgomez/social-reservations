@@ -8,35 +8,23 @@ module KepplerTravel
     acts_as_paranoid
 
     # Relationships
-    has_many :rooms
+    # has_many :rooms
     belongs_to :destination
+    has_many :circuitables
+    has_many :circuitable_rooms
+    has_many :circuits, through: :circuitables
+    has_and_belongs_to_many :rooms
 
     def selected(destination)
       self.destination_id.eql?(destination) ? 'selected' : false
     end
 
-    def str(room)
-      self.type_rooms.try(:include?, room) ? 'selected' : false
+    def selected_rooms(id)
+      self.rooms.map(&:id).include?(id) ? 'selected' : false
     end
 
-    def disabled_room(room)
-      self.type_rooms.try(:exclude?, room) ? true : false
-    end
-
-    def name_type_rooms
-      @name = []
-      [
-        ['1', 'Simple'],
-        ['2', 'Niños'],
-        ['3', 'Dobles'],
-        ['4', 'Triples'],
-        ['5', 'Cuadruples'],
-        ['6', 'Quintuples'],
-        ['7', 'Sextuples']
-      ].each do |type|
-        @name.push(type[1]) if self.type_rooms.include?(type[0])
-      end
-      return @name
+    def disabled_room(cr)
+      self.rooms.map(&:id).include?(cr.room_id) ? false : true
     end
 
     # Fields for the search form in the navbar
@@ -68,3 +56,35 @@ module KepplerTravel
     end
   end
 end
+
+
+
+
+# def name_room(id)
+#   @name = [
+#     ['1', 'single'],
+#     ['2', 'doubles'],
+#     ['3', 'triples'],
+#     ['4', 'quadruples'],
+#     ['5', 'quintuples'],
+#     ['6', 'sextuples'],
+#     ['7', 'children']
+#   ]
+#   return @name.select{|name| name[0] == id}.flatten
+# end
+#
+# def name_type_rooms
+#   @name = []
+#   [
+#     ['1', 'Simple'],
+#     ['2', 'Dobles'],
+#     ['3', 'Triples'],
+#     ['4', 'Cuadruples'],
+#     ['5', 'Quintuples'],
+#     ['6', 'Sextuples'],
+#     ['7', 'Niños']
+#   ].each do |type|
+#     @name.push(type[1]) if self.type_rooms.include?(type[0])
+#   end
+#   return @name
+# end

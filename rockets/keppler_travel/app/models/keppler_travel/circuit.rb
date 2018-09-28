@@ -9,9 +9,16 @@ module KepplerTravel
     acts_as_paranoid
 
     # Relationships
-    has_and_belongs_to_many :destinations
-    has_and_belongs_to_many :lodgments
+    # has_and_belongs_to_many :destinations
+    # has_and_belongs_to_many :lodgments
     has_many :reservations, as: :reservationable
+
+    has_many :circuitables
+    has_many :destinations, through: :circuitables
+    has_many :lodgments, through: :circuitables
+    has_many :circuitable_rooms, through: :circuitables
+    # has_many :rooms, through: :circuitables
+
 
 
     def selected(destination)

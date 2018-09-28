@@ -85,8 +85,8 @@
 										.col-xs-6.col-lg-6
 											%label Destinos
 											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}
-												- KepplerTravel::Destination.all.each do |destination|
-													%option{ value: destination.id, selected: @circuit.selected(destination.id)}= destination.custom_title
+												- KepplerTravel::Destination.all.select{|destination| destination.lodgments.count.positive? }.each do |destination|
+													%option{ value: destination.id, selected: @circuit.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
 
 									.col-xs-12.col-md-12
 										%label Galería de Imágenes
