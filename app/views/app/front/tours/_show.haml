@@ -66,12 +66,12 @@
                       .form-group
                         %label Cantidad de Niños
                         %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
-            %br
             .content-tours__button
-              %center
-                = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
-                  %button.about-view.packages-btn.btn-reservation
-                    Reservar
+              .row
+                .col-lg-12.pull-left
+                  = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                    %button.about-view.packages-btn.btn-reservation
+                      Reservar
 
           .col-lg-5
             .content-tours__image
@@ -84,7 +84,7 @@
           .content-tours__tab
             .col-lg-12
               .content-tours__tab--box
-                %ul.nav.nav-tabs
+                %ul.nav.nav-tabs.nav-item-tours
                   %li.active
                     %a{"data-toggle" => "tab", :href => "#includes"} Actividades
                   %li
