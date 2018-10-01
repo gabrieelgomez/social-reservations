@@ -6,7 +6,7 @@ class CreateKepplerTravelCircuits < ActiveRecord::Migration[5.2]
       t.jsonb :description
       t.jsonb :include
       t.jsonb :exclude
-      t.float :price
+      t.jsonb :price
       t.jsonb :files
       t.integer :position
       t.datetime :deleted_at

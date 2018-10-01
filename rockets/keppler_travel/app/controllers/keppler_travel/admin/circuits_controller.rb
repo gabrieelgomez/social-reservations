@@ -30,9 +30,6 @@ module KepplerTravel
         end
       end
 
-      def rooms_tables
-      end
-
       # GET /circuits/1
       def show
       end
@@ -65,6 +62,10 @@ module KepplerTravel
         else
           render :edit
         end
+      end
+
+      def rooms_tables
+        CircuitableService.update_circuitable(@circuit)
       end
 
       def clone
@@ -142,6 +143,11 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def circuit_params
         params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at,
+          files:[], title: @language, description: @language, include: @language, exclude: @language)
+      end
+
+      def circuitable_params
+        params.require(:circuitable).permit(:quantity_days, :price, :position, :deleted_at,
           files:[], title: @language, description: @language, include: @language, exclude: @language)
       end
 

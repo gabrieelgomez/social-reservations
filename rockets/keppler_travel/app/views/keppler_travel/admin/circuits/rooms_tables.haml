@@ -19,7 +19,7 @@
             .col-12
               .card
                 .card-header
-                  %h3.card-title Alojamientos / Habitaciones
+                  %h3.card-title Alojamientos / Habitaciones / COP
                 .card-body.table-responsive.p-0
                   %table.table.table-hover
                     %tr
@@ -33,32 +33,22 @@
                       %th Cuadruples
                       %th Quintuples
                       %th Sextuples
-                    - @circuit.circuitables.each do |circuitable|
-                      - lodgment = circuitable.lodgment
-                      - destination = circuitable.destination
-                      - circuit = circuitable.circuit
-                      -# - circuitable.lodgment.each do |lodgment|
+                    = f.simple_fields_for :circuitables, @circuit.circuitables do |circuitable|
+                      - lodgment = circuitable.object.lodgment
+                      - destination = circuitable.object.destination
+                      - circuit = circuitable.object.circuit
                       %tr
                         %td Check
                         %td= destination.custom_title[I18n.locale.to_s]
                         %td= lodgment.title['es']
-                        - circuitable.circuitable_rooms.each do |cr|
+                        = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
+                          -# - if cr.object.id == circuitable.
                           %td
-                            %input{value: cr.price['cop'], name: 'type_room', disabled: lodgment.disabled_room(cr), min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('1'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('2'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('3'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('4'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('5'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('6'), type: 'number', min: 1, style: 'width:85%'}
-                        -# %td
-                        -#   %input{name: 'type_room', disabled: lodgment.disabled_room('7'), type: 'number', min: 1, style: 'width:85%'}
+                            = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object)
+                            -# %input{value: cr.object.price['cop'], name: "price[#{cr.object.room.type_room}][cop][#{cr.object.id}]", disabled: lodgment.disabled_room(cr.object), min: 1, style: 'width:85%'}
+
+                            -# = f.simple_fields_for :price, OpenStruct.new(cr.object.price) do |field|
+                            -#   = field.input :cop, label: false, disable: lodgment.disabled_room(cr.object)
 
                 .form-padding
                   .col-xs-12

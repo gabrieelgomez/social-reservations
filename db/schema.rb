@@ -59,7 +59,8 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
   end
 
   create_table "keppler_travel_circuitable_rooms", force: :cascade do |t|
-    t.jsonb "price"
+    t.float "price_cop"
+    t.float "price_usd"
     t.boolean "status"
     t.bigint "room_id"
     t.bigint "circuitable_id"
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.jsonb "description"
     t.jsonb "include"
     t.jsonb "exclude"
-    t.float "price"
+    t.jsonb "price"
     t.jsonb "files"
     t.integer "position"
     t.datetime "deleted_at"

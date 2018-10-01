@@ -19,7 +19,8 @@ module KepplerTravel
     has_many :circuitable_rooms, through: :circuitables
     # has_many :rooms, through: :circuitables
 
-
+    accepts_nested_attributes_for :circuitables
+    accepts_nested_attributes_for :circuitable_rooms
 
     def selected(destination)
       self.destination_ids.include?(destination) ? 'selected' : false
