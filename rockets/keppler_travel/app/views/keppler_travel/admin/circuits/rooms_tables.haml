@@ -33,18 +33,29 @@
                       %th Cuadruples
                       %th Quintuples
                       %th Sextuples
+
+                    // Circuitables from Circuit
                     = f.simple_fields_for :circuitables, @circuit.circuitables do |circuitable|
                       - lodgment = circuitable.object.lodgment
                       - destination = circuitable.object.destination
                       - circuit = circuitable.object.circuit
                       %tr
-                        %td Check
+                        %td
+                          -# .checkbox
+                          -#   %label
+                          -#     %input{name: 'circuit_circuitables[status]', :type => "checkbox", :value => circuitable.object.status}
+                          -# = circuitable.input :status, as: :keppler_boolean, label: false
+                          = circuitable.input :status, as: :boolean, label: false
+
                         %td= destination.custom_title[I18n.locale.to_s]
                         %td= lodgment.title['es']
+
+                        // Circuitable Roms from one Circuitable from Circuit
                         = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
-                          -# - if cr.object.id == circuitable.
                           %td
                             = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object)
+
+
                             -# %input{value: cr.object.price['cop'], name: "price[#{cr.object.room.type_room}][cop][#{cr.object.id}]", disabled: lodgment.disabled_room(cr.object), min: 1, style: 'width:85%'}
 
                             -# = f.simple_fields_for :price, OpenStruct.new(cr.object.price) do |field|
@@ -72,5 +83,13 @@
 //     var circuit_id = #{raw @circuit.id};
 //     validateCircuit(`#edit_circuit_${circuit_id}`);
 //
-// :scss
-//   label.error-class{color: #e60707 !important;}
+:scss
+  label.error-class{color: #e60707 !important;}
+  .checkbox{position: unset!important;}
+  .checkbox input[type="checkbox"]{
+    position: unset!important;
+    margin-left: unset!important;
+  }
+  [type="checkbox"]{
+    display: unset!important;
+  }

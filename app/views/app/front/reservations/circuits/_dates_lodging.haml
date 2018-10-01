@@ -4,24 +4,14 @@
   .col-lg-12
     .box-hotel-room
       %h4 Hoteles disponibles
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel1", :type => "checkbox", :value => "Gran Hotel'"}/
-      %p Gran Hotel
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel2", :type => "checkbox", :value => "Conquest"}/
-      %p Conquest
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel3", :type => "checkbox", :value => "Ibis"}/
-      %p Ibis
+  - @circuit.circuitables.each do |circuitable|
+    - if circuitable.status
+      .col-lg-2
+        %label.btn.btn-room
+          %center
+            .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
+              %input.js-hotel-room{:name => "hotel1", :type => "checkbox", :value => circuitable.lodgment_id}/
+          %p= circuitable.lodgment.title[@lang]
 .row
   .col-lg-12
     .box-type-room
@@ -61,11 +51,20 @@
           %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
       %p Habitación
       %p Quintuple
+
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
+          %input.js-type-room{:name => "", :type => "radio", :value => "sextuple"}/
+      %p Habitación
+      %p Sextuple
+
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.js-type-room{:name => "", :type => "radio", :value => "kids"}/
       %p Habitación
       %p Niño
 

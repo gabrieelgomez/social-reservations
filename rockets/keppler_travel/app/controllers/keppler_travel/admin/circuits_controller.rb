@@ -142,14 +142,17 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def circuit_params
-        params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at,
-          files:[], title: @language, description: @language, include: @language, exclude: @language)
+        params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at, circuitables_attributes: [:id, :status], circuitable_rooms_attributes: [:id, :price_cop, :price_usd],
+        files:[], title: @language, description: @language, include: @language, exclude: @language)
       end
 
-      def circuitable_params
-        params.require(:circuitable).permit(:quantity_days, :price, :position, :deleted_at,
-          files:[], title: @language, description: @language, include: @language, exclude: @language)
-      end
+      # def circuitable_params
+      #   params.require(:circuitable).permit(:status, circuitables_rooms_attributes: [:price_cop, :price_usd, :status, :room_id, :circuitable_id])
+      # end
+      #
+      # def circuitables_rooms_params
+      #   params.require(:circuitables_rooms).permit(:price_cop, :price_usd, :status, :room_id, :circuitable_id)
+      # end
 
       def show_history
         get_history(Circuit)
