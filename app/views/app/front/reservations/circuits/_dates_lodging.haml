@@ -30,59 +30,63 @@
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "simple"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "simple"}/
       %p Habitación
       %p Simple
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "double"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "double"}/
       %p Habitación
       %p Doble
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "triple"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "triple"}/
       %p Habitación
       %p Triple
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "quadruple"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "quadruple"}/
       %p Habitación
       %p Cuadruple
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "quintuple"}/
       %p Habitación
       %p Quintuple
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "radio", :value => "quintuple"}/
+          %input.js-type-room{:name => "", :type => "checkbox", :value => "quintuple"}/
       %p Habitación
       %p Niño
 
 :javascript
+
   $( '.js-hotel-room' ).on( 'click', function() {
       if( $(this).is(':checked') ){
-          alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+          $(this).addClass('js-hotel-active');
+          $(this).closest('label').addClass('btn-default');
       } else {
-          alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+          $(this).removeClass('js-hotel-active');
+          $(this).closest('label').removeClass('btn-default');
       }
   });
+
   $( '.js-type-room' ).on( 'click', function() {
-    if( $(this).is(':checked') ){
-        // checkbox seleccionado
-         alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
-    } else {
-        // checkbox deseleccionado
-        alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
-    }
+      if( $(this).is(':checked') ){
+          $(this).addClass('js-room-active');
+          $(this).closest('label').addClass('btn-default');
+      } else {
+          $(this).removeClass('js-room-active');
+          $(this).closest('label').removeClass('btn-default');
+      }  
   });
