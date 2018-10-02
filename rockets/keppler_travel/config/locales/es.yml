@@ -62,6 +62,19 @@ es:
       reserve: Reservar
   activerecord:
     attributes:
+      quantity_days: Cantidad de Días
+      include: Incluye
+      exclude: Excluye
+      destinations: Destinos
+      price: Precio
+      custom_title: Título Personalizado
+      latitude: Latitud
+      longitude: Longitud
+      price_adults: Precio Adultos
+      price_kids: Precio Niños
+      seat: Asientos
+      inner_price: Precio dentro Perímetro
+      outer_price: Precio fuera Perímetro
       id: Identificador
       title: Título
       subtitle: Subtítulo

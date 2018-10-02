@@ -147,23 +147,25 @@
                       %h4.text-center Habitaciones
                       -#%p= raw @results.exclude[@lang]
                       .row
-                        .col-lg-2
-                        .col-lg-8
-                          %table.table.table-room
+                        .col-lg-12
+                          %table.table.table-hover
                             %thead
                               %tr
                                 %th Hotel
-                                %th Hab. Individual
-                                %th Hab. Doble
-                                %th Hab. Triple
-                                %th Hab. Cuádruple
-                                %th Hab. Quíntuple
-                                %th Hab. Sextuple
-                                %th Hab. Niños
+                                %th Habitación Individual
+                                %th Habitación Doble
+                                %th Habitación Triple
+                                %th Habitación Cuádruple
+                                %th Habitación Quíntuple
+                                %th Habitación Sextuple
+                                %th Habitación Niños
                             %tbody
                               - @results.circuitables.each do |circuitable|
                                 - if circuitable.status
                                   %tr
                                     %td= circuitable.lodgment.title[@lang]
                                     - circuitable.circuitable_rooms.each do |room|
-                                      %td= room.try("price_#{@currency}")
+                                      - if circuitable.lodgment.avaible_room? room
+                                        %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
+                                      - else
+                                        %td No Disponible

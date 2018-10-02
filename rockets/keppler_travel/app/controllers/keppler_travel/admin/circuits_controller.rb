@@ -146,14 +146,6 @@ module KepplerTravel
         files:[], title: @language, description: @language, include: @language, exclude: @language)
       end
 
-      # def circuitable_params
-      #   params.require(:circuitable).permit(:status, circuitables_rooms_attributes: [:price_cop, :price_usd, :status, :room_id, :circuitable_id])
-      # end
-      #
-      # def circuitables_rooms_params
-      #   params.require(:circuitables_rooms).permit(:price_cop, :price_usd, :status, :room_id, :circuitable_id)
-      # end
-
       def show_history
         get_history(Circuit)
       end
@@ -178,6 +170,3 @@ module KepplerTravel
     end
   end
 end
-
-#(byebug) room = KepplerTravel::Room.new(type: 'simpless', price: {cop: '123', usd: '34'})
-#*** ActiveRecord::SubclassNotFound Exception: The single-table inheritance mechanism failed to locate the subclass: 'simpless'. This error is raised because the column 'type' is reserved for storing the class in case of inheritance. Please rename this column if you didn't intend it to be used for storing the inheritance class or overwrite KepplerTravel::Room.inheritance_column to use another column for that information.#

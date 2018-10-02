@@ -41,12 +41,7 @@
                       - circuit = circuitable.object.circuit
                       %tr
                         %td
-                          -# .checkbox
-                          -#   %label
-                          -#     %input{name: 'circuit_circuitables[status]', :type => "checkbox", :value => circuitable.object.status}
-                          -# = circuitable.input :status, as: :keppler_boolean, label: false
                           = circuitable.input :status, as: :boolean, label: false
-
                         %td= destination.custom_title[I18n.locale.to_s]
                         %td= lodgment.title['es']
 
@@ -55,23 +50,11 @@
                           %td
                             = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object)
 
-
-                            -# %input{value: cr.object.price['cop'], name: "price[#{cr.object.room.type_room}][cop][#{cr.object.id}]", disabled: lodgment.disabled_room(cr.object), min: 1, style: 'width:85%'}
-
-                            -# = f.simple_fields_for :price, OpenStruct.new(cr.object.price) do |field|
-                            -#   = field.input :cop, label: false, disable: lodgment.disabled_room(cr.object)
-
                 .form-padding
                   .col-xs-12
                   .col-xs-12
                     .pull-right
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
-                      = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
-
--# if($('checkbox').attr('checked'))
--# {
--#     $(this).parent().hide();
--# }
 
 // :javascript
 //

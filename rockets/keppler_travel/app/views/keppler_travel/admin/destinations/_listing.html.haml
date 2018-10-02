@@ -42,7 +42,7 @@
             = link_to edit_admin_travel_destination_path(destination), class: 'new-menu', title: t('keppler.actions.edit') do
               %i.icon-pencil
               = t('keppler.actions.edit')
-        - if can?(KepplerTravel::Destination).clone?
+        -# - if can?(KepplerTravel::Destination).clone?
           %li
             = link_to admin_travel_destination_clone_path(destination), class: 'new-menu', title: t('keppler.actions.clone') do
               %i.icon-docs
