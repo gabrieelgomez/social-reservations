@@ -37440,10 +37440,9 @@ function collectImages(id_input, edit_input, name_input){
       imagesAdd.push(imagesFiles)
     });
   }
-  console.log(imagesAdd);
   $(id_input).filer({
     limit: null,
-    maxSize: 0.5,
+    maxSize: 3,
     extensions: ['jpg', 'png', 'jpeg', 'pdf', 'svg', 'doc', 'docx', 'ppt', 'pptx'],
     changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag&Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn blue">Browse Files</a></div></div>',
     showThumbs: true,
@@ -39186,9 +39185,111 @@ function validateForm(id_form){
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-     // var data = $('#destinations_vehicles').val();
-     // $('form').append(`<input type="hidden" name="vehicle[destination_ids]" value="${data}" /> `);
      form.submit();
+   }
+  });
+}
+
+
+function validateTour(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'tour[price]': { required: true},
+     'tour[destination_ids]': { required: true},
+     },
+   messages: {
+     'tour[price]': 'No puede estar en blanco',
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var tour_files = $('#tour_files').val();
+     var destinations = $('#destinations_tours').val();
+
+     $('form').append(`<input type="hidden" name="tour[destination_ids]" value=${destinations} /> `);
+
+     if (tour_files  == ''){
+       alert('Agregue mínimo una imagen');
+     }
+     else if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}
+
+
+function validateCircuit(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'circuit[price]': { required: true},
+     'circuit[quantity_days]': { required: true, digits: true, number: true},
+     'circuit[destination_ids]': { required: true}
+     },
+   messages: {
+     'circuit[destination_ids]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var circuit_files = $('#circuit_files').val();
+     var destinations = $('#destinations_circuits').val();
+
+     $('form').append(`<input type="hidden" name="circuit[destination_ids]" value=${destinations} /> `);
+
+     if (circuit_files  == ''){
+       alert('Agregue mínimo una imagen');
+     }
+     else if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}
+
+
+function validateLodgment(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'lodgment[title]': { required: true}
+     },
+   messages: {
+     'lodgment[title]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var destinations = $('#destinations_lodgments').val();
+     var rooms = $('#lodgments_rooms').val();
+
+     debugger;
+     $('form').append(`<input type="hidden" name="lodgment[destination_ids]" value=${destinations} /> `);
+     $('form').append(`<input type="hidden" name="lodgment[room_ids]" value=${rooms} /> `);
+
+
+     if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
 
    }
   });

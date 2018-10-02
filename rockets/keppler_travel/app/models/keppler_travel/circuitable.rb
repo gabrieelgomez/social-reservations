@@ -6,6 +6,7 @@ module KepplerTravel
     belongs_to :circuit
     belongs_to :lodgment
     has_many   :circuitable_rooms
+    accepts_nested_attributes_for :circuitable_rooms
 
   end
 end

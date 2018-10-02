@@ -10,23 +10,11 @@
     %td.hidden-xs
       = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
         %span
-          = circuit.title
+          = circuit.title[I18n.locale.to_s]
     %td.hidden-xs
       = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
         %span
           = circuit.quantity_days
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-    -#     %span
-    -#       = circuit.description
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-    -#     %span
-    -#       = circuit.include
-    -# %td.hidden-xs.hidden-sm
-    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-    -#     %span
-    -#       = circuit.exclude
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
         %span

@@ -30,51 +30,51 @@
   width: 100%;
 }
 /* line 29, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-prev {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-prev {
   left: -50px !important;
   z-index: 2;
 }
 /* line 33, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-prev:before {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-prev:before {
   font-size: 25px;
   color: #43b7e8;
 }
 /* line 39, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-next {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-next {
   right: -50px !important;
   z-index: 2;
 }
 /* line 43, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-next:before {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-next:before {
   font-size: 25px;
   color: #43b7e8;
 }
 /* line 49, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-dots {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-dots {
   bottom: -35px;
   z-index: 2;
 }
 /* line 55, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-dots .slick-active button:before {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-dots .slick-active button:before {
   color: #43b7e8;
   opacity: 0.75;
 }
 /* line 64, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-dots li button:before {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-dots li button:before {
   color: #4e4e56;
   font-size: 10px;
 }
 /* line 69, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-dots li button:hover:before, .circuits .content-circuits__image .carrusel-galery .galery .slick-dots li button:focus:before {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-dots li button:hover:before, .circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-dots li button:focus:before {
   color: #43b7e8;
 }
 /* line 77, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-slide {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-slide {
   height: 300px;
   margin: 0px 10px;
 }
 /* line 81, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-slide img {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-slide img {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -83,7 +83,7 @@
   object-position: center;
 }
 /* line 90, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-slide .mask-item {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-slide .mask-item {
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
@@ -93,12 +93,12 @@
   z-index: 1;
 }
 /* line 100, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-slide .banner-info {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-slide .banner-info {
   height: 100%;
   width: 100%;
 }
 /* line 104, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
-.circuits .content-circuits__image .carrusel-galery .galery .slick-slide .banner-info h1 {
+.circuits .content-circuits__image .carrusel-galery .galery_circuits .slick-slide .banner-info h1 {
   color: white;
   font-family: monospace;
   position: absolute;
@@ -114,22 +114,46 @@
 }
 /* line 124, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits__tab--box {
-  border: 1px solid #80808066;
+  box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   background: white;
   min-height: 300px;
   margin: 20px 0;
 }
-/* line 133, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 135, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits__tab--box .nav-item-circuits li a {
+  border-radius: 0;
+}
+/* line 138, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits__tab--box .nav-item-circuits li a:active, .circuits .content-circuits__tab--box .nav-item-circuits li a:focus, .circuits .content-circuits__tab--box .nav-item-circuits li a:visited {
+  background-color: #4e4e56 !important;
+  color: white;
+  border-radius: 5px;
+}
+/* line 149, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits__tab--box .nav-item-circuits li.active a {
+  border-radius: 5px;
+  background-color: #4e4e56 !important;
+  color: white;
+}
+/* line 160, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits__data {
+  padding: 5px 0 20px 0;
+}
+/* line 163, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits__data label {
   color: #4e4e56;
 }
-/* line 140, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 168, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits__button {
+  height: 60px;
+}
+/* line 173, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits__button a button {
   width: 160px;
   height: 45px;
   font-size: 16px;
 }
-/* line 148, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 181, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits h3 {
   color: #4e4e56;
   text-align: left;
@@ -139,55 +163,60 @@
   display: inline-block;
   box-shadow: 0px 2px 0px #43b7e8;
 }
-/* line 158, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 191, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-includes {
   padding: 20px;
 }
-/* line 161, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 194, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-includes h4 {
   color: #4e4e56;
   font-family: "Poppins", sans-serif;
   padding: 10px 0;
 }
-/* line 167, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 200, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-includes .items {
   padding-left: 20px;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 171, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 204, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-includes .items li {
   list-style-type: disc;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 178, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 211, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-description {
   padding: 20px;
 }
-/* line 181, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 214, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-description h4 {
   color: #4e4e56;
   font-family: "Poppins", sans-serif;
   padding: 10px 0;
 }
-/* line 187, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 220, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-description .items {
   padding-left: 20px;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 191, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 224, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-description .items li {
   list-style-type: disc;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 198, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 233, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+.circuits .content-circuits .box-description .table-room thead tr th {
+  text-align: center;
+  color: #4e4e56;
+}
+/* line 242, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-results {
   width: 100%;
 }
-/* line 201, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 245, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-results .image-search {
   padding: 40px 0;
 }
-/* line 204, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
+/* line 248, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/circuits.scss */
 .circuits .content-circuits .box-results .image-search img {
   width: 170px;
 }
@@ -388,7 +417,75 @@
 .reservation-circuits .box-reservation .form-reservation {
   margin-bottom: 0 !important;
 }
-/* line 15, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 16, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .box-type-room {
+  padding: 20px 0 10px 0;
+}
+/* line 19, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .box-type-room h4 {
+  color: #4e4e56;
+}
+/* line 24, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .box-hotel-room {
+  padding: 20px 0 10px 0;
+}
+/* line 27, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .box-hotel-room h4 {
+  color: #4e4e56;
+}
+/* line 32, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .btn-room {
+  max-width: 300px;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+/* line 41, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .btn-room:active {
+  box-shadow: none;
+}
+/* line 46, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .btn-room center .icon-room {
+  background-size: 55px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  padding-bottom: 10px;
+}
+/* line 56, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .btn-room center .icon-room input {
+  width: 100%;
+  padding: 10px;
+  background-color: #D4D4D4;
+  color: black;
+  border: 13px solid white;
+  border-radius: 0;
+  outline: none;
+  visibility: hidden;
+}
+/* line 69, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .btn-room p {
+  text-align: center;
+  color: #00000096;
+}
+/* line 75, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .bg-active {
+  background-color: #4e4e56;
+}
+/* line 79, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .bg-disabled {
+  background-color: #0000000f;
+}
+/* line 83, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+.reservation-circuits .box-reservation .reservation-data .bg-room-active {
+  background-color: #0000000f;
+}
+/* line 88, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation h3 {
   color: #4e4e56;
   text-align: left;
@@ -398,53 +495,53 @@
   display: inline-block;
   box-shadow: 0px 2px 0px #43b7e8;
 }
-/* line 25, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 98, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation label {
   padding: 1px 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   display: block;
 }
-/* line 32, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 105, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation .title {
   font-weight: 500;
 }
-/* line 36, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 109, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation input,
 .reservation-circuits .box-reservation select {
   border-radius: 0 !important;
 }
-/* line 41, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 114, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation ul {
   padding: 40px 0;
 }
-/* line 44, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 117, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation ul li {
   border-radius: 0;
 }
-/* line 49, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 122, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation .box-btn-reservation {
   padding: 40px 0;
   height: 50px;
   display: flex;
   justify-content: center;
 }
-/* line 55, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 128, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation .box-btn-reservation .btn-reservation {
   height: 40px;
 }
-/* line 60, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 133, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation .box-btn-payment {
   height: 50px;
   display: flex;
   flex-direction: column;
 }
-/* line 65, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 138, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-reservation .box-btn-payment .btn-payment {
   height: 25px;
   margin-right: 0 !important;
 }
-/* line 72, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
+/* line 145, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/reservation-circuits.scss */
 .reservation-circuits .box-search {
   width: 100%;
   height: 300px;
@@ -1089,22 +1186,41 @@
 }
 /* line 124, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours__tab--box {
-  border: 1px solid #80808066;
+  box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   background: white;
   min-height: 300px;
-  margin: 20px 0;
 }
-/* line 133, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 134, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+.tours_ .content-tours__tab--box .nav-item-tours li a {
+  border-radius: 0;
+}
+/* line 137, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+.tours_ .content-tours__tab--box .nav-item-tours li a:active, .tours_ .content-tours__tab--box .nav-item-tours li a:focus, .tours_ .content-tours__tab--box .nav-item-tours li a:visited {
+  background-color: #4e4e56 !important;
+  color: white;
+  border-radius: 5px;
+}
+/* line 148, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+.tours_ .content-tours__tab--box .nav-item-tours li.active a {
+  border-radius: 5px;
+  background-color: #4e4e56 !important;
+  color: white;
+}
+/* line 168, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours__data label {
   color: #4e4e56;
 }
-/* line 140, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 173, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+.tours_ .content-tours__button {
+  height: 60px;
+}
+/* line 178, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours__button a button {
   width: 160px;
   height: 45px;
   font-size: 16px;
 }
-/* line 148, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 186, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours h3 {
   color: #4e4e56;
   text-align: left;
@@ -1114,55 +1230,55 @@
   display: inline-block;
   box-shadow: 0px 2px 0px #43b7e8;
 }
-/* line 158, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 196, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-includes {
   padding: 20px;
 }
-/* line 161, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 199, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-includes h4 {
   color: #4e4e56;
   font-family: "Poppins", sans-serif;
   padding: 10px 0;
 }
-/* line 167, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 205, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-includes .items {
   padding-left: 20px;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 171, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 209, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-includes .items li {
   list-style-type: disc;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 178, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 216, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-description {
   padding: 20px;
 }
-/* line 181, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 219, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-description h4 {
   color: #4e4e56;
   font-family: "Poppins", sans-serif;
   padding: 10px 0;
 }
-/* line 187, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 225, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-description .items {
   padding-left: 20px;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 191, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 229, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-description .items li {
   list-style-type: disc;
   font-family: "Poppins", sans-serif !important;
 }
-/* line 198, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 236, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-results {
   width: 100%;
 }
-/* line 201, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 239, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-results .image-search {
   padding: 40px 0;
 }
-/* line 204, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
+/* line 242, /media/snowden/Respaldo/Proyectos/SliceGroup/receptivo-w/app/assets/stylesheets/css/receptivo_colombia/tours.scss */
 .tours_ .content-tours .box-results .image-search img {
   width: 170px;
 }

@@ -122,12 +122,47 @@
       width: 100%;
 
       &--box {
-        border: 1px solid #80808066;
+        //border: 1px solid #80808066;
+        box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
+          0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 3px 0px rgba(0, 0, 0, 0.12);
         background: white;
         min-height: 300px;
-        margin: 20px 0;
+
+        .nav-item-tours {
+          li {
+            a {
+              border-radius: 0;
+
+              &:active,
+              &:focus,
+              &:visited {
+                background-color: $color-gray !important;
+                color: white;
+                border-radius: 5px;
+              }
+            }
+          }
+
+          li.active {
+            a {
+              border-radius: 5px;
+              background-color: $color-gray !important;
+              color: white;
+
+            }
+          }
+        }
       }
     }
+
+
+
+
+
+
+
+
 
     &__data {
       label {
@@ -136,6 +171,9 @@
     }
 
     &__button {
+      height: 60px;
+
+
       a {
         button {
           width: 160px;
