@@ -4,7 +4,7 @@ module KepplerTravel
     # CircuitsController
     class CircuitsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_circuit, only: [:show, :edit, :update, :destroy]
+      before_action :set_circuit, only: [:show, :edit, :update, :destroy, :rooms_tables]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -46,9 +46,10 @@ module KepplerTravel
       # POST /circuits
       def create
         @circuit = Circuit.new(circuit_params)
-        @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
-        if @circuit.save
-          redirect(@circuit, params)
+        if @circuit.save!
+          @circuitable = CircuitableService.create(@circuit, params)
+          redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
+          # redirect(@circuit, params)
         else
           render :new
         end
@@ -56,13 +57,15 @@ module KepplerTravel
 
       # PATCH/PUT /circuits/1
       def update
-        ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
         if @circuit.update(circuit_params)
-          @circuit.update(destination_ids: ids)
           redirect(@circuit, params)
         else
           render :edit
         end
+      end
+
+      def rooms_tables
+        CircuitableService.update_circuitable(@circuit)
       end
 
       def clone
@@ -134,12 +137,17 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_circuit
-        @circuit = Circuit.find(params[:id])
+        @circuit = Circuit.find(params[:id]) rescue Circuit.find(params[:circuit_id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def circuit_params
         params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at,
+          files:[], title: @language, description: @language, include: @language, exclude: @language)
+      end
+
+      def circuitable_params
+        params.require(:circuitable).permit(:quantity_days, :price, :position, :deleted_at,
           files:[], title: @language, description: @language, include: @language, exclude: @language)
       end
 
@@ -167,3 +175,6 @@ module KepplerTravel
     end
   end
 end
+
+#(byebug) room = KepplerTravel::Room.new(type: 'simpless', price: {cop: '123', usd: '34'})
+#*** ActiveRecord::SubclassNotFound Exception: The single-table inheritance mechanism failed to locate the subclass: 'simpless'. This error is raised because the column 'type' is reserved for storing the class in case of inheritance. Please rename this column if you didn't intend it to be used for storing the inheritance class or overwrite KepplerTravel::Room.inheritance_column to use another column for that information.#

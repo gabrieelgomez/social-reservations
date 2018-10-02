@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_161450) do
+ActiveRecord::Schema.define(version: 2018_09_28_162511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,13 +58,35 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keppler_travel_circuitable_rooms", force: :cascade do |t|
+    t.float "price_cop"
+    t.float "price_usd"
+    t.boolean "status"
+    t.bigint "room_id"
+    t.bigint "circuitable_id"
+    t.datetime "deleted_at"
+    t.index ["circuitable_id"], name: "index_keppler_travel_circuitable_rooms_on_circuitable_id"
+    t.index ["room_id"], name: "index_keppler_travel_circuitable_rooms_on_room_id"
+  end
+
+  create_table "keppler_travel_circuitables", force: :cascade do |t|
+    t.bigint "destination_id"
+    t.bigint "lodgment_id"
+    t.bigint "circuit_id"
+    t.boolean "status"
+    t.datetime "deleted_at"
+    t.index ["circuit_id"], name: "index_keppler_travel_circuitables_on_circuit_id"
+    t.index ["destination_id"], name: "index_keppler_travel_circuitables_on_destination_id"
+    t.index ["lodgment_id"], name: "index_keppler_travel_circuitables_on_lodgment_id"
+  end
+
   create_table "keppler_travel_circuits", force: :cascade do |t|
     t.jsonb "title"
     t.integer "quantity_days"
     t.jsonb "description"
     t.jsonb "include"
     t.jsonb "exclude"
-    t.float "price"
+    t.jsonb "price"
     t.jsonb "files"
     t.integer "position"
     t.datetime "deleted_at"
@@ -73,20 +95,13 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
     t.index ["deleted_at"], name: "index_keppler_travel_circuits_on_deleted_at"
   end
 
-  create_table "keppler_travel_circuits_destinations", force: :cascade do |t|
-    t.bigint "circuit_id"
-    t.bigint "destination_id"
-    t.index ["circuit_id"], name: "index_keppler_travel_circuits_destinations_on_circuit_id"
-    t.index ["destination_id"], name: "index_keppler_travel_circuits_destinations_on_destination_id"
-  end
-
   create_table "keppler_travel_destinations", force: :cascade do |t|
     t.string "title"
     t.float "latitude"
     t.float "longitude"
-    t.string "custom_title"
+    t.jsonb "custom_title"
     t.string "cover"
-    t.string "description"
+    t.jsonb "description"
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -97,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
   create_table "keppler_travel_destinations_tours", force: :cascade do |t|
     t.bigint "destination_id"
     t.bigint "tour_id"
+    t.datetime "deleted_at"
     t.index ["destination_id"], name: "index_keppler_travel_destinations_tours_on_destination_id"
     t.index ["tour_id"], name: "index_keppler_travel_destinations_tours_on_tour_id"
   end
@@ -104,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
   create_table "keppler_travel_destinations_vehicles", force: :cascade do |t|
     t.bigint "destination_id"
     t.bigint "vehicle_id"
+    t.datetime "deleted_at"
     t.index ["destination_id"], name: "destination_id"
     t.index ["vehicle_id"], name: "vehicle_id"
   end
@@ -124,13 +141,22 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
 
   create_table "keppler_travel_lodgments", force: :cascade do |t|
     t.jsonb "title"
+    t.string "type_rooms", array: true
     t.integer "position"
-    t.datetime "deleted_at"
     t.bigint "destination_id"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_lodgments_on_deleted_at"
     t.index ["destination_id"], name: "index_keppler_travel_lodgments_on_destination_id"
+  end
+
+  create_table "keppler_travel_lodgments_rooms", force: :cascade do |t|
+    t.bigint "lodgment_id"
+    t.bigint "room_id"
+    t.datetime "deleted_at"
+    t.index ["lodgment_id"], name: "index_keppler_travel_lodgments_rooms_on_lodgment_id"
+    t.index ["room_id"], name: "index_keppler_travel_lodgments_rooms_on_room_id"
   end
 
   create_table "keppler_travel_reservations", force: :cascade do |t|
@@ -164,12 +190,10 @@ ActiveRecord::Schema.define(version: 2018_09_26_161450) do
   end
 
   create_table "keppler_travel_rooms", force: :cascade do |t|
-    t.jsonb "title"
-    t.jsonb "price"
-    t.bigint "lodgment_id"
+    t.string "type_room"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lodgment_id"], name: "lodgment_id"
   end
 
   create_table "keppler_travel_tours", force: :cascade do |t|

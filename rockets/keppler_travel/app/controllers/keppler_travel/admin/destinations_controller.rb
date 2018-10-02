@@ -42,7 +42,6 @@ module KepplerTravel
       # POST /destinations
       def create
         @destination = Destination.new(destination_params)
-
         if @destination.save
           redirect(@destination, params)
         else
@@ -123,6 +122,7 @@ module KepplerTravel
       def set_attachments
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
+        @language = [:en, :es, :pt]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -132,7 +132,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def destination_params
-        params.require(:destination).permit(:title, :custom_title, :latitude, :longitude, :position, :deleted_at)
+        params.require(:destination).permit(:title, :latitude, :longitude, :position, :deleted_at, custom_title: @language)
       end
 
       def show_history

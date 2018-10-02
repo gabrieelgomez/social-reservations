@@ -50,6 +50,7 @@
                   %tr
                     %th
                     %th.hidden-xs= t('activerecord.attributes.title')
+                    %th.hidden-xs Tipo de Habitaciones
                     %th.hidden-xs Destino
                     %th.center Menu
                     %th
@@ -63,10 +64,12 @@
   %aside#index-show.control-sidebar
 
   .mixed-btn
-    - if can?(KepplerTravel::Lodgment).create?
-      = link_to new_admin_travel_lodgment_path, class: "btn-float" do
-        +
-
+    - if KepplerTravel::Destination.count.positive?
+      - if can?(KepplerTravel::Lodgment).create?
+        = link_to new_admin_travel_lodgment_path, class: "btn-float" do
+          +
+    - else
+      %h4 Debe cargar Destinos
 :javascript
   $(document).ready(function(){
     $('#lodgment').click(function() {

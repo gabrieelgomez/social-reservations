@@ -4,9 +4,9 @@ class CreateKepplerTravelDestinations < ActiveRecord::Migration[5.2]
       t.string :title
       t.float :latitude
       t.float :longitude
-      t.string :custom_title
+      t.jsonb :custom_title
       t.string :cover
-      t.string :description
+      t.jsonb :description
       t.integer :position
       # t.string :slug
       t.datetime :deleted_at
