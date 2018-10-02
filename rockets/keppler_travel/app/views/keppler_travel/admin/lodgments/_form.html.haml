@@ -48,7 +48,13 @@
 										%label Destino
 										%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_lodgments', name: 'lodgment[destination_id]'}
 											- KepplerTravel::Destination.all.each do |destination|
-												%option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title
+												%option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
+
+									.col-xs-6
+										%label Tipos de Habitaciones
+										%select.selectpicker{"data-style" => "btn-primary", id: 'lodgments_rooms', name: 'lodgment[room_id]', multiple: 'multiple'}
+											- KepplerTravel::Room.all.each do |room|
+												%option{ value: room.id, selected: @lodgment.selected_rooms(room.id)}= room.type_room
 
 									.col-xs-12
 										= f.input :position, as: :hidden

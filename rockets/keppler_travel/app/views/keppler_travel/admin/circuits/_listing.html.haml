@@ -15,22 +15,26 @@
       = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
         %span
           = circuit.quantity_days
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-        %span
-          = circuit.description
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-        %span
-          = circuit.include
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-        %span
-          = circuit.exclude
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = circuit.description
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = circuit.include
+    -# %td.hidden-xs.hidden-sm
+    -#   = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = circuit.exclude
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
         %span
           = circuit.price
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_circuit_rooms_tables_path(circuit), class: 'show-row' do
+        %i.icon-eye
+        -# = t('keppler.actions.show')
     %td{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{circuit.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical

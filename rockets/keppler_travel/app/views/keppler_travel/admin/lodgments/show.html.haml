@@ -34,4 +34,9 @@
                 %tr.list-row
                   %th.display-label Destinations
                   %td.display-value.fs-body-1.tc-black-2
-                    = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title
+                    = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title[I18n.locale.to_s]
+
+                %tr.list-row
+                  %th.display-label Tipos de Habitaciones
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @lodgment.room_ids.blank? ? '-----------' : @lodgment.rooms.map(&:type_room).join(', ')

@@ -46,6 +46,7 @@ module KepplerTravel
       # POST /lodgments
       def create
         @lodgment = Lodgment.new(lodgment_params)
+        @lodgment.room_ids = params[:lodgment][:room_ids].split(',').map(&:to_i)
         if @lodgment.save
           redirect(@lodgment, params)
         else
@@ -55,7 +56,9 @@ module KepplerTravel
 
       # PATCH/PUT /lodgments/1
       def update
+        ids = params[:lodgment][:room_ids].split(',').map(&:to_i)
         if @lodgment.update(lodgment_params)
+          @lodgment.update(room_ids: ids)
           redirect(@lodgment, params)
         else
           render :edit

@@ -20,6 +20,34 @@
               %tbody
                 .form-padding
                   .col-xs-12.col-lg-6
+
+                    .col-xs-12
+                      .nav-tabs-custom
+                        %ul.nav.nav-tabs
+                          %li.active
+                            %a{"data-toggle" => "tab", :href => "#spanish"} Español
+                          %li
+                            %a{"data-toggle" => "tab", :href => "#english"} Inglés
+                          %li
+                            %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
+                        .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+
+                          // ESPAÑOL
+                          #spanish.tab-pane.active
+                            .col-xs-12
+                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                = field.input :es, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                          // Ingles
+                          #english.tab-pane
+                            .col-xs-12
+                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                = field.input :en, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                          // Portugues
+                          #portugues.tab-pane
+                            .col-xs-12
+                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                = field.input :pt, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+
                     .col-xs-12.col-lg-12
                       = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
 
@@ -41,8 +69,8 @@
                       %input#destination_long.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
                       = f.hidden_field :longitude
 
-                    .col-xs-12.col-lg-12{style: 'margin-top:20px;'}
-                      = f.input :custom_title, label: 'Título personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                    -# .col-xs-12.col-lg-12{style: 'margin-top:20px;'}
+                    -#   = f.input :custom_title, label: 'Título personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
 
                   .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
                     -# = f.input :position, as: :hidden
@@ -56,6 +84,10 @@
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
 
 :javascript
+
+    $("#destination_title").focus(function() {
+       $(this).select();
+    });
 
   var map;
   var marker = [];
