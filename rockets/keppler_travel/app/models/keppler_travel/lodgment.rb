@@ -27,6 +27,10 @@ module KepplerTravel
       self.rooms.map(&:id).include?(cr.room_id) ? false : true
     end
 
+    def avaible_room? room
+      self.rooms.map(&:id).include?(room.room_id) ? true : false
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "position", "deleted_at"]

@@ -142,13 +142,8 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def circuit_params
-        params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at,
-          files:[], title: @language, description: @language, include: @language, exclude: @language)
-      end
-
-      def circuitable_params
-        params.require(:circuitable).permit(:quantity_days, :price, :position, :deleted_at,
-          files:[], title: @language, description: @language, include: @language, exclude: @language)
+        params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at, circuitables_attributes: [:id, :status], circuitable_rooms_attributes: [:id, :price_cop, :price_usd],
+        files:[], title: @language, description: @language, include: @language, exclude: @language)
       end
 
       def show_history
@@ -175,6 +170,3 @@ module KepplerTravel
     end
   end
 end
-
-#(byebug) room = KepplerTravel::Room.new(type: 'simpless', price: {cop: '123', usd: '34'})
-#*** ActiveRecord::SubclassNotFound Exception: The single-table inheritance mechanism failed to locate the subclass: 'simpless'. This error is raised because the column 'type' is reserved for storing the class in case of inheritance. Please rename this column if you didn't intend it to be used for storing the inheritance class or overwrite KepplerTravel::Room.inheritance_column to use another column for that information.#

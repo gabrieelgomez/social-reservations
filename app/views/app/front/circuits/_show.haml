@@ -90,10 +90,10 @@
                     %a{"data-toggle" => "tab", :href => "#includes"} Incluye
                   %li
                     %a{"data-toggle" => "tab", :href => "#excludes"} No Incluye
-                  %li
-                    %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario 
-                  %li
-                    %a{"data-toggle" => "tab", :href => "#terms"} Condiciones 
+                  -# %li
+                  -#   %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
+                  -# %li
+                  -#   %a{"data-toggle" => "tab", :href => "#terms"} Condiciones
                   %li
                     %a{"data-toggle" => "tab", :href => "#rooms_prices"} Habitaciones/Precios
                 .tab-content
@@ -112,67 +112,60 @@
                       %h4 No Incluye
                       %p= raw @results.exclude[@lang]
 
-                  #itinerary.tab-pane
-                    .box-includes
-                      %h4 Itinerario
-                      %ul
-                        %li 
-                          %p
-                            %i.icon-bag.icons
-                            %span Dia 1:
-                            Lorem ipsum dolor sit amet
-                        %li 
-                          %p
-                            %i.icon-bag.icons
-                            %span Dia 1:
-                            Lorem ipsum dolor sit amet
-                        %li 
-                          %p
-                            %i.icon-bag.icons
-                            %span Dia 1:
-                            Lorem ipsum dolor sit amet
-                        %li 
-                          %p
-                            %i.icon-bag.icons
-                            %span Dia 1:
-                            Lorem ipsum dolor sit amet                                         
+                  -# #itinerary.tab-pane
+                  -#   .box-includes
+                  -#     %h4 Itinerario
+                  -#     %ul
+                  -#       %li
+                  -#         %p
+                  -#           %i.icon-bag.icons
+                  -#           %span Dia 1:
+                  -#           Lorem ipsum dolor sit amet
+                  -#       %li
+                  -#         %p
+                  -#           %i.icon-bag.icons
+                  -#           %span Dia 1:
+                  -#           Lorem ipsum dolor sit amet
+                  -#       %li
+                  -#         %p
+                  -#           %i.icon-bag.icons
+                  -#           %span Dia 1:
+                  -#           Lorem ipsum dolor sit amet
+                  -#       %li
+                  -#         %p
+                  -#           %i.icon-bag.icons
+                  -#           %span Dia 1:
+                  -#           Lorem ipsum dolor sit amet
+                  -#
+                  -# #terms.tab-pane
+                  -#   .box-includes
+                  -#     %h4 Condiciones
+                  -#     -#%p= raw @results.include[@lang]
 
-                  #terms.tab-pane
-                    .box-includes
-                      %h4 Condiciones 
-                      -#%p= raw @results.include[@lang]
-                      
                   #rooms_prices.tab-pane
                     .box-description
                       %h4.text-center Habitaciones
                       -#%p= raw @results.exclude[@lang]
                       .row
-                        .col-lg-2
-                        .col-lg-8
-                          %table.table.table-room
+                        .col-lg-12
+                          %table.table.table-hover
                             %thead
                               %tr
                                 %th Hotel
-                                %th Hab. Individual
-                                %th Hab. Doble
-                                %th Hab. Triple
-                                %th Hab. Cuadruple
+                                %th Habitación Individual
+                                %th Habitación Doble
+                                %th Habitación Triple
+                                %th Habitación Cuádruple
+                                %th Habitación Quíntuple
+                                %th Habitación Sextuple
+                                %th Habitación Niños
                             %tbody
-                              %tr
-                                %td Mare Mare Inn
-                                %td $ 1000,00 USD
-                                %td $ 2500,00 USD
-                                %td $ 3800,00 USD
-                                %td $ 5000,00 USD
-                              %tr
-                                %td Casa Blanca
-                                %td $ 1200,00 USD
-                                %td $ 2700,00 USD
-                                %td $ 4000,00 USD
-                                %td $ 5200,00 USD
-                              %tr
-                                %td Blue Emerald Inn
-                                %td $ 1400,00 USD
-                                %td $ 2900,00 USD
-                                %td $ 4200,00 USD
-                                %td $ 5600,00 USD
+                              - @results.circuitables.each do |circuitable|
+                                - if circuitable.status
+                                  %tr
+                                    %td= circuitable.lodgment.title[@lang]
+                                    - circuitable.circuitable_rooms.each do |room|
+                                      - if circuitable.lodgment.avaible_room? room
+                                        %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
+                                      - else
+                                        %td No Disponible

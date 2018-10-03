@@ -4,24 +4,14 @@
   .col-lg-12
     .box-hotel-room
       %h4 Hoteles disponibles
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel1", :type => "checkbox", :value => "Gran Hotel'"}/
-      %p Gran Hotel
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel2", :type => "checkbox", :value => "Conquest"}/
-      %p Conquest
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-          %input.js-hotel-room{:name => "hotel3", :type => "checkbox", :value => "Ibis"}/
-      %p Ibis
+  - @circuit.circuitables.each do |circuitable|
+    - if circuitable.status
+      .col-lg-2
+        %label.btn.btn-room
+          %center
+            .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
+              %input.room.js-hotelRoom{:name => "hotel1", :type => "checkbox", :value => circuitable.lodgment_id}/
+          %p= circuitable.lodgment.title[@lang]
 .row
   .col-lg-12
     .box-type-room
@@ -30,63 +20,98 @@
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "simple"}/
-      %p Habitación
-      %p Simple
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Simple
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "double"}/
-      %p Habitación
-      %p Doble
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Doble
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "triple"}/
-      %p Habitación
-      %p Triple
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Triple
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "quadruple"}/
-      %p Habitación
-      %p Cuadruple
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Cuadruple
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
   .col-lg-2
     %label.btn.btn-room
       %center
         .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "quintuple"}/
-      %p Habitación
-      %p Quintuple
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
-          %input.js-type-room{:name => "", :type => "checkbox", :value => "quintuple"}/
-      %p Habitación
-      %p Niño
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Quintuple
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
 
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Sextuple
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
+
+  .col-lg-2
+    %label.btn.btn-room
+      %center
+        .icon-room{:style => "background-image: url(/assets/img/hotel-room.svg)"}
+          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+        %p Habitación
+        %p Niño
+      .quantity-type-room.js-quantityRoom.quantity-disabled
+        .quantity-room
+          %input{:name => "", :type => "number", :value => ""}/
+
+
+        
 :javascript
 
-  $( '.js-hotel-room' ).on( 'click', function() {
+  $( '.js-hotelRoom' ).on( 'click', function() {
       if( $(this).is(':checked') ){
           $(this).addClass('js-hotel-active');
-          $(this).closest('label').addClass('btn-default');
+          $(this).closest('label').addClass('bg-active');
       } else {
           $(this).removeClass('js-hotel-active');
-          $(this).closest('label').removeClass('btn-default');
+          $(this).closest('label').removeClass('bg-active');
       }
   });
 
-  $( '.js-type-room' ).on( 'click', function() {
+  $( '.js-typeRoom' ).on( 'click', function() {
       if( $(this).is(':checked') ){
           $(this).addClass('js-room-active');
-          $(this).closest('label').addClass('btn-default');
+          $(this).closest('label').addClass('bg-active');
+          $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
       } else {
+          $(this).closest('label').removeClass('bg-active');
           $(this).removeClass('js-room-active');
-          $(this).closest('label').removeClass('btn-default');
+          $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled').;
+
       }  
   });
