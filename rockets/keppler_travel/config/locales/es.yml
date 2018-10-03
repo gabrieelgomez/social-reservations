@@ -75,6 +75,7 @@ es:
       seat: Asientos
       inner_price: Precio dentro Perímetro
       outer_price: Precio fuera Perímetro
+      task: Tareas
       id: Identificador
       title: Título
       subtitle: Subtítulo

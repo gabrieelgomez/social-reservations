@@ -78,8 +78,8 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :pt, label: 'Excluir', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
-										.col-xs-6.col-lg-6
-											= f.input :quantity_days, input_html: { min: 0 }
+										.col-xs-6.col-lg-2
+											= f.input :quantity_days, label: 'Cantidad de Días', input_html: { min: 0 }
 										.col-xs-6.col-lg-6
 											%label Destinos
 											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}

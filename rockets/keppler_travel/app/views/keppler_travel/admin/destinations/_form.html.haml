@@ -65,7 +65,7 @@
                       .keppler-custom-field.form-group.string.required.disabled.destination_lang
                         %label.control-label.string.required.disabled{:for => "destination_lang"}
                           %abbr{:title => "requerido"} *
-                          Longitude
+                          Longitud
                       %input#destination_long.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
                       = f.hidden_field :longitude
 
@@ -85,25 +85,27 @@
 
 :javascript
 
-	$(document).ready(function() {
+  $(document).ready(function() {
 
-	  $('form').keypress(function(e){
-	    if(e == 13){
-	      return false;
-	    }
-	  });
+    $('form').keypress(function(e){
+      if(e == 13){
+        return false;
+      }
+    });
 
-	  $('input').keypress(function(e){
-	    if(e.which == 13){
-	      return false;
-	    }
-	  });
-
-	});
+    $('input').keypress(function(e){
+      if(e.which == 13){
+        return false;
+      }
+    });
 
     $("#destination_title").focus(function() {
        $(this).select();
     });
+
+  });
+
+
 
   var map;
   var marker = [];
