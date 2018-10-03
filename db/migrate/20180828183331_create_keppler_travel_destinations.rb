@@ -8,12 +8,10 @@ class CreateKepplerTravelDestinations < ActiveRecord::Migration[5.2]
       t.string :cover
       t.jsonb :description
       t.integer :position
-      # t.string :slug
+      t.boolean :status
       t.datetime :deleted_at
-
       t.timestamps
     end
-    # add_index :keppler_travel_destinations, :slug, unique: true
     add_index :keppler_travel_destinations, :deleted_at
   end
 end

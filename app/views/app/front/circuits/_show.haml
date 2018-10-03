@@ -165,7 +165,8 @@
                                   %tr
                                     %td= circuitable.lodgment.title[@lang]
                                     - circuitable.circuitable_rooms.each do |room|
-                                      - if circuitable.lodgment.avaible_room? room
-                                        %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
-                                      - else
+                                      - price = room.try("price_#{@currency}")
+                                      - if price.zero? || room === false
                                         %td No Disponible
+                                      - else circuitable.lodgment.avaible_room? room
+                                        %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)

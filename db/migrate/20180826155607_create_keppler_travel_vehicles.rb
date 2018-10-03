@@ -14,12 +14,10 @@ class CreateKepplerTravelVehicles < ActiveRecord::Migration[5.2]
       t.jsonb :inner_price
       t.jsonb :outer_price
       t.integer :position
-      # t.string :slug
+      t.boolean :status
       t.datetime :deleted_at
-
       t.timestamps
     end
-    # add_index :keppler_travel_vehicles, :slug, unique: true
     add_index :keppler_travel_vehicles, :deleted_at
   end
 end

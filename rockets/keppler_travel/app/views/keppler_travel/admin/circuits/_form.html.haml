@@ -81,8 +81,6 @@
 										.col-xs-6.col-lg-6
 											= f.input :quantity_days, input_html: { min: 0 }
 										.col-xs-6.col-lg-6
-											= f.input :price, input_html: { min: 0 }
-										.col-xs-6.col-lg-6
 											%label Destinos
 											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}
 												- KepplerTravel::Destination.all.select{|destination| destination.lodgments.count.positive? }.each do |destination|

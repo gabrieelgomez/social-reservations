@@ -23,13 +23,20 @@
             %table.table.table-striped
               %tbody
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.title")
+                  %th.display-label Título Español
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.title[I18n.locale.to_s].blank? ? '-----------' : @circuit.title[I18n.locale.to_s]
+                    = @circuit.title['es'].blank? ? '-----------' : @circuit.title['es']
+
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.price")
+                  %th.display-label Título Inglés
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.price.blank? ? '-----------' : @circuit.price
+                    = @circuit.title['en'].blank? ? '-----------' : @circuit.title['en']
+
+                %tr.list-row
+                  %th.display-label Título Portugués
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @circuit.title['pt'].blank? ? '-----------' : @circuit.title['pt']
+
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.quantity_days")
                   %td.display-value.fs-body-1.tc-black-2
@@ -41,15 +48,15 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.description[I18n.locale.to_s].blank? ? '-----------' : @circuit.description[I18n.locale.to_s]
+                    = @circuit.description[I18n.locale.to_s].blank? ? '-----------' : @circuit.description[I18n.locale.to_s].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.include")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.include[I18n.locale.to_s].blank? ? '-----------' : @circuit.include[I18n.locale.to_s]
+                    = @circuit.include[I18n.locale.to_s].blank? ? '-----------' : @circuit.include[I18n.locale.to_s].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.exclude")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.exclude[I18n.locale.to_s].blank? ? '-----------' : @circuit.exclude[I18n.locale.to_s]
+                    = @circuit.exclude[I18n.locale.to_s].blank? ? '-----------' : @circuit.exclude[I18n.locale.to_s].truncate(50)
 
 
       .col-md-12
@@ -67,12 +74,12 @@
                 %th Destino
                 %th Alojamiento
                 %th Simple
-                %th Niños
                 %th Dobles
                 %th Triples
                 %th Cuadruples
                 %th Quintuples
                 %th Sextuples
+                %th Niños
 
               // Circuitables from Circuit
               - @circuit.circuitables.each do |circuitable|
