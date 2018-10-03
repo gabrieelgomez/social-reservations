@@ -31,7 +31,7 @@
 
       .btn-room {
         max-width: 300px;
-        border-radius: 5px;
+        border-radius: 0px;
         padding: 6px;
         width: 100%;
         margin-top: 10px;
@@ -53,7 +53,7 @@
             max-width: 70px;
             padding-bottom: 10px;
 
-            input {
+            .room {
               width: 100%;
               padding: 10px;
               background-color: #D4D4D4;
@@ -63,6 +63,18 @@
               outline: none;
               visibility: hidden;
             }
+
+            .type-room {
+              width: 100%;
+              padding: 10px;
+              background-color: #D4D4D4;
+              color: black;
+              border: 13px solid white;
+              border-radius: 0;
+              outline: none;
+              visibility: hidden;
+            }
+
           }
         }
 
@@ -70,10 +82,39 @@
           text-align: center;
           color: #00000096;
         }
+
+
+
+        .quantity-type-room {
+          width: 100%;
+          margin: 0;
+
+          .quantity-room {
+            height: auto;
+            width: 100%;
+            background: red;
+
+            input {
+              width: inherit;
+            }
+          }
+
+        }
+
+        .quantity-disabled {
+          visibility: hidden;
+        }
+
+        .quantity-active {
+          visibility: visible;
+        }
       }
 
+
+
       .bg-active {
-        background-color: #4e4e56;
+        border: 1px solid #4e4e56;
+        border-radius: 5px;
       }
 
       .bg-disabled {
@@ -106,10 +147,7 @@
       font-weight: 500;
     }
 
-    input,
-    select {
-      border-radius: 0 !important;
-    }
+
 
     ul {
       padding: 40px 0;
