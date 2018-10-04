@@ -17,7 +17,8 @@ module KepplerTravel
 
       # GET /reservations
       def index
-        @q = Reservation.ransack(params[:q])
+        @types = Reservation.where(reservationable_type: "KepplerTravel::#{@model}")
+        @q = @types.ransack(params[:q])
         reservations = @q.result(distinct: true)
         @objects = reservations.page(@current_page).order(id: :desc)
         @total = reservations.size
@@ -125,6 +126,7 @@ module KepplerTravel
       def set_attachments
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
+        @model = params[:model_name].capitalize
       end
 
       # Use callbacks to share common setup or constraints between actions.
