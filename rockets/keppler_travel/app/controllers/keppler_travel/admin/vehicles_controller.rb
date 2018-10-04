@@ -127,6 +127,7 @@ module KepplerTravel
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
         @language = [:en, :es, :pt]
+        @currency = [:cop, :usd]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -137,7 +138,8 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def vehicle_params
         params.require(:vehicle).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
-          :date, :time, :seat, {files:[]}, inner_price: [:cop, :usd], outer_price: [:cop, :usd], kit: [:quantity, :weight],
+          :date, :time, :seat, :status, {files:[]}, kit: [:quantity, :weight],
+          inner_price: @currency, outer_price: @currency,
           title: @language, description: @language, includes: @language, conditions: @language)
       end
 

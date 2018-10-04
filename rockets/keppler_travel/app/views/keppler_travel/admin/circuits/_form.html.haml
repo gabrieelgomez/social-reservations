@@ -46,6 +46,10 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :es, label: 'No incluye', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :es, label: 'Itinerario', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
 												// INGLES
 												#english.tab-pane
 													.col-xs-12
@@ -62,6 +66,10 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :en, label: 'Exclude', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :en, label: 'Itinenary', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
 												// PORTUGUES
 												#portugues.tab-pane
 													.col-xs-12
@@ -77,6 +85,10 @@
 													.col-xs-6
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :pt, label: 'Excluir', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :pt, label: 'Itinerário', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
 										.col-xs-6.col-lg-2
 											= f.input :quantity_days, label: 'Cantidad de Días', input_html: { min: 0 }
@@ -110,10 +122,6 @@
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
 
 :javascript
-
-	$("#destinations_circuits").change(function() {
-
-	});
 
 	collectImages("#circuit_files", ".edit_circuit", "circuit[files_delete][]");
 

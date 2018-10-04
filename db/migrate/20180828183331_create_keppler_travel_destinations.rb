@@ -8,7 +8,7 @@ class CreateKepplerTravelDestinations < ActiveRecord::Migration[5.2]
       t.string :cover
       t.jsonb :description
       t.integer :position
-      t.boolean :status
+      t.boolean :status, default: true
       t.datetime :deleted_at
       t.timestamps
     end

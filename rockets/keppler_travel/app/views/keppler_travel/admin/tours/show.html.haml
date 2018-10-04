@@ -49,14 +49,24 @@
                     = @tour.task[I18n.locale.to_s].blank? ? '-----------' : @tour.task[I18n.locale.to_s].truncate(50)
 
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.price_adults")
+                  %th.display-label Precio Adulto COP
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.price_adults.blank? ? '-----------' : @tour.price_adults
+                    = @tour.price_adults['cop'].blank? ? '-----------' : @tour.price_adults['cop']
 
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.price_kids")
+                  %th.display-label Precio Adulto USD
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.price_kids.blank? ? '-----------' : @tour.price_kids
+                    = @tour.price_adults['usd'].blank? ? '-----------' : @tour.price_adults['usd']
+
+                %tr.list-row
+                  %th.display-label Precio Niño COP
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_kids['cop'].blank? ? '-----------' : @tour.price_kids['cop']
+
+                %tr.list-row
+                  %th.display-label Precio Niño USD
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_kids['usd'].blank? ? '-----------' : @tour.price_kids['usd']
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")

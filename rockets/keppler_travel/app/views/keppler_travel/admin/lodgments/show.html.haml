@@ -42,3 +42,8 @@
                 %th.display-label Tipos de Habitaciones
                 %td.display-value.fs-body-1.tc-black-2
                   = @lodgment.room_ids.blank? ? '-----------' : @lodgment.rooms.map(&:type_room).join(', ')
+
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.status")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.status.blank? ? '-----------' : @lodgment.status

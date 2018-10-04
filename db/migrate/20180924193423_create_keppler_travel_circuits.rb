@@ -6,7 +6,8 @@ class CreateKepplerTravelCircuits < ActiveRecord::Migration[5.2]
       t.jsonb :description
       t.jsonb :include
       t.jsonb :exclude
-      t.boolean :status
+      t.jsonb :itinerary
+      t.boolean :status, default: true
       t.jsonb :files
       t.integer :position
       t.datetime :deleted_at

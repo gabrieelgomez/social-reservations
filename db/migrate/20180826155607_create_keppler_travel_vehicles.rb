@@ -14,7 +14,7 @@ class CreateKepplerTravelVehicles < ActiveRecord::Migration[5.2]
       t.jsonb :inner_price
       t.jsonb :outer_price
       t.integer :position
-      t.boolean :status
+      t.boolean :status, default: true
       t.datetime :deleted_at
       t.timestamps
     end

@@ -69,8 +69,8 @@
                       %input#destination_long.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
                       = f.hidden_field :longitude
 
-                    -# .col-xs-12.col-lg-12{style: 'margin-top:20px;'}
-                    -#   = f.input :custom_title, label: 'Título personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                    .col-xs-12.col-lg-12
+                      = f.input :status, label: '¿Habilitado?',as: :keppler_boolean
 
                   .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
                     -# = f.input :position, as: :hidden

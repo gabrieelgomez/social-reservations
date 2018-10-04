@@ -131,6 +131,7 @@ module KepplerTravel
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
         @language = [:en, :es, :pt]
+        @currency = [:cop, :usd]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -140,7 +141,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def tour_params
-        params.require(:tour).permit(:price_adults, :price_kids, :position, :deleted_at, files:[], title: @language, description: @language, task: @language)
+        params.require(:tour).permit(:position, :deleted_at, :status, files:[], title: @language, description: @language, task: @language, price_adults: @currency, price_kids: @currency)
       end
 
       def show_history

@@ -71,7 +71,7 @@
                 .col-lg-12
                   %center
                     %span.price
-                      Costo por persona: 
+                      Costo por persona:
                       %h3.price COP $ 99999,00
                 .col-lg-12
                   %center
@@ -97,8 +97,8 @@
                     %a{"data-toggle" => "tab", :href => "#includes"} Incluye
                   %li
                     %a{"data-toggle" => "tab", :href => "#excludes"} No Incluye
-                  -# %li
-                  -#   %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
                   -# %li
                   -#   %a{"data-toggle" => "tab", :href => "#terms"} Condiciones
                   %li
@@ -118,6 +118,12 @@
                     .box-description
                       %h4 No Incluye
                       %p= raw @results.exclude[@lang]
+
+                  #itinerary.tab-pane
+                    .box-description
+                      %h4 Itinerario
+                      %p= raw @results.itinerary[@lang]
+
                   #rooms_prices.tab-pane
                     .box-description
                       %h4.text-center Habitaciones
@@ -134,7 +140,7 @@
                                 %th Cuádruple
                                 %th Quíntuple
                                 %th Sextuple
-                                %th Niños
+                                %th Precio por niño
                             %tbody
                               - @results.circuitables.each do |circuitable|
                                 - if circuitable.status
