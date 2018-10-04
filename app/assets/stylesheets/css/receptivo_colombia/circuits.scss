@@ -168,6 +168,30 @@
     &__button {
       height: 60px;
 
+      .price {
+        color: #4e4e56;
+        text-align: left;
+        display: inline-block;
+        font-family: "Poppins",
+          sans-serif;
+        padding: 10px 0;
+        display: inline-block;
+        box-shadow: none;
+        font-size: 18px;
+
+        h3 {
+          color: $color-gray;
+          font-weight: 700;
+          text-align: left;
+          display: inline-block;
+          font-family: $font-primary;
+          padding: 10px 0;
+          display: inline-block;
+          box-shadow: none;
+        }
+
+
+      }
 
       a {
         button {
