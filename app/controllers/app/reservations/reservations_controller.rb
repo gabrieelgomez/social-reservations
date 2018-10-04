@@ -77,8 +77,8 @@ module App
 
       # Set by Step 1
       def set_price_tour
-        @total_adults    = @tour.price_adults * @adults
-        @total_kids      = @tour.calculate_kids(@kids) * @kids
+        @total_adults    = @tour.price_adults[@currency].to_f * @adults
+        @total_kids      = @tour.calculate_kids(@kids, @currency) * @kids
         @total_price     = @total_adults + @total_kids
       end
 

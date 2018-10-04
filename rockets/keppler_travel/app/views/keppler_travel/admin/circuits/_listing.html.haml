@@ -16,10 +16,6 @@
         %span
           = circuit.quantity_days
     %td.hidden-xs.hidden-sm
-      = link_to admin_travel_circuit_path(circuit, search: @query), remote: true, class: 'show-row' do
-        %span
-          = circuit.price
-    %td.hidden-xs.hidden-sm
       = link_to admin_travel_circuit_rooms_tables_path(circuit), class: 'show-row' do
         %i.icon-eye
         -# = t('keppler.actions.show')

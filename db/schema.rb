@@ -86,7 +86,8 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.jsonb "description"
     t.jsonb "include"
     t.jsonb "exclude"
-    t.jsonb "price"
+    t.jsonb "itinerary"
+    t.boolean "status", default: true
     t.jsonb "files"
     t.integer "position"
     t.datetime "deleted_at"
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.string "cover"
     t.jsonb "description"
     t.integer "position"
+    t.boolean "status", default: true
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.jsonb "title"
     t.string "type_rooms", array: true
     t.integer "position"
+    t.boolean "status", default: true
     t.bigint "destination_id"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -201,8 +204,9 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.jsonb "description"
     t.jsonb "task"
     t.jsonb "files"
-    t.float "price_adults"
-    t.float "price_kids"
+    t.jsonb "price_adults"
+    t.jsonb "price_kids"
+    t.boolean "status", default: true
     t.integer "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -213,8 +217,8 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
   create_table "keppler_travel_travellers", force: :cascade do |t|
     t.string "name"
     t.string "dni"
-    t.bigint "reservation_id"
     t.datetime "deleted_at"
+    t.bigint "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_travellers_on_deleted_at"
@@ -235,6 +239,7 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.jsonb "inner_price"
     t.jsonb "outer_price"
     t.integer "position"
+    t.boolean "status", default: true
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

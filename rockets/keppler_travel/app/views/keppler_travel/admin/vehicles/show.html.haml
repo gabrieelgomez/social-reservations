@@ -33,32 +33,44 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @vehicle.as_json(only: ["title", "seat", "kit", "inner_price", "outer_price"]).each do |attribute, value|
-                  %tr.list-row
-                    %th.display-label= t("activerecord.attributes.#{attribute}")
-                    %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
-                -# %tr.list-row
-                -#   %th.display-label= t("activerecord.attributes.destination_ids")
-                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.destinations.blank? ? '-----------' : @vehicle.destinations.map(&:title)
+                -# - @vehicle.as_json(only: "inner_price", "outer_price"]).each do |attribute, value|
 
+                %tr.list-row
+                  %th.display-label Título Español
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.title['es'].blank? ? '-----------' : @vehicle.title['es']
 
-      -# .col-md-6
-      -#   -# - @vehicle.files.each_with_index do |img, index|
-      -#   -#   %img{src: img.url, style: 'width:200px;height:200px;'}
-      -#   .box.box-solid
-      -#     .box-header.with-border
-      -#       %h3.box-title Galería de Imágenes
-      -#     .box-body
-      -#       #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
-      -#         -# %ol.carousel-indicators
-      -#         -#   %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
-      -#         -#   %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
-      -#         -#   %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
-      -#         .carousel-inner
-      -#           - @vehicle.files.each_with_index do |img, index|
-      -#             .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
-      -#               %img{alt: 'Galery', src: img.url}
-      -#         %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
-      -#           %span.fa.fa-angle-left
-      -#         %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
-      -#           %span.fa.fa-angle-right
+                %tr.list-row
+                  %th.display-label Título Inglés
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.title['en'].blank? ? '-----------' : @vehicle.title['en']
+
+                %tr.list-row
+                  %th.display-label Título Portugués
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.title['pt'].blank? ? '-----------' : @vehicle.title['pt']
+
+                %tr.list-row
+                  %th.display-label Cantidad máx. de Asientos
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.seat.blank? ? '-----------' : @vehicle.seat
+
+                %tr.list-row
+                  %th.display-label Peso máx. de equipaje
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.kit.blank? ? '-----------' : @vehicle.kit['weight']
+
+                %tr.list-row
+                  %th.display-label Piezas máx. de equipaje
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.kit.blank? ? '-----------' : @vehicle.kit['quantity']
+
+                %tr.list-row
+                  %th.display-label Precio Dentro Perímetro COP
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['cop']
+
+                %tr.list-row
+                  %th.display-label Precio Dentro Perímetro USD
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['usd']
+
+                %tr.list-row
+                  %th.display-label Precio Fuera Perímetro COP
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['cop']
+
+                %tr.list-row
+                  %th.display-label Precio Fuera Perímetro USD
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['usd']

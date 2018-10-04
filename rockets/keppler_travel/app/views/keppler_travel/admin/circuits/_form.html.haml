@@ -46,6 +46,10 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :es, label: 'No incluye', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :es, label: 'Itinerario', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
 												// INGLES
 												#english.tab-pane
 													.col-xs-12
@@ -61,6 +65,10 @@
 													.col-xs-6
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :en, label: 'Exclude', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :en, label: 'Itinenary', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
 												// PORTUGUES
 												#portugues.tab-pane
@@ -78,10 +86,12 @@
 														= f.simple_fields_for :exclude, OpenStruct.new(@circuit.exclude) do |field|
 															= field.input :pt, label: 'Excluir', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
-										.col-xs-6.col-lg-6
-											= f.input :quantity_days, input_html: { min: 0 }
-										.col-xs-6.col-lg-6
-											= f.input :price, input_html: { min: 0 }
+													.col-xs-6
+														= f.simple_fields_for :itinerary, OpenStruct.new(@circuit.itinerary) do |field|
+															= field.input :pt, label: 'Itinerário', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+										.col-xs-6.col-lg-2
+											= f.input :quantity_days, label: 'Cantidad de Días', input_html: { min: 0 }
 										.col-xs-6.col-lg-6
 											%label Destinos
 											%select.selectpicker{"data-style" => "btn-primary", id: 'destinations_circuits', name: 'circuit[destination_ids]', multiple: "multiple"}
@@ -112,10 +122,6 @@
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
 
 :javascript
-
-	$("#destinations_circuits").change(function() {
-
-	});
 
 	collectImages("#circuit_files", ".edit_circuit", "circuit[files_delete][]");
 

@@ -65,6 +65,7 @@ es:
       quantity_days: Cantidad de Días
       include: Incluye
       exclude: Excluye
+      itinerary: Itinerario
       destinations: Destinos
       price: Precio
       custom_title: Título Personalizado
@@ -75,6 +76,7 @@ es:
       seat: Asientos
       inner_price: Precio dentro Perímetro
       outer_price: Precio fuera Perímetro
+      task: Tareas
       id: Identificador
       title: Título
       subtitle: Subtítulo
