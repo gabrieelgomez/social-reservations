@@ -6,12 +6,19 @@
       %h4 Hoteles disponibles
   - @circuit.circuitables.each do |circuitable|
     - if circuitable.status
-      .col-lg-2
-        %label.btn.btn-room
-          %center
-            .icon-room{:style => "background-image: url(/assets/img/hotel.svg)"}
-              %input.room.js-hotelRoom{:name => "hotel1", :type => "checkbox", :value => circuitable.lodgment_id}/
-          %p= circuitable.lodgment.title[@lang]
+      .col-lg-6
+        .row.row-flex
+          .col-lg-4
+            %label.btn.btn-room
+              %center
+                .icon-hotel{:style => "background-image: url(/assets/img/hotel.svg)"}
+                  %input.room.js-hotelRoom{:name => "hotel1", :type => "checkbox", :value => circuitable.lodgment_id}/
+          .col-lg-8    
+            %p.title-hotel= circuitable.lodgment.title[@lang]
+            %p
+              %a
+                %span Ver más información
+          
 .row
   .col-lg-12
     .box-type-room
