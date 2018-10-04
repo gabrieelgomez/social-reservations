@@ -212,6 +212,16 @@
       box-shadow: 0px 2px 0px #43b7e8;
     }
 
+    .box-information {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+    }
+
     .box-includes {
       padding: 20px;
 
@@ -228,6 +238,47 @@
         li {
           list-style-type: disc;
           font-family: $font-primary !important;
+        }
+      }
+    }
+
+    .box-excludes {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+    }
+
+    .box-itinerary {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+    }
+
+    .box-rooms_prices {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+
+      .table-room {
+        thead {
+          tr {
+            th {
+              text-align: center;
+              color: $color-gray;
+            }
+          }
         }
       }
     }
@@ -251,16 +302,7 @@
         }
       }
 
-      .table-room {
-        thead {
-          tr {
-            th {
-              text-align: center;
-              color: $color-gray;
-            }
-          }
-        }
-      }
+
     }
 
     .box-results {

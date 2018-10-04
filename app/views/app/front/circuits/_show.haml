@@ -3,13 +3,26 @@
     - unless @results.blank?
       .box-search
         .container
-          .row
+          .row.row-flex
             .col-lg-9
-              %p.result
-                %span
-                  Su búsqueda:
-                %span
-                  ="#{@results.title[@lang]}".titleize
+              .row
+                .items-search
+                  .col-lg-12  
+                    %span
+                      Su búsqueda:
+                  .col-lg-4
+                    %span
+                      ="Destino: #{@results.title[@lang]}".titleize
+                  .col-lg-4
+                    %span
+                      ="Fecha: #{@flight_origin_circuit_picker}"
+                  .col-lg-2
+                    %span
+                      ="Adultos: #{@adults}"
+                  .col-lg-2
+                    %span
+                      ="Niños: #{@kids}"
+
             .col-lg-3
               %p
                 %span
@@ -97,15 +110,13 @@
                     %a{"data-toggle" => "tab", :href => "#includes"} Incluye
                   %li
                     %a{"data-toggle" => "tab", :href => "#excludes"} No Incluye
-                  -# %li
-                  -#   %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
-                  -# %li
-                  -#   %a{"data-toggle" => "tab", :href => "#terms"} Condiciones
                   %li
-                    %a{"data-toggle" => "tab", :href => "#rooms_prices"} Habitaciones/Precios
+                    %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#rooms_prices"} Habitaciones
                 .tab-content
                   #information.tab-pane.active
-                    .box-includes
+                    .box-information
                       %h4 Información
                       %p= raw @results.description[@lang]
 
@@ -115,13 +126,15 @@
                       %p= raw @results.include[@lang]
 
                   #excludes.tab-pane
-                    .box-description
+                    .box-excludes
                       %h4 No Incluye
                       %p= raw @results.exclude[@lang]
+                  #itinerary.tab-pane
+                    .box-itinerary
+                      %h4 Sin información
                   #rooms_prices.tab-pane
-                    .box-description
+                    .box-rooms_prices
                       %h4.text-center Habitaciones
-                      -#%p= raw @results.exclude[@lang]
                       .row
                         .col-lg-12
                           %table.table.table-hover.table-room
