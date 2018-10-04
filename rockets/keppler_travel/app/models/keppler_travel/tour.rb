@@ -19,12 +19,12 @@ module KepplerTravel
       self.class.to_s.split('::').last
     end
 
-    def calculate_kids(kids)
-      case self.price_kids.to_f.positive?
+    def calculate_kids(kids, currency)
+      case self.price_kids[currency].to_f.positive?
         when true
-          self.price_kids.to_f
+          self.price_kids[currency].to_f
         when false
-          self.price_adults
+          self.price_adults[currency]
       end
     end
 

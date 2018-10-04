@@ -29,7 +29,6 @@
 						%input.google-input.form-control{id: 'origin_name', name: 'origin_name'}
 						%input{name: 'origin_location', id: 'origin_location', type: 'hidden'}
 						%input{name: 'origin_locality', id: 'origin_locality', type: 'hidden'}
-						%h2.origin_name Desde...
 
 				.col-lg-3
 					.box-item
@@ -37,7 +36,6 @@
 						%input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
 						%input{name: 'arrival_location', id: 'arrival_location', type: 'hidden'}
 						%input{name: 'arrival_locality', id: 'arrival_locality', type: 'hidden'}
-						%h2.arrival_name Hasta...
 
 				.col-lg-2
 					.box-item
@@ -121,6 +119,22 @@
 			}
 		}).datetimepicker("setDate", new Date());
 	} );
+
+	$(document).ready(function() {
+
+	  $('form').keypress(function(e){
+	    if(e == 13){
+	      return false;
+	    }
+	  });
+
+	  $('input').keypress(function(e){
+	    if(e.which == 13){
+	      return false;
+	    }
+	  });
+
+	});
 
 	// $("#origin_name").focusin(function () {
 	// 	$(document).keypress(function (e) {

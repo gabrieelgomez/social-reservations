@@ -43,8 +43,9 @@ module App
         def calculate_price
           adults = session[:reservation]['quantity_adults']
           kids   = session[:reservation]['quantity_kids']
-          @total_adults    = @reservation.reservationable.price_adults * adults
-          @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
+          currency = session[:invoice].first['currency']
+          @total_adults    = @reservation.reservationable.price_adults[currency].to_f * adults
+          @total_kids      = @reservation.reservationable.calculate_kids(kids, currency) * kids
           @price_total     = @total_adults + @total_kids
         end
 

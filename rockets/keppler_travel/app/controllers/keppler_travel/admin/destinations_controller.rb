@@ -132,7 +132,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def destination_params
-        params.require(:destination).permit(:title, :latitude, :longitude, :position, :deleted_at, custom_title: @language)
+        params.require(:destination).permit(:title, :latitude, :longitude, :position, :deleted_at, :status, custom_title: @language)
       end
 
       def show_history

@@ -21,6 +21,7 @@
                 %th Order N°
                 %th Tipo de Orden
                 %th Tour
+                %th Precio
                 %th Pasajeros
                 %th Estatus
                 %th Pago
@@ -30,6 +31,7 @@
                   %td= reservation.invoice.token
                   %td= reservation.reservationable.class_str
                   %td= truncate(reservation.origin, :length => 25)
+                  %th= "Precio"
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status

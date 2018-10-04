@@ -22,10 +22,21 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @destination.as_json(only: ["title", "latitude", "longitude", "custom_title"]).each do |attribute, value|
+                - @destination.as_json(only: ["title", "latitude", "longitude", "status"]).each do |attribute, value|
                   %tr.list-row
                     %th.display-label= t("activerecord.attributes.#{attribute}")
                     %td.display-value.fs-body-1.tc-black-2.text-overflow= value.blank? ? '-----------' : value
+
+                %tr.list-row
+                  %th.display-label Título Personalizado Español
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @destination.custom_title['es'].blank? ? '-----------' : @destination.custom_title['es']
+                %tr.list-row
+                  %th.display-label Título Personalizado Inglés
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @destination.custom_title['en'].blank? ? '-----------' : @destination.custom_title['en']
+                %tr.list-row
+                  %th.display-label Título Personalizado Portugués
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @destination.custom_title['pt'].blank? ? '-----------' : @destination.custom_title['pt']
+
       .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
