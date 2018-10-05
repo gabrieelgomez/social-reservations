@@ -68,6 +68,9 @@
     .container
       //Modal - Terms & Conditions
       = render 'app/front/reservations/circuits/modal/terms_conditions'
+    .container
+      //Modal - Details Hotel
+      = render 'app/front/reservations/circuits/modal/details_hotel'      
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -85,11 +88,31 @@
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
   });
+  
   $(document).ready(function(){
       $("#js_privacyPolicy").click(function(){
-          $("#modalPrivacyPolicy").modal();
+        $("#modalPrivacyPolicy").modal();
       });
       $("#js_termsConditions").click(function(){
-          $("#modalTermsConditions").modal();
+        $("#modalTermsConditions").modal();
       });
+
+      $("#js_detailsHotel").click(function(){
+        $("#modalDetailsHotel").modal();
+      });   
+      
   });
+
+  $(document).ready(function(){
+    $(".room").slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    infinite: true,
+    cssEase: 'linear',
+    fade: true,
+    arrows: false,
+    dots: true,
+    });
+  });
+
