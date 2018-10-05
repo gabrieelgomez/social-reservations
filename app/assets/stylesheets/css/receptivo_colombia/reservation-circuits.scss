@@ -62,7 +62,7 @@
                 padding: 10px 0;
                 display: inline-block;
                 box-shadow: 0px 2px 0px $color-yellow;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
               }
 
               &--images {
@@ -129,6 +129,7 @@
                         padding: 0;
                         height: 100%;
                         object-fit: cover;
+                        border-radius: 5px;
                         object-position: center;
                       }
 
@@ -155,7 +156,7 @@
             .price__room {
               width: 100%;
               text-align: center;
-              margin-top: 25px;
+              margin-top: 30px;
 
               h4 {
                 color: $color-gray;
@@ -337,6 +338,12 @@
         p {
           text-align: center;
           color: #00000096;
+        }
+
+        .price {
+          font-weight: bold;
+          color: $color-gray;
+          padding: 2px 0;
         }
 
         .quantity-type-room {
