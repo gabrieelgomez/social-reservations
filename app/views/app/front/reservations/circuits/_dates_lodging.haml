@@ -18,7 +18,7 @@
             %p
               = link_to 'Ver más información', '#' , :class => '', :id => 'js_detailsHotel', :type => 'button'
 
-.box_type_rooms.room-hidden         
+.box_type_rooms.room-hidden.room-disabled        
   .row
     .col-lg-12
       .box-type-room
@@ -103,21 +103,38 @@
 
 
 :javascript
-
   $( '.js-hotelRoom' ).on( 'click', function() {
-    if( $(this).is(':checked') ){
-        $(this).addClass('js-hotel-active');
-        $(this).closest('label').addClass('bg-active');
-        $('.box_type_rooms').removeClass('room-hidden');
-        $('.box_type_rooms').removeClass('room-show');
-        setTimeout(function () {
-           $('.box_type_rooms').addClass('room-active');
-        }, 20);
-    } else {
-        $(this).removeClass('js-hotel-active');
-        $(this).closest('label').removeClass('bg-active');
-    }
+    var accountant = 0;
+    $("input[type=checkbox]").each(function(){
+      if( $(this).is(':checked') ){
+          $(this).addClass('js-hotel-active');
+          $(this).closest('label').addClass('bg-active');
+          $('.box_type_rooms').removeClass('room-hidden');
+          $('.box_type_rooms').removeClass('room-disabled');
+          $('.box_type_rooms').addClass('room-show');
+          setTimeout(function () {
+            $('.box_type_rooms').addClass('room-activated');
+          }, 20);
+          accountant++;
+          if(accountant === 1){
+            alert("Un hotel seleccionado.");
+          }
+          else{
+            alert("Más de un hotel seleccionado.");
+          }
+      } else {
+          $(this).removeClass('js-hotel-active');
+          $(this).closest('label').removeClass('bg-active');
+          $('.box_type_rooms').removeClass('room-show');
+          $('.box_type_rooms').removeClass('room-activated');
+          $('.box_type_rooms').addClass('room-hidden');
+          setTimeout(function () {
+            $('.box_type_rooms').addClass('room-disabled');
+          }, 20);
+      }
+    });
   });
+
   $( '.js-typeRoom' ).on( 'click', function() {
     if( $(this).is(':checked') ){
         $(this).addClass('js-room-active');
