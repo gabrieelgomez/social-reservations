@@ -16,95 +16,98 @@
           .col-lg-8    
             %p.title-hotel= circuitable.lodgment.title[@lang]
             %p
-              %a
-                %span Ver más información
-          
-.row
-  .col-lg-12
-    .box-type-room
-      %h4 Tipo de Habitación
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_single.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Simple
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_doubles.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Doble
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_triples.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Triple
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_quadruples.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Cuadruple
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_quintuples.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Quintuple
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
+              = link_to 'Ver más información', '#' , :class => '', :id => 'js_detailsHotel', :type => 'button'
 
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_sextuples.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Sextuple
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
+.box_type_rooms.room-hidden           
+  .row
+    .col-lg-12
+      .box-type-room
+        %h4 Tipo de Habitación
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_single.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Simple
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_doubles.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Doble
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_triples.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Triple
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_quadruples.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Cuadruple
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_quintuples.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Quintuple
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
 
-  .col-lg-2
-    %label.btn.btn-room
-      %center
-        .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_children.svg)"}
-          %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
-        %p Habitación
-        %p Niño
-      .quantity-type-room.js-quantityRoom.quantity-disabled
-        .quantity-room
-          %input{:name => "", :type => "number", :value => ""}/
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_sextuples.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Sextuple
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
+
+    .col-lg-2
+      %label.btn.btn-room
+        %center
+          .icon-room{:style => "background-image: url(/assets/img/type-rooms/room_children.svg)"}
+            %input.type-room.js-typeRoom{:name => "", :type => "checkbox", :value => "kids"}/
+          %p Habitación
+          %p Niño
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input{:name => "", :type => "number", :value => ""}/
 
 
-        
 :javascript
-
 
   $( '.js-hotelRoom' ).on( 'click', function() {
     if( $(this).is(':checked') ){
         $(this).addClass('js-hotel-active');
         $(this).closest('label').addClass('bg-active');
+        $('.box_type_rooms').removeClass('room-hidden');
+        $('.box_type_rooms').removeClass('room-show');
+        setTimeout(function () {
+           $('.box_type_rooms').addClass('room-active');
+        }, 20);
     } else {
         $(this).removeClass('js-hotel-active');
         $(this).closest('label').removeClass('bg-active');
