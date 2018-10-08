@@ -4,26 +4,26 @@
   .col-lg-3
     .form-group.form-custom
       %label{for: "name"} Nombre del Cotizante
-      %input.form-control{name: 'travellers[][name]', type: "text", placeholder: "Ingrese nombre"}/
+      %input.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: "Ingrese nombre"}/
   .col-lg-3
     .form-group.form-custom
       %label{:for => "origin_circuit_booking"} Circuito
       %input{name: 'reservation[origin]', value: @circuit.title[@lang].titleize, type: 'hidden'}
-      %input.google-input.form-control{disabled: 'disabled', value: @circuit.title[@lang].titleize}
+      %input.google-input.form-control.custom_input{disabled: 'disabled', value: @circuit.title[@lang].titleize}
   .col-lg-2
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
     .form-group.form-custom#fecha_origen_ida
       %label{:for => ""}  Fecha Viaje
       %input{name: 'reservation[flight_origin]', value: @flight_origin_circuit_picker, type: 'hidden'}
-      %input.form-control.custom-input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_circuit_picker}/
+      %input.form-control.custom-input.custom_input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_circuit_picker}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
   .col-lg-2
     .form-group.form-custom
       %label{:for => "adults"} N° Adultos
       %input{name: 'reservation[quantity_adults]', value: @adults, type: 'hidden'}
-      %input.form-control{value: @adults, disabled: 'disabled'}
+      %input.form-control.custom_input{value: @adults, disabled: 'disabled'}
   .col-lg-2
     .form-group.form-custom
       %label{:for => "kids"} N° Niños
       %input{name: 'reservation[quantity_kids]', value: @kids, type: 'hidden'}
-      %input.form-control{value: @kids, disabled: 'disabled'}
+      %input.form-control.custom_input{value: @kids, disabled: 'disabled'}

@@ -249,6 +249,11 @@
     }
 
     .reservation-data {
+      a {
+        color: #43b7e8;
+        font-weight: 500;
+      }
+
       .box-type-room {
         padding: 20px 0 10px 0;
 
@@ -476,17 +481,24 @@
     flex-direction: row;
   }
 
+  .box_type_rooms {
+    transition: all 0.3s linear;
+  }
+
   .room-hidden {
     display: none;
-    opacity: 0;
-    transition: all 0.3s linear;
   }
 
   .room-show {
     display: block;
   }
 
-  .room-active {
+  .room-activated {
     opacity: 1;
   }
+
+  .room-disabled {
+    opacity: 0;
+  }
+
 }
