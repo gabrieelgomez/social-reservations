@@ -9,11 +9,11 @@
       .col-lg-6
         .row.row-flex
           .col-lg-4
-            %label.btn.btn-room
+            %label.btn.btn-hotel.js-hotel
               %center
                 .icon-hotel{:style => "background-image: url(/assets/img/hotel.svg)"}
                   %input.room.js-hotelRoom{:name => "hotel1", :type => "checkbox", :value => circuitable.lodgment_id}/
-          .col-lg-8    
+          .col-lg-8.js-hotel    
             %p.title-hotel= circuitable.lodgment.title[@lang]
             %p
               = link_to 'Ver más información', '#' , :class => '', :id => 'js_detailsHotel', :type => 'button'
@@ -101,42 +101,4 @@
           .quantity-room
             %input{:name => "", :type => "number", :value => ""}/
 
-
-:javascript
-  $( '.js-hotelRoom' ).on( 'click', function() {
-    
-      if( $(this).is(':checked') ){
-          $(this).addClass('js-hotel-active');
-          $(this).closest('label').addClass('bg-active');
-          $('.box_type_rooms').removeClass('room-hidden');
-          $('.box_type_rooms').removeClass('room-disabled');
-          $('.box_type_rooms').addClass('room-show');
-          setTimeout(function () {
-            $('.box_type_rooms').addClass('room-activated');
-          }, 20);
-
-      } else {
-          $(this).removeClass('js-hotel-active');
-          $(this).closest('label').removeClass('bg-active');
-          $('.box_type_rooms').removeClass('room-show');
-          $('.box_type_rooms').removeClass('room-activated');
-          $('.box_type_rooms').addClass('room-hidden');
-          setTimeout(function () {
-            $('.box_type_rooms').addClass('room-disabled');
-          }, 20);
-      }
-
-  });
-
-  $( '.js-typeRoom' ).on( 'click', function() {
-    if( $(this).is(':checked') ){
-        $(this).addClass('js-room-active');
-        $(this).closest('label').addClass('bg-active');
-        $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
-    } else {
-        $(this).closest('label').removeClass('bg-active');
-        $(this).removeClass('js-room-active');
-        $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
-    }  
-  });
-
+%script{:src => "/assets/js/hotel-room.js"}

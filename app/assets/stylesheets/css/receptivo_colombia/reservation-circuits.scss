@@ -270,6 +270,120 @@
         }
       }
 
+      .btn-hotel {
+        max-width: 300px;
+        border-radius: 0px;
+        padding: 6px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+
+        &:active {
+          box-shadow: none;
+        }
+
+        center {
+          .icon-room {
+            background-size: 55px;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            min-height: 70px;
+            max-width: 70px;
+            padding-bottom: 10px;
+
+            .room {
+              width: 100%;
+              padding: 10px;
+              background-color: #d4d4d4;
+              color: black;
+              border: 13px solid white;
+              border-radius: 0;
+              outline: none;
+              visibility: hidden;
+            }
+
+            .type-room {
+              width: 100%;
+              padding: 10px;
+              background-color: #d4d4d4;
+              color: black;
+              border: 13px solid white;
+              border-radius: 0;
+              outline: none;
+              visibility: hidden;
+            }
+          }
+
+          .icon-hotel {
+            background-size: 70px;
+            background-position: center -4px;
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            min-height: 70px;
+            max-width: 70px;
+            padding-bottom: 10px;
+            box-shadow: 0px 2px 0px $color-yellow;
+
+            .room {
+              width: 100%;
+              padding: 10px;
+              background-color: #d4d4d4;
+              color: black;
+              border: 13px solid white;
+              border-radius: 0;
+              outline: none;
+              visibility: hidden;
+            }
+          }
+        }
+
+        p {
+          text-align: center;
+          color: #00000096;
+        }
+
+        .price {
+          font-weight: bold;
+          color: $color-gray;
+          padding: 2px 0;
+        }
+
+        .quantity-type-room {
+          width: 100%;
+          margin: 0;
+
+          .quantity-room {
+            height: auto;
+            width: 100%;
+            background: red;
+
+            input {
+              width: inherit;
+            }
+          }
+        }
+
+        .quantity-disabled {
+          visibility: hidden;
+        }
+
+        .quantity-active {
+          visibility: visible;
+        }
+      }
+
+      .disabled-content  {
+        cursor: not-allowed;
+        opacity: 0.65;
+        filter: opacity(0.65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+
       .btn-room {
         max-width: 300px;
         border-radius: 0px;
@@ -447,13 +561,7 @@
     background: rebeccapurple;
   }
 
-  .disabled-content {
-    cursor: not-allowed;
-    opacity: 0.65;
-    filter: opacity(0.65);
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
+
 
   .title-hotel {
     color: #4e4e56;
