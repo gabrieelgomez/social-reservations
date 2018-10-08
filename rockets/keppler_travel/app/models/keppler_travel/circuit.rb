@@ -26,6 +26,11 @@ module KepplerTravel
       self.destination_ids.include?(destination) ? 'selected' : false
     end
 
+    def low_price(currency)
+      price = "price_#{currency}".to_sym
+      self.circuitables.collect{|cc|  cc.circuitable_rooms.map(&price)}.flatten.reject(&:zero?).min
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "quantity_days", "description", "include", "exclude", "files", "position", "deleted_at"]

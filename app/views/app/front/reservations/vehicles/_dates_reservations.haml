@@ -84,16 +84,15 @@
               %input.check_vehicle#vehicle_origin{name: 'vehicle_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
           // End --- Checkbox Traslado al/desde Aeropuerto
           // Inputs informacion de vuelo aeropuerto
-        .row
-          .col-lg-6.desde_aero_inputs
-            .form-group
-              %label.title{:for => ""}  Aerolinea
-              %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
+        .col-lg-6.desde_aero_inputs
+          .form-group
+            %label.title{:for => ""}  Aerolinea
+            %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
 
-          .col-lg-6.desde_aero_inputs
-            .form-group
-              %label.title{:for => ""}  N° de Vuelo
-              %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
+        .col-lg-6.desde_aero_inputs
+          .form-group
+            %label.title{:for => ""}  N° de Vuelo
+            %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
 
       .col-lg-12
         .col-lg-12.al_aero
