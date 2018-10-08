@@ -1,0 +1,86 @@
+#modalDetailsHotel.modalDetailsHotel.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title.text-center Hotel Colombia Real
+      .modal-body
+        .row
+          .col-md-6
+            .information__room
+              %ul
+                %li 
+                  %h4 Ubicación
+                  %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, repellat.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, repellat.            
+                %li 
+                  %h4 Contáctanos
+                  %p  colombiareal@info.com
+                  %p  +57 317 3632119 - +57 317 3632111    
+          .col-md-6
+            .gallery__room
+              %h4 Nuestras Habitaciones
+              .gallery__room--images
+                .carrusel-room
+                  .room
+                    .room__item
+                      %img{src:"/assets/img/bg-1.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-2.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-3.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-4.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-5.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-6.jpg", class:"img-responsive"}
+                    .room__item
+                      %img{src:"/assets/img/bg-7.jpg", class:"img-responsive"}
+                      
+          .col-md-12
+            .price__room
+              %h4 Precios de nuestras Habitaciones
+              %ul
+                .row
+                  .col-lg-6
+                    %li 
+                      %p 
+                        Simple      
+                      %span 
+                        COP $ 99999999,00
+                    %li 
+                      %p 
+                        Doble
+                      %span 
+                        COP $ 99999999,00                 
+                    %li 
+                      %p 
+                        Triple
+                      %span 
+                        COP $ 99999999,00  
+                  .col-lg-6
+                    %li 
+                      %p 
+                        Cuádruple
+                      %span 
+                        COP $ 99999999,00  
+                    %li 
+                      %p 
+                        Quíntuple
+                      %span 
+                        COP $ 99999999,00
+                    %li 
+                      %p 
+                        Sextuple
+                      %span 
+                        COP $ 99999999,00
+                  .col-lg-12
+                    %li 
+                      %p 
+                        Precio/Niño
+                      %span 
+                        COP $ 99999999,00
+                                     
+      .modal-footer
+        %button{"data-dismiss" => "modal", :type => "button"} Cerrar
+

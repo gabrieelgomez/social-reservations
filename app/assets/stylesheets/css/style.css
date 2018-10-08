@@ -2431,3 +2431,7 @@ Checkbox - Customize */
     object-fit: cover;
     object-position: center;
 }
+
+.custom_input {
+    border-radius: 5px !important;
+}
