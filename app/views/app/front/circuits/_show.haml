@@ -85,7 +85,9 @@
                   %center
                     %span.price
                       Costo por persona:
-                      %h3.price COP $ 99999,00
+                      %h3.price
+                        Desde
+                        = number_to_currency(@results.low_price(@currency), locale: @locale)
                 .col-lg-12
                   %center
                     = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker), class:'' do
@@ -133,7 +135,7 @@
                   #itinerary.tab-pane
                     .box-description
                       %h4 Itinerario
-                      -#%p= raw @results.itinerary[@lang]
+                      %p= raw @results.itinerary[@lang]
 
                   #rooms_prices.tab-pane
                     .box-rooms_prices

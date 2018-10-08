@@ -7,6 +7,10 @@ es:
       circuits: Circuitos
       tours: Tours
       vehicles: Vehículos
+      reservations-submenu:
+        circuits: Circuitos
+        tours: Tours
+        vehicles: Traslados
       keppler-travel-submenu:
     models:
       singularize:
@@ -24,7 +28,7 @@ es:
         circuits: circuitos
         vehicles: vehículos
     modules:
-      keppler_travel/admin/reservations: 'KepplerTravel → Reservaciones'
+      keppler_travel/admin/reservations: "KepplerTravel → Reservaciones %{model}"
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
       keppler_travel/admin/lodgments: 'KepplerTravel → Alojamientos'
       keppler_travel/admin/tours: 'KepplerTravel → Tours'

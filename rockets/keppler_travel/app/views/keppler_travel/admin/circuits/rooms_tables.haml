@@ -87,7 +87,11 @@
                             - circuit = circuitable.object.circuit
                             %tr
                               %td
-                                = circuitable.input :status, as: :boolean, label: false
+                                .form-group.boolean.optional.asd
+                                  .checkbox
+                                    %input{name: "asd", type: "hidden", value: "0"}/
+                                    %label
+                                      %input#circuit_circuitables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
                               %td= destination.custom_title[I18n.locale.to_s]
                               %td= lodgment.title['es']
 

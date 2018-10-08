@@ -4,8 +4,8 @@
       .listing.col-lg-12.col-xs-12
         %section.content-header.index-header
           %h1{ style: 'display: inline-block' }
-            = t("keppler.modules.#{controller_path.underscore}")
-          = entries(@total, @objects)
+            = t("keppler.modules.#{controller_path.underscore}", model:  t("keppler.models.pluralize.#{params[:model_name].pluralize}"))
+
           .toolbar
             - if can?(KepplerTravel::Reservation).download?
               %li.toolbar-item.dropdown

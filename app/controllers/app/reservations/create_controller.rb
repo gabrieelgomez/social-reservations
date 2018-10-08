@@ -43,11 +43,13 @@ module App::Reservations
     end
 
     def create_travellers
-      KepplerTravel::Traveller.create(
-        name: session[:travellers].first['name'],
-        dni: session[:travellers].first['dni'],
-        reservation: @reservation
-      )
+      session[:travellers].each do |traveler|
+        KepplerTravel::Traveller.create(
+          name: traveler['name'],
+          dni: traveler['dni'],
+          reservation: @reservation
+        )
+      end
     end
 
     private
