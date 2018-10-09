@@ -18,7 +18,11 @@
               .col-lg-8
                 %p.title-hotel= circuitable.lodgment.title[@lang]
                 %p
-                  = link_to 'Ver más información', '#' , class: '', id: 'js_detailsHotel', type: 'button'
+                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: 'js_detailsHotel', type: 'button'
+                  -#%a{"data-toggle" => "modal", :href => "#modalDetailsHotel", type: 'button'} Ver más información
+                  -#%button.btn.btn-info.btn-lg{"data-target" => "#modalDetailsHotel", "data-toggle" => "modal", :type => "button"} Open Modal
+                  -#%input.btn.btn-success{"data-target" => "#modalDetailsHotel", "data-toggle" => "modal", :type => "button", :value => "Upload"}/
+
 
 .box_type_rooms.room-hidden.room-disabled
   .row
