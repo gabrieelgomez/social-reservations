@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  position: 1
+  deleted_at: 2018-10-09 13:55:49
+
+two:
+  title: 
+  position: 1
+  deleted_at: 2018-10-09 13:55:49

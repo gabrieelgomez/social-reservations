@@ -42,23 +42,27 @@
 						%p +57 317 3632119
 						%p RNT: 32133
 						%p info@receptivocolombia.com
-						%p Lorem ipsum dolor sit amet.
 						%p Colombia
-						-#%ul
+						%ul
 							%li
+								= link_to "#", class:'' do
+									%span
+										Términos y Condiciones
+							-#%li
 								= link_to "#", class:'' do
 									%span
 										PQRS
-							%li
+							-#%li
 								= link_to "#", class:'' do
 									%span
 										Política de Tratamiento de Datos
-							%li
+							-#%li
 								= link_to "#", class:'' do
 									%span
 										Política de Cancelaciones
 
-				.foot-icons
+
+				-#.foot-icons
 					%ul.footer-social-links.list-inline.list-unstyled
 						%li
 							%a.foot-icon-bg-1{:href => "#", :target => "_blank"}

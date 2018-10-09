@@ -123,14 +123,13 @@ function validateLodgment(id_form){
    submitHandler: function(form){
 
      var destinations = $('#destinations_lodgments').val();
+     var rankings = $('#rankings_lodgments').val();
      var rooms = $('#lodgments_rooms').val();
 
-     debugger;
-     $('form').append(`<input type="hidden" name="lodgment[destination_ids]" value=${destinations} /> `);
      $('form').append(`<input type="hidden" name="lodgment[room_ids]" value=${rooms} /> `);
 
 
-     if (destinations == null){
+     if (destinations == null || rankings == null){
        alert('Agregue mínimo un destino');
      }
      else{

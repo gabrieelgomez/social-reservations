@@ -34,6 +34,37 @@
                 %th.display-label Título Portugués
                 %td.display-value.fs-body-1.tc-black-2
                   = @lodgment.title['pt'].blank? ? '-----------' : @lodgment.title['pt']
+
+              %tr.list-row
+                %th.display-label Dirección Español
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.address['es'].blank? ? '-----------' : @lodgment.address['es']
+
+              %tr.list-row
+                %th.display-label Dirección Inglés
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.address['en'].blank? ? '-----------' : @lodgment.address['es']
+
+              %tr.list-row
+                %th.display-label Dirección Portugués
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.address['pt'].blank? ? '-----------' : @lodgment.address['es']
+
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.email")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.email.blank? ? '-----------' : @lodgment.email
+
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.phone_one")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.phone_one.blank? ? '-----------' : @lodgment.phone_one
+
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.phone_two")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.phone_two.blank? ? '-----------' : @lodgment.phone_two
+
               %tr.list-row
                 %th.display-label= t("activerecord.attributes.destinations")
                 %td.display-value.fs-body-1.tc-black-2
@@ -47,3 +78,19 @@
                 %th.display-label= t("activerecord.attributes.status")
                 %td.display-value.fs-body-1.tc-black-2
                   = @lodgment.status.blank? ? '-----------' : @lodgment.status
+
+
+      .col-md-6
+        .box.box-solid
+          .box-header.with-border
+            %h3.box-title Galería de Imágenes
+          .box-body
+            #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+              .carousel-inner
+                - @lodgment.files.each_with_index do |img, index|
+                  .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
+                    %img{alt: 'Galery', src: img.url}
+              %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+                %span.fa.fa-angle-left
+              %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+                %span.fa.fa-angle-right
