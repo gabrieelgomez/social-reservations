@@ -4,7 +4,8 @@ class CreateKepplerTravelLodgments < ActiveRecord::Migration[5.2]
       t.jsonb :title
       t.string :type_rooms, array: true
       t.integer :position
-      t.belongs_to :destination#, index: {name: 'destination_id'}
+      t.boolean :status, default: true
+      t.belongs_to :destination
       t.datetime :deleted_at
       t.timestamps
     end

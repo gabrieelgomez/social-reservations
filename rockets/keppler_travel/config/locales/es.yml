@@ -7,6 +7,10 @@ es:
       circuits: Circuitos
       tours: Tours
       vehicles: Vehículos
+      reservations-submenu:
+        circuits: Circuitos
+        tours: Tours
+        vehicles: Traslados
       keppler-travel-submenu:
     models:
       singularize:
@@ -24,7 +28,7 @@ es:
         circuits: circuitos
         vehicles: vehículos
     modules:
-      keppler_travel/admin/reservations: 'KepplerTravel → Reservaciones'
+      keppler_travel/admin/reservations: "KepplerTravel → Reservaciones %{model}"
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
       keppler_travel/admin/lodgments: 'KepplerTravel → Alojamientos'
       keppler_travel/admin/tours: 'KepplerTravel → Tours'
@@ -65,6 +69,7 @@ es:
       quantity_days: Cantidad de Días
       include: Incluye
       exclude: Excluye
+      itinerary: Itinerario
       destinations: Destinos
       price: Precio
       custom_title: Título Personalizado
@@ -75,6 +80,7 @@ es:
       seat: Asientos
       inner_price: Precio dentro Perímetro
       outer_price: Precio fuera Perímetro
+      task: Tareas
       id: Identificador
       title: Título
       subtitle: Subtítulo

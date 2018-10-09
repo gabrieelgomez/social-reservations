@@ -22,13 +22,10 @@ class CreateKepplerTravelReservations < ActiveRecord::Migration[5.2]
       t.belongs_to :user, foreign_key: true
       t.integer :reservationable_id, index: {name: 'reservationable_id'}
       t.string :reservationable_type, index: {name: 'reservationable_type'}
-      # t.references :reservationable, polymorphic: true, index: true
       t.integer :position
       t.datetime :deleted_at
-
       t.timestamps
     end
     add_index :keppler_travel_reservations, :deleted_at
-    # add_index :reservations, [:reservationable_id, :reservationable_type]
   end
 end

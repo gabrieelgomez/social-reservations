@@ -43,7 +43,8 @@ function validateReservationCircuit(id_form) {
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-    form.submit();
+    // form.submit();
+    debugger;
    }
 
   });

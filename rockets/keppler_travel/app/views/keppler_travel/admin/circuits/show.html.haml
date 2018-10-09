@@ -23,13 +23,20 @@
             %table.table.table-striped
               %tbody
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.title")
+                  %th.display-label Título Español
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.title[I18n.locale.to_s].blank? ? '-----------' : @circuit.title[I18n.locale.to_s]
+                    = @circuit.title['es'].blank? ? '-----------' : @circuit.title['es']
+
                 %tr.list-row
-                  %th.display-label= t("activerecord.attributes.price")
+                  %th.display-label Título Inglés
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.price.blank? ? '-----------' : @circuit.price
+                    = @circuit.title['en'].blank? ? '-----------' : @circuit.title['en']
+
+                %tr.list-row
+                  %th.display-label Título Portugués
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @circuit.title['pt'].blank? ? '-----------' : @circuit.title['pt']
+
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.quantity_days")
                   %td.display-value.fs-body-1.tc-black-2
@@ -41,15 +48,20 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.description[I18n.locale.to_s].blank? ? '-----------' : @circuit.description[I18n.locale.to_s]
+                    = @circuit.description[I18n.locale.to_s].blank? ? '-----------' : @circuit.description[I18n.locale.to_s].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.include")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.include[I18n.locale.to_s].blank? ? '-----------' : @circuit.include[I18n.locale.to_s]
+                    = @circuit.include[I18n.locale.to_s].blank? ? '-----------' : @circuit.include[I18n.locale.to_s].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.exclude")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.exclude[I18n.locale.to_s].blank? ? '-----------' : @circuit.exclude[I18n.locale.to_s]
+                    = @circuit.exclude[I18n.locale.to_s].blank? ? '-----------' : @circuit.exclude[I18n.locale.to_s].truncate(50)
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.itinerary")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @circuit.itinerary[I18n.locale.to_s].blank? ? '-----------' : @circuit.itinerary[I18n.locale.to_s].truncate(50)
 
 
       .col-md-12
@@ -60,36 +72,79 @@
               - if can?(KepplerTravel::Circuit).update?
                 = link_to admin_travel_circuit_rooms_tables_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
                   %i.icon-pencil
-          .box-body
-            %table.table.table-hover
-              %tr
-                %th
-                %th Destino
-                %th Alojamiento
-                %th Simple
-                %th Dobles
-                %th Triples
-                %th Cuadruples
-                %th Quintuples
-                %th Sextuples
-                %th Niños
 
-              // Circuitables from Circuit
-              - @circuit.circuitables.each do |circuitable|
-                - lodgment = circuitable.lodgment
-                - destination = circuitable.destination
-                - circuit = circuitable.circuit
-                %tr
-                  %td
-                    - if circuitable.status
-                      %i.icon-check
-                    - else
-                      %i.icon-close
-                  %td= destination.custom_title[I18n.locale.to_s]
-                  %td= lodgment.title['es']
-                  - circuitable.circuitable_rooms.each do |cr|
-                    %td= cr.price_cop
+          .nav-tabs-custom
+            %ul.nav.nav-tabs
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#cop"} COP
+              %li
+                %a{"data-toggle" => "tab", :href => "#usd"} USD
+            .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
 
+              // COP
+              #cop.tab-pane.active
+
+                .box-body
+                  %table.table.table-hover
+                    %tr
+                      %th
+                      %th Destino
+                      %th Alojamiento
+                      %th Simple
+                      %th Dobles
+                      %th Triples
+                      %th Cuadruples
+                      %th Quintuples
+                      %th Sextuples
+                      %th Niños
+
+                    // Circuitables from Circuit
+                    - @circuit.circuitables.each do |circuitable|
+                      - lodgment = circuitable.lodgment
+                      - destination = circuitable.destination
+                      - circuit = circuitable.circuit
+                      %tr
+                        %td
+                          - if circuitable.status
+                            %i.icon-check
+                          - else
+                            %i.icon-close
+                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= lodgment.title['es']
+                        - circuitable.circuitable_rooms.each do |cr|
+                          %td= cr.price_cop
+              // COP
+              #usd.tab-pane
+
+                .box-body
+                  %table.table.table-hover
+                    %tr
+                      %th
+                      %th Destino
+                      %th Alojamiento
+                      %th Simple
+                      %th Dobles
+                      %th Triples
+                      %th Cuadruples
+                      %th Quintuples
+                      %th Sextuples
+                      %th Niños
+
+                    // Circuitables from Circuit
+                    - @circuit.circuitables.each do |circuitable|
+                      - lodgment = circuitable.lodgment
+                      - destination = circuitable.destination
+                      - circuit = circuitable.circuit
+                      %tr
+                        %td
+                          - if circuitable.status
+                            %i.icon-check
+                          - else
+                            %i.icon-close
+                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= lodgment.title['es']
+                        - circuitable.circuitable_rooms.each do |cr|
+                          %td= cr.price_usd
 
       .col-md-6
         .box.box-solid

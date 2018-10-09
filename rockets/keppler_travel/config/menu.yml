@@ -5,6 +5,19 @@ menu:
     url_path: /admin/travel/reservations
     icon: layers
     model: KepplerTravel::Reservation
+    submenu:
+      - circuits:
+          name: circuits
+          url_path: /admin/travel/reservations?model_name=circuit
+          current: ['admin/travel/reservations']
+      - tours:
+          name: tours
+          url_path: /admin/travel/reservations?model_name=tour
+          current: ['admin/travel/reservations']
+      - vehicles:
+          name: vehicles
+          url_path: /admin/travel/reservations?model_name=vehicle
+          current: ['admin/travel/reservations']
 
   keppler_travel_destination:
     name: destinations

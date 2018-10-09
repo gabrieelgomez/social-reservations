@@ -2280,6 +2280,26 @@ label.container .checkmark:after {
     align-items: center;
 }
 
+.row-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.items-search span {
+    color: black;
+}
+
 .button-search {
     width: 200px !important;
 }
@@ -2410,4 +2430,8 @@ Checkbox - Customize */
     height: 160px;
     object-fit: cover;
     object-position: center;
+}
+
+.custom_input {
+    border-radius: 5px !important;
 }

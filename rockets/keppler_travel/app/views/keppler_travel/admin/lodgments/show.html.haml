@@ -20,23 +20,30 @@
                 = link_to admin_travel_lodgment_path(@lodgment), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
                   %i.icon-trash
           .box-body.box-body-no-padding
-            %table.table.table-striped
-              %tbody
-                - @lodgment.as_json(only: ["title", "position", "deleted_at"]).each do |attribute, value|
-                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                    %tr.list-row
-                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                      %td.display-value.fs-body-1.tc-black-2
-                        - if @attachments.include?(attribute)
-                          = image_tag value.url unless value.url.blank?
-                        - else
-                          = value.blank? ? '-----------' : value
-                %tr.list-row
-                  %th.display-label= t("activerecord.attributes.destinations")
-                  %td.display-value.fs-body-1.tc-black-2
-                    = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title[I18n.locale.to_s]
+          %table.table.table-striped
+            %tbody
+              %tr.list-row
+                %th.display-label Título Español
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.title['es'].blank? ? '-----------' : @lodgment.title['es']
+              %tr.list-row
+                %th.display-label Título Inglés
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.title['en'].blank? ? '-----------' : @lodgment.title['en']
+              %tr.list-row
+                %th.display-label Título Portugués
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.title['pt'].blank? ? '-----------' : @lodgment.title['pt']
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.destinations")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title[I18n.locale.to_s]
+              %tr.list-row
+                %th.display-label Tipos de Habitaciones
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.room_ids.blank? ? '-----------' : @lodgment.rooms.map(&:type_room).join(', ')
 
-                %tr.list-row
-                  %th.display-label Tipos de Habitaciones
-                  %td.display-value.fs-body-1.tc-black-2
-                    = @lodgment.room_ids.blank? ? '-----------' : @lodgment.rooms.map(&:type_room).join(', ')
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.status")
+                %td.display-value.fs-body-1.tc-black-2
+                  = @lodgment.status.blank? ? '-----------' : @lodgment.status

@@ -22,19 +22,56 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @tour.as_json(only: ["title", "description", "task", "price_adults", "price_kids", "activities", "position", "deleted_at"]).each do |attribute, value|
-                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                    %tr.list-row
-                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                      %td.display-value.fs-body-1.tc-black-2
-                        - if @attachments.include?(attribute)
-                          = image_tag value.url unless value.url.blank?
-                        - else
-                          = value.blank? ? '-----------' : value
+
+                %tr.list-row
+                  %th.display-label Título Español
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.title['es'].blank? ? '-----------' : @tour.title['es']
+
+                %tr.list-row
+                  %th.display-label Título Inglés
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.title['en'].blank? ? '-----------' : @tour.title['en']
+
+                %tr.list-row
+                  %th.display-label Título Portugués
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.title['pt'].blank? ? '-----------' : @tour.title['pt']
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.description")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.description[I18n.locale.to_s].blank? ? '-----------' : @tour.description[I18n.locale.to_s].truncate(50)
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.task")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.task[I18n.locale.to_s].blank? ? '-----------' : @tour.task[I18n.locale.to_s].truncate(50)
+
+                %tr.list-row
+                  %th.display-label Precio Adulto COP
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_adults['cop'].blank? ? '-----------' : @tour.price_adults['cop']
+
+                %tr.list-row
+                  %th.display-label Precio Adulto USD
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_adults['usd'].blank? ? '-----------' : @tour.price_adults['usd']
+
+                %tr.list-row
+                  %th.display-label Precio Niño COP
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_kids['cop'].blank? ? '-----------' : @tour.price_kids['cop']
+
+                %tr.list-row
+                  %th.display-label Precio Niño USD
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.price_kids['usd'].blank? ? '-----------' : @tour.price_kids['usd']
+
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.destination_ids.blank? ? '-----------' : @tour.destinations.collect{|des| des.custom_title}
+                    = @tour.destination_ids.blank? ? '-----------' : @tour.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
 
 
       .col-md-6

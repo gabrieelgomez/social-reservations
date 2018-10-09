@@ -22,6 +22,7 @@
                 %th Tipo de Orden
                 %th Origen
                 %th Destino
+                %th Precio
                 %th Pasajeros
                 %th Estatus
                 %th Pago
@@ -32,6 +33,7 @@
                   %td= reservation.reservationable.class_str
                   %td= truncate(reservation.origin, :length => 25)
                   %td= truncate(reservation.arrival, :length => 25)
+                  %th= "Precio"
                   %td= reservation.travellers.count
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
