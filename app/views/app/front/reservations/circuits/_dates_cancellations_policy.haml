@@ -1,0 +1,12 @@
+-#%hr
+%h3 Política de Cancelaciones
+.row
+  .col-lg-12
+    .form-custom
+    .form-group
+      .checkbox.checkbox-blue.checkbox-inline
+        %input#cancellations_policy.styled{name: 'cancellations_policy', :type => "checkbox", :value => "agree"}/
+        %label{:for => "cancellations_policy"} 
+          Acepto
+          = succeed "." do
+            = link_to 'Política de Cancelaciones', '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'

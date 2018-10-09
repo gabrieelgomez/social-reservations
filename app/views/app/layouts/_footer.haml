@@ -45,21 +45,18 @@
 						%p Colombia
 						%ul
 							%li
-								= link_to "#", class:'' do
-									%span
-										Términos y Condiciones
-							-#%li
-								= link_to "#", class:'' do
-									%span
-										PQRS
-							-#%li
-								= link_to "#", class:'' do
-									%span
-										Política de Tratamiento de Datos
-							-#%li
-								= link_to "#", class:'' do
+								= link_to   '#' , :class => '', :id => 'js_cancellations_footer', :type => 'button' do
 									%span
 										Política de Cancelaciones
+							%li
+								= link_to   '#' , :class => '', :id => 'js_treatments_footer', :type => 'button' do
+									%span
+										Política de Tratamiento de Datos
+							%li
+								= link_to   '#' , :class => '', :id => 'js_terms_footer', :type => 'button' do
+									%span
+										Términos y Condiciones
+
 
 
 				-#.foot-icons
@@ -99,11 +96,23 @@
 								%path{:d => "m178.06 598.88q-3.9364 0-5.9373-2.0994-1.9682-2.0994-1.9682-6.1014 0-2.4274 0.68886-4.166 0.68886-1.7714 1.8698-2.7226 2.2962-1.837 5.3469-1.837t4.658 1.5745q1.6402 1.5417 1.6402 5.5765 0 2.3618-2.329 2.3618h-7.1182q0.13121 2.0666 1.0497 2.9195 0.95128 0.85288 2.9851 0.85288 1.1153 0 2.1322-0.26242 1.0169-0.26243 1.4761-0.52485l0.45924-0.26243 0.98409 2.6242q-0.19682 0.22963-0.59045 0.59046-0.36084 0.32803-1.9026 0.91848-1.5089 0.55765-3.4443 0.55765zm2.0666-10.333q0.0656-0.45924 0.0656-1.1153t-0.52485-1.3777q-0.52484-0.75447-1.837-0.75447-1.2793 0-1.9682 0.78728-0.68887 0.78727-0.91849 2.657l5.1829-0.19682z"}
 								%path{:d => "m195.86 586.25q-2.493 0-3.4443 0.95129v7.5119q2.657 0.49205 3.6411 1.3777l-0.32803 2.5258h-9.3816l-0.32803-2.5258q0.45924-0.62326 1.8042-1.1153v-9.1192q-1.1481-0.39364-1.8042-1.1153l0.32803-2.5258q1.8042-0.39363 3.2475-0.39363t2.3946 0.0656v2.0666q0.75447-0.88568 1.9354-1.4433 1.1809-0.59045 2.1322-0.59045 0.98409 0 1.3449 0.16401l-0.0984 4.2644q-0.65606-0.0984-1.4433-0.0984z"}
 
-		
-		-#%script{:src => "/assets/js/jquery.filterizr.min.js"}
-		-#%script{:src => "/assets/js/jquery.easing.min.js"}
-		-# %script{:src => "/assets/js/jquery-ui.min.js"}
-		-#%script{:src => "/assets/js/jquery.counterup.min.js"}
-		-#%script{:src => "/assets/js/waypoints.min.js"}
-		-# %script{:src => "/assets/js/datepicker.js"}.
-		-#%script{:src => "/assets/js/setting-slider.js"}
+	.container
+		/* Modal - Política de Cancelaciones */
+		= render 'app/layouts/modal/cancellations'
+		/* Modal - Política de Tratamiento de Datos */
+		= render 'app/layouts/modal/treatments'
+		/* Modal - Términos y Condiciones */
+		= render 'app/layouts/modal/terms'
+
+	:javascript
+		$(document).ready(function(){
+				$("#js_terms_footer").click(function(){
+					$("#modalTerms").modal();
+				});
+				$("#js_cancellations_footer").click(function(){
+					$("#modalCancellations").modal();
+				});
+				$("#js_treatments_footer").click(function(){
+					$("#modalTreatments").modal();
+				});
+		});

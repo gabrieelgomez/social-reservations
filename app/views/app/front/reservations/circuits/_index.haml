@@ -52,11 +52,16 @@
               //Billing Data
               = render 'app/front/reservations/circuits/dates_billing'
 
+              //Privacy Policy
+              = render 'app/front/reservations/circuits/dates_privacy_policy'
+
+              //Cancellations Policy
+              = render 'app/front/reservations/circuits/dates_cancellations_policy'
+
               //Terms & Conditions
               = render 'app/front/reservations/circuits/dates_terms_conditions'
 
-              //Privacy Policy
-              = render 'app/front/reservations/circuits/dates_privacy_policy'
+
 
           .col-lg-4
             // Reservation Summary
@@ -65,6 +70,9 @@
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/circuits/modal/privacy_policy'
+    .container
+      //Modal - Cancellations Policy
+      = render 'app/front/reservations/circuits/modal/cancellations_policy'
     .container
       //Modal - Terms & Conditions
       = render 'app/front/reservations/circuits/modal/terms_conditions'
@@ -96,7 +104,9 @@
       $("#js_termsConditions").click(function(){
         $("#modalTermsConditions").modal();
       });
-
+      $("#js_cancellationsPolicy").click(function(){
+        $("#modalCancellationsPolicy").modal();
+      });
       $("#js_detailsHotel").click(function(){
         $("#modalDetailsHotel").modal();
       });
