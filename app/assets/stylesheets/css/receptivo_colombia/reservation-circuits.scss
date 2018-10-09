@@ -376,12 +376,18 @@
         }
       }
 
-      .disabled-content  {
+      .disabled-content {
         cursor: not-allowed;
         opacity: 0.65;
         filter: opacity(0.65);
         -webkit-box-shadow: none;
         box-shadow: none;
+
+        p {
+          a {
+            cursor: not-allowed;
+          }
+        }
       }
 
       .btn-room {

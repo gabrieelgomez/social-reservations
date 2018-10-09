@@ -59,6 +59,7 @@ module App::Reservations
                                           :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
                                           :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :description,
                                           :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
+                                          square_circuit_attributes: %i[id lodgment_id single doubles triples quadruples quintuples sextuples children],
                                           travellers_attributes: [:name, :dni])
     end
 

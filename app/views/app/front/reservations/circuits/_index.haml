@@ -44,11 +44,11 @@
               = render 'app/front/reservations/circuits/dates_reservations', f: f
 
               //Lodging Data
-              = render 'app/front/reservations/circuits/dates_lodging'
+              = render 'app/front/reservations/circuits/dates_lodging', f: f
 
               //Requests / Observations
               = render 'app/front/reservations/circuits/requests_observations'
-              
+
               //Billing Data
               = render 'app/front/reservations/circuits/dates_billing'
 
@@ -70,7 +70,7 @@
       = render 'app/front/reservations/circuits/modal/terms_conditions'
     .container
       //Modal - Details Hotel
-      = render 'app/front/reservations/circuits/modal/details_hotel'      
+      = render 'app/front/reservations/circuits/modal/details_hotel'
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -88,7 +88,7 @@
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
   });
-  
+
   $(document).ready(function(){
       $("#js_privacyPolicy").click(function(){
         $("#modalPrivacyPolicy").modal();
@@ -99,8 +99,8 @@
 
       $("#js_detailsHotel").click(function(){
         $("#modalDetailsHotel").modal();
-      });   
-      
+      });
+
   });
 
   $(document).ready(function(){
@@ -115,4 +115,3 @@
     dots: true,
     });
   });
-

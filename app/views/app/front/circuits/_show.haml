@@ -1,4 +1,4 @@
-%section#seach-widget
+-#%section#seach-widget
   .container
     - unless @results.blank?
       .box-search
@@ -35,6 +35,9 @@
         = render 'app/layouts/widget'
 
 %section#circuits.circuits
+  - unless @results.blank?
+    .banner-circuits{:style => "background-image: url(/assets/img/banner.jpg)"}
+      .banner-circuits--mask
   .container
     - unless @results.blank?
       .gallary-header.text-center
