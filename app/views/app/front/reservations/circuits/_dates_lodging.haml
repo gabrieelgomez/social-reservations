@@ -18,7 +18,7 @@
               .col-lg-8
                 %p.title-hotel= circuitable.lodgment.title[@lang]
                 %p
-                  = link_to 'Ver más información', '#' , class: '', id: 'js_detailsHotel', type: 'button'
+                  = link_to 'Ver más información', '#' , class: '', id: "modal_id_#{circuitable.id}", type: 'button'
 
 .box_type_rooms.room-hidden.room-disabled
   .row

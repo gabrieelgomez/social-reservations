@@ -46,6 +46,7 @@ module KepplerTravel
       # POST /circuits
       def create
         @circuit = Circuit.new(circuit_params)
+        @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
         if @circuit.save!
           @circuitable = CircuitableService.create(@circuit, params)
           redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
@@ -57,7 +58,9 @@ module KepplerTravel
 
       # PATCH/PUT /circuits/1
       def update
+        ids = params[:circuit][:destination_ids].try(:split, ',').try(:map, &:to_i)
         if @circuit.update(circuit_params)
+          @circuit.update(destination_ids: ids) if ids
           redirect(@circuit, params)
         else
           render :edit

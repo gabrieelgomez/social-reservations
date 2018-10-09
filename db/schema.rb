@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_015722) do
+ActiveRecord::Schema.define(version: 2018_10_09_170849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,13 @@ ActiveRecord::Schema.define(version: 2018_10_09_015722) do
     t.index ["deleted_at"], name: "index_keppler_travel_circuits_on_deleted_at"
   end
 
+  create_table "keppler_travel_circuits_destinations", force: :cascade do |t|
+    t.bigint "circuit_id"
+    t.bigint "destination_id"
+    t.index ["circuit_id"], name: "index_keppler_travel_circuits_destinations_on_circuit_id"
+    t.index ["destination_id"], name: "index_keppler_travel_circuits_destinations_on_destination_id"
+  end
+
   create_table "keppler_travel_destinations", force: :cascade do |t|
     t.string "title"
     t.float "latitude"
@@ -143,15 +150,22 @@ ActiveRecord::Schema.define(version: 2018_10_09_015722) do
 
   create_table "keppler_travel_lodgments", force: :cascade do |t|
     t.jsonb "title"
-    t.string "type_rooms", array: true
-    t.integer "position"
+    t.jsonb "address"
+    t.string "email"
+    t.integer "phone_one"
+    t.integer "phone_two"
+    t.jsonb "files"
     t.boolean "status", default: true
+    t.string "type_rooms", array: true
     t.bigint "destination_id"
+    t.bigint "ranking_id"
     t.datetime "deleted_at"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_lodgments_on_deleted_at"
     t.index ["destination_id"], name: "index_keppler_travel_lodgments_on_destination_id"
+    t.index ["ranking_id"], name: "index_keppler_travel_lodgments_on_ranking_id"
   end
 
   create_table "keppler_travel_lodgments_rooms", force: :cascade do |t|
@@ -160,6 +174,15 @@ ActiveRecord::Schema.define(version: 2018_10_09_015722) do
     t.datetime "deleted_at"
     t.index ["lodgment_id"], name: "index_keppler_travel_lodgments_rooms_on_lodgment_id"
     t.index ["room_id"], name: "index_keppler_travel_lodgments_rooms_on_room_id"
+  end
+
+  create_table "keppler_travel_rankings", force: :cascade do |t|
+    t.jsonb "title"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_rankings_on_deleted_at"
   end
 
   create_table "keppler_travel_reservations", force: :cascade do |t|
