@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  single: 1
+  doubles: 1
+  triples: 1
+  quadruples: 1
+  quintuples: 1
+  sextuples: 1
+  children: 1
+  lodgment: one
+
+two:
+  single: 1
+  doubles: 1
+  triples: 1
+  quadruples: 1
+  quintuples: 1
+  sextuples: 1
+  children: 1
+  lodgment: two

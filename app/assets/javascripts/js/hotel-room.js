@@ -1,5 +1,7 @@
+var lodgment_id_radio = null;
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
   if ($(this).is(':checked')) {
+    lodgment_id_radio = $(this).val();
     $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
     $('.js-hotel').addClass('disabled-content').removeClass('bg-active');
     $(this).closest($('.js-hotel')).removeClass('disabled-content');
@@ -13,6 +15,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
     }, 20);
 
   } else {
+    lodgment_id_radio = null;
     var inputs = $('.js-hotelRoom');
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].disabled = false;
