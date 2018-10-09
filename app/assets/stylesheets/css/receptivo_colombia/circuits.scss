@@ -5,7 +5,7 @@
     height: 280px;
     background: #756f6f;
     width: 100%;
-    margin: 8px 0 50px 0;
+    margin: 0 0 50px 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -170,7 +170,6 @@
               border-radius: 5px;
               background-color: $color-gray !important;
               color: white;
-
             }
           }
         }
@@ -192,8 +191,7 @@
         color: #4e4e56;
         text-align: left;
         display: inline-block;
-        font-family: "Poppins",
-          sans-serif;
+        font-family: "Poppins", sans-serif;
         padding: 10px 0;
         display: inline-block;
         box-shadow: none;
@@ -209,8 +207,6 @@
           display: inline-block;
           box-shadow: none;
         }
-
-
       }
 
       a {
@@ -321,8 +317,6 @@
           font-family: $font-primary !important;
         }
       }
-
-
     }
 
     .box-results {
@@ -336,7 +330,5 @@
         }
       }
     }
-
-
   }
 }

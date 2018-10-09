@@ -1,0 +1,65 @@
+.checkbox-blue {
+  input[type="checkbox"] {
+    &:checked {
+      + {
+        label {
+          &::before {
+            background-color: $color-blue;
+            border-color: $color-blue;
+          }
+
+          &::after {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    &:indeterminate {
+      + {
+        label {
+          &::before {
+            background-color: $color-blue;
+            border-color: $color-blue;
+          }
+
+          &::after {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  input[type="radio"] {
+    &:checked {
+      + {
+        label {
+          &::before {
+            background-color: $color-blue;
+            border-color: $color-blue;
+          }
+
+          &::after {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    &:indeterminate {
+      + {
+        label {
+          &::before {
+            background-color: $color-blue;
+            border-color: $color-blue;
+          }
+
+          &::after {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
