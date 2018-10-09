@@ -10,6 +10,7 @@ module KepplerTravel
     # Relationships
     # has_many :rooms
     belongs_to :destination
+    has_many :square_circuits
     has_many :circuitables
     has_many :circuitable_rooms
     has_many :circuits, through: :circuitables

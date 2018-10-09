@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_162511) do
+ActiveRecord::Schema.define(version: 2018_10_09_015722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,23 @@ ActiveRecord::Schema.define(version: 2018_09_28_162511) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "keppler_travel_square_circuits", force: :cascade do |t|
+    t.integer "single"
+    t.integer "doubles"
+    t.integer "triples"
+    t.integer "quadruples"
+    t.integer "quintuples"
+    t.integer "sextuples"
+    t.integer "children"
+    t.bigint "lodgment_id"
+    t.bigint "reservation_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lodgment_id"], name: "index_keppler_travel_square_circuits_on_lodgment_id"
+    t.index ["reservation_id"], name: "index_keppler_travel_square_circuits_on_reservation_id"
   end
 
   create_table "keppler_travel_tours", force: :cascade do |t|
