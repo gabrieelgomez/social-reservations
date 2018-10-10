@@ -1,15 +1,29 @@
-%section#seach-widget
+
+-#%section#seach-widget
   .container
     - unless @results.blank?
       .box-search
         .container
-          .row
+          .row.row-flex
             .col-lg-9
-              %p.result
-                %span
-                  Su búsqueda:
-                %span
-                  ="#{@results.title[@lang]}".titleize
+              .row
+                .items-search
+                  .col-lg-12
+                    %span
+                      Su búsqueda:
+                  .col-lg-4
+                    %span
+                      ="Destino: #{@results.title[@lang]}".titleize
+                  .col-lg-4
+                    %span
+                      ="Fecha: #{@flight_origin_tour_picker}"
+                  .col-lg-2
+                    %span
+                      ="Adultos: #{@adults}"
+                  .col-lg-2
+                    %span
+                      ="Niños: #{@kids}"
+
             .col-lg-3
               %p
                 %span
@@ -22,6 +36,9 @@
         = render 'app/layouts/widget'
 
 %section#tours_.tours_
+  - unless @results.blank?
+    .banner-tours{:style => "background-image: url(/assets/img/banner.jpg)"}
+      .banner-tours--mask
   .container
     - unless @results.blank?
       .gallary-header.text-center
@@ -50,7 +67,7 @@
               %h3 Descripción del Tour
               .content-tours__description--summary
                 %p= raw @results.description[@lang]
-            .content-tours__data
+            -#.content-tours__data
               .row
                 .col-lg-12
                   .row
@@ -66,13 +83,26 @@
                       .form-group
                         %label Cantidad de Niños
                         %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
-            .content-tours__button
+            -#.content-tours__button
               .row
                 .col-lg-12.pull-left
                   = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
                     %button.about-view.packages-btn.btn-reservation
                       Reservar
-
+            .content-tours__button
+              .row
+                .col-lg-12
+                  %center
+                    %span.price
+                      Costo por persona:
+                      %h3.price
+                        999999,00 
+                        -#= number_to_currency(@results.low_price(@currency), locale: @locale)
+                .col-lg-12
+                  %center
+                    = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                      %button.about-view.packages-btn.btn-reservation
+                        Reservar                   
           .col-lg-5
             .content-tours__image
               .carrusel-galery

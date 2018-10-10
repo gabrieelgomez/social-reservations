@@ -64,7 +64,84 @@ if defined?(KepplerContactUs) && KepplerContactUs.is_a?(Class)
 end
 
 
-%i[single doubles triples quadruples quintuples sextuples children].each do |name|
+# Create Destinations
+destinations = [
+  {
+    title: 'Cartagena, Bolívar, Colombia',
+    latitude: 10.3910485,
+    longitude: -75.479425699,
+    custom_title: {
+      es: 'Cartagena',
+      en: 'Cartagena',
+      pt: 'Cartagena'
+    }
+  },
+  {
+    title: 'Medellín, Antioquia, Colombia',
+    latitude: 6.2530408,
+    longitude: -75.564573699999,
+    custom_title: {
+      es: 'Medellín',
+      en: 'Medellín',
+      pt: 'Medellín'
+    }
+  },
+  {
+    title: 'Barranquilla, Atlántico, Colombia',
+    latitude: 10.3910485,
+    longitude: -75.479425699,
+    custom_title: {
+      es: 'Barranquilla',
+      en: 'Barranquilla',
+      pt: 'Barranquilla'
+    }
+  }
+]
+
+rankings  = ['1 Estrella', '2 Estrellas', '3 Estrellas', '4 Estrellas', '5 Estrellas']
+lodgments = ['Hotel Mirasol', 'Hotel Bijou', 'Hotel Eurobuilding', 'Hotel Paraguaná']
+rooms     = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples', 'children']
+
+destinations.each do |destination|
+  KepplerTravel::Destination.create(
+    title: destination[:title],
+    latitude: destination[:latitude],
+    longitude: destination[:longitude],
+    custom_title: destination[:custom_title],
+    status: true
+  )
+  puts "Destination #{destination[:custom_title][:es]} has been created"
+end
+
+rankings.each do |name|
+  KepplerTravel::Ranking.create(title: {en: name, es: name, pt: name})
+  puts "Ranking #{name} has been created"
+end
+
+rooms.each do |name|
   KepplerTravel::Room.create type_room: name
   puts "Room #{name} has been created"
+end
+
+lodgments.each do |lodgment|
+  KepplerTravel::Lodgment.create(
+    title: {
+      es: lodgment,
+      en: lodgment,
+      pt: lodgment
+    },
+    address: {
+      es: 'Colombia',
+      en: 'Colombia',
+      pt: 'Colombia'
+    },
+    email: 'hotel@example.com',
+    phone_one: 12345678,
+    phone_two: 987654321,
+    status: true,
+    destination_id: [1, 2, 3].sample,
+    ranking_id: [1, 2, 3, 4, 5].sample,
+    room_ids: [1, 2, 3, 4, 5].sample
+  )
+  puts "Alojamiento #{lodgment} has been created"
 end

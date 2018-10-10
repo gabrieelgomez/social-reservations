@@ -1,4 +1,12 @@
 modules:
+ rankings:
+    name: Ranking
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
  lodgments:
     name: Lodgment
     actions: [

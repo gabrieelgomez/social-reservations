@@ -1,86 +1,77 @@
-#modalDetailsHotel.modalDetailsHotel.modal.fade{:role => "dialog"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title.text-center Hotel Colombia Real
-      .modal-body
-        .row
-          .col-md-6
-            .information__room
-              %ul
-                %li 
-                  %h4 Ubicación
-                  %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, repellat.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, repellat.            
-                %li 
-                  %h4 Contáctanos
-                  %p  colombiareal@info.com
-                  %p  +57 317 3632119 - +57 317 3632111    
-          .col-md-6
-            .gallery__room
-              %h4 Nuestras Habitaciones
-              .gallery__room--images
-                .carrusel-room
-                  .room
-                    .room__item
-                      %img{src:"/assets/img/bg-1.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-2.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-3.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-4.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-5.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-6.jpg", class:"img-responsive"}
-                    .room__item
-                      %img{src:"/assets/img/bg-7.jpg", class:"img-responsive"}
-                      
-          .col-md-12
-            .price__room
-              %h4 Precios de nuestras Habitaciones
-              %ul
-                .row
-                  .col-lg-6
-                    %li 
-                      %p 
-                        Simple      
-                      %span 
-                        COP $ 99999999,00
-                    %li 
-                      %p 
-                        Doble
-                      %span 
-                        COP $ 99999999,00                 
-                    %li 
-                      %p 
-                        Triple
-                      %span 
-                        COP $ 99999999,00  
-                  .col-lg-6
-                    %li 
-                      %p 
-                        Cuádruple
-                      %span 
-                        COP $ 99999999,00  
-                    %li 
-                      %p 
-                        Quíntuple
-                      %span 
-                        COP $ 99999999,00
-                    %li 
-                      %p 
-                        Sextuple
-                      %span 
-                        COP $ 99999999,00
-                  .col-lg-12
-                    %li 
-                      %p 
-                        Precio/Niño
-                      %span 
-                        COP $ 99999999,00
-                                     
-      .modal-footer
-        %button{"data-dismiss" => "modal", :type => "button"} Cerrar
+- @circuit.circuitables.each do |circuitable|
+  - if circuitable.status
+    .modalDetailsHotel.modal.fade{:role => "dialog", id: "modal_id_#{circuitable.id}_1"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{"data-dismiss" => "modal", :type => "button"} ×
+            %h4.modal-title.text-center= circuitable.lodgment.title[@lang]
+          .modal-body
+            .row
+              .col-md-6
+                .information__room
+                  %ul
+                    %li
+                      %h4 Ubicación
+                      %p= circuitable.lodgment.address[@lang]
+                    %li
+                      %h4 Contáctanos
+                      %p= circuitable.lodgment.email
+                      %p
+                        = circuitable.lodgment.phone_one
+                        = '-' if circuitable.lodgment.phone_two
+                        = circuitable.lodgment.phone_two
+              .col-md-6
+                .gallery__room
+                  %h4 Nuestras Habitaciones
+                  .gallery__room--images
+                    .carrusel-room
+                      .room
+                        - circuitable.lodgment.files.each do |image|
+                          .room__item
+                            %img{src: image.url, class:"img-responsive"}
+              .col-md-12
+                .price__room
+                  %h4 Precios de nuestras Habitaciones
+                  %ul
+                    .row
+                      - types = ['Simple', 'Dobles', 'Triples', 'Cuádruples', 'Quíntuples', 'Sextuples', 'Precio / Niño']
+                      - circuitable.circuitable_rooms.in_groups_of(3).each_with_index do |objects, index|
+                        - unless objects.last.nil?
+                          .col-lg-6
+                            %li
+                              %p= objects.first.room.type_room
+                              %span
+                                - price = objects.first.try("price_#{@currency}")
+                                - if price.zero? || objects.first === false
+                                  %td No Disponible
+                                - else circuitable.lodgment.avaible_room? objects.first
+                                  %td= number_to_currency(objects.first.try("price_#{@currency}"), locale: @locale)
+                            %li
+                              %p= objects.second.room.type_room
+                              %span
+                                - price = objects.second.try("price_#{@currency}")
+                                - if price.zero? || objects.second === false
+                                  %td No Disponible
+                                - else circuitable.lodgment.avaible_room? objects.second
+                                  %td= number_to_currency(objects.second.try("price_#{@currency}"), locale: @locale)
+                            %li
+                              %p= objects.third.room.type_room
+                              %span
+                                - price = objects.third.try("price_#{@currency}")
+                                - if price.zero? || objects.third === false
+                                  %td No Disponible
+                                - else circuitable.lodgment.avaible_room? objects.third
+                                  %td= number_to_currency(objects.third.try("price_#{@currency}"), locale: @locale)
+                      .col-lg-12
+                        %li
+                          %p kids
+                          %span
+                            - price = circuitable.circuitable_rooms[6].try("price_#{@currency}")
+                            - if price.zero? || circuitable.circuitable_rooms[6] === false
+                              %td No Disponible
+                            - else circuitable.lodgment.avaible_room? circuitable.circuitable_rooms[6]
+                              %td= number_to_currency(circuitable.circuitable_rooms[6].try("price_#{@currency}"), locale: @locale)
 
+          .modal-footer
+            %button{"data-dismiss" => "modal", :type => "button"} Cerrar

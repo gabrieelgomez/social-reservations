@@ -12,8 +12,9 @@
     //transfer invoice
     = render "app/front/checkout/#{@render}/index"
 
-    %footer.footer-copyright
+    %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
+      
     %script{:src => "/assets/js/loader.js"}
     %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"}
 

@@ -4,14 +4,7 @@
   .col-lg-12
     .form-custom
     .form-group
- 
-      -#%label.checkbox-inline
-        %input{name: 'terms_conditions', :type => "checkbox", :value => "agree"}/
-        Acepto
-        = succeed "." do
-          = link_to 'Términos y Condiciones', '#' , :class => '', :id => 'js_termsConditions', :type => 'button'
-
-      .checkbox.checkbox-primary.checkbox-inline
+      .checkbox.checkbox-blue.checkbox-inline
         %input#terms_conditions.styled{name: 'terms_conditions', :type => "checkbox", :value => "agree"}/
         %label{:for => "terms_conditions"} 
           Acepto
