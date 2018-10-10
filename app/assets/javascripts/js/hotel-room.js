@@ -7,9 +7,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       var filtered_json = find_in_object(JSON.parse(lodgments_json), {lodgment_id: lodgment_id_radio});
       $.each(filtered_json, function(i, item) {
         $('#room_' + item.type_room).text('$' + item.price_cop);
-        // debugger;
       })
-
     // End JSON Methods
 
     $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
