@@ -2,6 +2,16 @@ var lodgment_id_radio = null;
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
   if ($(this).is(':checked')) {
     lodgment_id_radio = $(this).val();
+
+    // Passing JSON methods
+      var filtered_json = find_in_object(JSON.parse(lodgments_json), {lodgment_id: lodgment_id_radio});
+      $.each(filtered_json, function(i, item) {
+        $('#room_' + item.type_room).text('$' + item.price_cop);
+        // debugger;
+      })
+
+    // End JSON Methods
+
     $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
     $('.js-hotel').addClass('disabled-content').removeClass('bg-active');
     $(this).closest($('.js-hotel')).removeClass('disabled-content');
@@ -43,3 +53,13 @@ $('.js-typeRoom').on('click', function () {
     $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
   }
 });
+
+function find_in_object(my_object, my_criteria){
+
+  return my_object.filter(function(obj) {
+    return Object.keys(my_criteria).every(function(c) {
+      return obj[c] == my_criteria[c];
+    });
+  });
+
+}

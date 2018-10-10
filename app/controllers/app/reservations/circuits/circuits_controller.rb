@@ -10,6 +10,7 @@ module App
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
           session[:reservationable]  = {type:'circuit', id:params[:reservationable_id]}
+          session[:square_circuit]   = params[:square_circuit]
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 

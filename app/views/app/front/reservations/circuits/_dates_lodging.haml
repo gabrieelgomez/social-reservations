@@ -18,11 +18,7 @@
               .col-lg-8
                 %p.title-hotel= circuitable.lodgment.title[@lang]
                 %p
-                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: 'js_detailsHotel', type: 'button'
-                  -#%a{"data-toggle" => "modal", :href => "#modalDetailsHotel", type: 'button'} Ver más información
-                  -#%button.btn.btn-info.btn-lg{"data-target" => "#modalDetailsHotel", "data-toggle" => "modal", :type => "button"} Open Modal
-                  -#%input.btn.btn-success{"data-target" => "#modalDetailsHotel", "data-toggle" => "modal", :type => "button", :value => "Upload"}/
-
+                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
 
 .box_type_rooms.room-hidden.room-disabled
   .row
@@ -36,10 +32,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Simple
-          %p.price $ 99999999
+          %p.price#room_single $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][single]", type: "number", min: 0}/
+            %input{name: "square_circuit[][single]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -47,10 +43,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Doble
-          %p.price $ 99999999
+          %p.price#room_doubles $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][doubles]", type: "number", min: 0}/
+            %input{name: "square_circuit[][doubles]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -58,10 +54,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Triple
-          %p.price $ 99999999
+          %p.price#room_triples $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][triples]", type: "number", min: 0}/
+            %input{name: "square_circuit[][triples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -69,10 +65,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Cuadruple
-          %p.price $ 99999999
+          %p.price#room_quadruples $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][quadruples]", type: "number", min: 0}/
+            %input{name: "square_circuit[][quadruples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -80,10 +76,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Quintuple
-          %p.price $ 99999999
+          %p.price#room_quintuples $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][quintuples]", type: "number", min: 0}/
+            %input{name: "square_circuit[][quintuples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -91,10 +87,10 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Sextuple
-          %p.price $ 99999999
+          %p.price#room_sextuples $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][sextuples]", type: "number", min: 0}/
+            %input{name: "square_circuit[][sextuples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -102,9 +98,14 @@
             %input.type-room.js-typeRoom{type: "checkbox"}/
           %p Habitación
           %p Niño
-          %p.price $ 99999999
+          %p.price#room_children $ 99999999
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][children]", type: "number", min: 0}/
+            %input{name: "square_circuit[][children]", type: "number", min: 1}/
+
+:javascript
+  var lodgments_ruby = #{raw @lodgments.to_json};
+  //We do that to ensure to get a correct JSON
+  var lodgments_json = JSON.stringify(lodgments_ruby)
 
 %script{src: "/assets/js/hotel-room.js"}

@@ -107,8 +107,10 @@
       $("#js_cancellationsPolicy").click(function(){
         $("#modalCancellationsPolicy").modal();
       });
+
       $(".js_detailsHotel").click(function(){
-        $(".js_infoHotel").modal();
+        let id = $(this).attr('id');
+        $('#' + id + '_1').modal();
       });
 
   });
