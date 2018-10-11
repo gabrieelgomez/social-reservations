@@ -32,10 +32,6 @@
             %a
               %span todos
 
-          %li.filter-btn{"data-filter" => ".js_filterVehicles"}
-            %a
-              %span traslados
-
           %li.filter-btn{"data-filter" => ".js_filterTours"}
             %a
               %span tours
@@ -49,31 +45,6 @@
       .cards-services
         .container#mix-wrapper
           .row
-            - @vehicles.each do |vehicle|
-              .col-md-4.col-sm-6.mix-target.js_filterVehicles
-                .box-card
-                  .box-image{:style => "background-image: url(#{vehicle.cover.url})"}
-                  .box-information
-                    %h3= vehicle.title[@lang]
-                    %span.pull-right= number_to_currency(vehicle.inner_price[@currency], locale: @locale)
-                    .more-information
-                      -# %p
-                      -#   %span
-                      -#     10 dias 5 noches
-                      %p
-                        -# %span= vehicle.description[@lang].truncate(50)
-                        %span Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                      %p
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                    .about-btn
-                      %a.link-card{:href => "#"}
-                        %button.about-view.packages-btn
-                          ver más
-
             - @tours.each do |tour|
               .col-md-4.col-sm-6.mix-target.js_filterTours
                 .box-card
