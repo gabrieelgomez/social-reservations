@@ -13,7 +13,7 @@
     %section#home.about-us
       %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
         %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
-      %section.travel-box.widget.p-widget 
+      %section.travel-box.widget.p-widget
         .container
           .row
             = render 'app/layouts/widget'
@@ -31,165 +31,96 @@
           %li.filter-btn{"data-filter" => "all"}
             %a
               %span todos
-          -#%li.filter-btn{"data-filter" => ".transfers"}
+
+          %li.filter-btn{"data-filter" => ".js_filterVehicles"}
             %a
               %span traslados
-          %li.filter-btn{"data-filter" => ".js_filterCircuits"}
-            %a
-              %span circuitos
+
           %li.filter-btn{"data-filter" => ".js_filterTours"}
             %a
               %span tours
+
+          %li.filter-btn{"data-filter" => ".js_filterCircuits"}
+            %a
+              %span circuitos
           %li.filter-btn{"data-filter" => ".js_filterMultidestines"}
             %a
               %span multidestinos
       .cards-services
         .container#mix-wrapper
           .row
-            .col-md-4.col-sm-6.mix-target.js_filterCircuits
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
-                .box-information
-                  %h3
-                    Antioquia
-                    %span.pull-right $201
-                  .more-information
-                    %p
-                      %span
-                        10 dias 5 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.mix-target.js_filterTours
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
-                .box-information
-                  %h3
-                    Boyaca
-                    %span.pull-right $202
-                  .more-information
-                    %p
-                      %span
-                        15 dias 2 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .btn-hotel.btn-services
-                    %a.link-card{:href => "#"}
-                      .about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.mix-target.js_filterMultidestines
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
-                .box-information
-                  %h3
-                    Bucaramanga
-                    %span.pull-right $203
-                  .more-information
-                    %p
-                      %span
-                        12 dias 1 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.mix-target.js_filterCircuits
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-4.jpg)"}
-                .box-information
-                  %h3
-                    Santa Rosa de Cabal
-                    %span.pull-right $204
-                  .more-information
-                    %p
-                      %span
-                        5 dias 7 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.mix-target.js_filterMultidestines
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-5.jpg)"}
-                .box-information
-                  %h3
-                    Barranquilla
-                    %span.pull-right $205
-                  .more-information
-                    %p
-                      %span
-                        6 dias 5 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.mix-target.js_filterTours
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-6.jpg)"}
-                .box-information
-                  %h3
-                    Santander
-                    %span.pull-right $206
-                  .more-information
-                    %p
-                      %span
-                        3 dias 3 noches
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
+            - @vehicles.each do |vehicle|
+              .col-md-4.col-sm-6.mix-target.js_filterVehicles
+                .box-card
+                  .box-image{:style => "background-image: url(#{vehicle.cover.url})"}
+                  .box-information
+                    %h3= vehicle.title[@lang]
+                    %span.pull-right= number_to_currency(vehicle.inner_price[@currency], locale: @locale)
+                    .more-information
+                      -# %p
+                      -#   %span
+                      -#     10 dias 5 noches
+                      %p
+                        -# %span= vehicle.description[@lang].truncate(50)
+                        %span Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                      %p
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                    .about-btn
+                      %a.link-card{:href => "#"}
+                        %button.about-view.packages-btn
+                          ver más
+
+            - @tours.each do |tour|
+              .col-md-4.col-sm-6.mix-target.js_filterTours
+                .box-card
+                  .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+                  .box-information
+                    %h3= tour.title[@lang]
+                    %span.pull-right= number_to_currency(tour.price_adults[@currency], locale: @locale)
+                    .more-information
+                      -# %p
+                      -#   %span
+                      -#     10 dias 5 noches
+                      %span= raw tour.description[@lang].truncate(120)
+
+                      %p
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                    .about-btn
+                      %a.link-card{:href => "#"}
+                        %button.about-view.packages-btn
+                          ver más
+
+            - @circuits.each do |circuit|
+              .col-md-4.col-sm-6.mix-target.js_filterCircuits
+                .box-card
+                  .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
+                  .box-information
+                    %h3= circuit.title[@lang]
+                    %span.pull-right= number_to_currency(25000, locale: @locale)
+                    .more-information
+                      -# %p
+                      -#   %span
+                      -#     10 dias 5 noches
+                      %span= raw circuit.description[@lang].truncate(155)
+
+                      %p
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                    .about-btn
+                      %a.link-card{:href => "#"}
+                        %button.about-view.packages-btn
+                          ver más
 
     %section#tours.tours
       .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}
@@ -213,72 +144,26 @@
       .cards-top-tours
         .container
           .row
-            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-1.jpg)"}
-                .box-information
-                  %h3
-                    Bucaramanga Family Tour
-                  .more-information
-                    %p
-                      %span
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-2.jpg)"}
-                .box-information
-                  %h3
-                    Cartagena Family Tour
-                  .more-information
-                    %p
-                      %span
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
-            .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
-              .box-card
-                .box-image{:style => "background-image: url(/assets/img/bg-3.jpg)"}
-                .box-information
-                  %h3
-                    Colombia Family Tour
-                  .more-information
-                    %p
-                      %span
-                    %p
-                      %span
-                        Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    %p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                  .about-btn
-                    %a.link-card{:href => "#"}
-                      %button.about-view.packages-btn
-                        ver más
+            - @tours.each do |tour|
+              .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
+                .box-card
+                  .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+                  .box-information
+                    %h3= tour.title[@lang]
+                    .more-information
+                      %p
+                        %span
+                      %span= raw tour.description[@lang].truncate(150)
+                      %p
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                    .about-btn
+                      %a.link-card{:href => "#"}
+                        %button.about-view.packages-btn
+                          ver más
 
     %section#tips-services.tips-services
       .container
@@ -321,7 +206,7 @@
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
-    
+
     %script{:src => "/assets/js/loader.js"}
     %script{:src => "/assets/js/navbar.js"}
     %script{:src => "/assets/js/mixitup-setting.js"}

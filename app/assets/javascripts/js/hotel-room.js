@@ -57,11 +57,14 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
     setTimeout(function () {
       $('.box_type_rooms').addClass('room-disabled');
     }, 20);
-  }
-});
 
+  } // END --- Si no está checkeado
+
+}); // END --- Seleccion de un Alojamiento u hotel
+
+
+// Funcion de habilitar o no el tipo de habitacion room
 $('.js-typeRoom').on('click', function () {
-
   lodgment_id_radio = $(this).val();
   json_parse = JSON.parse(lodgment_id_radio);
   that = $(this);
@@ -78,13 +81,17 @@ $('.js-typeRoom').on('click', function () {
           that.removeClass('js-room-active');
           that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
         }
-      }
+      }else{
+
+      } //aqui agregar addclass de boton not allowed
 
     }) // end for each json
   // End JSON Methods
-
 });
+// END --- Funcion de habilitar o no el tipo de habitacion room
 
+
+// Metodo para iterar el JSON, filtrar por parametro
 function find_in_object(my_object, my_criteria){
 
   return my_object.filter(function(obj) {
