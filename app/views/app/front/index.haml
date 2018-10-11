@@ -32,7 +32,7 @@
             %a
               %span todos
 
-          %li.filter-btn{"data-filter" => ".js_filterVehicles"}
+          -#%li.filter-btn{"data-filter" => ".js_filterVehicles"}
             %a
               %span traslados
 
@@ -85,7 +85,7 @@
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
-                      %span= raw tour.description[@lang].truncate(120)
+                      %span= raw tour.description[@lang].truncate(100)
 
                       %p
                         %i.fa.fa-star.fa-star-custom
@@ -109,7 +109,7 @@
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
-                      %span= raw circuit.description[@lang].truncate(120)
+                      %span= raw circuit.description[@lang].truncate(100)
 
                       %p
                         %i.fa.fa-star.fa-star-custom

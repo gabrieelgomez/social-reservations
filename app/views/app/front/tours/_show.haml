@@ -39,7 +39,8 @@
   - unless @results.blank?
     .banner-tours{:style => "background-image: url(/assets/img/banner.jpg)"}
       .banner-tours--mask
-  .container
+        %h2= @results.title[@lang].titleize
+  -#.container
     - unless @results.blank?
       .gallary-header.text-center
         %h2= @results.title[@lang].titleize
