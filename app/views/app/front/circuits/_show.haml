@@ -38,7 +38,8 @@
   - unless @results.blank?
     .banner-circuits{:style => "background-image: url(/assets/img/banner.jpg)"}
       .banner-circuits--mask
-  .container
+        %h2= @results.title[@lang].titleize
+  -#.container
     - unless @results.blank?
       .gallary-header.text-center
         %h2= @results.title[@lang].titleize
@@ -59,7 +60,6 @@
                 %p
                   = link_to root_path do
                     Volver a relizar la búsqueda
-
         - else
           .col-lg-7
             .content-circuits__description

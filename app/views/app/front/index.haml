@@ -32,6 +32,10 @@
             %a
               %span todos
 
+          -#%li.filter-btn{"data-filter" => ".js_filterVehicles"}
+            %a
+              %span traslados
+
           %li.filter-btn{"data-filter" => ".js_filterTours"}
             %a
               %span tours
@@ -56,7 +60,7 @@
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
-                      %span= raw tour.description[@lang].truncate(120)
+                      %span= raw tour.description[@lang].truncate(100)
 
                       %p
                         %i.fa.fa-star.fa-star-custom
@@ -80,7 +84,7 @@
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
-                      %span= raw circuit.description[@lang].truncate(155)
+                      %span= raw circuit.description[@lang].truncate(100)
 
                       %p
                         %i.fa.fa-star.fa-star-custom
@@ -124,7 +128,7 @@
                     .more-information
                       %p
                         %span
-                      %span= raw tour.description[@lang].truncate(150)
+                      %span= raw tour.description[@lang].truncate(120)
                       %p
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
