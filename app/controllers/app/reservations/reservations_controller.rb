@@ -70,6 +70,9 @@ module App
             set_price_tour
           when 'circuit'
             @circuit = KepplerTravel::Circuit.find params[:reservationable_id]
+            @lodgments = @circuit.circuitable_rooms.as_json(
+              methods: %i[lodgment_id type_room]
+            )
           when 'multidestination'
             nil
         end

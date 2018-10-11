@@ -4,6 +4,7 @@ module KepplerTravel
     include ActivityHistory
     include CloneRecord
     require 'csv'
+    mount_uploaders :files, AttachmentUploader
     acts_as_list
     acts_as_paranoid
 
@@ -30,6 +31,28 @@ module KepplerTravel
 
     def avaible_room? room
       self.rooms.map(&:id).include?(room.room_id) ? true : false
+    end
+
+    def update_images(images_list)
+      unless images_list[:files].nil? || images_list[:files].empty?
+        imgs = self.files
+        imgs += images_list[:files]
+        self.files = imgs
+        self.save
+      end
+
+      unless images_list[:files_delete].nil? || images_list[:files_delete].empty?
+        idx_arr = images_list[:files_delete]
+        remain_images = self.files # copy the array
+        idx_arr.size.times do |time|
+          deleted_image = remain_images.delete_at(idx_arr[time].to_i)
+          deleted_image.try(:remove!)
+          # images[images_list[time].to_i].remove!
+          # images[idx_arr[time].to_i].model[:files].delete_at(idx_arr[time].to_i)
+          # self.save
+        end
+        self.files = remain_images
+      end
     end
 
     # Fields for the search form in the navbar

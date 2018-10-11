@@ -43,8 +43,10 @@ function validateReservationCircuit(id_form) {
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-    // form.submit();
-    debugger;
+    let lodgment =  lodgment_id_radio;
+     $('form').append(`<input type="hidden" name="square_circuit[][lodgment_id]" value=${lodgment} /> `);
+     // debugger;
+     form.submit();
    }
 
   });

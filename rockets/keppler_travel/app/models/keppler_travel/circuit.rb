@@ -9,12 +9,12 @@ module KepplerTravel
     acts_as_paranoid
 
     # Relationships
-    # has_and_belongs_to_many :destinations
+    has_and_belongs_to_many :destinations
     # has_and_belongs_to_many :lodgments
     has_many :reservations, as: :reservationable
 
     has_many :circuitables
-    has_many :destinations, through: :circuitables
+    # has_many :destinations, through: :circuitables
     has_many :lodgments, through: :circuitables
     has_many :circuitable_rooms, through: :circuitables
     # has_many :rooms, through: :circuitables
@@ -43,6 +43,28 @@ module KepplerTravel
           self.create! row.to_hash
         rescue => err
         end
+      end
+    end
+
+    def update_images(images_list)
+      unless images_list[:files].nil? || images_list[:files].empty?
+        imgs = self.files
+        imgs += images_list[:files]
+        self.files = imgs
+        self.save
+      end
+
+      unless images_list[:files_delete].nil? || images_list[:files_delete].empty?
+        idx_arr = images_list[:files_delete]
+        remain_images = self.files # copy the array
+        idx_arr.size.times do |time|
+          deleted_image = remain_images.delete_at(idx_arr[time].to_i)
+          deleted_image.try(:remove!)
+          # images[images_list[time].to_i].remove!
+          # images[idx_arr[time].to_i].model[:files].delete_at(idx_arr[time].to_i)
+          # self.save
+        end
+        self.files = remain_images
       end
     end
 

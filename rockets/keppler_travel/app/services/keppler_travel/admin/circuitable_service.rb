@@ -34,7 +34,7 @@ module KepplerTravel
       end # Create end
 
       def self.update_circuitable(circuit)
-        lodgments = circuit.circuitables.map(&:destination).map(&:lodgment_ids).flatten
+        lodgments = circuit.destinations.map(&:lodgment_ids).flatten
         lodgments_circuitables = circuit.circuitables.map(&:lodgment_id)
         ids = lodgments - lodgments_circuitables
         unless ids.empty?
