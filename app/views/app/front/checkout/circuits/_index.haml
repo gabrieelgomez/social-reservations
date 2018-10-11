@@ -49,23 +49,6 @@
                         %br/
                         = @invoice['address']
                   .row
-                    .col-xs-6
-                      %address
-                        %strong Método de Pago
-                        %br/
-                        Pĺataforma: EnLineaPagos
-                        %br/
-                        = @user['name']
-                        %br/
-                        = @user['email']
-                    .col-xs-6.text-right
-                      %address
-                        %strong N°. Orden ELP
-                        %br/
-                        = @invoice['token']
-                        %br/
-                        %br/
-                  .row
                     .col-xs-12
                       %h5.text-center Información del Circuito
                       %br/
@@ -110,9 +93,9 @@
                                     = "/"
                                     Niños
                                     = number_to_currency(1000, locale: @locale)
-                                  %td.text-center= seats
+                                  %td.text-center= 3
                                   %td.text-right= number_to_currency(2000, locale: @locale)
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment
-                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Cotizar"}/

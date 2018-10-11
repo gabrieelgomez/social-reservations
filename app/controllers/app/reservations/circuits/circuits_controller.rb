@@ -32,7 +32,8 @@ module App
             if @reservation.save!
               create_travellers
               # ReservationMailer.circuit_status(@reservation, @user).deliver_now
-              redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              redirect_to invoice_path('es', 'cop')
             else
               render :new
             end
@@ -42,11 +43,11 @@ module App
         private
 
         def calculate_price
-          adults = session[:reservation]['quantity_adults']
-          kids   = session[:reservation]['quantity_kids']
-          @total_adults    = @reservation.reservationable.price * adults
-          # @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
-          @price_total     = @total_adults# + @total_kids
+          # adults = session[:reservation]['quantity_adults']
+          # kids   = session[:reservation]['quantity_kids']
+          # @total_adults    = @reservation.reservationable.price * adults
+          # # @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
+          @price_total     = 1000
         end
 
       end
