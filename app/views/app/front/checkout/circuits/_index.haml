@@ -1,9 +1,9 @@
-- adults = session[:reservation]['quantity_adults']
-- kids   = session[:reservation]['quantity_kids']
-- seats  = adults.to_i + kids.to_i
-- @total_adults    = @reservationable.price * adults
+-# - adults = session[:reservation]['quantity_adults']
+-# - kids   = session[:reservation]['quantity_kids']
+-# - seats  = adults.to_i + kids.to_i
+-# - @total_adults    = @reservationable.price * adults
 -# - @total_kids      = @reservationable.calculate_kids(kids) * kids
-- @total_price     = @total_adults# + @total_kids
+-# - @total_price     = @total_adults# + @total_kids
 %section.invoice-transfers#invoice-transfers
   .container
     .gallary-header.text-center
@@ -49,23 +49,6 @@
                         %br/
                         = @invoice['address']
                   .row
-                    .col-xs-6
-                      %address
-                        %strong Método de Pago
-                        %br/
-                        Pĺataforma: EnLineaPagos
-                        %br/
-                        = @user['name']
-                        %br/
-                        = @user['email']
-                    .col-xs-6.text-right
-                      %address
-                        %strong N°. Orden ELP
-                        %br/
-                        = @invoice['token']
-                        %br/
-                        %br/
-                  .row
                     .col-xs-12
                       %h5.text-center Información del Circuito
                       %br/
@@ -106,13 +89,13 @@
                                   %td= @reservationable['title'][@lang]
                                   %td.text-center
                                     Adultos
-                                    = number_to_currency(@reservationable.price, locale: @locale)
+                                    = number_to_currency(3000, locale: @locale)
                                     = "/"
                                     Niños
                                     = number_to_currency(1000, locale: @locale)
-                                  %td.text-center= seats
+                                  %td.text-center= 3
                                   %td.text-right= number_to_currency(2000, locale: @locale)
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment
-                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Cotizar"}/

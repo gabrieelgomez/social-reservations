@@ -11,8 +11,7 @@ module App
           session[:travellers]  = params[:travellers]
           session[:reservationable]  = {type:'circuit', id:params[:reservationable_id]}
           session[:square_circuit]   = params[:square_circuit]
-          byebug
-          # redirect_to checkout_path(params[:lang], params[:currency])
+          redirect_to checkout_path(params[:lang], params[:currency])
         end
 
         def create_reservation_circuit
@@ -33,7 +32,8 @@ module App
             if @reservation.save!
               create_travellers
               # ReservationMailer.circuit_status(@reservation, @user).deliver_now
-              redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              redirect_to invoice_path('es', 'cop')
             else
               render :new
             end
@@ -43,11 +43,11 @@ module App
         private
 
         def calculate_price
-          adults = session[:reservation]['quantity_adults']
-          kids   = session[:reservation]['quantity_kids']
-          @total_adults    = @reservation.reservationable.price * adults
-          # @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
-          @price_total     = @total_adults# + @total_kids
+          # adults = session[:reservation]['quantity_adults']
+          # kids   = session[:reservation]['quantity_kids']
+          # @total_adults    = @reservation.reservationable.price * adults
+          # # @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
+          @price_total     = 1000
         end
 
       end

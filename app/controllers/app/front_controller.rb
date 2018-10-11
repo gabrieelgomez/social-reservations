@@ -5,13 +5,16 @@ module App
     before_action :set_lang_currency
     before_action :set_search,        only: %i[index circuits reservations tours vehicles]
     before_action :set_params_widget, only: %i[circuits tours vehicles]
-    before_action :delete_session,    except: %i[checkout create_reservation_transfer session_reservation_transfer create_reservation_tour session_reservation_tour]
+    before_action :delete_session,    except: %i[checkout create_reservation_transfer session_reservation_transfer create_reservation_tour session_reservation_tour create_reservation_circuit session_reservation_circuit]
 
     def set_locale_lang
       @locale = request.protocol + request.host_with_port + '/es'
     end
 
     def index
+      @vehicles = KepplerTravel::Vehicle.all
+      @tours    = KepplerTravel::Tour.all
+      @circuits = KepplerTravel::Circuit.all
     end
 
     def vehicles
