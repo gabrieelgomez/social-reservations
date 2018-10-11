@@ -12,6 +12,9 @@ module App
     end
 
     def index
+      @vehicles = KepplerTravel::Vehicle.all
+      @tours    = KepplerTravel::Tour.all
+      @circuits = KepplerTravel::Circuit.all
     end
 
     def vehicles
