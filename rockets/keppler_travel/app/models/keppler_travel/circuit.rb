@@ -22,6 +22,10 @@ module KepplerTravel
     accepts_nested_attributes_for :circuitables
     accepts_nested_attributes_for :circuitable_rooms
 
+    def class_str
+      self.class.to_s.split('::').last
+    end
+
     def selected(destination)
       self.destination_ids.include?(destination) ? 'selected' : false
     end
