@@ -10,6 +10,10 @@ menu:
           name: circuits
           url_path: /admin/travel/reservations?model_name=circuit
           current: ['admin/travel/reservations']
+      - multidestinations:
+          name: multidestinations
+          url_path: /admin/travel/reservations?model_name=multidestination
+          current: ['admin/travel/reservations']
       - tours:
           name: tours
           url_path: /admin/travel/reservations?model_name=tour
@@ -33,13 +37,20 @@ menu:
     icon: layers
     model: KepplerTravel::Lodgment
 
-
   keppler_travel_circuit:
     name: circuits
     current: ['admin/travel/circuits']
     url_path: /admin/travel/circuits
     icon: loop
     model: KepplerTravel::Circuit
+
+
+  keppler_travel_multidestination:
+    name: multidestinations
+    current: ['admin/travel/multidestinations']
+    url_path: /admin/travel/multidestinations
+    icon: loop
+    model: KepplerTravel::Multidestination
 
   keppler_travel_tour:
     name: tours

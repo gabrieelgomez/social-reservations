@@ -10,14 +10,15 @@ module App
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
           session[:reservationable]  = {type:'circuit', id:params[:reservationable_id]}
-          session[:square_circuit]   = params[:square_circuit]
+          session[:square_circuit]   = params[:square_circuit].first.select{|_, value| !value.empty?}
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 
         def create_reservation_circuit
-          if session[:reservation].nil?
+          if session[:reservation].nil? || session[:square_circuit].nil?
             redirect_to errors_checkout_path('cop')
           else
+
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
             find_or_create_user
             @reservation.status = :pending
@@ -27,8 +28,8 @@ module App
             # Calculate Price
             calculate_price
             # Calculate Price
-
             build_invoice
+            build_square
             if @reservation.save!
               create_travellers
               # ReservationMailer.circuit_status(@reservation, @user).deliver_now
@@ -40,14 +41,30 @@ module App
           end
         end
 
+        def build_square
+          square = session[:square_circuit]
+          @square = KepplerTravel::Square.create!(
+            single:     square['single'].to_i     || 0,
+            doubles:    square['doubles'].to_i    || 0,
+            triples:    square['triples'].to_i    || 0,
+            quadruples: square['quadruples'].to_i || 0,
+            quintuples: square['quintuples'].to_i || 0,
+            sextuples:  square['sextuples'].to_i  || 0,
+            children:   square['children'].to_i   || 0,
+            ranking_id: square['ranking_id'].to_i,
+            reservation: @reservation,
+            squareable_id: @reservation.reservationable.id,
+            squareable_type: @reservation.reservationable.class.to_s
+          )
+        end
+
         private
 
         def calculate_price
-          # adults = session[:reservation]['quantity_adults']
-          # kids   = session[:reservation]['quantity_kids']
-          # @total_adults    = @reservation.reservationable.price * adults
-          # # @total_kids      = @reservation.reservationable.calculate_kids(kids) * kids
-          @price_total     = 1000
+          circuitable = @reservation.reservationable.circuitables.find_by(ranking_id: session[:square_circuit]['ranking_id'])
+
+          table = circuitable.price_table(session[:square_circuit], session[:invoice].first['currency'])
+          @price_total = table.last[:total_price_table]
         end
 
       end

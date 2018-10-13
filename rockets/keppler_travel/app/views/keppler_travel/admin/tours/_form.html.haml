@@ -99,6 +99,12 @@
                       - KepplerTravel::Destination.all.each do |destination|
                         %option{ value: destination.id, selected: @tour.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
 
+                    .col-xs-12.col-lg-12
+                      = f.input :status, label: 'Habilitado?',as: :keppler_boolean
+
+                    .col-xs-12.col-lg-12
+                      = f.input :featured, label: '¿Destacado?',as: :keppler_boolean
+
                   .col-xs-12.col-md-12
                     %label Galería de Imágenes
                     -# %input#tour_files{:multiple => "", :name => "tour[files][]", :type => "file"}

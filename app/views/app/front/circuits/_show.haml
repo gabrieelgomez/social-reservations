@@ -148,7 +148,7 @@
                           %table.table.table-hover.table-room
                             %thead
                               %tr
-                                %th Hotel
+                                %th Categoría
                                 %th Simple
                                 %th Doble
                                 %th Triple
@@ -160,10 +160,10 @@
                               - @results.circuitables.each do |circuitable|
                                 - if circuitable.status
                                   %tr
-                                    %td= circuitable.lodgment.title[@lang]
+                                    %td= circuitable.ranking.title[@lang]
                                     - circuitable.circuitable_rooms.each do |room|
                                       - price = room.try("price_#{@currency}")
                                       - if price.zero? || room === false
                                         %td No Disponible
-                                      - else circuitable.lodgment.avaible_room? room
+                                      - else
                                         %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)

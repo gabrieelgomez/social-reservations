@@ -73,6 +73,15 @@
                   %td.display-value.fs-body-1.tc-black-2
                     = @tour.destination_ids.blank? ? '-----------' : @tour.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
 
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.status")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.status.blank? ? '-----------' : @tour.status
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.featured")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.featured.blank? ? '-----------' : @tour.featured
 
       .col-md-6
         -# - @tour.files.each_with_index do |img, index|

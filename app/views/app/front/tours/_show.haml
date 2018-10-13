@@ -95,15 +95,23 @@
                 .col-lg-12
                   %center
                     %span.price
-                      Costo por persona:
+                      Costo por Adulto:
                       %h3.price
-                        999999,00 
-                        -#= number_to_currency(@results.low_price(@currency), locale: @locale)
+                        -# 999999,00
+                        = number_to_currency(@results.price_adults[@currency], locale: @locale)
+
+                    %br
+                    %span.price
+                      Costo por Niño:
+                      %h3.price
+                        -# 999999,00
+                        = number_to_currency(@results.price_kids[@currency], locale: @locale)
+
                 .col-lg-12
                   %center
                     = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
                       %button.about-view.packages-btn.btn-reservation
-                        Reservar                   
+                        Reservar
           .col-lg-5
             .content-tours__image
               .carrusel-galery

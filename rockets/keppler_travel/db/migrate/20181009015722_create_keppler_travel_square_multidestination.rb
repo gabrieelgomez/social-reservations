@@ -1,6 +1,6 @@
-class CreateKepplerTravelSquareCircuit < ActiveRecord::Migration[5.2]
+class CreateKepplerTravelSquareMultidestination < ActiveRecord::Migration[5.2]
   def change
-    create_table :keppler_travel_square_circuits do |t|
+    create_table :keppler_travel_square_multidestinations do |t|
       t.integer :single
       t.integer :doubles
       t.integer :triples

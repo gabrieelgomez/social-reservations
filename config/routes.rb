@@ -9,17 +9,16 @@ Rails.application.routes.draw do
     get 'vehicles', to: 'app/front#vehicles'
     get 'tours', to: 'app/front#tours'
     get 'circuits', to: 'app/front#circuits'
+    get 'multidestinations', to: 'app/front#multidestinations'
 
-     get 'reservations/circuits', to: 'app/front#circuits'
-
+    # get 'reservations/circuits', to: 'app/front#circuits'
 
     get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice
 
-    get '/dashboard/orders/transfers', to: 'app/dashboard/dashboard#transfer_orders', as: :transfer_orders
-    get '/dashboard/orders/tours', to: 'app/dashboard/dashboard#tour_orders', as: :tour_orders
+    get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
 
     get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
     post '/dashboard/user/edit', to: 'app/dashboard/users/users#update', as: :user_update
@@ -36,9 +35,13 @@ Rails.application.routes.draw do
   # Reservations Tours
     post '/session_reservation_tour', to: 'app/reservations/tours/tours#session_reservation_tour'
     post '/create_reservation_tour', to: 'app/reservations/tours/tours#create_reservation_tour'
-  # Reservations Tours
+  # Reservations Circuits
     post '/session_reservation_circuit', to: 'app/reservations/circuits/circuits#session_reservation_circuit'
     post '/create_reservation_circuit', to: 'app/reservations/circuits/circuits#create_reservation_circuit'
+    # Reservations Multidestinations
+      post '/session_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#session_reservation_multidestination'
+      post '/create_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#create_reservation_multidestination'
+
 
   get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations/reservations#transaction_payment', as: :checkout_elp_redirect
 

@@ -1,9 +1,7 @@
--# - adults = session[:reservation]['quantity_adults']
--# - kids   = session[:reservation]['quantity_kids']
--# - seats  = adults.to_i + kids.to_i
--# - @total_adults    = @reservationable.price * adults
--# - @total_kids      = @reservationable.calculate_kids(kids) * kids
--# - @total_price     = @total_adults# + @total_kids
+- reservation = session[:reservation]
+- square = session[:square_circuit]
+- circuit = KepplerTravel::Circuit.find(session[:reservationable]['id'])
+- circuitable = circuit.circuitables.find_by(ranking_id: square['ranking_id'])
 %section.invoice-transfers#invoice-transfers
   .container
     .gallary-header.text-center
@@ -48,6 +46,13 @@
                         = @user['email']
                         %br/
                         = @invoice['address']
+                        %br/
+                        = reservation['description']
+                        %br/
+                        = "Adultos (#{reservation['quantity_adults']})"
+                        %br/
+                        = "Niños (#{reservation['quantity_kids']})"
+
                   .row
                     .col-xs-12
                       %h5.text-center Información del Circuito
@@ -59,12 +64,18 @@
                         = @reservation['origin']
                         %br/
                     .col-xs-4
+                      %address
+                        %strong Tipo de Alojamiento
+                        %br/
+                        = circuitable.ranking.title[@lang]
+                        %br/
                     .col-xs-4
                       %address
                         %strong Fecha/Hora de Ida
                         %br/
                         = @reservation['flight_origin']
                         %br/
+
                   .row
                     .col-md-12
                       .panel.panel-default
@@ -82,20 +93,38 @@
                                     %strong Precio
                                   %td.text-center
                                     %strong Cantidad
-                                  %td.text-right
+                                  %td.text-center
                                     %strong Total
                               %tbody
+                                - table = circuitable.price_table(square, @currency)
+                                - table.each do |room|
+                                  - unless room.keys.include?(:total_price_table)
+                                    %tr
+                                      %td{style:'text-align:left!important;'}= "Habitación #{room[:type]}"
+                                      %td= number_to_currency(room[:price], locale: @locale)
+                                      %td= room[:quantity]
+                                      %td= number_to_currency(room[:total_room], locale: @locale)
                                 %tr
-                                  %td= @reservationable['title'][@lang]
-                                  %td.text-center
-                                    Adultos
-                                    = number_to_currency(3000, locale: @locale)
-                                    = "/"
-                                    Niños
-                                    = number_to_currency(1000, locale: @locale)
-                                  %td.text-center= 3
-                                  %td.text-right= number_to_currency(2000, locale: @locale)
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'}= table.last[:total_price_table]
+
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment
                         %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Cotizar"}/
+
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+:javascript
+  $('#button').on('click', function () {
+    swal({
+      type: 'warning',
+      title: 'Tu reservación está siendo procesada...',
+      text: 'Espere un momento...',
+      timer: 300000,
+      onOpen: () => {
+        swal.showLoading()
+      }
+    })
+  }); // END --- Seleccion de un Alojamiento u hotel

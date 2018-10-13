@@ -3,9 +3,13 @@ module App
   class FrontController < AppController
     layout 'layouts/templates/application'
     before_action :set_lang_currency
-    before_action :set_search,        only: %i[index circuits reservations tours vehicles]
-    before_action :set_params_widget, only: %i[circuits tours vehicles]
-    before_action :delete_session,    except: %i[checkout create_reservation_transfer session_reservation_transfer create_reservation_tour session_reservation_tour create_reservation_circuit session_reservation_circuit]
+    before_action :set_search, only: %i[index circuits multidestinations reservations tours vehicles]
+    before_action :set_params_widget, only: %i[circuits multidestinations tours vehicles]
+    before_action :delete_session,    except: %i[checkout
+      create_reservation_transfer session_reservation_transfer
+      create_reservation_tour session_reservation_tour
+      create_reservation_circuit session_reservation_circuit
+      create_reservation_multidestination session_reservation_multidestination]
 
     def set_locale_lang
       @locale = request.protocol + request.host_with_port + '/es'
@@ -15,6 +19,7 @@ module App
       @vehicles = KepplerTravel::Vehicle.all
       @tours    = KepplerTravel::Tour.all
       @circuits = KepplerTravel::Circuit.all
+      @multidestinations = KepplerTravel::Multidestination.all
     end
 
     def vehicles
@@ -27,6 +32,10 @@ module App
 
     def circuits
       @results = KepplerTravel::Circuit.find(params[:circuit_id])
+    end
+
+    def multidestinations
+      @results = KepplerTravel::Multidestination.find(params[:multidestination_id])
     end
 
     def errors
@@ -53,6 +62,7 @@ module App
       @seats                 = @adults + @kids
       @flight_origin_tour_picker = params[:flight_origin_tour_picker]
       @flight_origin_circuit_picker = params[:flight_origin_circuit_picker]
+      @flight_origin_multidestination_picker = params[:flight_origin_multidestination_picker]
     end
 
     def set_lang_currency

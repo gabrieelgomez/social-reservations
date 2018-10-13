@@ -10,14 +10,12 @@ module KepplerTravel
 
     # Relationships
     has_and_belongs_to_many :destinations
-    # has_and_belongs_to_many :lodgments
     has_many :reservations, as: :reservationable
 
+    # Relationships Poly
     has_many :circuitables
-    # has_many :destinations, through: :circuitables
-    has_many :lodgments, through: :circuitables
+    has_many :rankings, through: :circuitables
     has_many :circuitable_rooms, through: :circuitables
-    # has_many :rooms, through: :circuitables
 
     accepts_nested_attributes_for :circuitables
     accepts_nested_attributes_for :circuitable_rooms
@@ -37,7 +35,7 @@ module KepplerTravel
 
     # Fields for the search form in the navbar
     def self.search_field
-      fields = ["title", "quantity_days", "description", "include", "exclude", "files", "position", "deleted_at"]
+      fields = ["title", "quantity_days", "description", "include", "exclude", "itinerary", "status", "files", "position", "deleted_at"]
       build_query(fields, :or, :cont)
     end
 

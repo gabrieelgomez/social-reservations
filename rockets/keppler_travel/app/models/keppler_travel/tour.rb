@@ -15,6 +15,10 @@ module KepplerTravel
     validates :title, :description, :task, :price_adults, presence: true
     validates :title, uniqueness: true
 
+    def low_price(currency)
+      [self.price_adults[currency], self.price_kids[currency]].min
+    end
+
     def class_str
       self.class.to_s.split('::').last
     end

@@ -4,10 +4,12 @@ es:
       reservations: Reservaciones
       destinations: Destinos
       lodgments: Alojamientos
+      multidestinations: Multidestinos
       circuits: Circuitos
       tours: Tours
       vehicles: Vehículos
       reservations-submenu:
+        multidestinations: Multidestinos
         circuits: Circuitos
         tours: Tours
         vehicles: Traslados
@@ -18,6 +20,7 @@ es:
         keppler_travel/destination: destino
         keppler_travel/lodgment: alojamiento
         keppler_travel/tour: tour
+        keppler_travel/multidestination: multidestino
         keppler_travel/circuit: circuito
         keppler_travel/vehicle: vehículo
       pluralize:
@@ -25,6 +28,7 @@ es:
         destinations: destinos
         lodgments: alojamientos
         tours: tours
+        multidestinations: multidestinos
         circuits: circuitos
         vehicles: vehículos
     modules:
@@ -32,6 +36,7 @@ es:
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
       keppler_travel/admin/lodgments: 'KepplerTravel → Alojamientos'
       keppler_travel/admin/tours: 'KepplerTravel → Tours'
+      keppler_travel/admin/multidestinations: 'KepplerTravel → Multidestinos'
       keppler_travel/admin/circuits: 'KepplerTravel → Circuitos'
       keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
     settings:

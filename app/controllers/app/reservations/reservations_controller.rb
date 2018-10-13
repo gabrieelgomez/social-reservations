@@ -32,7 +32,7 @@ module App
             when 'circuit'
               set_circuit_checkout
             when 'multidestination'
-              nil
+              set_multidestination_checkout
           end
           # -----
         end
@@ -70,11 +70,14 @@ module App
             set_price_tour
           when 'circuit'
             @circuit = KepplerTravel::Circuit.find params[:reservationable_id]
-            @lodgments = @circuit.circuitable_rooms.as_json(
-              methods: %i[lodgment_id type_room]
+            @rankings = @circuit.circuitable_rooms.as_json(
+              methods: %i[ranking_id type_room]
             )
           when 'multidestination'
-            nil
+            @multidestination = KepplerTravel::Multidestination.find params[:reservationable_id]
+            @lodgments = @multidestination.multidestinationable_rooms.as_json(
+              methods: %i[lodgment_id type_room]
+            )
         end
       end
 
@@ -104,6 +107,12 @@ module App
       def set_circuit_checkout
         @render          = 'circuits'
         @reservationable = KepplerTravel::Circuit.find(@reservationable['id'])
+      end
+
+      # Set by Step 2 Multidestination
+      def set_multidestination_checkout
+        @render          = 'multidestinations'
+        @reservationable = KepplerTravel::Multidestination.find(@reservationable['id'])
       end
 
     end

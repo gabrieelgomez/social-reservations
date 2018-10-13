@@ -7,15 +7,13 @@
   %body.hold-transition.skin-blue.sidebar-mini.fixed
     .loader
       = render 'app/front/loader/loader'
-    .loader
-      = render 'app/front/loader/loader'
     .wrapper
       %header.main-header
         = render 'app/dashboard/dashboard/layouts/header'
       %aside.main-sidebar
         = render 'app/dashboard/dashboard/layouts/aside'
       .content-wrapper
-        = render 'app/dashboard/dashboard/transfers/show'
+        = render "app/dashboard/dashboard/#{params[:module]}/show"
 
     %script{:src => "/assets/js/loader.js"}
     %script{:src => "/assets/js/navbar.js"}

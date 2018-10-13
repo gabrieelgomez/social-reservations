@@ -67,12 +67,9 @@
   %aside#index-show.control-sidebar
 
   .mixed-btn
-    - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive?
-      - if can?(KepplerTravel::Circuit).create?
-        = link_to new_admin_travel_circuit_path, class: "btn-float" do
-          +
-    - else
-      %h4 Debe cargar Destinos o Alojamientos
+    - if can?(KepplerTravel::Circuit).create?
+      = link_to new_admin_travel_circuit_path, class: "btn-float" do
+        +
 
 :javascript
   $(document).ready(function(){

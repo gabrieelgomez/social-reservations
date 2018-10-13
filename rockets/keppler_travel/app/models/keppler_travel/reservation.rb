@@ -11,10 +11,10 @@ module KepplerTravel
     belongs_to :user
     belongs_to :reservationable, -> { with_deleted }, polymorphic: true
     has_one    :invoice
-    has_one    :square_circuit
+    has_many   :square, as: :squareable
     has_many   :travellers
     accepts_nested_attributes_for :travellers
-    accepts_nested_attributes_for :square_circuit
+    accepts_nested_attributes_for :square
 
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'

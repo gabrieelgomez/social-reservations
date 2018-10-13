@@ -10,12 +10,9 @@ module App
       def index
       end
 
-      def transfer_orders
+      def orders
       end
-
-      def tour_orders
-      end
-
+      
       def users
       end
 

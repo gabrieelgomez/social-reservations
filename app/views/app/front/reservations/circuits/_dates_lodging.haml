@@ -14,17 +14,11 @@
                 %label.btn.btn-hotel
                   %center
                     .icon-hotel{style: "background-image: url(/assets/img/hotel.svg)"}
-                      %input.room.js-hotelRoom{name: "lodgment_circuitable", type: "checkbox", value: circuitable.lodgment_id}/
+                      %input.room.js-hotelRoom{name: "ranking_circuitable", type: "checkbox", value: circuitable.ranking_id}/
               .col-lg-8
-                %p.title-hotel= circuitable.lodgment.title[@lang]
-                %p
-<<<<<<< HEAD
-                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: 'js_detailsHotel', type: 'button'
-
-
-=======
-                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
->>>>>>> e7b8ce7d19de32dcce67d20dec8c204cd0e7dc8a
+                %p.title-hotel= circuitable.ranking.title[@lang]
+                -# %p
+                -#   = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
 
 .box_type_rooms.room-hidden.room-disabled
   .row
@@ -41,7 +35,7 @@
           %p.price#room_single
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][single]", type: "number", min: 1}/
+            %input.js-square#single{name: "square_circuit[][single]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -52,7 +46,7 @@
           %p.price#room_doubles
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][doubles]", type: "number", min: 1}/
+            %input.js-square#doubles{name: "square_circuit[][doubles]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -63,7 +57,7 @@
           %p.price#room_triples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][triples]", type: "number", min: 1}/
+            %input.js-square#triples{name: "square_circuit[][triples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -74,7 +68,7 @@
           %p.price#room_quadruples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][quadruples]", type: "number", min: 1}/
+            %input.js-square#quadruples{name: "square_circuit[][quadruples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -85,7 +79,7 @@
           %p.price#room_quintuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][quintuples]", type: "number", min: 1}/
+            %input.js-square#quintuples{name: "square_circuit[][quintuples]", type: "number", min: 1}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -96,8 +90,8 @@
           %p.price#room_sextuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][sextuples]", type: "number", min: 1}/
-    .col-lg-2
+            %input.js-square#sextuples{name: "square_circuit[][sextuples]", type: "number", min: 1}/
+    .col{style: 'visibility: hidden;'}
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
@@ -107,11 +101,14 @@
           %p.price#room_children
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_circuit[][children]", type: "number", min: 1}/
+            %input.js-square#single{type: 'hidden', name: "square_circuit[][children]", type: "number", min: 1, value: @kids}/
 
 :javascript
-  var lodgments_ruby = #{raw @lodgments.to_json};
-  //We do that to ensure to get a correct JSON
-  var lodgments_json = JSON.stringify(lodgments_ruby)
+  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, }
 
-%script{src: "/assets/js/hotel-room.js"}
+  var rankings_ruby = #{raw @rankings.to_json};
+  //We do that to ensure to get a correct JSON
+  var rankings_json = JSON.stringify(rankings_ruby);
+
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+%script{src: "/assets/js/ranking-room.js"}

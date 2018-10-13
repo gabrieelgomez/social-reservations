@@ -11,5 +11,6 @@ module KepplerTravel
     def rooms_tables?
       true
     end
+
   end
 end

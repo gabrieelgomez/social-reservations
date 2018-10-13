@@ -20,9 +20,10 @@ module KepplerTravel
       fill_in "Exclude", with: @circuit.exclude
       fill_in "Files", with: @circuit.files
       fill_in "Include", with: @circuit.include
+      fill_in "Itinerary", with: @circuit.itinerary
       fill_in "Position", with: @circuit.position
-      fill_in "Price", with: @circuit.price
       fill_in "Quantity Days", with: @circuit.quantity_days
+      fill_in "Status", with: @circuit.status
       fill_in "Title", with: @circuit.title
       click_on "Create Circuit"
 
@@ -39,9 +40,10 @@ module KepplerTravel
       fill_in "Exclude", with: @circuit.exclude
       fill_in "Files", with: @circuit.files
       fill_in "Include", with: @circuit.include
+      fill_in "Itinerary", with: @circuit.itinerary
       fill_in "Position", with: @circuit.position
-      fill_in "Price", with: @circuit.price
       fill_in "Quantity Days", with: @circuit.quantity_days
+      fill_in "Status", with: @circuit.status
       fill_in "Title", with: @circuit.title
       click_on "Update Circuit"
 

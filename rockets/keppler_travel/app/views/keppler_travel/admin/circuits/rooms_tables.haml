@@ -34,8 +34,7 @@
                         %table.table.table-hover
                           %tr
                             %th
-                            %th Destino
-                            %th Alojamiento
+                            %th Categoría
                             %th Simple
                             %th Dobles
                             %th Triples
@@ -46,19 +45,17 @@
 
                           // Circuitables from Circuit
                           = f.simple_fields_for :circuitables, @circuit.circuitables do |circuitable|
-                            - lodgment = circuitable.object.lodgment
-                            - destination = circuitable.object.destination
+                            - ranking = circuitable.object.ranking
                             - circuit = circuitable.object.circuit
                             %tr
                               %td
                                 = circuitable.input :status, as: :boolean, label: false
-                              %td= destination.custom_title[I18n.locale.to_s]
-                              %td= lodgment.title['es']
+                              %td= ranking.title[I18n.locale.to_s]
 
                               // Circuitable Roms from one Circuitable from Circuit
                               = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
                                 %td
-                                  = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+                                  = cr.input :price_cop, label: false, input_html: {min: 0}
 
                 // USD
                 #usd.tab-pane
@@ -70,8 +67,7 @@
                         %table.table.table-hover
                           %tr
                             %th
-                            %th Destino
-                            %th Alojamiento
+                            %th Categoría
                             %th Simple
                             %th Dobles
                             %th Triples
@@ -79,11 +75,9 @@
                             %th Quintuples
                             %th Sextuples
                             %th Niños
-
                           // Circuitables from Circuit
                           = f.simple_fields_for :circuitables, @circuit.circuitables do |circuitable|
-                            - lodgment = circuitable.object.lodgment
-                            - destination = circuitable.object.destination
+                            - ranking = circuitable.object.ranking
                             - circuit = circuitable.object.circuit
                             %tr
                               %td
@@ -91,14 +85,14 @@
                                   .checkbox
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
-                                      %input#circuit_circuitables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= destination.custom_title[I18n.locale.to_s]
-                              %td= lodgment.title['es']
+                                      %input#multidestination_multidestinationables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
+                              %td= ranking.title[I18n.locale.to_s]
 
                               // Circuitable Roms from one Circuitable from Circuit
                               = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
                                 %td
-                                  = cr.input :price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+                                  = cr.input :price_usd, label: false, input_html: {min: 0}
+
 
 
 

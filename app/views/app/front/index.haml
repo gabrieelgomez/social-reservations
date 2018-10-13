@@ -97,6 +97,31 @@
                         %button.about-view.packages-btn
                           ver más
 
+            - @multidestinations.each do |multidestination|
+              .col-md-4.col-sm-6.mix-target.js_filterMultidestines
+                .box-card
+                  .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
+                  .box-information
+                    %h3= multidestination.title[@lang]
+                    %span.pull-right= number_to_currency(25000, locale: @locale)
+                    .more-information
+                      -# %p
+                      -#   %span
+                      -#     10 dias 5 noches
+                      %span= raw multidestination.description[@lang].truncate(100)
+
+                      %p
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                        %i.fa.fa-star.fa-star-custom
+                    .about-btn
+                      %a.link-card{:href => "#"}
+                        %button.about-view.packages-btn
+                          ver más
+
+
     %section#tours.tours
       .jumbotron.jumbotron-fluid.jb-bg-tours{:style => "background-image: url(/assets/img/bg-tours.jpg)"}
         .mask-tours
@@ -120,25 +145,26 @@
         .container
           .row
             - @tours.each do |tour|
-              .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
-                .box-card
-                  .box-image{:style => "background-image: url(#{tour.files.first.url})"}
-                  .box-information
-                    %h3= tour.title[@lang]
-                    .more-information
-                      %p
-                        %span
-                      %span= raw tour.description[@lang].truncate(120)
-                      %p
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                        %i.fa.fa-star.fa-star-custom
-                    .about-btn
-                      %a.link-card{:href => "#"}
-                        %button.about-view.packages-btn
-                          ver más
+              - if tour.featured
+                .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
+                  .box-card
+                    .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+                    .box-information
+                      %h3= tour.title[@lang]
+                      .more-information
+                        %p
+                          %span
+                        %span= raw tour.description[@lang].truncate(120)
+                        %p
+                          %i.fa.fa-star.fa-star-custom
+                          %i.fa.fa-star.fa-star-custom
+                          %i.fa.fa-star.fa-star-custom
+                          %i.fa.fa-star.fa-star-custom
+                          %i.fa.fa-star.fa-star-custom
+                      .about-btn
+                        %a.link-card{:href => "#"}
+                          %button.about-view.packages-btn
+                            ver más
 
     %section#tips-services.tips-services
       .container

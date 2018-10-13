@@ -11,10 +11,10 @@ module KepplerTravel
     # Relationships
     # has_many :rooms
     belongs_to :destination
-    has_many :square_circuits
-    has_many :circuitables
-    has_many :circuitable_rooms
-    has_many :circuits, through: :circuitables
+    has_many :squares, as: :squareable
+    has_many :multidestinationables
+    has_many :multidestinationable_rooms
+    has_many :multidestinations, through: :multidestinationables
     has_and_belongs_to_many :rooms
 
     def selected(destination)

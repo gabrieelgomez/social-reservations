@@ -25,10 +25,16 @@
           %i.fa.fa-angle-left.pull-right
       %ul.treeview-menu
         %li
-          = link_to transfer_orders_path, class:"" do
+          = link_to orders_path(@lang, @currency, 'circuits'), class:"" do
+            Circuitos
+        %li
+          = link_to orders_path(@lang, @currency, 'multidestinations'), class:"" do
+            Multidestinos
+        %li
+          = link_to orders_path(@lang, @currency, 'transfers'), class:"" do
             Traslados / Vehículos
         %li
-          = link_to tour_orders_path, class:"" do
+          = link_to orders_path(@lang, @currency, 'tours'), class:"" do
             Tours
     %li.treeview
       %a{href: "#"}

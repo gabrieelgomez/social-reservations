@@ -1,0 +1,41 @@
+%section.content-header
+  %h1
+    Órdenes de Reserva
+    -#%small Traslados
+%section.content
+  .row
+    .col-xs-12
+      .box
+        .box-header
+          %h3.box-title Multidestinos
+          .box-tools
+            .input-group.input-group-sm{:style => "width: 150px;"}
+              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
+              .input-group-btn
+                %button.btn.btn-default{:type => "submit"}
+                  %i.fa.fa-search
+        .box-body.table-responsive.no-padding
+          %table.table.table-hover
+            %tbody
+              %tr.items-orders
+                %th N° Orden
+                %th N° Factura
+                %th Costo Cotización
+                %th Estatus Reserva
+                %th Cotizante
+                %th Multidestino
+                %th Fecha de Reserva
+                %th Cant. Adultos
+                %th Cant. Niños
+              - current_user.reservations_where('multidestination').each do |reservation|
+                %tr
+                  %td= reservation.id
+                  %td= reservation.invoice.token
+                  %td= reservation.invoice.amount
+                  %td{style:"text-align: center;"}
+                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                  %td= reservation.travellers.first.try(:name)
+                  %td= truncate(reservation.origin, :length => 25)
+                  %td= reservation.flight_origin
+                  %td= reservation.quantity_adults
+                  %td= reservation.quantity_kids

@@ -20,7 +20,7 @@ module KepplerTravel
 
     test "should create circuit" do
       assert_difference('Circuit.count') do
-        post circuits_url, params: { circuit: { deleted_at: @circuit.deleted_at, description: @circuit.description, exclude: @circuit.exclude, files: @circuit.files, include: @circuit.include, position: @circuit.position, price: @circuit.price, quantity_days: @circuit.quantity_days, title: @circuit.title } }
+        post circuits_url, params: { circuit: { deleted_at: @circuit.deleted_at, description: @circuit.description, exclude: @circuit.exclude, files: @circuit.files, include: @circuit.include, itinerary: @circuit.itinerary, position: @circuit.position, quantity_days: @circuit.quantity_days, status: @circuit.status, title: @circuit.title } }
       end
 
       assert_redirected_to circuit_url(Circuit.last)
@@ -37,7 +37,7 @@ module KepplerTravel
     end
 
     test "should update circuit" do
-      patch circuit_url(@circuit), params: { circuit: { deleted_at: @circuit.deleted_at, description: @circuit.description, exclude: @circuit.exclude, files: @circuit.files, include: @circuit.include, position: @circuit.position, price: @circuit.price, quantity_days: @circuit.quantity_days, title: @circuit.title } }
+      patch circuit_url(@circuit), params: { circuit: { deleted_at: @circuit.deleted_at, description: @circuit.description, exclude: @circuit.exclude, files: @circuit.files, include: @circuit.include, itinerary: @circuit.itinerary, position: @circuit.position, quantity_days: @circuit.quantity_days, status: @circuit.status, title: @circuit.title } }
       assert_redirected_to circuit_url(@circuit)
     end
 

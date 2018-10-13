@@ -1,0 +1,12 @@
+-#%hr
+%h3 Términos y Condiciones
+.row
+  .col-lg-12
+    .form-custom
+    .form-group
+      .checkbox.checkbox-blue.checkbox-inline
+        %input#terms_conditions.styled{name: 'terms_conditions', :type => "checkbox", :value => "agree"}/
+        %label{:for => "terms_conditions"} 
+          Acepto
+          = succeed "." do
+            = link_to 'Términos y Condiciones', '#' , :class => '', :id => 'js_termsConditions', :type => 'button'

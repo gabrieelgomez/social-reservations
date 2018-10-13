@@ -43,10 +43,10 @@ function validateReservationCircuit(id_form) {
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-    let lodgment =  lodgment_id_radio;
-    json_parse = JSON.parse(lodgment_id_radio);
+    let ranking =  ranking_id_radio;
+    json_parse = JSON.parse(ranking_id_radio);
 
-     $('form').append(`<input type="hidden" name="square_circuit[][lodgment_id]" value=${json_parse['lodgment_id']} /> `);
+     $('form').append(`<input type="hidden" name="square_circuit[][ranking_id]" value=${json_parse['ranking_id']} /> `);
      // debugger;
      form.submit();
    }

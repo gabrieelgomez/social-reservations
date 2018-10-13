@@ -1,0 +1,14 @@
+%hr
+%h3#travellers_form Datos del Viajero
+- @seats.times do |i|
+  .row
+    .col-lg-6
+      .form-custom
+      .form-group
+        %label.title{for: "name"} Nombre
+        %input#name.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: "Ingrese nombre"}/
+    .col-lg-6
+      .form-custom
+      .form-group
+        %label.title{for: "dni"} Identificación
+        %input#dni.form-control.custom_input{name: 'travellers[][dni]', type: "text", placeholder: "Ingrese identificación"}/

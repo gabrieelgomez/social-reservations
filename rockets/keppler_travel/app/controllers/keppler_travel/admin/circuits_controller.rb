@@ -46,7 +46,7 @@ module KepplerTravel
       # POST /circuits
       def create
         @circuit = Circuit.new(circuit_params)
-        @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
+        # @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
         if @circuit.save!
           @circuitable = CircuitableService.create(@circuit, params)
           redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
@@ -58,9 +58,9 @@ module KepplerTravel
 
       # PATCH/PUT /circuits/1
       def update
-        ids = params[:circuit][:destination_ids].try(:split, ',').try(:map, &:to_i)
+        # ids = params[:circuit][:destination_ids].try(:split, ',').try(:map, &:to_i)
         if @circuit.update(circuit_params)
-          @circuit.update(destination_ids: ids) if ids
+          # @circuit.update(destination_ids: ids) if ids
           redirect(@circuit, params)
         else
           render :edit
@@ -68,7 +68,7 @@ module KepplerTravel
       end
 
       def rooms_tables
-        CircuitableService.update_circuitable(@circuit)
+        # @circuitable = CircuitableService.create(@circuit, params)
       end
 
       def clone
@@ -145,7 +145,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def circuit_params
-        params.require(:circuit).permit(:quantity_days, :price, :position, :deleted_at, :status, circuitables_attributes: [:id, :status], circuitable_rooms_attributes: [:id, :price_cop, :price_usd],
+        params.require(:circuit).permit(:quantity_days, :price, :featured, :position, :deleted_at, :status, circuitables_attributes: [:id, :status], circuitable_rooms_attributes: [:id, :price_cop, :price_usd],
         files:[], title: @language, description: @language, include: @language, exclude: @language, itinerary: @language)
       end
 

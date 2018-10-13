@@ -5,6 +5,13 @@ module KepplerTravel
     include CloneRecord
     require 'csv'
     acts_as_list
+    acts_as_paranoid
+
+    # Relationships
+    has_many :squares, as: :squareable
+    has_many :circuitables
+
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["title", "position", "deleted_at"]

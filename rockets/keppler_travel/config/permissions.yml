@@ -1,20 +1,4 @@
 modules:
- rankings:
-    name: Ranking
-    actions: [
-      'index', 'create', 'update',
-      'destroy', 'download', 'upload',
-      'clone'
-    ]
-  
- lodgments:
-    name: Lodgment
-    actions: [
-      'index', 'create', 'update',
-      'destroy', 'download', 'upload',
-      'clone'
-    ]
-  
  circuits:
     name: Circuit
     actions: [
@@ -23,6 +7,30 @@ modules:
       'clone'
     ]
   
+ rankings:
+    name: Ranking
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+
+ lodgments:
+    name: Lodgment
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+
+ multidestinations:
+    name: Multidestination
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+
  tours:
     name: Tour
     actions: [
@@ -30,7 +38,7 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  
+
  reservations:
     name: Reservation
     actions: [
@@ -38,7 +46,7 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  
+
  destinations:
     name: Destination
     actions: [
@@ -46,7 +54,7 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  
+
  vehicles:
     name: Vehicle
     actions: [
@@ -54,4 +62,3 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  

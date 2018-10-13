@@ -4,13 +4,12 @@ module KepplerTravel
     belongs_to :circuitable
     belongs_to :room
 
-    def lodgment_id
-      self.circuitable.lodgment_id
+    def ranking_id
+      self.circuitable.ranking_id
     end
 
     def type_room
       self.room.type_room
     end
-
   end
 end

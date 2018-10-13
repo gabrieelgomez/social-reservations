@@ -1,0 +1,129 @@
+%section#seach-widget
+  .container
+    .box-search
+      .container
+        .row
+          .col-lg-9
+            %p.result
+              %span
+                Su búsqueda:
+              %span= @multidestination.title[@lang].titleize
+          .col-lg-3
+            %p
+              %span
+                -#%i.icon.icon-magnifier
+                %a.pull-right.link-widget
+                  Volver a relizar la búsqueda
+
+
+  .container.js-widget.js-hide-widget.widget-results
+    .row
+      .col-lg-12
+        = render 'app/layouts/widget'
+
+%section.reservation-circuits#reservation-circuits
+  .container
+    .gallary-header.text-center
+      %h2
+        Reserva de Circuito
+      %p
+        Completa todos los datos para confirmar y pagar tu reserva.
+  .box-reservation
+    .container
+      = simple_form_for @reservation, url: '/session_reservation_multidestination', method: :post do |f|
+        .row{style:"display:flex;"}
+          %input{value: @multidestination.id, type: 'hidden', name: 'reservationable_id'}
+          %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
+          %input{value: @lang, type: 'hidden', name: 'lang'}
+          %input{value: @currency, type: 'hidden', name: 'currency'}
+          %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
+          %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
+          .col-lg-8
+            .reservation-data
+              //Reservation Data
+              = render 'app/front/reservations/multidestinations/dates_reservations', f: f
+
+              //Lodging Data
+              = render 'app/front/reservations/multidestinations/dates_lodging', f: f
+
+              //Requests / Observations
+              = render 'app/front/reservations/multidestinations/requests_observations'
+
+              //Billing Data
+              = render 'app/front/reservations/multidestinations/dates_billing'
+
+              //Privacy Policy
+              = render 'app/front/reservations/multidestinations/dates_privacy_policy'
+
+              //Cancellations Policy
+              = render 'app/front/reservations/multidestinations/dates_cancellations_policy'
+
+              //Terms & Conditions
+              = render 'app/front/reservations/multidestinations/dates_terms_conditions'
+
+
+
+          .col-lg-4
+            // Reservation Summary
+            .reservation-resumen
+              = render 'app/front/reservations/multidestinations/resumen'
+    .container
+      //Modal - Privacy Policy
+      = render 'app/front/reservations/multidestinations/modal/privacy_policy'
+    .container
+      //Modal - Cancellations Policy
+      = render 'app/front/reservations/multidestinations/modal/cancellations_policy'
+    .container
+      //Modal - Terms & Conditions
+      = render 'app/front/reservations/multidestinations/modal/terms_conditions'
+    .container
+      //Modal - Details Hotel
+      = render 'app/front/reservations/multidestinations/modal/details_hotel'
+
+%link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+
+:scss
+  label.error-class{color: #e60707 !important;}
+
+
+:javascript
+  validateReservationCircuit('#new_reservation')
+  validateWidgetForm('#search-input');
+
+  $( '.link-widget' ).on( 'click', function() {
+      $('.js-widget').removeClass('js-hide-widget');
+      $('.js-widget').addClass('js-show-widget');
+  });
+
+  $(document).ready(function(){
+      $("#js_privacyPolicy").click(function(){
+        $("#modalPrivacyPolicy").modal();
+      });
+      $("#js_termsConditions").click(function(){
+        $("#modalTermsConditions").modal();
+      });
+      $("#js_cancellationsPolicy").click(function(){
+        $("#modalCancellationsPolicy").modal();
+      });
+
+      $(".js_detailsHotel").click(function(){
+        let id = $(this).attr('id');
+        $('#' + id + '_1').modal();
+      });
+
+  });
+
+  $(document).ready(function(){
+    $(".room").slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    infinite: true,
+    cssEase: 'linear',
+    fade: true,
+    arrows: false,
+    dots: true,
+    });
+  });

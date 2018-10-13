@@ -96,6 +96,39 @@ function validateCircuit(id_form){
      if (circuit_files  == ''){
        alert('Agregue mínimo una imagen');
      }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}
+
+
+function validateMultidestination(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'multidestination[price]': { required: true},
+     'multidestination[quantity_days]': { required: true, digits: true, number: true},
+     'multidestination[destination_ids]': { required: true}
+     },
+   messages: {
+     'multidestination[destination_ids]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var multidestination_files = $('#multidestination_files').val();
+     var destinations = $('#destinations_multidestinations').val();
+
+     $('form').append(`<input type="hidden" name="multidestination[destination_ids]" value=${destinations} /> `);
+
+     if (multidestination_files  == ''){
+       alert('Agregue mínimo una imagen');
+     }
      else if (destinations == null){
        alert('Agregue mínimo un destino');
      }

@@ -117,3 +117,16 @@
                     .col-lg-12
                       .invoice-transfers__box--payment
                         %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+:javascript
+  $('#button').on('click', function () {
+    swal({
+      type: 'warning',
+      title: 'Tu reservación está siendo procesada...',
+      text: 'Espere un momento...',
+      timer: 300000,
+      onOpen: () => {
+        swal.showLoading()
+      }
+    })
+  }); // END --- Seleccion de un Alojamiento u hotel
