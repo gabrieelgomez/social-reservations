@@ -61,10 +61,10 @@ module App
         private
 
         def calculate_price
-          # multidestinationable = @reservation.reservationable.multidestinationables.find_by(lodgment_id: session[:square_multidestination]['lodgment_id'])
-          #
-          # table = multidestinationable.price_table(session[:square_multidestination], session[:invoice].first['currency'])
-          # @price_total = table.last[:total_price_table]
+          multidestinationable = @reservation.reservationable.multidestinationables.find_by(lodgment_id: session[:square_multidestination]['lodgment_id'])
+
+          table = multidestinationable.price_table(session[:square_multidestination], session[:invoice].first['currency'])
+          @price_total = table.last[:total_price_table]
         end
 
       end

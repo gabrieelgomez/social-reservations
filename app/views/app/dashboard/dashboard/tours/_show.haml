@@ -18,21 +18,22 @@
           %table.table.table-hover
             %tbody
               %tr.items-orders
-                %th Order N°
-                %th Tipo de Orden
-                %th Tour
-                %th Precio
-                %th Pasajeros
-                %th Estatus
+                %th N° Orden
+                %th N° Factura
+                %th Moneda
+                %th Costo Reserva
+                %th Estatus Reserva
                 %th Pago
-                %th Usuario
+                %th Tour
+                %th Pasajeros
+                %th Cant. Adultos
+                %th Cant. Niños
               - current_user.reservations_where('tour').each do |reservation|
                 %tr
+                  %td= reservation.id
                   %td= reservation.invoice.token
-                  %td= reservation.reservationable.class_str
-                  %td= truncate(reservation.origin, :length => 25)
-                  %th= "Precio"
-                  %td= reservation.travellers.count
+                  %td= reservation.invoice.currency.upcase
+                  %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
                   %td{style:"text-align: center;"}
@@ -44,4 +45,7 @@
                           Pagar
                     - else
                       %h6 Pagado
-                  %td= current_user.email
+                  %td= reservation.reservationable.title[@lang]
+                  %td= reservation.travellers.count
+                  %td= reservation.quantity_adults
+                  %td= reservation.quantity_kids

@@ -108,7 +108,7 @@
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'} -----
-                                  %td{style: 'border-top: 2px solid #000;'}= table.last[:total_price_table]
+                                  %td{style: 'border-top: 2px solid #000;'}= number_to_currency(table.last[:total_price_table], locale: @locale)
 
                   .row
                     .col-lg-12

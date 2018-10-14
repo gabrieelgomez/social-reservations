@@ -63,7 +63,7 @@
         - else
           .col-lg-7
             .content-circuits__description
-              %h3 Descripción del Circuitos
+              %h3 Descripción del Multidestino
               .content-circuits__description--summary
                 %p= raw @results.description[@lang]
             -#.content-circuits__data
@@ -100,7 +100,7 @@
           .col-lg-5
             .content-circuits__image
               .carrusel-galery
-                .galery_circuits
+                .galery_multidestinations
                   - @results.files.each_with_index do |image|
                     .galery__item
                       %img{:alt => "", :src => image.url, :class => "img-responsive"}/

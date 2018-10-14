@@ -1,4 +1,3 @@
-multidestination-#%hr
 %h3 Alojamiento
 .row
   .col-lg-12
@@ -91,21 +90,24 @@ multidestination-#%hr
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
             %input{name: "square_multidestination[][sextuples]", type: "number", min: 1}/
-    -# .col-lg-2
-    -#   %label.btn.btn-room
-    -#     %center
-    -#       .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
-    -#         %input.type-room.js-typeRoom{name: 'room_children', type: "checkbox"}/
-    -#       %p Habitación
-    -#       %p Niño
-    -#       %p.price#room_children
-    -#     .quantity-type-room.js-quantityRoom.quantity-disabled
-    -#       .quantity-room
-    -#         %input{name: "square_multidestination[][children]", type: "number", min: 1}/
+    .col{style: 'visibility: hidden;'}
+      %label.btn.btn-room
+        %center
+          .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_children', type: "checkbox"}/
+          %p Habitación
+          %p Niño
+          %p.price#room_children
+        .quantity-type-room.js-quantityRoom.quantity-disabled
+          .quantity-room
+            %input.js-square#single{type: 'hidden', name: "square_multidestination[][children]", type: "number", min: 1, value: @kids}/
 
 :javascript
+  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, }
+
   var lodgments_ruby = #{raw @lodgments.to_json};
   //We do that to ensure to get a correct JSON
-  var lodgments_json = JSON.stringify(lodgments_ruby)
+  var lodgments_json = JSON.stringify(lodgments_ruby);
 
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{src: "/assets/js/hotel-room.js"}

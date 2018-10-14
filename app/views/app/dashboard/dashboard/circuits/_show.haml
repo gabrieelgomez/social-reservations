@@ -31,7 +31,7 @@
                 %tr
                   %td= reservation.id
                   %td= reservation.invoice.token
-                  %td= reservation.invoice.amount
+                  %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
                   %td= reservation.travellers.first.try(:name)
