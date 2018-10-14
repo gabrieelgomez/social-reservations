@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 ruby '2.5.1'
 gem 'rails', '5.2.0'
@@ -7,13 +5,12 @@ gem 'rails', '5.2.0'
 # Javascript
 gem 'ckeditor', '4.2.4'
 gem 'jquery-rails', '4.3' # jQuery library
-gem 'nprogress-rails', '0.2.0.2' #
+gem 'nprogress-rails', '0.2.0.2'
 gem 'remotipart', '1.3.0'
 gem 'vuejs-rails', '2.5.13' # VueJS library
 
 # Server
 gem 'puma', '~> 3.11', '>= 3.11.3'
-# master
 # Documentation
 gem 'sdoc', '1.0.0'
 
@@ -75,7 +72,6 @@ gem 'pundit', '1.1.0'
 gem 'rolify', '5.2.0'
 
 # Search
-# gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack'
 gem 'ransack', '1.8.8'
 
 # Route translation
@@ -114,7 +110,7 @@ group :development, :test do
   gem 'jshint' # JavaScripts Linter
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', '~> 0.54.0', require: false
-  gem "rubycritic", '3.4.0', require: false
+  gem 'rubycritic', '3.4.0', require: false
   gem 'scss_lint', '~> 0.57.0', require: false
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'pundit-matchers', '~> 1.4.1'
@@ -127,8 +123,6 @@ gem 'keppler_ga_dashboard', path: 'rockets/keppler_ga_dashboard'
 
 #---- keppler_ga_dashboard ----
 gem 'keppler_travel', path: 'rockets/keppler_travel'
-# gem 'select2-rails'
-# gem "selectize-rails"
 
 #---- gems frontend----
 gem 'slick_rails'
