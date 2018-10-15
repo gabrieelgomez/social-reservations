@@ -86,6 +86,24 @@ es:
       inner_price: Precio dentro Perímetro
       outer_price: Precio fuera Perímetro
       task: Tareas
+      origin: Origen
+      arrival: Llegada
+      origin_location: Coordenadas de Origen
+      arrival_location: Coordenadas de Llegada
+      flight_origin: Fecha de Vuelo/Recepción de Origen
+      flight_arrival: Fecha de Vuelo/Recepción de Llegada
+      quantity_adults: Cantidad de Adultos
+      quantity_kids: Cantidad de Niños
+      quantity_kit: Cantidad de Equipaje
+      round_trip: ¿Ida y Vuelta?
+      airline_origin: Aeropuerto Origen
+      airline_arrival: Aeropuerto Llegada
+      kit: Equipaje
+      kit_weight: Equipaje del Vehículo (Peso)
+      kit_quantity: Equipaje del Vehículo (Cantidad de pasajeros)
+      seat_max: Asientos máx. Permitidos
+      price_cop: Precio COP
+      price_usd: Precio USD
       id: Identificador
       title: Título
       subtitle: Subtítulo

@@ -1,0 +1,128 @@
+- reservationable = @reservation.reservationable
+- invoice = @reservation.invoice
+
+.container
+  .row
+    .col-lg-2
+      = link_to admin_travel_reservations_path(model_name: @model.downcase), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        .arrow-back.btn.btn-default
+          %i.fa.fa-angle-left
+          = t('keppler.actions.back')
+
+  .show-section
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title
+              Keppler Travel
+              #{params[:model_name].pluralize.titleize} ->
+              Reservación #
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Reservation).destroy?
+                = link_to admin_travel_reservation_path(@reservation), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                  %i.icon-trash
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                - @reservation.as_json(only: ["origin", "arrival", 'origin_location', 'arrival_location', 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'quantity_kit', 'round_trip', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description', 'user']).each do |attribute, value|
+                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
+                    %tr.list-row
+                      %th.display-label= t("activerecord.attributes.#{attribute}")
+                      %td.display-value.fs-body-1.tc-black-2
+                        - if @attachments.include?(attribute)
+                          = image_tag value.url unless value.url.blank?
+                        - else
+                          = value.blank? ? '-----------' : value
+
+  .show-section
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Datos de Orden/Factura
+            .box-tools.pull-right
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+
+                %tr.list-row
+                  %th.display-label N° de Orden
+                  %td.display-value.fs-body-1.tc-black-2= invoice.id
+
+                %tr.list-row
+                  %th.display-label N° de Factura
+                  %td.display-value.fs-body-1.tc-black-2= invoice.token
+
+                %tr.list-row
+                  %th.display-label Moneda
+                  %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+
+                %tr.list-row
+                  %th.display-label Costo de la Reserva
+                  %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
+
+                %tr.list-row
+                  %th.display-label Estatus de la Reserva
+                  %td.display-value.fs-body-1.tc-black-2= invoice.status
+
+                %tr.list-row
+                  %th.display-label Nombre del Cotizante
+                  %td.display-value.fs-body-1.tc-black-2= @reservation.user.name
+
+                %tr.list-row
+                  %th.display-label Dirección de Facturación
+                  %td.display-value.fs-body-1.tc-black-2= invoice.address
+
+  .show-section
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Datos de los Viajeros
+            .box-tools.pull-right
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                - @reservation.travellers.each_with_index do |traveller, index|
+                  %tr.list-row
+                    %th.display-label= "Viajero # #{index+1}"
+                    %td.display-value.fs-body-1.tc-black-2
+                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+
+  .show-section
+    .row
+      .col-lg-5
+        - @reservation.reservationable.as_json(only: ["cover"]).each do |attribute, value|
+          .box.slice-box
+            .box-header.with-border
+              %h3.box-title Cover
+              .box-tools.pull-right
+                -# %a.btn.btn-box-tool{"data-widget" => "collapse", type: "button"}
+                -#   %i.fa.fa-minus
+            .box-body.box-body-no-padding
+              - unless value.url.blank?
+                = image_tag value.url, class: 'img-show'
+      .col-lg-7
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Datos del Vehículo
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.title")
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.title.blank? ? '-----------' : @reservation.reservationable.title['es']
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.kit_weight")
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.kit['weight'].blank? ? '-----------' : @reservation.reservationable.kit['weight']
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.kit_quantity")
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.kit['quantity'].blank? ? '-----------' : @reservation.reservationable.kit['quantity']
+
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.seat_max")
+                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.seat.blank? ? '-----------' : @reservation.reservationable.seat
