@@ -41,6 +41,9 @@ module App
     def errors
     end
 
+    def pqrs
+    end
+
     private
 
     def set_search

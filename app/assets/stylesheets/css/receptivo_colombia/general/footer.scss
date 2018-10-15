@@ -1,0 +1,183 @@
+.footer {
+  position: relative;
+  background: #f9f9f9;
+  padding: 30px 0 30px 0;
+
+  &__content {
+    padding: 60px 0;
+
+    .single-footer-item {
+      font-family: 'Poppins', sans-serif;
+      text-transform: capitalize;
+      height: 285px;
+
+      h2 {
+        color: #565a5c;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 40px;
+      }
+
+      .single-footer-txt {
+        p {
+          margin-bottom: 8px;
+
+          a {
+            color: #565a5c;
+            font-size: 16px;
+            -webkit-transition: .1s ease-in-out;
+            -moz-transition: .1s ease-in-out;
+            -ms-transition: .1s ease-in-out;
+            -o-transition: .1s ease-in-out;
+            transition: .1s ease-in-out;
+
+            &:hover {
+              color: #43b7e8;
+              font-weight: 500;
+            }
+          }
+        }
+
+        ul {
+          li {
+            margin: 8px 0;
+
+            a {
+              span {
+                color: #666666;
+                font-size: 14px;
+                text-transform: initial;
+              }
+            }
+          }
+        }
+      }
+
+      .footer-logo {
+        height: 100%;
+        width: 100%;
+        margin-top: 20px;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    .single-footer-item .slice-group:hover {
+      color: #c15010;
+      text-decoration: none;
+    }
+
+    .foot-icons {
+      text-align: center;
+      margin-top: 0px;
+
+      ul {
+        float: left !important;
+
+        li {
+          padding: 0 10px;
+          text-align: center;
+
+          a {
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            -webkit-transition: all 0.5s ease-in-out 0s;
+            -moz-transition: all 0.5s ease-in-out 0s;
+            -o-transition: all 0.5s ease-in-out 0s;
+            -ms-transition: all 0.5s ease-in-out 0s;
+            transition: all 0.5s ease-in-out 0s;
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+
+            &:hover {
+              -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+
+          &:nth-child(1) {
+            a {
+              background: #3b5999;
+            }
+          }
+
+          &:nth-child(2) {
+            a {
+              background: #1da1f3;
+            }
+          }
+
+          &:nth-child(3) {
+            a {
+              background: #8938ae;
+              background: -webkit-linear-gradient(right, #8938ae 0%, #c13181 100%);
+              background: -o-linear-gradient(right, #8938ae 0%, #c13181 100%);
+              background: linear-gradient(to right, #8938ae 0%, #c13181 100%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  hr {
+    border-top: 1px solid #ebebeb;
+  }
+
+  .copyright {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+    .slice-group {
+      color: #4e4e56;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      -webkit-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      transition: all .5s ease;
+    }
+
+    .keppler-admin {
+      &:hover .keppler-logo {
+        transform: rotate(360deg);
+      }
+
+      &:hover .svg-keppler {
+        fill: #DA291C;
+      }
+
+      .keppler-logo {
+        height: 20px;
+        transition: .5s all;
+        margin-left: -5px;
+        -webkit-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+        vertical-align: middle;
+      }
+
+      .svg-keppler {
+        fill: #4e4e56;
+      }
+    }
+
+  }
+}

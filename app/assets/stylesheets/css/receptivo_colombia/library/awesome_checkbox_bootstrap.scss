@@ -45,7 +45,7 @@
     cursor: pointer;
 
     &:focus {
-      + {
+      ~ {
         label {
           &::before {
             outline: thin dotted;
@@ -57,7 +57,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::after {
             font-family: "FontAwesome";
@@ -68,7 +68,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::after {
             display: block;
@@ -87,7 +87,7 @@
     &:disabled {
       cursor: not-allowed;
 
-      + {
+      ~ {
         label {
           opacity: 0.65;
 
@@ -106,7 +106,7 @@
     cursor: pointer;
 
     &:focus {
-      + {
+      ~ {
         label {
           &::before {
             outline: thin dotted;
@@ -118,7 +118,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::after {
             font-family: "FontAwesome";
@@ -129,7 +129,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::after {
             display: block;
@@ -148,7 +148,7 @@
     &:disabled {
       cursor: not-allowed;
 
-      + {
+      ~ {
         label {
           opacity: 0.65;
 
@@ -177,7 +177,7 @@
 .checkbox-primary {
   input[type="checkbox"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #337ab7;
@@ -192,7 +192,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #337ab7;
@@ -209,7 +209,7 @@
 
   input[type="radio"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #337ab7;
@@ -224,7 +224,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #337ab7;
@@ -243,7 +243,7 @@
 .checkbox-danger {
   input[type="checkbox"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #d9534f;
@@ -258,7 +258,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #d9534f;
@@ -275,7 +275,7 @@
 
   input[type="radio"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #d9534f;
@@ -290,7 +290,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #d9534f;
@@ -309,7 +309,7 @@
 .checkbox-info {
   input[type="checkbox"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5bc0de;
@@ -324,7 +324,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5bc0de;
@@ -341,7 +341,7 @@
 
   input[type="radio"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5bc0de;
@@ -356,7 +356,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5bc0de;
@@ -375,7 +375,7 @@
 .checkbox-warning {
   input[type="checkbox"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #f0ad4e;
@@ -390,7 +390,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #f0ad4e;
@@ -407,7 +407,7 @@
 
   input[type="radio"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #f0ad4e;
@@ -422,7 +422,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #f0ad4e;
@@ -441,7 +441,7 @@
 .checkbox-success {
   input[type="checkbox"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5cb85c;
@@ -456,7 +456,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5cb85c;
@@ -473,7 +473,7 @@
 
   input[type="radio"] {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5cb85c;
@@ -488,7 +488,7 @@
     }
 
     &:indeterminate {
-      + {
+      ~ {
         label {
           &::before {
             background-color: #5cb85c;
@@ -557,7 +557,7 @@
     cursor: pointer;
 
     &:focus {
-      + {
+      ~ {
         label {
           &::before {
             outline: thin dotted;
@@ -569,7 +569,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::after {
             -webkit-transform: scale(1, 1);
@@ -584,7 +584,7 @@
     &:disabled {
       cursor: not-allowed;
 
-      + {
+      ~ {
         label {
           opacity: 0.65;
 
@@ -603,7 +603,7 @@
 
 .radio-primary {
   input[type="radio"] {
-    + {
+    ~ {
       label {
         &::after {
           background-color: #337ab7;
@@ -612,7 +612,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             border-color: #337ab7;
@@ -629,7 +629,7 @@
 
 .radio-danger {
   input[type="radio"] {
-    + {
+    ~ {
       label {
         &::after {
           background-color: #d9534f;
@@ -638,7 +638,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             border-color: #d9534f;
@@ -655,7 +655,7 @@
 
 .radio-info {
   input[type="radio"] {
-    + {
+    ~ {
       label {
         &::after {
           background-color: #5bc0de;
@@ -664,7 +664,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             border-color: #5bc0de;
@@ -681,7 +681,7 @@
 
 .radio-warning {
   input[type="radio"] {
-    + {
+    ~ {
       label {
         &::after {
           background-color: #f0ad4e;
@@ -690,7 +690,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             border-color: #f0ad4e;
@@ -707,7 +707,7 @@
 
 .radio-success {
   input[type="radio"] {
-    + {
+    ~ {
       label {
         &::after {
           background-color: #5cb85c;
@@ -716,7 +716,7 @@
     }
 
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             border-color: #5cb85c;
@@ -733,7 +733,7 @@
 
 input[type="checkbox"].styled {
   &:checked {
-    + {
+    ~ {
       label {
         &:after {
           font-family: 'FontAwesome';
@@ -746,7 +746,7 @@ input[type="checkbox"].styled {
 
 input[type="radio"].styled {
   &:checked {
-    + {
+    ~ {
       label {
         &:after {
           font-family: 'FontAwesome';
@@ -760,7 +760,7 @@ input[type="radio"].styled {
 input[type="checkbox"] {
   .styled {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             color: #fff;
@@ -778,7 +778,7 @@ input[type="checkbox"] {
 input[type="radio"] {
   .styled {
     &:checked {
-      + {
+      ~ {
         label {
           &::before {
             color: #fff;

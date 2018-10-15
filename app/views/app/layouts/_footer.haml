@@ -1,5 +1,5 @@
 .container
-	.footer-content
+	.footer__content
 		.row
 			.col-sm-3
 				.single-footer-item
@@ -43,7 +43,11 @@
 						%p RNT: 32133
 						%p info@receptivocolombia.com
 						%p Colombia
-						-#%ul
+						%ul
+							%li
+								= link_to   '#' , :class => '', :id => '', :type => 'button' do
+									%span
+										PQRS
 							%li
 								= link_to   '#' , :class => '', :id => 'js_cancellations_footer', :type => 'button' do
 									%span
@@ -56,8 +60,6 @@
 								= link_to   '#' , :class => '', :id => 'js_terms_footer', :type => 'button' do
 									%span
 										Términos y Condiciones
-
-
 
 				.foot-icons
 					%ul.footer-social-links.list-inline.list-unstyled
