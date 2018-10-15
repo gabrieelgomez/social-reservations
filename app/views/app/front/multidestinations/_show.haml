@@ -33,12 +33,12 @@
     .row
       .col-lg-12
         = render 'app/layouts/widget'
-
-%section#circuits.circuits
+%section#multidestinations.multidestinations
   - unless @results.blank?
-    .banner-circuits{:style => "background-image: url(/assets/img/banner.jpg)"}
-      .banner-circuits--mask
+    .banner-multidestinations{:style => "background-image: url(/assets/img/banner.jpg)"}
+      .banner-multidestinations--mask
         %h2= @results.title[@lang].titleize
+        %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
   -#.container
     - unless @results.blank?
       .gallary-header.text-center
@@ -46,7 +46,8 @@
         %p
           //Description circuits
           Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
-  .content-circuits
+
+  .content-multidestinations
     .container
       .row
         - if @results.blank?
@@ -62,9 +63,9 @@
                     Volver a relizar la búsqueda
         - else
           .col-lg-7
-            .content-circuits__description
-              %h3 Descripción del Multidestino
-              .content-circuits__description--summary
+            .content-multidestinations__description
+              %h3 Descripción
+              .content-multidestinations__description--summary
                 %p= raw @results.description[@lang]
             -#.content-circuits__data
               .row
@@ -82,7 +83,7 @@
                       .form-group
                         %label Cantidad de Niños
                         %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
-            .content-circuits__button
+            .content-multidestinations__button
               .row
                 .col-lg-12
                   %center
@@ -98,17 +99,17 @@
                         Reservar
 
           .col-lg-5
-            .content-circuits__image
+            .content-multidestinations__image
               .carrusel-galery
                 .galery_multidestinations
                   - @results.files.each_with_index do |image|
                     .galery__item
                       %img{:alt => "", :src => image.url, :class => "img-responsive"}/
 
-          .content-circuits__tab
+          .content-multidestinations__tab
             .col-lg-12
-              .content-circuits__tab--box
-                %ul.nav.nav-tabs.nav-item-circuits
+              .content-multidestinations__tab--box
+                %ul.nav.nav-tabs.nav-item-multidestinations
                   %li.active
                     %a{"data-toggle" => "tab", :href => "#information"} Información
                   %li

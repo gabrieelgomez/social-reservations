@@ -1,7 +1,7 @@
-.tours_ {
+.multidestinations {
   padding: 0;
 
-  .banner-tours {
+  .banner-multidestinations {
     height: 280px;
     background: #756f6f;
     width: 100%;
@@ -12,7 +12,7 @@
     position: relative;
 
     &--mask {
-      background-color: hsla(0, 0%, 0%, 0.25);
+      background-color: hsla(0, 0%, 0%, 0.35);
       position: absolute;
       top: 0;
       left: 0;
@@ -21,18 +21,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
 
       h2 {
         color: $color-white;
         text-align: center;
         font-family: $font-primary;
         font-size: 40px;
+        font-weight: bold;
+      }
+
+      p {
+        margin: 0;
+        padding: 20px;
+        color: $color-white;
+        text-align: center;
+        font-family: $font-primary;
+        font-size: 20px;
+        font-weight: bold;
 
       }
     }
   }
 
-  .content-tours {
+  .content-multidestinations {
     padding: 45px 0;
 
     &__description {
@@ -56,7 +68,7 @@
       .carrusel-galery {
         width: 100%;
 
-        .galery {
+        .galery_multidestinations {
           .slick-prev {
             left: -50px !important;
             z-index: 2;
@@ -159,8 +171,9 @@
           0px 1px 3px 0px rgba(0, 0, 0, 0.12);
         background: white;
         min-height: 300px;
+        margin: 20px 0;
 
-        .nav-item-tours {
+        .nav-item-circuits {
           li {
             a {
               border-radius: 0;
@@ -180,22 +193,15 @@
               border-radius: 5px;
               background-color: $color-gray !important;
               color: white;
-
             }
           }
         }
       }
     }
 
-
-
-
-
-
-
-
-
     &__data {
+      padding: 5px 0 20px 0;
+
       label {
         color: $color-gray;
       }
@@ -235,7 +241,6 @@
       }
     }
 
-
     h3 {
       color: $color-gray;
       text-align: left;
@@ -244,6 +249,16 @@
       padding: 10px 0;
       display: inline-block;
       box-shadow: 0px 2px 0px #43b7e8;
+    }
+
+    .box-information {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
     }
 
     .box-includes {
@@ -262,6 +277,47 @@
         li {
           list-style-type: disc;
           font-family: $font-primary !important;
+        }
+      }
+    }
+
+    .box-excludes {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+    }
+
+    .box-itinerary {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+    }
+
+    .box-rooms_prices {
+      padding: 20px;
+
+      h4 {
+        color: $color-gray;
+        font-family: $font-primary;
+        padding: 10px 0;
+      }
+
+      .table-room {
+        thead {
+          tr {
+            th {
+              text-align: center;
+              color: $color-gray;
+            }
+          }
         }
       }
     }
@@ -297,7 +353,5 @@
         }
       }
     }
-
-
   }
 }

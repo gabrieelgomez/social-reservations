@@ -634,4 +634,10 @@
     opacity: 0;
   }
 
+  .error-class {
+    &:before {
+      visibility: hidden;
+    }
+  }
+
 }

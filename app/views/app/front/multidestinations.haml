@@ -15,7 +15,6 @@
       = render 'app/layouts/footer'
 
 %script{:src => "/assets/js/loader.js"}
-
 :javascript
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
@@ -23,7 +22,6 @@
   });
   $('.navigation-front').removeClass('background-hide');
   $('.navigation-front').addClass('background-show');
-
 
   $('.galery_multidestinations').slick({
       infinite: true,
