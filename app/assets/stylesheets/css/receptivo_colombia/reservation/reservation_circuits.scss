@@ -530,13 +530,7 @@
       font-weight: 500;
     }
 
-    ul {
-      padding: 40px 0;
 
-      li {
-        border-radius: 0;
-      }
-    }
 
     .box-btn-reservation {
       padding: 40px 0;
@@ -563,7 +557,10 @@
     .reservation-data {}
 
     .reservation-resumen {
-      .list-summary {
+      ul {
+        padding: 8px 0 0 0;
+        margin-bottom: 0px;
+
         li {
           &:first-child {
             border-top-left-radius: 5px;

@@ -1,0 +1,25 @@
+.radio-blue {
+  input[type="radio"] {
+    ~ {
+      label {
+        &::after {
+          background-color: $color-blue;
+        }
+      }
+    }
+
+    &:checked {
+      ~ {
+        label {
+          &::before {
+            border-color: $color-blue;
+          }
+
+          &::after {
+            background-color: $color-blue;
+          }
+        }
+      }
+    }
+  }
+}

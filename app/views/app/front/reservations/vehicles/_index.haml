@@ -52,28 +52,37 @@
               //Personal Data
               = render 'app/front/reservations/vehicles/dates_personal', f: f
 
+              //Requests / Observations
+              = render 'app/front/reservations/vehicles/requests_observations'
+
               //Billing Data
               = render 'app/front/reservations/vehicles/dates_billing'
 
-              //Condiciones Reembolsos/Cancelaciones
-              = render 'app/front/reservations/vehicles/dates_refunds_cancellations'
-
-              //Términos y Condiciones
-              = render 'app/front/reservations/vehicles/dates_terms_conditions'
-
               //Privacy Policy
               = render 'app/front/reservations/vehicles/dates_privacy_policy'
+
+              //Cancellations Policy
+              = render 'app/front/reservations/vehicles/dates_cancellations_policy'
+
+              //Terms & Conditions
+              = render 'app/front/reservations/vehicles/dates_terms_conditions'
 
           .col-lg-4
             // Reservation Summary
             .reservation-resumen
               = render 'app/front/reservations/vehicles/resumen'
+              
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/vehicles/modal/privacy_policy'
-    .container
+  
+      //Modal - Cancellations Policy
+      = render 'app/front/reservations/vehicles/modal/cancellations_policy'
+
       //Modal - Terms & Conditions
       = render 'app/front/reservations/vehicles/modal/terms_conditions'
+
+
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -93,10 +102,17 @@
       $('.js-widget').addClass('js-show-widget');
   });
   $(document).ready(function(){
-      $("#js_privacyPolicy").click(function(){
-          $("#modalPrivacyPolicy").modal();
+     $("#js_privacyPolicy").click(function(){
+        $("#modalPrivacyPolicy").modal();
       });
       $("#js_termsConditions").click(function(){
-          $("#modalTermsConditions").modal();
+        $("#modalTermsConditions").modal();
+      });
+      $("#js_cancellationsPolicy").click(function(){
+        $("#modalCancellationsPolicy").modal();
       });
   });
+
+
+
+ 

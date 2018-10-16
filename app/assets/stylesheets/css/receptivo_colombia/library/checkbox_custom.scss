@@ -30,36 +30,4 @@
       }
     }
   }
-
-  input[type="radio"] {
-    &:checked {
-      ~ {
-        label.check {
-          &::before {
-            background-color: $color-blue;
-            border-color: $color-blue;
-          }
-
-          &::after {
-            color: #fff;
-          }
-        }
-      }
-    }
-
-    &:indeterminate {
-      ~ {
-        label.check {
-          &::before {
-            background-color: $color-blue;
-            border-color: $color-blue;
-          }
-
-          &::after {
-            background-color: #fff;
-          }
-        }
-      }
-    }
-  }
 }

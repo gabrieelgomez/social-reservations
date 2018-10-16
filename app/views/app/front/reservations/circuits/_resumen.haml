@@ -2,7 +2,9 @@
   .col-lg-12
     .reservation-resumen
       .sticky
-        %h3 Resumen
+        %h3  Reser
+        %br/
+        %br/
         %ul.list-group.list-summary.mb-3
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
@@ -49,9 +51,10 @@
                 = @currency.upcase
                 = number_to_currency(0, locale: @locale)
         .box-btn-payment
+          %br/
           %span
-            -# %p.text-center.title-reser ¡Paga tu reserva!
-            -# %br/
+            %p.text-center.title-reser ¡Cotiza tu reserva!
+          %br/
           %center
             .about-btn.travel-mrt-0
               %button.about-view.travel-btn.btn-reser Cotizar

@@ -48,11 +48,11 @@
             %strong{style:"float: right;"}
               = @currency.upcase
               = number_to_currency(@total_price, locale: @locale)
-        %hr
         .box-btn-payment
+          %br/
           %span
             %p.text-center.title-reser ¡Paga tu reserva!
-            %br/
+          %br/
           %center
             .about-btn.travel-mrt-0
               %button.about-view.travel-btn.btn-reser Confirmar
