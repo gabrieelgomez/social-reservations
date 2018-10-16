@@ -39,6 +39,7 @@
     .banner-circuits{:style => "background-image: url(/assets/img/banner.jpg)"}
       .banner-circuits--mask
         %h2= @results.title[@lang].titleize
+        %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
   -#.container
     - unless @results.blank?
       .gallary-header.text-center
@@ -63,7 +64,7 @@
         - else
           .col-lg-7
             .content-circuits__description
-              %h3 Descripción del Circuitos
+              %h3 Descripción 
               .content-circuits__description--summary
                 %p= raw @results.description[@lang]
             -#.content-circuits__data

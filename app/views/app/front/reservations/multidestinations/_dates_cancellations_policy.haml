@@ -6,7 +6,7 @@
     .form-group
       .checkbox.checkbox-blue.checkbox-inline
         %input#cancellations_policy.styled{name: 'cancellations_policy', :type => "checkbox", :value => "agree"}/
-        %label{:for => "cancellations_policy"} 
+        %label.check{:for => "cancellations_policy"} 
           Acepto
           = succeed "." do
-            = link_to 'Política de Cancelaciones', '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'
+            = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'

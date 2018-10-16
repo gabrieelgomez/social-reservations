@@ -6,7 +6,7 @@
     .form-group
       .checkbox.checkbox-blue.checkbox-inline
         %input#privacy_policy.styled{name: 'privacy_policy', :type => "checkbox", :value => "agree"}/
-        %label{:for => "privacy_policy"} 
+        %label.check{:for => "privacy_policy"} 
           Acepto
           = succeed "." do
             = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
