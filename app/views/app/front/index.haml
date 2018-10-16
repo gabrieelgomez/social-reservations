@@ -55,14 +55,14 @@
                   .box-image{:style => "background-image: url(#{tour.files.first.url})"}
                   .box-information
                     %h3= tour.title[@lang]
-                    %span.pull-right= number_to_currency(tour.price_adults[@currency], locale: @locale)
+                    %span.pull-left.price= number_to_currency(tour.price_adults[@currency], locale: @locale)
                     .more-information
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
                       %span= raw tour.description[@lang].truncate(100)
 
-                      %p
+                      -#%p
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
@@ -79,14 +79,14 @@
                   .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
                   .box-information
                     %h3= circuit.title[@lang]
-                    %span.pull-right= number_to_currency(25000, locale: @locale)
+                    %span.pull-left.price= number_to_currency(25000, locale: @locale)
                     .more-information
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
                       %span= raw circuit.description[@lang].truncate(100)
 
-                      %p
+                      -#%p
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
@@ -103,14 +103,14 @@
                   .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
                   .box-information
                     %h3= multidestination.title[@lang]
-                    %span.pull-right= number_to_currency(25000, locale: @locale)
+                    %span.pull-left.price= number_to_currency(25000, locale: @locale)
                     .more-information
                       -# %p
                       -#   %span
                       -#     10 dias 5 noches
                       %span= raw multidestination.description[@lang].truncate(100)
 
-                      %p
+                      -#%p
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
@@ -152,10 +152,8 @@
                     .box-information
                       %h3= tour.title[@lang]
                       .more-information
-                        %p
-                          %span
                         %span= raw tour.description[@lang].truncate(120)
-                        %p
+                        -#%p
                           %i.fa.fa-star.fa-star-custom
                           %i.fa.fa-star.fa-star-custom
                           %i.fa.fa-star.fa-star-custom
