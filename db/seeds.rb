@@ -98,7 +98,7 @@ destinations = [
   }
 ]
 
-rankings  = ['3 Estrellas Superior', '4 Estrellas', '5 Estrellas']
+rankings  = ['III Estrellas', 'IV Estrellas', 'V Estrellas']
 lodgments = ['Hotel Mirasol', 'Hotel Bijou', 'Hotel Eurobuilding', 'Hotel Paraguaná']
 rooms     = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples', 'children']
 
