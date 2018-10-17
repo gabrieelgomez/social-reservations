@@ -19,7 +19,7 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-                  .col-xs-12
+                  .col-xs-12.col-lg-12
                     .nav-tabs-custom
                       %ul.nav.nav-tabs
                         %li.active
@@ -31,76 +31,76 @@
                       .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
                         // ESPAÑOL
                         #spanish.tab-pane.active
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@lodgment.title) do |field|
                               = field.input :es, label: 'Titulo'
 
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :address, OpenStruct.new(@lodgment.address) do |field|
                               = field.input :es, label: 'Dirección'
-
                         // English
                         #english.tab-pane
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@lodgment.title) do |field|
                               = field.input :en, label: 'Title'
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :address, OpenStruct.new(@lodgment.address) do |field|
                               = field.input :en, label: 'Address'
-
                         // PORTUGUES
                         #portugues.tab-pane
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@lodgment.title) do |field|
                               = field.input :pt, label: 'Titulo'
-                          .col-xs-6
+                          .col-xs-12
                             = f.simple_fields_for :address, OpenStruct.new(@lodgment.address) do |field|
                               = field.input :pt, label: 'Endereço'
-
-                    .col-xs-4
+                    .col-xs-12.col-lg-4
                       = f.input :email, label: 'Email'
-                    .col-xs-4
+                    .col-xs-6.col-lg-4
                       = f.input :phone_one, label: 'Teléfono (1)'
-                    .col-xs-4
+                    .col-xs-6.col-lg-4
                       = f.input :phone_two, label: 'Teléfono (2)'
-
-                    .col-xs-4
+                    .col-xs-12.col-md-6.col-lg-4
                       %label Categorías de Alojamientos
+                      %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'rankings_lodgments', name: 'lodgment[ranking_id]'}
                         - KepplerTravel::Ranking.all.each do |ranking|
                           %option{ value: ranking.id, selected: @lodgment.selected(ranking.id)}= ranking.title[I18n.locale.to_s]
-
-                    .col-xs-4
+                      %br
+                      %br
+                    .col-xs-12.col-md-6.col-lg-4
                       %label Tipos de Habitaciones
+                      %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'lodgments_rooms', name: 'lodgment[room_id]', multiple: 'multiple'}
                         - KepplerTravel::Room.all.each do |room|
                           %option{ value: room.id, selected: @lodgment.selected_rooms(room.id)}= room.type_room
-
-                    .col-xs-4
+                      %br
+                      %br
+                    .col-xs-12.col-lg-4
                       %label Destino
                       %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_lodgments', name: 'lodgment[destination_id]'}
                         - KepplerTravel::Destination.all.each do |destination|
                           %option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
-
-                    .col-xs-12.col-lg-12{style: 'margin-top:30px'}
+                      %br
+                      %br
+                    .col-xs-12.col-lg-12
                       = f.input :status, label: '¿Habilitado?',as: :keppler_boolean
-
-                  .col-xs-12.col-md-12
-                    %label Galería de Imágenes
-                    -# %input#lodgment_files{:multiple => "", :name => "lodgment[files][]", :type => "file"}
-                    = f.file_field :files, multiple: true
-                  #helper_que_busco
-                    = files_exist(1, f.object.files, 'lodgment[files][]')
-
-                  .col-xs-12
-                    = f.input :position, as: :hidden
-                  .col-xs-12
-                    = f.input :deleted_at, as: :hidden
-                  .col-xs-12
-                    .pull-right
-                      = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
-                      = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+                    .col-xs-12.col-lg-12
+                      %label Imágenes de Galería - (Múltiples imágenes)
+                      %br
+                      %br
+                      = f.file_field :files, multiple: true
+                    #helper_que_busco
+                      = files_exist(1, f.object.files, 'lodgment[files][]')
+                    .col-xs-12
+                      = f.input :position, as: :hidden
+                    .col-xs-12
+                      = f.input :deleted_at, as: :hidden
+                    .col-xs-12
+                      .pull-left
+                        = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+                        = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/jquery.filer.css", :rel => "stylesheet", :type => "text/css"}/
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/themes/jquery.filer-dragdropbox-theme.css", :rel => "stylesheet", :type => "text/css"}/
