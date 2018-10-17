@@ -24,9 +24,7 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-
-                  // Field multilanguage
-                  .col-xs-12.col-md-6
+                  .col-xs-12.col-lg-8
                     .nav-tabs-custom
                       %ul.nav.nav-tabs
                         %li.active
@@ -36,7 +34,6 @@
                         %li
                           %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
                       .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
-
                         // ESPAÑOL
                         #spanish.tab-pane.active
                           .col-xs-12
@@ -52,41 +49,44 @@
                           .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@vehicle.title) do |field|
                               = field.input :pt, label: 'Titulo'
-
                     .col-xs-12.col-md-12
                       .row
                         = f.simple_fields_for :inner_price, OpenStruct.new(@vehicle.inner_price) do |field|
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :cop, label: 'Precio Dentro Perimetro COP', input_html: { min: '1', type: 'number' }
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :usd, label: 'Precio Dentro Perimetro USD', input_html: { min: '1', type: 'number' }
-
                     .col-xs-12.col-md-12
                       .row
                         = f.simple_fields_for :outer_price, OpenStruct.new(@vehicle.outer_price) do |field|
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :cop, label: 'Precio Fuera Perimetro COP', input_html: { min: '1', type: 'number' }
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :usd, label: 'Precio Fuera Perimetro USD', input_html: { min: '1', type: 'number' }
-
                     .col-xs-12.col-md-12
                       .row
                         = f.simple_fields_for :kit, OpenStruct.new(@vehicle.kit) do |field|
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :quantity, label: 'Piezas Máx. Equipaje', input_html: { min: '1', type: 'number' }
-                          .col-lg-6
+                          .col-xs-6.col-lg-6
                             = field.input :weight, label: 'Peso Máx. Equipaje', input_html: { min: '1', type: 'number' }
-
                     .col-xs-12.col-md-12
                       .row
-                        .col-lg-6
+                        .col-xs-6.col-lg-6
                           = f.input :seat, label: 'Cantidad Máx. Asientos', input_html: { min: '1', type: 'number' }
-
-                  // Cover
-                  .col-xs-12.col-md-6
+                  -#.col-xs-12.col-lg-4
                     .row
                       .col-lg-12
                         = f.input :cover, as: :keppler_file, label: false, max_size: 800
+
+                  .col-xs-12.col-lg-4
+                    .col-xs-12.col-lg-6
+                      %label Imagen de Portada 
+                      %br
+                      %br
+                      = f.file_field :cover 
+                      #helper_que_busco
+                        = files_exist(1, f.object.files, 'vehicle[cover][]')
 
 
                   .col-xs-4
@@ -104,6 +104,8 @@
 :javascript
   $('#destinations_vehicles').select2();
   collectImages("#vehicle_files", ".edit_vehicle", "vehicle[files_delete][]");
+  collectImages("#vehicle_cover", ".edit_vehicle", "vehicle[cover_delete][]");
+
 
 - if action_name == 'new'
   :javascript

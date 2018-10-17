@@ -6,7 +6,6 @@
           .arrow-back.btn.btn-default
             %i.fa.fa-angle-left
             = t('keppler.actions.back')
-
     .row
       .col-lg-12
         .box.slice-box
@@ -19,65 +18,67 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-                  .col-xs-12.col-lg-6
+                  .col-xs-12.col-lg-8
+                    .row
+                      .col-xs-12.col-lg-12
+                        .nav-tabs-custom
+                          %ul.nav.nav-tabs
+                            %li.active
+                              %a{"data-toggle" => "tab", :href => "#spanish"} Español
+                            %li
+                              %a{"data-toggle" => "tab", :href => "#english"} Inglés
+                            %li
+                              %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
+                          .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+                            // ESPAÑOL
+                            #spanish.tab-pane.active
+                              .col-xs-12
+                                = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                  = field.input :es, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                            // Ingles
+                            #english.tab-pane
+                              .col-xs-12
+                                = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                  = field.input :en, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                            // Portugues
+                            #portugues.tab-pane
+                              .col-xs-12
+                                = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
+                                  = field.input :pt, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
 
-                    .col-xs-12
-                      .nav-tabs-custom
-                        %ul.nav.nav-tabs
-                          %li.active
-                            %a{"data-toggle" => "tab", :href => "#spanish"} Español
-                          %li
-                            %a{"data-toggle" => "tab", :href => "#english"} Inglés
-                          %li
-                            %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
-                        .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+                        .col-xs-12.col-lg-12
+                          = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
 
-                          // ESPAÑOL
-                          #spanish.tab-pane.active
-                            .col-xs-12
-                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
-                                = field.input :es, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
-                          // Ingles
-                          #english.tab-pane
-                            .col-xs-12
-                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
-                                = field.input :en, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
-                          // Portugues
-                          #portugues.tab-pane
-                            .col-xs-12
-                              = f.simple_fields_for :custom_title, OpenStruct.new(@destination.custom_title) do |field|
-                                = field.input :pt, label: 'Titulo Personalizado', placeholder: 'Introduce un nombre de dirección personalizada'
+                        // Latitud
+                        .col-xs-12.col-lg-12
+                          .keppler-custom-field.form-group.string.required.disabled.destination_lang
+                            %label.control-label.string.required.disabled{:for => "destination_lang"}
+                              %abbr{:title => "requerido"} *
+                              Latitud
+                            %input#destination_lang.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
+                            = f.hidden_field :latitude
 
-                    .col-xs-12.col-lg-12
-                      = f.input :title, label: 'Dirección', placeholder: '¡Escribe un lugar de Colombia!'
+                        // Longitude
+                        .col-xs-12.col-lg-12
+                          .keppler-custom-field.form-group.string.required.disabled.destination_lang
+                            %label.control-label.string.required.disabled{:for => "destination_lang"}
+                              %abbr{:title => "requerido"} *
+                              Longitud
+                            %input#destination_long.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
+                            = f.hidden_field :longitude
 
-                    // Latitud
-                    .col-xs-12.col-lg-12
-                      .keppler-custom-field.form-group.string.required.disabled.destination_lang
-                        %label.control-label.string.required.disabled{:for => "destination_lang"}
-                          %abbr{:title => "requerido"} *
-                          Latitud
-                      %input#destination_lang.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
-                      = f.hidden_field :latitude
+                        .col-xs-12.col-lg-12
+                          = f.input :status, label: '¿Habilitado?',as: :keppler_boolean
 
-                    // Longitude
-                    .col-xs-12.col-lg-12
-                      .keppler-custom-field.form-group.string.required.disabled.destination_lang
-                        %label.control-label.string.required.disabled{:for => "destination_lang"}
-                          %abbr{:title => "requerido"} *
-                          Longitud
-                      %input#destination_long.form-control.string.required.disabled{:disabled => "disabled",:type => "text"}
-                      = f.hidden_field :longitude
+                  .col-xs-12.col-sm-12.col-md-12.col-lg-4#gmap{style: 'height: 400px;'}
 
-                    .col-xs-12.col-lg-12
-                      = f.input :status, label: '¿Habilitado?',as: :keppler_boolean
-
-                  .col-xs-12.col-lg-6#gmap{style: 'width: 400px; height: 400px;'}
                     -# = f.input :position, as: :hidden
                   .col-xs-12
                     = f.input :deleted_at, as: :hidden
                   .col-xs-12
-                    .pull-left
+                    %br
+                    %br
+                    .pull-right
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 

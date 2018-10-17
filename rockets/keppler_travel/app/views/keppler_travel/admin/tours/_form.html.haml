@@ -19,11 +19,7 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-
-                  .col-lg-12
-                    = f.input :banner, as: :keppler_file, label: false, max_size: 500
-
-                  .col-xs-12
+                  .col-xs-12.col-md-12
                     .nav-tabs-custom
                       %ul.nav.nav-tabs
                         %li.active
@@ -33,89 +29,95 @@
                         %li
                           %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
                       .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
-
                         // ESPAÑOL
                         #spanish.tab-pane.active
-                          .col-xs-12
+                          .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
                               = field.input :es, label: 'Titulo'
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
                               = field.input :es, label: 'Descripción', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
                               = field.input :es, label: 'Actividades', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-
                         // INGLÉS
                         #english.tab-pane
-                          .col-xs-12
+                          .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
                               = field.input :en, label: 'Title'
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
                               = field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
                               = field.input :en, label: 'Activities', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-
                         // PORTUGUÉS
                         #portugues.tab-pane
-                          .col-xs-12
+                          .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@tour.title) do |field|
                               = field.input :pt, label: 'Titulo'
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
                               = field.input :pt, label: 'Descrição', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-                          .col-xs-6
+                          .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :task, OpenStruct.new(@tour.task) do |field|
                               = field.input :pt, label: 'Atividades', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
-
-                    .nav-tabs-custom
-                      %ul.nav.nav-tabs
-                        %li.active
-                          %a{"data-toggle" => "tab", :href => "#cop"} Precio COP
-                        %li
-                          %a{"data-toggle" => "tab", :href => "#usd"} Precio USD
-                      .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
-                        // ESPAÑOL
-                        #cop.tab-pane.active
-                          .col-md-2
-                            = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
-                              = field.input :cop, label: 'Precio Adulto COP', input_html: { min: 1, type: 'number' }
-
-                          .col-md-2
-                            = f.simple_fields_for :price_kids, OpenStruct.new(@tour.price_kids) do |field|
-                              = field.input :cop, label: 'Precio Niño COP', input_html: { min: 1, type: 'number' }
-
-                        #usd.tab-pane
-                          .col-md-2
-                            = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
-                              = field.input :usd, label: 'Precio Adulto USD', input_html: { min: 1, type: 'number' }
-
-                          .col-md-2
-                            = f.simple_fields_for :price_kids, OpenStruct.new(@tour.price_kids) do |field|
-                              = field.input :usd, label: 'Precio Niño USD', input_html: { min: 1, type: 'number' }
-
-
-                  .col-xs-8
-                    %label Destinos
-                    %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_tours', name: 'tour[destination_ids]', multiple: "multiple"}
-                      - KepplerTravel::Destination.all.each do |destination|
-                        %option{ value: destination.id, selected: @tour.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
-
-                    .col-xs-12.col-lg-12
+                  .col-xs-12.col-lg-6
+                    .col-xs-12.col-md-6
+                      %label Destinos
+                      %br.hidde-md
+                      %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_tours', name: 'tour[destination_ids]', multiple: "multiple"}
+                        - KepplerTravel::Destination.all.each do |destination|
+                          %option{ value: destination.id, selected: @tour.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
+                      %br
+                      %br
+                  .col-xs-12.col-lg-6
+                    .col-xs-12.col-md-6
                       = f.input :status, label: 'Habilitado?',as: :keppler_boolean
-
-                    .col-xs-12.col-lg-12
+                      %br
+                    .col-xs-12.col-md-6
                       = f.input :featured, label: '¿Destacado?',as: :keppler_boolean
-
-                  .col-xs-12.col-md-12
-                    %label Galería de Imágenes
-                    -# %input#tour_files{:multiple => "", :name => "tour[files][]", :type => "file"}
-                    = f.file_field :files, multiple: true
-                  #helper_que_busco
-                    = files_exist(1, f.object.files, 'tour[files][]')
-
+                      %br
+                  .col-xs-12.col-md-12.col-lg-6
+                    .col-xs-12
+                      .nav-tabs-custom
+                        %ul.nav.nav-tabs
+                          %li.active
+                            %a{"data-toggle" => "tab", :href => "#cop"} Precio COP
+                          %li
+                            %a{"data-toggle" => "tab", :href => "#usd"} Precio USD
+                        .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+                          // ESPAÑOL
+                          #cop.tab-pane.active
+                            .col-xs-6
+                              = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
+                                = field.input :cop, label: 'Precio Adulto COP', input_html: { min: 1, type: 'number' }
+                            .col-xs-6
+                              = f.simple_fields_for :price_kids, OpenStruct.new(@tour.price_kids) do |field|
+                                = field.input :cop, label: 'Precio Niño COP', input_html: { min: 1, type: 'number' }
+                          #usd.tab-pane
+                            .col-xs-6
+                              = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
+                                = field.input :usd, label: 'Precio Adulto USD', input_html: { min: 1, type: 'number' }
+                            .col-xs-6
+                              = f.simple_fields_for :price_kids, OpenStruct.new(@tour.price_kids) do |field|
+                                = field.input :usd, label: 'Precio Niño USD', input_html: { min: 1, type: 'number' }
+                  .col-xs-12
+                    .col-xs-12.col-lg-6
+                      %label Imagen de Portada - (Sólo una imagen)
+                      %br
+                      %br
+                      = f.file_field :banner  
+                      #helper_que_busco2
+                        = files_exist(1, f.object.files, 'tour[banner][]')
+                    .col-xs-12.col-lg-6
+                      %label Imágenes de Galería - (Múltiples imágenes)
+                      %br
+                      %br
+                      = f.file_field :files, multiple: true
+                      #helper_que_busco
+                        = files_exist(1, f.object.files, 'tour[files][]')
+              
                   .col-xs-12
                     = f.input :position, as: :hidden
                   .col-xs-12
@@ -135,6 +137,7 @@
 
 :javascript
   collectImages("#tour_files", ".edit_tour", "tour[files_delete][]");
+  collectImages("#tour_banner", ".edit_tour", "tour[banner_delete][]");
 
 - if action_name == 'new'
   :javascript
