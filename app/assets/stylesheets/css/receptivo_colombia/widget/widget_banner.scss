@@ -1,0 +1,23 @@
+.widget-banner {
+  padding: 25px 0 0 0;
+
+  &__content {
+    width: 100%;
+    background: #cccccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+
+    .row-flex {
+      display: flex;
+      align-items: center;
+    }
+
+    p {
+      font-weight: 500;
+      color: #3a3a37;
+      font-size: 12px;
+    }
+  }
+}

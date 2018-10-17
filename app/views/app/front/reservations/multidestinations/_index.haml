@@ -1,17 +1,17 @@
-%section#seach-widget
+%section.widget-banner#widget-banner
   .container
-    .box-search
+    .widget-banner__content
       .container
-        .row
+        .row.row-flex
           .col-lg-9
-            %p.result
-              %span
-                Su búsqueda:
-              %span= @multidestination.title[@lang].titleize
+            %p
+              %h5 Su búsqueda
+              %p="Destino: #{@multidestination.title[@lang].titleize.truncate(100)}"
+              -#%p="Hasta: #{@arrival_name.truncate(100)}"
+              -#%p="Desde #{@locality[0]} > Hasta #{@locality[1]}"
           .col-lg-3
             %p
               %span
-                -#%i.icon.icon-magnifier
                 %a.pull-right.link-widget
                   Volver a relizar la búsqueda
 

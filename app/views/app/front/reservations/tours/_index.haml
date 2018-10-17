@@ -1,17 +1,17 @@
-%section#seach-widget
+%section.widget-banner#widget-banner
   .container
-    .box-search
+    .widget-banner__content
       .container
-        .row
+        .row.row-flex
           .col-lg-9
-            %p.result
-              %span
-                Su búsqueda:
-              %span= @tour.title[@lang].titleize
+            %p
+              %h5 Su búsqueda
+              %p="Destino: #{@tour.title[@lang].titleize.truncate(100)}"
+              -#%p="Hasta: #{@arrival_name.truncate(100)}"
+              -#%p="Desde #{@locality[0]} > Hasta #{@locality[1]}"
           .col-lg-3
             %p
               %span
-                -#%i.icon.icon-magnifier
                 %a.pull-right.link-widget
                   Volver a relizar la búsqueda
 
@@ -75,8 +75,6 @@
 
       //Modal - Terms & Conditions
       = render 'app/front/reservations/tours/modal/terms_conditions'
-
-
 
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
