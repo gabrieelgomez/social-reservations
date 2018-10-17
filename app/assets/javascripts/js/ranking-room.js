@@ -60,6 +60,8 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
         $(`input[name='square_circuit[][${array[i]}]']`).val('');
       }
 
+      $("select > option[value=" + 1 + "]").attr("selected", true);
+
       ranking_id_radio = null;
       var inputs = $('.js-hotelRoom');
       for (var i = 0; i < inputs.length; i++) {
@@ -94,6 +96,8 @@ $('.js-typeRoom').on('click', function () {
   $.each(filtered_json, function (i, item) {
     if (item.price_cop > 0 && item.type_room == json_parse['type']) {
       if (that.is(':checked')) {
+        $('.js-square').hide();
+        $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
         that.addClass('js-room-active');
         that.closest('label').addClass('bg-active');
         that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
