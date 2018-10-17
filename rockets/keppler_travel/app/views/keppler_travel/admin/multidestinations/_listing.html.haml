@@ -7,6 +7,12 @@
             %input{ type:"checkbox", id: "checkbox-#{multidestination.id}", 'checklist-model' => 'check', 'checklist-value' => "#{multidestination.id}", '@click' => "listDelete(#{multidestination.id})"}
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
+
+    %td
+      = link_to admin_travel_multidestination_path(multidestination, search: @query), remote: true, class: 'list-rows' do
+        %span
+          = image_tag multidestination.banner.url, width: 100, height: 50, style: 'object-fit: cover;'
+
     %td.hidden-xs
       = link_to admin_travel_multidestination_path(multidestination, search: @query), remote: true, class: 'show-row' do
         %span

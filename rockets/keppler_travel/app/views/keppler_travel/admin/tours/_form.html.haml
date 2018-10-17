@@ -105,11 +105,13 @@
                   .col-xs-12
                     .col-xs-12.col-lg-6
                       %label Imagen de Portada - (Sólo una imagen)
-                      %br
-                      %br
-                      = f.file_field :banner  
-                      #helper_que_busco2
-                        = files_exist(1, f.object.files, 'tour[banner][]')
+                      = f.input :banner, as: :keppler_file, label: false, max_size: 800
+
+                      -# %br
+                      -# %br
+                      -# = f.file_field :banner
+                      -# #helper_que_busco2
+                      -#   = files_exist(1, f.object.files, 'tour[banner][]')
                     .col-xs-12.col-lg-6
                       %label Imágenes de Galería - (Múltiples imágenes)
                       %br
@@ -117,7 +119,7 @@
                       = f.file_field :files, multiple: true
                       #helper_que_busco
                         = files_exist(1, f.object.files, 'tour[files][]')
-              
+
                   .col-xs-12
                     = f.input :position, as: :hidden
                   .col-xs-12
@@ -137,7 +139,6 @@
 
 :javascript
   collectImages("#tour_files", ".edit_tour", "tour[files_delete][]");
-  collectImages("#tour_banner", ".edit_tour", "tour[banner_delete][]");
 
 - if action_name == 'new'
   :javascript

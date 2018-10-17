@@ -74,19 +74,21 @@
                       .row
                         .col-xs-6.col-lg-6
                           = f.input :seat, label: 'Cantidad Máx. Asientos', input_html: { min: '1', type: 'number' }
-                  -#.col-xs-12.col-lg-4
+                  .col-xs-12.col-lg-4
                     .row
                       .col-lg-12
+                        %label Imagen de Portada
                         = f.input :cover, as: :keppler_file, label: false, max_size: 800
 
-                  .col-xs-12.col-lg-4
-                    .col-xs-12.col-lg-6
-                      %label Imagen de Portada 
-                      %br
-                      %br
-                      = f.file_field :cover 
-                      #helper_que_busco
-                        = files_exist(1, f.object.files, 'vehicle[cover][]')
+                  -# .col-xs-12.col-lg-4
+                  -#   .col-xs-12.col-lg-6
+                  -#     %label Imagen de Portada
+                  -#     = f.input :cover, as: :keppler_file, label: false, max_size: 800
+                      -# %br
+                      -# %br
+                      -# = f.file_field :cover
+                      -# #helper_que_busco
+                      -#   = files_exist(1, f.object.files, 'vehicle[cover][]')
 
 
                   .col-xs-4
@@ -103,9 +105,6 @@
 
 :javascript
   $('#destinations_vehicles').select2();
-  collectImages("#vehicle_files", ".edit_vehicle", "vehicle[files_delete][]");
-  collectImages("#vehicle_cover", ".edit_vehicle", "vehicle[cover_delete][]");
-
 
 - if action_name == 'new'
   :javascript
