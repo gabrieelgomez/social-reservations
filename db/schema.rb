@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.jsonb "include"
     t.jsonb "exclude"
     t.jsonb "itinerary"
+    t.string "banner"
     t.boolean "status", default: true
     t.jsonb "files"
     t.boolean "featured"
@@ -215,6 +216,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.jsonb "include"
     t.jsonb "exclude"
     t.jsonb "itinerary"
+    t.string "banner"
     t.boolean "status", default: true
     t.jsonb "files"
     t.boolean "featured"
@@ -300,6 +302,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.jsonb "files"
     t.jsonb "price_adults"
     t.jsonb "price_kids"
+    t.string "banner"
     t.boolean "status", default: true
     t.integer "position"
     t.boolean "featured"

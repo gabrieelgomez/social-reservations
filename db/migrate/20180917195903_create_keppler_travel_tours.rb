@@ -7,6 +7,7 @@ class CreateKepplerTravelTours < ActiveRecord::Migration[5.2]
       t.jsonb :files
       t.jsonb :price_adults
       t.jsonb :price_kids
+      t.string :banner
       t.boolean :status, default: true
       t.integer :position
       t.boolean :featured

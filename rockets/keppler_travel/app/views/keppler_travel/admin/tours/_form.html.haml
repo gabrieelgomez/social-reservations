@@ -19,6 +19,10 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
+
+                  .col-lg-12
+                    = f.input :banner, as: :keppler_file, label: false, max_size: 500
+
                   .col-xs-12
                     .nav-tabs-custom
                       %ul.nav.nav-tabs

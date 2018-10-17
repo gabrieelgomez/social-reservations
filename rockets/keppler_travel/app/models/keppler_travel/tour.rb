@@ -4,6 +4,7 @@ module KepplerTravel
     include ActivityHistory
     include CloneRecord
     require 'csv'
+    mount_uploader :banner, AttachmentUploader
     mount_uploaders :files, AttachmentUploader
     acts_as_list
     acts_as_paranoid

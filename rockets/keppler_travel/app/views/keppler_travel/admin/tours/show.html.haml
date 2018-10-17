@@ -84,17 +84,24 @@
                     = @tour.featured.blank? ? '-----------' : @tour.featured
 
       .col-md-6
-        -# - @tour.files.each_with_index do |img, index|
-        -#   %img{src: img.url, style: 'width:200px;height:200px;'}
+        - @tour.as_json(only: ["banner"]).each do |attribute, value|
+          .box.slice-box
+            .box-header.with-border
+              %h3.box-title= attribute.capitalize
+              .box-tools.pull-right
+                %a.btn.btn-box-tool{"data-widget" => "collapse", type: "button"}
+                  %i.fa.fa-minus
+            .box-body.box-body-no-padding
+              - unless value.url.blank?
+                = image_tag value.url, class: 'img-show'
+
+
+      .col-md-6
         .box.box-solid
           .box-header.with-border
             %h3.box-title Galería de Imágenes
           .box-body
             #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
-              -# %ol.carousel-indicators
-              -#   %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
-              -#   %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
-              -#   %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
               .carousel-inner
                 - @tour.files.each_with_index do |img, index|
                   .item{class: "#{index.zero? ? 'active' : 'no-active'}"}
