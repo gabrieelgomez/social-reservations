@@ -33,6 +33,10 @@
 .col-lg-6
   = f.input :privacy_policies, label: 'Políticas de Privacidad', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
+.col-lg-6
+  = f.input :cancellations, label: 'Políticas de Privacidad', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+
+
 :javascript
   $(document).ready(function(){
     $("#setting_logo").change(function(){
