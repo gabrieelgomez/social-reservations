@@ -100,7 +100,10 @@
                                 - table.each do |room|
                                   - unless room.keys.include?(:total_price_table)
                                     %tr
-                                      %td{style:'text-align:left!important;'}= "Habitación #{room[:type]}"
+                                      - if room[:type] == 'children'
+                                        %td{style:'text-align:left!important;'}= "Cant. Niños"
+                                      - else
+                                        %td{style:'text-align:left!important;'}= "Habitación #{room[:type]}"
                                       %td= number_to_currency(room[:price], locale: @locale)
                                       %td= room[:quantity]
                                       %td= number_to_currency(room[:total_room], locale: @locale)

@@ -20,7 +20,7 @@
                       %p.title-hotel= multidestinationable.lodgment.title[@lang]
                       -#%p
                         = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{multidestinationable.id}", type: 'button'
-          
+
 .box_type_rooms.room-hidden.room-disabled
   .row
     .col-lg-12
@@ -92,7 +92,7 @@
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
             %input{name: "square_multidestination[][sextuples]", type: "number", min: 1, placeholder:'1'}/
-    -#.col{style: 'visibility: hidden;'}
+    .col{style: 'visibility: hidden;'}
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
@@ -102,10 +102,10 @@
           %p.price#room_children
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input.js-square#single{type: 'hidden', name: "square_multidestination[][children]", type: "number", min: 1, value: @kids}/
+            %input.js-square#chindlren{type: 'hidden', name: "square_multidestination[][children]", type: "number", min: 1, value: @kids}/
 
 :javascript
-  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, }
+  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
 
   var lodgments_ruby = #{raw @lodgments.to_json};
   //We do that to ensure to get a correct JSON

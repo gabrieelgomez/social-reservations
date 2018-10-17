@@ -102,6 +102,7 @@ $('.js-typeRoom').on('click', function () {
         that.closest('label').addClass('bg-active');
         that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
       } else {
+        $(`#select_${this.type_room} > option[value=` + 1 + "]").attr("selected", true);
         $(`input[name='square_multidestination[][${this.type_room}]']`).val('')
         that.closest('label').removeClass('bg-active');
         that.removeClass('js-room-active');

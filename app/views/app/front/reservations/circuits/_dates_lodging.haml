@@ -112,7 +112,7 @@
                 %option{ value: i+1}= i+1
             %input.js-square#sextuples{type: 'hidden', name: "square_circuit[][sextuples]", type: "number", min: 1, placeholder:'1'}/
 
-    -#.col{style: 'visibility: hidden;'}
+    .col{style: 'visibility: hidden;'}
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
@@ -122,10 +122,10 @@
           %p.price#room_children
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input.js-square#single{type: 'hidden', name: "square_circuit[][children]", type: "number", min: 1, value: @kids}/
+            %input.js-square#children{type: 'hidden', name: "square_circuit[][children]", type: "number", min: 1, value: @kids}/
 
 :javascript
-  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, }
+  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
 
   var rankings_ruby = #{raw @rankings.to_json};
   //We do that to ensure to get a correct JSON
@@ -134,7 +134,6 @@
   $('select').change(function(e){
     let id    = e.target.id.split('select_')[1];
     let value = parseInt(e.target.selectedOptions[0].value);
-    debugger
     $(`input[name='square_circuit[][${id}]']`).val(value);
     // var valor_precio = e.target.selectedOptions[0].index;
     // var precio = 0;
