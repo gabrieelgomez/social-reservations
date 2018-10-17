@@ -91,12 +91,14 @@
                   .col-xs-12
                     .col-xs-12.col-lg-6
                       %label Imagen de Portada - (Sólo una imagen)
-                      %br
-                      %br
-                      -#= f.input :banner, as: :keppler_file, label: false, max_size: 500
-                      = f.file_field :banner  
-                      #helper_que_busco2
-                        = files_exist(1, f.object.files, 'circuit[banner][]')
+                      = f.input :banner, as: :keppler_file, label: false, max_size: 800
+                      -# %label Imagen de Portada - (Sólo una imagen)
+                      -# %br
+                      -# %br
+                      -# -#= f.input :banner, as: :keppler_file, label: false, max_size: 500
+                      -# = f.file_field :banner
+                      -# #helper_que_busco2
+                      -#   = files_exist(1, f.object.files, 'circuit[banner][]')
                     .col-xs-12.col-lg-6
                       %label Imágenes de Galería - (Múltiples imágenes)
                       %br
@@ -115,7 +117,7 @@
                       - else
                         = f.button :submit, 'Guardar', name: '_save', class: 'btn-primary'
 
-  
+
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/jquery.filer.css", :rel => "stylesheet", :type => "text/css"}/
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/themes/jquery.filer-dragdropbox-theme.css", :rel => "stylesheet", :type => "text/css"}/
 %script{:src => "https://www.tutorialspoint.com/jquery/src/filer/js/jquery.filer.min.js", :type => "text/javascript"}
@@ -125,7 +127,6 @@
 :javascript
 
   collectImages("#circuit_files", ".edit_circuit", "circuit[files_delete][]");
-  collectImages("#circuit_banner", ".edit_circuit", "circuit[banner_delete][]");
 
 - if action_name == 'new'
   :javascript
