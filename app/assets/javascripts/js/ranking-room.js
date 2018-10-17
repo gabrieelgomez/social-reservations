@@ -1,4 +1,6 @@
 var ranking_id_radio = null;
+
+// Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
   ranking_id_radio = $(this).val();
   // Passing JSON methods
@@ -30,6 +32,8 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
           $(`input[name='square_circuit[][${item.type_room}]']`).attr('disabled', false);
           $('#room_' + item.type_room).text('$' + item.price_cop);
           room_json[item.type_room] = item.price_cop;
+          $('#room_' + item.type_room).parent().removeClass('disabled-content');
+
         } // end condicion si la habitacion esta disponible
       }) // end for each json
       // End JSON Methods
