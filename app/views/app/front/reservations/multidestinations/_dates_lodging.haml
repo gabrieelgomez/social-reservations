@@ -2,28 +2,30 @@
 .row
   .col-lg-12
     .box-hotel-room
-      %h4 Hoteles disponibles
-  - @multidestination.multidestinationables.each do |multidestinationable|
-    - if multidestinationable.status
-      .col-lg-6
-        .row
-          .col-lg-12.js-hotel
-            .row.row-flex
-              .col-lg-4
-                %label.btn.btn-hotel
-                  %center
-                    .icon-hotel{style: "background-image: url(/assets/img/hotel.svg)"}
-                      %input.room.js-hotelRoom{name: "lodgment_multidestinationable", type: "checkbox", value: multidestinationable.lodgment_id}/
-              .col-lg-8
-                %p.title-hotel= multidestinationable.lodgment.title[@lang]
-                %p
-                  = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{multidestinationable.id}", type: 'button'
-
+      %h4 Seleccione el tipo de hotel
+    .set_hotel
+      - @multidestination.multidestinationables.each do |multidestinationable|
+        - if multidestinationable.status
+          .col-lg-4
+            .row
+              .col-lg-12.js-hotel
+                .row
+                  .box_hotel.row-flex
+                    .col-lg-6
+                      %label.btn.btn-hotel
+                        %center
+                          .icon-hotel{style: "background-image: url(/assets/img/hotel.svg)"}
+                            %input.room.js-hotelRoom{name: "lodgment_multidestinationable", type: "checkbox", value: multidestinationable.lodgment_id}/
+                    .col-lg-6
+                      %p.title-hotel= multidestinationable.lodgment.title[@lang]
+                      -#%p
+                        = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{multidestinationable.id}", type: 'button'
+          
 .box_type_rooms.room-hidden.room-disabled
   .row
     .col-lg-12
       .box-type-room
-        %h4 Tipo de Habitación
+        %h4 Seleccione el tipo y cantidad de habitaciones
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -34,7 +36,7 @@
           %p.price#room_single
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][single]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][single]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -45,7 +47,7 @@
           %p.price#room_doubles
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][doubles]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][doubles]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -56,7 +58,7 @@
           %p.price#room_triples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][triples]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][triples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -67,7 +69,7 @@
           %p.price#room_quadruples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][quadruples]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][quadruples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -78,7 +80,7 @@
           %p.price#room_quintuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][quintuples]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][quintuples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
         %center
@@ -89,7 +91,7 @@
           %p.price#room_sextuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
-            %input{name: "square_multidestination[][sextuples]", type: "number", min: 1}/
+            %input{name: "square_multidestination[][sextuples]", type: "number", min: 1, placeholder:'1'}/
     -#.col{style: 'visibility: hidden;'}
       %label.btn.btn-room
         %center

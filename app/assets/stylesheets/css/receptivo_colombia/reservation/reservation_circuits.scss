@@ -13,8 +13,7 @@
             border-bottom: 0;
             text-align: center;
 
-            button {
-            }
+            button {}
 
             h4 {
               color: $color-gray;
@@ -267,13 +266,19 @@
         }
       }
 
+      .set_room {
+        .box_hotel {
+          cursor: pointer;
+        }
+      }
+
       .btn-hotel {
         max-width: 300px;
         border-radius: 0px;
-        padding: 6px;
+        padding: 6px 0;
         width: 100%;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        /* margin-top: 10px; */
+        margin: 5px 0px;
 
         &:active {
           box-shadow: none;
@@ -315,7 +320,7 @@
 
           .icon-hotel {
             background-size: 60px;
-            background-position: center 12px;
+            background-position: center 6px;
             background-repeat: no-repeat;
             width: 70px;
             height: 80px;
@@ -549,8 +554,7 @@
       }
     }
 
-    .reservation-data {
-    }
+    .reservation-data {}
 
     .reservation-resumen {
       ul {

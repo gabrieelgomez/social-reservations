@@ -1,0 +1,49 @@
+.pqrs {
+  padding: 90px 0;
+
+  .box-pqrs {
+    padding: 45px 0;
+
+    .form-custom {
+      padding: 20px 0 0 0;
+    }
+
+    .form-reservation {
+      margin-bottom: 0 !important;
+    }
+
+    .reservation-pqrs {
+      a {
+        color: #43b7e8;
+        font-weight: 500;
+      }
+
+      h3 {
+        color: #4e4e56;
+        text-align: left;
+        display: inline-block;
+        font-family: "Poppins",
+          sans-serif;
+        padding: 10px 0;
+        display: inline-block;
+        box-shadow: 0px 2px 0px #43b7e8;
+      }
+
+      ul {
+        padding-top: 20px;
+
+        li {
+          input[type="radio"] {
+            label {
+              &:after {
+                top: 3px;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+}
