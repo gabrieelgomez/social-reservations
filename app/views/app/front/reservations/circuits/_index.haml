@@ -61,24 +61,24 @@
               //Terms & Conditions
               = render 'app/front/reservations/circuits/dates_terms_conditions'
 
-
-
           .col-lg-4
             // Reservation Summary
             .reservation-resumen
               = render 'app/front/reservations/circuits/resumen'
+
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/circuits/modal/privacy_policy'
-    .container
+  
       //Modal - Cancellations Policy
       = render 'app/front/reservations/circuits/modal/cancellations_policy'
-    .container
+
       //Modal - Terms & Conditions
       = render 'app/front/reservations/circuits/modal/terms_conditions'
-    -# .container
-    -#   //Modal - Details Hotel
-    -#   = render 'app/front/reservations/circuits/modal/details_hotel'
+
+      //Modal - Details Hotel
+      -#= render 'app/front/reservations/circuits/modal/details_hotel'
+
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}

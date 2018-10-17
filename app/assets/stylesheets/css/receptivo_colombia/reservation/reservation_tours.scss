@@ -34,8 +34,9 @@
     }
 
     input,
-    select {
-      border-radius: 0 !important;
+    select,
+    textarea {
+      border-radius: 5px !important;
     }
 
     ul {
@@ -73,5 +74,10 @@
     width: 100%;
     height: 300px;
     background: rebeccapurple;
+  }
+
+  a {
+    color: #43b7e8;
+    font-weight: 500;
   }
 }

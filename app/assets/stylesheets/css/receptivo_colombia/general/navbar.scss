@@ -182,11 +182,12 @@
 }
 
 .effect-items li:nth-child(3) a:hover {
-    color: #f5493d !important;
+
+    color: #eb6b0a !important;
 }
 
 .effect-items li:nth-child(4) a:hover {
-    color: #eb6b0a !important;
+    color: #e53124 !important;
 }
 
 .effect-items li:nth-child(5) a:hover {
@@ -232,13 +233,13 @@
 
 .effect-items li:nth-child(3).active a:before,
 .effect-items li:nth-child(3) a:hover:before {
-    background: #f5493d !important;
+    background: #eb6b0a !important;
     width: 100%;
 }
 
 .effect-items li:nth-child(4).active a:before,
 .effect-items li:nth-child(4) a:hover:before {
-    background: #eb6b0a !important;
+    background: #e53124 !important;
     width: 100%;
 }
 

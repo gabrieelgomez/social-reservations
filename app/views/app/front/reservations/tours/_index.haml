@@ -25,7 +25,7 @@
   .container
     .gallary-header.text-center
       %h2
-        Reserva de Tour
+        Reserva de Tours
       %p
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
@@ -52,22 +52,32 @@
               //Billing Data
               = render 'app/front/reservations/tours/dates_billing'
 
-              //Terms & Conditions
-              = render 'app/front/reservations/tours/dates_terms_conditions'
-
               //Privacy Policy
               = render 'app/front/reservations/tours/dates_privacy_policy'
+
+              //Cancellations Policy
+              = render 'app/front/reservations/tours/dates_cancellations_policy'
+
+              //Terms & Conditions
+              = render 'app/front/reservations/tours/dates_terms_conditions'
 
           .col-lg-4
             // Reservation Summary
             .reservation-resumen
               = render 'app/front/reservations/tours/resumen'
+
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/tours/modal/privacy_policy'
-    .container
+  
+      //Modal - Cancellations Policy
+      = render 'app/front/reservations/tours/modal/cancellations_policy'
+
       //Modal - Terms & Conditions
       = render 'app/front/reservations/tours/modal/terms_conditions'
+
+
+
 
 %link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -87,9 +97,13 @@
   });
   $(document).ready(function(){
       $("#js_privacyPolicy").click(function(){
-          $("#modalPrivacyPolicy").modal();
+        $("#modalPrivacyPolicy").modal();
       });
       $("#js_termsConditions").click(function(){
-          $("#modalTermsConditions").modal();
+        $("#modalTermsConditions").modal();
       });
+      $("#js_cancellationsPolicy").click(function(){
+        $("#modalCancellationsPolicy").modal();
+      });
+
   });
