@@ -10,6 +10,7 @@ class CreateSettings < ActiveRecord::Migration[5.1]
       t.string :favicon
       t.text   :terms_conditions
       t.text   :privacy_policies
+      t.text   :cancellations
 
       t.timestamps null: false
     end

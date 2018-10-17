@@ -6,6 +6,6 @@
         %h4.modal-title Términos y Condiciones
       .modal-body
         -# %h4 Text in a modal
-        %p link_footer
+        %p= @setting.terms_conditions.html_safe
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

@@ -55,7 +55,8 @@
                   .box-image{:style => "background-image: url(#{tour.files.first.url})"}
                   .box-information
                     %h3= tour.title[@lang]
-                    %span.pull-left.price= number_to_currency(tour.price_adults[@currency], locale: @locale)
+                    %span.pull-left.price
+                      = number_to_currency(tour.price_adults[@currency], locale: @locale)
                     .more-information
                       -# %p
                       -#   %span
@@ -79,7 +80,9 @@
                   .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
                   .box-information
                     %h3= circuit.title[@lang]
-                    %span.pull-left.price= number_to_currency(25000, locale: @locale)
+                    %span.pull-left.price
+                      Desde
+                      = number_to_currency(circuit.low_price(@currency), locale: @locale)
                     .more-information
                       -# %p
                       -#   %span
@@ -103,7 +106,9 @@
                   .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
                   .box-information
                     %h3= multidestination.title[@lang]
-                    %span.pull-left.price= number_to_currency(25000, locale: @locale)
+                    %span.pull-left.price
+                      Desde
+                      = number_to_currency(multidestination.low_price(@currency), locale: @locale)
                     .more-information
                       -# %p
                       -#   %span

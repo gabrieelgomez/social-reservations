@@ -36,7 +36,7 @@
 
 %section#tours_.tours_
   - unless @results.blank?
-    .banner-tours{:style => "background-image: url(/assets/img/banner.jpg)"}
+    .banner-tours{:style => "background-image: url(#{@results.banner.url})"}
       .banner-tours--mask
         %h2= @results.title[@lang].titleize
         %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.

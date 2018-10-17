@@ -36,7 +36,7 @@
 
 %section#circuits.circuits
   - unless @results.blank?
-    .banner-circuits{:style => "background-image: url(/assets/img/banner.jpg)"}
+    .banner-circuits{:style => "background-image: url(#{@results.banner.url})"}
       .banner-circuits--mask
         %h2= @results.title[@lang].titleize
         %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
@@ -64,7 +64,7 @@
         - else
           .col-lg-7
             .content-circuits__description
-              %h3 Descripción 
+              %h3 Descripción
               .content-circuits__description--summary
                 %p= raw @results.description[@lang]
             -#.content-circuits__data

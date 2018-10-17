@@ -35,7 +35,7 @@
         = render 'app/layouts/widget'
 %section#multidestinations.multidestinations
   - unless @results.blank?
-    .banner-multidestinations{:style => "background-image: url(/assets/img/banner.jpg)"}
+    .banner-multidestinations{:style => "background-image: url(#{@results.banner.url})"}
       .banner-multidestinations--mask
         %h2= @results.title[@lang].titleize
         %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.

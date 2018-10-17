@@ -402,6 +402,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.string "favicon"
     t.text "terms_conditions"
     t.text "privacy_policies"
+    t.text "cancellations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
