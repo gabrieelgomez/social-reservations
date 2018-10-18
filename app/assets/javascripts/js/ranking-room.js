@@ -35,6 +35,14 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
           $('#room_' + item.type_room).parent().removeClass('disabled-content');
 
         } // end condicion si la habitacion esta disponible
+
+        if (item.type_room == 'children'){
+          precio_kids   = item.price_cop;
+          total_kids    = kids * precio_kids;
+          $('#precio_nino').text(`$ ${precio_kids} (Niños) x ${kids} = $ ${total_kids}`);
+        }
+
+
       }) // end for each json
       // End JSON Methods
       $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
@@ -61,6 +69,8 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       }
 
       $("select > option[value=" + 1 + "]").attr("selected", true);
+
+      $('#precio_nino').text('-----');
 
       ranking_id_radio = null;
       var inputs = $('.js-hotelRoom');
@@ -96,8 +106,9 @@ $('.js-typeRoom').on('click', function () {
   $.each(filtered_json, function (i, item) {
     if (item.price_cop > 0 && item.type_room == json_parse['type']) {
       if (that.is(':checked')) {
-        $('.js-square').hide();
         $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
+        $(`#select_${this.type_room} > option[value=` + 1 + "]").attr("selected", true);
+        $('.js-square').hide();
         that.addClass('js-room-active');
         that.closest('label').addClass('bg-active');
         that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');

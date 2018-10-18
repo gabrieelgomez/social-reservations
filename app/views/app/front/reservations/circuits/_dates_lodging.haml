@@ -125,6 +125,8 @@
             %input.js-square#children{type: 'hidden', name: "square_circuit[][children]", type: "number", min: 1, value: @kids}/
 
 :javascript
+  var adults = #{raw @adults};
+  var kids   = #{raw @kids};
   var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
 
   var rankings_ruby = #{raw @rankings.to_json};
@@ -135,26 +137,6 @@
     let id    = e.target.id.split('select_')[1];
     let value = parseInt(e.target.selectedOptions[0].value);
     $(`input[name='square_circuit[][${id}]']`).val(value);
-    // var valor_precio = e.target.selectedOptions[0].index;
-    // var precio = 0;
-    // if (valor_precio == 1){
-    //   precio = "#{@total_tipo_1}"
-    //   var valor = isNaN(precio)
-    //   if (valor){  $('.stripe-button-el').prop('disabled',true);}
-    //   else{$('.stripe-button-el').prop('disabled',false);}
-    // }else if (valor_precio == 2){
-    //   precio = "#{@total_tipo_2}"
-    //   var valor = isNaN(precio)
-    //   if (valor){  $('.stripe-button-el').prop('disabled',true);}
-    //   else{$('.stripe-button-el').prop('disabled',false);}
-    // }else if (valor_precio == 3){
-    //   precio = "#{@total_tipo_3}"
-    //
-    //   var valor = isNaN(precio)
-    //   if (valor){  $('.stripe-button-el').prop('disabled',true);}
-    //   else{$('.stripe-button-el').prop('disabled',false);}
-    // }
-    // $('#total_pagar').text( `Total a pagar es de $ ${precio} `);
   });
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}

@@ -24,23 +24,10 @@
             %div
               %h6.my-0 Sub-total
               -# %small.text-muted 2 x $ 1.000,00 = $ 2.000,00
-              %small.text-muted#precio_adulto
-                // Precio de Adultos
-                = number_to_currency(0, locale: @locale)
-                (Adultos) x
-                = @adults
-                = "="
-                = number_to_currency(0, locale: @locale)
-
+              %small.text-muted#precio_adulto -----
               - if @kids.positive?
                 %br
-                %small.text-muted#precio_nino
-                  = number_to_currency(0, locale: @locale)
-                  (Niños) x
-                  = @kids
-                  = "="
-                  = number_to_currency(0, locale: @locale)
-
+                %small.text-muted#precio_nino -----
                 %br
                 %small.text-muted= "Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
@@ -58,29 +45,3 @@
           %center
             .about-btn.travel-mrt-0
               %button.about-view.travel-btn.btn-reser Cotizar
-
-:javascript
-  var adults = #{raw @adults};
-  var kids   = #{raw @kids};
-
-  $('input.js-square').on('change', function(){
-    precio_adults = room_json[$(this).attr('id')];
-    precio_kids   = room_json['children']
-    total_adults  = adults * precio_adults;
-    total_kids    = kids * precio_kids;
-    total         = total_adults + total_kids;
-    $('#precio_adulto').text(`$ ${precio_adults} (Adultos) x ${adults} = ${total_adults}`);
-    $('#precio_nino').text(`$ ${precio_kids} (Adultos) x ${kids} = ${total_kids}`);
-    $('#precio_total').text('$ ' + total);
-  });
-
-  // $('input.js-square').on('focusin', function(){
-  //   precio_adults = room_json[$(this).attr('id')];
-  //   precio_kids   = room_json['children']
-  //   total_adults  = adults * precio_adults;
-  //   total_kids    = kids * precio_kids;
-  //   total         = total_adults + total_kids;
-  //   $('#precio_adulto').text(`$ ${precio_adults} (Adultos) x ${adults} = ${total_adults}`);
-  //   $('#precio_nino').text(`$ ${precio_kids} (Adultos) x ${kids} = ${total_kids}`);
-  //   $('#precio_total').text('$ ' + total);
-  // });

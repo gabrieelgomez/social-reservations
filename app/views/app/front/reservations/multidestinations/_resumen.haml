@@ -8,7 +8,7 @@
         %ul.list-group.list-summary.mb-3
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Circuito
+              %h6.my-0 Multidestino
               %small.text-muted= @multidestination.title[@lang].titleize
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
@@ -24,42 +24,24 @@
             %div
               %h6.my-0 Sub-total
               -# %small.text-muted 2 x $ 1.000,00 = $ 2.000,00
-              %small.text-muted
-                // Precio de Adultos
-                = number_to_currency(1000, locale: @locale)
-                (Adultos) x
-                = @adults
-                = "="
-                = number_to_currency(2000, locale: @locale)
-
+              %small.text-muted#precio_adulto -----
               - if @kids.positive?
                 %br
-                %small.text-muted
-                  // Precio de Niños
-                  = number_to_currency(500, locale: @locale)
-                  (Niños) x
-                  = @kids
-                  = "="
-                  = number_to_currency(1000, locale: @locale)
-
+                %small.text-muted#precio_nino -----
                 %br
                 %small.text-muted= "Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
             %div
               %span
                 Precio Total
-              %strong{style:"float: right; color:#4e4e56;"}
+              %strong#precio_total{style:"float: right; color:#4e4e56;"}
                 = @currency.upcase
-                = number_to_currency(3000, locale: @locale)
+                = number_to_currency(0, locale: @locale)
         .box-btn-payment
           %br/
           %span
-            %p.text-center.title-reser ¡Cotiza tu Reserva!
+            %p.text-center.title-reser ¡Cotiza tu reserva!
           %br/
           %center
             .about-btn.travel-mrt-0
               %button.about-view.travel-btn.btn-reser Cotizar
-
-:javascript
-  var adults = #{raw @adults};
-  var kids   = #{raw @kids};
