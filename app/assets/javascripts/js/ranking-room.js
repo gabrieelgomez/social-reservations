@@ -1,4 +1,7 @@
 var ranking_id_radio = null;
+var rankings_json = JSON.stringify(rankings_ruby);
+var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
+var budget    = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
 
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
@@ -37,13 +40,19 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
         } // end condicion si la habitacion esta disponible
 
         if (item.type_room == 'children'){
-          precio_kids   = item.price_cop;
-          total_kids    = kids * precio_kids;
-          $('#precio_nino').text(`$ ${formatMoney(precio_kids)} (Niños) x ${kids} = $ ${formatMoney(total_kids)}`);
+          price_kids   = item.price_cop;
+          total_kids    = kids * price_kids;
+          budget['children'] = total_kids;
+          // Format square text (element, price_room, quantity, total_room_or_budget, text)
+          formatTextSquare($('#price_children'), price_kids, kids, total_kids, 'Cant. Niños');
         }
 
 
       }) // end for each json
+
+      // Calcular el price total del hotel seleccionado
+      total_budget();
+
       // End JSON Methods
       $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
       $('.js-hotel').addClass('disabled-content').removeClass('bg-active');
@@ -58,27 +67,13 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       }, 20);
 
     } else {
+      // Remover estilos del room seleccionado
+      removeClassTypeRoom($('.js-typeRoom'));
+      // Inicializar todos los valores en cero || null || ''
+      restoreValuesZero();
+      // Calcular el price total del hotel seleccionado
+      total_budget();
 
-      $('.js-typeRoom').closest('label').removeClass('bg-active');
-      $('.js-typeRoom').removeClass('js-room-active');
-      $('.js-typeRoom').closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
-
-      let array = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples']
-      for (let i = 0; i < array.length; i++) {
-        $(`input[name='square_circuit[][${array[i]}]']`).val('');
-        $(`#select_${this.type_room}`).val('')
-      }
-
-      // $("select > option[value=" + 1 + "]").attr("selected", true);
-      // $("select#select_single").val('1')
-
-      $('#precio_nino').text('-----');
-
-      ranking_id_radio = null;
-      var inputs = $('.js-hotelRoom');
-      for (var i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = false;
-      }
       $(this).closest($('.btn-room')).removeClass('disabled-content');
       $('.js-hotel').removeClass('disabled-content')
       $(this).closest('.box_hotel').removeClass('bg-active');
@@ -110,19 +105,18 @@ $('.js-typeRoom').on('click', function () {
       if (that.is(':checked')) {
         $('.js-square').hide();
         $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
+        budget[this.type_room] = room_json[this.type_room];
+        // Format square text (element, price_room, quantity, total_room_or_budget, text)
+        formatTextSquare($(`#price_${this.type_room}`), room_json[this.type_room], 1, budget[this.type_room], `Hab. ${this.type_room}`);
+        total_budget();
         that.addClass('js-room-active');
         that.closest('label').addClass('bg-active');
         that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
       } else {
-        $(`#select_${this.type_room}`).val('1')
-        $(`input[name='square_circuit[][${this.type_room}]']`).val('')
-        that.closest('label').removeClass('bg-active');
-        that.removeClass('js-room-active');
-        that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
+        restoreValuesRoomZero(this.type_room);
+        removeClassTypeRoom(that);
       }
-    } else {
-
-    } //aqui agregar addclass de boton not allowed
+    }
 
   }) // end for each json
   // End JSON Methods
@@ -130,13 +124,81 @@ $('.js-typeRoom').on('click', function () {
 // END --- Funcion de habilitar o no el tipo de habitacion room
 
 
-// Metodo para iterar el JSON, filtrar por parametro
-function find_in_object(my_object, my_criteria) {
 
+
+// --------------------- FUNCTIONS ----------------------------------
+
+// Method to calculate the total price
+function total_budget() {
+  var total_budget = 0;
+  $.each(budget, function () {
+    total_budget += this;
+  });
+  $('#price_total').text(`${currency} $ ${formatMoney(total_budget)}`);
+}
+
+//
+function restoreValuesRoomZero(type_room){
+  budget[type_room] = 0;
+  $(`#select_${type_room}`).val('1');
+  $(`input[name='square_circuit[][${type_room}]']`).val('');
+  formatTextSquare($(`#price_${type_room}`), 0, 0, 0, `Hab. ${type_room}`);
+  total_budget();
+}
+
+// Method to format everything to zero
+function restoreValuesZero(){
+  let array = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples', 'children'];
+  let inputs = $('.js-hotelRoom');
+  let ranking_id_radio = null;
+  // Format square text (element, price_room, quantity, total_room_or_budget, text)
+  for (let i = 0; i < array.length; i++) {
+    budget[array[i]] = 0;
+    $(`input[name='square_circuit[][${array[i]}]']`).val('');
+    $(`#select_${this.type_room}`).val('');
+    if (array[i] != 'children'){
+      formatTextSquare($(`#price_${array[i]}`), 0, 0, 0, `Hab. ${array[i]}`);
+    }else if (array[i] == 'children'){
+      // Format square text (element, price_room, quantity, total_room_or_budget, text)
+      formatTextSquare($('#price_children'), 0, kids, 0, 'Cant. Niños');
+    }
+  }
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].disabled = false;
+  }
+}
+
+// Method to remove classes of room type
+function removeClassTypeRoom(element){
+  element.closest('label').removeClass('bg-active');
+  element.removeClass('js-room-active');
+  element.closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
+}
+
+// Method to format summary text
+function formatTextSquare(element, price, quantity, total, text){
+  element.text(`${text} (${quantity}) x $ ${formatMoney(price)} = $ ${formatMoney(total)}`);
+}
+
+// Method to change the price by the select
+$('select').change(function(e){
+  let id    = e.target.id.split('select_')[1];
+  let value = parseInt(e.target.selectedOptions[0].value);
+  let price_room = room_json[id];
+  let total_price_room = price_room * value;
+  $(`input[name='square_circuit[][${id}]']`).val(value);
+  $(`#price_${id}`).val(value);
+  budget[id] = (total_price_room);// + budget[id];
+  total_budget();
+  // Format square text (element, price_room, quantity, total_room_or_budget, text)
+  formatTextSquare($(`#price_${id}`), price_room, value, total_price_room, `Hab. ${id}`);
+});
+
+// Method to iterate the JSON, filter by parameter
+function find_in_object(my_object, my_criteria) {
   return my_object.filter(function (obj) {
     return Object.keys(my_criteria).every(function (c) {
       return obj[c] == my_criteria[c];
     });
   });
-
 }

@@ -1,9 +1,10 @@
+-#%hr
 %h3 Alojamiento
 .row
   .col-lg-12
     .box-hotel-room
       %h4 Seleccione el tipo de hotel
-    .set_hotel
+    .set_room
       - @multidestination.multidestinationables.each do |multidestinationable|
         - if multidestinationable.status
           .col-lg-4
@@ -18,8 +19,8 @@
                             %input.room.js-hotelRoom{name: "lodgment_multidestinationable", type: "checkbox", value: multidestinationable.lodgment_id}/
                     .col-lg-6
                       %p.title-hotel= multidestinationable.lodgment.title[@lang]
-                      -#%p
-                        = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{multidestinationable.id}", type: 'button'
+                      -# %p
+                      -#   = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{multidestinationable.id}", type: 'button'
 
 .box_type_rooms.room-hidden.room-disabled
   .row
@@ -122,22 +123,11 @@
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
             %input.js-square#children{type: 'hidden', name: "square_multidestination[][children]", type: "number", min: 1, value: @kids}/
-
-
 :javascript
   var adults = #{raw @adults};
   var kids   = #{raw @kids};
-  var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
-
+  var currency = "#{raw @currency.upcase}";
   var lodgments_ruby = #{raw @lodgments.to_json};
-  //We do that to ensure to get a correct JSON
-  var lodgments_json = JSON.stringify(lodgments_ruby);
-
-  $('select').change(function(e){
-    let id    = e.target.id.split('select_')[1];
-    let value = parseInt(e.target.selectedOptions[0].value);
-    $(`input[name='square_multidestination[][${id}]']`).val(value);
-  });
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{src: "/assets/js/hotel-room.js"}
