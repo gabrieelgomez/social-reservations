@@ -122,10 +122,14 @@ gem "font-awesome-rails"
 gem 'google-api-client', '~> 0.7.1'
 gem 'keppler_ga_dashboard', path: 'rockets/keppler_ga_dashboard'
 
-#Keppler Blog
-gem 'acts-as-taggable-on', '6.0'
-gem 'bootstrap-tagsinput-rails'
-gem 'social-share-button'
+gem 'keppler_travel', path: 'rockets/keppler_travel'
+
+#---- gems frontend----
+gem 'slick_rails'
+gem 'mixitup_rails'
+gem 'wow-rails'
+gem 'hover-rails'
+gem 'awesome-bootstrap-checkbox', '~> 1.0'
 
 
 # -------------------------------------------------------------
