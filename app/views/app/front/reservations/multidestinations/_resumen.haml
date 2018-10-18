@@ -25,22 +25,22 @@
               %h6.my-0 Sub-total
               %ul.list_price
                 %li
-                  %small.text-muted#price_single Hab. single (0)     x $ 0.0 = $ 0.0
+                  %small.text-muted#price_single -Hab. single (0)     x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_doubles Hab. doubles (0)    x $ 0.0 = $ 0.0
+                  %small.text-muted#price_doubles -Hab. doubles (0)    x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_triples Hab. triples (0)    x $ 0.0 = $ 0.0
+                  %small.text-muted#price_triples -Hab. triples (0)    x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_quadruples Hab. quadruples (0) x $ 0.0 = $ 0.0
+                  %small.text-muted#price_quadruples -Hab. quadruples (0) x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_quintuples Hab. quintuples (0) x $ 0.0 = $ 0.0
+                  %small.text-muted#price_quintuples -Hab. quintuples (0) x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_sextuples Hab. sextuples (0)  x $ 0.0 = $ 0.0
+                  %small.text-muted#price_sextuples -Hab. sextuples (0)  x $ 0.0 = $ 0.0
               - if @kids.positive?
                 %li
-                  %small.text-muted#price_children= "Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
+                  %small.text-muted#price_children= "-Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
                 %li
-                  %small.text-muted= "Total #{@seats} personas"
+                  %small.text-muted= "-Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
             %div
               %span
