@@ -37,7 +37,7 @@
           %p.price#room_single
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_single
+            %select.form-control#select_single
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#single{type: 'hidden', name: "square_circuit[][single]", type: "number", min: 1, placeholder:'1'}/
@@ -51,7 +51,7 @@
           %p.price#room_doubles
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_doubles
+            %select.form-control#select_doubles
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#doubles{type: 'hidden', name: "square_circuit[][doubles]", type: "number", min: 1, placeholder:'1'}/
@@ -65,7 +65,7 @@
           %p.price#room_triples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_triples
+            %select.form-control#select_triples
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#triples{type: 'hidden', name: "square_circuit[][triples]", type: "number", min: 1, placeholder:'1'}/
@@ -79,7 +79,7 @@
           %p.price#room_quadruples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_quadruples
+            %select.form-control#select_quadruples
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#quadruples{type: 'hidden', name: "square_circuit[][quadruples]", type: "number", min: 1, placeholder:'1'}/
@@ -93,7 +93,7 @@
           %p.price#room_quintuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_quintuples
+            %select.form-control#select_quintuples
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#quintuples{type: 'hidden', name: "square_circuit[][quintuples]", type: "number", min: 1, placeholder:'1'}/
@@ -107,7 +107,7 @@
           %p.price#room_sextuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select#select_sextuples
+            %select.form-control#select_sextuples
               - 10.times do |i|
                 %option{ value: i+1}= i+1
             %input.js-square#sextuples{type: 'hidden', name: "square_circuit[][sextuples]", type: "number", min: 1, placeholder:'1'}/
@@ -128,6 +128,6 @@
   var kids   = #{raw @kids};
   var currency = "#{raw @currency.upcase}";
   var rankings_ruby = #{raw @rankings.to_json};
-  
+
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{src: "/assets/js/ranking-room.js"}
