@@ -9,7 +9,7 @@
 				.col-lg-5
 					.box-item
 						.form-group
-							%h2 Multidestinationos
+							%h2 Multidestinos
 							%select#sel1.form-control{name: 'multidestination_id', style:'border-radius: 0 !important;'}
 								- KepplerTravel::Multidestination.all.each do |multidestination|
 									%option{ value: multidestination.id}= multidestination.title[@lang].titleize

@@ -30,7 +30,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
           $('#room_' + item.type_room).parent().addClass('disabled-content');
         } else {
           $(`input[name='square_circuit[][${item.type_room}]']`).attr('disabled', false);
-          $('#room_' + item.type_room).text('$' + item.price_cop);
+          $('#room_' + item.type_room).text('$' + formatMoney(item.price_cop));
           room_json[item.type_room] = item.price_cop;
           $('#room_' + item.type_room).parent().removeClass('disabled-content');
 
@@ -39,7 +39,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
         if (item.type_room == 'children'){
           precio_kids   = item.price_cop;
           total_kids    = kids * precio_kids;
-          $('#precio_nino').text(`$ ${precio_kids} (Niños) x ${kids} = $ ${total_kids}`);
+          $('#precio_nino').text(`$ ${formatMoney(precio_kids)} (Niños) x ${kids} = $ ${formatMoney(total_kids)}`);
         }
 
 
@@ -66,9 +66,11 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       let array = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples']
       for (let i = 0; i < array.length; i++) {
         $(`input[name='square_circuit[][${array[i]}]']`).val('');
+        $(`#select_${this.type_room}`).val('')
       }
 
-      $("select > option[value=" + 1 + "]").attr("selected", true);
+      // $("select > option[value=" + 1 + "]").attr("selected", true);
+      // $("select#select_single").val('1')
 
       $('#precio_nino').text('-----');
 
@@ -106,14 +108,13 @@ $('.js-typeRoom').on('click', function () {
   $.each(filtered_json, function (i, item) {
     if (item.price_cop > 0 && item.type_room == json_parse['type']) {
       if (that.is(':checked')) {
-        $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
-        $(`#select_${this.type_room} > option[value=` + 1 + "]").attr("selected", true);
         $('.js-square').hide();
+        $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
         that.addClass('js-room-active');
         that.closest('label').addClass('bg-active');
         that.closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
       } else {
-        $(`#select_${this.type_room} > option[value=` + 1 + "]").attr("selected", true);
+        $(`#select_${this.type_room}`).val('1')
         $(`input[name='square_circuit[][${this.type_room}]']`).val('')
         that.closest('label').removeClass('bg-active');
         that.removeClass('js-room-active');
