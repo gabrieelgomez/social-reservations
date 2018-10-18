@@ -11,6 +11,9 @@
             .row
               .col-lg-12.js-hotel
                 .row
+                  .check
+                    %span
+                      %i.fa.fa-check.fa_custom{"aria-hidden" => "true"}
                   .box_hotel.row-flex
                     .col-lg-6
                       %label.btn.btn-hotel
@@ -37,9 +40,10 @@
           %p.price#room_single
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_single
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_single
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#single{type: 'hidden', name: "square_circuit[][single]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
@@ -51,9 +55,10 @@
           %p.price#room_doubles
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_doubles
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_doubles
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#doubles{type: 'hidden', name: "square_circuit[][doubles]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
@@ -65,9 +70,10 @@
           %p.price#room_triples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_triples
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_triples
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#triples{type: 'hidden', name: "square_circuit[][triples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
@@ -79,9 +85,10 @@
           %p.price#room_quadruples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_quadruples
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_quadruples
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#quadruples{type: 'hidden', name: "square_circuit[][quadruples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
@@ -93,9 +100,10 @@
           %p.price#room_quintuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_quintuples
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_quintuples
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#quintuples{type: 'hidden', name: "square_circuit[][quintuples]", type: "number", min: 1, placeholder:'1'}/
     .col-lg-2
       %label.btn.btn-room
@@ -107,9 +115,10 @@
           %p.price#room_sextuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
-            %select.form-control#select_sextuples
-              - 10.times do |i|
-                %option{ value: i+1}= i+1
+            %center
+              %select.form-control#select_sextuples
+                - 10.times do |i|
+                  %option{ value: i+1}= i+1
             %input.js-square#sextuples{type: 'hidden', name: "square_circuit[][sextuples]", type: "number", min: 1, placeholder:'1'}/
 
     -#.col{style: 'visibility: hidden;'}

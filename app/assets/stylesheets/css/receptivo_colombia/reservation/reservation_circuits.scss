@@ -361,7 +361,10 @@
           .quantity-room {
             height: auto;
             width: 100%;
-            background: red;
+
+
+
+
 
             input {
               width: inherit;
@@ -484,6 +487,13 @@
 
             input {
               width: inherit;
+            }
+
+            select {
+              width: 60%;
+              height: 30px;
+              padding: 0px 8px;
+              font-size: 14px;
             }
           }
         }
@@ -634,4 +644,30 @@
       visibility: hidden;
     }
   }
+
+  .list_price {
+    font-family: $font-primary;
+    font-size: 15px;
+  }
+}
+
+.check_ {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: -12px;
+  top: -9px;
+  border-radius: 17px;
+
+
+}
+
+.fa_custom {
+  font-size: 1.5em;
+  color: #4caf50;
+  visibility: hidden;
+}
+
+.active-check {
+  visibility: visible;
 }
