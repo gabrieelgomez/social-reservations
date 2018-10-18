@@ -7,7 +7,7 @@ require "keppler_travel/version"
 Gem::Specification.new do |s|
   s.name        = "keppler_travel"
   s.version     = KepplerTravel::VERSION
-  s.authors     = ["Gabriel Gómez"]
+  s.authors     = ["gabrieelgomez"]
   s.email       = ["gagg1707@gmail.com"]
   s.homepage    = 'http://keppler.io'
   s.summary     = 'keppler_travel'
