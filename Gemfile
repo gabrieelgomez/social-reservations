@@ -122,7 +122,7 @@ gem "font-awesome-rails"
 gem 'google-api-client', '~> 0.7.1'
 gem 'keppler_ga_dashboard', path: 'rockets/keppler_ga_dashboard'
 
-gem 'keppler_travel', path: 'rockets/keppler_travel'
+# gem 'keppler_travel', path: 'rockets/keppler_travel'
 
 #---- gems frontend----
 gem 'slick_rails'
