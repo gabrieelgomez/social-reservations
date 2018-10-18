@@ -119,7 +119,8 @@
                             %i.icon-close
                         %td= ranking.title['es']
                         - circuitable.circuitable_rooms.each do |cr|
-                          %td= cr.price_cop
+                          -# %td= cr.price_cop
+                          %td= number_to_currency(cr.price_cop, locale: @locale)
               // COP
               #usd.tab-pane
 
@@ -148,7 +149,9 @@
                             %i.icon-close
                         %td= ranking.title['es']
                         - circuitable.circuitable_rooms.each do |cr|
-                          %td= cr.price_usd
+                          -# %td= cr.price_usd
+                          %td= number_to_currency(cr.price_usd, locale: @locale)
+
 
       .col-md-6
         - @circuit.as_json(only: ["banner"]).each do |attribute, value|

@@ -23,18 +23,44 @@
           %li.list-group-item.d-flex.justify-content-between
             %div
               %h6.my-0 Sub-total
-              -# %small.text-muted 2 x $ 1.000,00 = $ 2.000,00
-              %small.text-muted#precio_adulto -----
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_single Hab. single (0)     x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_doubles Hab. doubles (0)    x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_triples Hab. triples (0)    x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_quadruples Hab. quadruples (0) x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_quintuples Hab. quintuples (0) x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+              %br
+              %small.text-muted#price_sextuples Hab. sextuples (0)  x $ 0.0 = $ 0.0
+              %br
+              %small.text-muted -----
+
               - if @kids.positive?
                 %br
-                %small.text-muted#precio_nino -----
+                %small.text-muted#price_children= "Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
+                %br
+                %small.text-muted -----
                 %br
                 %small.text-muted= "Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
             %div
               %span
                 Precio Total
-              %strong#precio_total{style:"float: right; color:#4e4e56;"}
+              %strong#price_total{style:"float: right; color:#4e4e56;"}
                 = @currency.upcase
                 = number_to_currency(0, locale: @locale)
         .box-btn-payment
