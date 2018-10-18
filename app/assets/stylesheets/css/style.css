@@ -2099,7 +2099,7 @@ label.container .checkmark:after {
 
 .sticky {
     position: sticky;
-    top: 85px;
+    top: 130px;
 }
 
 .js-show-widget {
