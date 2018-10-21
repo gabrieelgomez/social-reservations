@@ -13,6 +13,8 @@
     }
 
     .reservation-pqrs {
+      padding: 0 120px;
+
       a {
         color: #43b7e8;
         font-weight: 500;
@@ -30,19 +32,26 @@
       }
 
       ul {
-        padding-top: 20px;
+        text-align: center;
+        padding: 20px 0;
 
-        li {
-          input[type="radio"] {
-            label {
-              &:after {
-                top: 3px;
-              }
-            }
+        li {}
+      }
+
+      .radio {
+        label {
+          &:after {
+            top: 3px;
           }
         }
       }
 
+    }
+
+    .items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 

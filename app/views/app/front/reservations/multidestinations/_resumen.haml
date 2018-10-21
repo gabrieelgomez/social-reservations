@@ -2,7 +2,7 @@
   .col-lg-12
     .reservation-resumen
       .sticky
-        %h3  Reserva
+        %h3  Resumen
         %br/
         %br/
         %ul.list-group.list-summary.mb-3
@@ -23,39 +23,24 @@
           %li.list-group-item.d-flex.justify-content-between
             %div
               %h6.my-0 Sub-total
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_single Hab. single (0)     x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_doubles Hab. doubles (0)    x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_triples Hab. triples (0)    x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_quadruples Hab. quadruples (0) x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_quintuples Hab. quintuples (0) x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-              %br
-              %small.text-muted#price_sextuples Hab. sextuples (0)  x $ 0.0 = $ 0.0
-              %br
-              %small.text-muted -----
-
+              %ul.list_price
+                %li
+                  %small.text-muted#price_single -Hab. single (0)     x $ 0.0 = $ 0.0
+                %li
+                  %small.text-muted#price_doubles -Hab. doubles (0)    x $ 0.0 = $ 0.0
+                %li
+                  %small.text-muted#price_triples -Hab. triples (0)    x $ 0.0 = $ 0.0
+                %li
+                  %small.text-muted#price_quadruples -Hab. quadruples (0) x $ 0.0 = $ 0.0
+                %li
+                  %small.text-muted#price_quintuples -Hab. quintuples (0) x $ 0.0 = $ 0.0
+                %li
+                  %small.text-muted#price_sextuples -Hab. sextuples (0)  x $ 0.0 = $ 0.0
               - if @kids.positive?
-                %br
-                %small.text-muted#price_children= "Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
-                %br
-                %small.text-muted -----
-                %br
-                %small.text-muted= "Total #{@seats} personas"
+                %li
+                  %small.text-muted#price_children= "-Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
+                %li
+                  %small.text-muted= "-Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
             %div
               %span

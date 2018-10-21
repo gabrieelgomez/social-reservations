@@ -1,7 +1,23 @@
 var ranking_id_radio = null;
 var rankings_json = JSON.stringify(rankings_ruby);
-var room_json = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
-var budget    = {single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, sextuples: 0, children: 0}
+var room_json = {
+  single: 0,
+  doubles: 0,
+  triples: 0,
+  quadruples: 0,
+  quintuples: 0,
+  sextuples: 0,
+  children: 0
+}
+var budget = {
+  single: 0,
+  doubles: 0,
+  triples: 0,
+  quadruples: 0,
+  quintuples: 0,
+  sextuples: 0,
+  children: 0
+}
 
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
@@ -39,9 +55,9 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
 
         } // end condicion si la habitacion esta disponible
 
-        if (item.type_room == 'children'){
-          price_kids   = item.price_cop;
-          total_kids    = kids * price_kids;
+        if (item.type_room == 'children') {
+          price_kids = item.price_cop;
+          total_kids = kids * price_kids;
           budget['children'] = total_kids;
           // Format square text (element, price_room, quantity, total_room_or_budget, text)
           formatTextSquare($('#price_children'), price_kids, kids, total_kids, 'Cant. Niños');
@@ -138,7 +154,7 @@ function total_budget() {
 }
 
 //
-function restoreValuesRoomZero(type_room){
+function restoreValuesRoomZero(type_room) {
   budget[type_room] = 0;
   $(`#select_${type_room}`).val('1');
   $(`input[name='square_circuit[][${type_room}]']`).val('');
@@ -147,7 +163,7 @@ function restoreValuesRoomZero(type_room){
 }
 
 // Method to format everything to zero
-function restoreValuesZero(){
+function restoreValuesZero() {
   let array = ['single', 'doubles', 'triples', 'quadruples', 'quintuples', 'sextuples', 'children'];
   let inputs = $('.js-hotelRoom');
   let ranking_id_radio = null;
@@ -156,9 +172,9 @@ function restoreValuesZero(){
     budget[array[i]] = 0;
     $(`input[name='square_circuit[][${array[i]}]']`).val('');
     $(`#select_${this.type_room}`).val('');
-    if (array[i] != 'children'){
+    if (array[i] != 'children') {
       formatTextSquare($(`#price_${array[i]}`), 0, 0, 0, `Hab. ${array[i]}`);
-    }else if (array[i] == 'children'){
+    } else if (array[i] == 'children') {
       // Format square text (element, price_room, quantity, total_room_or_budget, text)
       formatTextSquare($('#price_children'), 0, kids, 0, 'Cant. Niños');
     }
@@ -169,26 +185,26 @@ function restoreValuesZero(){
 }
 
 // Method to remove classes of room type
-function removeClassTypeRoom(element){
+function removeClassTypeRoom(element) {
   element.closest('label').removeClass('bg-active');
   element.removeClass('js-room-active');
   element.closest('label').parent().find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
 }
 
 // Method to format summary text
-function formatTextSquare(element, price, quantity, total, text){
+function formatTextSquare(element, price, quantity, total, text) {
   element.text(`${text} (${quantity}) x $ ${formatMoney(price)} = $ ${formatMoney(total)}`);
 }
 
 // Method to change the price by the select
-$('select').change(function(e){
-  let id    = e.target.id.split('select_')[1];
+$('select').change(function (e) {
+  let id = e.target.id.split('select_')[1];
   let value = parseInt(e.target.selectedOptions[0].value);
   let price_room = room_json[id];
   let total_price_room = price_room * value;
   $(`input[name='square_circuit[][${id}]']`).val(value);
   $(`#price_${id}`).val(value);
-  budget[id] = (total_price_room);// + budget[id];
+  budget[id] = (total_price_room); // + budget[id];
   total_budget();
   // Format square text (element, price_room, quantity, total_room_or_budget, text)
   formatTextSquare($(`#price_${id}`), price_room, value, total_price_room, `Hab. ${id}`);

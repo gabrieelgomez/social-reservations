@@ -479,6 +479,13 @@
             input {
               width: inherit;
             }
+
+            select {
+              width: 60%;
+              height: 30px;
+              padding: 0px 8px;
+              font-size: 14px;
+            }
           }
         }
 
@@ -627,5 +634,10 @@
     &:before {
       visibility: hidden;
     }
+  }
+
+  .list_price {
+    font-family: $font-primary;
+    font-size: 15px;
   }
 }

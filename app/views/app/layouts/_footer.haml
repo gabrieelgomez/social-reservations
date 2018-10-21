@@ -42,9 +42,9 @@
 						%p +57 317 3632119
 						%p RNT: 32133
 						%p info@receptivocolombia.com
-						%p Colombia
+						-#%p Colombia
 						%ul
-							%li
+							-#%li
 								= link_to   '#' , :class => '', :id => '', :type => 'button' do
 									%span
 										PQRS
@@ -107,6 +107,7 @@
 		= render 'app/layouts/modal/terms'
 
 	:javascript
+		var linear = new SmoothScroll('[data-easing="linear"]', {easing: 'linear'});
 		$(document).ready(function(){
 				$("#js_terms_footer").click(function(){
 					$("#modalTerms").modal();
