@@ -61,12 +61,12 @@ module Admin
     end
 
     def destroy
-      @user.destroy
+      @user.really_destroy!
       redirect_to admin_users_path, notice: actions_messages(@user)
     end
 
     def destroy_multiple
-      User.destroy redefine_ids(params[:multiple_ids])
+      User.really_destroy! redefine_ids(params[:multiple_ids])
       redirect_to(
         admin_users_path(page: @current_page, search: @query),
         notice: actions_messages(User.new)
@@ -104,8 +104,9 @@ module Admin
 
     def user_params
       params.require(:user).permit(
-        :name, :email, :password, :password_confirmation,
-        :role_ids, :encrypted_password, :avatar
+        :name, :email, :phone, :dni, :password, :password_confirmation,
+        :role_ids, :encrypted_password, :avatar,
+        driver_attributes: [:id, :timetrack]
       )
     end
 

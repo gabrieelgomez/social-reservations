@@ -26,7 +26,7 @@ module Admin
     end
 
     def validate_permissions
-      return if current_user.rol.eql?('keppler_admin')
+      return if current_user.rol.eql?('keppler_admin') || current_user.rol.eql?('admin') || current_user.rol.eql?('driver')
       redirect_to root_path unless current_user.permissions?
     end
 

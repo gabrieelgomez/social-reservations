@@ -1,6 +1,6 @@
 module KepplerTravel
   # Policy for Circuit model
-  class CircuitPolicy < ControllerPolicy
+  class CircuitPolicy < KepplerTravelPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

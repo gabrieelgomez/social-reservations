@@ -1,6 +1,6 @@
 module KepplerTravel
   # Policy for Ranking model
-  class RankingPolicy < ControllerPolicy
+  class RankingPolicy < KepplerTravelPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

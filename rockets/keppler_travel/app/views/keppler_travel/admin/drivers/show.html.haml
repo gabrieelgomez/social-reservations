@@ -1,0 +1,161 @@
+.container
+  .row
+    .col-lg-2
+      = link_to admin_travel_drivers_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        .arrow-back.btn.btn-default
+          %i.fa.fa-angle-left
+          = t('keppler.actions.back')
+
+  .show-section
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= t("keppler.modules.#{controller_path.underscore}")
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Driver).update?
+                = link_to edit_admin_travel_driver_path(@driver), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                  %i.icon-pencil
+              - if can?(KepplerTravel::Driver).destroy?
+                = link_to admin_travel_driver_path(@driver), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                  %i.icon-trash
+
+          .box-body.box-body-no-padding
+            .nav-tabs-custom
+              %ul.nav.nav-tabs
+                %li.active
+                  %a{"data-toggle" => "tab", :href => "#pending"} Traslados Pendientes
+                %li
+                  %a{"data-toggle" => "tab", :href => "#complete"} Traslados Completados
+              .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+
+                // Pending
+                #pending.tab-pane.active
+                  - @driver.orders.where(status: 'pending').each do |order|
+                    - reservation = order.reservation
+                    .row
+                      .col-lg-6
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title= "Traslado ID: #{order.id} - Reservación ID: #{order.reservation.id}"
+                            .box-tools.pull-right
+                              -# - if can?(KepplerTravel::Circuit).update?
+                              -#   = link_to edit_admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                              -#     %i.icon-pencil
+                              -# - if can?(KepplerTravel::Circuit).destroy?
+                              -#   = link_to admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                              -#     %i.icon-trash
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+                                - reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
+                                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
+                                    %tr.list-row
+                                      %th.display-label= t("activerecord.attributes.#{attribute}")
+                                      %td.display-value.fs-body-1.tc-black-2
+                                        - if @attachments.include?(attribute)
+                                          = image_tag value.url unless value.url.blank?
+                                        - else
+                                          = value.blank? ? '-----------' : value
+                      .col-lg-4
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title Datos de los Viajeros
+                            .box-tools.pull-right
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+                                - order.reservation.travellers.each_with_index do |traveller, index|
+                                  %tr.list-row
+                                    %th.display-label= "Viajero # #{index+1}"
+                                    %td.display-value.fs-body-1.tc-black-2
+                                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+                      .col-lg-4
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title Datos de Orden/Factura
+                            .box-tools.pull-right
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+
+                                %tr.list-row
+                                  %th.display-label N° de Orden
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.id
+
+                                %tr.list-row
+                                  %th.display-label N° de Factura
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.token
+
+                                %tr.list-row
+                                  %th.display-label Estatus de la Reserva
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.status
+
+                                %tr.list-row
+                                  %th.display-label Nombre del Cotizante
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.user.name
+                // Complete
+                #complete.tab-pane.active
+                  - @driver.orders.where(status: 'complete').each do |order|
+                    - reservation = order.reservation
+                    .row
+                      .col-lg-6
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title= "Traslado ID: #{order.id} - Reservación ID: #{order.reservation.id}"
+                            .box-tools.pull-right
+                              -# - if can?(KepplerTravel::Circuit).update?
+                              -#   = link_to edit_admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                              -#     %i.icon-pencil
+                              -# - if can?(KepplerTravel::Circuit).destroy?
+                              -#   = link_to admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                              -#     %i.icon-trash
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+                                - reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
+                                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
+                                    %tr.list-row
+                                      %th.display-label= t("activerecord.attributes.#{attribute}")
+                                      %td.display-value.fs-body-1.tc-black-2
+                                        - if @attachments.include?(attribute)
+                                          = image_tag value.url unless value.url.blank?
+                                        - else
+                                          = value.blank? ? '-----------' : value
+                      .col-lg-4
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title Datos de los Viajeros
+                            .box-tools.pull-right
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+                                - order.reservation.travellers.each_with_index do |traveller, index|
+                                  %tr.list-row
+                                    %th.display-label= "Viajero # #{index+1}"
+                                    %td.display-value.fs-body-1.tc-black-2
+                                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+                      .col-lg-4
+                        .box.slice-box
+                          .box-header.with-border
+                            %h3.box-title Datos de Orden/Factura
+                            .box-tools.pull-right
+                          .box-body.box-body-no-padding
+                            %table.table.table-striped
+                              %tbody
+
+                                %tr.list-row
+                                  %th.display-label N° de Orden
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.id
+
+                                %tr.list-row
+                                  %th.display-label N° de Factura
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.token
+
+                                %tr.list-row
+                                  %th.display-label Estatus de la Reserva
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.status
+
+                                %tr.list-row
+                                  %th.display-label Nombre del Cotizante
+                                  %td.display-value.fs-body-1.tc-black-2= reservation.user.name

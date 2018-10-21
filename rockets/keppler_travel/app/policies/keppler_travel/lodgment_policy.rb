@@ -1,6 +1,6 @@
 module KepplerTravel
   # Policy for Lodgment model
-  class LodgmentPolicy < ControllerPolicy
+  class LodgmentPolicy < KepplerTravelPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

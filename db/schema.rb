@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_180158) do
+ActiveRecord::Schema.define(version: 2018_10_21_154744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,17 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.index ["vehicle_id"], name: "vehicle_id"
   end
 
+  create_table "keppler_travel_drivers", force: :cascade do |t|
+    t.string "timetrack"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_drivers_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_drivers_on_user_id"
+  end
+
   create_table "keppler_travel_invoices", force: :cascade do |t|
     t.string "token"
     t.string "amount"
@@ -225,6 +236,17 @@ ActiveRecord::Schema.define(version: 2018_10_12_180158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_travel_multidestinations_on_deleted_at"
+  end
+
+  create_table "keppler_travel_orders", force: :cascade do |t|
+    t.string "status"
+    t.string "details"
+    t.bigint "driver_id"
+    t.bigint "reservation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_keppler_travel_orders_on_driver_id"
+    t.index ["reservation_id"], name: "index_keppler_travel_orders_on_reservation_id"
   end
 
   create_table "keppler_travel_rankings", force: :cascade do |t|

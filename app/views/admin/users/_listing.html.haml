@@ -23,13 +23,16 @@
       = link_to admin_user_path(user, search: @query), remote: true, class: 'show-row' do
         %span= user.rol.humanize
 
-    %td.visible-lg.visible-md
-      - if user.has_role? :partner
-        = link_to admin_user_assign_partner_path(user, partner: true), remote: true, class: 'show-row' do
-          %i.icon-check{style:'color:mediumturquoise'}
-      - else
-        = link_to admin_user_assign_partner_path(user, partner: false), remote: true, class: 'show-row' do
-          %i.icon-minus
+    - unless (user.has_role? :driver) || (user.has_role? :keppler_admin) || (user.has_role? :admin)
+      %td.visible-lg.visible-md
+        - if user.has_role? :partner
+          = link_to admin_user_assign_partner_path(user, partner: true), remote: true, class: 'show-row' do
+            %i.icon-check{style:'color:mediumturquoise'}
+        - else
+          = link_to admin_user_assign_partner_path(user, partner: false), remote: true, class: 'show-row' do
+            %i.icon-minus
+    - else
+      %td No Disponible
 
     %td
       %a.action-btn.pull-right{ id: "menu-#{user.id}", 'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown' }
@@ -41,18 +44,20 @@
               %i.icon-eye
               = t('keppler.actions.show')
         - if can?(User).update?
-          %li
-            = link_to edit_admin_user_path(user), title: t('keppler.actions.edit') do
-              %i.icon-pencil
-              = t('keppler.actions.edit')
+          - unless user.has_role? :driver
+            %li
+              = link_to edit_admin_user_path(user), title: t('keppler.actions.edit') do
+                %i.icon-pencil
+                = t('keppler.actions.edit')
         - if can?(User).clone?
           %li
             = link_to admin_user_path(user), title: t('keppler.actions.clone') do
               %i.icon-docs
               = t('keppler.actions.clone')
         - if can?(User).destroy?
-          - unless user.id.eql?(current_user.id)
-            %li
-              = link_to admin_user_path(user), title: t('keppler.actions.delete'), method: :delete, data: { confirm: t('keppler.messages.data_confirm') } do
-                %i.icon-trash
-                = t('keppler.actions.delete')
+          - unless user.has_role? :driver
+            - unless user.id.eql?(current_user.id)
+              %li
+                = link_to admin_user_path(user), title: t('keppler.actions.delete'), method: :delete, data: { confirm: t('keppler.messages.data_confirm') } do
+                  %i.icon-trash
+                  = t('keppler.actions.delete')

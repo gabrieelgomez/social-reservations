@@ -7,8 +7,10 @@ class CreateKepplerTravelMultidestinations < ActiveRecord::Migration[5.2]
       t.jsonb :include
       t.jsonb :exclude
       t.jsonb :itinerary
+      t.string :banner
       t.boolean :status, default: true
       t.jsonb :files
+      t.boolean :featured
       t.integer :position
       t.datetime :deleted_at
       t.timestamps

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Application Policy
 class ControllerPolicy < ApplicationPolicy
   attr_reader :user, :record
@@ -10,7 +8,7 @@ class ControllerPolicy < ApplicationPolicy
   end
 
   def index?
-    keppler_admin? || user_can?(@objects, 'index')
+    admin? || keppler_admin? || user_can?(@objects, 'index')
   end
 
   def new?
@@ -18,7 +16,7 @@ class ControllerPolicy < ApplicationPolicy
   end
 
   def create?
-    keppler_admin? || user_can?(@objects, 'create')
+    admin? || keppler_admin? || user_can?(@objects, 'create')
   end
 
   def edit?
@@ -26,15 +24,15 @@ class ControllerPolicy < ApplicationPolicy
   end
 
   def update?
-    keppler_admin? || user_can?(@objects, 'update')
+    admin? || keppler_admin? || user_can?(@objects, 'update')
   end
 
   def clone?
-    keppler_admin? || user_can?(@objects, 'clone')
+    admin? || keppler_admin? || user_can?(@objects, 'clone')
   end
 
   def show?
-    keppler_admin? || user_can?(@objects, 'index')
+    admin? || keppler_admin? || user_can?(@objects, 'index')
   end
 
   def destroy_multiple?
@@ -42,18 +40,18 @@ class ControllerPolicy < ApplicationPolicy
   end
 
   def destroy?
-    keppler_admin? || user_can?(@objects, 'destroy')
+    admin? || keppler_admin? || user_can?(@objects, 'destroy')
   end
 
   def upload?
-    keppler_admin? || user_can?(@objects, 'upload')
+    admin? || keppler_admin? || user_can?(@objects, 'upload')
   end
 
   def download?
-    keppler_admin? || user_can?(@objects, 'download')
+    admin? || keppler_admin? || user_can?(@objects, 'download')
   end
 
   def sort?
-    keppler_admin? || user_can?(@objects, 'sort')
+    admin? || keppler_admin? || user_can?(@objects, 'sort')
   end
 end

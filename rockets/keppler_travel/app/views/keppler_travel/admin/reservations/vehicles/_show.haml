@@ -76,7 +76,7 @@
 
   .show-section
     .row
-      .col-lg-12
+      .col-lg-6
         .box.slice-box
           .box-header.with-border
             %h3.box-title Datos de los Viajeros
@@ -89,6 +89,51 @@
                     %th.display-label= "Viajero # #{index+1}"
                     %td.display-value.fs-body-1.tc-black-2
                       = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+
+      .col-lg-6
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Chofer Asignado
+            .box-tools.pull-right
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                %tr.list-row
+                  %th.display-label Nombre y Apellido
+                  %td.display-value.fs-body-1.tc-black-2
+                    - unless @reservation.driver.nil?
+                      .col-lg-8.pull-left
+                        = @reservation.driver.user.name
+                      .col-lg-4
+                        - unless @reservation.order.status.eql?('complete')
+                          = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
+                            .arrow-back.btn.btn-default
+                              = t('keppler.actions.unassign')
+                    - else
+                      = '-----------'
+                %tr.list-row
+                  %th.display-label Correo
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @reservation.driver.nil? ? '-----------' : @reservation.driver.user.email
+                %tr.list-row
+                  %th.display-label Teléfono
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @reservation.driver.nil? ? '-----------' : @reservation.driver.user.phone
+            - unless @reservation.order.try(:status).try(:eql, 'complete')
+              = simple_form_for @reservation, url: '/admin/travel/reservations/assignment', data: { confirm: t("keppler.messages.data_confirm") }, method: :post do |f|
+                %input{name: 'reservation_id', value: @reservation.id, type: 'hidden'}
+                %input{name: 'model_name', value: params[:model_name], type: 'hidden'}
+                %table.table.table-striped
+                  %tbody
+                    %tr.list-row
+                      %th.display-label Lista de Choferes Disponibles
+                      %td.display-value.fs-body-1.tc-black-2
+                        %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                          - KepplerTravel::Driver.driver_avaible.each do |driver|
+                            %option{ value: driver.id}= driver.user.name
+                    %tr.list-row
+                      %th.display-label= f.button :submit, t('keppler.actions.assignment'), name: '_save', class: 'btn-primary'
+
 
   .show-section
     .row

@@ -8,6 +8,7 @@ es:
       circuits: Circuitos
       tours: Tours
       vehicles: Vehículos
+      drivers: Choferes
       reservations-submenu:
         multidestinations: Multidestinos
         circuits: Circuitos
@@ -23,6 +24,7 @@ es:
         keppler_travel/multidestination: multidestino
         keppler_travel/circuit: circuito
         keppler_travel/vehicle: vehículo
+        keppler_travel/driver: chofer
       pluralize:
         reservations: reservaciones
         destinations: destinos
@@ -31,6 +33,7 @@ es:
         multidestinations: multidestinos
         circuits: circuitos
         vehicles: vehículos
+        drivers: choferes
     modules:
       keppler_travel/admin/reservations: "KepplerTravel → Reservaciones %{model}"
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
@@ -39,8 +42,11 @@ es:
       keppler_travel/admin/multidestinations: 'KepplerTravel → Multidestinos'
       keppler_travel/admin/circuits: 'KepplerTravel → Circuitos'
       keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
+      keppler_travel/admin/drivers: 'KepplerTravel → Choferes'
     settings:
     actions:
+      unassign: Desasignar
+      assignment: Asignar
       created: Creado
       updated: Actualizado
       new: Nuevo

@@ -59,6 +59,13 @@ menu:
     icon: map
     model: KepplerTravel::Tour
 
+  keppler_travel_driver:
+    name: drivers
+    current: ['admin/travel/drivers']
+    url_path: /admin/travel/drivers
+    icon: speedometer
+    model: KepplerTravel::Driver
+
   keppler_travel_vehicle:
     name: vehicles
     current: ['admin/travel/vehicles']

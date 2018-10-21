@@ -1,4 +1,12 @@
 modules:
+ drivers:
+    name: Driver
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
  circuits:
     name: Circuit
     actions: [

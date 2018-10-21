@@ -1,6 +1,6 @@
 module KepplerTravel
   # Policy for Tour model
-  class TourPolicy < ControllerPolicy
+  class TourPolicy < KepplerTravelPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

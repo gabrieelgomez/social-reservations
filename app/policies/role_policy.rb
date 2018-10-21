@@ -14,14 +14,14 @@ class RolePolicy < ControllerPolicy
   end
 
   def add_permissions?
-    keppler_admin? || user_can?(@objects, 'add_permissions')
+    keppler_admin? || admin? || user_can?(@objects, 'add_permissions')
   end
 
   def create_permissions?
-    keppler_admin? || user_can?(@objects, 'create_permissions')
+    keppler_admin? || admin? || user_can?(@objects, 'create_permissions')
   end
 
   def show_description?
-    keppler_admin? || user_can?(@objects, 'create_permissions')
+    keppler_admin? || admin? || user_can?(@objects, 'create_permissions')
   end
 end

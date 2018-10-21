@@ -1,11 +1,13 @@
-# frozen_string_literal: true
-
 # Application Policy
 class ApplicationPolicy
   attr_reader :user, :record
 
   def keppler_admin?
     user.keppler_admin?
+  end
+
+  def admin?
+    user.has_role? :admin
   end
 
   def same_user?(id)

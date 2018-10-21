@@ -1,6 +1,6 @@
 module KepplerTravel
   # Policy for Multidestination model
-  class MultidestinationPolicy < ControllerPolicy
+  class MultidestinationPolicy < KepplerTravelPolicy
     attr_reader :user, :objects
 
     def initialize(user, objects)

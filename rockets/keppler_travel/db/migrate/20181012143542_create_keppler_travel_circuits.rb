@@ -7,11 +7,12 @@ class CreateKepplerTravelCircuits < ActiveRecord::Migration[5.2]
       t.jsonb :include
       t.jsonb :exclude
       t.jsonb :itinerary
-      t.boolean :status
+      t.string :banner
+      t.boolean :status, default: true
       t.jsonb :files
+      t.boolean :featured
       t.integer :position
       t.datetime :deleted_at
-
       t.timestamps
     end
     add_index :keppler_travel_circuits, :deleted_at

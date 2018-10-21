@@ -14,6 +14,25 @@ module KepplerTravel
       include KepplerTravel::Concerns::DestroyMultiple
       include ObjectQuery
 
+      def assignment
+        @reservation = Reservation.find(params[:reservation_id])
+        if @reservation.order
+          if @order = @reservation.order.update(driver_id: params[:driver_id])
+            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
+          end
+        else
+          @order = @reservation.build_order(status: 'pending', driver_id: params[:driver_id])
+          if @order.save
+            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
+          end
+        end
+      end
+
+      def unassign
+        @reservation = Reservation.find(params[:reservation_id])
+        @reservation.order.destroy
+        redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
+      end
 
       # GET /reservations
       def index
@@ -126,7 +145,7 @@ module KepplerTravel
       def set_attachments
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
-        @model = params[:model_name].capitalize
+        @model = params[:model_name].try(:capitalize)
       end
 
       # Use callbacks to share common setup or constraints between actions.
