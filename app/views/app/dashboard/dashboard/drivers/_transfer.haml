@@ -1,0 +1,49 @@
+%section.content-header
+  %h1
+    Órdenes de Reserva
+    -#%small Traslados
+%section.content
+  .row
+    .col-xs-12
+      .box
+        .box-header
+          %h3.box-title Traslados
+          .box-tools
+            .input-group.input-group-sm{:style => "width: 150px;"}
+              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
+              .input-group-btn
+                %button.btn.btn-default{:type => "submit"}
+                  %i.fa.fa-search
+        .box-body.table-responsive.no-padding
+          %table.table.table-hover
+            %tbody
+              %tr.items-orders
+                %th ¿Completado?
+                %th N° Orden
+                %th N° Factura
+                %th Estatus Reserva
+                %th Traslado
+                %th Origen
+                %th Destino
+                %th Responsable
+                %th Pasajeros
+                %th Cant. Adultos
+                %th Cant. Niños
+
+              - @orders.map(&:reservation).each do |reservation|
+                %tr
+                  = simple_form_for reservation.order, url: user_update_path, method: :post do |f|
+                    %td
+                      = f.input :status, as: :boolean, label: false
+                  %td= reservation.id
+                  %td= reservation.invoice.token
+                  %td{style:"text-align: center;"}
+                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+
+                  %td= reservation.reservationable.title[@lang]
+                  %td= truncate(reservation.origin, :length => 25)
+                  %td= truncate(reservation.arrival, :length => 25)
+                  %td= reservation.user.name.titleize
+                  %td= reservation.travellers.count
+                  %td= reservation.quantity_adults
+                  %td= reservation.quantity_kids

@@ -17,25 +17,37 @@
   / Sidebar Menu
   %ul.sidebar-menu{"data-widget"=>"tree"}
     %li.header Consultas
-    %li.treeview
-      %a{href: "#"}
-        %i.icon-docs.icons
-        %span Órdenes
-        %span.pull-right-container
-          %i.fa.fa-angle-left.pull-right
-      %ul.treeview-menu
-        %li
-          = link_to orders_path(@lang, @currency, 'circuits'), class:"" do
-            Circuitos
-        %li
-          = link_to orders_path(@lang, @currency, 'multidestinations'), class:"" do
-            Multidestinos
-        %li
-          = link_to orders_path(@lang, @currency, 'transfers'), class:"" do
-            Traslados / Vehículos
-        %li
-          = link_to orders_path(@lang, @currency, 'tours'), class:"" do
-            Tours
+    - unless current_user.has_role? :driver
+      %li.treeview
+        %a{href: "#"}
+          %i.icon-docs.icons
+          %span Órdenes
+          %span.pull-right-container
+            %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
+          %li
+            = link_to orders_path(@lang, @currency, 'circuits'), class:"" do
+              Circuitos
+          %li
+            = link_to orders_path(@lang, @currency, 'multidestinations'), class:"" do
+              Multidestinos
+          %li
+            = link_to orders_path(@lang, @currency, 'transfers'), class:"" do
+              Traslados / Vehículos
+          %li
+            = link_to orders_path(@lang, @currency, 'tours'), class:"" do
+              Tours
+    - if current_user.has_role? :driver
+      %li.treeview
+        %a{href: "#"}
+          %i.icon-user.icons
+          %span Mis Traslados Asignados
+          %span.pull-right-container
+            %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
+          %li
+            %a{href: drivers_transfers_path(@lang, @currency)} Traslados
+
     %li.treeview
       %a{href: "#"}
         %i.icon-user.icons

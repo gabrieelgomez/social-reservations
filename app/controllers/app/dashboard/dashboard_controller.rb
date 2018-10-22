@@ -11,9 +11,14 @@ module App
       end
 
       def orders
+        redirect_to drivers_transfers_path('es', 'usd') if current_user.has_role? :driver
       end
-      
+
       def users
+      end
+
+      def drivers
+        @orders = current_user.driver.orders
       end
 
       private
