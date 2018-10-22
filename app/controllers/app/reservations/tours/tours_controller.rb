@@ -30,7 +30,7 @@ module App
             build_invoice
             if @reservation.save!
               create_travellers
-              # ReservationMailer.tour_status(@reservation, @user).deliver_now
+              ReservationMailer.tour_status(@reservation, @user).deliver_now
               redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
             else
               render :new

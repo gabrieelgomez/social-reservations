@@ -172,3 +172,44 @@ function validateLodgment(id_form){
    }
   });
 }
+
+
+function validateDriver(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'user[name]': { required: true},
+     'user[email]': { required: true, email:true},
+     'user[phone]': { required: true},
+     'user[dni]': { required: true},
+     'user[password]': { required: true},
+     'user[password_confirmation]': { required: true, equalTo: "#user_password"}
+     },
+   messages: {
+     'user[name]': 'No puede estar en blanco',
+     'user[phone]': 'No puede estar en blanco',
+     'user[dni]': 'No puede estar en blanco',
+     'user[password]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var avatar = $('#user_avatar').val();
+     // var rankings = $('#rankings_users').val();
+     // var rooms = $('#users_rooms').val();
+     //
+     // $('form').append(`<input type="hidden" name="user[room_ids]" value=${rooms} /> `);
+
+
+     if (avatar == ""){
+       alert('Agregue una imagen');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}

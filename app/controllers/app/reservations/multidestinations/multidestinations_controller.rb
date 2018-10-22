@@ -32,7 +32,7 @@ module App
             build_square
             if @reservation.save!
               create_travellers
-              # ReservationMailer.multidestination_status(@reservation, @user).deliver_now
+              ReservationMailer.multidestination_status(@reservation, @user).deliver_now
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               redirect_to invoice_path('es', 'cop')
             else

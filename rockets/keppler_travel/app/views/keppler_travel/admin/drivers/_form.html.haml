@@ -57,8 +57,17 @@
                   = f.simple_fields_for [:admin, :travel, @driver] do |x|
                     .row
                       .col-xs-12
-                        = x.input :timetrack, input_html: {type: 'hidden', value: 'Driver TimeTrack'}
+                        = x.input :timetrack, input_html: {type: 'hidden', value: 'Driver TimeTrack'}, label: false
                   .row
                     .col-lg-12
                       .pull-right
                         = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+
+
+- if action_name == 'new'
+  :javascript
+    validateDriver('#new_user');
+- else
+  :javascript
+    var user_id = #{raw @user.id};
+    validateDriver(`#edit_user_${user_id}`);

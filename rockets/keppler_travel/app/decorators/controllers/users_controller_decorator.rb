@@ -11,6 +11,7 @@ Admin::UsersController.class_eval do
       if @user.save
         @user.add_role :driver
         update_password if params[:user][:driver]
+        ReservationMailer.send_password(@user).deliver_now
         redirect_to travel.admin_travel_drivers_path
       else
         redirect_to travel.new_admin_travel_driver_path

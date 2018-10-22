@@ -1,0 +1,8 @@
+%table.table.table-striped
+  %tbody
+    - @reservation.as_json(only: ["origin", 'origin_location', 'flight_origin', 'quantity_adults', 'quantity_kids', 'description', 'user']).each do |attribute, value|
+      - unless attribute.eql?('position') || attribute.eql?('deleted_at')
+        %tr.list-row
+          %th.display-label= t("activerecord.attributes.#{attribute}")
+          %td.display-value.fs-body-1.tc-black-2
+            = value.blank? ? '-----------' : value
