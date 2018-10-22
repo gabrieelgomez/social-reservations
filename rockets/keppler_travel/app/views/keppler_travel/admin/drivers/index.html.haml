@@ -49,10 +49,10 @@
                 - else
                   %tr
                     %th
-                    %th Disponibilidad
-                    %th Avatar
+                    %th Estatus
+                    %th Perfil
                     %th.hidden-xs Nombre
-                    %th.hidden-xs Correo
+                    %th.hidden-xs Correo electrónico
                     %th.hidden-xs Identificación
                     %th.hidden-xs Teléfono
                     %th.center Menu
@@ -70,6 +70,30 @@
     - if can?(KepplerTravel::Driver).create?
       = link_to new_admin_travel_driver_path, class: "btn-float" do
         +
+
+:scss
+  .status{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    
+  }
+
+  .available{
+   background-color: #5cb85c;
+  }
+
+  .not-available{
+     background-color: #d9534f;
+  }
+
 
 :javascript
   $(document).ready(function(){
