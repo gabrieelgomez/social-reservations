@@ -1,11 +1,20 @@
 module App
   module Dashboard
-    module Transfers
+    module Drivers
 
       class TransfersController < DashboardController
 
         def drivers
-          byebug
+        end
+
+        def update_order
+          @order = KepplerTravel::Order.find(params[:order_id])
+          @order.update(status: 'complete')
+          if params[:admin] == 'true'
+            redirect_to admin_travel_reservation_path(@order.reservation, model_name: 'vehicle')
+          else
+            redirect_to drivers_transfers_path('es', 'usd'), notice: 'success'
+          end
         end
 
         private
