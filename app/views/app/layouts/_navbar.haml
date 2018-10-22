@@ -50,17 +50,17 @@
                     %li
                       = link_to orders_path(@lang, @currency, 'transfers'), class:'' do
                         %span
-                          %i.icon-list.icons
+                          %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }
                           Mi Tablero
                     %li
                       = link_to users_details_path(@lang, @currency), class:'' do
                         %span
-                          %i.icon-user.icons
+                          %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}
                           Mi Perfil
                     %li
                       = link_to destroy_session_path(current_user), class:''  do
                         %span
-                          %i.icon-logout.icons
+                          %i.icon-logout.icons{style:' margin-left: -1px; margin-right: 2px;'}
                           Cerrar Sesión
 
               - else

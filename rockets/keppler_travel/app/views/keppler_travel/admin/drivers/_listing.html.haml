@@ -10,13 +10,13 @@
 
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
-        %span
+        %span.status.available
           = driver.orders.map(&:status).count('pending').positive? ? 'Ocupado' : 'Disponible'
 
     %td
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
         %span
-          =  image_tag driver.user.try(:avatar).try(:url), width: 100, height: 50, style: 'object-fit: cover;'
+          =  image_tag driver.user.try(:avatar).try(:url), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
 
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
@@ -66,3 +66,4 @@
     %td{:style => 'width: 5%;'}
       %a.drop{:href=>"#"}
         %i.icon-cursor-move
+

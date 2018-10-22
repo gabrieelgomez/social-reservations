@@ -1,74 +1,73 @@
 menu:
   keppler_travel_reservation:
     name: reservations
-    current: ['admin/travel/reservations']
+    current: ["admin/travel/reservations"]
     url_path: /admin/travel/reservations
     icon: layers
     model: KepplerTravel::Reservation
     submenu:
-      - circuits:
-          name: circuits
-          url_path: /admin/travel/reservations?model_name=circuit
-          current: ['admin/travel/reservations']
-      - multidestinations:
-          name: multidestinations
-          url_path: /admin/travel/reservations?model_name=multidestination
-          current: ['admin/travel/reservations']
-      - tours:
-          name: tours
-          url_path: /admin/travel/reservations?model_name=tour
-          current: ['admin/travel/reservations']
       - vehicles:
           name: vehicles
           url_path: /admin/travel/reservations?model_name=vehicle
-          current: ['admin/travel/reservations']
+          current: ["admin/travel/reservations"]
+      - tours:
+          name: tours
+          url_path: /admin/travel/reservations?model_name=tour
+          current: ["admin/travel/reservations"]
+      - circuits:
+          name: circuits
+          url_path: /admin/travel/reservations?model_name=circuit
+          current: ["admin/travel/reservations"]
+      - multidestinations:
+          name: multidestinations
+          url_path: /admin/travel/reservations?model_name=multidestination
+          current: ["admin/travel/reservations"]
+
+  keppler_travel_vehicle:
+    name: vehicles
+    current: ["admin/travel/vehicles"]
+    url_path: /admin/travel/vehicles
+    icon: speedometer
+    model: KepplerTravel::Vehicle
+
+  keppler_travel_tour:
+    name: tours
+    current: ["admin/travel/tours"]
+    url_path: /admin/travel/tours
+    icon: map
+    model: KepplerTravel::Tour
+
+  keppler_travel_circuit:
+    name: circuits
+    current: ["admin/travel/circuits"]
+    url_path: /admin/travel/circuits
+    icon: loop
+    model: KepplerTravel::Circuit
+
+  keppler_travel_multidestination:
+    name: multidestinations
+    current: ["admin/travel/multidestinations"]
+    url_path: /admin/travel/multidestinations
+    icon: loop
+    model: KepplerTravel::Multidestination
 
   keppler_travel_destination:
     name: destinations
-    current: ['admin/travel/destinations']
+    current: ["admin/travel/destinations"]
     url_path: /admin/travel/destinations
     icon: location-pin
     model: KepplerTravel::Destination
 
   keppler_travel_lodgment:
     name: lodgments
-    current: ['admin/travel/lodgments']
+    current: ["admin/travel/lodgments"]
     url_path: /admin/travel/lodgments
     icon: layers
     model: KepplerTravel::Lodgment
 
-  keppler_travel_circuit:
-    name: circuits
-    current: ['admin/travel/circuits']
-    url_path: /admin/travel/circuits
-    icon: loop
-    model: KepplerTravel::Circuit
-
-
-  keppler_travel_multidestination:
-    name: multidestinations
-    current: ['admin/travel/multidestinations']
-    url_path: /admin/travel/multidestinations
-    icon: loop
-    model: KepplerTravel::Multidestination
-
-  keppler_travel_tour:
-    name: tours
-    current: ['admin/travel/tours']
-    url_path: /admin/travel/tours
-    icon: map
-    model: KepplerTravel::Tour
-
   keppler_travel_driver:
     name: drivers
-    current: ['admin/travel/drivers']
+    current: ["admin/travel/drivers"]
     url_path: /admin/travel/drivers
     icon: speedometer
     model: KepplerTravel::Driver
-
-  keppler_travel_vehicle:
-    name: vehicles
-    current: ['admin/travel/vehicles']
-    url_path: /admin/travel/vehicles
-    icon: speedometer
-    model: KepplerTravel::Vehicle
