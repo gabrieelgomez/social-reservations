@@ -10,6 +10,9 @@ module App
       def index
       end
 
+      def template
+      end
+
       def orders
         redirect_to drivers_transfers_path('es', 'usd') if current_user.has_role? :driver
       end

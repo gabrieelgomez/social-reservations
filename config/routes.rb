@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
     post '/dashboard/user/edit', to: 'app/dashboard/users/users#update', as: :user_update
 
+    #New template - Client / Drivers
+    get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end

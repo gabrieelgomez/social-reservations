@@ -5,21 +5,21 @@
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title Dashboard
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
-    %link{:href => "assets/css/bootstrap.min.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "assets/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "assets/css/nucleo-icons.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "assets/css/theme.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/assets/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "/assets/css/theme.css", :rel => "stylesheet"}/
+    %link{:href => "/assets/css/nucleo-icons.css", :rel => "stylesheet"}/
+    %link{:href => "/assets/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
     %div
       .notifications
         %span{:mode => "in-out"}
       .wrapper
-        .sidebar{:style => "background-image: url(assets/img/sidebar-5.jpg);"}
+        .sidebar{style: "background-image: url(/assets/img/sidebar-5.jpg)"}
           .sidebar-wrapper
             .logo
               %a.simple-text{:href => "#"}
                 .logo-img
-                  %img{:alt => "", :src => "assets/img/vue-logo.png"}/
+                  %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
                 Receptivo Colombia
             %ul.nav.nav-mobile-menu
               %li.dropdown.nav-item{"aria-haspopup" => "true"}
@@ -722,11 +722,11 @@
                 .col-md-4
                   .card.card-user
                     .card-image
-                      %img{:alt => "...", :src => "assets/img/cover.jpg"}/
+                      %img{:alt => "...", :src => "/assets/img/cover.jpg"}/
                     .card-body
                       .author
                         %a{:href => "#"}
-                          %img.avatar.border-gray{:alt => "...", :src => "assets/img/profile.jpg"}/
+                          %img.avatar.border-gray{:alt => "...", :src => "/assets/img/profile.jpg"}/
                           %h4.title
                             Mike Andrew
                             %br/
@@ -845,11 +845,11 @@
                     / 
           %footer.footer
             .container-fluid
-              %nav
+              -#%nav
                 %ul.footer-menu
                   %li
                     %a.nav-item.active{:href => "#"} Dashboard
-              .copyright.text-center
+              -#.copyright.text-center
                 © Coded with
                 %i.fa.fa-heart.heart
                 by
