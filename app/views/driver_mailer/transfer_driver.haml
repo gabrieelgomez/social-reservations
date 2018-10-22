@@ -12,10 +12,7 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.#{attribute}")
                   %td.display-value.fs-body-1.tc-black-2
-                    - if @attachments.include?(attribute)
-                      = image_tag value.url unless value.url.blank?
-                    - else
-                      = value.blank? ? '-----------' : value
+                    = value.blank? ? '-----------' : value
   .col-lg-4
     .box.slice-box
       .box-header.with-border
