@@ -11,6 +11,7 @@
       border: 1px solid #00000014;
       font-family: $font-primary;
       cursor: pointer;
+      margin-bottom: 15px;
 
       &__img {
         height: 300px;
@@ -34,12 +35,14 @@
           font-family: $font-primary;
           font-weight: 300;
           font-size: 25px;
-          margin-bottom: 38px;
+          margin-bottom: 40px;
 
           .title {
             text-align: left;
             float: left;
             box-shadow: 0px 2px 0px $color-blue;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
           }
         }
 
