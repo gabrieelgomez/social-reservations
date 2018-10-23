@@ -1,9 +1,9 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
   .form-label-group
-    = f.label :email
+    -#= f.label :email
     = f.email_field :email, :autofocus => true, class: "form-control validate", :placeholder => "Enter your email"
   .form-label-group
-    = f.label :password
+    -#= f.label :password
     = f.password_field :password, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Enter your password"
   .form-group.has-feedback
     .devise-errors.center-align
