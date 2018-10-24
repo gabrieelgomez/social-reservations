@@ -29,296 +29,170 @@
               .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
                 // Pending
                 #pending.tab-pane.active
-                  .listing.col-lg-12.col-xs-12
-                    %section.content-header.index-header
-                      %h1{:style => "display: inline-block;"}
-                        Lista - Traslados Pendientes
-                      .toolbar
-                        %li.toolbar-item.dropdown
-                          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Descargar registros"}
-                            %i.icon-cloud-download
-                          %ul.dropdown-menu
-                            %li
-                              %a.tool-btn{:href => "/admin/travel/reservations.xls"} Descargar XLS
-                        .toolbar-item
-                          %a#reservation.tool-btn{:href => "", :title => "Cargar registros"}
-                            %i.icon-cloud-upload
-                        .toolbar-item
-                          %a.tool-btn{"data-remote" => "true", :href => "/admin/travel/reservations/reload"}
-                            %i.icon-reload
-                      .hide
-                        %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0xabde965c%3E/upload", :enctype => "multipart/form-data", :method => "post"}
-                          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-                          %input{:name => "authenticity_token", :type => "hidden", :value => "5MPpPlwH4dRH+HcfaLS8C9dDaHFyVijdicjcSY/H/MxY8B2OdcvgJaWA13oSgHPO2F1aZVjfWrQTAEQ4acawEA=="}/
-                          %input#upload_file_reservation{:name => "file", :type => "file"}/
-                      %ol.breadcrumb
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-directions
-                            %span.translation_missing{:title => "translation missing: es.keppler.modules.index"} Index
-                    .box.slice-box
-                      .box-body.no-padding
-                        .spinner2
-                          %center
-                            %svg.spinner{:height => "50px", :style => "display: none;", :viewbox => "0 0 66 66", :width => "50px", :xmlns => "http://www.w3.org/2000/svg"}
-                              %circle.path{:cx => "33", :cy => "33", :fill => "none", :r => "30", "stroke-linecap" => "round", "stroke-width" => "6"}
-                        %table.table
-                          %thead
-                            %tr
-                              %th N° Orden
-                              %th.hidden-xs Nombre del Cotizante
-                              %th.hidden-xs Estatus Reserva
-                              %th.hidden-xs Origen
-                              %th.hidden-xs Destino
-                              %th.hidden-xs.hidden-sm Vehiculo
-                              %th.hidden-xs.hidden-sm Cant. Niño
-                              %th.hidden-xs.hidden-sm Cant. Adultos
-                              %th.center Detalles
-                          %tbody#objects-container
-                            %tr#row-1
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 1
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Example #1
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span pending
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Honda, Tolima, Co...
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Huila, Colombia
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Vans
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 2
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 5
-                              %td.hidden-xs.hidden-sm{style:'text-align: center;'}
-                                %a.new-menu{:href => "/admin/travel/reservations/1?model_name=vehicle", :title => "Ver"}
-                                  %i.icon-eye
-
-
-
-
-
-                  -#- @driver.orders.where(status: 'pending').each do |order|
+                  - @driver.orders.where(status: 'pending').each do |order|
                     - reservation = order.reservation
-                    .row
-                      .col-lg-6
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title= "Traslado ID: #{order.id} - Reservación ID: #{order.reservation.id}"
-                            .box-tools.pull-right
-                              -# - if can?(KepplerTravel::Circuit).update?
-                              -#   = link_to edit_admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
-                              -#     %i.icon-pencil
-                              -# - if can?(KepplerTravel::Circuit).destroy?
-                              -#   = link_to admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
-                              -#     %i.icon-trash
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
-                                - reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
-                                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                                    %tr.list-row
-                                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                                      %td.display-value.fs-body-1.tc-black-2
-                                        - if @attachments.include?(attribute)
-                                          = image_tag value.url unless value.url.blank?
-                                        - else
-                                          = value.blank? ? '-----------' : value
-                      .col-lg-4
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title Datos de los Viajeros
-                            .box-tools.pull-right
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
-                                - order.reservation.travellers.each_with_index do |traveller, index|
-                                  %tr.list-row
-                                    %th.display-label= "Viajero # #{index+1}"
-                                    %td.display-value.fs-body-1.tc-black-2
-                                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
-                      .col-lg-4
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title Datos de Orden/Factura
-                            .box-tools.pull-right
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
+                    .listing.col-lg-12.col-xs-12
+                      %section.content-header.index-header
+                        %h1{:style => "display: inline-block;"}
+                          Lista - Traslados Pendientes
+                        -# .toolbar
+                        -#   %li.toolbar-item.dropdown
+                        -#     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Descargar registros"}
+                        -#       %i.icon-cloud-download
+                        -#     %ul.dropdown-menu
+                        -#       %li
+                        -#         %a.tool-btn{:href => "/admin/travel/reservations.xls"} Descargar XLS
+                          -# .toolbar-item
+                          -#   %a#reservation.tool-btn{:href => "", :title => "Cargar registros"}
+                          -#     %i.icon-cloud-upload
+                          -# .toolbar-item
+                          -#   %a.tool-btn{"data-remote" => "true", :href => "/admin/travel/reservations/reload"}
+                          -#     %i.icon-reload
+                        -# .hide
+                        -#   %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0xabde965c%3E/upload", :enctype => "multipart/form-data", :method => "post"}
+                        -#     %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+                        -#     %input{:name => "authenticity_token", :type => "hidden", :value => "5MPpPlwH4dRH+HcfaLS8C9dDaHFyVijdicjcSY/H/MxY8B2OdcvgJaWA13oSgHPO2F1aZVjfWrQTAEQ4acawEA=="}/
+                        -#     %input#upload_file_reservation{:name => "file", :type => "file"}/
+                        -# %ol.breadcrumb
+                        -#   %li
+                        -#     %a{:href => "#"}
+                        -#       %i.icon-directions
+                        -#       %span.translation_missing{:title => "translation missing: es.keppler.modules.index"} Index
+                      .box.slice-box
+                        .box-body.no-padding
+                          -# .spinner2
+                          -#   %center
+                          -#     %svg.spinner{:height => "50px", :style => "display: none;", :viewbox => "0 0 66 66", :width => "50px", :xmlns => "http://www.w3.org/2000/svg"}
+                          -#       %circle.path{:cx => "33", :cy => "33", :fill => "none", :r => "30", "stroke-linecap" => "round", "stroke-width" => "6"}
+                          %table.table
+                            %thead
+                              %tr
+                                %th N° Orden
+                                %th N° Factura
+                                %th.hidden-xs Nombre del Cotizante
+                                %th.hidden-xs Estatus Reserva
+                                %th.hidden-xs Origen
+                                %th.hidden-xs Destino
+                                %th.hidden-xs.hidden-sm Vehiculo
+                                %th.hidden-xs.hidden-sm Cant. Niño
+                                %th.hidden-xs.hidden-sm Cant. Adultos
+                                %th.center Detalles
+                            %tbody#objects-container
+                              %tr#row-1
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.id
 
-                                %tr.list-row
-                                  %th.display-label N° de Orden
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.id
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.invoice.token
 
-                                %tr.list-row
-                                  %th.display-label N° de Factura
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.token
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.user.name
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.status
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.origin
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.arrival
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.reservationable.title['es']
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.quantity_kids
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.quantity_adults
+                                %td.hidden-xs.hidden-sm{style:'text-align: center;'}
+                                  %a.new-menu{:href => "/admin/travel/reservations/1?model_name=vehicle", :title => "Ver"}
+                                    %i.icon-eye
 
-                                %tr.list-row
-                                  %th.display-label Estatus de la Reserva
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.status
 
-                                %tr.list-row
-                                  %th.display-label Nombre del Cotizante
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.user.name
                 // Complete
                 #complete.tab-pane
-                  .listing.col-lg-12.col-xs-12
-                    %section.content-header.index-header
-                      %h1{:style => "display: inline-block;"}
-                        Lista - Traslados Completados
-                      .toolbar
-                        %li.toolbar-item.dropdown
-                          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Descargar registros"}
-                            %i.icon-cloud-download
-                          %ul.dropdown-menu
-                            %li
-                              %a.tool-btn{:href => "/admin/travel/reservations.xls"} Descargar XLS
-                        .toolbar-item
-                          %a#reservation.tool-btn{:href => "", :title => "Cargar registros"}
-                            %i.icon-cloud-upload
-                        .toolbar-item
-                          %a.tool-btn{"data-remote" => "true", :href => "/admin/travel/reservations/reload"}
-                            %i.icon-reload
-                      .hide
-                        %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0xabde965c%3E/upload", :enctype => "multipart/form-data", :method => "post"}
-                          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-                          %input{:name => "authenticity_token", :type => "hidden", :value => "5MPpPlwH4dRH+HcfaLS8C9dDaHFyVijdicjcSY/H/MxY8B2OdcvgJaWA13oSgHPO2F1aZVjfWrQTAEQ4acawEA=="}/
-                          %input#upload_file_reservation{:name => "file", :type => "file"}/
-                      %ol.breadcrumb
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-directions
-                            %span.translation_missing{:title => "translation missing: es.keppler.modules.index"} Index
-                    .box.slice-box
-                      .box-body.no-padding
-                        .spinner2
-                          %center
-                            %svg.spinner{:height => "50px", :style => "display: none;", :viewbox => "0 0 66 66", :width => "50px", :xmlns => "http://www.w3.org/2000/svg"}
-                              %circle.path{:cx => "33", :cy => "33", :fill => "none", :r => "30", "stroke-linecap" => "round", "stroke-width" => "6"}
-                        %table.table
-                          %thead
-                            %tr
-                              %th N° Orden
-                              %th.hidden-xs Nombre del Cotizante
-                              %th.hidden-xs Estatus Reserva
-                              %th.hidden-xs Origen
-                              %th.hidden-xs Destino
-                              %th.hidden-xs.hidden-sm Vehiculo
-                              %th.hidden-xs.hidden-sm Cant. Niño
-                              %th.hidden-xs.hidden-sm Cant. Adultos
-                              %th.center Detalles
-                          %tbody#objects-container
-                            %tr#row-1
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 1
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Example #3
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span pending
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Honda, Tolima, Co...
-                              %td.hidden-xs
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Huila, Colombia
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span Vans
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 2
-                              %td.hidden-xs.hidden-sm
-                                %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
-                                  %span 5
-                              %td.hidden-xs.hidden-sm{style:'text-align: center;'}
-                                %a.new-menu{:href => "/admin/travel/reservations/1?model_name=vehicle", :title => "Ver"}
-                                  %i.icon-eye
+                  - @driver.orders.where(status: 'complete').each do |order|
+                    .listing.col-lg-12.col-xs-12
+                      %section.content-header.index-header
+                        %h1{:style => "display: inline-block;"}
+                          Lista - Traslados Pendientes
+                        -# .toolbar
+                        -#   %li.toolbar-item.dropdown
+                        -#     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Descargar registros"}
+                        -#       %i.icon-cloud-download
+                        -#     %ul.dropdown-menu
+                        -#       %li
+                        -#         %a.tool-btn{:href => "/admin/travel/reservations.xls"} Descargar XLS
+                          -# .toolbar-item
+                          -#   %a#reservation.tool-btn{:href => "", :title => "Cargar registros"}
+                          -#     %i.icon-cloud-upload
+                          -# .toolbar-item
+                          -#   %a.tool-btn{"data-remote" => "true", :href => "/admin/travel/reservations/reload"}
+                          -#     %i.icon-reload
+                        -# .hide
+                        -#   %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0xabde965c%3E/upload", :enctype => "multipart/form-data", :method => "post"}
+                        -#     %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+                        -#     %input{:name => "authenticity_token", :type => "hidden", :value => "5MPpPlwH4dRH+HcfaLS8C9dDaHFyVijdicjcSY/H/MxY8B2OdcvgJaWA13oSgHPO2F1aZVjfWrQTAEQ4acawEA=="}/
+                        -#     %input#upload_file_reservation{:name => "file", :type => "file"}/
+                        -# %ol.breadcrumb
+                        -#   %li
+                        -#     %a{:href => "#"}
+                        -#       %i.icon-directions
+                        -#       %span.translation_missing{:title => "translation missing: es.keppler.modules.index"} Index
+                      .box.slice-box
+                        .box-body.no-padding
+                          -# .spinner2
+                          -#   %center
+                          -#     %svg.spinner{:height => "50px", :style => "display: none;", :viewbox => "0 0 66 66", :width => "50px", :xmlns => "http://www.w3.org/2000/svg"}
+                          -#       %circle.path{:cx => "33", :cy => "33", :fill => "none", :r => "30", "stroke-linecap" => "round", "stroke-width" => "6"}
+                          %table.table
+                            %thead
+                              %tr
+                                %th N° Orden
+                                %th N° Factura
+                                %th.hidden-xs Nombre del Cotizante
+                                %th.hidden-xs Estatus Reserva
+                                %th.hidden-xs Origen
+                                %th.hidden-xs Destino
+                                %th.hidden-xs.hidden-sm Vehiculo
+                                %th.hidden-xs.hidden-sm Cant. Niño
+                                %th.hidden-xs.hidden-sm Cant. Adultos
+                                %th.center Detalles
+                            %tbody#objects-container
+                              %tr#row-1
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.id
 
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.invoice.token
 
-
-
-
-                  -#- @driver.orders.where(status: 'complete').each do |order|
-                    - reservation = order.reservation
-                    .row
-                      .col-lg-6
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title= "Traslado ID: #{order.id} - Reservación ID: #{order.reservation.id}"
-                            .box-tools.pull-right
-                              -# - if can?(KepplerTravel::Circuit).update?
-                              -#   = link_to edit_admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
-                              -#     %i.icon-pencil
-                              -# - if can?(KepplerTravel::Circuit).destroy?
-                              -#   = link_to admin_travel_circuit_path(@circuit), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
-                              -#     %i.icon-trash
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
-                                - reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
-                                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                                    %tr.list-row
-                                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                                      %td.display-value.fs-body-1.tc-black-2
-                                        - if @attachments.include?(attribute)
-                                          = image_tag value.url unless value.url.blank?
-                                        - else
-                                          = value.blank? ? '-----------' : value
-                      .col-lg-4
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title Datos de los Viajeros
-                            .box-tools.pull-right
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
-                                - order.reservation.travellers.each_with_index do |traveller, index|
-                                  %tr.list-row
-                                    %th.display-label= "Viajero # #{index+1}"
-                                    %td.display-value.fs-body-1.tc-black-2
-                                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
-                      .col-lg-4
-                        .box.slice-box
-                          .box-header.with-border
-                            %h3.box-title Datos de Orden/Factura
-                            .box-tools.pull-right
-                          .box-body.box-body-no-padding
-                            %table.table.table-striped
-                              %tbody
-
-                                %tr.list-row
-                                  %th.display-label N° de Orden
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.id
-
-                                %tr.list-row
-                                  %th.display-label N° de Factura
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.token
-
-                                %tr.list-row
-                                  %th.display-label Estatus de la Reserva
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.invoice.status
-
-                                %tr.list-row
-                                  %th.display-label Nombre del Cotizante
-                                  %td.display-value.fs-body-1.tc-black-2= reservation.user.name
-
-
-
-                                -#%tbody#objects-container
-                                  = render 'admin/layouts/listing_preloader'
-                                  = render 'listing', objects: @objects
-                          -#%center#paginator-module
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.user.name
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.status
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.origin
+                                %td.hidden-xs
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.arrival
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.reservationable.title['es']
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.quantity_kids
+                                %td.hidden-xs.hidden-sm
+                                  %a.show-row{"data-remote" => "true", :href => "/admin/travel/reservations/1"}
+                                    %span= reservation.quantity_adults
+                                %td.hidden-xs.hidden-sm{style:'text-align: center;'}
+                                  %a.new-menu{:href => "/admin/travel/reservations/1?model_name=vehicle", :title => "Ver"}
+                                    %i.icon-eye

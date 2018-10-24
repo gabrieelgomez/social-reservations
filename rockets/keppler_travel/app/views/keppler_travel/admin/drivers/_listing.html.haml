@@ -8,12 +8,12 @@
             %span.cr
               %i.cr-icon.glyphicon.glyphicon-ok
 
-    %td.hidden-xs
-      = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
-        - if driver.orders.map(&:status).count('pending').positive?
-          %span.status.not-available Ocupado
-        - else
-          %span.status.available Disponible
+    -# %td.hidden-xs
+    -#   = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
+    -#     - if driver.orders.map(&:status).count('pending').positive?
+    -#       %span.status.not-available Ocupado
+    -#     - else
+    -#       %span.status.available Disponible
     %td
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
         %span

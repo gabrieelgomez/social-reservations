@@ -1,0 +1,44 @@
+.row
+  .col-lg-6
+    .box.slice-box
+      .box-header.with-border
+        %h3.box-title= "Para su traslado con Orden ##{@reservation.id}, ha sido asignado el siguiente chofer:"
+        .box-tools.pull-right
+      .box-body.box-body-no-padding
+        %table.table.table-striped
+          %tbody
+            %tr.list-row
+              %th.display-label Chofer
+              %td.display-value.fs-body-1.tc-black-2= @driver.name
+
+            %tr.list-row
+              %th.display-label Correo Electrónico Chofer
+              %td.display-value.fs-body-1.tc-black-2= @driver.email
+
+            %tr.list-row
+              %th.display-label Teléfono
+              %td.display-value.fs-body-1.tc-black-2= @driver.phone
+
+            %tr.list-row
+              %th.display-label Identificación
+              %td.display-value.fs-body-1.tc-black-2= @driver.dni
+
+  .col-lg-4
+    .box.slice-box
+      .box-header.with-border
+        %h3.box-title Datos del Vehículo
+        .box-tools.pull-right
+      .box-body.box-body-no-padding
+        %table.table.table-striped
+          %tbody
+            %tr.list-row
+              %th.display-label Vehículo
+              %td.display-value.fs-body-1.tc-black-2= @vehicle.title['es']
+
+            %tr.list-row
+              %th.display-label Asientos
+              %td.display-value.fs-body-1.tc-black-2= @vehicle.seat
+
+            %tr.list-row
+              %th.display-label Imagen
+              %td.display-value.fs-body-1.tc-black-2= image_tag attachments[@logo].url, style: "width: 100px;"

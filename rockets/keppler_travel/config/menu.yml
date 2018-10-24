@@ -23,6 +23,13 @@ menu:
           url_path: /admin/travel/reservations?model_name=multidestination
           current: ["admin/travel/reservations"]
 
+  keppler_travel_driver:
+    name: drivers
+    current: ["admin/travel/drivers"]
+    url_path: /admin/travel/drivers
+    icon: speedometer
+    model: KepplerTravel::Driver
+
   keppler_travel_vehicle:
     name: vehicles
     current: ["admin/travel/vehicles"]
@@ -64,10 +71,3 @@ menu:
     url_path: /admin/travel/lodgments
     icon: layers
     model: KepplerTravel::Lodgment
-
-  keppler_travel_driver:
-    name: drivers
-    current: ["admin/travel/drivers"]
-    url_path: /admin/travel/drivers
-    icon: speedometer
-    model: KepplerTravel::Driver

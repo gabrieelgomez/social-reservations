@@ -83,19 +83,19 @@
                       .nav-tabs-custom
                         %ul.nav.nav-tabs
                           %li.active
-                            %a{"data-toggle" => "tab", :href => "#cop"} Precio COP
-                          %li
                             %a{"data-toggle" => "tab", :href => "#usd"} Precio USD
+                          %li
+                            %a{"data-toggle" => "tab", :href => "#cop"} Precio COP
                         .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
                           // ESPAÑOL
-                          #cop.tab-pane.active
+                          #cop.tab-pane
                             .col-xs-6
                               = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
                                 = field.input :cop, label: 'Precio Adulto COP', input_html: { min: 1, type: 'number' }
                             .col-xs-6
                               = f.simple_fields_for :price_kids, OpenStruct.new(@tour.price_kids) do |field|
                                 = field.input :cop, label: 'Precio Niño COP', input_html: { min: 1, type: 'number' }
-                          #usd.tab-pane
+                          #usd.tab-pane.active
                             .col-xs-6
                               = f.simple_fields_for :price_adults, OpenStruct.new(@tour.price_adults) do |field|
                                 = field.input :usd, label: 'Precio Adulto USD', input_html: { min: 1, type: 'number' }

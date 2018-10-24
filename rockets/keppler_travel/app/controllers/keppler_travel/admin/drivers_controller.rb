@@ -69,7 +69,7 @@ module KepplerTravel
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
         end
-        @user = User.find_by(email: user_params[:email])
+        @user = User.find_by(email: params[:user][:last_email])
         # -----
         if @user.update_attributes(update_attributes)
           update_password
