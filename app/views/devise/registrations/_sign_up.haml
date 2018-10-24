@@ -1,15 +1,15 @@
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
   = devise_error_messages!
   .form-label-group
-    = f.input :name, :autofocus => true, class: 'form-control'
+    = f.input :name, :autofocus => true, class: 'form-control', label: false, :placeholder => "Enter your name"
   .form-label-group
-    = f.label :email
-    = f.email_field :email, :autofocus => true, class: 'form-control'
+    -#= f.label :email
+    = f.email_field :email, :autofocus => true, class: 'form-control', label: false, :placeholder => "Enter your email"
   .form-label-group
-    = f.label :password
-    = f.password_field :password, class: 'form-control'
+    -#= f.label :password
+    = f.password_field :password, class: 'form-control', label: false, :placeholder => "Enter your password"
   .form-label-group
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, class: 'form-control'
-  .box-login-btn.register
+    -#= f.label :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control', label: false, :placeholder => "Enter your password confirmation"
+  .box-login-btn
     = f.submit 'Register now', :class => 'btn btn-lg btn-primary btn-block btn-login'
