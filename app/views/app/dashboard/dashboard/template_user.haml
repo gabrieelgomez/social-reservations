@@ -72,38 +72,6 @@
                               %label.control-label
                                 Confirmar contraseña
                               %input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Confirm Password", :type => "number"}/
-
-                        -#.row
-                          .col-md-12
-                            .form-group
-                              %label.control-label
-                                Address
-                              %input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Home Address", :type => "text"}/
-                        -#.row
-                          .col-md-4
-                            .form-group
-                              %label.control-label
-                                City
-                              %input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "City", :type => "text"}/
-                          .col-md-4
-                            .form-group
-                              %label.control-label
-                                Country
-                              %input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Country", :type => "text"}/
-                          .col-md-4
-                            .form-group
-                              %label.control-label
-                                Postal Code
-                              %input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "ZIP Code", :type => "number"}/
-                        -#.row
-                          .col-md-12
-                            -#.form-group
-                              %label About Me
-                              %textarea.form-control.border-input{:placeholder => "Here can be your description", :rows => "5"}
-                            .custom-file.mb-3
-                              %input#customFile.custom-file-input{:name => "filename", :type => "file"}/
-                              %label.custom-file-label{:for => "customFile"} Choose file
-
                         .text-center
                           %button.btn.btn-info.btn-fill.float-right{:type => "submit"}
                             Guardar
@@ -137,13 +105,10 @@
                           %i.fa.fa-google-plus-square
                   .row
                     .col-md-12
-                      -#.form-group
-                        %label About Me
-                        %textarea.form-control.border-input{:placeholder => "Here can be your description", :rows => "5"}
                       .custom-file.mb-3
                         %input#customFile.custom-file-input{:name => "filename", :type => "file"}/
                         %label.custom-file-label{:for => "customFile"} Subir imagen de perfil
-                        -#%label.custom-file-label{:for => "customFile"} Upload profile image
+                        -#Upload profile image
 
     = render 'app/dashboard/dashboard/layouts/scripts'
 
