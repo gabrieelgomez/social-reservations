@@ -5,13 +5,12 @@
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title Dashboard
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
-    -#%link{:href => "/assets/css/bootstrap.min.css", :rel => "stylesheet"}/
-    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", :integrity => "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", :rel => "stylesheet"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", :rel => "stylesheet"}/
     %link{:href => "/assets/css/theme.css", :rel => "stylesheet"}/
     %link{:href => "/assets/css/nucleo-icons.css", :rel => "stylesheet"}/
     %link{:href => "/assets/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
-    %div
+    %div#js-mobile
       .notifications
         %span{:mode => "in-out"}
       .wrapper
@@ -70,6 +69,7 @@
                 %a.nav-link{:href => "#"}
                   %i.nc-icon.nc-paper-2
                   %p Perfil
+                
               /
                 <li class="">
                 <a href="#/admin/icons" class="nav-link">
@@ -93,7 +93,7 @@
           %nav.navbar.navbar-expand-lg
             .container-fluid
               %a.navbar-brand{:href => "#"} Mi Tablero
-              %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
+              %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
                 %span.navbar-toggler-bar.burger-lines
                 %span.navbar-toggler-bar.burger-lines
                 %span.navbar-toggler-bar.burger-lines
@@ -134,22 +134,14 @@
                   %li.dropdown.nav-item{"aria-haspopup" => "true"}
                     %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
                       %i
-                      %span.no-icon Mi Perfil
+                      %span.no-icon Mi perfil
                       %b.caret
-                    .dropdown-menu{:style => "display: none;"}
-                      %a.dropdown-item{:href => "#"} Action
-                      %a.dropdown-item{:href => "#"} Another action
-                      %a.dropdown-item{:href => "#"} Something
-                      %a.dropdown-item{:href => "#"} Another action
-                      %a.dropdown-item{:href => "#"} Something
-                      .divider
-                      %a.dropdown-item{:href => "#"} Separated link
-                  /
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    Log out
-                    </a>
-                    </li>
+                    .dropdown-menu
+                      %a.dropdown-item{:href => "#"} Perfil
+                      %a.dropdown-item{:href => "#"} Mis Reservaciones
+                      %a.dropdown-item{:href => "#"} Cerrar Sesión
+                  %li
+
           .content
             .container-fluid
               .row
@@ -858,6 +850,7 @@
                   %a{:href => "#", :target => "_blank"} Cristi Jora
                 = succeed "." do
                   %a{:href => "#", :target => "_blank"} Creative Tim
-    %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
-    %script{:crossorigin => "anonymous", :integrity => "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
-    %script{:crossorigin => "anonymous", :integrity => "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
+    %script{:src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
+    %script{:src => "/assets/js/hamburger.js"}
