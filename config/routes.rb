@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
     #New template - Client / Drivers
     get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
+    get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
+    
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end
