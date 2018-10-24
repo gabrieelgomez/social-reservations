@@ -54,12 +54,12 @@
                           .col-xs-12
                             = f.simple_fields_for :address, OpenStruct.new(@lodgment.address) do |field|
                               = field.input :pt, label: 'Endereço'
-                    .col-xs-12.col-lg-4
-                      = f.input :email, label: 'Email'
-                    .col-xs-6.col-lg-4
-                      = f.input :phone_one, label: 'Teléfono (1)'
-                    .col-xs-6.col-lg-4
-                      = f.input :phone_two, label: 'Teléfono (2)'
+                    -# .col-xs-12.col-lg-4
+                    -#   = f.input :email, label: 'Email'
+                    -# .col-xs-6.col-lg-4
+                    -#   = f.input :phone_one, label: 'Teléfono (1)'
+                    -# .col-xs-6.col-lg-4
+                    -#   = f.input :phone_two, label: 'Teléfono (2)'
                     .col-xs-12.col-md-6.col-lg-4
                       %label Categorías de Alojamientos
                       %br

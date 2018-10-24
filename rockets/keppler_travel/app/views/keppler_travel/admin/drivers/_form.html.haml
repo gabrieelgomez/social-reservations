@@ -32,8 +32,9 @@
                         = f.input :phone, label: t('simple_form.labels.defaults.phone'), placeholder: 'Teléfono', input_html: {class: 'form-control'}, required: true
                       .col-xs-12.col-lg-6
                         = f.input :dni, label: t('simple_form.labels.defaults.dni'), placeholder: 'Identificación', input_html: {class: 'form-control'}, required: true
-                      .col-xs-12.col-lg-12
-                        = f.input :role_ids, collection: [['Driver', 5]], label: 'Rol', include_blank: false
+                      -# .col-xs-12.col-lg-12
+                      %input{name: 'user[role_ids]', value: '5', type: 'hidden'}
+                        -# = f.input :role_ids, collection: [['Driver', 5]], label: 'Rol', include_blank: false
                       .col-xs-12.col-lg-6
                         = f.input :password, label: t('simple_form.labels.defaults.password'), placeholder: 'Password', input_html: {class: 'form-control'}, required: true
                       .col-xs-12.col-lg-6
