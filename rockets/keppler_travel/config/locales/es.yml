@@ -45,6 +45,7 @@ es:
       keppler_travel/admin/drivers: 'KepplerTravel → Choferes'
     settings:
     actions:
+      confirm_transfer: Confirmar Traslado
       unassign: Desasignar
       assignment: Asignar
       created: Creado

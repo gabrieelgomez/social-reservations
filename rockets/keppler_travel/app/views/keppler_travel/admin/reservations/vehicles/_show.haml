@@ -91,12 +91,15 @@
                       = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
 
   .show-section
-    .row                      
+    .row
       .col-lg-6
         .box.slice-box
           .box-header.with-border
             %h3.box-title Chofer Asignado
             .box-tools.pull-right
+              - if @reservation.order.status == 'complete'
+                %h6.status.available Completado
+              -# %i.icon-check{style: 'color:green'}
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
@@ -106,11 +109,11 @@
                     - unless @reservation.driver.nil?
                       .col-lg-8.pull-left
                         = @reservation.driver.user.name
-                      .col-lg-4
-                        - unless @reservation.order.status.eql?('complete')
-                          = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: '', data: { confirm: t("keppler.messages.data_confirm") } do
-                            .icon-close.icons.btn_remove.pull-right
-                              -#= t('keppler.actions.unassign')
+                      - unless @reservation.order.status.eql?('complete')
+                        .col-lg-4
+                          = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
+                            .arrow-back.btn.btn-default
+                              = t('keppler.actions.unassign')
                     - else
                       = '-----------'
                 %tr.list-row
@@ -159,7 +162,7 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.seat_max")
                   %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.seat.blank? ? '-----------' : @reservation.reservationable.seat
-                        
+
 
   .show-section
     .row
@@ -177,9 +180,9 @@
 %br/
 %br/
 %br/
-%br/  
+%br/
 
-             
+
 :scss
   .btn_remove{
     color: #f44336;

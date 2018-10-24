@@ -9,10 +9,10 @@
         .box-header
           %h3.box-title Traslados
           .box-tools
-            .input-group.input-group-sm{:style => "width: 150px;"}
-              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
+            .input-group.input-group-sm{style: "width: 150px;"}
+              %input.form-control.pull-right{name: "table_search", placeholder: "Buscar", type: "text"}/
               .input-group-btn
-                %button.btn.btn-default{:type => "submit"}
+                %button.btn.btn-default{type: "submit"}
                   %i.fa.fa-search
         .box-body.table-responsive.no-padding
           %table.table.table-hover
@@ -32,26 +32,96 @@
 
               - @orders.map(&:reservation).each do |reservation|
                 %tr
-                  = simple_form_for reservation.order, url: user_update_path, method: :post do |f|
+                  - unless reservation.order.status.eql?('complete')
+                    = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
+                      %td
+                        %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
+                        %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
+                        %label.switch
+                          %input#check_driver{type: "checkbox"}/
+                          %span.slider.round
+                  - else
                     %td
-                      -#= f.input :status, as: :boolean, label: false
-                      %label.switch
-                        %input.js_drive{:type => "checkbox"}/
-                        %span.slider.round
-
+                      %span.status.available Completado
                   %td= reservation.id
                   %td= reservation.invoice.token
                   %td{style:"text-align: center;"}
                     %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
 
                   %td= reservation.reservationable.title[@lang]
-                  %td= truncate(reservation.origin, :length => 25)
-                  %td= truncate(reservation.arrival, :length => 25)
+                  %td= truncate(reservation.origin, length: 25)
+                  %td= truncate(reservation.arrival, length: 25)
                   %td= reservation.user.name.titleize
                   %td= reservation.travellers.count
                   %td= reservation.quantity_adults
                   %td= reservation.quantity_kids
+
+%script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+:javascript
+
+  $("#check_driver").on( 'change', function() {
+    swal({
+      title: '¿Estás seguro?',
+      text: "Esta acción no se puede revertir",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Si!, confirmar el traslado como completado',
+      cancelButtonText: '¡No!, regresar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        $('form').submit();
+        swal({
+          type: 'warning',
+          title: 'Tu solicitud está siendo procesada...',
+          text: 'Espere un momento...',
+          timer: 300000,
+          onOpen: () => {
+            swal.showLoading()
+          }
+        })
+      } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel
+      ) {
+        $("#check_driver").attr('checked', false);
+      }
+    })
+  });
+
+:javascript
+  var notice = "#{notice}";
+
+  if (notice == 'success'){
+   swal({
+    type: 'success',
+    title: '¡Listo!',
+    text: '¡Cambios guardados exitosamente!'
+   })
+  }
+
 :scss
+  .status{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+
+  }
+
+  .available{
+   background-color: #5cb85c;
+  }
+
+  .not-available{
+     background-color: #d9534f;
+  }
 
   .switch {
     position: relative;
@@ -60,7 +130,7 @@
     height: 20px;
   }
 
-  .switch input { 
+  .switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -112,13 +182,3 @@
   .slider.round:before {
   border-radius: 50%;
   }
-
-:javascript
-
-  $(".js_drive").on( 'change', function() {
-    if( $(this).is(':checked') ) {
-        alert("Ha completado el traslado");
-    } else {
-        alert("No ha completado el traslado");
-    }
-  });
