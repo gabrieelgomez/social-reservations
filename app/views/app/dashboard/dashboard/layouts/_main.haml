@@ -1,0 +1,51 @@
+%nav.navbar.navbar-expand-lg
+  .container-fluid
+    %a.navbar-brand{:href => "#"} Mi Tablero
+    %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
+      %span.navbar-toggler-bar.burger-lines
+      %span.navbar-toggler-bar.burger-lines
+      %span.navbar-toggler-bar.burger-lines
+    .collapse.navbar-collapse.justify-content-end
+      %ul.nav.navbar-nav.mr-auto
+        %li.nav-item
+          %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
+            %i.nc-icon.nc-palette
+        /
+          <li  aria-haspopup="true" class="dropdown nav-item">
+          <a  data-toggle="dropdown" class="nav-link dropdown-toggle">
+          <i  class="nc-icon nc-planet"></i>
+          <b  class="caret"></b>
+          <span  class="notification">5</span>
+          </a>
+          <div  class="dropdown-menu" style="display: none;">
+          <a  href="#" class="dropdown-item">Notification 1</a>
+          <a  href="#" class="dropdown-item">Notification 2</a>
+          <a  href="#" class="dropdown-item">Notification 3</a>
+          <a  href="#" class="dropdown-item">Notification 4</a>
+          <a  href="#" class="dropdown-item">Another notification</a>
+          </div>
+          </li>
+        /
+          <li class="nav-item">
+          <a href="#" class="nav-link">
+          <i class="nc-icon nc-zoom-split"></i>
+          <span class="d-lg-block">&nbsp;Search</span>
+          </a>
+          </li>
+      %ul.navbar-nav.ml-auto
+        /
+          <li class="nav-item">
+          <a href="#" class="nav-link">
+          Account
+          </a>
+          </li>
+        %li.dropdown.nav-item{"aria-haspopup" => "true"}
+          %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
+            %i
+            %span.no-icon Mi perfil
+            %b.caret
+          .dropdown-menu
+            %a.dropdown-item{:href => "#"} Perfil
+            %a.dropdown-item{:href => "#"} Mis Reservaciones
+            %a.dropdown-item{:href => "#"} Cerrar Sesión
+        %li

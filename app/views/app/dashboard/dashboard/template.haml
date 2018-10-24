@@ -1,148 +1,20 @@
 !!!
 %html{:lang => "en"}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %title Dashboard
-    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
-    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", :rel => "stylesheet"}/
-    %link{:href => "/assets/css/theme.css", :rel => "stylesheet"}/
-    %link{:href => "/assets/css/nucleo-icons.css", :rel => "stylesheet"}/
-    %link{:href => "/assets/css/font-awesome.min.css", :rel => "stylesheet"}/
+    = render 'app/dashboard/dashboard/layouts/head'
+    -#= render 'app/layouts/head'
   %body
+    -#.loader
+      = render 'app/front/loader/loader'
     %div#js-mobile
       .notifications
         %span{:mode => "in-out"}
       .wrapper
         .sidebar{style: "background-image: url(/assets/img/sidebar-5.jpg)"}
-          .sidebar-wrapper
-            .logo
-              %a.simple-text{:href => "#"}
-                .logo-img
-                  %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
-                Receptivo Colombia
-            %ul.nav.nav-mobile-menu
-              %li.dropdown.nav-item{"aria-haspopup" => "true"}
-                %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-                  %i.fa.fa-globe
-                  %b.caret
-                  %span.notification 5 Notifications
-                .dropdown-menu{:style => "display: none;"}
-                  %a.dropdown-item{:href => "#"} Notification 1
-                  %a.dropdown-item{:href => "#"} Notification 2
-                  %a.dropdown-item{:href => "#"} Notification 3
-                  %a.dropdown-item{:href => "#"} Notification 4
-                  %a.dropdown-item{:href => "#"} Another notification
-              %li.nav-item
-                %a.nav-link{:href => "#"}
-                  %i.nc-icon.nc-zoom-split.hidden-lg-up
-                  %span.d-lg-none Search
-              %li.dropdown.nav-item{"aria-haspopup" => "true"}
-                %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-                  %i
-                  %span.no-icon Dropdown
-                  %b.caret
-                .dropdown-menu{:style => "display: none;"}
-                  %a.dropdown-item{:href => "#"} Action
-                  %a.dropdown-item{:href => "#"} Another action
-                  %a.dropdown-item{:href => "#"} Something
-                  %a.dropdown-item{:href => "#"} Something else here
-                  .divider
-                  %a.dropdown-item{:href => "#"} Separated link
-              %li.nav-item
-                %a.nav-link{:href => "#pablo"}
-                  %span.no-icon Log out
-            %ul.nav
-              %li.router-link-exact-active.nav-item.active
-                %a.nav-link{:href => "#"}
-                  %i.nc-icon.nc-chart-pie-35
-                  %p Mi Tablero
-              %li
-                %a.nav-link{:href => "#"}
-                  %i.nc-icon.nc-circle-09
-                  %p Consultas
-              %li
-                %a.nav-link{:href => "#"}
-                  %i.nc-icon.nc-notes
-                  %p Ordenes
-              %li
-                %a.nav-link{:href => "#"}
-                  %i.nc-icon.nc-paper-2
-                  %p Perfil
-                
-              /
-                <li class="">
-                <a href="#/admin/icons" class="nav-link">
-                <i class="nc-icon nc-atom"></i>
-                <p>Icons</p>
-                </a>
-                </li>
-                <li class="">
-                <a href="#/admin/maps" class="nav-link">
-                <i class="nc-icon nc-pin-3"></i>
-                <p>Maps</p>
-                </a>
-                </li>
-                <li class="">
-                <a href="#/admin/notifications" class="nav-link">
-                <i class="nc-icon nc-bell-55"></i>
-                <p>Notifications</p>
-                </a>
-                </li>
+          = render 'app/dashboard/dashboard/layouts/sidebar'
         .main-panel
-          %nav.navbar.navbar-expand-lg
-            .container-fluid
-              %a.navbar-brand{:href => "#"} Mi Tablero
-              %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
-                %span.navbar-toggler-bar.burger-lines
-                %span.navbar-toggler-bar.burger-lines
-                %span.navbar-toggler-bar.burger-lines
-              .collapse.navbar-collapse.justify-content-end
-                %ul.nav.navbar-nav.mr-auto
-                  %li.nav-item
-                    %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
-                      %i.nc-icon.nc-palette
-                  /
-                    <li  aria-haspopup="true" class="dropdown nav-item">
-                    <a  data-toggle="dropdown" class="nav-link dropdown-toggle">
-                    <i  class="nc-icon nc-planet"></i>
-                    <b  class="caret"></b>
-                    <span  class="notification">5</span>
-                    </a>
-                    <div  class="dropdown-menu" style="display: none;">
-                    <a  href="#" class="dropdown-item">Notification 1</a>
-                    <a  href="#" class="dropdown-item">Notification 2</a>
-                    <a  href="#" class="dropdown-item">Notification 3</a>
-                    <a  href="#" class="dropdown-item">Notification 4</a>
-                    <a  href="#" class="dropdown-item">Another notification</a>
-                    </div>
-                    </li>
-                  /
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nc-icon nc-zoom-split"></i>
-                    <span class="d-lg-block">&nbsp;Search</span>
-                    </a>
-                    </li>
-                %ul.navbar-nav.ml-auto
-                  /
-                    <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    Account
-                    </a>
-                    </li>
-                  %li.dropdown.nav-item{"aria-haspopup" => "true"}
-                    %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-                      %i
-                      %span.no-icon Mi perfil
-                      %b.caret
-                    .dropdown-menu
-                      %a.dropdown-item{:href => "#"} Perfil
-                      %a.dropdown-item{:href => "#"} Mis Reservaciones
-                      %a.dropdown-item{:href => "#"} Cerrar Sesión
-                  %li
-
-          .content
+          = render 'app/dashboard/dashboard/layouts/main'
+          -#.content
             .container-fluid
               .row
                 .col-xl-3.col-md-6
@@ -645,7 +517,7 @@
                           %i.fa.fa-history
                           Updated 3 minutes ago
                     / 
-          .content
+          -#.content
             .container-fluid
               .row
                 .col-md-8
@@ -739,7 +611,7 @@
                           %i.fa.fa-twitter
                         %button.btn.btn-simple{:href => "#"}
                           %i.fa.fa-google-plus-square
-          .content
+          -#.content
             .container-fluid
               .row
                 .col-12
@@ -836,7 +708,7 @@
                               %td Malawi
                               %td Feldkirchen in Kärnten
                     / 
-          %footer.footer
+          -#%footer.footer
             .container-fluid
               -#%nav
                 %ul.footer-menu
@@ -850,7 +722,4 @@
                   %a{:href => "#", :target => "_blank"} Cristi Jora
                 = succeed "." do
                   %a{:href => "#", :target => "_blank"} Creative Tim
-    %script{:src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
-    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
-    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
-    %script{:src => "/assets/js/hamburger.js"}
+    = render 'app/dashboard/dashboard/layouts/scripts'
