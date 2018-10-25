@@ -126,7 +126,7 @@
                   %td.display-value.fs-body-1.tc-black-2
                     = @reservation.driver.nil? ? '-----------' : @reservation.driver.user.phone
             -# if @reservation.order.try(:status).try(:eql, 'complete')
-            - if @reservation.order.nil?
+            - if @reservation.order.nil? && KepplerTravel::Driver.count.positive?
               = simple_form_for @reservation, url: '/admin/travel/reservations/assignment', data: { confirm: t("keppler.messages.data_confirm") }, method: :post do |f|
                 %input{name: 'reservation_id', value: @reservation.id, type: 'hidden'}
                 %input{name: 'model_name', value: params[:model_name], type: 'hidden'}
