@@ -1,0 +1,62 @@
+= simple_form_for [:admin, :travel, @driver] do |f|
+  .container
+    .row
+      .col-lg-2
+        = link_to admin_travel_drivers_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+          .arrow-back.btn.btn-default
+            %i.fa.fa-angle-left
+            = t('keppler.actions.back')
+
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Descripciones de los Vehículos
+            .box-tools.pull-right
+              %a.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+                %i.fa.fa-minus
+          .box-body
+            .col-12
+              .card
+                .card-header
+                  %h3.card-title Vehículos
+                .card-body.table-responsive.p-0
+                  %table.table.table-hover
+                    %tr
+                      %th Nombre
+                      %th Matrícula
+                      %th Color
+                    // Circuitables from Circuit
+                    = f.simple_fields_for :car_descriptions, @driver.car_descriptions do |x|
+                      %tr
+                        %td= x.object.vehicle.title['es']
+                        %td
+                          = x.input :license, label: false
+                        %td
+                          = x.input :color, label: false
+            .form-padding
+              .col-xs-12
+              .col-xs-12
+                .pull-right
+                  = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+
+// :javascript
+//
+// - if action_name == 'new'
+//   :javascript
+//     validateCircuit('#new_driver');
+// - else
+//   :javascript
+//     var driver_id = #{raw @driver.id};
+//     validateCircuit(`#edit_driver_${driver_id}`);
+//
+:scss
+  label.error-class{color: #e60707 !important;}
+  .checkbox{position: unset!important;}
+  .checkbox input[type="checkbox"]{
+    position: unset!important;
+    margin-left: unset!important;
+  }
+  [type="checkbox"]{
+    display: unset!important;
+  }

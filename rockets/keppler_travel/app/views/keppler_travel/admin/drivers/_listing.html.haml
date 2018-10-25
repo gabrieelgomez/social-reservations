@@ -39,6 +39,11 @@
         %span
           = driver.user.phone
 
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_driver_description_tables_path(driver.id), class: 'show-row' do
+        %i.icon-eye
+        -# = t('keppler.actions.show')
+
     %td{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{driver.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical

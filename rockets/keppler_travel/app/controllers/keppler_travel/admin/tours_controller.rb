@@ -141,7 +141,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def tour_params
-        params.require(:tour).permit(:position, :deleted_at, :featured, :banner, :status, files:[], title: @language, description: @language, task: @language, price_adults: @currency, price_kids: @currency)
+        params.require(:tour).permit(:position, :deleted_at, :featured, :banner, :status, files:[], title: @language, subtitle: @language, description: @language, task: @language, price_adults: @currency, price_kids: @currency)
       end
 
       def show_history

@@ -39,6 +39,21 @@
                     = @tour.title['pt'].blank? ? '-----------' : @tour.title['pt']
 
                 %tr.list-row
+                  %th.display-label Subtítulo Español
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.subtitle['es'].blank? ? '-----------' : @tour.subtitle['es']
+
+                %tr.list-row
+                  %th.display-label Subtítulo Inglés
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.subtitle['en'].blank? ? '-----------' : @tour.subtitle['en']
+
+                %tr.list-row
+                  %th.display-label Subtítulo Portugués
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @tour.subtitle['pt'].blank? ? '-----------' : @tour.subtitle['pt']
+
+                %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
                     = @tour.description[I18n.locale.to_s].blank? ? '-----------' : @tour.description[I18n.locale.to_s].truncate(50)

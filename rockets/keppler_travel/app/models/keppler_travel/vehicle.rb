@@ -11,6 +11,7 @@ module KepplerTravel
 
     # Relationships
     has_many :reservations, as: :reservationable
+    has_and_belongs_to_many :drivers
 
     validates :cover, presence: true
     validates :title, uniqueness: true

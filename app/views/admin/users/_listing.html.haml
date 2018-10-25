@@ -21,7 +21,10 @@
         %span= user.email
     %td.visible-lg.visible-md
       = link_to admin_user_path(user, search: @query), remote: true, class: 'show-row' do
-        %span= user.rol.humanize
+        - if user.has_role? :partner
+          %span Partner  
+        - else
+          %span= user.rol.humanize
 
     - unless (user.has_role? :driver) || (user.has_role? :keppler_admin) || (user.has_role? :admin)
       %td.visible-lg.visible-md

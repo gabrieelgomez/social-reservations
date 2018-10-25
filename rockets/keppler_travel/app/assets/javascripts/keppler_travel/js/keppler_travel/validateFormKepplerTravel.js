@@ -202,9 +202,15 @@ function validateDriver(id_form){
      //
      // $('form').append(`<input type="hidden" name="user[room_ids]" value=${rooms} /> `);
 
+     var vehicles = $('#drivers_vehicles').val();
+
+     $('form').append(`<input type="hidden" name="driver[vehicle_ids]" value=${vehicles} /> `);
 
      if (avatar == ""){
        alert('Agregue una imagen');
+     }
+     else if (vehicles == null){
+       alert('Agregue mínimo un vehículo');
      }
      else{
        form.submit();

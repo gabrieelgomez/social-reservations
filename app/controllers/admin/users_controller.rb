@@ -27,6 +27,7 @@ module Admin
       user.add_role    :partner if partner.eql?('false')
       user.remove_role :partner if partner.eql?('true')
       @users = User.filter_by_role(@objects, 'client')
+      # redirect_to admin_users_path
     end
 
     def new

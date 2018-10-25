@@ -12,5 +12,9 @@ module KepplerTravel
       true
     end
 
+    def description_tables?
+      true
+    end
+
   end
 end

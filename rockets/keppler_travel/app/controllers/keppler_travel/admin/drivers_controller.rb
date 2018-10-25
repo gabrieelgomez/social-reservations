@@ -4,7 +4,7 @@ module KepplerTravel
     # DriversController
     class DriversController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_driver, only: [:show, :edit, :update, :destroy]
+      before_action :set_driver, only: [:show, :edit, :update, :destroy, :description_tables]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -65,6 +65,20 @@ module KepplerTravel
         end
       end
 
+      def description_tables
+        create_car_descriptions if @driver.car_descriptions.empty?
+      end
+
+      def create_car_descriptions
+        @driver.vehicles.each do |vehicle|
+          KepplerTravel::CarDescription.create(
+            license: '',
+            color: '',
+            driver: @driver,
+            vehicle: vehicle)
+        end
+      end
+
       def update_user
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
@@ -72,6 +86,8 @@ module KepplerTravel
         @user = User.find_by(email: params[:user][:last_email])
         # -----
         if @user.update_attributes(update_attributes)
+          ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
+          @user.driver.update(vehicle_ids: ids)
           update_password
           redirect_to travel.admin_travel_driver_path(@user.driver)
         else
@@ -153,12 +169,13 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_driver
-        @driver = Driver.find(params[:id])
+        # @driver = Driver.find(params[:id])
+        @driver = Driver.find(params[:id]) rescue Driver.find(params[:driver_id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def driver_params
-        params.require(:driver).permit(:timetrack, :user_id, :position, :deleted_at)
+        params.require(:driver).permit(:bank, :account_type, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :license, :color])
       end
 
       def show_history

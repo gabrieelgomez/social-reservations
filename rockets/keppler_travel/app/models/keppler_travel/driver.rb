@@ -9,7 +9,11 @@ module KepplerTravel
     belongs_to :user, dependent: :destroy
     has_many :orders
     has_many :reservations, through: :orders
+    has_many :car_descriptions
+    has_and_belongs_to_many :vehicles
     accepts_nested_attributes_for :user
+    accepts_nested_attributes_for :car_descriptions
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["timetrack", "position", "deleted_at"]

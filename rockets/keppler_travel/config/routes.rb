@@ -14,7 +14,7 @@ KepplerTravel::Engine.routes.draw do
       end
 
       resources :drivers do
-
+        get '/description_tables', action: :description_tables, as: :description_tables
         get '(page/:page)', action: :index, on: :collection, as: ''
         get '/clone', action: 'clone'
         post '/sort', action: :sort, on: :collection

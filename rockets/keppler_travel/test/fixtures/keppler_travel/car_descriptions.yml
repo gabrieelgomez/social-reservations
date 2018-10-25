@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  license: MyString
+  color: MyString
+
+two:
+  license: MyString
+  color: MyString

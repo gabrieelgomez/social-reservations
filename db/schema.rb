@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_154744) do
+ActiveRecord::Schema.define(version: 2018_10_25_194222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,18 @@ ActiveRecord::Schema.define(version: 2018_10_21_154744) do
     t.integer "setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "keppler_travel_car_descriptions", force: :cascade do |t|
+    t.string "license"
+    t.string "color"
+    t.bigint "driver_id"
+    t.bigint "vehicle_id"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_keppler_travel_car_descriptions_on_driver_id"
+    t.index ["vehicle_id"], name: "index_keppler_travel_car_descriptions_on_vehicle_id"
   end
 
   create_table "keppler_travel_circuitable_rooms", force: :cascade do |t|
@@ -152,8 +164,19 @@ ActiveRecord::Schema.define(version: 2018_10_21_154744) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bank"
+    t.string "account_type"
+    t.text "account_number"
     t.index ["deleted_at"], name: "index_keppler_travel_drivers_on_deleted_at"
     t.index ["user_id"], name: "index_keppler_travel_drivers_on_user_id"
+  end
+
+  create_table "keppler_travel_drivers_vehicles", force: :cascade do |t|
+    t.bigint "driver_id"
+    t.bigint "vehicle_id"
+    t.datetime "deleted_at"
+    t.index ["driver_id"], name: "driver_id"
+    t.index ["vehicle_id"], name: "index_keppler_travel_drivers_vehicles_on_vehicle_id"
   end
 
   create_table "keppler_travel_invoices", force: :cascade do |t|
@@ -331,6 +354,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_154744) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "subtitle"
     t.index ["deleted_at"], name: "index_keppler_travel_tours_on_deleted_at"
   end
 
