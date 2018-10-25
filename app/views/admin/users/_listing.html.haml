@@ -22,25 +22,25 @@
     %td.visible-lg.visible-md
       = link_to admin_user_path(user, search: @query), remote: true, class: 'show-row' do
         - if user.has_role? :partner
-          %span Partner  
+          %span Partner
         - else
           %span= user.rol.humanize
 
     - unless (user.has_role? :driver) || (user.has_role? :keppler_admin) || (user.has_role? :admin)
       %td.visible-lg.visible-md
         - if user.has_role? :partner
-          = link_to admin_user_assign_partner_path(user, partner: true), remote: true, class: 'show-row' do
+          = link_to admin_user_assign_partner_path(user, partner: true), class: 'show-row' do
             %i.icon-check{style:'color:mediumturquoise'}
         - else
-          = link_to admin_user_assign_partner_path(user, partner: false), remote: true, class: 'show-row' do
+          = link_to admin_user_assign_partner_path(user, partner: false), class: 'show-row' do
             %i.icon-minus
     - else
       %td No Disponible
 
-    %td
-      %a.action-btn.pull-right{ id: "menu-#{user.id}", 'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown' }
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
+      %a.action-btn.pull-right{:id => "menu-#{user.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
-      %ul.actions.dropdown-menu{ 'aria-labelledby' => "menu-#{user.id}" }
+      %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{user.id}" }
         - if can?(User).show?
           %li
             = link_to admin_user_path(user), title: t('keppler.actions.show') do

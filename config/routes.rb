@@ -31,14 +31,14 @@ Rails.application.routes.draw do
     get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
     get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
     get '/dashboard/template_order', to: 'app/dashboard/dashboard#template_order', as: :template_order
-    
-    
+
+
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end
 
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
-  post '/filter', to: 'admin/users#filter_by_role', as: :filter_by_role
+  post '/filter', to: 'admin/users#index', as: :filter_by_role
 
   # Reservations Transfers / Vehicles
   post '/session_reservation_transfer', to: 'app/reservations/transfers/transfers#session_reservation_transfer'

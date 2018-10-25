@@ -8,17 +8,23 @@ module Admin
     before_action :show_history, only: %i[index assign_partner]
     before_action :authorization, except: %i[reload filter_by_role assign_partner]
     before_action :set_users, only: %i[index filter_by_role reload assign_partner]
+    skip_before_action :verify_authenticity_token
     include ObjectQuery
 
     def index
-      @users = User.all.drop(1)
-      redirect_to_index(users_path) if nothing_in_first_page?(@objects)
-      respond_to_formats(@users)
+      if params[:role]
+        return @users = User.all.drop(1) if params[:role].eql?('all')
+        @users = User.filter_by_role(@objects, params[:role])
+        @rol = params[:role]
+        respond_to_formats(@users)
+      else
+        @users = User.all.drop(1)
+        redirect_to_index(users_path) if nothing_in_first_page?(@objects)
+        respond_to_formats(@users)
+      end
     end
 
     def filter_by_role
-      return @users = User.all.drop(1) if params[:role].eql?('all')
-      @users = User.filter_by_role(@objects, params[:role])
     end
 
     def assign_partner
@@ -26,8 +32,8 @@ module Admin
       partner = params[:partner]
       user.add_role    :partner if partner.eql?('false')
       user.remove_role :partner if partner.eql?('true')
-      @users = User.filter_by_role(@objects, 'client')
-      # redirect_to admin_users_path
+      # @users = User.filter_by_role(@objects, 'client')
+      redirect_to admin_users_path
     end
 
     def new

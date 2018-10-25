@@ -7,12 +7,21 @@ module KepplerTravel
     acts_as_list
 
     belongs_to :user, dependent: :destroy
+    belongs_to :destination
     has_many :orders
     has_many :reservations, through: :orders
     has_many :car_descriptions
     has_and_belongs_to_many :vehicles
     accepts_nested_attributes_for :user
     accepts_nested_attributes_for :car_descriptions
+
+    def selected_vehicle(vehicle)
+      self.vehicle_ids.include?(vehicle) ? 'selected' : false
+    end
+
+    def selected(destination)
+      self.destination_id.eql?(destination) ? 'selected' : false
+    end
 
     # Fields for the search form in the navbar
     def self.search_field

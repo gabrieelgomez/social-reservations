@@ -39,6 +39,7 @@
                         = f.input :password, label: t('simple_form.labels.defaults.password'), placeholder: 'Password', input_html: {class: 'form-control'}, required: true
                       .col-xs-12.col-lg-6
                         = f.input :password_confirmation, label: t('simple_form.labels.defaults.password_confirmation'), placeholder: 'Password Confirmation', input_html: {class: 'form-control'}, required: true
+                      .col-xs-12.col-lg-12
                         = f.simple_fields_for [:admin, :travel, @driver] do |x|
                           = x.input :timetrack, input_html: {type: 'hidden', value: 'Driver TimeTrack'}, label: false
                           .col-xs-12.col-lg-6
@@ -50,13 +51,19 @@
                           -# .row
                           -#   .col-xs-12
                       %br
-                      .col-xs-12.col-lg-12
+                      .col-xs-12.col-lg-6
                         .col-xs-12.col-md-6
                           %label Vehículos
                           %br.hidden-md
                             %select.selectpicker{"data-style" => "btn-primary", id: 'drivers_vehicles', name: 'driver[vehicle_ids]', multiple: "multiple", style:'width: 100%;'}
                               - KepplerTravel::Vehicle.all.each do |vehicle|
                                 %option{ value: vehicle.id}= vehicle.title[I18n.locale.to_s]
+                      .col-xs-12.col-lg-6
+                        %label Destino
+                        %br
+                        %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_drivers', name: 'driver[destination_id]'}
+                          - KepplerTravel::Destination.all.each do |destination|
+                            %option{ value: destination.id, selected: @driver.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
 
                   .col-xs-12.col-lg-4
                     .row

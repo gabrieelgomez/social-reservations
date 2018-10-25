@@ -205,7 +205,7 @@ function validateDriver(id_form){
      var vehicles = $('#drivers_vehicles').val();
 
      $('form').append(`<input type="hidden" name="driver[vehicle_ids]" value=${vehicles} /> `);
-
+     debugger;
      if (avatar == ""){
        alert('Agregue una imagen');
      }

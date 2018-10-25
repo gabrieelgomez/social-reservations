@@ -73,14 +73,14 @@ Admin::UsersController.class_eval do
   private
 
   def driver_params
-    params.permit(:timetrack, :user_id)
+    params.permit(:timetrack, :bank, :account_type, :account_number, :destination_id, :user_id)
   end
 
   def user_params
     params.require(:user).permit(
       :name, :email, :phone, :dni, :password, :password_confirmation,
       :role_ids, :encrypted_password, :avatar,
-      driver_attributes: [:id, :timetrack]
+      driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id]
     )
   end
 

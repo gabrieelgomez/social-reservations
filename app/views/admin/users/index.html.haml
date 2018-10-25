@@ -33,16 +33,16 @@
         .form-group
           %label.control-label.string.required{ for: 'user_name' }
             Filtrar usuarios por rol
-          = simple_form_for Role.last, url: filter_by_role_path, method: :post, remote: true do
-            %select.form-control.form-control#filter_by_role{ name: 'role', onchange: '$(this).parent().submit()' }
+          = simple_form_for Role.last, url: filter_by_role_path, method: :post do
+            %select.form-control.form-control#filter_by_role{ name: 'role', onchange: '$(this).parent().submit()'}
               %option{ name: 'role', value: 'all' } Todos
-              %option{ name: 'role', value: 'admin' } Admin
-              %option{ name: 'role', value: 'client' } Cliente
-              %option{ name: 'role', value: 'driver' } Chofer
-              %option{ name: 'role', value: 'partner' } Agencia de Viaje
+              -# %option{ name: 'role', value: 'admin' } Admin
+              -# %option{ name: 'role', value: 'client' } Cliente
+              -# %option{ name: 'role', value: 'driver' } Chofer
+              -# %option{ name: 'role', value: 'partner' } Agencia de Viaje
 
-              -# - @roles.each do |role|
-              -#   %option{ name: 'role', value: role.first.downcase }= role.first
+              - @roles.each do |role|
+                %option{ name: 'role', value: role.first.downcase, selected: (@rol if role.first.downcase == @rol) }= role.first
         .box.slice-box
           .box-body.no-padding
             %table.table.table-striped
