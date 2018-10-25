@@ -23,8 +23,8 @@
         .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
 
           %h2
-            Conoce lo que tenemos para ti
-          %p
+            Planes para toda Colombia
+          -#%p
             Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
       .category-services
         %ul
@@ -52,10 +52,13 @@
             - @tours.each do |tour|
               .col-md-4.col-sm-6.mix-target.js_filterTours
                 .box-card
-                  .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+                  = link_to '#', class:'' do
+                    .box-image{:style => "background-image: url(#{tour.files.first.url})"}
                   .box-information
-                    %h3= tour.title[@lang]
+                    = link_to '#', class:'' do
+                      %h3= tour.title[@lang]
                     %span.pull-left.price
+                      = @currency.upcase
                       = number_to_currency(tour.price_adults[@currency], locale: @locale)
                     .more-information
                       -# %p
@@ -70,18 +73,21 @@
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                     .about-btn
-                      %a.link-card{:href => "#"}
+                      = link_to '#', class:'link-card' do
                         %button.about-view.packages-btn
                           ver más
 
             - @circuits.each do |circuit|
               .col-md-4.col-sm-6.mix-target.js_filterCircuits
                 .box-card
-                  .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
+                  = link_to '#', class:'' do
+                    .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
                   .box-information
-                    %h3= circuit.title[@lang]
+                    = link_to '#', class:'' do
+                      %h3= circuit.title[@lang]
                     %span.pull-left.price
                       Desde
+                      = @currency.upcase
                       = number_to_currency(circuit.low_price(@currency), locale: @locale)
                     .more-information
                       -# %p
@@ -96,18 +102,21 @@
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                     .about-btn
-                      %a.link-card{:href => "#"}
+                      = link_to '#', class:'link-card' do
                         %button.about-view.packages-btn
                           ver más
 
             - @multidestinations.each do |multidestination|
               .col-md-4.col-sm-6.mix-target.js_filterMultidestines
                 .box-card
-                  .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
+                  = link_to '#', class:'' do
+                    .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
                   .box-information
-                    %h3= multidestination.title[@lang]
+                    = link_to '#', class:'' do
+                      %h3= multidestination.title[@lang]
                     %span.pull-left.price
                       Desde
+                      = @currency.upcase
                       = number_to_currency(multidestination.low_price(@currency), locale: @locale)
                     .more-information
                       -# %p
@@ -122,7 +131,7 @@
                         %i.fa.fa-star.fa-star-custom
                         %i.fa.fa-star.fa-star-custom
                     .about-btn
-                      %a.link-card{:href => "#"}
+                      = link_to '#', class:'link-card' do
                         %button.about-view.packages-btn
                           ver más
 

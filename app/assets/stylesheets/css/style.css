@@ -1653,7 +1653,7 @@ body {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-    height: 500px;
+    min-height: 500px;
 }
 
 .services .cards-services .box-card .box-image {
