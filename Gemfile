@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 gem 'rails', '5.2.0'
 
+# Comment
+
 # Javascript
 gem 'ckeditor', '4.2.4'
 gem 'jquery-rails', '4.3' # jQuery library
