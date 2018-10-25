@@ -10,7 +10,7 @@
 					.box-item
 						.form-group
 							%h2 Circuitos
-							%select#sel1.form-control{name: 'circuit_id', style:'border-radius: 0 !important;'}
+							%select#sel1.form-control{name: 'circuit_id', style:'border-radius: 6px !important;'}
 								- KepplerTravel::Circuit.all.each do |circuit|
 									%option{ value: circuit.id}= circuit.title[@lang].titleize
 
