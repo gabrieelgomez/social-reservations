@@ -205,11 +205,47 @@ function validateDriver(id_form){
      var vehicles = $('#drivers_vehicles').val();
 
      $('form').append(`<input type="hidden" name="driver[vehicle_ids]" value=${vehicles} /> `);
-     debugger;
      if (avatar == ""){
        alert('Agregue una imagen');
      }
      else if (vehicles == null){
+       alert('Agregue mínimo un vehículo');
+     }
+     else{
+       form.submit();
+     }
+
+   }
+  });
+}
+
+
+function validateDriver2(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'user[name]': { required: true},
+     'user[email]': { required: true, email:true},
+     'user[phone]': { required: true},
+     'user[dni]': { required: true},
+     'user[password]': { required: true},
+     'user[password_confirmation]': { required: true, equalTo: "#user_password"}
+     },
+   messages: {
+     'user[name]': 'No puede estar en blanco',
+     'user[phone]': 'No puede estar en blanco',
+     'user[dni]': 'No puede estar en blanco',
+     'user[password]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+
+     var vehicles = $('#drivers_vehicles').val();
+
+     $('form').append(`<input type="hidden" name="driver[vehicle_ids]" value=${vehicles} /> `);
+     if (vehicles == null){
        alert('Agregue mínimo un vehículo');
      }
      else{
