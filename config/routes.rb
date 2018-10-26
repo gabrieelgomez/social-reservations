@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
     get '/', to: 'app/front#index', as: :index_app
 
-    get 'vehicles', to: 'app/front#vehicles'
-    get 'tours', to: 'app/front#tours'
-    get 'circuits', to: 'app/front#circuits'
-    get 'multidestinations', to: 'app/front#multidestinations'
+    get 'vehicles', to: 'app/front#vehicles', as: :vehicles_show
+    get 'tours', to: 'app/front#tours', as: :tours_show
+    get 'circuits', to: 'app/front#circuits', as: :circuits_show
+    get 'multidestinations', to: 'app/front#multidestinations', as: :multidestinations_show
     get 'pqrs', to: 'app/front#pqrs'
 
     # get 'reservations/circuits', to: 'app/front#circuits'
@@ -31,8 +31,6 @@ Rails.application.routes.draw do
     get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
     get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
     get '/dashboard/template_order', to: 'app/dashboard/dashboard#template_order', as: :template_order
-
-
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end

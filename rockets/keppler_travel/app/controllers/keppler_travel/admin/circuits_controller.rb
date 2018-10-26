@@ -60,7 +60,7 @@ module KepplerTravel
       def update
         # ids = params[:circuit][:destination_ids].try(:split, ',').try(:map, &:to_i)
         if @circuit.update(circuit_params)
-          # @circuit.update(destination_ids: ids) if ids
+          @circuit.update_images(params[:circuit])
           redirect(@circuit, params)
         else
           render :edit
@@ -146,7 +146,7 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def circuit_params
         params.require(:circuit).permit(:quantity_days, :price, :featured, :banner, :position, :deleted_at, :status, circuitables_attributes: [:id, :status], circuitable_rooms_attributes: [:id, :price_cop, :price_usd],
-        files:[], title: @language, description: @language, include: @language, exclude: @language, itinerary: @language)
+        title: @language, description: @language, include: @language, exclude: @language, itinerary: @language)
       end
 
       def show_history

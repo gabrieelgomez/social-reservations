@@ -57,10 +57,10 @@ function validateTour(id_form){
 
      $('form').append(`<input type="hidden" name="tour[destination_ids]" value=${destinations} /> `);
 
-     if (tour_files  == ''){
-       alert('Agregue mínimo una imagen');
-     }
-     else if (destinations == null){
+     // if (tour_files  == ''){
+     //   alert('Agregue mínimo una imagen');
+     // }
+     if (destinations == null){
        alert('Agregue mínimo un destino');
      }
      else{
@@ -93,12 +93,12 @@ function validateCircuit(id_form){
 
      $('form').append(`<input type="hidden" name="circuit[destination_ids]" value=${destinations} /> `);
 
-     if (circuit_files  == ''){
-       alert('Agregue mínimo una imagen');
-     }
-     else{
-       form.submit();
-     }
+     form.submit();
+     // if (circuit_files  == ''){
+     //   alert('Agregue mínimo una imagen');
+     // }
+     // else{
+     // }
 
    }
   });
@@ -121,15 +121,15 @@ function validateMultidestination(id_form){
    debug: true,errorElement: "label",
    submitHandler: function(form){
 
-     var multidestination_files = $('#multidestination_files').val();
+     // var multidestination_files = $('#multidestination_files').val();
      var destinations = $('#destinations_multidestinations').val();
 
      $('form').append(`<input type="hidden" name="multidestination[destination_ids]" value=${destinations} /> `);
 
-     if (multidestination_files  == ''){
-       alert('Agregue mínimo una imagen');
-     }
-     else if (destinations == null){
+     // if (multidestination_files  == ''){
+     //   alert('Agregue mínimo una imagen');
+     // }
+     if (destinations == null){
        alert('Agregue mínimo un destino');
      }
      else{

@@ -57,8 +57,8 @@ module KepplerTravel
       # PATCH/PUT /tours/1
       def update
         ids = params[:tour][:destination_ids].split(',').map(&:to_i)
-        @tour.update_images(params[:tour])
         if @tour.update(tour_params)
+          @tour.update_images(params[:tour])
           @tour.update(destination_ids: ids)
           redirect(@tour, params)
         else
@@ -141,7 +141,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def tour_params
-        params.require(:tour).permit(:position, :deleted_at, :featured, :banner, :status, files:[], title: @language, subtitle: @language, description: @language, task: @language, price_adults: @currency, price_kids: @currency)
+        params.require(:tour).permit(:position, :deleted_at, :featured, :banner, :status, title: @language, subtitle: @language, description: @language, task: @language, price_adults: @currency, price_kids: @currency)
       end
 
       def show_history

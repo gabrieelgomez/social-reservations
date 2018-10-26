@@ -1,0 +1,107 @@
+%section#services.services
+  .container
+    .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
+      %h2
+        Planes para toda Colombia
+  .category-services
+    %ul
+      %li.filter-btn{"data-filter" => "all"}
+        %a
+          %span todos
+      %li.filter-btn{"data-filter" => ".js_filterTours"}
+        %a
+          %span tours
+      %li.filter-btn{"data-filter" => ".js_filterCircuits"}
+        %a
+          %span circuitos
+      %li.filter-btn{"data-filter" => ".js_filterMultidestines"}
+        %a
+          %span multidestinos
+  .cards-services
+    .container#mix-wrapper
+      .row
+        - @tours.each do |tour|
+          .col-md-4.col-sm-6.mix-target.js_filterTours
+            .box-card
+              = link_to tours_show_path(tour_id: tour.id), class:'' do
+                .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+              .box-information
+                = link_to tours_show_path(tour_id: tour.id), class:'' do
+                  %h3= tour.title[@lang].titleize
+                %span.pull-left.price
+                  = @currency.upcase
+                  = number_to_currency(tour.price_adults[@currency], locale: @locale)
+                .more-information
+                  -# %p
+                  -#   %span
+                  -#     10 dias 5 noches
+                  %span= raw tour.description[@lang].truncate(100)
+
+                  -#%p
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                .about-btn
+                  = link_to tours_show_path(tour_id: tour.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más
+
+        - @circuits.each do |circuit|
+          .col-md-4.col-sm-6.mix-target.js_filterCircuits
+            .box-card
+              = link_to circuits_show_path(circuit_id: circuit.id), class:'' do
+                .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
+              .box-information
+                = link_to circuits_show_path(circuit_id: circuit.id), class:'' do
+                  %h3= circuit.title[@lang].titleize
+                %span.pull-left.price
+                  Desde
+                  = @currency.upcase
+                  = number_to_currency(circuit.low_price(@currency), locale: @locale)
+                .more-information
+                  -# %p
+                  -#   %span
+                  -#     10 dias 5 noches
+                  %span= raw circuit.description[@lang].truncate(100)
+
+                  -#%p
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                .about-btn
+                  = link_to circuits_show_path(circuit_id: circuit.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más
+
+        - @multidestinations.each do |multidestination|
+          .col-md-4.col-sm-6.mix-target.js_filterMultidestines
+            .box-card
+              = link_to multidestinations_show_path(multidestination_id: multidestination.id), class:'' do
+                .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
+              .box-information
+                = link_to multidestinations_show_path(multidestination_id: multidestination.id), class:'' do
+                  %h3= multidestination.title[@lang].titleize
+                %span.pull-left.price
+                  Desde
+                  = @currency.upcase
+                  = number_to_currency(multidestination.low_price(@currency), locale: @locale)
+                .more-information
+                  -# %p
+                  -#   %span
+                  -#     10 dias 5 noches
+                  %span= raw multidestination.description[@lang].truncate(100)
+
+                  -#%p
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                    %i.fa.fa-star.fa-star-custom
+                .about-btn
+                  = link_to multidestinations_show_path(multidestination_id: multidestination.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más

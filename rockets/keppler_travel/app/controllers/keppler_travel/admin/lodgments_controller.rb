@@ -57,8 +57,8 @@ module KepplerTravel
       # PATCH/PUT /lodgments/1
       def update
         ids = params[:lodgment][:room_ids].split(',').map(&:to_i)
-        @lodgment.update_images(params[:lodgment])
         if @lodgment.update(lodgment_params)
+          @lodgment.update_images(params[:lodgment])
           @lodgment.update(room_ids: ids)
           redirect(@lodgment, params)
         else
@@ -140,7 +140,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def lodgment_params
-        params.require(:lodgment).permit(:position, :deleted_at, :email, :phone_one, :phone_two, :ranking_id, :destination_id, :status, files:[], title: @language, address: @language)
+        params.require(:lodgment).permit(:position, :deleted_at, :email, :phone_one, :phone_two, :ranking_id, :destination_id, :status, title: @language, address: @language)
       end
 
       def show_history

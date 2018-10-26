@@ -39,7 +39,7 @@
     .banner-tours{:style => "background-image: url(#{@results.banner.url})"}
       .banner-tours--mask
         %h2= @results.title[@lang].titleize
-        %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+        %p= @results.subtitle[@lang].titleize
 
   -#.container
     - unless @results.blank?
