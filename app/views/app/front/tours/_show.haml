@@ -107,7 +107,19 @@
                       %h3.price
                         -# 999999,00
                         = number_to_currency(@results.price_kids[@currency], locale: @locale)
-
+                -# User click from a Cards - Condition 
+                .col-lg-offset-2.col-lg-8
+                  .row
+                    %center
+                      .col-lg-6
+                        .form-group
+                          %input.form-control{:type => "text", :placeholder => "Fecha", disabled: 'disabled'}/
+                      .col-lg-3
+                        .form-group
+                          %input.form-control{:type => "text", :placeholder => "Niños"}/
+                      .col-lg-3
+                        .form-group
+                          %input.form-control{:type => "text", :placeholder => "Adulto"}/
                 .col-lg-12
                   %center
                     = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
