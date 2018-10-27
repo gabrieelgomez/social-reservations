@@ -1684,7 +1684,7 @@ body {
 }
 
 .services .cards-services .box-card .box-information .more-information {
-    padding: 30px 0 0;
+    padding: 30px 0 0 0;
 }
 
 .services .cards-services .box-card .box-information .more-information p {
@@ -1782,7 +1782,7 @@ body {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-    height: 480px;
+    min-height: 500px;
 }
 
 .top-tours .cards-top-tours .box-card .box-image {
@@ -1802,22 +1802,31 @@ body {
     font-size: 20px;
     color: #565a5c;
     font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    padding: 20px 0;
+    font-family: 'Poppins',
+        sans-serif;
+    padding: 20px 0 5px 0;
 }
+
+.top-tours .cards-top-tours .box-card .box-information span.price {
+    color: #43b7e8;
+    font-size: 16px;
+    font-weight: 700;
+}
+
 
 .top-tours .cards-top-tours .box-card .box-information h3 span {
     color: #777777;
 }
 
 .top-tours .cards-top-tours .box-card .box-information .more-information {
-    padding: 0;
+    padding: 30px 0 0 0;
 }
 
 .top-tours .cards-top-tours .box-card .box-information .more-information p {
     font-size: 14px;
     color: #aaa;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins',
+        sans-serif;
     margin-bottom: 15px;
     text-align: left;
 }

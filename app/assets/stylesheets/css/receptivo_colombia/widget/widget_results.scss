@@ -43,8 +43,7 @@
   }
 
   .tab-content {
-    margin-top: 10px;
-    min-height: 170px;
+    min-height: 140px;
   }
 
   .box-transfers {
@@ -86,8 +85,16 @@
       margin-bottom: 10px;
     }
 
-    input {
+    input,
+    select {
       font-size: 12px;
+      border-radius: 6px !important;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
   }
 }
