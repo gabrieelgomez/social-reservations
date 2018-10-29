@@ -31,7 +31,7 @@ module KepplerTravel
 
     def low_price(currency)
       price = "price_#{currency}".to_sym
-      self.circuitables.collect{|cc|  cc.circuitable_rooms.map(&price)}.flatten.reject(&:zero?).min
+      self.circuitables.collect{|cc|  cc.circuitable_rooms.reject{|mr| mr.type_room == 'children'}.map(&price)}.flatten.reject(&:zero?).min
     end
 
     # Fields for the search form in the navbar

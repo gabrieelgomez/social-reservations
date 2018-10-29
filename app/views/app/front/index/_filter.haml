@@ -24,7 +24,7 @@
           .col-md-4.col-sm-6.mix-target.js_filterTours
             .box-card
               = link_to tours_show_path(tour_id: tour.id), class:'' do
-                .box-image{:style => "background-image: url(#{tour.files.first.url})"}
+                .box-image{:style => "background-image: url(#{tour.banner.url})"}
               .box-information
                 = link_to tours_show_path(tour_id: tour.id), class:'' do
                   %h3= tour.title[@lang].titleize
@@ -52,7 +52,7 @@
           .col-md-4.col-sm-6.mix-target.js_filterCircuits
             .box-card
               = link_to circuits_show_path(circuit_id: circuit.id), class:'' do
-                .box-image{:style => "background-image: url(#{circuit.files.first.url})"}
+                .box-image{:style => "background-image: url(#{circuit.banner.url})"}
               .box-information
                 = link_to circuits_show_path(circuit_id: circuit.id), class:'' do
                   %h3= circuit.title[@lang].titleize
@@ -81,7 +81,7 @@
           .col-md-4.col-sm-6.mix-target.js_filterMultidestines
             .box-card
               = link_to multidestinations_show_path(multidestination_id: multidestination.id), class:'' do
-                .box-image{:style => "background-image: url(#{multidestination.files.first.url})"}
+                .box-image{:style => "background-image: url(#{multidestination.banner.url})"}
               .box-information
                 = link_to multidestinations_show_path(multidestination_id: multidestination.id), class:'' do
                   %h3= multidestination.title[@lang].titleize
