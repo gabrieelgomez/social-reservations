@@ -33,7 +33,7 @@ module KepplerTravel
 
     def low_price(currency)
       price = "price_#{currency}".to_sym
-      self.multidestinationables.collect{|cc|  cc.multidestinationable_rooms.map(&price)}.flatten.reject(&:zero?).min
+      self.multidestinationables.collect{|cc| cc.multidestinationable_rooms.reject{|mr| mr.type_room == 'children'}.map(&price)}.flatten.reject(&:zero?).min
     end
 
     # Fields for the search form in the navbar
