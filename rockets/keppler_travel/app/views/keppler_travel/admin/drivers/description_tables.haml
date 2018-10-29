@@ -27,7 +27,7 @@
                       %th Matrícula
                       %th Color
                     // Circuitables from Circuit
-                    = f.simple_fields_for :car_descriptions, @driver.car_descriptions do |x|
+                    = f.simple_fields_for :car_descriptions, @driver.car_descriptions.sort_by{|cd| cd.id } do |x|
                       %tr
                         %td= x.object.vehicle.title['es']
                         %td

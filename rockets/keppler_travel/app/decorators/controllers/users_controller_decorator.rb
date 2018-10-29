@@ -6,10 +6,14 @@ Admin::UsersController.class_eval do
 
     if params[:user][:driver]
       @user.build_driver(
-        timetrack: params[:user][:driver][:timetrack]
+        timetrack: params[:user][:driver][:timetrack],
+        bank: params[:user][:driver][:bank],
+        account_type: params[:user][:driver][:account_type],
+        account_number: params[:user][:driver][:account_number]
       )
       @user.driver.vehicle_ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
-      if @user.save
+      @user.driver.destination_id = params[:driver][:destination_id]
+      if @user.save!
         @user.add_role :driver
         update_password if params[:user][:driver]
         ReservationMailer.send_password(@user).deliver_now
@@ -21,7 +25,7 @@ Admin::UsersController.class_eval do
             driver: @user.driver,
             vehicle: vehicle)
         end
-        redirect_to admin_travel_driver_description_tables_path(@user.driver)
+        redirect_to travel.admin_travel_driver_description_tables_path(@user.driver)
       else
         redirect_to travel.new_admin_travel_driver_path
       end
@@ -29,7 +33,7 @@ Admin::UsersController.class_eval do
     # -----
     else
       @user = User.new(user_params)
-      if @user.save
+      if @user.save!
         update_password
         @user.add_role Role.find(user_params.fetch(:role_ids)).name
         redirect(@user, params)
