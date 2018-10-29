@@ -1,0 +1,51 @@
+.contact-us {
+  padding: 0;
+
+  .banner-contact-us {
+    height: 280px;
+    background: #756f6f;
+    width: 100%;
+    margin: 0 0 25px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    &--mask {
+      background-color: hsla(0, 0%, 0%, 0.35);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h2 {
+        color: $color-white;
+        text-align: center;
+        font-family: $font-primary;
+        font-size: 40px;
+        font-weight: bold;
+        box-shadow: 0 4px 0 $color-blue;
+      }
+
+      p {
+        margin: 0;
+        padding: 20px;
+        color: $color-white;
+        text-align: center;
+        font-family: $font-primary;
+        font-size: 20px;
+        font-weight: bold;
+
+      }
+    }
+  }
+
+  .box-contact-us {
+    padding: 45px 0;
+  }
+}

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get 'tours', to: 'app/front#tours', as: :tours_show
     get 'circuits', to: 'app/front#circuits', as: :circuits_show
     get 'multidestinations', to: 'app/front#multidestinations', as: :multidestinations_show
+
+
+    get 'about', to: 'app/front#about'
+    get 'contact', to: 'app/front#contact'
     get 'pqrs', to: 'app/front#pqrs'
 
     # get 'reservations/circuits', to: 'app/front#circuits'

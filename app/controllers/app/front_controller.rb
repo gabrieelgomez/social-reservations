@@ -41,8 +41,16 @@ module App
     def errors
     end
 
+    def about
+    end
+
+    def contact
+    end
+
     def pqrs
     end
+
+
 
     private
 
