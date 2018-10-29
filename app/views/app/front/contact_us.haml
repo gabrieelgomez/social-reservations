@@ -1,0 +1,97 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+
+  %body{style:"padding-top:120px;"}
+    %header
+      = render 'app/layouts/navbar'
+      .loader
+        = render 'app/front/loader/loader'
+
+    %section#contact-us.contact-us
+      .banner-contact-us{style: "background-image: url(/assets/img/banner.jpg)"}
+        .banner-contact-us--mask
+          %h2 Contáctanos
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti incidunt.
+      .box-contact-us
+        .container
+          .gallary-header.text-center
+            %h2 Contáctanos
+            %p Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        .info-contact-us
+          .container
+            .row
+              .box-contact-us--form
+                .col-lg-8
+                  .row
+                    .col-lg-6
+                      .form-group
+                        %label{:for => "name"} Nombre
+                        %input#name.form-control{:type => "text"}/
+                    .col-lg-6
+                      .form-group
+                        %label{:for => "email"} Correo electrónico
+                        %input#email.form-control{:type => "email"}/
+                    .col-lg-6
+                      .form-group
+                        %label{:for => "phone"} Teléfono
+                        %input#phone.form-control{:type => "text"}/
+                    .col-lg-6
+                      .form-group
+                        %label{:for => "subject"} Asunto
+                        %input#subject.form-control{:type => "text"}/
+                    .col-lg-12
+                      .form-group
+                        %label{:for => "message"} Mensaje
+                        %textarea#message.form-control{:rows => "4"}
+                    .col-lg-12
+                      .items
+                        .g-recaptcha.pull-left{"data-sitekey" => "6LcrvnUUAAAAAMnLtpxb6pG5b2RXRB5aFlkmI55E"}
+                        .box-btn-payment.pull-right
+                          .about-btn.travel-mrt-0
+                            %button.about-view.travel-btn.btn-reser enviar 
+                   
+              .box-contact-us--maps
+                .col-lg-4
+                  %ul
+                    -#%li 
+                      %address
+                        %strong Ubicación
+                        %br/
+                        Lorem ipsum dolor, sit amet consectetur 
+                        %br/
+                        Colombia
+                    -#%li 
+                      %address
+                        %strong Teléfonos
+                        %br/
+                        +57 317 3632119
+                        %br/
+                    -#%li
+                      %address
+                        %strong Correo electrónico
+                        %br/
+                        %a{:href => "mailto:#"} info@receptivocolombia.com
+                    %li
+                      %address
+                        %strong Localízanos
+                        %br/
+                        %br/
+                        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "350", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39281033058!2d-74.24789184262298!3d4.648625933149298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2sBogot%C3%A1%2C+Bogota%2C+Colombia!5e0!3m2!1sen!2sve!4v1540828282456", :style => "border:0", :width => "600"}
+
+
+
+  
+
+
+
+    %footer#footer.footer.footer-copyright
+      = render 'app/layouts/footer'
+%script{:src => "/assets/js/loader.js"}
+%script{:src => "https://www.google.com/recaptcha/api.js"}
+
+:javascript
+  $('.navigation-front').removeClass('background-hide');
+  $('.navigation-front').addClass('background-show');
+
