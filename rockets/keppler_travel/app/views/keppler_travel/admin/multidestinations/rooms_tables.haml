@@ -24,6 +24,43 @@
                   %a{"data-toggle" => "tab", :href => "#cop"} Alojamientos / Habitaciones / COP
               .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
 
+                // USD
+                #usd.tab-pane.active
+                  .col-12
+                    .card
+                      .card-header
+                        %h3.card-title Alojamientos / Habitaciones / USD
+                      .card-body.table-responsive.p-0
+                        %table.table.table-hover
+                          %tr
+                            %th
+                            %th Destino
+                            %th Alojamiento
+                            %th Simple
+                            %th Dobles
+                            %th Triples
+                            %th Cuadruples
+                            %th Quintuples
+                            %th Sextuples
+                            %th Niños
+
+                          // Multidestinationables from Multidestination
+                          = f.simple_fields_for :multidestinationables, @multidestination.multidestinationables do |multidestinationable|
+                            - lodgment = multidestinationable.object.lodgment
+                            - destination = multidestinationable.object.destination
+                            - multidestination = multidestinationable.object.multidestination
+                            %tr
+                              %td
+                                = multidestinationable.input :status, as: :boolean, label: false
+                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td= lodgment.title['es']
+
+                              // Multidestinationable Roms from one Multidestinationable from Multidestination
+                              = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms do |cr|
+                                -# %td
+                                  = cr.input :price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+                                %td
+                                  = cr.input :price_usd, label: false, input_html: {min: 0}
                 // COP
                 #cop.tab-pane
                   .col-12
@@ -61,44 +98,10 @@
 
                               // Multidestinationable Roms from one Multidestinationable from Multidestination
                               = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms do |cr|
-                                %td
+                                -# %td
                                   = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
-
-                // USD
-                #usd.tab-pane.active
-                  .col-12
-                    .card
-                      .card-header
-                        %h3.card-title Alojamientos / Habitaciones / USD
-                      .card-body.table-responsive.p-0
-                        %table.table.table-hover
-                          %tr
-                            %th
-                            %th Destino
-                            %th Alojamiento
-                            %th Simple
-                            %th Dobles
-                            %th Triples
-                            %th Cuadruples
-                            %th Quintuples
-                            %th Sextuples
-                            %th Niños
-
-                          // Multidestinationables from Multidestination
-                          = f.simple_fields_for :multidestinationables, @multidestination.multidestinationables do |multidestinationable|
-                            - lodgment = multidestinationable.object.lodgment
-                            - destination = multidestinationable.object.destination
-                            - multidestination = multidestinationable.object.multidestination
-                            %tr
-                              %td
-                                = multidestinationable.input :status, as: :boolean, label: false
-                              %td= destination.custom_title[I18n.locale.to_s]
-                              %td= lodgment.title['es']
-
-                              // Multidestinationable Roms from one Multidestinationable from Multidestination
-                              = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms do |cr|
                                 %td
-                                  = cr.input :price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+                                  = cr.input :price_cop, label: false, input_html: {min: 0}
 
 
 
