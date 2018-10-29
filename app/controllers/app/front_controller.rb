@@ -44,7 +44,7 @@ module App
     def about
     end
 
-    def contact
+    def contact_us
     end
 
     def pqrs

@@ -47,5 +47,25 @@
 
   .box-contact-us {
     padding: 45px 0;
+
+    .info-contact-us {
+      padding: 45px 0;
+
+      .box-contact-us--form {
+        label {
+          padding: 5px 0;
+          font-family: $font-primary;
+          display: block;
+        }
+
+        .items {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .box-contact-us--maps {}
+    }
   }
 }

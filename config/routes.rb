@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 
     get 'about', to: 'app/front#about'
-    get 'contact', to: 'app/front#contact'
+    get 'contact_us', to: 'app/front#contact_us'
     get 'pqrs', to: 'app/front#pqrs'
 
     # get 'reservations/circuits', to: 'app/front#circuits'
