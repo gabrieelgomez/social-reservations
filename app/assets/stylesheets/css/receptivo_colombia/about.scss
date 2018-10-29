@@ -1,7 +1,7 @@
-.about-us {
+.aboutus {
   padding: 0;
 
-  .banner-about-us {
+  .banner-aboutus {
     height: 280px;
     background: #756f6f;
     width: 100%;
@@ -45,7 +45,11 @@
     }
   }
 
-  .box-about-us {
+  .box-aboutus {
     padding: 45px 0;
+
+    .info-aboutus {
+      padding: 15px 0;
+    }
   }
 }

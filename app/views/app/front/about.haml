@@ -9,33 +9,54 @@
       .loader
         = render 'app/front/loader/loader'
 
-    
-    -#%section.pqrs#pqrs
-      .container
-        .gallary-header.text-center
-          %h2
-            Sistema PQRS
-          %p
-            Por favor, indíquenos en siguiente formulario cualquier pregunta, queja, reclamos y/o sugerencias 
-            %br/
-            con el fin mejorar nuestros servicios
-
-
-    %section#about-us.about-us
-      .banner-about-us{style: "background-image: url(/assets/img/banner.jpg)"}
-        .banner-about-us--mask
-          %h2 Receptivo Colombia
+    %section#aboutus.aboutus
+      .banner-aboutus{style: "background-image: url(/assets/img/banner.jpg)"}
+        .banner-aboutus--mask
+          %h2 Nosotros
           %p Agencia Operadora de Turismo
-      .box-about-us
+      .box-aboutus
+        .container
+          .gallary-header.text-center
+            %h2 Receptivo Colombia
+            -#%p Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        .info-aboutus
+          .container
+            .row
+              .col-lg-2
+              .col-lg-8
+                %p 
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, praesentium quo temporibus fugiat, quis error sunt alias dolore ipsum repellendus distinctio commodi odit provident et in, autem unde consequatur officia.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, praesentium quo temporibus fugiat, quis error sunt alias dolore ipsum repellendus distinctio commodi odit provident et in, autem unde consequatur officia.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, praesentium quo temporibus fugiat, quis error sunt alias dolore ipsum repellendus distinctio commodi odit provident et in, autem unde consequatur officia.
 
+                   
+              .box-contact-us--maps
+                .col-lg-4
+                  %ul
+                    -#%li 
+                      %address
+                        %strong Ubicación
+                        %br/
+                        Lorem ipsum dolor, sit amet consectetur 
+                        %br/
+                        Colombia
+                    -#%li 
+                      %address
+                        %strong Teléfonos
+                        %br/
+                        +57 317 3632119
+                        %br/
+                    -#%li
+                      %address
+                        %strong Correo electrónico
+                        %br/
+                        %a{:href => "mailto:#"} info@receptivocolombia.com
 
 
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
 %script{:src => "/assets/js/loader.js"}
-%script{:src => "https://www.google.com/recaptcha/api.js"}
-
 :javascript
   $('.navigation-front').removeClass('background-hide');
   $('.navigation-front').addClass('background-show');
