@@ -24,6 +24,10 @@
           background-color: $color-blue;
           color: #ffffff;
 
+          @include respond-to(xs) {
+            font-size: 12px;
+          }
+
           &:hover {
             text-decoration: none;
             border-color: $color-blue !important;
@@ -92,12 +96,21 @@
       font-weight: 400;
       font-family: 'Poppins', sans-serif;
       margin-bottom: 2px;
+
+      @include respond-to(xs) {
+        text-align: left;
+        margin-bottom: 5px;
+      }
     }
 
     input,
     select {
       font-size: 12px;
       border-radius: 6px !important;
+
+      @include respond-to(xs) {
+        margin-bottom: 5px;
+      }
     }
 
     input[type=number]::-webkit-inner-spin-button,

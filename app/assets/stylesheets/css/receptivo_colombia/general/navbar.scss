@@ -223,36 +223,60 @@
 .effect-items li:nth-child(1) a:hover:before {
     background: #43b7e8 !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .effect-items li:nth-child(2).active a:before,
 .effect-items li:nth-child(2) a:hover:before {
     background: #ffc600 !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .effect-items li:nth-child(3).active a:before,
 .effect-items li:nth-child(3) a:hover:before {
     background: #eb6b0a !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .effect-items li:nth-child(4).active a:before,
 .effect-items li:nth-child(4) a:hover:before {
     background: #e53124 !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .effect-items li:nth-child(5).active a:before,
 .effect-items li:nth-child(5) a:hover:before {
     background: #9dc107 !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .effect-items li:nth-child(6).active a:before,
 .effect-items li:nth-child(6) a:hover:before {
     background: #43b7e8 !important;
     width: 100%;
+
+    @include respond-to(xs) {
+        background: transparent !important;
+    }
 }
 
 .nav>li.item-link>a {
@@ -304,7 +328,7 @@
         margin-right: 20px !important;
         margin-bottom: 10px !important;
         padding: 15px 10px !important;
-        border-radius: 0px !important;
+        border-radius: 4px !important;
     }
 
     .logo-separator {

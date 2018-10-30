@@ -1,24 +1,49 @@
-.col-lg-1
-.col-lg-10
+.col-xs-1.col-lg-1
+.col-xs-10.col-lg-10
 	.widget__search
-		-# Traslados | Tours | Circuitos | Multidestinos
-		%ul.nav.nav-tabs.widget__search--items
-			%li.active
-				%a{"data-toggle" => "tab", :href => "#transfers"}
-					%i.fa.fa-car
-					Traslados
-			%li
-				%a{"data-toggle" => "tab", :href => "#tours"}
-					%i.fa.fa-map-o
-					Tours
-			%li
-				%a{"data-toggle" => "tab", :href => "#circuits"}
-					%i.fa.fa-train
-					Circuitos
-			%li
-				%a.fix{"data-toggle" => "tab", :href => "#multidestinations"}
-					%i.fa.fa-plane
-					Multidestinos
+		-# Order of Items: 1.Traslados 2.Tours 3.Circuitos 4.Multidestinos
+		-#Desktop version
+		.hidden-xs
+			%ul.nav.nav-tabs.widget__search--items.hidden-xs
+				%li.active
+					%a{"data-toggle" => "tab", :href => "#transfers"}
+						%i.fa.fa-car
+						Traslados
+				%li
+					%a{"data-toggle" => "tab", :href => "#tours"}
+						%i.fa.fa-map-o
+						Tours
+				%li
+					%a{"data-toggle" => "tab", :href => "#circuits"}
+						%i.fa.fa-train
+						Circuitos
+				%li
+					%a.fix{"data-toggle" => "tab", :href => "#multidestinations"}
+						%i.fa.fa-plane
+						Multidestinos
+		-#Mobile version
+		.visible-xs
+			%ul.nav.nav-tabs.widget__search--items
+				%li.active
+					%a{"data-toggle" => "tab", :href => "#transfers"}
+						%i.fa.fa-car
+						%br/	
+						Traslados
+				%li
+					%a{"data-toggle" => "tab", :href => "#tours"}
+						%i.fa.fa-map-o
+						%br/
+						Tours
+				%li
+					%a{"data-toggle" => "tab", :href => "#circuits"}
+						%i.fa.fa-train
+						%br/
+						Circuitos
+				%li
+					%a.fix{"data-toggle" => "tab", :href => "#multidestinations"}
+						%i.fa.fa-plane
+						%br/
+						Multidestinos
 
 		.tab-content
 			// Transfers

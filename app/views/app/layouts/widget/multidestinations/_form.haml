@@ -1,4 +1,4 @@
-= search_form_for @q, url: "/#{@lang}/#{@currency}/multidestinations", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+= search_form_for @q, url: "/#{@lang}/#{@currency}/multidestinations", html: {class: 'input-group', style:'width: 100%;', id: 'search-input', method: :get } do |f|
 	.box-transfers
 		.row
 			- unless KepplerTravel::Multidestination.count.positive?
@@ -21,13 +21,13 @@
 						.form-group
 							%input.form-control.custom-input{name: 'flight_origin_multidestination_picker', id: 'flight_origin_multidestination_picker', autocomplete: 'off'}/
 
-				.col-lg-2
+				.col-xs-6.col-lg-2
 					.box-item
 						%h2 Adultos
 						.form-group
 							%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-				.col-lg-2
+				.col-xs-6.col-lg-2
 					.box-item
 						%h2 Niños
 						.form-group

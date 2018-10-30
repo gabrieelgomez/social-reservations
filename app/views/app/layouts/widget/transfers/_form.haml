@@ -1,4 +1,4 @@
-= search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+= search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', style:'width: 100%;' ,id: 'search-input', method: :get } do |f|
 	.box-transfers
 		.row
 			- unless KepplerTravel::Vehicle.count.positive?
@@ -45,15 +45,15 @@
 						%h2 Fecha de Vuelta
 						.form-group
 							%input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-				.col-lg-12{style:'padding-top: 8px;'}	
+				.col-xs-12.col-lg-12{style:'padding-top: 8px;'}	
 					.row								
-						.col-lg-1
+						.col-xs-6.col-lg-1
 							.box-item
 								%h2 Adultos
 								.form-group
 									%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-						.col-lg-1
+						.col-xs-6.col-lg-1
 							.box-item
 								%h2 Niños
 								.form-group

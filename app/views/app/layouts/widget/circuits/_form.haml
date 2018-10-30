@@ -1,4 +1,4 @@
-= search_form_for @q, url: "/#{@lang}/#{@currency}/circuits", html: {class: 'input-group', id: 'search-input', method: :get } do |f|
+= search_form_for @q, url: "/#{@lang}/#{@currency}/circuits", html: {class: 'input-group', style:'width: 100%;' ,id: 'search-input', method: :get } do |f|
 	.box-transfers
 		.row
 			- unless KepplerTravel::Circuit.count.positive?
@@ -13,21 +13,19 @@
 							%select#sel1.form-control{name: 'circuit_id', style:'border-radius: 6px !important;'}
 								- KepplerTravel::Circuit.all.each do |circuit|
 									%option{ value: circuit.id}= circuit.title[@lang].titleize
-
-
 				.col-lg-3
 					.box-item
 						%h2 Fecha
 						.form-group
 							%input.form-control.custom-input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off'}/
 
-				.col-lg-2
+				.col-xs-6.col-lg-2
 					.box-item
 						%h2 Adultos
 						.form-group
 							%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-				.col-lg-2
+				.col-xs-6.col-lg-2
 					.box-item
 						%h2 Niños
 						.form-group

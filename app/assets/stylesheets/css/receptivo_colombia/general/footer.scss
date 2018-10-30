@@ -6,16 +6,28 @@
   &__content {
     padding: 60px 0;
 
+    @include respond-to(xs) {
+      padding: 30px 0;
+    }
+
     .single-footer-item {
       font-family: 'Poppins', sans-serif;
       text-transform: capitalize;
       height: 285px;
+
+      @include respond-to(xs) {
+        height: auto;
+      }
 
       h2 {
         color: #565a5c;
         font-size: 16px;
         font-weight: 600;
         margin-bottom: 40px;
+
+        @include respond-to(xs) {
+          margin-bottom: 20px;
+        }
       }
 
       .single-footer-txt {
@@ -57,6 +69,10 @@
         height: 100%;
         width: 100%;
         margin-top: 20px;
+
+        @include respond-to(xs) {
+          height: 250px;
+        }
 
         img {
           height: 100%;
