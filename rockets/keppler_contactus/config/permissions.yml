@@ -1,0 +1,16 @@
+modules:
+ requests:
+    name: Request
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
+ messages:
+    name: Message
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]

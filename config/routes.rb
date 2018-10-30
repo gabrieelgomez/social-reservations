@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     get 'about', to: 'app/front#about'
     get 'contact_us', to: 'app/front#contact_us'
-    get 'pqrs', to: 'app/front#pqrs'
+    get 'pqrs', to: 'app/front#pqrs', as: :pqrs
 
     # get 'reservations/circuits', to: 'app/front#circuits'
 
@@ -202,6 +202,9 @@ Rails.application.routes.draw do
 
   # Travel routes engine
   mount KepplerTravel::Engine, at: '/', as: 'travel'
+
+  # Contactus routes engine
+  mount KepplerContactus::Engine, at: '/', as: 'contactus'
 
   # Ckeditor routes engine
   mount Ckeditor::Engine => '/ckeditor'

@@ -1,4 +1,13 @@
 PATH
+  remote: rockets/keppler_contactus
+  specs:
+    keppler_contactus (0.1.0)
+      haml_rails
+      pundit
+      rails (= 5.2.0)
+      simple_form
+
+PATH
   remote: rockets/keppler_ga_dashboard
   specs:
     keppler_ga_dashboard (0.0.1)
@@ -101,6 +110,8 @@ GEM
     carrierwave-imageoptimizer (1.4.0)
       carrierwave (>= 0.8, < 2.0)
       image_optimizer (~> 1.6)
+    city-state (0.0.13)
+      rubyzip (~> 1.1)
     ckeditor (4.2.4)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -123,6 +134,14 @@ GEM
     commands (0.2.1)
       rails (>= 3.2.0)
     concurrent-ruby (1.0.5)
+    countries (2.1.4)
+      i18n_data (~> 0.8.0)
+      money (~> 6.9)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (3.1.1)
+      countries (~> 2.0)
+      sort_alphabetical (~> 1.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
@@ -224,6 +243,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.8.0)
     ice_nine (0.11.2)
     image_optimizer (1.8.0)
     jquery-minicolors-rails (2.2.6.1)
@@ -242,6 +262,7 @@ GEM
       execjs (>= 1.4.0)
       multi_json (~> 1.0)
       therubyracer (~> 0.12.1)
+    json (2.1.0)
     jwt (2.1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -283,6 +304,8 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     mixitup_rails (0.0.3)
+    money (6.13.1)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.2.4)
     multi_json (1.13.1)
     multipart-post (2.0.0)
@@ -367,6 +390,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (6.0.4)
+    recaptcha (4.8.0)
+      json
     reek (4.8.2)
       codeclimate-engine-rb (~> 0.4.0)
       parser (>= 2.5.0.0, < 2.6)
@@ -421,6 +446,7 @@ GEM
       ruby_parser (~> 3.8)
       tty-which (~> 0.3.0)
       virtus (~> 1.0)
+    rubyzip (1.2.2)
     sass (3.6.0)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -451,8 +477,11 @@ GEM
       activemodel (> 4)
     sitemap_generator (6.0.1)
       builder (~> 3.0)
+    sixarm_ruby_unaccent (1.2.0)
     slick_rails (1.5.9)
       railties (>= 3.1)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spreadsheet (1.1.8)
       ruby-ole (>= 1.0)
     spring (2.0.2)
@@ -485,6 +514,7 @@ GEM
     uglifier (4.1.8)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
+    unicode_utils (1.4.0)
     uuidtools (2.1.5)
     virtus (1.0.5)
       axiom-types (~> 0.1)
@@ -518,10 +548,12 @@ DEPENDENCIES
   byebug (= 10.0.2)
   carrierwave (= 1.2.2)
   carrierwave-imageoptimizer (~> 1.4)
+  city-state (~> 0.0.13)
   ckeditor (= 4.2.4)
   cocoon (= 1.2.11)
   coffee-rails (= 4.2.2)
   commands (= 0.2.1)
+  country_select
   database_cleaner (~> 1.5)
   devise (= 4.4.3)
   devise-i18n (= 1.6.1)
@@ -541,6 +573,7 @@ DEPENDENCIES
   jshint
   kaminari (~> 1.1, >= 1.1.1)
   kaminari-i18n (= 0.5.0)
+  keppler_contactus!
   keppler_ga_dashboard!
   keppler_travel!
   mini_magick (= 4.8.0)
@@ -559,6 +592,7 @@ DEPENDENCIES
   rails-assets-simple-line-icons!
   rails-controller-testing
   ransack (= 1.8.8)
+  recaptcha (= 4.8.0)
   remotipart (= 1.3.0)
   rmagick (= 2.16.0)
   rolify (= 5.2.0)

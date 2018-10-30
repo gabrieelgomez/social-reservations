@@ -1,0 +1,15 @@
+menu:
+  keppler_contactus:
+    name: Messages
+    current: ['admin/contactus/messages']
+    url_path: /admin/contactus/messages
+    icon: envelope
+    model: KepplerContactus::Message
+
+
+  keppler_pqrs:
+    name: Request
+    current: ['admin/contactus/requests']
+    url_path: /admin/contactus/requests
+    icon: earphones-alt
+    model: KepplerContactus::Request
