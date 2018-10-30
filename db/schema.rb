@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_203216) do
+ActiveRecord::Schema.define(version: 2018_10_30_152746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,34 @@ ActiveRecord::Schema.define(version: 2018_10_25_203216) do
     t.string "ga_tracking_id"
     t.boolean "ga_status"
     t.integer "setting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "keppler_contactus_messages", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "subject"
+    t.text "content"
+    t.boolean "read"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_contactus_messages_on_deleted_at"
+  end
+
+  create_table "keppler_contactus_requests", force: :cascade do |t|
+    t.string "name"
+    t.string "company"
+    t.string "dni"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.text "body"
+    t.string "options"
+    t.integer "position"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

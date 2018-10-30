@@ -48,6 +48,7 @@ module App
     end
 
     def pqrs
+      @message = KepplerContactus::Request.new
     end
 
 

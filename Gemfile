@@ -121,9 +121,15 @@ end
 gem 'google-api-client', '~> 0.7.1'
 gem 'keppler_ga_dashboard', path: 'rockets/keppler_ga_dashboard'
 
-#---- keppler_ga_dashboard ----
+#---- keppler_travel ----
 gem 'keppler_travel', path: 'rockets/keppler_travel'
 
+#---- keppler_contactus ----
+gem 'keppler_contactus', path: 'rockets/keppler_contactus'
+gem 'recaptcha', '4.8.0', require: 'recaptcha/rails'
+# All countries gem
+gem 'country_select'
+gem 'city-state', '~> 0.0.13'
 #---- gems frontend----
 gem 'slick_rails'
 gem 'mixitup_rails'
