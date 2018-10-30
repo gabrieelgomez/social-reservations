@@ -57,7 +57,7 @@
                               %td= ranking.title[I18n.locale.to_s]
 
                               // Circuitable Roms from one Circuitable from Circuit
-                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
+                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|
                                 %td
                                   = cr.input :price_cop, label: false, input_html: {min: 0}
 
@@ -89,7 +89,7 @@
                               %td= ranking.title[I18n.locale.to_s]
 
                               // Circuitable Roms from one Circuitable from Circuit
-                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms do |cr|
+                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|
                                 %td
                                   = cr.input :price_usd, label: false, input_html: {min: 0}
 

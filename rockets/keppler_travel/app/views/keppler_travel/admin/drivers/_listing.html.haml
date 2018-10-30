@@ -14,10 +14,16 @@
     -#       %span.status.not-available Ocupado
     -#     - else
     -#       %span.status.available Disponible
+
     %td
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
         %span
           =  image_tag driver.user.try(:avatar).try(:url), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
+
+    %td.hidden-xs
+      = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
+        %span
+          = driver.destination.custom_title['es']
 
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do

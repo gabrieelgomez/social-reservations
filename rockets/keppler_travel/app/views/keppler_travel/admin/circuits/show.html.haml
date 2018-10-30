@@ -118,7 +118,7 @@
                           - else
                             %i.icon-close
                         %td= ranking.title['es']
-                        - circuitable.circuitable_rooms.each do |cr|
+                        - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_cop
                           %td= number_to_currency(cr.price_cop, locale: @locale)
               // COP
@@ -148,7 +148,7 @@
                           - else
                             %i.icon-close
                         %td= ranking.title['es']
-                        - circuitable.circuitable_rooms.each do |cr|
+                        - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_usd
                           %td= number_to_currency(cr.price_usd, locale: @locale)
 
