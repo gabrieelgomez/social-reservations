@@ -1,0 +1,85 @@
+#index-container{ :controller => "requests" }
+  .container
+    .row
+      .listing.col-lg-12.col-xs-12
+        %section.content-header.index-header
+          %h1{ style: 'display: inline-block' }
+            = t("keppler.modules.#{controller_path.underscore}")
+          = entries(@total, @objects)
+          .toolbar
+            - if can?(KepplerContactus::Request).download?
+              .toolbar-item
+                = link_to admin_contactus_request_download_path(KepplerContactus::Request, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
+                  %i.icon-cloud-download
+            - if can?(KepplerContactus::Request).upload?
+              .toolbar-item
+                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "request" do
+                  %i.icon-cloud-upload
+            .toolbar-item
+              = link_to reload_admin_contactus_requests_path, class: "tool-btn", remote: true do
+                %i.icon-reload
+            - if can?(KepplerContactus::Request).destroy_multiple?
+              .toolbar-item
+                .checkbox
+                  %label{ for: 'checkbox-all' }
+                    %input{ type: 'checkbox', id: 'checkbox-all', ':disabled' => "checkItems ? true : false", '@click' => 'selectAll()' }
+                    %span.cr
+                      %i.cr-icon.glyphicon.glyphicon-ok
+            .toolbar-item
+              %a.tool-btn{"data-confirm" => "¿Estás seguro?", "data-method" => "delete", "v-bind:href" => "link", :rel => "nofollow", ":class" => "{disabled: !checks}" }
+                %i.icon-trash
+          .hide
+            = form_tag admin_contactus_request_upload_path(@objects), id: "upload_form_requests", multipart: true, method: :post do
+              = file_field_tag :file, id: "upload_file_request"
+          %ol.breadcrumb
+            %li
+              %a{ href: '#' }
+                %i.icon-directions
+                = t("keppler.modules.#{action_name.underscore}")
+
+        .box.slice-box
+          .box-body.no-padding
+
+            %table.table
+              %thead
+                - if @objects.size.zero?
+                  %tr
+                    %th{style: 'text-align: center;'}
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.requests"))
+                - else
+                  %tr
+                    %th
+                    %th.hidden-xs= t('activerecord.attributes.name')
+                    %th.hidden-xs= t('activerecord.attributes.company')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.dni')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.country')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.phone')
+                    %th.hidden-xs.hidden-sm= t('activerecord.attributes.email')
+                    %th.center Menu
+                    %th
+              %tbody#objects-container
+                = render 'admin/layouts/listing_preloader'
+                = render 'listing', objects: @objects
+        %center.paginator-module
+          = paginate @objects, window: 1
+  %aside.control-sidebar
+    = render "description"
+  %aside#index-show.control-sidebar
+
+  -# .mixed-btn
+  -#   - if can?(KepplerContactus::Request).create?
+  -#     = link_to new_admin_contactus_request_path, class: "btn-float" do
+  -#       +
+
+:javascript
+  $(document).ready(function(){
+    $('#request').click(function() {
+      $('#upload_file_request').click()
+      $('#upload_file_request').change(function() {
+        $('.waiting').css('display', 'block')
+        $('#upload_form_request').submit()
+      })
+    });
+
+    renderImg();
+  });

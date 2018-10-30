@@ -9,16 +9,18 @@
       .loader
         = render 'app/front/loader/loader'
 
-    
+
     %section.pqrs#pqrs
       .container
         .gallary-header.text-center
           %h2
             Sistema PQRS
           %p
-            Por favor, indíquenos en siguiente formulario cualquier pregunta, queja, reclamos y/o sugerencias 
+            Por favor, indíquenos en siguiente formulario cualquier pregunta, queja, reclamos y/o sugerencias
             %br/
             con el fin mejorar nuestros servicios
+
+    = simple_form_for @message, url: '/admin/contactus/requests', method: :post do |f|
       .box-pqrs
         .container
           .row
@@ -28,70 +30,131 @@
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
-                        %input#questions{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "questions"}
+                        %input#pregunta{:name => "request[options]", :type => "radio"}/
+                        %label{:for => "pregunta"}
                           %font{:style => "vertical-align: inherit;"}
                             %font{:style => "vertical-align: inherit;"} Pregunta
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
-                        %input#complaints{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "complaints"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Queja
+                        %input#queja{:name => "request[options]", value: 'Queja', :type => "radio"}/
+                        %label{:for => "queja"}
+                          %font{value: 'Queja', :style => "vertical-align: inherit;"}
+                            %font{value: 'Queja', :style => "vertical-align: inherit;"} Queja
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
-                        %input#claims{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "claims"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Reclamo
+                        %input#reclamo{:name => "request[options]", value: 'Reclamo', :type => "radio"}/
+                        %label{:for => "reclamo"}
+                          %font{value: 'Reclamo', :style => "vertical-align: inherit;"}
+                            %font{value: 'Reclamo', :style => "vertical-align: inherit;"} Reclamo
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
-                        %input#suggestions{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "suggestions"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Sugerencia
+                        %input#sugerencia{:name => "request[options]", value: 'Sugerencia', :type => "radio"}/
+                        %label{:for => "sugerencia"}
+                          %font{value: 'Sugerencia', :style => "vertical-align: inherit;"}
+                            %font{value: 'Sugerencia', :style => "vertical-align: inherit;"} Sugerencia
                 .col-lg-6
                   .form-group
-                    %label{:for => "email"} Nombre
-                    %input#email.form-control{:type => "email"}/
+                    %label Nombre
+                    = f.input :name, label: false, class: 'form-control', type: 'text'
                   .form-group
-                    %label{:for => "pwd"} Identificación
-                    %input#pwd.form-control{:type => "password"}/
+                    %label Identificación
+                    = f.input :dni, label: false, class: 'form-control', type: 'text'
                   .form-group
-                    %label{:for => "pwd"} Teléfono
-                    %input#pwd.form-control{:type => "password"}/
+                    %label Teléfono
+                    = f.input :phone, label: false, class: 'form-control', type: 'text'
                 .col-lg-6
                   .form-group
-                    %label{:for => "email"} Compañia
-                    %input#email.form-control{:type => "email"}/
+                    %label{name: ''} Compañia
+                    = f.input :company, label: false, class: 'form-control', type: 'text'
                   .form-group
-                    %label{:for => "pwd"} País
-                    %input#pwd.form-control{:type => "password"}/
+                    %label País
+                    = f.input :country, label: false, class: 'form-control', type: 'text'
                   .form-group
-                    %label{:for => "pwd"} Correo Electronico
-                    %input#pwd.form-control{:type => "password"}/
+                    %label Correo Electronico
+                    = f.input :email, label: false, class: 'form-control', type: 'text'
                 .col-lg-12
                   .form-group
-                    %label{:for => "comment"} Descripción
-                    %textarea#comment.form-control{:rows => "5"}
+                    %label Descripción
+                    -# %input{name: 'request[options]', type: 'hidden', value: 'ninguno'}/
+                    %textarea#comment.form-control{name: 'request[name]', id: 'request_name', :rows => "5"}
                 .col-lg-12
                   .items
-                    .g-recaptcha.pull-left{"data-sitekey" => "6LcrvnUUAAAAAMnLtpxb6pG5b2RXRB5aFlkmI55E"}
+                    = raw recaptcha_tags
                     .box-btn-payment.pull-right
                       .about-btn.travel-mrt-0
                         %button.about-view.travel-btn.btn-reser enviar
 
-
-
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
 %script{:src => "/assets/js/loader.js"}
+%script{:src => "/assets/js/jquery-validate.js"}
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{:src => "https://www.google.com/recaptcha/api.js"}
 
 :javascript
   $('.navigation-front').removeClass('background-hide');
   $('.navigation-front').addClass('background-show');
 
+
+:javascript
+  $('font').on('click', function () {
+    $(`input[name='request[options]']`).val($(this).text());
+    // debugger;
+  });
+
+  $(`input[name='request[options]']`).on('click', function () {
+    $(`input[name='request[options]']`).val($(this).attr('id'));
+    // debugger;
+  });
+
+    $('#new_request').validate({
+     event: "blur",
+     errorClass: "error-class",
+     validClass: "valid-class",
+     rules: {
+       'request[name]': { required: true},
+       'request[dni]': { required: true},
+       'request[company]': { required: true},
+       'request[country]': { required: true},
+       'request[email]': { required: true, email: true},
+       'request[body]': { required: true},
+       'request[options]': { required: true},
+       'request[phone]': { required: true}
+       },
+     messages: {
+       'request[name]': 'No puede estar en blanco',
+       'request[dni]': 'No puede estar en blanco',
+       'request[company]': 'No puede estar en blanco',
+       'request[country]': 'No puede estar en blanco',
+       'request[email]': {required: 'No puede estar en blanco', email: 'Email inválido'},
+       'request[body]': 'No puede estar en blanco',
+       'request[options]': 'Selecciona una opción',
+       'reservation[phone]': 'No puede estar en blanco'
+       },
+     debug: true,errorElement: "label",
+     submitHandler: function(form){
+      form.submit();
+     }
+    });
+
+:javascript
+  var notice = "#{notice}";
+
+  if (notice == 'saved'){
+   swal({
+    type: 'success',
+    title: '¡Listo!',
+    text: '¡Su solicitud ha sido enviada exitosamente!'
+   })
+  }
+
+  else if (notice == 'not_saved'){
+   swal({
+    type: 'error',
+    title: '¡Upps..!!',
+    text: '¡Ha ocurrido un error, intente de nuevo!'
+   })
+  }

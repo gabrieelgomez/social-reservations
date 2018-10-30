@@ -4,37 +4,37 @@
 			.col-sm-3
 				.single-footer-item
 					.footer-logo
-						%img{:alt => "", :src => "/assets/img/patron.svg"}/
+						%img{alt: "", src: "/assets/img/patron.svg"}/
 			.col-sm-3
 				.single-footer-item
 					%h2 Site Map
 					.single-footer-txt
 						%p
-							%a{:href => "#"} Quiénes Somos
+							%a{href: "#"} Quiénes Somos
 						%p
-							%a{:href => "#"} Traslados
+							%a{href: "#"} Traslados
 						%p
-							%a{:href => "#"} Circuitos
+							%a{href: "#"} Circuitos
 						%p
-							%a{:href => "#"} Tours
+							%a{href: "#"} Tours
 						%p
-							%a{:href => "#"} Multidestinos
+							%a{href: "#"} Multidestinos
 						%p
-							%a{:href => "#"} Contacto
+							%a{href: "#"} Contacto
 			.col-sm-3
 				.single-footer-item
 					%h2 Destinos Destacados
 					.single-footer-txt
 						%p
-							%a{:href => "#"} Cartagena
+							%a{href: "#"} Cartagena
 						%p
-							%a{:href => "#"} Bucaramanga
+							%a{href: "#"} Bucaramanga
 						%p
-							%a{:href => "#"} Barranquilla
+							%a{href: "#"} Barranquilla
 						%p
-							%a{:href => "#"} Neiva
+							%a{href: "#"} Neiva
 						%p
-							%a{:href => "#"} Guajira
+							%a{href: "#"} Guajira
 			.col-sm-3
 				.single-footer-item.text-center
 					%h2.text-left Contáctanos
@@ -44,33 +44,33 @@
 						%p{style:'text-transform: lowercase;'} info@receptivocolombia.com
 						-#%p Colombia
 						%ul
-							-#%li
-								= link_to   '#' , :class => '', :id => '', :type => 'button' do
+							%li
+								= link_to pqrs_path , class: '', id: '', type: 'button' do
 									%span
 										PQRS
 							%li
-								= link_to   '#' , :class => '', :id => 'js_cancellations_footer', :type => 'button' do
+								= link_to '#' , class: '', id: 'js_cancellations_footer', type: 'button' do
 									%span
 										Política de Cancelaciones
 							%li
-								= link_to   '#' , :class => '', :id => 'js_treatments_footer', :type => 'button' do
+								= link_to '#' , class: '', id: 'js_treatments_footer', type: 'button' do
 									%span
 										Política de Privacidad
 							%li
-								= link_to   '#' , :class => '', :id => 'js_terms_footer', :type => 'button' do
+								= link_to '#' , class: '', id: 'js_terms_footer', type: 'button' do
 									%span
 										Términos y Condiciones
 
 				.foot-icons
 					%ul.footer-social-links.list-inline.list-unstyled
 						%li
-							%a.foot-icon-bg-1{:href => "#", :target => "_blank"}
+							%a.foot-icon-bg-1{href: "#", target: "_blank"}
 								%i.fa.fa-facebook
 						%li
-							%a.foot-icon-bg-2{:href => "#", :target => "_blank"}
+							%a.foot-icon-bg-2{href: "#", target: "_blank"}
 								%i.fa.fa-twitter
 						%li
-							%a.foot-icon-bg-3{:href => "#", :target => "_blank"}
+							%a.foot-icon-bg-3{href: "#", target: "_blank"}
 								%i.fa.fa-instagram
 	%hr/
 	.container
