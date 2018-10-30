@@ -39,6 +39,7 @@
     color: white;
     vertical-align: middle;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .item-contact.phone p {
@@ -50,12 +51,16 @@
 .item-contact.phone p img {
     width: 18px;
     display: inline-block;
+    @include respond-to(md) {
+        font-size: 12px;
+    }
 }
 
 .item-contact.phone p span {
     color: white;
     vertical-align: middle;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .item-contact.login p {
@@ -150,6 +155,13 @@
     height: 60px;
     display: flex;
     align-items: center;
+    @include respond-to(sm) {
+        width: 100%;
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 }
 
 .effect-items li {

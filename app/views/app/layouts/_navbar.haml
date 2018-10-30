@@ -1,20 +1,20 @@
 %nav.navigation-front.navbar.navbar-fixed-top.navbar-inverse.background-hide.navbar-effect{:role => "navigation"}
-  .navbar-contact.visible-lg-
+  .navbar-contact.hidden-xs.hidden-sm
     .container
       .row
-        .col-lg-6.nav-padding
-          .col-lg-6
+        .col-md-6.col-lg-6.nav-padding
+          .col-md-8.col-lg-6
             .item-contact.email
               %p.pull-left
                 %img{:alt => "icon-email", :src => "/assets/img/mail.svg"}/
                 %span info@receptivocolombia.com
-          .col-lg-6
+          .col-md-4.col-lg-6
             .item-contact.phone
               %p.pull-left
                 %img{:alt => "icon-phone", :src => "/assets/img/whatsapp-logo.svg"}/
                 %span +57 317 3632119
-        .col-lg-6.nav-padding
-          .col-lg-4.nav-padding
+        .col-md-6.col-lg-6.nav-padding
+          .col-md-3.col-lg-4.nav-padding
             .item-contact.idioma
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
@@ -27,7 +27,7 @@
                     = url_lang('en', @currency, request, 'Inglés')
                   %li
                     = url_lang('pt', @currency, request, 'Portugués')
-          .col-lg-4.nav-padding
+          .col-md-3.col-lg-4.nav-padding
             .item-contact.money
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
@@ -38,7 +38,7 @@
                     = url_lang(@lang, 'cop', request, 'COP')
                   %li
                     = url_lang(@lang, 'usd', request, 'USD')
-          .col-lg-4
+          .col-md-6.col-lg-4
             .item-contact.login
               - if user_signed_in?
                 .dropdown.pull-right
@@ -76,7 +76,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      .logo-navbar.logo-separator
+      .logo-navbar.logo-separator.hidden-sm
         %a{:href => "/#{@lang}/#{@currency}"}
           %svg{:height => "300px", :style => "enable-background:new 0 0 830.7 300;", :version => "1.1", :viewbox => "0 0 830.7 300", :width => "830.7px", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:a" => "http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
             %defs
