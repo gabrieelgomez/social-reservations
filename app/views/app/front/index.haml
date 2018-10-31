@@ -10,13 +10,17 @@
         = render 'app/front/loader/loader'
 
     // Widget
+    
     %section#home.about-us
-      %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
-        %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
+      .content_video{style:'overflow: hidden;'}
+        %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
+          %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
       %section.travel-box.widget.p-widget
         .container
           .row
             = render 'app/layouts/widget'
+
+
 
     // Filter by Buttons Todos/Tours/Circuitos/Multidestinos
     = render 'app/front/index/filter'
@@ -45,7 +49,8 @@
             ¿Por qué escogernos?
           %p
             Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
-      .box-tips.wow.fadeInRight.animated{"data-wow-delay" => "0.2s", :style => "visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;"}
+      .box-tips 
+        -#wow.fadeInRight.animated{"data-wow-delay" => "0.2s", :style => "visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;width: 100% !important;"}
         .container
           .row
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
@@ -81,7 +86,7 @@
       = render 'app/layouts/footer'
 
     %script{:src => "/assets/js/loader.js"}
-    %script{:src => "/assets/js/navbar.js"}
+    -#%script{:src => "/assets/js/navbar.js"}
     %script{:src => "/assets/js/mixitup-setting.js"}
     %script{:src => "/assets/js/wow-settings.js"}
 
@@ -89,18 +94,28 @@
       $(document).ready(function(){
         document.getElementById("my-video").play();
       });
-
-      var consulta = window.matchMedia('(max-width: 767px)');
-      consulta.addListener(mediaQuery);
-
+      var screen = window.matchMedia('(max-width: 991px)');
+      screen.addListener(mediaQuery);
       function mediaQuery() {
-        if (consulta.matches) {
+        if (screen.matches) {
             $('.navigation-front').removeClass('background-hide');
             $('.navigation-front').addClass('background-show');
           
         } else {
-          $('.navigation-front').removeClass('background-show');
-          $('.navigation-front').addClass('background-hide');
+          $(window).on("scroll", function () {
+              var scrollTop = $(window).scrollTop();
+              if (scrollTop > 50) {
+                $('.navigation-front').removeClass('background-hide');
+                $('.navigation-front').addClass('background-show');
+                $('.logo-nav').removeClass('svg-yellow');
+                $('.logo-nav').addClass('svg-white');
+              } else {
+                $('.navigation-front').removeClass('background-show');
+                $('.navigation-front').addClass('background-hide');
+                $('.logo-nav').removeClass('svg-white');
+                $('.logo-nav').addClass('svg-yellow');
+              }
+            });
         }
       }
       mediaQuery();

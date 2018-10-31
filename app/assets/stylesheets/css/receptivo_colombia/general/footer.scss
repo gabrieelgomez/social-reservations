@@ -8,6 +8,7 @@
 
     @include respond-to(xs) {
       padding: 30px 0;
+      text-align: center;
     }
 
     .single-footer-item {
@@ -90,7 +91,10 @@
       margin-top: 0px;
 
       ul {
-        float: left !important;
+        float: left;
+        @include respond-to(xs) {
+          float: none;
+        }
 
         li {
           padding: 0 10px;
