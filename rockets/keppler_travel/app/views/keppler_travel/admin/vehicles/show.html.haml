@@ -48,6 +48,11 @@
                   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.title['pt'].blank? ? '-----------' : @vehicle.title['pt']
 
                 %tr.list-row
+                  %th.display-label= t("activerecord.attributes.destinations")
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @vehicle.destination_ids.blank? ? '-----------' : @vehicle.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
+
+                %tr.list-row
                   %th.display-label Cantidad máx. de Asientos
                   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.seat.blank? ? '-----------' : @vehicle.seat
 
@@ -59,18 +64,77 @@
                   %th.display-label Piezas máx. de equipaje
                   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.kit.blank? ? '-----------' : @vehicle.kit['quantity']
 
-                %tr.list-row
-                  %th.display-label Precio Dentro Perímetro COP
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['cop']
+                -# %tr.list-row
+                -#   %th.display-label Precio Dentro Perímetro COP
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['cop']
+                -#
+                -# %tr.list-row
+                -#   %th.display-label Precio Dentro Perímetro USD
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['usd']
+                -#
+                -# %tr.list-row
+                -#   %th.display-label Precio Fuera Perímetro COP
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['cop']
+                -#
+                -# %tr.list-row
+                -#   %th.display-label Precio Fuera Perímetro USD
+                -#   %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['usd']
 
-                %tr.list-row
-                  %th.display-label Precio Dentro Perímetro USD
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.inner_price.blank? ? '-----------' : @vehicle.inner_price['usd']
+      .col-md-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title Precio por destinos
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Multidestination).update?
+                = link_to admin_travel_vehicle_prices_tables_path(@vehicle), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                  %i.icon-pencil
 
-                %tr.list-row
-                  %th.display-label Precio Fuera Perímetro COP
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['cop']
+          .nav-tabs-custom
+            %ul.nav.nav-tabs
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#usd"} USD
+              %li
+                %a{"data-toggle" => "tab", :href => "#cop"} COP
+            .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
 
-                %tr.list-row
-                  %th.display-label Precio Fuera Perímetro USD
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= @vehicle.outer_price.blank? ? '-----------' : @vehicle.outer_price['usd']
+              // USD
+              #usd.tab-pane.active
+                .box-body
+                  %table.table.table-hover
+                    %tr
+                      %th
+                      %th Destino
+                      %th Precio USD
+                    // Multidestinationables from Multidestination
+                    - @vehicle.vehicleables.sort_by{|price| price.id }.each do |vehicleable|
+                      - destination = vehicleable.destination
+                      - vehicle = vehicleable.vehicle
+                      %tr
+                        %td
+                          - if vehicleable.status
+                            %i.icon-check
+                          - else
+                            %i.icon-close
+                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= number_to_currency(vehicleable.price_usd, locale: @locale)
+
+              // COP
+              #cop.tab-pane
+                .box-body
+                  %table.table.table-hover
+                    %tr
+                      %th
+                      %th Destino
+                      %th Precio COP
+                    // Multidestinationables from Multidestination
+                    - @vehicle.vehicleables.sort_by{|price| price.id }.each do |vehicleable|
+                      - destination = vehicleable.destination
+                      - vehicle = vehicleable.vehicle
+                      %tr
+                        %td
+                          - if vehicleable.status
+                            %i.icon-check
+                          - else
+                            %i.icon-close
+                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= number_to_currency(vehicleable.price_cop, locale: @locale)

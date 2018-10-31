@@ -23,7 +23,13 @@ module App
     end
 
     def vehicles
-      @results = KepplerTravel::Vehicle.ransack(seat_gteq: @seats).result
+      if @locality[0] == @locality[1]
+        @destination = KepplerTravel::Destination.ransack(title_cont: @locality[0]).result.first
+        @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
+      else
+        @results = KepplerTravel::Vehicle.ransack(seat_gteq: @seats).result
+        @cotization = true
+      end
     end
 
     def tours

@@ -11,10 +11,25 @@ module KepplerTravel
 
     # Relationships
     has_many :reservations, as: :reservationable
+    has_many :vehicleables
     has_and_belongs_to_many :drivers
+    has_and_belongs_to_many :destinations
+    accepts_nested_attributes_for :vehicleables
 
     validates :cover, presence: true
     validates :title, uniqueness: true
+
+    def price_total(locality, currency, object)
+      if locality[0] == locality[1]
+        data    = vehicleables
+        result  = data.ransack(title_cont: locality[0]).result.first
+        price = result.try("price_#{currency}")
+      elsif locality[0] != locality[1]
+        price = 1
+      end
+      object['round_trip'] == 'true' ? price = price.to_f*2 : price = price.to_f
+      price
+    end
 
     def class_str
       self.class.to_s.split('::').last
@@ -26,6 +41,15 @@ module KepplerTravel
       elsif locality[0] != locality[1]
         self.outer_price[currency]
       end
+    end
+
+    def set_price_destination(locality, currency)
+      @destiny = vehicleables.ransack(title_cont: locality).result.first
+      @destiny.try("price_#{currency}")
+    end
+
+    def selected(destination)
+      self.destination_ids.include?(destination) ? 'selected' : false
     end
 
     # Fields for the search form in the navbar

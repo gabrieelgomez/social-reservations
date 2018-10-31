@@ -4,7 +4,7 @@ module KepplerTravel
     # VehiclesController
     class VehiclesController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+      before_action :set_vehicle, only: [:show, :edit, :update, :destroy, :prices_tables]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -26,6 +26,10 @@ module KepplerTravel
         respond_to_formats(@vehicles)
       end
 
+      def prices_tables
+        VehicleableService.update_vehicleable(@vehicle)
+      end
+
       # GET /vehicles/1
       def show
       end
@@ -42,9 +46,11 @@ module KepplerTravel
       # POST /vehicles
       def create
         @vehicle = Vehicle.new(vehicle_params)
-        # @vehicle.destination_ids = params[:vehicle][:destination_ids].split(',').map(&:to_i)
+        @vehicle.destination_ids = params[:vehicle][:destination_ids].split(',').map(&:to_i)
         if @vehicle.save
-          redirect(@vehicle, params)
+          @vehicleable = VehicleableService.create(@vehicle, params)
+          redirect_to admin_travel_vehicle_prices_tables_path(@vehicle)
+          # redirect(@vehicle, params)
         else
           render :new
         end
@@ -52,10 +58,10 @@ module KepplerTravel
 
       # PATCH/PUT /vehicles/1
       def update
-        # @vehicle.destination_ids = params[:vehicle][:destination_ids].split(',').map(&:to_i)
-        @vehicle.update_images(params[:vehicle])
-        @vehicle.update(vehicle_params)
-        if @vehicle.save
+        ids = params[:vehicle][:destination_ids].try(:split, ',').try(:map, &:to_i)
+        if @vehicle.update(vehicle_params)
+          @vehicle.update(destination_ids: ids) if ids
+          # @vehicle.update_images(params[:vehicle])
           redirect(@vehicle, params)
         else
           render :edit
@@ -132,14 +138,15 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_vehicle
-        @vehicle = Vehicle.find(params[:id])
+        @vehicle = Vehicle.find(params[:id]) rescue Vehicle.find(params[:vehicle_id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def vehicle_params
+        # inner_price: @currency, outer_price: @currency,
         params.require(:vehicle).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
           :date, :time, :seat, :status, {files:[]}, kit: [:quantity, :weight],
-          inner_price: @currency, outer_price: @currency,
+          vehicleables_attributes: [:id, :status, :price_cop, :price_usd],
           title: @language, description: @language, includes: @language, conditions: @language)
       end
 

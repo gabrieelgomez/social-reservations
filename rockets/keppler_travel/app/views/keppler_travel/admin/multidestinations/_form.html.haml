@@ -129,7 +129,10 @@
                       = f.input :deleted_at, as: :hidden
                   .col-xs-12
                     .pull-right
-                      = f.button :submit, 'Siguiente', name: '_save', class: 'btn-primary'
+                      - if action_name == 'new'
+                        = f.button :submit, 'Siguiente', name: '_save', class: 'btn-primary'
+                      - else
+                        = f.button :submit, 'Guardar', name: '_save', class: 'btn-primary'
 
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/jquery.filer.css", :rel => "stylesheet", :type => "text/css"}/
 %link{:href => "https://www.tutorialspoint.com/jquery/src/filer/css/themes/jquery.filer-dragdropbox-theme.css", :rel => "stylesheet", :type => "text/css"}/

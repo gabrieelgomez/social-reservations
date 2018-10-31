@@ -10,6 +10,8 @@ module KepplerTravel
 
     has_many :lodgments
     has_many :drivers
+    has_many :vehicleables
+    has_many :multidestinationables
     has_and_belongs_to_many :circuits
     has_and_belongs_to_many :multidestinations
     has_and_belongs_to_many :tours

@@ -65,7 +65,7 @@ module KepplerTravel
       end
 
       def rooms_tables
-        # MultidestinationableService.update_multidestinationable(@multidestination)
+        MultidestinationableService.update_multidestinationable(@multidestination)
       end
 
       def clone

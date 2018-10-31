@@ -7,5 +7,10 @@ module KepplerTravel
       @user = user
       @objects = objects
     end
+
+    def prices_tables?
+      true
+    end
+
   end
 end

@@ -23,11 +23,18 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
         %span
-          = vehicle.inner_price['cop']
+          = "#{vehicle.kit['weight']} kg."
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
         %span
-          = vehicle.outer_price['cop']
+          = vehicle.kit['quantity']
+
+    %td.hidden-xs.hidden-sm
+      - if vehicle.destination_ids.nil? || vehicle.destination_ids.empty?
+        %span Debe agregar destinos
+      - else
+        = link_to admin_travel_vehicle_prices_tables_path(vehicle), class: 'show-row' do
+          %i.icon-eye
 
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{vehicle.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}

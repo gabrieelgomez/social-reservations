@@ -1,0 +1,106 @@
+= simple_form_for [:admin, :travel, @vehicle] do |f|
+  .container
+    .row
+      .col-lg-2
+        = link_to admin_travel_vehicles_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+          .arrow-back.btn.btn-default
+            %i.fa.fa-angle-left
+            = t('keppler.actions.back')
+
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= t("keppler.modules.#{action_name.underscore}")
+            .box-tools.pull-right
+              %a.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+                %i.fa.fa-minus
+          .box-body
+            .nav-tabs-custom
+              %ul.nav.nav-tabs
+                %li.active
+                  %a{"data-toggle" => "tab", :href => "#usd"} Destinos / USD
+                %li
+                  %a{"data-toggle" => "tab", :href => "#cop"} Destinos / COP
+              .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+
+                // USD
+                #usd.tab-pane.active
+                  .col-12
+                    .card
+                      .card-header
+                        %h3.card-title Destinos / USD
+                      .card-body.table-responsive.p-0
+                        %table.table.table-hover
+                          %tr
+                            %th
+                            %th Destino
+                            %th Precio USD
+
+                          // vehicleables from vehicle
+                          = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
+                            - destination = vehicleable.object.destination
+                            - vehicle = vehicleable.object.vehicle
+                            %tr
+                              %td
+                                = vehicleable.input :status, as: :boolean, label: false
+                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td
+                                = vehicleable.input :price_usd, label: false, input_html: {min: 0}
+
+                // COP
+                #cop.tab-pane
+                  .col-12
+                    .card
+                      .card-header
+                        %h3.card-title Destinos / COP
+                      .card-body.table-responsive.p-0
+                        %table.table.table-hover
+                          %tr
+                            %th
+                            %th Destino
+                            %th Precio COP
+
+                          // vehicleables from vehicle
+                          = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
+                            - destination = vehicleable.object.destination
+                            - vehicle = vehicleable.object.vehicle
+                            %tr
+                              %td
+                                .form-group.boolean.optional.asd
+                                  .checkbox
+                                    %input{name: "asd", type: "hidden", value: "0"}/
+                                    %label
+                                      %input#vehicle_vehicleables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
+                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td
+                                = vehicleable.input :price_cop, label: false, input_html: {min: 0}
+
+
+
+            .form-padding
+              .col-xs-12
+              .col-xs-12
+                .pull-right
+                  = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+
+// :javascript
+//
+// - if action_name == 'new'
+//   :javascript
+//     validatevehicle('#new_vehicle');
+// - else
+//   :javascript
+//     var vehicle_id = #{raw @vehicle.id};
+//     validatevehicle(`#edit_vehicle_${vehicle_id}`);
+//
+:scss
+  label.error-class{color: #e60707 !important;}
+  .checkbox{position: unset!important;}
+  .checkbox input[type="checkbox"]{
+    position: unset!important;
+    margin-left: unset!important;
+  }
+  [type="checkbox"]{
+    display: unset!important;
+  }

@@ -26,7 +26,7 @@
 						%input.google-input.form-control{id: 'origin_name', name: 'origin_name'}
 						%input{name: 'origin_location', id: 'origin_location', type: 'hidden'}
 						%input{name: 'origin_locality', id: 'origin_locality', type: 'hidden'}
-
+						%h2.origin_name Desde...
 				.col-lg-2
 					.box-item
 						%h2 Fecha de Ida
@@ -39,14 +39,15 @@
 						%input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
 						%input{name: 'arrival_location', id: 'arrival_location', type: 'hidden'}
 						%input{name: 'arrival_locality', id: 'arrival_locality', type: 'hidden'}
-			
+						%h2.arrival_name Hasta...
+
 				.col-lg-2#vuelo_vuelta
 					.box-item
 						%h2 Fecha de Vuelta
 						.form-group
 							%input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-				.col-xs-12.col-lg-12{style:'padding-top: 8px;'}	
-					.row								
+				.col-xs-12.col-lg-12{style:'padding-top: 8px;'}
+					.row
 						.col-xs-6.col-lg-1
 							.box-item
 								%h2 Adultos

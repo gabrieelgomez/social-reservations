@@ -49,20 +49,20 @@
                           .col-xs-12
                             = f.simple_fields_for :title, OpenStruct.new(@vehicle.title) do |field|
                               = field.input :pt, label: 'Titulo'
-                    .col-xs-12.col-md-12
-                      .row
-                        = f.simple_fields_for :inner_price, OpenStruct.new(@vehicle.inner_price) do |field|
-                          .col-xs-6.col-lg-6
-                            = field.input :cop, label: 'Precio Dentro Perimetro COP', input_html: { min: '1', type: 'number' }
-                          .col-xs-6.col-lg-6
-                            = field.input :usd, label: 'Precio Dentro Perimetro USD', input_html: { min: '1', type: 'number' }
-                    .col-xs-12.col-md-12
-                      .row
-                        = f.simple_fields_for :outer_price, OpenStruct.new(@vehicle.outer_price) do |field|
-                          .col-xs-6.col-lg-6
-                            = field.input :cop, label: 'Precio Fuera Perimetro COP', input_html: { min: '1', type: 'number' }
-                          .col-xs-6.col-lg-6
-                            = field.input :usd, label: 'Precio Fuera Perimetro USD', input_html: { min: '1', type: 'number' }
+                    -# .col-xs-12.col-md-12
+                    -#   .row
+                    -#     = f.simple_fields_for :inner_price, OpenStruct.new(@vehicle.inner_price) do |field|
+                    -#       .col-xs-6.col-lg-6
+                    -#         = field.input :cop, label: 'Precio Dentro Perimetro COP', input_html: { min: '1', type: 'number' }
+                    -#       .col-xs-6.col-lg-6
+                    -#         = field.input :usd, label: 'Precio Dentro Perimetro USD', input_html: { min: '1', type: 'number' }
+                    -# .col-xs-12.col-md-12
+                    -#   .row
+                    -#     = f.simple_fields_for :outer_price, OpenStruct.new(@vehicle.outer_price) do |field|
+                    -#       .col-xs-6.col-lg-6
+                    -#         = field.input :cop, label: 'Precio Fuera Perimetro COP', input_html: { min: '1', type: 'number' }
+                    -#       .col-xs-6.col-lg-6
+                    -#         = field.input :usd, label: 'Precio Fuera Perimetro USD', input_html: { min: '1', type: 'number' }
                     .col-xs-12.col-md-12
                       .row
                         = f.simple_fields_for :kit, OpenStruct.new(@vehicle.kit) do |field|
@@ -74,45 +74,45 @@
                       .row
                         .col-xs-6.col-lg-6
                           = f.input :seat, label: 'Cantidad Máx. Asientos', input_html: { min: '1', type: 'number' }
+
+                        .col-xs-12.col-md-6.col-lg.6
+                          %label Destinos
+                          %br.hidden-md
+                            %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_vehicles', name: 'vehicle[destination_ids]', multiple: "multiple", style:'width: 100%;'}
+                              - KepplerTravel::Destination.all.each do |destination|
+                                %option{ value: destination.id, selected: @vehicle.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
+
                   .col-xs-12.col-lg-4
                     .row
                       .col-lg-12
                         %label Imagen de Portada
                         = f.input :cover, as: :keppler_file, label: false, max_size: 800
 
-                  -# .col-xs-12.col-lg-4
-                  -#   .col-xs-12.col-lg-6
-                  -#     %label Imagen de Portada
-                  -#     = f.input :cover, as: :keppler_file, label: false, max_size: 800
-                      -# %br
-                      -# %br
-                      -# = f.file_field :cover
-                      -# #helper_que_busco
-                      -#   = files_exist(1, f.object.files, 'vehicle[cover][]')
-
-
                   .col-xs-4
                     = f.input :position, as: :hidden
                     = f.input :deleted_at, as: :hidden
                   .col-xs-12
                     .pull-right
-                      = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
-                      = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+                      - if action_name == 'new'
+                        = f.button :submit, 'Siguiente', name: '_save', class: 'btn-primary'
+                      - else
+                        = f.button :submit, 'Guardar', name: '_save', class: 'btn-primary'
 
 
-%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css", :rel => "stylesheet"}/
-%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"}
+%script{:src => "https://www.tutorialspoint.com/jquery/src/filer/js/jquery.filer.min.js", :type => "text/javascript"}
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
 
 :javascript
   $('#destinations_vehicles').select2();
 
 - if action_name == 'new'
   :javascript
-    validateForm('#new_vehicle');
+    validateFormVehicle('#new_vehicle');
 - else
   :javascript
     var vehicle_id = #{raw @vehicle.id};
-    validateForm(`#edit_vehicle_${vehicle_id}`);
+    validateFormVehicle(`#edit_vehicle_${vehicle_id}`);
 
 :scss
   label.error-class{color: #e60707 !important;}

@@ -106,35 +106,13 @@
                         %br/
                         = @reservation['quantity_kit']
                         piezas
-                  .row
-                    .col-md-12
-                      .panel.panel-default
-                        .panel-heading
-                          %h3.panel-title
-                            %strong Descripción
-                        .panel-body
-                          .table-responsive
-                            %table.table.table-condensed
-                              %thead
-                                %tr
-                                  %td
-                                    %strong Concepto
-                                  %td.text-center
-                                    %strong Precio
-                                  %td.text-center
-                                    %strong Cantidad
-                                  %td.text-right
-                                    %strong Total
-                              %tbody
-                                %tr
-                                  %td= @reservationable['title'][@lang]
-                                  %td.text-center= number_to_currency(@reservationable.set_price(@locality, @currency).to_f, locale: @locale)
-                                  %td.text-center= @multiple
-                                  %td.text-right= number_to_currency(@price_total, locale: @locale)
-                  .row
-                    .col-lg-12
-                      .invoice-transfers__box--payment
-                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+
+                  - org = session[:reservationable]['origin_locality']
+                  - arr = session[:reservationable]['arrival_locality']
+                  - if org == arr
+                    = render "app/front/checkout/vehicles/paid"
+                  - else
+                    = render "app/front/checkout/vehicles/cotizations"
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript

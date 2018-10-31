@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          %strong Descripción
+      .panel-body
+        .table-responsive
+          %table.table.table-condensed
+            %thead
+              %tr
+                %td
+                  %strong Concepto
+                -# %td.text-center
+                -#   %strong Precio
+                -# %td.text-center
+                -#   %strong Cantidad
+                -# %td.text-right
+                -#   %strong Total
+            %tbody
+              %tr
+                %td Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
+.row
+  .col-lg-12
+    .invoice-transfers__box--payment
+      %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Solicitar Reserva"}/

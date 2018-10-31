@@ -33,7 +33,11 @@ module App
             if @reservation.save!
               create_travellers
               ReservationMailer.transfer_status(@reservation, @user).deliver_now
-              redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              if @price_total != 1
+                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              else @price_total == 1
+                redirect_to invoice_path('es', 'cop')
+              end
             else
               render :new
             end
@@ -47,9 +51,12 @@ module App
           org = session[:reservationable]['origin_locality']
           arr = session[:reservationable]['arrival_locality']
           if org == arr
-            @price_total = @reservation.reservationable.inner_price[@currency]
+            @vehicle = @reservation.reservationable.vehicleables
+            @result  = @vehicle.ransack(title_cont: org).result.first
+            @price_total = @result.try("price_#{@currency}")
           elsif org != arr
-            @price_total = @reservation.reservationable.outer_price[@currency]
+            @cotization     = true
+            @price_total = 1
           end
         end
 

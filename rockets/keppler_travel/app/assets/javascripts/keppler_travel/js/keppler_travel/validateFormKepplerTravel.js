@@ -2,7 +2,7 @@
 //
 // });
 
-function validateForm(id_form){
+function validateFormVehicle(id_form){
   $(id_form).validate({
    event: "blur",
    errorClass: "error-class",
@@ -31,7 +31,18 @@ function validateForm(id_form){
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){
-     form.submit();
+
+     var destinations = $('#destinations_vehicles').val();
+
+     $('form').append(`<input type="hidden" name="vehicle[destination_ids]" value=${destinations} /> `);
+
+     if (destinations == null){
+       alert('Agregue mínimo un destino');
+     }
+     else{
+       form.submit();
+     }
+
    }
   });
 }
