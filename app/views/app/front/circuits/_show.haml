@@ -92,7 +92,7 @@
                       %h3.price
                         Desde
                         = number_to_currency(@results.low_price(@currency), locale: @locale)
-                -# User click from a Cards - Condition 
+                -# User click from a Cards - Condition
                 .col-lg-offset-2.col-lg-8
                   .row
                     %center
@@ -177,7 +177,7 @@
                                 - if circuitable.status
                                   %tr
                                     %td= circuitable.ranking.title[@lang]
-                                    - circuitable.circuitable_rooms.each do |room|
+                                    - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |room|
                                       - price = room.try("price_#{@currency}")
                                       - if price.zero? || room === false
                                         %td No Disponible

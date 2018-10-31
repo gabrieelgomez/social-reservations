@@ -13,6 +13,7 @@ module KepplerContactus
       include KepplerContactus::Concerns::Commons
       include KepplerContactus::Concerns::History
       include KepplerContactus::Concerns::DestroyMultiple
+      include ObjectQuery
 
       # GET /messages
       def index
@@ -24,11 +25,7 @@ module KepplerContactus
         if !@objects.first_page? && @objects.size.zero?
           redirect_to messages_path(page: @current_page.to_i.pred, search: @query)
         end
-        respond_to do |format|
-          format.html
-          format.xls { send_data(@messages.to_xls) }
-          format.json { render :json => @objects }
-        end
+        respond_to_formats(@messages)
       end
 
       # GET /messages/1

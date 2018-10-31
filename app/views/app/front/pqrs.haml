@@ -9,116 +9,10 @@
       .loader
         = render 'app/front/loader/loader'
 
-<<<<<<< HEAD
-    %section#pqrs.pqrs 
-      .banner-pqrs{style: "background-image: url(/assets/img/banner.jpg)"}
-        .banner-pqrs--mask
-          %h2 PQRS
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti incidunt.
-      .box-pqrs
-        .container
-          .gallary-header.text-center
-            %h2 PQRS
-            %p Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    %br
+    %br
+    %br
 
-        .container
-          .row
-            .col-lg-12
-              .reservation-pqrs
-                %ul.list-inline
-                  %li
-                    .form-group
-                      .radio.radio-blue.radio-inline
-                        %input#questions{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "questions"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Pregunta
-                  %li
-                    .form-group
-                      .radio.radio-blue.radio-inline
-                        %input#complaints{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "complaints"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Queja
-                  %li
-                    .form-group
-                      .radio.radio-blue.radio-inline
-                        %input#claims{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "claims"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Reclamo
-                  %li
-                    .form-group
-                      .radio.radio-blue.radio-inline
-                        %input#suggestions{:name => "radio_pqrs", :type => "radio"}/
-                        %label{:for => "suggestions"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Sugerencia
-                .col-lg-6
-                  .form-group
-                    %label{:for => "email"} Nombre
-                    %input#email.form-control{:type => "email"}/
-                  .form-group
-                    %label{:for => "pwd"} Identificación
-                    %input#pwd.form-control{:type => "password"}/
-                  .form-group
-                    %label{:for => "pwd"} Teléfono
-                    %input#pwd.form-control{:type => "password"}/
-                .col-lg-6
-                  .form-group
-                    %label{:for => "email"} Compañia
-                    %input#email.form-control{:type => "email"}/
-                  .form-group
-                    %label{:for => "pwd"} País
-                    %input#pwd.form-control{:type => "password"}/
-                  .form-group
-                    %label{:for => "pwd"} Correo Electronico
-                    %input#pwd.form-control{:type => "password"}/
-                .col-lg-12
-                  .form-group
-                    %label{:for => "comment"} Descripción
-                    %textarea#comment.form-control{:rows => "5"}
-                .col-lg-12
-                  .items
-                    .g-recaptcha.pull-left{"data-sitekey" => "6LcrvnUUAAAAAMnLtpxb6pG5b2RXRB5aFlkmI55E"}
-                    .box-btn-payment.pull-right
-                      .about-btn.travel-mrt-0
-                        %button.about-view.travel-btn.btn-reser enviar
-    %footer#footer.footer.footer-copyright
-      = render 'app/layouts/footer'
-
-%script{:src => "/assets/js/loader.js"}
-
-:javascript
-  $('.navigation-front').removeClass('background-hide');
-  $('.navigation-front').addClass('background-show');
-
-
-
-
-
-
-
-
-
-
-
-
--#!!!
--#%html.no-js{:lang => "en"}
-  %head
-    = render 'app/layouts/head'
-
-  %body{style:"padding-top:120px;"}
-    %header
-      = render 'app/layouts/navbar'
-      .loader
-        = render 'app/front/loader/loader'
-
-    
-=======
-
->>>>>>> be598f6427e2fd3bb753d2c2d5ab0be4210b56b2
     %section.pqrs#pqrs
       .container
         .gallary-header.text-center
@@ -188,7 +82,7 @@
                   .form-group
                     %label Descripción
                     -# %input{name: 'request[options]', type: 'hidden', value: 'ninguno'}/
-                    %textarea#comment.form-control{name: 'request[name]', id: 'request_name', :rows => "5"}
+                    %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5"}
                 .col-lg-12
                   .items
                     = raw recaptcha_tags

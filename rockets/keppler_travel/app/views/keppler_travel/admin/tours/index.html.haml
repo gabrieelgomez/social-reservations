@@ -8,13 +8,16 @@
           = entries(@total, @objects)
           .toolbar
             - if can?(KepplerTravel::Tour).download?
-              .toolbar-item
-                = link_to admin_travel_tour_download_path(KepplerTravel::Tour, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
+              %li.toolbar-item.dropdown
+                %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#', title: t('keppler.actions.download_records') }
                   %i.icon-cloud-download
-            - if can?(KepplerTravel::Tour).upload?
-              .toolbar-item
-                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "tour" do
-                  %i.icon-cloud-upload
+                %ul.dropdown-menu
+                  -# %li= link_to 'Descargar CSV', admin_travel_tours_path(format: :csv), class: 'tool-btn'
+                  %li= link_to 'Descargar XLS', admin_travel_tours_path(format: :xls), class: 'tool-btn'
+            -# - if can?(KepplerTravel::Tour).upload?
+            -#   .toolbar-item
+            -#     = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "tour" do
+            -#       %i.icon-cloud-upload
             .toolbar-item
               = link_to reload_admin_travel_tours_path, class: "tool-btn", remote: true do
                 %i.icon-reload

@@ -92,7 +92,7 @@
                       %h3.price
                         Desde
                         = number_to_currency(@results.low_price(@currency), locale: @locale)
-                -# User click from a Cards - Condition 
+                -# User click from a Cards - Condition
                 .col-lg-offset-2.col-lg-8
                   .row
                     %center
@@ -174,12 +174,14 @@
                                 %th Precio por niño
                             %tbody
                               - @results.multidestinationables.each do |multidestinationable|
+                                - lodgment = multidestinationable.lodgment
                                 - if multidestinationable.status
                                   %tr
                                     %td= multidestinationable.lodgment.title[@lang]
-                                    - multidestinationable.multidestinationable_rooms.each do |room|
+                                    - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |room|
                                       - price = room.try("price_#{@currency}")
-                                      - if price.zero? || room === false
+                                      - room_disabled = lodgment.disabled_room(room)
+                                      - if price.zero? || room === false || room_disabled != false
                                         %td No Disponible
                                       - else multidestinationable.lodgment.avaible_room? room
                                         %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)

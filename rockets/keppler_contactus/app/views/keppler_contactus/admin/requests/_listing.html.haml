@@ -10,6 +10,10 @@
     %td.hidden-xs
       = link_to admin_contactus_request_path(request, search: @query), remote: true, class: 'show-row' do
         %span
+          = request.options
+    %td.hidden-xs
+      = link_to admin_contactus_request_path(request, search: @query), remote: true, class: 'show-row' do
+        %span
           = request.name
     %td.hidden-xs
       = link_to admin_contactus_request_path(request, search: @query), remote: true, class: 'show-row' do

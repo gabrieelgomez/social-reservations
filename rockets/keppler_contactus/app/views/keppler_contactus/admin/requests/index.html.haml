@@ -8,13 +8,16 @@
           = entries(@total, @objects)
           .toolbar
             - if can?(KepplerContactus::Request).download?
-              .toolbar-item
-                = link_to admin_contactus_request_download_path(KepplerContactus::Request, :format => :xls), class: "tool-btn", title: t('keppler.actions.download_records') do
+              %li.toolbar-item.dropdown
+                %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#', title: t('keppler.actions.download_records') }
                   %i.icon-cloud-download
-            - if can?(KepplerContactus::Request).upload?
-              .toolbar-item
-                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "request" do
-                  %i.icon-cloud-upload
+                %ul.dropdown-menu
+                  -# %li= link_to 'Descargar CSV', admin_contactus_requests_path(format: :csv), class: 'tool-btn'
+                  %li= link_to 'Descargar XLS', admin_contactus_requests_path(format: :xls), class: 'tool-btn'
+            -# - if can?(KepplerContactus::Request).upload?
+            -#   .toolbar-item
+            -#     = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "request" do
+            -#       %i.icon-cloud-upload
             .toolbar-item
               = link_to reload_admin_contactus_requests_path, class: "tool-btn", remote: true do
                 %i.icon-reload
@@ -49,6 +52,7 @@
                 - else
                   %tr
                     %th
+                    %th.hidden-xs Solicitud
                     %th.hidden-xs= t('activerecord.attributes.name')
                     %th.hidden-xs= t('activerecord.attributes.company')
                     %th.hidden-xs.hidden-sm= t('activerecord.attributes.dni')

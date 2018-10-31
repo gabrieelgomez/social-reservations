@@ -71,6 +71,9 @@ function validateReservationCircuit(id_form) {
       },
       'terms_conditions': {
         required: true
+      },
+      'cancellations_policy': {
+        required: true
       }
     },
     messages: {
