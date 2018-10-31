@@ -11,7 +11,7 @@ module KepplerTravel
       include KepplerTravel::Concerns::Commons
       include KepplerTravel::Concerns::History
       include KepplerTravel::Concerns::DestroyMultiple
-
+      include ObjectQuery
 
       # GET /multidestinations
       def index
@@ -23,11 +23,7 @@ module KepplerTravel
         if !@objects.first_page? && @objects.size.zero?
           redirect_to multidestinations_path(page: @current_page.to_i.pred, search: @query)
         end
-        respond_to do |format|
-          format.html
-          format.xls { send_data(@multidestinations.to_xls) }
-          format.json { render :json => @objects }
-        end
+        respond_to_formats(@multidestinations)
       end
 
       # GET /multidestinations/1

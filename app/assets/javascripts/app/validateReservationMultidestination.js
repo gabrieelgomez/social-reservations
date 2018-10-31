@@ -20,7 +20,8 @@ function validateReservationMultidestination(id_form) {
      'user[][dni]': { required: true, digits: true, number: true},
      'user[][email]': { required: true, email: true},
      'privacy_policy': {required: true},
-     'terms_conditions': {required: true}
+     'terms_conditions': {required: true},
+     'cancellations_policy': {required: true}
      },
    messages: {
      'reservation[origin]': 'No puede estar en blanco',
@@ -39,7 +40,8 @@ function validateReservationMultidestination(id_form) {
      'user[][dni]': {required: 'No puede estar en blanco', digits: 'Sólo números válidos', number: 'Sólo números'},
      'user[][email]': {required: 'No puede estar en blanco', email: 'E-mail inválido'},
      'privacy_policy': 'Debes aceptar',
-     'terms_conditions': 'Debes aceptar'
+     'terms_conditions': 'Debes aceptar',
+     'cancellations_policy': 'Debes aceptar'
      },
    debug: true,errorElement: "label",
    submitHandler: function(form){

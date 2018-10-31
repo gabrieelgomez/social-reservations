@@ -11,7 +11,7 @@ module KepplerTravel
       include KepplerTravel::Concerns::Commons
       include KepplerTravel::Concerns::History
       include KepplerTravel::Concerns::DestroyMultiple
-
+      include ObjectQuery
 
       # GET /circuits
       def index
@@ -23,11 +23,7 @@ module KepplerTravel
         if !@objects.first_page? && @objects.size.zero?
           redirect_to circuits_path(page: @current_page.to_i.pred, search: @query)
         end
-        respond_to do |format|
-          format.html
-          format.xls { send_data(@circuits.to_xls) }
-          format.json { render :json => @objects }
-        end
+        respond_to_formats(@circuits)
       end
 
       # GET /circuits/1

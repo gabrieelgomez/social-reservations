@@ -14,10 +14,10 @@
                 %ul.dropdown-menu
                   -# %li= link_to 'Descargar CSV', admin_travel_vehicles_path(format: :csv), class: 'tool-btn'
                   %li= link_to 'Descargar XLS', admin_travel_vehicles_path(format: :xls), class: 'tool-btn'
-            - if can?(KepplerTravel::Vehicle).upload?
-              .toolbar-item
-                = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "vehicle" do
-                  %i.icon-cloud-upload
+            -# - if can?(KepplerTravel::Vehicle).upload?
+            -#   .toolbar-item
+            -#     = link_to "", class: "tool-btn", title: t('keppler.actions.upload_records'), id: "vehicle" do
+            -#       %i.icon-cloud-upload
             .toolbar-item
               = link_to reload_admin_travel_vehicles_path, class: "tool-btn", remote: true do
                 %i.icon-reload
