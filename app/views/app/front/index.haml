@@ -12,9 +12,11 @@
     // Widget
     
     %section#home.about-us
-      .content_video{style:'overflow: hidden;'}
-        %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
-          %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
+      .content_video
+        %video.myvideo#my-video{:poster => "/assets/img/Background-web-Receptivo-Colombia.png", :autoplay => "true", :loop => "true", :muted => "true" }
+          %source{:src => "/assets/img/receptivo.mp4", :type => "video/mp4"}
+            %source{:src => "/assets/img/receptivo.mp4", :type => "video/webm"}
+          -#%source{:src => "/assets/img/receptivo.mp4", :type => "video/ogg"}
       %section.travel-box.widget.p-widget
         .container
           .row
@@ -85,7 +87,21 @@
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
-
+    :scss
+      .content_video{
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        video{
+          position: absolute;
+          top: -200px;
+        }
+      }
     %script{:src => "/assets/js/loader.js"}
     -#%script{:src => "/assets/js/navbar.js"}
     %script{:src => "/assets/js/mixitup-setting.js"}
