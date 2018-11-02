@@ -48,7 +48,7 @@
 
         - else
           - @results.each do |vehicle|
-            .col-lg-4
+            .col-xs-12.col-sm-6.col-md-6.col-lg-4
               .cars
                 .cars__img{style:"background-image: url('#{vehicle.cover.url}')"}
                 .cars__inf
@@ -93,6 +93,7 @@
 %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
 :javascript
+  $('.js-widget').addClass('js-show-widget');
   $( '.link-widget' ).on( 'click', function() {
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');

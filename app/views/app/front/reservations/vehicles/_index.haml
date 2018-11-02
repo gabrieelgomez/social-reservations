@@ -31,8 +31,8 @@
         Completa todos los datos para confirmar y pagar tu reserva.
   .box-reservation
     .container
-      = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post do |f|
-        .row{style:"display:flex;"}
+      = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post, style:'width: 100%;' do |f|
+        .row.r__flex
           %input{value: @vehicle.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
@@ -41,7 +41,7 @@
           %input{value: @currency, type: 'hidden', name: 'currency'}
           %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
-          .col-lg-8
+          .col-xs-12.col-sm-12.col-md-7.col-lg-8
             .reservation-data
               //Reservation Data
               = render 'app/front/reservations/vehicles/dates_reservations', f: f
@@ -64,10 +64,10 @@
               //Terms & Conditions
               = render 'app/front/reservations/vehicles/dates_terms_conditions'
 
-          .col-lg-4
+          .col-xs-12.col-sm-12.col-md-5.col-lg-4
             // Reservation Summary
-            .reservation-resumen
-              = render 'app/front/reservations/vehicles/resumen'
+            -#.reservation-resumen
+            = render 'app/front/reservations/vehicles/resumen'
               
     .container
       //Modal - Privacy Policy

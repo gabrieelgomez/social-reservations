@@ -1,6 +1,14 @@
 .vehicles {
   padding: 90px 0 90px 0;
-
+  @include respond-to(xs) {
+    padding: 45px 0 45px 0;
+  }
+  @include respond-to(sm) {
+    padding: 45px 0 45px 0;
+  }
+  @include respond-to(md) {
+    padding: 65px 0 65px 0;
+  }
   .content-vehicles {
     padding: 40px 0;
     width: 100%;

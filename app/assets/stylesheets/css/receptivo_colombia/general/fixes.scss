@@ -1,0 +1,10 @@
+.body-settings{
+    padding-top:130px;
+    @include respond-to(xs) {
+        padding-top: 75px;
+      }
+      @include respond-to(sm) {
+        padding-top: 75px;
+      }
+
+}
