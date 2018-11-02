@@ -13,7 +13,6 @@
 							%select#sel1.form-control{name: 'tour_id', style:'border-radius: 6px !important;'}
 								- KepplerTravel::Tour.all.each do |tour|
 									%option{ value: tour.id}= tour.title[@lang].titleize
-
 				.col-lg-3
 					.box-item
 						%h2 Fecha
