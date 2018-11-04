@@ -128,6 +128,7 @@ gem 'keppler_travel', path: 'rockets/keppler_travel'
 gem 'keppler_contactus', path: 'rockets/keppler_contactus'
 gem 'recaptcha', '4.8.0', require: 'recaptcha/rails'
 # All countries gem
+
 gem 'country_select'
 gem 'city-state', '~> 0.0.13'
 #---- gems frontend----
