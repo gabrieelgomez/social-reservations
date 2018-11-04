@@ -1,167 +1,182 @@
 = search_form_for @q, url: "/#{@lang}/#{@currency}/vehicles", html: {class: 'input-group', style:'width: 100%;' ,id: 'search-input', method: :get } do |f|
-	.box-transfers
-		.row
-			- unless KepplerTravel::Vehicle.count.positive?
-				.col-lg-12
-					%h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran traslados disponible.
-			- else
-				%input#round_trip{name: 'round_trip', type: 'hidden'}
-				.col-lg-12
-					.trip-circle
-						.single-trip-circle
-							%input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-							%label.ida_vuelta{:for => "ida_vuelta"}
-								%span.round-boarder
-									%span.round-boarder1
-								Ida y vuelta
-						.single-trip-circle
-							%input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-							%label.solo_ida{:for => "solo_ida"}
-								%span.round-boarder>
-									%span.round-boarder1
-								Solo ida
-				.col-lg-4
-					.box-item
-						%h2 Origen
-						%input.google-input.form-control{id: 'origin_name', name: 'origin_name'}
-						%input{name: 'origin_location', id: 'origin_location', type: 'hidden'}
-						%input{name: 'origin_locality', id: 'origin_locality', type: 'hidden'}
-						%h2.origin_name Desde...
-				.col-lg-2
-					.box-item
-						%h2 Fecha de Ida
-						.form-group
-							%input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
+    .box-transfers
+        .row
+            - unless KepplerTravel::Vehicle.count.positive?
+                .col-lg-12
+                    %h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran traslados disponible.
+            - else
+                %input#round_trip{name: 'round_trip', type: 'hidden'}
+                .col-lg-12.hidden-xs
+                    .trip-circle
+                        .single-trip-circle
+                            %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                            %label.ida_vuelta{:for => "ida_vuelta"}
+                                %span.round-boarder
+                                    %span.round-boarder1
+                                Ida y vuelta
+                        .single-trip-circle
+                            %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                            %label.solo_ida{:for => "solo_ida"}
+                                %span.round-boarder>
+                                    %span.round-boarder1
+                                Solo ida
+                .col-xs-12.visible-xs
+                    .trip-circle.row{style:'display: block !important;'}
+                        .col-xs-6
+                            .single-trip-circle
+                                %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                                %label.ida_vuelta{:for => "ida_vuelta"}
+                                    %span.round-boarder
+                                        %span.round-boarder1
+                                    Ida y vuelta
+                        .col-xs-6
+                            .single-trip-circle
+                                %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
+                                %label.solo_ida{:for => "solo_ida"}
+                                    %span.round-boarder>
+                                        %span.round-boarder1
+                                    Solo ida
+                .col-lg-4
+                    .box-item
+                        %h2 Origen
+                        %input.google-input.form-control{id: 'origin_name', name: 'origin_name'}
+                        %input{name: 'origin_location', id: 'origin_location', type: 'hidden'}
+                        %input{name: 'origin_locality', id: 'origin_locality', type: 'hidden'}
 
-				.col-lg-4
-					.box-item
-						%h2 Destino
-						%input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
-						%input{name: 'arrival_location', id: 'arrival_location', type: 'hidden'}
-						%input{name: 'arrival_locality', id: 'arrival_locality', type: 'hidden'}
-						%h2.arrival_name Hasta...
+                .col-lg-2
+                    .box-item
+                        %h2 Fecha de Ida
+                        .form-group
+                            %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
 
-				.col-lg-2#vuelo_vuelta
-					.box-item
-						%h2 Fecha de Vuelta
-						.form-group
-							%input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-				.col-xs-12.col-lg-12{style:'padding-top: 8px;'}
-					.row
-						.col-xs-6.col-lg-1
-							.box-item
-								%h2 Adultos
-								.form-group
-									%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
+                .col-lg-4
+                    .box-item
+                        %h2 Destino
+                        %input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
+                        %input{name: 'arrival_location', id: 'arrival_location', type: 'hidden'}
+                        %input{name: 'arrival_locality', id: 'arrival_locality', type: 'hidden'}
+            
+                .col-lg-2#vuelo_vuelta
+                    .box-item
+                        %h2 Fecha de Vuelta
+                        .form-group
+                            %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+                .col-xs-12.col-lg-12{style:'padding-top: 8px;'}	
+                    .row								
+                        .col-xs-6.col-lg-1
+                            .box-item
+                                %h2 Adultos
+                                .form-group
+                                    %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-						.col-xs-6.col-lg-1
-							.box-item
-								%h2 Niños
-								.form-group
-									%input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
+                        .col-xs-6.col-lg-1
+                            .box-item
+                                %h2 Niños
+                                .form-group
+                                    %input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
 
-						.col-lg-10
-							#errors
-							.about-btn.travel-mrt-0.pull-right.box-btn
-								%button.about-view.travel-btn{type: 'submit'}
-									buscar
+                        .col-lg-10
+                            #errors
+                            .about-btn.travel-mrt-0.pull-right.box-btn
+                                %button.about-view.travel-btn{type: 'submit'}
+                                    buscar
 
 :javascript
-	// Transfers / Vehicles
-	validateWidgetForm('#search-input');
-	$('#vuelo_vuelta').addClass('show-input');
-	$( "#ida_vuelta").prop('checked', true);
-	$('#round_trip').val(true);
-	$( '.radio-fecha-vuelos' ).on( 'click', function() {
-			if( $('#ida_vuelta').is(':checked') ){
-					$('#round_trip').val(true);
-					console.log($('#round_trip').val());
-					$('#vuelo_vuelta').removeClass('hidden-input');
-					$('#vuelo_vuelta').addClass('show-input');
-			} else {
-					$('#round_trip').val(false);
-					console.log($('#round_trip').val());
-					$('#vuelo_vuelta').removeClass('show-input');
-					$('#vuelo_vuelta').addClass('hidden-input');
-			}
-	});
+    // Transfers / Vehicles
+    validateWidgetForm('#search-input');
+    $('#vuelo_vuelta').addClass('show-input');
+    $( "#ida_vuelta").prop('checked', true);
+    $('#round_trip').val(true);
+    $( '.radio-fecha-vuelos' ).on( 'click', function() {
+            if( $('#ida_vuelta').is(':checked') ){
+                    $('#round_trip').val(true);
+                    console.log($('#round_trip').val());
+                    $('#vuelo_vuelta').removeClass('hidden-input');
+                    $('#vuelo_vuelta').addClass('show-input');
+            } else {
+                    $('#round_trip').val(false);
+                    console.log($('#round_trip').val());
+                    $('#vuelo_vuelta').removeClass('show-input');
+                    $('#vuelo_vuelta').addClass('hidden-input');
+            }
+    });
 
-	$( function() {
-		function populateEndDate() {
-			var date2 = $('#flight_origin_picker').datetimepicker('getDate');
-			date2.setDate(date2.getDate() + 1);
-			$('#flight_arrival_picker').datetimepicker('setDate', date2);
-			$("#flight_arrival_picker").datetimepicker("option", "minDate", date2);
-		}
+    $( function() {
+        function populateEndDate() {
+            var date2 = $('#flight_origin_picker').datetimepicker('getDate');
+            date2.setDate(date2.getDate() + 1);
+            $('#flight_arrival_picker').datetimepicker('setDate', date2);
+            $("#flight_arrival_picker").datetimepicker("option", "minDate", date2);
+        }
 
-		$("#flight_origin_picker").datetimepicker({
-			dateFormat: "dd-mm-yy",
-			minDate: 1,
-			onSelect: function(date) {
-				populateEndDate();
-				var date = $('#flight_origin_picker').val()
-				$('#reservation_flight_origin').val(date);
-			}
-		}).datetimepicker("setDate", new Date());
-		$('#flight_arrival_picker').datetimepicker({
-			dateFormat: "dd-mm-yy",
-			minDate: 2,
-			onClose: function() {
-				var dt1 = $('#flight_origin_picker').datetimepicker('getDate');
-				var dt2 = $('#flight_arrival_picker').datetimepicker('getDate');
-				if (dt2 <= dt1) {
-					var minDate = $('#flight_arrival_picker').datetimepicker('option', 'minDate');
-					$('#flight_arrival_picker').datetimepicker('setDate', minDate);
-				}
-				var date = $('#flight_arrival_picker').val()
-				$('#reservation_flight_arrival').val(date);
-			}
-		}).datetimepicker("setDate", new Date());
-	} );
+        $("#flight_origin_picker").datetimepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 1,
+            onSelect: function(date) {
+                populateEndDate();
+                var date = $('#flight_origin_picker').val()
+                $('#reservation_flight_origin').val(date);
+            }
+        }).datetimepicker("setDate", new Date());
+        $('#flight_arrival_picker').datetimepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 2,
+            onClose: function() {
+                var dt1 = $('#flight_origin_picker').datetimepicker('getDate');
+                var dt2 = $('#flight_arrival_picker').datetimepicker('getDate');
+                if (dt2 <= dt1) {
+                    var minDate = $('#flight_arrival_picker').datetimepicker('option', 'minDate');
+                    $('#flight_arrival_picker').datetimepicker('setDate', minDate);
+                }
+                var date = $('#flight_arrival_picker').val()
+                $('#reservation_flight_arrival').val(date);
+            }
+        }).datetimepicker("setDate", new Date());
+    } );
 
-	$(document).ready(function() {
+    $(document).ready(function() {
 
-	  $('form').keypress(function(e){
-	    if(e == 13){
-	      return false;
-	    }
-	  });
+      $('form').keypress(function(e){
+        if(e == 13){
+          return false;
+        }
+      });
 
-	  $('input').keypress(function(e){
-	    if(e.which == 13){
-	      return false;
-	    }
-	  });
+      $('input').keypress(function(e){
+        if(e.which == 13){
+          return false;
+        }
+      });
 
-	});
+    });
 
-	// $("#origin_name").focusin(function () {
-	// 	$(document).keypress(function (e) {
-	// 		if (e.which == 13) {
-	// 			debugger;
-	// 			var firstResult = $(".pac-container .pac-item:first").text();
-	// 			var geocoder = new google.maps.Geocoder();
-	// 			geocoder.geocode({"address":firstResult }, function(results, status) {
-	// 			if (status == google.maps.GeocoderStatus.OK) {
-	// 				var lat = results[0].geometry.location.lat(),
-	// 				lng = results[0].geometry.location.lng(),
-	// 				placeName = results[0].address_components[0].long_name,
-	// 				latlng = new google.maps.LatLng(lat, lng);
-	//
-	// 				$(".pac-container .pac-item:first").addClass("pac-selected");
-	// 				$(".pac-container").css("display","none");
-	// 				$("#searchTextField").val(firstResult);
-	// 				$(".pac-container").css("visibility","hidden");
-	//
-	// 				moveMarker(placeName, latlng);
-	//
-	// 			}
-	// 			});
-	// 		} else {
-	// 			$(".pac-container").css("visibility","visible");
-	// 		}
-	//
-	// 	});
-	// });
-	// $('.pac-container').find('.pac-item').first().attr('selected', true)
-	// End --- Transfers / Vehicles
+    // $("#origin_name").focusin(function () {
+    // 	$(document).keypress(function (e) {
+    // 		if (e.which == 13) {
+    // 			debugger;
+    // 			var firstResult = $(".pac-container .pac-item:first").text();
+    // 			var geocoder = new google.maps.Geocoder();
+    // 			geocoder.geocode({"address":firstResult }, function(results, status) {
+    // 			if (status == google.maps.GeocoderStatus.OK) {
+    // 				var lat = results[0].geometry.location.lat(),
+    // 				lng = results[0].geometry.location.lng(),
+    // 				placeName = results[0].address_components[0].long_name,
+    // 				latlng = new google.maps.LatLng(lat, lng);
+    //
+    // 				$(".pac-container .pac-item:first").addClass("pac-selected");
+    // 				$(".pac-container").css("display","none");
+    // 				$("#searchTextField").val(firstResult);
+    // 				$(".pac-container").css("visibility","hidden");
+    //
+    // 				moveMarker(placeName, latlng);
+    //
+    // 			}
+    // 			});
+    // 		} else {
+    // 			$(".pac-container").css("visibility","visible");
+    // 		}
+    //
+    // 	});
+    // });
+    // $('.pac-container').find('.pac-item').first().attr('selected', true)
+    // End --- Transfers / Vehicles

@@ -1860,6 +1860,7 @@ body {
 
 .box-tips {
     padding: 60px 0px;
+    width: 100% !important;
 }
 
 .tips-services .box-tips .tips {
