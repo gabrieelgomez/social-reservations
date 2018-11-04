@@ -1,4 +1,4 @@
--#%section#seach-widget
+%section#seach-widget
   .container
     - unless @results.blank?
       .box-search
@@ -33,6 +33,8 @@
     .row
       .col-lg-12
         = render 'app/layouts/widget'
+%br
+%br
 
 %section#tours_.tours_
   - unless @results.blank?
@@ -76,15 +78,15 @@
                     .col-lg-4
                       .form-group
                         %label Fecha de Reserva
-                        %input.form-control.custom-input{value: @flight_origin_tour_picker, disabled: 'disabled'}/
+                        %input.form-control{value: @flight_origin_tour_picker, disabled: 'disabled'}/
                     .col-lg-4
                       .form-group
                         %label Cantidad de Adultos
-                        %input.form-control.custom-input{value: @adults, disabled: 'disabled'}/
+                        %input.form-control{value: @adults, disabled: 'disabled'}/
                     .col-lg-4
                       .form-group
                         %label Cantidad de Niños
-                        %input.form-control.custom-input{value: @kids, disabled: 'disabled'}/
+                        %input.form-control{value: @kids, disabled: 'disabled'}/
             -#.content-tours__button
               .row
                 .col-lg-12.pull-left
@@ -107,26 +109,38 @@
                       %h3.price
                         -# 999999,00
                         = number_to_currency(@results.price_kids[@currency], locale: @locale)
-                -# User click from a Cards - Condition 
-                .col-lg-offset-2.col-lg-8
-                  .row
+                -# User click from a Cards - Condition
+                - unless @flight_origin_tour_picker
+                  .col-lg-offset-2.col-lg-8
+                    = search_form_for @q, url: "/#{@lang}/#{@currency}/reservations/tour/#{@results.id}", html: {class: 'input-group', style:'width: 100%;', id: 'search-metadata', method: :get } do |f|
+                      .row
+                        %center
+                          .col-lg-6
+                            .form-group
+                              %input.form-control.custom-input{name: 'flight_tour_data', id: 'flight_tour_data', autocomplete: 'off'}/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_adults', :type => "number", min: 1, value: 2, :placeholder => "Adultos"}/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_kids', :type => "number", min: 0, :placeholder => "Niños"}/
+                      .col-lg-12
+                        %br
+                        %br
+                        %center
+                          %button.about-view.packages-btn.btn-reservation{style: 'width: 165px;height: 48px;font-size: 14px;', type: 'submit'}
+                            solicitar
+                            %br/
+                            reservación
+                - else
+                  .col-lg-12
                     %center
-                      .col-lg-6
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Fecha", disabled: 'disabled'}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Niños"}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Adulto"}/
-                .col-lg-12
-                  %center
-                    = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
-                      %button.about-view.packages-btn.btn-reservation
-                        solicitar
-                        %br/
-                        reservación
+                      = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                        %button.about-view.packages-btn.btn-reservation
+                          solicitar
+                          %br/
+                          reservación
+
           .col-lg-5
             .content-tours__image
               .carrusel-galery
@@ -152,3 +166,44 @@
                     .box-description
                       %h4 Descripción
                       = raw @results.description[@lang]
+
+
+:javascript
+  // Tours
+  $( function() {
+    function populateEndDate() {
+      var date2 = $('#flight_tour_data').datetimepicker('getDate');
+      date2.setDate(date2.getDate() + 3);
+    }
+
+    $("#flight_tour_data").datetimepicker({
+      dateFormat: "dd-mm-yy",
+      minDate: 3,
+      onSelect: function(date) {
+        populateEndDate();
+        var date = $('#flight_tour_data').val();
+        $('#reservation_flight_origin_data').val(date);
+      }
+    }).datetimepicker("setDate", new Date());
+  } );
+  // End --- Tours
+
+  $('#search-metadata').validate({
+    event: "blur",
+    errorClass: "error-class",
+    validClass: "valid-class",
+    rules: {
+      'flight_tour_data': { required: true},
+      'quantity_adults': { required: true},
+    },
+    messages: {
+      'flight_tour_data': 'No puede estar en blanco',
+      'quantity_adults': 'No puede estar en blanco'
+    },
+    debug: true,
+    errorElement: "label",
+    submitHandler: function (form) {
+      form.submit();
+    }
+
+  });
