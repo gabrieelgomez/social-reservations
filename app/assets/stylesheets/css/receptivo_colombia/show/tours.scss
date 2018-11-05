@@ -1,6 +1,11 @@
 .tours_ {
   padding: 0;
 
+  
+  @include respond-to(xs) {
+    
+  }
+
   .banner-tours {
     height: 280px;
     background: #756f6f;
@@ -10,6 +15,9 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    @include respond-to(xs) {
+      margin: 0;
+    }
 
     &--mask {
       background-color: hsla(0, 0%, 0%, 0.35);
@@ -46,11 +54,11 @@
   }
 
 
-
-
-
   .content-tours {
     padding: 45px 0;
+    @include respond-to(xs) {
+      padding: 50px 0;
+    }
 
     &__description {
       width: 100%;
@@ -69,7 +77,12 @@
 
     &__image {
       width: 100%;
-
+      @include respond-to(xs) {
+        padding: 35px 0;
+      }
+      @include respond-to(sm) {
+        padding: 50px 0;
+      }
       .carrusel-galery {
         width: 100%;
 
@@ -171,6 +184,7 @@
 
     &__tab {
       width: 100%;
+      padding: 40px 0;
 
       &--box {
         //border: 1px solid #80808066;
@@ -222,7 +236,7 @@
     }
 
     &__button {
-      height: 60px;
+      //height: 60px;
 
       .price {
         color: #4e4e56;

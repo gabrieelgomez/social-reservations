@@ -10,7 +10,9 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-
+    @include respond-to(xs) {
+      margin: 0;
+    }
     &--mask {
       background-color: hsla(0, 0%, 0%, 0.35);
       position: absolute;
@@ -47,6 +49,10 @@
 
   .content-multidestinations {
     padding: 45px 0;
+    @include respond-to(xs) {
+      padding: 50px 0;
+    }
+
 
     &__description {
       width: 100%;
@@ -65,6 +71,12 @@
 
     &__image {
       width: 100%;
+      @include respond-to(xs) {
+        padding: 35px 0;
+      }
+      @include respond-to(sm) {
+        padding: 50px 0;
+      }
 
       .carrusel-galery {
         width: 100%;
@@ -211,7 +223,7 @@
     }
 
     &__button {
-      height: 60px;
+      //height: 60px;
 
       .price {
         color: #4e4e56;
@@ -307,6 +319,12 @@
     .box-rooms_prices {
       padding: 20px;
 
+      @include respond-to(xs) {
+        overflow-y: scroll;
+      }
+      @include respond-to(sm) {
+        overflow-y: scroll;
+      }
       h4 {
         color: $color-gray;
         font-family: $font-primary;
