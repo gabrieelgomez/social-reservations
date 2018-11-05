@@ -7,7 +7,7 @@
     .set_room
       - @multidestination.multidestinationables.each do |multidestinationable|
         - if multidestinationable.status
-          .col-lg-4
+          .col-xs-12.col-sm-4.col-md-12.col-lg-4
             .row
               .col-lg-12.js-hotel
                 .row
@@ -24,10 +24,10 @@
 
 .box_type_rooms.room-hidden.room-disabled
   .row
-    .col-lg-12
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
       .box-type-room
         %h4 Seleccione el tipo y cantidad de habitaciones
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab1.svg)"}
@@ -42,7 +42,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#single{type: 'hidden', name: "square_multidestination[][single]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab2.svg)"}
@@ -57,7 +57,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#doubles{type: 'hidden', name: "square_multidestination[][doubles]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab3.svg)"}
@@ -72,7 +72,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#triples{type: 'hidden', name: "square_multidestination[][triples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab4.svg)"}
@@ -87,7 +87,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#quadruples{type: 'hidden', name: "square_multidestination[][quadruples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab5.svg)"}
@@ -102,7 +102,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#quintuples{type: 'hidden', name: "square_multidestination[][quintuples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab6.svg)"}

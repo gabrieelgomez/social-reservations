@@ -7,7 +7,7 @@
     .set_room
       - @circuit.circuitables.each do |circuitable|
         - if circuitable.status
-          .col-lg-4.jshotelbox
+          .col-xs-12.col-sm-4.col-md-12.col-lg-4.jshotelbox
             .row
               .col-lg-12.js-hotel
                 .row
@@ -15,22 +15,22 @@
                     %span
                       %i.fa.fa-check.fa_custom{"aria-hidden" => "true"}
                   .box_hotel.row-flex
-                    .col-lg-6
+                    .col-xs-12.col-lg-6
                       %label.btn.btn-hotel
                         %center
                           .icon-hotel{style: "background-image: url(/assets/img/category-hotel/hotel_star-#{circuitable.ranking_id}.svg)"}
                             %input.room.js-hotelRoom{name: "ranking_circuitable", type: "checkbox", value: circuitable.ranking_id}/
-                    .col-lg-6
+                    .col-xs-12.col-lg-6
                       %p.title-hotel= circuitable.ranking.title[@lang]
                       -# %p
                       -#   = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
 
 .box_type_rooms.room-hidden.room-disabled
   .row
-    .col-lg-12
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
       .box-type-room
         %h4 Seleccione el tipo y cantidad de habitaciones
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab1.svg)"}
@@ -45,7 +45,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#single{type: 'hidden', name: "square_circuit[][single]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab2.svg)"}
@@ -60,7 +60,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#doubles{type: 'hidden', name: "square_circuit[][doubles]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab3.svg)"}
@@ -75,7 +75,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#triples{type: 'hidden', name: "square_circuit[][triples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab4.svg)"}
@@ -90,7 +90,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#quadruples{type: 'hidden', name: "square_circuit[][quadruples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab5.svg)"}
@@ -105,7 +105,7 @@
                 - 10.times do |i|
                   %option{ value: i+1}= i+1
             %input.js-square#quintuples{type: 'hidden', name: "square_circuit[][quintuples]", type: "number", min: 1, placeholder:'1'}/
-    .col-lg-2
+    .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab6.svg)"}
