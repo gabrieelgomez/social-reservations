@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 
     get 'payment', to: 'app/front#payment'
 
+    get 'error', to: 'app/front#break_error'
+
+
+    
+
  
 
     get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations

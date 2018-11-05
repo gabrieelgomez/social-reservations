@@ -54,6 +54,9 @@ module App
     def payment
     end
 
+    def break_error
+    end
+
     def contact_us
     end
 

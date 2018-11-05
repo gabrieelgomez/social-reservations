@@ -9,20 +9,21 @@
       .loader
         = render 'app/front/loader/loader'
 
-    %section#payment.payment
+    %section#break.break
       .container
         .row
           .col-lg-12
             .image-ico
-              = image_tag '/assets/img/wallet.svg'      
+              = image_tag '/assets/img/error.svg'      
           .col-lg-12
-            %p ¡Gracias por su Pago!
+            %p ¡Ha ocurrido un error inesperado!
+            %p Por favor vuelva a realizar el proceso nuevamente
           .col-lg-12
             %br/
             %br/
             %center
               = link_to 'Ir a Home', index_app_path(@lang, @currency)
-      
+           
 
           
     -#%footer#footer.footer.footer-copyright
