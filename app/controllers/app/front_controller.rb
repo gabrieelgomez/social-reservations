@@ -47,7 +47,11 @@ module App
     def errors
     end
 
+
     def about
+    end
+
+    def payment
     end
 
     def contact_us

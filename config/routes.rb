@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get 'contact_us', to: 'app/front#contact_us'
     get 'pqrs', to: 'app/front#pqrs', as: :pqrs
 
-    # get 'reservations/circuits', to: 'app/front#circuits'
+    get 'payment', to: 'app/front#payment'
+
+ 
 
     get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
