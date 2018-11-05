@@ -94,6 +94,7 @@
       -o-transition: .5s;
       transition: .5s;
       min-height: 500px;
+      position: relative;
 
       .box-image {
         height: 300px;
@@ -159,9 +160,7 @@
           -o-transition: .5s;
           transition: .5s;
 
-          .link-card {
-            text-decoration: none;
-          }
+
         }
 
         .about-btn .link-card:hover {
@@ -170,4 +169,10 @@
       }
     }
   }
+}
+
+.link-card {
+  text-decoration: none;
+  position: absolute;
+  bottom: 25px;
 }
