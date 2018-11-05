@@ -78,9 +78,9 @@ module App
       @adults                = params[:quantity_adults].to_i
       @kids                  = params[:quantity_kids].to_i
       @seats                 = @adults + @kids
-      @flight_origin_tour_picker = params[:flight_origin_tour_picker]
-      @flight_origin_circuit_picker = params[:flight_origin_circuit_picker]
-      @flight_origin_multidestination_picker = params[:flight_origin_multidestination_picker]
+      @flight_origin_tour_picker = params[:flight_origin_tour_picker] || params[:flight_tour_data]
+      @flight_origin_circuit_picker = params[:flight_origin_circuit_picker] || params[:flight_circuit_data]
+      @flight_origin_multidestination_picker = params[:flight_origin_multidestination_picker] || params[:flight_multidestination_data]
     end
 
     def set_lang_currency
