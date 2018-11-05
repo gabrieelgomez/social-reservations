@@ -1,3 +1,41 @@
+%section#seach-widget
+  .container
+    - unless @results.blank?
+      .box-search
+        .container
+          .row.row-flex
+            .col-lg-9
+              .row
+                .items-search
+                  .col-lg-12
+                    %span
+                      Su búsqueda:
+                  .col-lg-4
+                    %span
+                      ="Destino: #{@results.title[@lang]}".titleize
+                  .col-lg-4
+                    %span
+                      ="Fecha: #{@flight_origin_tour_picker}"
+                  .col-lg-2
+                    %span
+                      ="Adultos: #{@adults}"
+                  .col-lg-2
+                    %span
+                      ="Niños: #{@kids}"
+
+            .col-lg-3
+              %p
+                %span
+                  %a.pull-right.link-widget
+                    Volver a relizar la búsqueda
+
+  .container.js-widget.js-hide-widget.widget-results
+    .row
+      .col-lg-12
+        = render 'app/layouts/widget'
+%br
+%br
+
 %section#tours_.tours_
   - unless @results.blank?
     .banner-tours{:style => "background-image: url(#{@results.banner.url})"}
@@ -58,7 +96,7 @@
                 - else
                   .col-lg-12
                     %center
-                      = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                      = link_to reservations_path(@lang, @currency, 'tour', @results, tour: @results.title['es'], quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
                         %button.about-view.packages-btn.btn-reservation
                           solicitar
                           %br/
@@ -95,6 +133,42 @@
                         %h4 Descripción
                         = raw @results.description[@lang]
 
+:javascript
+  // tours
+  $( function() {
+    function populateEndDate() {
+      var date2 = $('#flight_tour_data').datetimepicker('getDate');
+      date2.setDate(date2.getDate() + 3);
+    }
 
+    $("#flight_tour_data").datetimepicker({
+      dateFormat: "dd-mm-yy",
+      minDate: 3,
+      onSelect: function(date) {
+        populateEndDate();
+        var date = $('#flight_tour_data').val();
+        $('#reservation_flight_origin_data').val(date);
+      }
+    }).datetimepicker("setDate", new Date());
+  } );
+  // End --- tours
 
+  $('#search-metadata').validate({
+    event: "blur",
+    errorClass: "error-class",
+    validClass: "valid-class",
+    rules: {
+      'flight_tour_data': { required: true},
+      'quantity_adults': { required: true},
+    },
+    messages: {
+      'flight_tour_data': 'No puede estar en blanco',
+      'quantity_adults': 'No puede estar en blanco'
+    },
+    debug: true,
+    errorElement: "label",
+    submitHandler: function (form) {
+      form.submit();
+    }
 
+  });

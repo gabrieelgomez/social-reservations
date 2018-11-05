@@ -38,6 +38,21 @@
                     = @multidestination.title['pt'].blank? ? '-----------' : @multidestination.title['pt']
 
                 %tr.list-row
+                  %th.display-label Subtítulo Español
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @multidestination.subtitle['es'].blank? ? '-----------' : @multidestination.subtitle['es']
+
+                %tr.list-row
+                  %th.display-label Subtítulo Inglés
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @multidestination.subtitle['en'].blank? ? '-----------' : @multidestination.subtitle['en']
+
+                %tr.list-row
+                  %th.display-label Subtítulo Portugués
+                  %td.display-value.fs-body-1.tc-black-2
+                    = @multidestination.subtitle['pt'].blank? ? '-----------' : @multidestination.subtitle['pt']
+
+                %tr.list-row
                   %th.display-label= t("activerecord.attributes.quantity_days")
                   %td.display-value.fs-body-1.tc-black-2
                     = @multidestination.quantity_days.blank? ? '-----------' : @multidestination.quantity_days

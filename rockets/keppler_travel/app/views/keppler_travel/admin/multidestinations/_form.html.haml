@@ -36,6 +36,9 @@
                           .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@multidestination.title) do |field|
                               = field.input :es, label: 'Titulo'
+                          .col-xs-12.col-md-12
+                            = f.simple_fields_for :subtitle, OpenStruct.new(@multidestination.subtitle) do |field|
+                              = field.input :es, label: 'Subtitulo'
                           .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@multidestination.description) do |field|
                               = field.input :es, label: 'Descripción', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
@@ -53,6 +56,9 @@
                           .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@multidestination.title) do |field|
                               = field.input :en, label: 'Title'
+                          .col-xs-12.col-md-12
+                            = f.simple_fields_for :subtitle, OpenStruct.new(@multidestination.subtitle) do |field|
+                              = field.input :en, label: 'Subtitulo'
                           .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@multidestination.description) do |field|
                               = field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
@@ -70,6 +76,9 @@
                           .col-xs-12.col-md-12
                             = f.simple_fields_for :title, OpenStruct.new(@multidestination.title) do |field|
                               = field.input :pt, label: 'Titulo'
+                          .col-xs-12.col-md-12
+                            = f.simple_fields_for :subtitle, OpenStruct.new(@multidestination.subtitle) do |field|
+                              = field.input :pt, label: 'Subtitulo'
                           .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@multidestination.description) do |field|
                               = field.input :pt, label: 'Descrição', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }

@@ -143,7 +143,7 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def multidestination_params
         params.require(:multidestination).permit(:quantity_days, :price, :banner, :featured, :position, :deleted_at, :status, multidestinationables_attributes: [:id, :status], multidestinationable_rooms_attributes: [:id, :price_cop, :price_usd],
-        title: @language, description: @language, include: @language, exclude: @language, itinerary: @language)
+        title: @language, subtitle: @language, description: @language, include: @language, exclude: @language, itinerary: @language)
       end
 
       def show_history

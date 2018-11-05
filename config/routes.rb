@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'vehicles', to: 'app/front#vehicles', as: :vehicles_show
     get 'tours', to: 'app/front#tours', as: :tours_show
     get 'circuits', to: 'app/front#circuits', as: :circuits_show
-    get 'multidestinations', to: 'app/front#multidestinations', as: :multidestinations_show
+    get 'multidestinations/', to: 'app/front#multidestinations', as: :multidestinations_show
 
 
     get 'about', to: 'app/front#about'
@@ -19,13 +19,9 @@ Rails.application.routes.draw do
     get 'payment', to: 'app/front#payment'
 
     get 'error', to: 'app/front#break_error'
-
-
-    
-
  
 
-    get 'reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
+    get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
     get '/invoice', to: 'app/front#invoice', as: :invoice

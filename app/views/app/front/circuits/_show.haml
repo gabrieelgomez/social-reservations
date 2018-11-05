@@ -1,9 +1,47 @@
+%section#seach-widget
+  .container
+    - unless @results.blank?
+      .box-search
+        .container
+          .row.row-flex
+            .col-lg-9
+              .row
+                .items-search
+                  .col-lg-12
+                    %span
+                      Su búsqueda:
+                  .col-lg-4
+                    %span
+                      ="Destino: #{@results.title[@lang]}".titleize
+                  .col-lg-4
+                    %span
+                      ="Fecha: #{@flight_origin_circuit_picker}"
+                  .col-lg-2
+                    %span
+                      ="Adultos: #{@adults}"
+                  .col-lg-2
+                    %span
+                      ="Niños: #{@kids}"
+
+            .col-lg-3
+              %p
+                %span
+                  %a.pull-right.link-widget
+                    Volver a relizar la búsqueda
+
+  .container.js-widget.js-hide-widget.widget-results
+    .row
+      .col-lg-12
+        = render 'app/layouts/widget'
+%br
+%br
+
 %section#circuits.circuits
   - unless @results.blank?
     .banner-circuits{:style => "background-image: url(#{@results.banner.url})"}
       .banner-circuits--mask
         %h2= @results.title[@lang].titleize
-        %p Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+        %p= @results.subtitle[@lang].titleize
 
   .content-circuits
     .container
@@ -61,7 +99,7 @@
                   %br
                   .col-lg-12
                     %center
-                      = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
+                      = link_to reservations_path(@lang, @currency, 'circuit', @results, circuit: @results.title['es'], quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
                         %button.about-view.packages-btn.btn-reservation
                           solicitar
                           %br/
