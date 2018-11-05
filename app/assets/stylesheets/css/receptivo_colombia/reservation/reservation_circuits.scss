@@ -4,6 +4,63 @@
   .box-reservation {
     padding: 45px 0;
 
+
+    .container{
+      .r__flex{
+        display: flex;
+        @include respond-to(xs) {
+         display: block;
+        }
+        @include respond-to(sm) {
+          display: block;
+         }
+      }
+    }
+
+    .reservation-data{
+      .separator__mobile{
+        margin-top: 10px;
+      }
+    }
+    
+    .reservation-resumen{
+      @include respond-to(xs) {
+        min-height: unset;
+      }
+      @include respond-to(sm) {
+        min-height: unset;
+      }
+      .sticky{
+        position: sticky;
+        top: 130px;
+        @include respond-to(xs) {
+          position: static;
+          top: 0;
+        }
+        @include respond-to(sm) {
+          position: static;
+          top: 0;
+        }
+      }
+    }
+   
+    .form-custom {
+      padding-top: 10px;
+      @include respond-to(xs) {
+        padding-top: 5px;
+        margin-bottom: 5px;
+      }
+      @include respond-to(sm) {
+        padding-top: 8px;
+        margin-bottom: 8px;
+      }
+      @include respond-to(md) {
+        padding-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+
+
     .modalDetailsHotel {
       .modal-dialog {
         .modal-content {
@@ -236,10 +293,7 @@
       }
     }
 
-    .form-custom {
-      padding: 20px 0 0 0;
-    }
-
+ 
     .form-reservation {
       margin-bottom: 0 !important;
     }

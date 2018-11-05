@@ -2,12 +2,10 @@
 - @seats.times do |i|
   .row
     .col-lg-6
-      .form-custom
-      .form-group
+      .form-group.form-custom
         %label{for: "name"} Nombre
         %input#name.form-control{name: 'travellers[][name]', type: "text", placeholder: "Ingrese nombre"}/
     .col-lg-6
-      .form-custom
-      .form-group
+      .form-group.form-custom
         %label{for: "dni"} Identificación
         %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: "Ingrese identificación"}/

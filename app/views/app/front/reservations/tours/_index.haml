@@ -31,7 +31,7 @@
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_tour', method: :post do |f|
-        .row{style:"display:flex;"}
+        .row.r__flex
           %input{value: @tour.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}

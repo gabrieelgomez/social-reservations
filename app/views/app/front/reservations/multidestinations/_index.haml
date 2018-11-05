@@ -31,14 +31,14 @@
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_multidestination', method: :post do |f|
-        .row{style:"display:flex;"}
+        .row.r__flex
           %input{value: @multidestination.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
           %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
-          .col-lg-8
+          .col-xs-12.col-sm-12.col-md-7.col-lg-8
             .reservation-data
               //Reservation Data
               = render 'app/front/reservations/multidestinations/dates_reservations', f: f
@@ -61,12 +61,12 @@
               //Terms & Conditions
               = render 'app/front/reservations/multidestinations/dates_terms_conditions'
 
-
-
-          .col-lg-4
+          .col-xs-12.col-sm-12.col-md-5.col-lg-4
             // Reservation Summary
-            .reservation-resumen
-              = render 'app/front/reservations/multidestinations/resumen'
+            //.reservation-resumen
+            = render 'app/front/reservations/multidestinations/resumen'
+
+
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/multidestinations/modal/privacy_policy'
