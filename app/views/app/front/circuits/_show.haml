@@ -36,25 +36,36 @@
                         Desde
                         = number_to_currency(@results.low_price(@currency), locale: @locale)
                 -# User click from a Cards - Condition
-                -#.col-lg-offset-2.col-lg-8
-                  .row
+                - unless @flight_origin_circuit_picker
+                  .col-lg-offset-2.col-lg-8
+                    = search_form_for @q, url: "/#{@lang}/#{@currency}/reservations/circuit/#{@results.id}", html: {class: 'input-group', style:'width: 100%;', id: 'search-metadata', method: :get } do |f|
+                      .row
+                        %center
+                          .col-lg-6
+                            .form-group
+                              %input.form-control{name: 'flight_circuit_data', id: 'flight_circuit_data', autocomplete: 'off', style:'border-radius: 6px;'}/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_adults', :type => "number", min: 1, value: 2, :placeholder => "Adultos", style:'border-radius: 6px;' }/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_kids', :type => "number", min: 0, :placeholder => "Niños", style:'border-radius: 6px;'}/
+                      .col-lg-12
+                        %br
+                        %center
+                          %button.about-view.packages-btn.btn-reservation{style: 'width: 165px;height: 48px;font-size: 14px;', type: 'submit'}
+                            solicitar
+                            %br/
+                            reservación
+                - else
+                  %br
+                  .col-lg-12
                     %center
-                      .col-lg-6
-                        .form-group
-                          %inputl.form-control{:type => "text", :placeholder => "Fecha", disabled: 'disabled'}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Niños"}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Adulto"}/
-                .col-lg-12
-                  %center
-                    = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker), class:'' do
-                      %button.about-view.packages-btn.btn-reservation
-                        solicitar
-                        %br/
-                        reservación
+                      = link_to reservations_path(@lang, @currency, 'circuit', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
+                        %button.about-view.packages-btn.btn-reservation
+                          solicitar
+                          %br/
+                          reservación
 
           .col-xs-12.col-sm-12.col-md-6.col-lg-5
             .content-.visible-xs.visible-sm
@@ -128,3 +139,42 @@
                                         %td No Disponible
                                       - else
                                         %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
+:javascript
+  // circuits
+  $( function() {
+    function populateEndDate() {
+      var date2 = $('#flight_circuit_data').datetimepicker('getDate');
+      date2.setDate(date2.getDate() + 3);
+    }
+
+    $("#flight_circuit_data").datetimepicker({
+      dateFormat: "dd-mm-yy",
+      minDate: 3,
+      onSelect: function(date) {
+        populateEndDate();
+        var date = $('#flight_circuit_data').val();
+        $('#reservation_flight_origin_data').val(date);
+      }
+    }).datetimepicker("setDate", new Date());
+  } );
+  // End --- circuits
+
+  $('#search-metadata').validate({
+    event: "blur",
+    errorClass: "error-class",
+    validClass: "valid-class",
+    rules: {
+      'flight_circuit_data': { required: true},
+      'quantity_adults': { required: true},
+    },
+    messages: {
+      'flight_circuit_data': 'No puede estar en blanco',
+      'quantity_adults': 'No puede estar en blanco'
+    },
+    debug: true,
+    errorElement: "label",
+    submitHandler: function (form) {
+      form.submit();
+    }
+
+  });

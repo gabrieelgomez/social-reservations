@@ -19,14 +19,12 @@
                 %p
                   = link_to root_path do
                     Volver a relizar la búsqueda
-
         - else
           .col-xs-12.col-sm-12.col-md-6.col-lg-7
             .content-tours__description
               %h3 Descripción
               .content-tours__description--summary
                 %p= raw @results.description[@lang]
-
             .content-tours__button
               .row
                 .col-lg-12
@@ -36,25 +34,36 @@
                       %h3.price
                         = number_to_currency(@results.price_adults[@currency], locale: @locale)
                 -# User click from a Cards - Condition 
-                -#.col-lg-offset-2.col-lg-8
-                  .row
+                - unless @flight_origin_tour_picker
+                  .col-lg-offset-2.col-lg-8
+                    = search_form_for @q, url: "/#{@lang}/#{@currency}/reservations/tour/#{@results.id}", html: {class: 'input-group', style:'width: 100%;', id: 'search-metadata', method: :get } do |f|
+                      .row
+                        %center
+                          .col-lg-6
+                            .form-group
+                              %input.form-control{name: 'flight_tour_data', id: 'flight_tour_data', autocomplete: 'off', style:'border-radius: 6px;'}/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_adults', :type => "number", min: 1, value: 2, :placeholder => "Adultos", style:'border-radius: 6px;'}/
+                          .col-lg-3
+                            .form-group
+                              %input.form-control{name: 'quantity_kids', :type => "number", min: 0, :placeholder => "Niños", style:'border-radius: 6px;'}/
+                      .col-lg-12
+                        %br
+                        %center
+                          %button.about-view.packages-btn.btn-reservation{style: 'width: 165px;height: 48px;font-size: 14px;', type: 'submit'}
+                            solicitar
+                            %br/
+                            reservación
+                - else
+                  .col-lg-12
                     %center
-                      .col-lg-6
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Fecha", disabled: 'disabled'}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Niños"}/
-                      .col-lg-3
-                        .form-group
-                          %input.form-control{:type => "text", :placeholder => "Adulto"}/
-                .col-lg-12
-                  %center
-                    = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
-                      %button.about-view.packages-btn.btn-reservation
-                        solicitar
-                        %br/
-                        reservación
+                      = link_to reservations_path(@lang, @currency, 'tour', @results, quantity_adults: @adults, quantity_kids: @kids, flight_origin_tour_picker: @flight_origin_tour_picker) do
+                        %button.about-view.packages-btn.btn-reservation
+                          solicitar
+                          %br/
+                          reservación
+
 
 
           .col-xs-12.col-sm-12.col-md-6.col-lg-5
@@ -85,3 +94,7 @@
                       .box-description
                         %h4 Descripción
                         = raw @results.description[@lang]
+
+
+
+
