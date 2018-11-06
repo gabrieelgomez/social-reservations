@@ -21,9 +21,6 @@
                     = @currency.upcase
                     = number_to_currency(tour.price_adults[@currency], locale: @locale)
                   .more-information
-                    -# %p
-                    -#   %span
-                    -#     10 dias 5 noches
                     %span= raw tour.description[@lang].truncate(100)
                   .about-btn
                     = link_to '#', class:'link-card' do

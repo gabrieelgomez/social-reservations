@@ -162,17 +162,19 @@
 
 
         }
-
+        .about-btn{
+          a{
+            button{
+              text-decoration: none;
+              position: absolute;
+              bottom: 25px;
+            }
+          }
+        }
         .about-btn .link-card:hover {
           text-decoration: none;
         }
       }
     }
   }
-}
-
-.link-card {
-  text-decoration: none;
-  position: absolute;
-  bottom: 25px;
 }
