@@ -137,5 +137,3 @@ gem 'wow-rails'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'hover-rails'
 gem 'awesome-bootstrap-checkbox', '~> 1.0'
-
-# 04260496840
