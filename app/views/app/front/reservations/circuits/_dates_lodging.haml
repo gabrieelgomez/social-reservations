@@ -15,12 +15,12 @@
                     %span
                       %i.fa.fa-check.fa_custom{"aria-hidden" => "true"}
                   .box_hotel.row-flex
-                    .col-xs-12.col-lg-6
+                    .col-xs-12.col-md-6.col-lg-6
                       %label.btn.btn-hotel
                         %center
                           .icon-hotel{style: "background-image: url(/assets/img/category-hotel/hotel_star-#{circuitable.ranking_id}.svg)"}
                             %input.room.js-hotelRoom{name: "ranking_circuitable", type: "checkbox", value: circuitable.ranking_id}/
-                    .col-xs-12.col-lg-6
+                    .col-xs-12.col-md-6.col-lg-6
                       %p.title-hotel= circuitable.ranking.title[@lang]
                       -# %p
                       -#   = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
