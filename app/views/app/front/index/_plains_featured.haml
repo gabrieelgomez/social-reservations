@@ -21,7 +21,7 @@
                     = @currency.upcase
                     = number_to_currency(tour.price_adults[@currency], locale: @locale)
                   .more-information
-                    %span= raw tour.description[@lang].truncate(100)
+                    -#%span= raw tour.description[@lang].truncate(100)
                   .about-btn
                     = link_to '#', class:'link-card' do
                       %button.about-view.packages-btn
