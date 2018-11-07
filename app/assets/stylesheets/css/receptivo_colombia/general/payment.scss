@@ -6,13 +6,20 @@
     justify-content: center;
     background: #4e4e56;
     .image-ico{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 280px;
+        //width: 280px;
+        margin: 0 auto;
         margin-bottom: 40px;
+        @include respond-to(xs) {
+            height: 200px;
+          }
        i{
          font-size: 180px;
          color: $color-orange;
+       }
+       img{
+           object-fit: cover;
+           height: 100%;
        }
     }
     p{
@@ -21,6 +28,12 @@
         font-size: 30px;
         color: $color-white;
         font-family: $font-primary;
+        @include respond-to(xs) {
+            font-size: 18px;
+          }
+          @include respond-to(sm) {
+            font-size: 25px;
+          }
     }
     a{
         font-size: 20px;
@@ -29,6 +42,9 @@
         i{
             color: #bbbdbf;
             font-size: 28px;
+            @include respond-to(xs) {
+                font-size: 18px;
+              }
         }
         a{
             text-decoration: underline;
@@ -39,6 +55,9 @@
                 font-weight: bold;
                 color: #bbbdbf;
                 margin: 0 10px;
+                @include respond-to(xs) {
+                    font-size: 18px;
+                  }
             }
         }
     }

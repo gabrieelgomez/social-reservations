@@ -73,6 +73,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       // End JSON Methods
       $('.js-hotelRoom').removeClass('js-hotel-active').prop('disabled', 'disabled');
       $('.js-hotel').addClass('disabled-content').removeClass('bg-active');
+      $('.room').css('visibility', 'visible');
       $(this).closest($('.js-hotel')).removeClass('disabled-content');
       $(this).removeAttr('disabled')
       $(this).closest('.box_hotel').addClass('bg-active');
@@ -90,7 +91,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
       restoreValuesZero();
       // Calcular el price total del hotel seleccionado
       total_budget();
-
+      $('.room').css('visibility', 'hidden');
       $(this).closest($('.btn-room')).removeClass('disabled-content');
       $('.js-hotel').removeClass('disabled-content')
       $(this).closest('.box_hotel').removeClass('bg-active');
