@@ -118,7 +118,7 @@ module KepplerTravel
 
       # DELETE /drivers/1
       def destroy
-        @driver.user.destroy
+        @driver.user.really_destroy!
         redirect_to admin_travel_drivers_path, notice: actions_messages(@driver)
       end
 
