@@ -19,6 +19,7 @@ var budget = {
   children: 0
 }
 
+
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
   ranking_id_radio = $(this).val();
