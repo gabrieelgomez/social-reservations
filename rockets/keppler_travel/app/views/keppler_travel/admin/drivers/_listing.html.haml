@@ -1,12 +1,12 @@
 - objects.each do |driver|
   %tr{ id: "row-#{driver.id}" }
     %td.item-check{ style: 'width: 10%' }
-      - if can?(KepplerTravel::Driver).destroy_multiple?
-        .checkbox
-          %label{ for: "checkbox-#{driver.id}" }
-            %input{ type:"checkbox", id: "checkbox-#{driver.id}", 'checklist-model' => 'check', 'checklist-value' => "#{driver.id}", '@click' => "listDelete(#{driver.id})"}
-            %span.cr
-              %i.cr-icon.glyphicon.glyphicon-ok
+    -#   - if can?(KepplerTravel::Driver).destroy_multiple?
+    -#     .checkbox
+    -#       %label{ for: "checkbox-#{driver.id}" }
+    -#         %input{ type:"checkbox", id: "checkbox-#{driver.id}", 'checklist-model' => 'check', 'checklist-value' => "#{driver.id}", '@click' => "listDelete(#{driver.id})"}
+    -#         %span.cr
+    -#           %i.cr-icon.glyphicon.glyphicon-ok
 
     -# %td.hidden-xs
     -#   = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
