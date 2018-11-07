@@ -2,34 +2,26 @@
 %html.no-js{:lang => "en"}
   %head
     = render 'app/layouts/head'
-
   %body
-    -#%header
-      = render 'app/layouts/navbar'
+    %header
       .loader
         = render 'app/front/loader/loader'
-
     %section#break.break
       .container
         .row
           .col-lg-12
             .image-ico
-              = image_tag '/assets/img/error.svg'      
+              %i.icon-directions.icons     
           .col-lg-12
-            %p ¡Ha ocurrido un error inesperado!
-            %p Por favor vuelva a realizar el proceso nuevamente
+            %p ¡Ha ocurrido un error inesperado! 
+            %p Por favor, vuelva a realizar el proceso nuevamente
           .col-lg-12
             %br/
             %br/
             %center
-              = link_to 'Ir a Home', index_app_path(@lang, @currency)
-           
-
-          
-    -#%footer#footer.footer.footer-copyright
-      = render 'app/layouts/footer'
--#%script{:src => "/assets/js/loader.js"}
--#:javascript
-  $('.navigation-front').removeClass('background-hide');
-  $('.navigation-front').addClass('background-show');
-
+              .back-home
+                %i.icon-home.icons
+                = link_to root_path do
+                  %span Regresar
+                  
+    %script{:src => "/assets/js/loader.js"}

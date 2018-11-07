@@ -4,25 +4,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #59565d21;
+    background: #4e4e56;
     .image-ico{
-       height: 240px;
-       width: 240px;
-       padding-bottom: 40px;
-       margin: 0 auto;
-       margin-top: -120px;
-       img{
-           height: 100%;
-           object-fit: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+       i{
+         font-size: 180px;
+         color: $color-orange;
        }
     }
     p{
         font-weight: 700;
         text-align: center;
         font-size: 30px;
-        color: #4e4e56;
+        color: $color-white;
+        font-family: $font-primary;
     }
     a{
         font-size: 20px;
+    }
+    .back-home{
+        i{
+            color: #bbbdbf;
+            font-size: 28px;
+        }
+        a{
+            text-decoration: underline;
+            span{
+                color: $color-white;
+                font-family: $font-primary;
+                font-size: 30px;
+                font-weight: bold;
+                color: #bbbdbf;
+                margin: 0 10px;
+            }
+        }
     }
 }
