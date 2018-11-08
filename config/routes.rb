@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     #new routes template dashboard
     get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
-    get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
+    #get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
     get '/dashboard/template_order', to: 'app/dashboard/dashboard#template_order', as: :template_order
 
     get 'errors', to: 'app/front#errors', as: :errors_checkout

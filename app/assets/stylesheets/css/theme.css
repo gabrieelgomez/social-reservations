@@ -484,6 +484,7 @@ body>.navbar-collapse .sidebar-wrapper {
 	width: 260px;
 	z-index: 4;
 	padding-bottom: 100px;
+	background: rgba(0, 0, 0, 0.50);
 }
 
 .sidebar .sidebar-background,
@@ -3213,7 +3214,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card-user .card-body {
-	min-height: 215px;
+	min-height: 195px;
 }
 
 .card-user .card-footer,
@@ -4996,6 +4997,14 @@ Copyright (c) 2015 Daniel Eden
 }
 
 @media (min-width: 992px) {
+	.table-responsive {
+		width: 100%;
+		margin-bottom: 15px;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		-webkit-overflow-scrolling: touch;
+	}
 	.typo-line {
 		padding-left: 140px;
 		margin-bottom: 40px;
