@@ -16,15 +16,10 @@ Rails.application.routes.draw do
     get 'contact_us', to: 'app/front#contact_us'
     get 'pqrs', to: 'app/front#pqrs', as: :pqrs
 
-    get 'payment', to: 'app/front#payment'
-
-    get 'error', to: 'app/front#break_error'
- 
-
     get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
-    get '/invoice', to: 'app/front#invoice', as: :invoice
+    get '/gracias', to: 'app/front#invoice', as: :invoice
 
     get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
     post '/update_order', to: 'app/dashboard/drivers/transfers#update_order', as: :update_order

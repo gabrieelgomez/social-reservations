@@ -10,14 +10,11 @@ module KepplerTravel
             title: destination.title,
             destination: destination,
             vehicle: vehicle,
-            inner_price: {
-              cop: 0,
-              usd: 0
-            },
-            outer_price: {
-              cop: 0,
-              usd: 0
-            }
+            price_inner_usd: 0,
+            price_inner_cop: 0,
+            price_outer_usd: 0,
+            price_outer_cop: 0
+
           )
         end # Destination end
 
@@ -34,14 +31,10 @@ module KepplerTravel
               title: destination.title,
               destination: destination,
               vehicle: vehicle,
-              inner_price: {
-                cop: 0,
-                usd: 0
-              },
-              outer_price: {
-                cop: 0,
-                usd: 0
-              }
+              price_inner_usd: 0,
+              price_inner_cop: 0,
+              price_outer_usd: 0,
+              price_outer_cop: 0
             )
           end # Ids end
         end # Unless end

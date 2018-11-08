@@ -2,35 +2,28 @@
 %html.no-js{:lang => "en"}
   %head
     = render 'app/layouts/head'
-
   %body
     %header
-      = render 'app/layouts/navbar'
       .loader
         = render 'app/front/loader/loader'
 
-
-    %section#home.about-us
-      %video#my-video.myvideo{:autoplay => "true", :loop => "true", :muted => "true"}
-        %source{:src => "/assets/img/video.mp4", :type => "video/mp4"}
-
-    %section#services.services
+    %section#payment.payment
       .container
-        .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
-
-          %h2 Gracias por tu cotización!
-
-
-
-    %footer#footer.footer.footer-copyright
-      = render 'app/layouts/footer'
+        .row
+          .col-lg-12
+            .image-ico
+              %img{:alt => "", :src => "/assets/img/thanks.svg", :class => "img-responsive"}/
+              -#%i.icon-trophy.icons
+          .col-lg-12
+            %p Tu reserva se ha realizado con éxito.
+            %p ¡Gracias por confiar en nosotros!
+          .col-lg-12
+            %br/
+            %br/
+            %center
+              .back-home
+                %i.icon-home.icons
+                = link_to root_path do
+                  %span Regresar
 
     %script{:src => "/assets/js/loader.js"}
-    %script{:src => "/assets/js/navbar.js"}
-    %script{:src => "/assets/js/mixitup-setting.js"}
-    %script{:src => "/assets/js/wow-settings.js"}
-
-    :javascript
-      $(document).ready(function(){
-        document.getElementById("my-video").play();
-      });

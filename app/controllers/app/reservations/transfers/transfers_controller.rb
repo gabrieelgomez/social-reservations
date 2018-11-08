@@ -13,7 +13,9 @@ module App
             type: 'vehicle',
             id: params[:reservationable_id],
             origin_locality: params[:origin_locality],
-            arrival_locality: params[:arrival_locality]
+            arrival_locality: params[:arrival_locality],
+            origin_departament: params[:origin_departament],
+            arrival_departament: params[:arrival_departament]
           }
           redirect_to checkout_path(params[:lang], params[:currency])
         end
@@ -48,13 +50,19 @@ module App
         private
 
         def set_price
-          org = session[:reservationable]['origin_locality']
-          arr = session[:reservationable]['arrival_locality']
-          if org == arr
-            @vehicle = @reservation.reservationable.vehicleables
-            @result  = @vehicle.ransack(title_cont: org).result.first
-            @price_total = @result.try("price_#{@currency}")
-          elsif org != arr
+          departament = [session[:reservationable]['origin_departament'], session[:reservationable]['arrival_departament']]
+          locality = [session[:reservationable]['origin_local'], session[:reservationable]['arrival_locality']]
+          if departament[0] == departament[1]
+            vehicleables = @reservation.reservationable.vehicleables
+            @destiny = vehicleables.ransack(title_cont: locality[0]).result.first
+            @destiny = vehicleables.ransack(title_cont: locality[1]).result.first if @destiny.nil?
+            if locality[0] == locality[1]
+              price = @destiny.try("price_inner_#{@currency}")
+            else
+              price = @destiny.try("price_outer_#{@currency}")
+            end
+            @price_total = price
+          elsif departament[0] != departament[1]
             @cotization     = true
             @price_total = 1
           end

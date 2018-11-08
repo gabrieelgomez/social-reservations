@@ -107,8 +107,8 @@
                         = @reservation['quantity_kit']
                         piezas
 
-                  - org = session[:reservationable]['origin_locality']
-                  - arr = session[:reservationable]['arrival_locality']
+                  - org = session[:reservationable]['origin_departament']
+                  - arr = session[:reservationable]['arrival_departament']
                   - if org == arr
                     = render "app/front/checkout/vehicles/paid"
                   - else

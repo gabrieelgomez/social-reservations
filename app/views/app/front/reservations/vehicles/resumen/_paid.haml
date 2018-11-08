@@ -3,9 +3,9 @@
     %h6.my-0 Sub-total
     %small.text-muted
       - multiple = @round_trip == 'true' ? '2' : '1'
-      - price    = @round_trip == 'true' ? @vehicle.set_price_destination(@locality[0], @currency).to_f*2 : @vehicle.set_price_destination(@locality[0], @currency).to_f
+      - price    = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
       = "#{multiple} x "
-      = number_to_currency(@vehicle.set_price_destination(@locality[0], @currency).to_f, locale: @locale)
+      = number_to_currency(@vehicle.set_price_destination(@locality, @currency).to_f, locale: @locale)
       = "="
       = number_to_currency(price, locale: @locale)
 %li.list-group-item.d-flex.justify-content-between

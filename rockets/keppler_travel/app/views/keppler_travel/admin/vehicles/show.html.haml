@@ -142,6 +142,6 @@
                           - else
                             %i.icon-close
                         %td= destination.custom_title[I18n.locale.to_s]
-                        %td= number_to_currency(vehicleable.price_outer_cop, locale: @locale)
+                        %td= number_to_currency(vehicleable.price_inner_cop, locale: @locale)
                         %td= number_to_currency(vehicleable.price_outer_cop, locale: @locale)
                         -# %td= number_to_currency(vehicleable.price_cop, locale: @locale)
