@@ -104,7 +104,9 @@
                     %tr
                       %th
                       %th Destino
-                      %th Precio USD
+                      %th Precio Dentro USD
+                      %th Precio Fuera USD
+
                     // Multidestinationables from Multidestination
                     - @vehicle.vehicleables.sort_by{|price| price.id }.each do |vehicleable|
                       - destination = vehicleable.destination
@@ -116,7 +118,9 @@
                           - else
                             %i.icon-close
                         %td= destination.custom_title[I18n.locale.to_s]
-                        %td= number_to_currency(vehicleable.price_usd, locale: @locale)
+                        %td= number_to_currency(vehicleable.price_inner_usd, locale: @locale)
+                        %td= number_to_currency(vehicleable.price_outer_usd, locale: @locale)
+
 
               // COP
               #cop.tab-pane
@@ -125,7 +129,8 @@
                     %tr
                       %th
                       %th Destino
-                      %th Precio COP
+                      %th Precio Dentro COP
+                      %th Precio Fuera COP
                     // Multidestinationables from Multidestination
                     - @vehicle.vehicleables.sort_by{|price| price.id }.each do |vehicleable|
                       - destination = vehicleable.destination
@@ -137,4 +142,6 @@
                           - else
                             %i.icon-close
                         %td= destination.custom_title[I18n.locale.to_s]
-                        %td= number_to_currency(vehicleable.price_cop, locale: @locale)
+                        %td= number_to_currency(vehicleable.price_inner_cop, locale: @locale)
+                        %td= number_to_currency(vehicleable.price_outer_cop, locale: @locale)
+                        -# %td= number_to_currency(vehicleable.price_cop, locale: @locale)

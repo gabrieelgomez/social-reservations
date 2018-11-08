@@ -44,8 +44,13 @@ module KepplerTravel
     end
 
     def set_price_destination(locality, currency)
-      @destiny = vehicleables.ransack(title_cont: locality).result.first
-      @destiny.try("price_#{currency}")
+      @destiny = vehicleables.ransack(title_cont: locality[0]).result.first
+      @destiny = vehicleables.ransack(title_cont: locality[1]).result.first if @destiny.nil?
+      if locality[0] == locality[1]
+        price = @destiny.try("price_inner_#{currency}")
+      else
+        price = @destiny.try("price_outer_#{currency}")
+      end
     end
 
     def selected(destination)

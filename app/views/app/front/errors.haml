@@ -1,3 +1,28 @@
-%h1 Ha ocurrido un error, por favor repita el proceso de nuevo.
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    = render 'app/layouts/head'
+  %body
+    %header
+      .loader
+        = render 'app/front/loader/loader'
+    %section#break.break
+      .container
+        .row
+          .col-lg-12
+            .image-ico
+              %img{:alt => "", :src => "/assets/img/error.svg", :class => "img-responsive"}/
+              -#%i.icon-directions.icons
+          .col-lg-12
+            %p ¡Ha ocurrido un error!
+            %p Por favor, vuelva a realizar el proceso nuevamente
+          .col-lg-12
+            %br/
+            %br/
+            %center
+              .back-home
+                %i.icon-home.icons
+                = link_to root_path do
+                  %span Regresar
 
-= link_to 'Ir a Home', index_app_path(@lang, @currency)
+    %script{:src => "/assets/js/loader.js"}

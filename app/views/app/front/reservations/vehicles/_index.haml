@@ -36,6 +36,8 @@
           %input{value: @vehicle.id, type: 'hidden', name: 'reservationable_id'}
           %input{value: @seats, type: 'hidden', name: 'quantity_seats'}
           %input{value: @lang, type: 'hidden', name: 'lang'}
+          %input{value: @departament[0], type: 'hidden', name: 'origin_departament'}
+          %input{value: @departament[1], type: 'hidden', name: 'arrival_departament'}
           %input{value: @locality[0], type: 'hidden', name: 'origin_locality'}
           %input{value: @locality[1], type: 'hidden', name: 'arrival_locality'}
           %input{value: @currency, type: 'hidden', name: 'currency'}
@@ -68,11 +70,11 @@
             // Reservation Summary
             -#.reservation-resumen
             = render 'app/front/reservations/vehicles/resumen'
-              
+
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/vehicles/modal/privacy_policy'
-  
+
       //Modal - Cancellations Policy
       = render 'app/front/reservations/vehicles/modal/cancellations_policy'
 
@@ -109,7 +111,3 @@
         $("#modalCancellationsPolicy").modal();
       });
   });
-
-
-
- 

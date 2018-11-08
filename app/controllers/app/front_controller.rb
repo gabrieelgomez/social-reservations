@@ -23,8 +23,10 @@ module App
     end
 
     def vehicles
-      if @locality[0] == @locality[1]
-        @destination = KepplerTravel::Destination.ransack(title_cont: @locality[0]).result.first
+      # byebug
+      if @departament[0] == @departament[1]
+        # byebug
+        @destination = KepplerTravel::Destination.ransack(title_cont: @departament[0]).result.first
         @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
       else
         @results = KepplerTravel::Vehicle.ransack(seat_gteq: @seats).result
@@ -64,8 +66,6 @@ module App
       @message = KepplerContactus::Request.new
     end
 
-
-
     private
 
     def set_search
@@ -75,6 +75,7 @@ module App
 
     def set_params_widget
       @locality              = [params[:origin_locality], params[:arrival_locality]]
+      @departament           = [params[:origin_departament], params[:arrival_departament]]
       @origin_location       = params[:origin_location]
       @origin_name           = params[:origin_name]
       @arrival_location      = params[:arrival_location]
