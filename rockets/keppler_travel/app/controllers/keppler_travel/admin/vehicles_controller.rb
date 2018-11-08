@@ -146,7 +146,7 @@ module KepplerTravel
         # inner_price: @currency, outer_price: @currency,
         params.require(:vehicle).permit(:cover, :quantity_adults, :quantity_kids, :position, :deleted_at,
           :date, :time, :seat, :status, {files:[]}, kit: [:quantity, :weight],
-          vehicleables_attributes: [:id, :status, :price_cop, :price_usd],
+          vehicleables_attributes: [:id, :status, :price_inner_cop, :price_inner_usd, :price_outer_cop, :price_outer_usd],
           title: @language, description: @language, includes: @language, conditions: @language)
       end
 

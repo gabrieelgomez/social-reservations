@@ -35,7 +35,8 @@
                           %tr
                             %th
                             %th Destino
-                            %th Precio USD
+                            %th Precio Dentro USD
+                            %th Precio Fuera USD
 
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
@@ -46,7 +47,9 @@
                                 = vehicleable.input :status, as: :boolean, label: false
                               %td= destination.custom_title[I18n.locale.to_s]
                               %td
-                                = vehicleable.input :price_usd, label: false, input_html: {min: 0}
+                                = vehicleable.input :price_inner_usd, label: false, input_html: {min: 0}
+                              %td
+                                = vehicleable.input :price_outer_usd, label: false, input_html: {min: 0}
 
                 // COP
                 #cop.tab-pane
@@ -59,7 +62,8 @@
                           %tr
                             %th
                             %th Destino
-                            %th Precio COP
+                            %th Precio Dentro COP
+                            %th Precio Fuera COP
 
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
@@ -74,7 +78,9 @@
                                       %input#vehicle_vehicleables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
                               %td= destination.custom_title[I18n.locale.to_s]
                               %td
-                                = vehicleable.input :price_cop, label: false, input_html: {min: 0}
+                                = vehicleable.input :price_inner_cop, label: false, input_html: {min: 0}
+                              %td
+                                = vehicleable.input :price_outer_cop, label: false, input_html: {min: 0}
 
 
 

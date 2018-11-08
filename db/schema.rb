@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_203026) do
+ActiveRecord::Schema.define(version: 2018_11_08_021937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -416,11 +416,13 @@ ActiveRecord::Schema.define(version: 2018_11_05_203026) do
   create_table "keppler_travel_vehicleables", force: :cascade do |t|
     t.string "title"
     t.boolean "status", default: false
-    t.float "price_usd", default: 0.0
-    t.float "price_cop", default: 0.0
+    t.float "price_inner_usd", default: 0.0
+    t.float "price_inner_cop", default: 0.0
     t.bigint "vehicle_id"
     t.bigint "destination_id"
     t.datetime "deleted_at"
+    t.float "price_outer_cop", default: 0.0
+    t.float "price_outer_usd", default: 0.0
     t.index ["destination_id"], name: "index_keppler_travel_vehicleables_on_destination_id"
     t.index ["vehicle_id"], name: "index_keppler_travel_vehicleables_on_vehicle_id"
   end

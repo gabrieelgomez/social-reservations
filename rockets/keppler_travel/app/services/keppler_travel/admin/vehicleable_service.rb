@@ -9,7 +9,15 @@ module KepplerTravel
           vehicleable = Vehicleable.create!(
             title: destination.title,
             destination: destination,
-            vehicle: vehicle
+            vehicle: vehicle,
+            inner_price: {
+              cop: 0,
+              usd: 0
+            },
+            outer_price: {
+              cop: 0,
+              usd: 0
+            }
           )
         end # Destination end
 
@@ -25,7 +33,15 @@ module KepplerTravel
             vehicleable = Vehicleable.create!(
               title: destination.title,
               destination: destination,
-              vehicle: vehicle
+              vehicle: vehicle,
+              inner_price: {
+                cop: 0,
+                usd: 0
+              },
+              outer_price: {
+                cop: 0,
+                usd: 0
+              }
             )
           end # Ids end
         end # Unless end
