@@ -5071,12 +5071,7 @@ Copyright (c) 2015 Daniel Eden
 	text-align: center;
 }
 
-</style><script src="./Light Bootstrap Dashboard Vue_files/js"async=""defer=""></script><style type="text/css">.vue-notifyjs.notifications .list-move {
-	-webkit-transition: opacity 0.4s, -webkit-transform 0.3s;
-	transition: opacity 0.4s, -webkit-transform 0.3s;
-	transition: transform 0.3s, opacity 0.4s;
-	transition: transform 0.3s, opacity 0.4s, -webkit-transform 0.3s;
-}
+
 
 .vue-notifyjs.notifications .list-item {
 	display: inline-block;
@@ -5123,5 +5118,3 @@ Copyright (c) 2015 Daniel Eden
 .fade-leave-to {
 	opacity: 0
 }
-
-.test {}
