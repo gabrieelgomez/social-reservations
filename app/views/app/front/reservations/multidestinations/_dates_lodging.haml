@@ -133,6 +133,7 @@
   var adults = #{raw @adults};
   var kids   = #{raw @kids};
   var currency = "#{raw @currency.upcase}";
+  var coin     = "#{raw @currency.downcase}";
   var lodgments_ruby = #{raw @lodgments.to_json};
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}

@@ -27,7 +27,7 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
   var filtered_json = find_in_object(JSON.parse(rankings_json), {
     ranking_id: ranking_id_radio
   });
-  if ((filtered_json[6]['price_cop'] == 0) && (kids != 0)) {
+  if ((filtered_json[6][`price_${coin}`] == 0) && (kids != 0)) {
     swal({
       type: 'error',
       title: '¡Disculpe!',
@@ -43,21 +43,21 @@ $('.js-hotelRoom').not('.disabled-content').on('click', function () {
         }
         $(`input[name='room_${item.type_room}']`).val(JSON.stringify(json_parse));
 
-        if (item.price_cop == 0) {
+        if (item[`price_${coin}`] == 0) {
           $(`input[name='square_circuit[][${item.type_room}]']`).attr('disabled', true);
           $('#room_' + item.type_room).text('No Disponible');
           room_json[item.type_room] = 0;
           $('#room_' + item.type_room).parent().addClass('disabled-content');
         } else {
           $(`input[name='square_circuit[][${item.type_room}]']`).attr('disabled', false);
-          $('#room_' + item.type_room).text('$' + formatMoney(item.price_cop));
-          room_json[item.type_room] = item.price_cop;
+          $('#room_' + item.type_room).text('$' + formatMoney(item[`price_${coin}`]));
+          room_json[item.type_room] = item[`price_${coin}`];
           $('#room_' + item.type_room).parent().removeClass('disabled-content');
 
         } // end condicion si la habitacion esta disponible
 
         if (item.type_room == 'children') {
-          price_kids = item.price_cop;
+          price_kids = item[`price_${coin}`];
           total_kids = kids * price_kids;
           budget['children'] = total_kids;
           // Format square text (element, price_room, quantity, total_room_or_budget, text)
@@ -119,7 +119,7 @@ $('.js-typeRoom').on('click', function () {
     ranking_id: json_parse['ranking_id']
   });
   $.each(filtered_json, function (i, item) {
-    if (item.price_cop > 0 && item.type_room == json_parse['type']) {
+    if (item[`price_${coin}`] > 0 && item.type_room == json_parse['type']) {
       if (that.is(':checked')) {
         $('.js-square').hide();
         $(`input[name='square_circuit[][${this.type_room}]']`).val(1);
