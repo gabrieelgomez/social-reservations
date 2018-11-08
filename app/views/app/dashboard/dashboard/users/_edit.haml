@@ -59,7 +59,7 @@
               %a{:href => "#"}
                 -#%img.avatar.border-gray{:alt => "...", :src => "/assets/img/user.png"}/
                 %img.avatar.border-gray{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
-                %h4.title="#{@user.name}"
+                %h4.title{:style => 'font-family: "Poppins", sans-serif;'}="#{@user.name}"
                 %br/
                 -#%small michael24
             -#%p.description.text-center

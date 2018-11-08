@@ -1,6 +1,6 @@
 .sidebar-wrapper
   .logo
-    %a.simple-text{:href => "#"}
+    %a.simple-text{:href => "#", :style => 'font-family: "Poppins", sans-serif;font-weight: bold;text-transform: capitalize;font-size: 14px;'}
       .logo-img
         %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
       Receptivo Colombia
@@ -39,7 +39,7 @@
         %i.nc-icon.nc-chart-pie-35
         %p Mi Tablero
     -# Order of Items: 1.Traslados 2.Tours 3.Circuitos 4.Multidestinos
-    %li.active
+    %li
       = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
         %i.nc-icon.nc-delivery-fast
         %p Traslados
