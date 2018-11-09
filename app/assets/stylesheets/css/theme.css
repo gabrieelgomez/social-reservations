@@ -325,12 +325,14 @@ body,
 }
 
 a {
-	color: #1DC7EA;
+	color: #43b7e8;
+	font-family: "Poppins", sans-serif;
+    font-weight: 500;
 }
 
 a:hover,
 a:focus {
-	color: #42d0ed;
+	color: #43b7e8;
 	text-decoration: none;
 }
 
@@ -590,13 +592,13 @@ body>.navbar-collapse .nav li .nav-link:hover {
 
 .sidebar .nav li .nav-link p,
 body>.navbar-collapse .nav li .nav-link p {
-	margin: 0;
-	line-height: 31px;
-	font-size: 12px;
-	font-weight: 600;
-	text-transform: uppercase;
-	display: inline-flex;
-	font-family: "Poppins", sans-serif;
+    margin: 0;
+    line-height: 31px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-flex;
+    font-family: "Poppins", sans-serif;
 }
 
 .sidebar .nav li .nav-link i,
@@ -1900,6 +1902,7 @@ fieldset[disabled] .form-control {
 .table>tfoot>tr>td {
 	padding: 12px 8px;
 	vertical-align: middle;
+	text-align: center;
 }
 
 .table>thead>tr>th {
@@ -1911,7 +1914,7 @@ fieldset[disabled] .form-control {
 	padding-bottom: 5px;
 	border-top: none !important;
 	border-bottom: none;
-	text-align: left !important;
+	text-align: center !important;
 }
 
 .table .td-actions .btn {
@@ -2156,11 +2159,13 @@ fieldset[disabled] .form-control {
 	font-weight: 400;
 	margin: 5px 0px;
 	font-size: 20px;
-	color: #888888;
+	color: #43b7e8;
+	font-family: "Poppins", sans-serif;
+    font-weight: 500;
 }
 
 .navbar .navbar-brand:hover {
-	color: #5e5e5e;
+	color: #43b7e8;
 }
 
 .navbar .navbar-toggler {
@@ -3063,7 +3068,7 @@ Copyright (c) 2015 Daniel Eden
 
 .card .card-title {
 	margin: 0;
-	color: #333333;
+	color: #4e4e56;
 	font-weight: 300;
 }
 
@@ -3200,11 +3205,13 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card-user .avatar {
-	width: 124px;
-	height: 124px;
+	width: 150px;
+	height: 150px;
 	border: 5px solid #FFFFFF;
 	position: relative;
 	margin-bottom: 15px;
+	object-fit: cover;
+    object-position: center;
 }
 
 .card-user .avatar.border-gray {

@@ -4,7 +4,7 @@
       .col-md-8
         .card
           .card-header
-            %h4.card-title Editar perfil
+            %h4.card-title.text-capitalize Editar perfil
           .card-body
             = simple_form_for @user, url: user_update_path, method: :post do |f|
               .row
@@ -58,7 +58,7 @@
             .author
               %a{:href => "#"}
                 -#%img.avatar.border-gray{:alt => "...", :src => "/assets/img/user.png"}/
-                %img.avatar.border-gray{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
+                %img.avatar.border-gray.img-fluid{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
                 %h4.title{:style => 'font-family: "Poppins", sans-serif;'}="#{@user.name}"
                 %br/
                 -#%small michael24
