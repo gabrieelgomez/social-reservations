@@ -109,12 +109,12 @@
                     - unless @reservation.driver.nil?
                       .col-lg-8.pull-left
                         = @reservation.driver.user.name
-                      - unless @reservation.order.status.eql?('complete')
-                        .col-lg-4
-                          = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
-                            %i.icon-close{style: 'color:red'}
-                            -# .arrow-back.btn.btn-default
-                            -#   = t('keppler.actions.unassign')
+                      -# - unless @reservation.order.status.eql?('complete')
+                      .col-lg-4
+                        = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
+                          %i.icon-close{style: 'color:red'}
+                          -# .arrow-back.btn.btn-default
+                          -#   = t('keppler.actions.unassign')
                     - else
                       = '-----------'
                 %tr.list-row

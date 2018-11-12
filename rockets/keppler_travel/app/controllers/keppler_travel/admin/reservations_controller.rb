@@ -98,7 +98,8 @@ module KepplerTravel
       # DELETE /reservations/1
       def destroy
         @reservation.destroy
-        redirect_to admin_travel_reservations_path, notice: actions_messages(@reservation)
+        model_name = @reservation.reservationable_type.split('::').last.downcase.singularize
+        redirect_to admin_travel_reservations_path(model_name: model_name), notice: actions_messages(@reservation)
       end
 
       def destroy_multiple

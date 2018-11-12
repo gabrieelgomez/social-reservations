@@ -20,6 +20,7 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
+          = reservation.invoice.currency.upcase
           = number_to_currency(reservation.invoice.amount, locale: @locale)
 
     %td.hidden-xs

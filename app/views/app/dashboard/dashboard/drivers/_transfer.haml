@@ -2,111 +2,53 @@
   .row
     .col-12
       .card
-        / 
+        /
         .card-header
           %h4.card-title Órdenes de Reserva
           -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
         .card-body
           .table-responsive
-            %table.table.table-hover.table-striped
-              %thead
-                %th Estatus
-                %th N° Orden
-                %th N° Factura
-                %th Estatus
-                %th Vehiculo
-                %th Origen
-                %th Destino
-                %th Responsable
-                %th Pasajeros
-                %th Cant. Adultos
-                %th Cant. Niños
+            %table.table.table-hover
               %tbody
-              -#- @orders.map(&:reservation).each do |reservation|
-                %tr
-                  - unless reservation.order.status.eql?('complete')
-                    = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
+                %tr.items-orders
+                  %th Estatus
+                  %th N° Orden
+                  %th N° Factura
+                  %th Estatus
+                  %th Vehiculo
+                  %th Origen
+                  %th Destino
+                  %th Responsable
+                  %th Pasajeros
+                  %th Cant. Adultos
+                  %th Cant. Niños
+
+                - @orders.map(&:reservation).each do |reservation|
+                  %tr
+                    - unless reservation.order.status.eql?('complete')
+                      = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
+                        %td
+                          %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
+                          %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
+                          %label.switch
+                            %input#check_driver{type: "checkbox"}/
+                            %span.slider.round
+                    - else
                       %td
-                        %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
-                        %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
-                        %label.switch
-                          %input#check_driver{type: "checkbox"}/
-                          %span.slider.round
-                  - else
-                    %td
-                      %span.status.available Completado
-                  %td= reservation.id
-                  %td= reservation.invoice.token
-                  %td{style:"text-align: center;"}
-                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                        %span.status.available Completado
+                    %td= reservation.id
+                    %td= reservation.invoice.token
+                    %td{style:"text-align: center;"}
+                      %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
 
-                  %td= reservation.reservationable.title[@lang]
-                  %td= truncate(reservation.origin, length: 25)
-                  %td= truncate(reservation.arrival, length: 25)
-                  %td= reservation.user.name.titleize
-                  %td= reservation.travellers.count
-                  %td= reservation.quantity_adults
-                  %td= reservation.quantity_kids
+                    %td= reservation.reservationable.title[@lang]
+                    %td= truncate(reservation.origin, length: 25)
+                    %td= truncate(reservation.arrival, length: 25)
+                    %td= reservation.user.name.titleize
+                    %td= reservation.travellers.count
+                    %td= reservation.quantity_adults
+                    %td= reservation.quantity_kids
 
-
-
--#%section.content-header
-  %h1
-    Órdenes de Reserva
-    -#%small Traslados
--#%section.content
-  .row
-    .col-xs-12
-      .box
-        .box-header
-          %h3.box-title Traslados
-          .box-tools
-            .input-group.input-group-sm{style: "width: 150px;"}
-              %input.form-control.pull-right{name: "table_search", placeholder: "Buscar", type: "text"}/
-              .input-group-btn
-                %button.btn.btn-default{type: "submit"}
-                  %i.fa.fa-search
-        .box-body.table-responsive.no-padding
-          %table.table.table-hover
-            %tbody
-              %tr.items-orders
-                %th Estatus
-                %th N° Orden
-                %th N° Factura
-                %th Estatus
-                %th Vehiculo
-                %th Origen
-                %th Destino
-                %th Responsable
-                %th Pasajeros
-                %th Cant. Adultos
-                %th Cant. Niños
-
-              - @orders.map(&:reservation).each do |reservation|
-                %tr
-                  - unless reservation.order.status.eql?('complete')
-                    = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
-                      %td
-                        %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
-                        %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
-                        %label.switch
-                          %input#check_driver{type: "checkbox"}/
-                          %span.slider.round
-                  - else
-                    %td
-                      %span.status.available Completado
-                  %td= reservation.id
-                  %td= reservation.invoice.token
-                  %td{style:"text-align: center;"}
-                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-
-                  %td= reservation.reservationable.title[@lang]
-                  %td= truncate(reservation.origin, length: 25)
-                  %td= truncate(reservation.arrival, length: 25)
-                  %td= reservation.user.name.titleize
-                  %td= reservation.travellers.count
-                  %td= reservation.quantity_adults
-                  %td= reservation.quantity_kids
 
 %script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript
@@ -136,7 +78,7 @@
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel
       ) {
-        $("#check_driver").attr('checked', false);
+        $("#check_driver").prop('checked', false);
       }
     })
   });
