@@ -64,6 +64,7 @@ module KepplerTravel
 
       # PATCH/PUT /drivers/1
       def update
+        byebug
         if @driver.update(driver_params)
           redirect(@driver, params)
         else
@@ -190,7 +191,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def driver_params
-        params.require(:driver).permit(:bank, :account_type, :destination_id, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :license, :color])
+        params.require(:driver).permit(:bank, :account_type, :destination_id, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :_destroy, licenses_attributes: [:id, :matricula, :color, :_destroy] ], licenses_attributes: [:id, :matricula, :color, :_destroy])
       end
 
       def show_history

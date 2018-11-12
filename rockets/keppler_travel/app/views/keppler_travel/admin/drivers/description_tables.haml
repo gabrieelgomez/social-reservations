@@ -21,42 +21,16 @@
                 .card-header
                   %h3.card-title Vehículos
                 .card-body.table-responsive.p-0
-                  %table.table.table-hover
-                    %tr
-                      %th Nombre
-                      %th Matrícula
-                      %th Color
-                    // Circuitables from Circuit
-                    = f.simple_fields_for :car_descriptions, @driver.car_descriptions.sort_by{|cd| cd.id } do |x|
-                      %tr
-                        %td= x.object.vehicle.title['es']
-                        %td
-                          = x.input :license, label: false
-                        %td
-                          = x.input :color, label: false
+                  = f.simple_fields_for :car_descriptions, @driver.car_descriptions.sort_by{|cd| cd.id } do |x|
+                    %h3.card-title= x.object.vehicle.title['es']
+                    = x.simple_fields_for :licenses, x.object.licenses do |license|
+                      = render 'license_fields', f: license
+                    .links
+                      = link_to_add_association 'Agregar Matriculas', x, :licenses
+                    %hr
+
             .form-padding
               .col-xs-12
               .col-xs-12
                 .pull-right
                   = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
-
-// :javascript
-//
-// - if action_name == 'new'
-//   :javascript
-//     validateCircuit('#new_driver');
-// - else
-//   :javascript
-//     var driver_id = #{raw @driver.id};
-//     validateCircuit(`#edit_driver_${driver_id}`);
-//
-:scss
-  label.error-class{color: #e60707 !important;}
-  .checkbox{position: unset!important;}
-  .checkbox input[type="checkbox"]{
-    position: unset!important;
-    margin-left: unset!important;
-  }
-  [type="checkbox"]{
-    display: unset!important;
-  }
