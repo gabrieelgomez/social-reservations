@@ -64,9 +64,9 @@ module KepplerTravel
 
       # PATCH/PUT /drivers/1
       def update
-        byebug
         if @driver.update(driver_params)
-          redirect(@driver, params)
+          # redirect(@driver, params)
+          redirect_to admin_travel_drivers_path
         else
           render :edit
         end
