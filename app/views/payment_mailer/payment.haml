@@ -270,7 +270,7 @@
                   / Body content
                   %tr
                     %td.content-cell
-                      %h1="¡Estimado Usuario! Has realizado una Reservación"
+                      %h1="¡Gabriel! Ha realizado el pago de la reservación exitosamente"
                       -#- @reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
                       -# unless attribute.eql?('position') || attribute.eql?('deleted_at')                      
                       %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
@@ -279,32 +279,25 @@
                             %table{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
                               %tr
                                 %td.attributes_item
-                                  %strong Nombre Cotizante:
-                                  = @reservation.user
+                                  %strong Item
+                                  -#= @payment.user
                               %tr
                                 %td.attributes_item
-                                  %strong Origen: 
-                                  = @reservation.origin
-                              %tr
-                                %td.attributes_item 
-                                  %strong Cantidad de Adultos:
-                                  = @reservation.quantity_adults
+                                  %strong Item
+                                  -#= @payment.user
                               %tr
                                 %td.attributes_item
-                                  %strong Cantidad de Niños: 
-                                  = @reservation.quantity_kids
+                                  %strong Item
+                                  -#= @payment.user
                               %tr
                                 %td.attributes_item
-                                  %strong Descripción    
-                                  = @reservation.description                          
-                              -#%tr
+                                  %strong Item
+                                  -#= @payment.user
+                              %tr
                                 %td.attributes_item
-                                  %strong Número de vuelo de origen:
-                                  = @reservation.
-                              -#%tr
-                                %td.attributes_item
-                                  %strong Fecha de Vuelo/Recepción de Origen:
-                      %p
+                                  %strong Item
+                                  -#= @payment.user
+                      -#%p
                         Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
                         tener
                         %br/
@@ -319,13 +312,3 @@
                         Desarrollado por
                         %a#company{:href => "http://slicegroup.xyz"}
                           %strong Slice Group
-
--#%table.table.table-striped
-  %tbody
-    - @reservation.as_json(only: ["origin", 'origin_location', 'flight_origin', 'quantity_adults', 'quantity_kids', 'description', 'user']).each do |attribute, value|
-      - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-        %tr.list-row
-          %th.display-label= t("activerecord.attributes.#{attribute}")
-          %td.display-value.fs-body-1.tc-black-2
-            = value.blank? ? '-----------' : value
-
