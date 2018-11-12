@@ -1,23 +1,15 @@
-%section.content-header
-  %h1
-    Órdenes de Reserva
-    -#%small Traslados
-%section.content
+.container-fluid
   .row
-    .col-xs-12
-      .box
-        .box-header
-          %h3.box-title Circuits
-          .box-tools
-            .input-group.input-group-sm{:style => "width: 150px;"}
-              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
-              .input-group-btn
-                %button.btn.btn-default{:type => "submit"}
-                  %i.fa.fa-search
-        .box-body.table-responsive.no-padding
-          %table.table.table-hover
-            %tbody
-              %tr.items-orders
+    .col-12
+      .card
+        / 
+        .card-header
+          %h4.card-title Órdenes de Circuitos
+          -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        .card-body
+          .table-responsive
+            %table.table.table-hover.table-striped
+              %thead
                 %th N° Orden
                 %th N° Factura
                 %th Costo Cotización
@@ -27,15 +19,65 @@
                 %th Fecha de Reserva
                 %th Cant. Adultos
                 %th Cant. Niños
-              - current_user.reservations_where('circuit').each do |reservation|
-                %tr
-                  %td= reservation.id
-                  %td= reservation.invoice.token
-                  %td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                  %td{style:"text-align: center;"}
-                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                  %td= reservation.travellers.first.try(:name)
-                  %td= truncate(reservation.origin, :length => 25)
-                  %td= reservation.flight_origin
-                  %td= reservation.quantity_adults
-                  %td= reservation.quantity_kids
+              %tbody
+                - current_user.reservations_where('circuit').each do |reservation|
+                  %tr
+                    %td= reservation.id
+                    %td= reservation.invoice.token
+                    %td= number_to_currency(reservation.invoice.amount, locale: @locale)
+                    %td{style:"text-align: center;"}
+                      %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                    %td= reservation.travellers.first.try(:name)
+                    %td= truncate(reservation.origin, :length => 25)
+                    %td= reservation.flight_origin
+                    %td= reservation.quantity_adults
+                    %td= reservation.quantity_kids
+
+-#conditioned snippet - variable in the controller #Gabriel
+-#.container-fluid
+  .row
+    .empty-states
+      - if @results.blank?
+        .col-12
+          %center
+            .image-ico
+              %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
+            -#%i.icon-directions.icons
+        .col-12
+          .error
+            %center
+              %p ¡Lo sentimos! 
+              %p No hemos encontrado órdenes de circuitos.    
+      - else
+        .col-12
+          .card
+            / 
+            .card-header
+              %h4.card-title Órdenes de Circuitos
+              -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            .card-body
+              .table-responsive
+                %table.table.table-hover.table-striped
+                  %thead
+                    %th N° Orden
+                    %th N° Factura
+                    %th Costo Cotización
+                    %th Estatus Reserva
+                    %th Cotizante
+                    %th Circuito
+                    %th Fecha de Reserva
+                    %th Cant. Adultos
+                    %th Cant. Niños
+                  %tbody
+                    - current_user.reservations_where('circuit').each do |reservation|
+                      %tr
+                        %td= reservation.id
+                        %td= reservation.invoice.token
+                        %td= number_to_currency(reservation.invoice.amount, locale: @locale)
+                        %td{style:"text-align: center;"}
+                          %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                        %td= reservation.travellers.first.try(:name)
+                        %td= truncate(reservation.origin, :length => 25)
+                        %td= reservation.flight_origin
+                        %td= reservation.quantity_adults
+                        %td= reservation.quantity_kids

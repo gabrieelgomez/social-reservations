@@ -1,5 +1,17 @@
-%script{:src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+%script{:crossorigin => "anonymous", :integrity => "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", :src => "https://code.jquery.com/jquery-3.3.1.min.js"}
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
 %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
-%script{:src => "/assets/js/loader.js"}
-%script{:src => "/assets/js/hamburger.js"}
+%script{:src => "/assets/app/googlefontAsync.js"}
+:javascript
+  $(window).on("load", function (e) {
+    setTimeout(function () {
+      $('.loader').fadeOut(500, function () {
+        $(this).remove();
+      });
+      $('body').css('overflow-y', 'auto');
+    }, 1000);
+  });
+
+  $( "#js-menu-mobile" ).click(function() {
+    $('#js-mobile').addClass('nav-open');
+  });

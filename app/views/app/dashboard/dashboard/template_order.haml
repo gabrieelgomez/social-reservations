@@ -4,13 +4,11 @@
     = render 'app/dashboard/dashboard/layouts/head'
     -#= render 'app/layouts/head'
   %body
-    -#.loader
-      = render 'app/front/loader/loader'
     %div#js-mobile
       .notifications
         %span{:mode => "in-out"}
       .wrapper
-        .sidebar{style: "background-image: url(/assets/img/sidebar-5.jpg)"}
+        .sidebar{style: "background-image: url(/assets/img/sidebar-2.jpg)"}
           = render 'app/dashboard/dashboard/layouts/sidebar'
         .main-panel
           = render 'app/dashboard/dashboard/layouts/main'
@@ -22,7 +20,7 @@
                     / 
                     .card-header
                       %h4.card-title Traslados
-                      %p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     .card-body
                       .table-responsive
                         %table.table.table-hover.table-striped

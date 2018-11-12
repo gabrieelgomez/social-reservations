@@ -1,64 +1,99 @@
-.edit_perfile{style:"width: 100%; padding-top: 25px;"}
-= simple_form_for @user, url: user_update_path, method: :post do |f|
-  .container
-    %h1 Editar Perfil
-    %hr/
+.container-fluid
+  = simple_form_for @user, url: user_update_path, method: :post do |f|
     .row
+      .col-md-8
+        .card
+          .card-header
+            %h4.card-title.text-capitalize Editar perfil
+          .card-body
+            = simple_form_for @user, url: user_update_path, method: :post do |f|
+              .row
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Nombre
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Name", :type => "text"}/
+                    = f.input :name, :autofocus => true, class: '', label: false                          
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Identificación
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Identification", :type => "text"}/
+                    = f.input :dni, :autofocus => true, class: '', label: false, disabled: true  
+              .row
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Correo electrónico
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "E-mail", :type => "email"}/
+                    = f.input :email, :autofocus => true, class: '', label: false  
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Teléfono
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Phone", :type => "tel"}/
+                    = f.input :phone, :autofocus => true, class: '', label: false 
+              .row
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Contraseña
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Password", :type => "number"}/
+                    = f.input :password, :autocomplete => 'off', class: '', label: false
+                .col-md-6
+                  .form-group
+                    %label.control-label
+                      Confirmar contraseña
+                    -#%input.form-control{"aria-describedby" => "addon-right addon-left", :placeholder => "Confirm Password", :type => "number"}/
+                    = f.input :password_confirmation, class: 'form-control', label: false
+              .text-center
+                %button.btn.btn-info.btn-fill.float-right{:type => "submit"}
+                  Guardar
+              .clearfix
+      .col-md-4
+        .card.card-user
+          .card-image
+            %img{:alt => "...", :src => "/assets/img/bg-3.jpg"}/
+          .card-body
+            .author
+              %a{:href => "#"}
+                -#%img.avatar.border-gray{:alt => "...", :src => "/assets/img/user.png"}/
+                %img.avatar.border-gray.img-fluid{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
+                %h4.title{:style => 'font-family: "Poppins", sans-serif;'}="#{@user.name}"
+                %br/
+                -#%small michael24
+            -#%p.description.text-center
+              "Lamborghini Mercy
+              %br/
+              Your chick she so thirsty
+              %br/
+              I'm in that two seat Lambo"
+          -#.card-footer
+            %hr/
+            .text-center
+              %button.btn.btn-simple{:href => "#"}
+                %i.fa.fa-facebook-square
+              %button.btn.btn-simple{:href => "#"}
+                %i.fa.fa-twitter
+              %button.btn.btn-simple{:href => "#"}
+                %i.fa.fa-google-plus-square
+        .row
+          .col-md-12
+            %center
+            = f.input :avatar, as: :keppler_file, label: false, id:'customFile', class:'custom-file-input'
+            -#.custom-file.mb-3
+              -#%input#customFile.custom-file-input{:name => "filename", :type => "file"}/
+              -#%label.custom-file-label{:for => "customFile"} Subir imagen de perfil
+              -#Upload profile image
 
-      .col-lg-9
-        %h3="¡Hola! #{@user.name}"
-        %form.form-horizontal{:role => "form"}
-          .col-lg-6
-            .form-group
-              %label.control-label Nombre:
-              = f.input :name, :autofocus => true, class: 'form-control', label: false
+= render 'app/dashboard/dashboard/layouts/scripts'
 
-            .form-group
-              %label.control-label Correo electrónico:
-              = f.input :email, class: 'form-control', label: false
-          .col-lg-6
-            .form-group
-              %label.control-label Identificación:
-              = f.input :dni, class: 'form-control', label: false
-
-            .form-group
-              %label.control-label Teléfono:
-              = f.input :phone, class: 'form-control', label: false
-
-          .col-lg-6
-            .form-group
-              %label.control-label Contraseña
-              = f.input :password, :autocomplete => 'off', class: 'form-control', label: false
-          .col-lg-6
-            .form-group
-              %label.control-label Confirmar contraseña
-              = f.input :password_confirmation, class: 'form-control', label: false
-          -# .col-lg-6.pull-left
-          -#   .form-group
-          -#     %label.control-label Contraseña actual
-          -#     = f.input :current_password, class: 'form-control', label: false
-
-      .col-md-3
-        .form-group
-          %label Subir Imagen
-          %center
-            %img.avatar.img-circle{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
-            = f.input :avatar, as: :keppler_file, label: false
-
-      .col-lg-12
-        .form-group
-          %input.btn.btn-primary{:type => "submit", :value => "Guadar"}/
-
-
-%script{:src => "/assets/js/jquery-validate.js"}
-%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
-:javascript
-  var notice = "#{notice}";
-
-  if (notice == 'success'){
-   swal({
-    type: 'success',
-    title: '¡Listo!',
-    text: '¡Cambios guardados exitosamente!'
-   })
+:scss
+  .help-block{
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #9A9A9A;
   }
+
+

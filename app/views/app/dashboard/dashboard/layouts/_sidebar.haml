@@ -1,26 +1,24 @@
 .sidebar-wrapper
   .logo
-    %a.simple-text{:href => "#"}
+    %a.simple-text{:href => "#", :style => 'font-family: "Poppins", sans-serif;font-weight: bold;text-transform: capitalize;font-size: 14px;'}
       .logo-img
         %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
       Receptivo Colombia
-  %ul.nav.nav-mobile-menu
-    %li.dropdown.nav-item{"aria-haspopup" => "true"}
+  -#%ul.nav.nav-mobile-menu
+    -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
       %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-        %i.fa.fa-globe
-        %b.caret
         %span.notification 5 Notifications
-      .dropdown-menu{:style => "display: none;"}
+      .dropdown-menu
         %a.dropdown-item{:href => "#"} Notification 1
         %a.dropdown-item{:href => "#"} Notification 2
         %a.dropdown-item{:href => "#"} Notification 3
         %a.dropdown-item{:href => "#"} Notification 4
         %a.dropdown-item{:href => "#"} Another notification
-    %li.nav-item
+    -#%li.nav-item
       %a.nav-link{:href => "#"}
         %i.nc-icon.nc-zoom-split.hidden-lg-up
         %span.d-lg-none Search
-    %li.dropdown.nav-item{"aria-haspopup" => "true"}
+    -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
       %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
         %i
         %span.no-icon Dropdown
@@ -36,39 +34,33 @@
       %a.nav-link{:href => "#pablo"}
         %span.no-icon Log out
   %ul.nav
-    %li.router-link-exact-active.nav-item.active
-      %a.nav-link{:href => "#"}
+    -#%li
+      %label.nav-link{:href => "#"}
         %i.nc-icon.nc-chart-pie-35
         %p Mi Tablero
+    -# Order of Items: 1.Traslados 2.Tours 3.Circuitos 4.Multidestinos
     %li
-      %a.nav-link{:href => "#"}
-        %i.nc-icon.nc-circle-09
-        %p Consultas
+      = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
+        %i.nc-icon.nc-delivery-fast
+        %p Traslados
     %li
-      %a.nav-link{:href => "#"}
-        %i.nc-icon.nc-notes
-        %p Ordenes
+      = link_to orders_path(@lang, @currency, 'tours'), class:"nav-link" do
+        %i.nc-icon.nc-map-big
+        %p Tours
     %li
-      %a.nav-link{:href => "#"}
-        %i.nc-icon.nc-paper-2
-        %p Perfil
-      
-    /
-      <li class="">
-      <a href="#/admin/icons" class="nav-link">
-      <i class="nc-icon nc-atom"></i>
-      <p>Icons</p>
-      </a>
-      </li>
-      <li class="">
-      <a href="#/admin/maps" class="nav-link">
-      <i class="nc-icon nc-pin-3"></i>
-      <p>Maps</p>
-      </a>
-      </li>
-      <li class="">
-      <a href="#/admin/notifications" class="nav-link">
-      <i class="nc-icon nc-bell-55"></i>
-      <p>Notifications</p>
-      </a>
-      </li>
+      = link_to orders_path(@lang, @currency, 'circuits'), class:"nav-link" do
+        %i.nc-icon.nc-bus-front-12
+        %p Circuitos
+    %li
+      = link_to orders_path(@lang, @currency, 'multidestinations'), class:"nav-link" do
+        %i.nc-icon.nc-send
+        %p Multidestinos
+    %li
+      = link_to users_details_path(@lang, @currency), class:"nav-link" do
+        %i.nc-icon.nc-single-02
+        %p Mi Perfil
+    %li.d-block.d-md-none
+      = link_to destroy_session_path(current_user), class:'nav-link'  do
+        %i.nc-icon.nc-button-power
+        %p Cerrar Sesión
+

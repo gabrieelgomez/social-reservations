@@ -1,23 +1,15 @@
-%section.content-header
-  %h1
-    Órdenes de Reserva
-    -#%small Traslados
-%section.content
+.container-fluid
   .row
-    .col-xs-12
-      .box
-        .box-header
-          %h3.box-title Tours
-          .box-tools
-            .input-group.input-group-sm{:style => "width: 150px;"}
-              %input.form-control.pull-right{:name => "table_search", :placeholder => "Buscar", :type => "text"}/
-              .input-group-btn
-                %button.btn.btn-default{:type => "submit"}
-                  %i.fa.fa-search
-        .box-body.table-responsive.no-padding
-          %table.table.table-hover
-            %tbody
-              %tr.items-orders
+    .col-12
+      .card
+        / 
+        .card-header
+          %h4.card-title Órdenes de Tours
+          -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        .card-body
+          .table-responsive
+            %table.table.table-hover.table-striped
+              %thead
                 %th N° Orden
                 %th N° Factura
                 %th Moneda
@@ -28,24 +20,84 @@
                 %th Pasajeros
                 %th Cant. Adultos
                 %th Cant. Niños
-              - current_user.reservations_where('tour').each do |reservation|
-                %tr
-                  %td= reservation.id
-                  %td= reservation.invoice.token
-                  %td= reservation.invoice.currency.upcase
-                  %td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                  %td{style:"text-align: center;"}
-                    %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                  %td{style:"text-align: center;"}
-                    - if reservation.invoice.status_pay? :pending
-                      %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
-                        %button.btn.btn-primary.btn-xs{:type => "button"}
-                          %span
-                            %i.icon-credit-card.icons
-                          Pagar
-                    - else
-                      %h6 Pagado
-                  %td= reservation.reservationable.title[@lang]
-                  %td= reservation.travellers.count
-                  %td= reservation.quantity_adults
-                  %td= reservation.quantity_kids
+              %tbody
+                - current_user.reservations_where('tour').each do |reservation|
+                  %tr
+                    %td= reservation.id
+                    %td= reservation.invoice.token
+                    %td= reservation.invoice.currency.upcase
+                    %td= number_to_currency(reservation.invoice.amount, locale: @locale)
+                    %td{style:"text-align: center;"}
+                      %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                    %td{style:"text-align: center;"}
+                      - if reservation.invoice.status_pay? :pending
+                        %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
+                          %button.btn.btn-primary.btn-xs{:type => "button"}
+                            %span
+                              %i.icon-credit-card.icons
+                            Pagar
+                      - else
+                        %h6 Pagado
+                    %td= reservation.reservationable.title[@lang]
+                    %td= reservation.travellers.count
+                    %td= reservation.quantity_adults
+                    %td= reservation.quantity_kids
+
+-#conditioned snippet - variable in the controller
+-#.container-fluid
+  .row
+    .empty-states
+      - if @results.blank?
+        .col-12
+          %center
+            .image-ico
+              %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
+            -#%i.icon-directions.icons
+        .col-12
+          .error
+            %center
+              %p ¡Lo sentimos! 
+              %p No hemos encontrado órdenes de tours.    
+      - else
+        .col-12
+          .card
+            / 
+            .card-header
+              %h4.card-title Órdenes de Tours
+              -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            .card-body
+              .table-responsive
+                %table.table.table-hover.table-striped
+                  %thead
+                    %th N° Orden
+                    %th N° Factura
+                    %th Moneda
+                    %th Costo Reserva
+                    %th Estatus Reserva
+                    %th Pago
+                    %th Tour
+                    %th Pasajeros
+                    %th Cant. Adultos
+                    %th Cant. Niños
+                  %tbody
+                    - current_user.reservations_where('tour').each do |reservation|
+                      %tr
+                        %td= reservation.id
+                        %td= reservation.invoice.token
+                        %td= reservation.invoice.currency.upcase
+                        %td= number_to_currency(reservation.invoice.amount, locale: @locale)
+                        %td{style:"text-align: center;"}
+                          %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                        %td{style:"text-align: center;"}
+                          - if reservation.invoice.status_pay? :pending
+                            %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
+                              %button.btn.btn-primary.btn-xs{:type => "button"}
+                                %span
+                                  %i.icon-credit-card.icons
+                                Pagar
+                          - else
+                            %h6 Pagado
+                        %td= reservation.reservationable.title[@lang]
+                        %td= reservation.travellers.count
+                        %td= reservation.quantity_adults
+                        %td= reservation.quantity_kids

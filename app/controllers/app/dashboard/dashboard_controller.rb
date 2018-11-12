@@ -27,7 +27,7 @@ module App
       end
 
       def drivers
-        @orders = current_user.driver.orders
+        @orders = current_user&.driver&.orders
       end
 
       private

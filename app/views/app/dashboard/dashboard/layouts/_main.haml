@@ -7,7 +7,7 @@
       %span.navbar-toggler-bar.burger-lines
     .collapse.navbar-collapse.justify-content-end
       %ul.nav.navbar-nav.mr-auto
-        %li.nav-item
+        -#%li.nav-item
           %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
             %i.nc-icon.nc-palette
         /
@@ -39,13 +39,17 @@
           Account
           </a>
           </li>
-        %li.dropdown.nav-item{"aria-haspopup" => "true"}
+        -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
             %i
-            %span.no-icon Mi perfil
+            %span.no-icon Cerrar Sesión
             %b.caret
-          .dropdown-menu
+          -#.dropdown-menu
             %a.dropdown-item{:href => "#"} Perfil
             %a.dropdown-item{:href => "#"} Mis Reservaciones
             %a.dropdown-item{:href => "#"} Cerrar Sesión
         %li
+          = link_to destroy_session_path(current_user), class:''  do
+            -#%i.nc-icon.nc-button-power
+            Cerrar Sesión
+          -#%span.no-icon 
