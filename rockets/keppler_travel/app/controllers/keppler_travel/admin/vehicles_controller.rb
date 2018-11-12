@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /vehicles
       def index
-        @q = Vehicle.ransack(params[:q])
+        filter_destination
         vehicles = @q.result(distinct: true)
         @objects = vehicles.page(@current_page).order(position: :asc)
         @total = vehicles.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to vehicles_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@vehicles)
+      end
+
+      def filter_destination
+        @destinations = Vehicle.all.map(&:destinations).flatten.uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Vehicle.ransack(params[:q])
+        else
+          @q = Vehicle.ransack(params[:q]).result.includes(:destinations).ransack(destinations_title_cont: params[:destination])
+        end
       end
 
       def prices_tables

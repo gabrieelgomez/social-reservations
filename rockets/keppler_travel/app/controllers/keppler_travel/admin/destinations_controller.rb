@@ -15,15 +15,24 @@ module KepplerTravel
 
       # GET /destinations
       def index
-        @q = Destination.ransack(params[:q])
+        filter_destination
         destinations = @q.result(distinct: true)
-        @objects = destinations.page(@current_page).order(position: :asc)
+        @objects = destinations.page(@current_page).order(title: :asc)
         @total = destinations.size
         @destinations = @objects.all
         if !@objects.first_page? && @objects.size.zero?
           redirect_to destinations_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@destinations)
+      end
+
+      def filter_destination
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Destination.ransack(params[:q])
+        else
+          @q = Destination.ransack(params[:q]).result.ransack(title_cont: params[:destination])
+        end
       end
 
       # GET /destinations/1

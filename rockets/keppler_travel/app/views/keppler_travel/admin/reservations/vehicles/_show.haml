@@ -109,12 +109,12 @@
                     - unless @reservation.driver.nil?
                       .col-lg-8.pull-left
                         = @reservation.driver.user.name
-                      - unless @reservation.order.status.eql?('complete')
-                        .col-lg-4
-                          = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
-                            %i.icon-close{style: 'color:red'}
-                            -# .arrow-back.btn.btn-default
-                            -#   = t('keppler.actions.unassign')
+                      -# - unless @reservation.order.status.eql?('complete')
+                      .col-lg-4
+                        = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
+                          %i.icon-close{style: 'color:red'}
+                          -# .arrow-back.btn.btn-default
+                          -#   = t('keppler.actions.unassign')
                     - else
                       = '-----------'
                 %tr.list-row
@@ -136,10 +136,16 @@
                       %th.display-label Lista de Choferes Disponibles
                       %td.display-value.fs-body-1.tc-black-2
                         %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
-                          - KepplerTravel::Driver.all.each do |driver|
+                          - @reservation.reservationable.drivers.each do |driver|
                             %option{ value: driver.id}= driver.user.name
-                          -# - KepplerTravel::Driver.driver_avaible.each do |driver|
-                            %option{ value: driver.id}= driver.user.name
+                    -# %tr.list-row
+                    -#   %th.display-label Matrícula de Vehículos
+                    -#   %td.display-value.fs-body-1.tc-black-2
+                    -#     %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                    -#       - @reservation.reservationable.drivers.each do |driver|
+                    -#         %option{ value: driver.id}= driver.user.name
+
+
                     %tr.list-row
                       %th.display-label= f.button :submit, t('keppler.actions.assignment'), name: '_save', class: 'btn-primary'
 

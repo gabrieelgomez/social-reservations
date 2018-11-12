@@ -10,10 +10,10 @@ module KepplerTravel
     belongs_to :destination
     has_many :orders
     has_many :reservations, through: :orders
-    has_many :car_descriptions
+    has_many :car_descriptions, inverse_of: :driver
     has_and_belongs_to_many :vehicles
     accepts_nested_attributes_for :user
-    accepts_nested_attributes_for :car_descriptions
+    accepts_nested_attributes_for :car_descriptions, reject_if: :all_blank, allow_destroy: true
 
     def selected_vehicle(vehicle)
       self.vehicle_ids.include?(vehicle) ? 'selected' : false

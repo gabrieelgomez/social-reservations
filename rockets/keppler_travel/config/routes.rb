@@ -4,8 +4,29 @@ KepplerTravel::Engine.routes.draw do
   namespace :admin do
     scope :travel, as: :travel do
 
+      namespace :destinations do
+        post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
       namespace :drivers do
         post '/update_user', action: :update_user
+        post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
+      namespace :lodgments do
+        post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
+      namespace :multidestinations do
+        post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
+      namespace :vehicles do
+        post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
+      namespace :tours do
+        post 'filter_by_destination', action: :index, as: :filter_destination
       end
 
       namespace :reservations do

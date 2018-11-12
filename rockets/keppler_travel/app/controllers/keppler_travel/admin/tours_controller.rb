@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /tours
       def index
-        @q = Tour.ransack(params[:q])
+        filter_destination
         tours = @q.result(distinct: true)
         @objects = tours.page(@current_page).order(position: :asc)
         @total = tours.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to tours_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@tours)
+      end
+
+      def filter_destination
+        @destinations = Tour.all.map(&:destinations).flatten.uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Tour.ransack(params[:q])
+        else
+          @q = Tour.ransack(params[:q]).result.includes(:destinations).ransack(destinations_title_cont: params[:destination])
+        end
       end
 
       # GET /tours/1

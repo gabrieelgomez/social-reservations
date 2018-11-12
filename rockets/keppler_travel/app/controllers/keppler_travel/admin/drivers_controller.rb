@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /drivers
       def index
-        @q = Driver.ransack(params[:q])
+        filter_destination
         drivers = @q.result(distinct: true)
         @objects = drivers.page(@current_page).order(position: :asc)
         @total = drivers.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to drivers_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@drivers)
+      end
+
+      def filter_destination
+        @destinations = Driver.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Driver.ransack(params[:q])
+        else
+          @q = Driver.ransack(params[:q]).result.includes(:destination).ransack(destination_title_cont: params[:destination])
+        end
       end
 
       # GET /drivers/1
@@ -55,7 +65,8 @@ module KepplerTravel
       # PATCH/PUT /drivers/1
       def update
         if @driver.update(driver_params)
-          redirect(@driver, params)
+          # redirect(@driver, params)
+          redirect_to admin_travel_drivers_path
         else
           render :edit
         end
@@ -180,7 +191,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def driver_params
-        params.require(:driver).permit(:bank, :account_type, :destination_id, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :license, :color])
+        params.require(:driver).permit(:bank, :account_type, :destination_id, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :_destroy, licenses_attributes: [:id, :matricula, :color, :_destroy] ], licenses_attributes: [:id, :matricula, :color, :_destroy])
       end
 
       def show_history

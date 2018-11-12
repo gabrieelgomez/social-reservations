@@ -1,6 +1,7 @@
 %nav.navbar.navbar-expand-lg
   .container-fluid
     %a.navbar-brand{:href => "#"} Mi Tablero
+    %span= current_user.email
     %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
       %span.navbar-toggler-bar.burger-lines
       %span.navbar-toggler-bar.burger-lines
@@ -52,4 +53,4 @@
           = link_to destroy_session_path(current_user), class:''  do
             -#%i.nc-icon.nc-button-power
             Cerrar Sesión
-          -#%span.no-icon 
+          -#%span.no-icon

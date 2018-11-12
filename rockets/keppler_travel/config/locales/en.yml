@@ -1,13 +1,51 @@
 en:
   keppler:
     sidebar-menu:
-      keppler-travel: Keppler Travel
-      keppler-travel-submenu:
+      reservations: Reservaciones
+      destinations: Destinos
+      lodgments: Alojamientos
+      multidestinations: Multidestinos
+      circuits: Circuitos
+      tours: Tours
+      vehicles: Vehículos
+      drivers: Choferes
+      reservations-submenu:
+        multidestinations: Multidestinos
+        circuits: Circuitos
+        tours: Tours
+        vehicles: Traslados
     models:
       singularize:
+        keppler_travel/reservation: reservación
+        keppler_travel/destination: destino
+        keppler_travel/lodgment: alojamiento
+        keppler_travel/tour: tour
+        keppler_travel/multidestination: multidestino
+        keppler_travel/circuit: circuito
+        keppler_travel/vehicle: vehículo
+        keppler_travel/driver: chofer
       pluralize:
+        reservations: reservaciones
+        destinations: destinos
+        lodgments: alojamientos
+        tours: tours
+        multidestinations: multidestinos
+        circuits: circuitos
+        vehicles: vehículos
+        drivers: choferes
     modules:
+      keppler_travel/admin/reservations: "KepplerTravel → Reservaciones %{model}"
+      keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
+      keppler_travel/admin/lodgments: 'KepplerTravel → Alojamientos'
+      keppler_travel/admin/tours: 'KepplerTravel → Tours'
+      keppler_travel/admin/multidestinations: 'KepplerTravel → Multidestinos'
+      keppler_travel/admin/circuits: 'KepplerTravel → Circuitos'
+      keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
+      keppler_travel/admin/drivers: 'KepplerTravel → Choferes'
     actions:
+      confirm_transfer: Confirmar Traslado
+      unassign: Desasignar
+      assignment: Asignar
       created: Created
       updated: Updated
       create: Create
@@ -37,6 +75,39 @@ en:
       apply: Apply
   activerecord:
     attributes:
+      quantity_days: Cantidad de Días
+      include: Incluye
+      exclude: Excluye
+      itinerary: Itinerario
+      destinations: Destinos
+      price: Precio
+      custom_title: Título Personalizado
+      latitude: Latitud
+      longitude: Longitud
+      price_adults: Precio Adultos
+      price_kids: Precio Niños
+      seat: Asientos
+      inner_price: Precio dentro Perímetro
+      outer_price: Precio fuera Perímetro
+      task: Tareas
+      origin: Origen
+      arrival: Llegada
+      origin_location: Coordenadas de Origen
+      arrival_location: Coordenadas de Llegada
+      flight_origin: Fecha de Vuelo/Recepción de Origen
+      flight_arrival: Fecha de Vuelo/Recepción de Llegada
+      quantity_adults: Cantidad de Adultos
+      quantity_kids: Cantidad de Niños
+      quantity_kit: Cantidad de Equipaje
+      round_trip: ¿Ida y Vuelta?
+      airline_origin: Aeropuerto Origen
+      airline_arrival: Aeropuerto Llegada
+      kit: Equipaje
+      kit_weight: Equipaje del Vehículo (Peso)
+      kit_quantity: Equipaje del Vehículo (Cantidad de pasajeros)
+      seat_max: Asientos máx. Permitidos
+      price_cop: Precio COP
+      price_usd: Precio USD
       id: Id
       title: Title
       subtitle: Subtitle
@@ -101,4 +172,3 @@ en:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
-  

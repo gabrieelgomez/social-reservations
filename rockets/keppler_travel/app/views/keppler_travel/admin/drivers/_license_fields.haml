@@ -1,0 +1,9 @@
+.nested-fields
+  .row
+    .col-lg-6
+      .col-lg-4
+        = f.input :matricula, label: 'Matrícula'
+      .col-lg-4
+        = f.input :color, label: 'Color'
+      .col-lg-4
+        = link_to_remove_association "Remover Matricula", f

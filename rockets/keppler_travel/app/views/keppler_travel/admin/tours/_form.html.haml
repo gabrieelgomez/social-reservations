@@ -50,7 +50,7 @@
                               = field.input :en, label: 'Title'
                           .col-xs-12.col-md-12
                             = f.simple_fields_for :subtitle, OpenStruct.new(@tour.subtitle) do |field|
-                              = field.input :eb, label: 'Subtitulo'
+                              = field.input :en, label: 'Subtitulo'
                           .col-xs-12.col-md-12.col-lg-6
                             = f.simple_fields_for :description, OpenStruct.new(@tour.description) do |field|
                               = field.input :en, label: 'Description', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
