@@ -40,6 +40,15 @@
                 %i.icon-directions
                 = t("keppler.modules.#{action_name.underscore}")
 
+        .form-group
+          %label.control-label.string.required{ for: 'user_name' }
+            Filtrar por Destino
+          = simple_form_for KepplerTravel::Destination.last, url: admin_travel_destinations_filter_destination_path, method: :post do
+            %select.form-control.form-control#filter_by_destination{ name: 'destination', onchange: '$(this).parent().submit()'}
+              %option{ name: 'destination', value: 'all' } Todos
+              - KepplerTravel::Destination.all.each do |destination|
+                %option{ name: 'destination', value: destination.custom_title['es'], selected: (@selected if destination.custom_title['es'] == @selected) }= destination.custom_title['es']
+
         .box.slice-box
           .box-body.no-padding
 

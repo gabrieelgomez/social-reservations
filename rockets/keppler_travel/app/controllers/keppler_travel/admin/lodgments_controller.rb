@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /lodgments
       def index
-        @q = Lodgment.ransack(params[:q])
+        filter_destination
         lodgments = @q.result(distinct: true)
         @objects = lodgments.page(@current_page).order(position: :asc)
         @total = lodgments.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to lodgments_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@lodgments)
+      end
+
+      def filter_destination
+        @destinations = Lodgment.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Lodgment.ransack(params[:q])
+        else
+          @q = Lodgment.ransack(params[:q]).result.includes(:destination).ransack(destination_title_cont: params[:destination])
+        end
       end
 
       # GET /lodgments/1

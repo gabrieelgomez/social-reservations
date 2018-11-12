@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /drivers
       def index
-        @q = Driver.ransack(params[:q])
+        filter_destination
         drivers = @q.result(distinct: true)
         @objects = drivers.page(@current_page).order(position: :asc)
         @total = drivers.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to drivers_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@drivers)
+      end
+
+      def filter_destination
+        @destinations = Driver.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Driver.ransack(params[:q])
+        else
+          @q = Driver.ransack(params[:q]).result.includes(:destination).ransack(destination_title_cont: params[:destination])
+        end
       end
 
       # GET /drivers/1

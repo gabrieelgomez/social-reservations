@@ -136,10 +136,16 @@
                       %th.display-label Lista de Choferes Disponibles
                       %td.display-value.fs-body-1.tc-black-2
                         %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
-                          - KepplerTravel::Driver.all.each do |driver|
+                          - @reservation.reservationable.drivers.each do |driver|
                             %option{ value: driver.id}= driver.user.name
-                          -# - KepplerTravel::Driver.driver_avaible.each do |driver|
-                            %option{ value: driver.id}= driver.user.name
+                    -# %tr.list-row
+                    -#   %th.display-label Matrícula de Vehículos
+                    -#   %td.display-value.fs-body-1.tc-black-2
+                    -#     %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                    -#       - @reservation.reservationable.drivers.each do |driver|
+                    -#         %option{ value: driver.id}= driver.user.name
+
+
                     %tr.list-row
                       %th.display-label= f.button :submit, t('keppler.actions.assignment'), name: '_save', class: 'btn-primary'
 

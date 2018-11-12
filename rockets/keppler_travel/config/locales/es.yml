@@ -14,7 +14,6 @@ es:
         circuits: Circuitos
         tours: Tours
         vehicles: Traslados
-      keppler-travel-submenu:
     models:
       singularize:
         keppler_travel/reservation: reservación

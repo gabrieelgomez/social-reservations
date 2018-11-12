@@ -1,12 +1,19 @@
 en:
   keppler:
     sidebar-menu:
-      keppler-contactus: Keppler Contactus
+      request: PQRS
+      keppler-contactus: Keppler Contact Us
       keppler-contactus-submenu:
+      messages: Mensajes
     models:
       singularize:
+        message: mensaje
+        keppler_contactus/request: petición
       pluralize:
+        messages: mensajes
+        requests: peticiones
     modules:
+      keppler_contactus/admin/requests: 'KepplerTravel → PQRS'
     actions:
       created: Created
       updated: Updated
@@ -101,4 +108,3 @@ en:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
-  

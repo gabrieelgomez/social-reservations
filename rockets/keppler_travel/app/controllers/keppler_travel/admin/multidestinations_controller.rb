@@ -15,7 +15,7 @@ module KepplerTravel
 
       # GET /multidestinations
       def index
-        @q = Multidestination.ransack(params[:q])
+        filter_destination
         multidestinations = @q.result(distinct: true)
         @objects = multidestinations.page(@current_page).order(position: :asc)
         @total = multidestinations.size
@@ -24,6 +24,16 @@ module KepplerTravel
           redirect_to multidestinations_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@multidestinations)
+      end
+
+      def filter_destination
+        @destinations = Multidestination.all.map(&:destinations).flatten.uniq.sort_by {|dest| dest.custom_title['es']}
+        @selected = params[:destination]
+        if params[:destination] == 'all'
+          @q = Multidestination.ransack(params[:q])
+        else
+          @q = Multidestination.ransack(params[:q]).result.includes(:destinations).ransack(destinations_title_cont: params[:destination])
+        end
       end
 
       # GET /multidestinations/1

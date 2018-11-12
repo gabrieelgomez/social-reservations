@@ -14,17 +14,17 @@
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          = tour.title[I18n.locale.to_s]
+          = tour.title['es']
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
           -# = sanitize(tour.description[I18n.locale.to_s]).truncate(300)
-          = tour.description[I18n.locale.to_s].html_safe.truncate(300)
+          = tour.description['es'].html_safe.truncate(300)
 
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          = sanitize(tour.task[I18n.locale.to_s]).truncate(300)
+          = sanitize(tour.task['es']).truncate(300)
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
     -#     %span

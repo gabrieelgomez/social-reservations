@@ -45,17 +45,37 @@ $(document).ready(function () {
           if (addressType.includes('administrative_area_level_1')){
             departament = place.address_components[i].long_name;
             if (id_input == 'origin_name'){
-              let field = $('#origin_departament').val(departament);
+              exception = validateExceptions(departament);
+              let field = $('#origin_departament').val(exception);
+              departament = exception;
               // $('.origin_name').text(`Desde: Localidad, ${departament}`);
             }
             else{
-              let field = $('#arrival_departament').val(departament);
+              exception = validateExceptions(departament);
+              let field = $('#arrival_departament').val(exception);
+              departament = exception;
               // $('.arrival_name').text(`Hasta: Localidad, ${departament}`);
             }
             // alert(departament);
             break;
           }
         }
+
+        function validateExceptions(exception){
+          switch (exception) {
+            case 'Bogotá':
+              exception = 'Cundinamarca';
+              break;
+            case 1:
+              exception = "Monexception";
+              break;
+            case 2:
+              exception = "Tuesday";
+              break;
+          }
+          return exception;
+        }
+
         // For each address administrative_area_level_1 in hash
 
         // For each address locality in hash
