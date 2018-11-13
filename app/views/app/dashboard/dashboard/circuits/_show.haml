@@ -34,7 +34,7 @@
                     %th Cant. Adultos
                     %th Cant. Niños
                   %tbody
-                    - current_user.reservations_where('circuit').each do |reservation|
+                    - current_user.reservations_where('circuit').reverse.each do |reservation|
                       %tr
                         %td= reservation.id
                         %td= reservation.invoice.token

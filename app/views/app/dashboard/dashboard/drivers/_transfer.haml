@@ -23,7 +23,7 @@
                   %th Cant. Adultos
                   %th Cant. Niños
 
-                - @orders.map(&:reservation).each do |reservation|
+                - @orders.reverse.map(&:reservation).each do |reservation|
                   %tr
                     - unless reservation.order.status.eql?('complete')
                       = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
