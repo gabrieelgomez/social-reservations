@@ -1,0 +1,103 @@
+.container-fluid
+  .row
+    .col-12.col-xl-8
+      .card
+        .card-header
+          %h4.card-title Detalles de la Reservación 
+          -#%p.card-category Lorem ipsum dolor sit amet consectetur
+        .card-body
+          -#items for modules
+          %ul.list-group.list-group-flush
+            %li.list-group-item 
+              Orden:
+              %span 1111
+            %li.list-group-item 
+              Factura:
+              %span
+            %li.list-group-item 
+              Cotizante:
+              %span 
+            %li.list-group-item 
+              Estatus:
+              %span 
+            %li.list-group-item 
+              Moneda:
+              %span 
+            %li.list-group-item 
+              Costo:
+              %span 
+            %li.list-group-item 
+              Pago:
+              %span 
+            %li.list-group-item 
+              -#Add condition depending on the module
+              -#Traslado:
+              -#Tour:
+              -#Circuito
+              -#Multidestino
+              nombre_modulo:
+              %span 
+            %li.list-group-item 
+              Origen:
+              %span 
+            %li.list-group-item 
+              Destino:
+              %span 
+            %li.list-group-item 
+              Pasajeros:
+              %span 
+            %li.list-group-item 
+              Cantidad Adultos:
+              %span 
+            %li.list-group-item 
+              Cantidad Niños:
+              %span 
+
+          -#items for drivers
+          -#%ul.list-group.list-group-flush
+            %li.list-group-item 
+              Orden:
+              %span 
+            %li.list-group-item 
+              Factura:
+              %span
+            %li.list-group-item 
+              Cotizante:
+              %span 
+            %li.list-group-item 
+              Estatus:
+              %span 
+            %li.list-group-item 
+              Vehiculo:
+              %span 
+            %li.list-group-item 
+              Origen:
+              %span 
+            %li.list-group-item 
+              Destino:
+              %span 
+            %li.list-group-item 
+              Pasajeros:
+              %span 
+            %li.list-group-item 
+              Cantidad Adultos:
+              %span 
+            %li.list-group-item 
+              Cantidad Niños:
+              %span 
+        .card-footer
+          -#.legend
+            %i.fa.fa-circle.text-info
+            Open
+            %i.fa.fa-circle.text-danger
+            Click
+            %i.fa.fa-circle.text-warning
+            Click Second Time
+          -#%hr/
+          -#.stats
+            %i.fa.fa-history
+            -#Updated 3 minutes ago
+:scss
+  .list-group-item {
+    border: 1px solid rgba(255, 255, 255, 0) !important;
+  }

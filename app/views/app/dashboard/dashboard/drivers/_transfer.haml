@@ -2,7 +2,6 @@
   .row
     .col-12
       .card
-        /
         .card-header
           %h4.card-title Órdenes de Reserva
           -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -10,35 +9,46 @@
           .table-responsive
             %table.table.table-hover.table-striped
               %thead
-                %th N° Orden
-                %th N° Factura
+                %th Orden
+                %th Factura
+                %th Cotizante
                 %th Estatus
                 %th Detalles
               %tbody
-                - @orders.map(&:reservation).each do |reservation|
-                  %tr
-                    - unless reservation.order.status.eql?('complete')
-                      = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
+                - if @orders
+                  - @orders.try(:reverse).map(&:reservation).each do |reservation|
+                    %tr
+                      %td= reservation.id
+                      %td= reservation.invoice.token
+                      %td= reservation.user.name.titleize
+                      - unless reservation.order.status.eql?('complete')
+                        = simple_form_for reservation.order, url: update_order_path, method: :post do |f|
+                          %td
+                            %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
+                            %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
+                            %label.switch
+                              %input#check_driver{type: "checkbox"}/
+                              %span.slider.round
+                      - else
                         %td
-                          %input{name: 'reservation_id', value: reservation.id, type: 'hidden'}
-                          %input{name: 'order_id', value: reservation.order.id, type: 'hidden'}
-                          %label.switch
-                            %input#check_driver{type: "checkbox"}/
-                            %span.slider.round
-                    - else
+                          %span.status.available Completado
                       %td
-                        %span.status.available Completado
-                    %td= reservation.id
-                    %td= reservation.invoice.token
-                    %td{style:"text-align: center;"}
-                      %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                    %td= reservation.reservationable.title[@lang]
-                    %td= truncate(reservation.origin, length: 25)
-                    %td= truncate(reservation.arrival, length: 25)
-                    %td= reservation.user.name.titleize
-                    %td= reservation.travellers.count
-                    %td= reservation.quantity_adults
-                    %td= reservation.quantity_kids
+                        %a{href: order_info_path(@lang, @currency, params[:module], reservation.id)}
+                          %button.btn.btn-primary.btn-xs{:type => "button"}
+                            %span
+                              %i.icon-credit-card.icons
+                            Detalles
+                      -#%td= reservation.id
+                      -#%td= reservation.invoice.token
+                      -#%td{style:"text-align: center;"}
+                        %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
+                      -#%td= reservation.reservationable.title[@lang]
+                      -#%td= truncate(reservation.origin, length: 25)
+                      -#%td= truncate(reservation.arrival, length: 25)
+                      -#%td= reservation.user.name.titleize
+                      -#%td= reservation.travellers.count
+                      -#%td= reservation.quantity_adults
+                      -#%td= reservation.quantity_kids
  
 
 %script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
@@ -86,28 +96,6 @@
   }
 
 :scss
-  .status{
-    display: inline;
-    padding: .2em .6em .3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25em;
-
-  }
-
-  .available{
-   background-color: #5cb85c;
-  }
-
-  .not-available{
-     background-color: #d9534f;
-  }
-
   .switch {
     position: relative;
     display: inline-block;
@@ -116,21 +104,21 @@
   }
 
   .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
   .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
   }
 
   .slider:before {
@@ -140,30 +128,30 @@
     width: 20px;
     left: 1px;
     bottom: 0px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
   }
 
   input:checked + .slider {
-  background-color: #2196F3;
+    background-color: #2196F3;
   }
 
   input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #2196F3;
   }
 
   input:checked + .slider:before {
-  -webkit-transform: translateX(18px);
-  -ms-transform: translateX(18px);
-  transform: translateX(18px);
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
   }
 
   /* Rounded sliders */
   .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
   }
 
   .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
   }

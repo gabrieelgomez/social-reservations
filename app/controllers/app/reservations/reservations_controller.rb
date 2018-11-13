@@ -6,7 +6,6 @@ module App
       before_action :set_search, only: :reservations
       before_action :set_params_widget, only: :reservations
       before_action :set_reservationable, only: :reservations
-      # before_action :delete_session, except: %i[checkout]
 
       # Step 1
       def reservations
@@ -53,10 +52,6 @@ module App
         end
       end
 
-      # Step 4
-      def invoice
-      end
-
       private
       # Set by Step 1
       def set_reservationable
@@ -94,8 +89,9 @@ module App
         @locality        = [@reservationable['origin_locality'], @reservationable['arrival_locality']]
         @reservationable = @KT::Vehicle.find(@reservationable['id'])
         @multiple        = @KT::Reservation.multiple(@reservation)
-        @price_total     = @reservationable.price_total(@locality, @currency, @reservation)
-        # @price_total     = @KT::Reservation.price_total(@locality, @reservation, @reservationable, @currency)
+        @round_trip      = session[:reservation]['round_trip']
+        @vehicle         = @reservationable
+        @price_total     = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
       end
 
       # Set by Step 2 Tour

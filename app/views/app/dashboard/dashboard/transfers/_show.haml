@@ -1,62 +1,72 @@
 -#conditioned snippet - variable in the controller
 .container-fluid
   .row
-    .empty-states
-      - if current_user.reservations_where('vehicle').blank?
-        .col-12
-          %center
-            .image-ico
-              %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
-            -#%i.icon-directions.icons
-        .col-12
-          .error
+    - if current_user.reservations_where('vehicle').blank?
+      .col-12
+        .empty-states
+          .col-12
             %center
-              %p ¡Lo sentimos!
-              %p No hemos encontrado órdenes de traslados.
-      - else
-        .col-12
-          .card
-            /
-            .card-header
-              %h4.card-title Órdenes de Traslados
-              -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            .card-body
-              .table-responsive
-                %table.table.table-hover.table-striped
-                  %thead
-                    %th N° Orden
-                    %th N° Factura
-                    %th Moneda
-                    %th Costo Reserva
-                    %th Estatus Reserva
-                    %th Pago
-                    %th Traslado
-                    %th Origen
-                    %th Destino
-                    %th Pasajeros
-                    %th Cant. Adultos
-                    %th Cant. Niños
-                  %tbody
-                    - current_user.reservations_where('vehicle').each do |reservation|
-                      %tr
-                        %td= reservation.id
-                        %td= reservation.invoice.token
-                        %td= reservation.invoice.currency.upcase
-                        %td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                        %td{style:"text-align: center;"}
-                          %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                        %td{style:"text-align: center;"}
-                          - if reservation.invoice.status_pay? :pending
-                            %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
-                              %button.btn.btn-primary.btn-xs{:type => "button"}
-                                %span
-                                  %i.icon-credit-card.icons
-                                Pagar
-                          - else
-                            %h6 Pagado
-                        %td= reservation.reservationable.title[@lang]
-                        %td= truncate(reservation.origin, :length => 25)
-                        %td= truncate(reservation.arrival, :length => 25)
-                        %td= reservation.travellers.count
-                        %td= reservation.quantity_adults
-                        %td= reservation.quantity_kids
+              .image-ico
+                %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
+              -#%i.icon-directions.icons
+          .col-12
+            .error
+              %center
+                %p ¡Lo sentimos!
+                %p No hemos encontrado órdenes de traslados.
+    - else
+      .col-12
+        .card
+          .card-header
+            %h4.card-title Órdenes de Traslados
+            -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          .card-body
+            .table-responsive
+              %table.table.table-hover.table-striped
+                %thead
+                  %th Orden
+                  %th Factura
+                  %th Cotizante
+                  %th Estatus
+                  %th Detalles
+                %tbody
+                  - current_user.reservations_where('vehicle').reverse.each do |reservation|
+                    %tr
+                      %td= reservation.id
+                      %td= reservation.invoice.token
+                      %td= reservation.user.name.titleize
+                      - unless reservation.order.status.eql?('complete')
+                        %td
+                          %span.status.not-available No completado
+                      - else
+                        %td
+                          %span.status.available Completado
+                      %td
+                        %a{href: order_info_path(@lang, @currency, params[:module], reservation.id)}
+                          %button.btn.btn-primary.btn-xs{:type => "button"}
+                            %span
+                              %i.icon-credit-card.icons
+                            Detalles
+                      -#%td= reservation.invoice.currency.upcase
+                      -#%td
+                        - if reservation.invoice.amount.nil?
+                          Por cotizar
+                        - else
+                          = number_to_currency(reservation.invoice.amount, locale: @locale)
+                      -#%td{style:"text-align: center;"}
+                        - if reservation.invoice.amount.nil?
+                          Por cotizar
+                        - elsif reservation.invoice.status_pay? :pending
+                          %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
+                            %button.btn.btn-primary.btn-xs{:type => "button"}
+                              %span
+                                %i.icon-credit-card.icons
+                              Pagar
+                        - else
+                          %h6 Pagado
+                      -#%td= reservation.reservationable.title[@lang]
+                      -#%td= truncate(reservation.origin, :length => 25)
+                      -#%td= truncate(reservation.arrival, :length => 25)
+                      -#%td= reservation.travellers.count
+                      -#%td= reservation.quantity_adults
+                      -#%td= reservation.quantity_kids

@@ -1,0 +1,25 @@
+!!!
+%html{:lang => "en"}
+  %head
+    = render 'app/dashboard/dashboard/layouts/head'
+    -#= render 'app/layouts/head'
+  %body
+    %header
+      .loader
+        = render 'app/front/loader/loader'
+    #js-mobile
+      .notifications
+        %span{:mode => "in-out"}
+      .wrapper
+        .sidebar{style: "background-image: url(/assets/img/sidebar_dashboard.png)"}
+          = render 'app/dashboard/dashboard/layouts/sidebar'
+        .main-panel
+          = render 'app/dashboard/dashboard/layouts/main'
+          .content
+            = render 'app/dashboard/dashboard/orders/show'
+            -#= render "app/dashboard/dashboard/orders/#{params[:module]}/show"
+
+    = render 'app/dashboard/dashboard/layouts/scripts'
+
+
+

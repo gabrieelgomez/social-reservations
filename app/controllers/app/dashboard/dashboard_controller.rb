@@ -13,6 +13,9 @@ module App
       def template
       end
 
+      def order_info
+      end
+
       def template_user
       end
 

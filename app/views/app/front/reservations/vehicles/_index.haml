@@ -43,6 +43,8 @@
           %input{value: @currency, type: 'hidden', name: 'currency'}
           %input{value: SecureRandom.hex(4), type: 'hidden', name: 'invoice[][token]'}
           %input{value: @currency, type: 'hidden', name: 'invoice[][currency]'}
+          %input{value: params[:cotization], type: 'hidden', name: 'cotization'}
+
           .col-xs-12.col-sm-12.col-md-7.col-lg-8
             .reservation-data
               //Reservation Data
