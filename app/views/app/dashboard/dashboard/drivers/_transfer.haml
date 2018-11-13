@@ -8,21 +8,13 @@
           -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
         .card-body
           .table-responsive
-            %table.table.table-hover
+            %table.table.table-hover.table-striped
+              %thead
+                %th N° Orden
+                %th N° Factura
+                %th Estatus
+                %th Detalles
               %tbody
-                %tr.items-orders
-                  %th Estatus
-                  %th N° Orden
-                  %th N° Factura
-                  %th Estatus
-                  %th Vehiculo
-                  %th Origen
-                  %th Destino
-                  %th Responsable
-                  %th Pasajeros
-                  %th Cant. Adultos
-                  %th Cant. Niños
-
                 - @orders.map(&:reservation).each do |reservation|
                   %tr
                     - unless reservation.order.status.eql?('complete')
@@ -40,7 +32,6 @@
                     %td= reservation.invoice.token
                     %td{style:"text-align: center;"}
                       %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-
                     %td= reservation.reservationable.title[@lang]
                     %td= truncate(reservation.origin, length: 25)
                     %td= truncate(reservation.arrival, length: 25)
@@ -48,7 +39,7 @@
                     %td= reservation.travellers.count
                     %td= reservation.quantity_adults
                     %td= reservation.quantity_kids
-
+ 
 
 %script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript

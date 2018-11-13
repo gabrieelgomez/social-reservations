@@ -594,7 +594,7 @@ body>.navbar-collapse .nav li .nav-link:hover {
 body>.navbar-collapse .nav li .nav-link p {
     margin: 0;
     line-height: 31px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     text-transform: capitalize;
     display: inline-flex;
@@ -2158,7 +2158,7 @@ fieldset[disabled] .form-control {
 .navbar .navbar-brand {
 	font-weight: 400;
 	margin: 5px 0px;
-	font-size: 20px;
+	font-size: 18px;
 	color: #43b7e8;
 	font-family: "Poppins", sans-serif;
     font-weight: 500;
@@ -2213,6 +2213,7 @@ fieldset[disabled] .form-control {
 	position: relative;
 	display: inline-flex;
 	line-height: 1.2;
+	cursor: pointer;
 }
 
 .navbar .navbar-nav .nav-item .nav-link.btn {
@@ -2284,6 +2285,7 @@ fieldset[disabled] .form-control {
 	border-top: 4px solid\9;
 	border-right: 4px solid transparent;
 	border-left: 4px solid transparent;
+	color: #43b7e8;
 }
 
 .navbar .btn {

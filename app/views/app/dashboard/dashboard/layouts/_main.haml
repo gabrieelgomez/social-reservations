@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg
   .container-fluid
-    %a.navbar-brand{:href => "#"} Mi Tablero
-    %span= current_user.email
+    = link_to root_path(@lang, @currency), class:'navbar-brand' do
+      Mi tablero
     %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
       %span.navbar-toggler-bar.burger-lines
       %span.navbar-toggler-bar.burger-lines
@@ -40,17 +40,41 @@
           Account
           </a>
           </li>
-        -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
+        %li.dropdown.nav-item{"aria-haspopup" => "true"}
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-            %i
-            %span.no-icon Cerrar Sesión
+            %i.nc-icon.nc-circle-09.ico-profile
+            %span.no-icon.drop-link{style:''} Mi Cuenta
             %b.caret
-          -#.dropdown-menu
-            %a.dropdown-item{:href => "#"} Perfil
-            %a.dropdown-item{:href => "#"} Mis Reservaciones
-            %a.dropdown-item{:href => "#"} Cerrar Sesión
-        %li
+          .dropdown-menu.dropdown-menu-right
+            .card-profile{style:'padding:10px 0;'}
+              %center
+                = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '80', width: '80', class: 'img-fluid'
+            %center
+              %h6.dropdown-header= current_user.name
+              %h6.dropdown-header= current_user.rol
+            .dropdown-divider
+            = link_to users_details_path(@lang, @currency), class:'dropdown-item'  do
+              %i.nc-icon.nc-single-02
+              Mi Perfil
+            = link_to destroy_session_path(current_user), class:'dropdown-item'  do
+              %i.nc-icon.nc-button-power
+              Cerrar Sesión
+        -#%li
           = link_to destroy_session_path(current_user), class:''  do
-            -#%i.nc-icon.nc-button-power
+            %i.nc-icon.nc-button-power
             Cerrar Sesión
           -#%span.no-icon
+:scss
+  .ico-profile{
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: #43b7e8;
+  }
+  .drop-link{
+    font-size: 18px;
+    color: #43b7e8;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }

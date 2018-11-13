@@ -71,19 +71,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_183522) do
     t.index ["deleted_at"], name: "index_keppler_contactus_messages_on_deleted_at"
   end
 
-  create_table "keppler_contactus_pqrs", force: :cascade do |t|
-    t.string "name"
-    t.string "company"
-    t.string "dni"
-    t.string "country"
-    t.string "phone"
-    t.string "email"
-    t.text "body"
-    t.string "options"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "keppler_contactus_requests", force: :cascade do |t|
     t.string "name"
     t.string "company"
