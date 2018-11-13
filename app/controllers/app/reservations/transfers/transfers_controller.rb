@@ -15,7 +15,8 @@ module App
             origin_locality: params[:origin_locality],
             arrival_locality: params[:arrival_locality],
             origin_departament: params[:origin_departament],
-            arrival_departament: params[:arrival_departament]
+            arrival_departament: params[:arrival_departament],
+            cotization: params[:cotization]
           }
           redirect_to checkout_path(params[:lang], params[:currency])
         end
@@ -35,9 +36,9 @@ module App
             if @reservation.save!
               create_travellers
               ReservationMailer.transfer_status(@reservation, @user).deliver_now
-              if @price_total != 1
+              if @price_total != nil
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              else @price_total == 1
+              else
                 redirect_to invoice_path('es', 'cop')
               end
             else
@@ -50,21 +51,16 @@ module App
         private
 
         def set_price
-          departament = [session[:reservationable]['origin_departament'], session[:reservationable]['arrival_departament']]
-          locality = [session[:reservationable]['origin_local'], session[:reservationable]['arrival_locality']]
-          if departament[0] == departament[1]
-            vehicleables = @reservation.reservationable.vehicleables
-            @destiny = vehicleables.ransack(title_cont: locality[0]).result.first
-            @destiny = vehicleables.ransack(title_cont: locality[1]).result.first if @destiny.nil?
-            if locality[0] == locality[1]
-              price = @destiny.try("price_inner_#{@currency}")
-            else
-              price = @destiny.try("price_outer_#{@currency}")
-            end
-            @price_total = price
-          elsif departament[0] != departament[1]
-            @cotization     = true
-            @price_total = 1
+          @round_trip = session[:reservation]['round_trip']
+          @vehicle    = @reservation.reservationable
+          # departament = [session[:reservationable]['origin_departament'], session[:reservationable]['arrival_departament']]
+          @locality = [session[:reservationable]['origin_locality'], session[:reservationable]['arrival_locality']]
+          @cotization = session[:reservationable]['cotization']
+          unless @cotization == 'true'
+            @price_total     = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
+          else
+            @cotization  = true
+            @price_total = nil
           end
         end
 

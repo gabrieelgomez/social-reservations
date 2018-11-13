@@ -49,6 +49,10 @@ module App
     def errors
     end
 
+    # Step 4
+    def invoice
+      byebug
+    end
 
     def about
     end
