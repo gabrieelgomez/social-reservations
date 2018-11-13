@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg
   .container-fluid
     = link_to root_path(@lang, @currency), class:'navbar-brand' do
-      Mi tablero
+      ="Mi tablero - ¡Bienvenido #{current_user.name}!"
     %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
       %span.navbar-toggler-bar.burger-lines
       %span.navbar-toggler-bar.burger-lines
@@ -42,7 +42,9 @@
           </li>
         %li.dropdown.nav-item{"aria-haspopup" => "true"}
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-            %i.nc-icon.nc-circle-09.ico-profile
+            -#%i.nc-icon.nc-circle-09.ico-profile
+            .perfil
+              = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '25px', width: '', class: 'img-fluid'
             %span.no-icon.drop-link{style:''} Mi Cuenta
             %b.caret
           .dropdown-menu.dropdown-menu-right
@@ -77,4 +79,18 @@
     color: #43b7e8;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+  }
+
+  .perfil{
+    height: 27px;
+    width: 27px;
+    background: #040404;
+    margin-right: 5px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-top: -2px;
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
   }
