@@ -28,11 +28,7 @@ class DriverMailer < ApplicationMailer
     attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
     mail(
       from: Rails.application.secrets.email,
-<<<<<<< HEAD
       to: @driver.email,
-=======
-      to: @reservation.user.email,
->>>>>>> c148338313328a733c61174bdd36f51ed6279c02
       subject: "#{@driver.name} - Vea más detalles del chofer asignado al traslado | Receptivo Colombia"
     )
   end
