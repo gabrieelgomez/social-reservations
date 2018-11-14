@@ -1,6 +1,7 @@
 .sidebar-wrapper
   .logo
-    %a.simple-text{:href => "#", :style => 'font-family: "Poppins", sans-serif;font-weight: bold;text-transform: capitalize;font-size: 14px;'}
+    -#%a.simple-text{:href => "#", :style => ''}
+    = link_to root_path(@lang, @currency), style:'font-family: "Poppins", sans-serif;font-weight: bold;text-transform: capitalize;font-size: 14px;', class:'simple-text' do
       .logo-img
         %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
       Receptivo Colombia

@@ -45,7 +45,7 @@
             -#%i.nc-icon.nc-circle-09.ico-profile
             .perfil
               = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '25px', width: '', class: 'img-fluid'
-            %span.no-icon.drop-link{style:''} Mi Cuenta
+            %span.no-icon.drop-link{style:''} Mi cuenta
             %b.caret
           .dropdown-menu.dropdown-menu-right
             .card-profile{style:'padding:10px 0;'}
@@ -76,7 +76,7 @@
   }
   .drop-link{
     font-size: 18px;
-    color: #43b7e8;
+    color: #4e4e56;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
   }
@@ -91,6 +91,8 @@
     margin-top: -2px;
     img{
       height: 100%;
+      object-position: center;
       object-fit: cover;
+      border-radius: 50%;
     }
   }

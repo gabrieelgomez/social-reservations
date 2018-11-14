@@ -1908,7 +1908,7 @@ fieldset[disabled] .form-control {
 .table>thead>tr>th {
 	border-bottom-width: 1px;
 	font-size: 12px;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	color: #9A9A9A;
 	font-weight: 400;
 	padding-bottom: 5px;
@@ -2159,13 +2159,13 @@ fieldset[disabled] .form-control {
 	font-weight: 400;
 	margin: 5px 0px;
 	font-size: 18px;
-	color: #43b7e8;
+	color: #4e4e56;
 	font-family: "Poppins", sans-serif;
     font-weight: 500;
 }
 
 .navbar .navbar-brand:hover {
-	color: #43b7e8;
+	color: #4e4e56;
 }
 
 .navbar .navbar-toggler {
@@ -2285,7 +2285,7 @@ fieldset[disabled] .form-control {
 	border-top: 4px solid\9;
 	border-right: 4px solid transparent;
 	border-left: 4px solid transparent;
-	color: #43b7e8;
+	color: #4e4e56;
 }
 
 .navbar .btn {
