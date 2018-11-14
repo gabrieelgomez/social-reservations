@@ -1,0 +1,134 @@
+.container-fluid
+  .row
+    .col-12.col-xl-8
+      .card
+        .card-header
+          %h4.card-title Detalles de la Reservación 
+          -#%p.card-category Lorem ipsum dolor sit amet consectetur
+        .card-body
+          .row
+            .col-12.col-xl-8
+              .row
+                %ul.list-group.list-group-flush
+                  %li.list-group-item 
+                    %span.title Orden:
+                    %span= @reservation.id
+
+                  %li.list-group-item 
+                    %span.title Factura:
+                    %span= @reservation.invoice.token
+
+                  %li.list-group-item 
+                    %span.title Moneda:
+                    %span= @reservation.invoice.currency.upcase
+
+                  %li.list-group-item 
+                    %span.title Costo:
+                    - if @reservation.invoice.amount.nil?
+                      %span Por cotizar
+                    - else
+                      = number_to_currency(@reservation.invoice.amount, locale: @locale)
+                  
+                  %li.list-group-item 
+                    %span.title Estatus:
+                    %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
+                
+                  %li.list-group-item 
+                    %span.title Pago:
+                    - if @reservation.invoice.amount.nil?
+                      %span Por cotizar
+                    - elsif @reservation.invoice.status_pay? :pending
+                      %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
+                        %button.btn.btn-primary.btn-xs{:type => "button"}
+                          %span
+                            %i.icon-credit-card.icons
+                          Pagar
+                    - else
+                      %span Pagado
+                  
+                  %li.list-group-item 
+                    %span.title Cotizante:
+                    %span= @reservation.user.name
+                  
+                  %li.list-group-item
+                    %span.title Traslado (Vehículo):
+                    %span= @reservation.reservationable.title[@lang]
+                  
+                  %li.list-group-item 
+                    %span.title Pasajeros:
+                    %span= @reservation.travellers.count
+                  
+                  %li.list-group-item 
+                    %span.title Cantidad Adultos:
+                    %span= @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
+                  
+                  %li.list-group-item 
+                    %span.title Cantidad Niños:
+                    %span= @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
+
+                  // Datos de Origen
+                  %li.list-group-item 
+                    %span.title Origen:
+                    %span= @reservation.origin.blank? ? '-----------' : @reservation.origin
+                
+                  %li.list-group-item 
+                    %span.title Fecha Vuelo Origen:
+                    %span= @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+
+                  %li.list-group-item 
+                    %span.title Aerolínea Origen:
+                    %span= @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+
+                  %li.list-group-item 
+                    %span.title N° Vuelo Origen:
+                    %span= @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
+                  // Fin Datos de Origen
+
+                  // Datos de Destino
+                  %li.list-group-item 
+                    %span.title Destino:
+                    %span= @reservation.arrival.blank? ? '-----------' : @reservation.arrival
+                  
+                  %li.list-group-item 
+                    %span.title Fecha Vuelo Destino:
+                    %span= @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
+                  
+                  %li.list-group-item 
+                    %span.title Aerolínea Destino:
+                    %span= @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
+
+                  %li.list-group-item 
+                    %span.title N° Vuelo Destino:
+                    %span= @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
+                  // Datos de Destino
+
+                  %li.list-group-item 
+                    %span.title Observación:
+                    %span= @reservation.description.blank? ? '-----------' : @reservation.description
+
+            .col-12.col-xl-4
+              .row
+                %ul.list-group.list-group-flush
+                  %li.list-group-item 
+                    %span.title Viajeros
+                  - @reservation.travellers.each do |traveller|
+                    %li.list-group-item 
+                      %span="#{traveller.name} -- #{traveller.dni}"
+
+                %ul.list-group.list-group-flush
+                  %li.list-group-item 
+                    %h5.title Vehículo
+                    %img{src: @reservation.reservationable.cover.url, class: 'rounded img-vehicle img-fluid'}
+        .card-footer
+
+
+:scss
+  .img-vehicle{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+
+   

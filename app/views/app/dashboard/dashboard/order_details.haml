@@ -16,10 +16,14 @@
         .main-panel
           = render 'app/dashboard/dashboard/layouts/main'
           .content
-            = render 'app/dashboard/dashboard/orders/show'
-            -#= render "app/dashboard/dashboard/orders/#{params[:module]}/show"
+            = render "app/dashboard/dashboard/#{params[:module]}/details"
 
     = render 'app/dashboard/dashboard/layouts/scripts'
 
-
-
+    :scss
+      .list-group-item {
+        border: 1px solid rgba(255, 255, 255, 0) !important;
+      }
+      .title{
+        font-weight: 600;
+      }

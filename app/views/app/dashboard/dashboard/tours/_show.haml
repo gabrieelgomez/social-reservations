@@ -26,23 +26,29 @@
                 %thead
                   %th Orden
                   %th Factura
-                  %th Cotizante
                   %th Estatus
+                  %th ¿Pagado?
                   %th Detalles
                 %tbody
                   - current_user.reservations_where('tour').reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
-                      %td= reservation.user.name.titleize
-                      - unless reservation.order.status.eql?('complete')
-                        %td
-                          %span.status.not-available No completado
-                      - else
-                        %td
-                          %span.status.available Completado
+                      %td 
+                        %span.badge.badge-pill{class: reservation.invoice.status_class?}= reservation.invoice.status.capitalize
                       %td
-                        %a{href: order_info_path(@lang, @currency, params[:module], reservation.id)}
+                        - if reservation.invoice.amount.nil?
+                          Por cotizar
+                        - elsif reservation.invoice.status_pay? :pending
+                          %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
+                            %button.btn.btn-primary.btn-xs{:type => "button"}
+                              %span
+                                %i.icon-credit-card.icons
+                              Pagar
+                        - else
+                          %h6 Pagado
+                      %td
+                        %a{href: order_details_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons

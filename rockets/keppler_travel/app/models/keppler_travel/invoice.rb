@@ -12,13 +12,13 @@ module KepplerTravel
 
       case self.status
       when 'approved'
-        'label-success'
+        'badge-success'
       when 'pending'
-        'label-warning'
+        'badge-warning'
       when 'cancelled'
-        'label-danger'
+        'badge-danger'
       else
-        'label-info'
+        'badge-info'
       end
 
     end

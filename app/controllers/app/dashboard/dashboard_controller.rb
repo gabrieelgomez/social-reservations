@@ -13,7 +13,8 @@ module App
       def template
       end
 
-      def order_info
+      def order_details
+        @reservation = KepplerTravel::Reservation.find(params[:reservation_id])
       end
 
       def template_user
