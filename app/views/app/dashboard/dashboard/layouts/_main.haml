@@ -44,6 +44,7 @@
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
             -#%i.nc-icon.nc-circle-09.ico-profile
             .perfil
+              = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '25px', width: '', class: 'img-fluid rounded-circle'
             %span.no-icon.drop-link{style:''} Mi cuenta
             %b.caret
           .dropdown-menu.dropdown-menu-right
@@ -92,6 +93,5 @@
       height: 100%;
       object-position: center;
       object-fit: cover;
-      border-radius: 50%;
     }
   }
