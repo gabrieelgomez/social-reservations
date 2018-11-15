@@ -63,6 +63,8 @@
     padding: 0px 25px 0px 25px;
     width: 100%;
 
+
+
     .box-btn {
       margin-top: 25px;
 
@@ -105,7 +107,7 @@
 
     input,
     select {
-      font-size: 12px;
+      font-size: 10px;
       border-radius: 6px !important;
 
       @include respond-to(xs) {

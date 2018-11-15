@@ -11,10 +11,8 @@
             .row
               .col-lg-12.js-hotel
                 .row
-                  .check
-                    %span
-                      %i.fa.fa-check.fa_custom{"aria-hidden" => "true"}
                   .box_hotel.row-flex
+                    -#.icon-checked{style: "background-image: url(/assets/img/checked.svg)"}
                     .col-xs-12.col-md-6.col-lg-6
                       %label.btn.btn-hotel
                         %center
@@ -24,6 +22,7 @@
                       %p.title-hotel= circuitable.ranking.title[@lang]
                       -# %p
                       -#   = link_to 'Ver más información', '#' , class: 'js_detailsHotel', id: "modal_id_#{circuitable.id}", type: 'button'
+
 
 .box_type_rooms.room-hidden.room-disabled
   .row
@@ -132,6 +131,49 @@
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room
             %input.js-square#children{type: 'hidden', name: "square_circuit[][children]", type: "number", min: 1, value: @kids}/
+
+//Solution to failure of hotel selection - User Experience (Bad)
+-#:javascript
+  
+  //Hide the check icon
+  $('.icon-checked').css('visibility', 'hidden');
+  
+  //Hotel selection by click
+  $(".jshotelbox").click( 'change', function() {
+    $(this).find('.js-hotelRoom').prop( "checked", true );    
+    $('.box_hotel').removeClass('bg-active');
+    $('.icon-checked').css('visibility', 'hidden');
+      if( $(this).find('.js-hotelRoom').is(':checked') ) {
+          // Hacer algo si el checkbox ha sido seleccionado
+        $(this).find('.box_hotel').addClass('bg-active');
+        $(this).find('.icon-checked').css('visibility', 'visible');
+        $('.box_type_rooms').removeClass('room-hidden');
+        $('.box_type_rooms').removeClass('room-disabled');
+        $('.box_type_rooms').addClass('room-show');
+        setTimeout(function () {
+          $('.box_type_rooms').addClass('room-activated');
+        }, 20);
+
+      } else {
+         $(this).find('.box_hotel').removeClass('bg-active');
+      }
+  });
+  
+  //Rooms selection by click
+  $('.js-typeRoom').on('click', function () {
+      if ($(this).is(':checked')) {
+          $('.js-square').hide();
+          $(this).addClass('js-room-active');
+          $(this).closest('label').addClass('bg-active');
+          $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
+      } else {
+          
+      }
+  });
+
+  //Solution to failure of hotel selection - User Experience (Bad)
+
+
 :javascript
   var adults = #{raw @adults};
   var kids   = #{raw @kids};
@@ -141,4 +183,3 @@
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{src: "/assets/js/ranking-room.js"}
-//$( ".buttonTest" ).on('click', function () { $(this).find('.box_hotel').addClass('bg-active'); });
