@@ -29,8 +29,9 @@ module App
         @destination = KepplerTravel::Destination.ransack(title_cont: @departament[0]).result.first
         @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
       else
-        @results = KepplerTravel::Vehicle.ransack(seat_gteq: @seats).result
-        @cotization = true
+        @destination = KepplerTravel::Destination.ransack(title_cont: @departament[0]).result.first
+        @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
+        @cotization  = true
       end
     end
 

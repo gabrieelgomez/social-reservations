@@ -52,7 +52,7 @@ $(document).ready(function () {
             }
             else{
               exception = validateExceptions(departament);
-              let field = $('#arrival_departament').val(exception);
+              let field = $('#arrival_departament').val(departament);
               // departament = exception;
               // $('.arrival_name').text(`Hasta: Localidad, ${departament}`);
             }
