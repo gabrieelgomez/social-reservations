@@ -1,4 +1,40 @@
 %nav.navigation-front.navbar.navbar-fixed-top.navbar-inverse.background-hide.navbar-effect{:role => "navigation"}
+  -# for mobile
+  -#.navbar-contact.visible-xs.hidden-sm
+    .container
+      .row
+        .col-xs-12
+          .item-contact.login
+            - if user_signed_in?
+              .dropdown.pull-left
+                %img{:alt => "icon-signed", :src => "/assets/img/user.svg", :width => "18px", class:"icon-signed" }/
+                %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to orders_path(@lang, @currency, 'transfers'), class:'' do
+                      %span
+                        %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }
+                        Mi Tablero
+                  %li
+                    = link_to users_details_path(@lang, @currency), class:'' do
+                      %span
+                        %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}
+                        Mi Perfil
+                  %li
+                    = link_to destroy_session_path(current_user), class:''  do
+                      %span
+                        %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }
+                        Cerrar Sesión
+            - else
+              = link_to new_user_session_path, class:"pull-right" do
+                %p
+                  %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
+                  %span Ingresa
+
+
+  -# for desktop
   .navbar-contact.hidden-xs.hidden-sm
     .container
       .row

@@ -403,6 +403,7 @@
           }
         }
 
+ 
         p {
           text-align: center;
           color: #00000096;
@@ -731,4 +732,13 @@
 
 .active-check {
   visibility: visible;
+}
+
+
+.icon-checked{
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }

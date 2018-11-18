@@ -11,12 +11,20 @@
 
     // Widget
     
-    %section#home.about-us
+    %section#home.about-us.visible-lg
       .content_video
-        %video.myvideo#my-video{:autoplay => "true", :loop => "true", :muted => "true", :poster => "/assets/img/wallpaper-receptivo.jpg" }
+        %video.myvideo#my-video{:autoplay => "false", :loop => "true", :muted => "true", :poster => "/assets/img/poster/receptivo-colombia.jpg" }
           %source{:src => "/assets/img/receptivo.mp4", :type => "video/mp4"}
             -#%source{:src => "/assets/img/receptivo.webm", :type => "video/webm"}
           -#%source{:src => "/assets/img/receptivo.mp4", :type => "video/ogg"}
+      %section.travel-box.widget.p-widget
+        .container
+          .row
+            = render 'app/layouts/widget'
+
+    %section#home.about-us.hidden-lg
+      .content_image{:style => "background-image: url(/assets/img/poster/receptivo-colombia.jpg)"}
+        .mask
       %section.travel-box.widget.p-widget
         .container
           .row
@@ -100,6 +108,21 @@
           top: 50%;
           transform: translate(-50%, -50%);
           z-index: 1;
+        }
+      }
+      .content_image{
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .mask{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.25);
         }
       }
     %script{:src => "/assets/js/loader.js"}

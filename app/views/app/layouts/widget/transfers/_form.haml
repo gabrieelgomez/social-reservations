@@ -36,7 +36,7 @@
                                     %span.round-boarder>
                                         %span.round-boarder1
                                     Solo ida
-                .col-lg-4
+                .col-lg-5
                     .box-item
                         %h2 Origen
                         %input.google-input.form-control{id: 'origin_name', name: 'origin_name'}
@@ -51,7 +51,7 @@
                         .form-group
                             %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
 
-                .col-lg-4
+                .col-lg-5
                     .box-item
                         %h2 Destino
                         %input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
@@ -60,26 +60,29 @@
                         %input{name: 'arrival_departament', id: 'arrival_departament', type: 'hidden'}
                         %h2.arrival_name Hasta...
 
-                .col-lg-2#vuelo_vuelta
-                    .box-item
-                        %h2 Fecha de Vuelta
-                        .form-group
-                            %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
                 .col-xs-12.col-lg-12{style:'margin-top: 8px;'}
                     .row
-                        .col-xs-6.col-lg-1
-                            .box-item
-                                %h2 Adultos
-                                .form-group
-                                    %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
+                        .col-lg-9
+                            .row
+                                .col-lg-3#vuelo_vuelta
+                                    .box-item
+                                        %h2 Fecha de Vuelta
+                                        .form-group
+                                            %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+                                .col-xs-6.col-lg-2
+                                    .box-item
+                                        %h2 Adultos
+                                        .form-group
+                                            %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
-                        .col-xs-6.col-lg-1
-                            .box-item
-                                %h2 Niños
-                                .form-group
-                                    %input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
+                                .col-xs-6.col-lg-2
+                                    .box-item
+                                        %h2 Niños
+                                        .form-group
+                                            %input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
 
-                        .col-lg-10
+                        .col-lg-3
                             #errors
                             .about-btn.travel-mrt-0.pull-right.box-btn
                                 %button.about-view.travel-btn{type: 'submit'}
