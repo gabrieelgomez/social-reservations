@@ -24,14 +24,9 @@ module App
 
     def vehicles
       # byebug
-      if @departament[0] == @departament[1]
-        # byebug
-        @destination = KepplerTravel::Destination.ransack(title_cont: @departament[0]).result.first
-        @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
-      else
-        @results = KepplerTravel::Vehicle.ransack(seat_gteq: @seats).result
-        @cotization = true
-      end
+      @destination = KepplerTravel::Destination.ransack(title_cont: @locality[0]).result.first
+      @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
+      @cotization  = true if @departament[0] != @departament[1]
     end
 
     def tours
