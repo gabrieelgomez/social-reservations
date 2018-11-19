@@ -46,6 +46,21 @@ module KepplerTravel
     def set_price_destination(locality, currency)
       @destiny = vehicleables.ransack(title_cont: locality[0]).result.first
       @destiny = vehicleables.ransack(title_cont: locality[1]).result.first if @destiny.nil?
+      puts "*****************************************************************************"
+      puts vehicleables.map(&:id)
+      puts "---------------"
+      puts vehicleables.map(&:title)
+      puts "---------------"
+      puts "Price inner COP"
+      puts vehicleables.map(&:price_inner_cop)
+      puts "Price inner USD"
+      puts vehicleables.map(&:price_inner_usd)
+      puts "Price outer COP"
+      puts vehicleables.map(&:price_outer_cop)
+      puts "Price outer USD"
+      puts vehicleables.map(&:price_outer_usd)
+      puts "*****************************************************************************"
+
       if locality[0] == locality[1]
         price = @destiny.try("price_inner_#{currency}")
       else
