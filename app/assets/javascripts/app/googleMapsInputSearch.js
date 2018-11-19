@@ -46,13 +46,13 @@ $(document).ready(function () {
             departament = place.address_components[i].long_name;
             if (id_input == 'origin_name'){
               exception = validateExceptions(departament);
-              let field = $('#origin_departament').val(departament);
+              let field = $('#origin_departament').val(exception);
               // departament = exception;
               // $('.origin_name').text(`Desde: Localidad, ${departament}`);
             }
             else{
               exception = validateExceptions(departament);
-              let field = $('#arrival_departament').val(departament);
+              let field = $('#arrival_departament').val(exception);
               // departament = exception;
               // $('.arrival_name').text(`Hasta: Localidad, ${departament}`);
             }
