@@ -284,26 +284,25 @@
                               %tr
                                 %td.attributes_item
                                   %strong Datos de Facturación
-                                  %p.item N° Orden
-                                  %p.item N° Orden ELP:
+                                  %p.item= "N° Orden: #{@reservation.id}"
+                                  %p.item= "N° Orden ELP: #{@reservation.invoice.token}"
                               %tr
                                 %td.attributes_item
                                   %strong Datos Personales
-                                  %p.item Nombre
-                                  %p.item Identificación
-                                  %p.item Correo electrónico
-                                  %p.item Dirección
+                                  %p.item= "Nombre: #{@user.name}"
+                                  %p.item= "Identificación: #{@user.dni}"
+                                  %p.item= "Correo electrónico: #{@user.email}"
                               %tr
                                 %td.attributes_item
-                                  %strong Método de Pago
-                                  %p.item Plataforma
-                                  %p.item Usuario:
-                                  %p.item Correo electrónico
-                                  %p.item Dirección
-                              %tr
-                                %td.attributes_item
-                                  %strong Descripción
-                                  %p.item Concepto
+                                  %strong Datos del Pago
+                                  %p.item= "Moneda: #{@reservation.invoice.currency}"
+                                  %p.item= "Monto: #{@reservation.invoice.amount}"
+                                  %p.item= "Status: #{@reservation.invoice.status}"
+                                  %p.item= "Dirección: #{@reservation.invoice.address}"
+                              -# %tr
+                              -#   %td.attributes_item
+                              -#     %strong Descripción
+                              -#     %p.item Concepto
                       %p
                         Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
                         tener
