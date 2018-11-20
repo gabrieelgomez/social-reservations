@@ -47,14 +47,7 @@ module App
     # Step 4
     def invoice
       referencia = params[:referencia]
-      moenda = params[:moenda]
-      valor = params[:valor]
-      repuesta = params[:repuesta]
-      cuentanro = params[:cuentanro]
-      autorizacion = params[:autorizacion]
-      nrotransaccion = params[:nrotransaccion]
-      extra = params[:extra]
-
+      respuesta = params[:respuesta]
       if respuesta == 'aprobada'
         invoice = KepplerTravel::Invoice.find_by(token: referencia)
         invoice.update(status: 'approved')
@@ -62,27 +55,10 @@ module App
           PaymentMailer.payment(invoice.reservation, invoice.reservation.user).deliver_now
         end
       end
-
     end
 
     # Step 4
     def gracias
-      referencia = params[:referencia]
-      moenda = params[:moenda]
-      valor = params[:valor]
-      repuesta = params[:repuesta]
-      cuentanro = params[:cuentanro]
-      autorizacion = params[:autorizacion]
-      nrotransaccion = params[:nrotransaccion]
-      extra = params[:extra]
-
-      if respuesta == 'aprobada'
-        invoice = KepplerTravel::Invoice.find_by(token: referencia)
-        invoice.update(status: 'approved')
-        if invoice.reservation.update(status: 'approved')
-          PaymentMailer.payment(invoice.reservation, invoice.reservation.user).deliver_now
-        end
-      end
     end
 
 
