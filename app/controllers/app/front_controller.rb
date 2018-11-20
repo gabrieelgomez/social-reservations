@@ -53,6 +53,8 @@ module App
     # Step 4
     def gracias
       # byebug
+      puts params
+      
     end
 
 
