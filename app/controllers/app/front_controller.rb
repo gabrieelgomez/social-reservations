@@ -47,7 +47,14 @@ module App
     # Step 4
     def invoice
       # byebug
+      puts params
     end
+
+    # Step 4
+    def gracias
+      # byebug
+    end
+
 
     def about
     end
