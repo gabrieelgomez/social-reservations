@@ -342,6 +342,8 @@
         }
 
         center {
+
+          
           .icon-room {
             background-size: 55px;
             background-position: center;
@@ -395,7 +397,7 @@
               border: 13px solid white;
               border-radius: 0;
               outline: none;
-              visibility: hidden;
+              //visibility: hidden;
               position: absolute;
               left: 175px;
               top: 5px;
@@ -459,10 +461,11 @@
       .btn-room {
         max-width: 300px;
         border-radius: 0px;
-        padding: 6px;
+        padding: 12px 0 12px 0;
         width: 100%;
         margin-top: 10px;
         margin-bottom: 20px;
+
 
         &:active {
           box-shadow: none;
@@ -478,6 +481,7 @@
             min-height: 70px;
             max-width: 70px;
             padding-bottom: 10px;
+            margin-top: -28px;
 
             .room {
               width: 100%;
@@ -741,4 +745,8 @@
   position: absolute;
   right: 5px;
   top: 5px;
+}
+
+.js-typeRoom{
+  visibility: hidden;
 }
