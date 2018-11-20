@@ -46,15 +46,25 @@ module App
 
     # Step 4
     def invoice
-      # byebug
-      puts params
+      referencia = params[:referencia]
+      moenda = params[:moenda]
+      valor = params[:valor]
+      repuesta = params[:repuesta]
+      cuentanro = params[:cuentanro]
+      autorizacion = params[:autorizacion]
+      nrotransaccion = params[:nrotransaccion]
+      extra = params[:extra]
+
+      if respuesta == 'aprobada'
+        invoice = KepplerTravel::Invoice.find_by(token: referencia)
+        invoice.update(status: 'approved')
+        invoice.reservation.update(status: 'approved')
+      end
+
     end
 
     # Step 4
     def gracias
-      # byebug
-      puts params
-      
     end
 
 
