@@ -1,10 +1,10 @@
 menu:
-  keppler_contactus:
-    name: Messages
-    current: ['admin/contactus/messages']
-    url_path: /admin/contactus/messages
-    icon: envelope
-    model: KepplerContactus::Message
+  # keppler_contactus:
+  #   name: Messages
+  #   current: ['admin/contactus/messages']
+  #   url_path: /admin/contactus/messages
+  #   icon: envelope
+  #   model: KepplerContactus::Message
 
 
   keppler_pqrs:

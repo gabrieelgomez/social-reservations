@@ -271,7 +271,7 @@
                   / Body content
                   %tr
                     %td.content-cell
-                      %h1="¡Estimado #{@driver.name}!"
+                      %h1="¡Estimado #{@reservation.user.name}!"
                       %h1
                       %p Datos del Chofer/Vehiculo
                       %table.attributes{cellpadding: "0", cellspacing: "0", width: "100%"}
@@ -282,15 +282,7 @@
                                 %td.attributes_item
                                   %strong Nombre del Chofer:
                                   = @driver.name
-                              -#%tr
-                                %td.attributes_item
-                                  %strong Identificación del Chofer:
-                                  = @driver.dni
-                              -#%tr
-                                %td.attributes_item
-                                  %strong Correo Electrónico del Chofer:
-                                  = @driver.email
-                              -#%tr
+                              %tr
                                 %td.attributes_item
                                   %strong Teléfono del Chofer:
                                   = @driver.phone
@@ -302,10 +294,20 @@
                                 %td.attributes_item
                                   %strong Cantidad de Asientos:
                                   = @vehicle.seat
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Placas:
+                                  - @reservation.driver.car_descriptions.each_with_index do |description, index|
+                                    %ul{:style => "list-style: none !important;"}
+                                      %li= description.license.blank? ? '-----------' : "#{description.license} - #{description.color}"
+
                               %tr
                                 %td.attributes_item
                                   %strong{middle: "", "style:" => ""} Imagen del Vehiculo:
                                   = image_tag attachments[@logo].url, style: "height: 80px; width: 80px; vertical-align: middle;border-radius: 50%;"
+                      %p
+                        Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com (acción mailto) o vía whatsapp al +573173632119 (acción mensaje de whatsapp) // If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at  +573173632119
                       %p
                         Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
                         tener

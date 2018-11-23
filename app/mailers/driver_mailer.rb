@@ -29,7 +29,7 @@ class DriverMailer < ApplicationMailer
     mail(
       from: Rails.application.secrets.email,
       to: @reservation.user.email,
-      subject: "#{@reservation.user.name} - Vea más detalles del chofer asignado al traslado | Receptivo Colombia"
+      subject: "Estimado #{@reservation.user.name} - Vea más detalles del chofer asignado al traslado | Receptivo Colombia"
     )
   end
 
