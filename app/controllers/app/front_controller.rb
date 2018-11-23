@@ -51,9 +51,8 @@ module App
       if respuesta == 'aprobada'
         invoice = KepplerTravel::Invoice.find_by(token: referencia)
         invoice.update(status: 'approved')
-        if invoice.reservation.update(status: 'approved')
-          PaymentMailer.payment(invoice.reservation, invoice.reservation.user).deliver_now
-        end
+        PaymentMailer.to_user(invoice.reservation, invoice.reservation.user).deliver_now
+        PaymentMailer.to_admin(invoice.reservation, invoice.reservation.user).deliver_now
       end
     end
 
