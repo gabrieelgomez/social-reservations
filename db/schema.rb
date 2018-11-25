@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_183522) do
+ActiveRecord::Schema.define(version: 2018_11_25_165132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 2018_11_12_183522) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_contactus_messages_on_deleted_at"
+  end
+
+  create_table "keppler_contactus_pqrs", force: :cascade do |t|
+    t.string "name"
+    t.string "company"
+    t.string "dni"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.text "body"
+    t.string "options"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "keppler_contactus_requests", force: :cascade do |t|
@@ -197,6 +210,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_183522) do
     t.string "account_type"
     t.text "account_number"
     t.integer "destination_id"
+    t.string "email_corporative", default: "example@example.com"
     t.index ["deleted_at"], name: "index_keppler_travel_drivers_on_deleted_at"
     t.index ["user_id"], name: "index_keppler_travel_drivers_on_user_id"
   end

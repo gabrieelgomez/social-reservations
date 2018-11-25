@@ -99,10 +99,12 @@ module KepplerTravel
           account_type   = params[:user][:driver][:account_type]
           account_number = params[:user][:driver][:account_number]
           destination    = params[:driver][:destination_id]
+          email_corporative    = params[:user][:driver][:email_corporative]
           @user.driver.update(bank: bank) if bank
           @user.driver.update(account_type: account_type) if account_type
           @user.driver.update(account_number: account_number) if account_number
           @user.driver.update(destination_id: destination) if destination
+          @user.driver.update(email_corporative: email_corporative) if email_corporative
 
           update_password
           redirect_to travel.admin_travel_driver_path(@user.driver)
@@ -191,7 +193,7 @@ module KepplerTravel
 
       # Only allow a trusted parameter "white list" through.
       def driver_params
-        params.require(:driver).permit(:bank, :account_type, :destination_id, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :_destroy, licenses_attributes: [:id, :matricula, :color, :_destroy] ], licenses_attributes: [:id, :matricula, :color, :_destroy])
+        params.require(:driver).permit(:bank, :account_type, :destination_id, :email_corporative, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :_destroy, licenses_attributes: [:id, :matricula, :color, :_destroy] ], licenses_attributes: [:id, :matricula, :color, :_destroy])
       end
 
       def show_history
@@ -209,7 +211,7 @@ module KepplerTravel
           :name, :email, :phone, :dni, :password, :password_confirmation,
           :destination_id,
           :role_ids, :encrypted_password, :avatar,
-          driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id]
+          driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id, :email_corporative]
         )
       end
 

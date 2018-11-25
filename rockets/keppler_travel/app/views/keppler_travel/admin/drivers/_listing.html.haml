@@ -38,6 +38,11 @@
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
         %span
+          = driver.email_corporative
+
+    %td.hidden-xs
+      = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
+        %span
           = driver.user.dni
 
     %td.hidden-xs
