@@ -95,7 +95,7 @@
       .col-lg-6
         .box.slice-box
           .box-header.with-border
-            %h3.box-title Chofer Asignado
+            %h3.box-title Conductor Asignado
             .box-tools.pull-right
               -# - if @reservation.order.status == 'complete'
               -#   %h6.status.available Completado
@@ -111,7 +111,7 @@
                         = @reservation.driver.user.name
                       -# - unless @reservation.order.status.eql?('complete')
                       .col-lg-4
-                        = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Chofer', data: { confirm: t("keppler.messages.data_confirm") } do
+                        = link_to admin_travel_reservations_unassign_driver_path(reservation_id: @reservation.id), title: 'Remover Conductor', data: { confirm: t("keppler.messages.data_confirm") } do
                           %i.icon-close{style: 'color:red'}
                           -# .arrow-back.btn.btn-default
                           -#   = t('keppler.actions.unassign')
@@ -133,7 +133,7 @@
                 %table.table.table-striped
                   %tbody
                     %tr.list-row
-                      %th.display-label Lista de Choferes Disponibles
+                      %th.display-label Lista de Conductores Disponibles
                       %td.display-value.fs-body-1.tc-black-2
                         %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
                           - @reservation.reservationable.drivers.each do |driver|

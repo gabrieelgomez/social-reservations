@@ -1,7 +1,7 @@
 .container
 	.footer__content
 		.row
-			.col-xs-12.col-lg-3.visible-xs.visible-lg 
+			.col-xs-12.col-lg-3.visible-xs.visible-lg
 				.single-footer-item
 					.footer-logo
 						%img{:alt => "", :src => "/assets/img/patron.svg"}/
@@ -108,16 +108,10 @@
 		/* Modal - Términos y Condiciones */
 		= render 'app/layouts/modal/terms'
 
-	:javascript
-		var linear = new SmoothScroll('[data-easing="linear"]', {easing: 'linear'});
-		$(document).ready(function(){
-				$("#js_terms_footer").click(function(){
-					$("#modalTerms").modal();
-				});
-				$("#js_cancellations_footer").click(function(){
-					$("#modalCancellations").modal();
-				});
-				$("#js_treatments_footer").click(function(){
-					$("#modalTreatments").modal();
-				});
-		});
+%p
+	Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
+	= link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+		%span +573173632119
+	If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
+	= link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+		%span +573173632119

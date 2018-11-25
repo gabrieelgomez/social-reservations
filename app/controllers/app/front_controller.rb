@@ -16,6 +16,9 @@ module App
     end
 
     def index
+      # reservation = KepplerTravel::Reservation.find(21)
+      # user        = User.find(2)
+      # ReservationMailer.circuit_status(reservation, user).deliver_now
       @vehicles = KepplerTravel::Vehicle.all
       @tours    = KepplerTravel::Tour.all
       @circuits = KepplerTravel::Circuit.all

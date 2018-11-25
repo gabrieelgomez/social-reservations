@@ -333,7 +333,12 @@
                                   %strong Fecha de Reserva:
                                   = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
                       %p
-                        Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com (acción mailto) o vía whatsapp al +573173632119 (acción mensaje de whatsapp) // If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at  +573173632119
+                        Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
+                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+                          %span +573173632119
+                        If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
+                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+                          %span +573173632119
                       %p
                         Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
                         tener
