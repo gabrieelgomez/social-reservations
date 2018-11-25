@@ -45,8 +45,8 @@ module KepplerContactus
       def create
         @request = Request.new(request_params)
         if verify_recaptcha(model: @request) && @request.save
-          # ContactMailer.admin_contact(@request).deliver_now
-          # ContactMailer.client_contact(@request).deliver_now
+          ContactMailer.to_admin(@request).deliver_now
+          ContactMailer.to_user(@request).deliver_now
           redirect_to main_app.pqrs_path('usd'), notice: 'saved'
         else
           redirect_to main_app.pqrs_path('usd'), notice: 'not_saved'

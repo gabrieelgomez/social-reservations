@@ -53,9 +53,14 @@ module App
       respuesta = params[:respuesta]
       if respuesta == 'aprobada'
         invoice = KepplerTravel::Invoice.find_by(token: referencia)
+        reservation = invoice.reservation
+        user = reservation.user
+        type = reservation.reservationable_type.split('::').last.downcase.singularize
         invoice.update(status: 'approved')
-        PaymentMailer.to_user(invoice.reservation, invoice.reservation.user).deliver_now
-        PaymentMailer.to_admin(invoice.reservation, invoice.reservation.user).deliver_now
+        ReservationMailer.tour_status(reservation, user).deliver_now if type == 'tour'
+        ReservationMailer.transfer_status(reservation, user).deliver_now if type == 'vehicle'
+        PaymentMailer.to_user(reservation, user).deliver_now
+        PaymentMailer.to_admin(reservation, user).deliver_now
       end
     end
 
