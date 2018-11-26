@@ -101,6 +101,8 @@ module App
       @arrival_name          = params[:arrival_name]
       @flight_origin_picker  = params[:flight_origin_picker]
       @flight_arrival_picker = params[:flight_arrival_picker]
+      @hour_origin_picker    = params[:hour_origin_picker]
+      @hour_arrival_picker   = params[:hour_arrival_picker]
       @round_trip            = params[:round_trip]
       @adults                = params[:quantity_adults].to_i
       @kids                  = params[:quantity_kids].to_i

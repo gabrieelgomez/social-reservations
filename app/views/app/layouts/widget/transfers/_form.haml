@@ -70,6 +70,18 @@
                                         %h2 Fecha de Vuelta
                                         .form-group
                                             %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
+
+                                .col-lg-3
+                                    .box-item
+                                        %h2 Hora de Traslado (Ida)
+                                        .form-group
+                                            %input.form-control.custom-input{name: 'hour_origin_picker', id: 'hour_origin_picker', autocomplete: 'off'}/
+                                .col-lg-3#hora_vuelta
+                                    .box-item
+                                        %h2 Hora de Traslado (Vuelta)
+                                        .form-group
+                                            %input.form-control.custom-input{name: 'hour_arrival_picker', id: 'hour_arrival_picker', autocomplete: 'off'}/
+
                                 .col-xs-6.col-lg-2
                                     .box-item
                                         %h2 Adultos
@@ -100,15 +112,21 @@
                     console.log($('#round_trip').val());
                     $('#vuelo_vuelta').removeClass('hidden-input');
                     $('#vuelo_vuelta').addClass('show-input');
+                    $('#hora_vuelta').removeClass('hidden-input');
+                    $('#hora_vuelta').addClass('show-input');
             } else {
                     $('#round_trip').val(false);
                     console.log($('#round_trip').val());
                     $('#vuelo_vuelta').removeClass('show-input');
                     $('#vuelo_vuelta').addClass('hidden-input');
+                    $('#hora_vuelta').removeClass('show-input');
+                    $('#hora_vuelta').addClass('hidden-input');
             }
     });
 
     $( function() {
+
+        // Functions by inputs datetimepicker transfers
         function populateEndDate() {
             var date2 = $('#flight_origin_picker').datetimepicker('getDate');
             date2.setDate(date2.getDate() + 1);
@@ -139,6 +157,44 @@
                 $('#reservation_flight_arrival').val(date);
             }
         }).datetimepicker("setDate", new Date());
+        // Functions by inputs datetimepicker transfers
+
+
+        // Functions by inputs timepicker hour transfers
+        function populateEndTime() {
+            var date2 = $('#hour_origin_picker').datetimepicker('getDate');
+            date2.setDate(date2.getDate() + 1);
+            $('#hour_arrival_picker').datetimepicker('setDate', date2);
+            $("#hour_arrival_picker").datetimepicker("option", "minDate", date2);
+        }
+
+        $("#hour_origin_picker").timepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 1,
+            onSelect: function(date) {
+                populateEndTime();
+                var date = $('#hour_origin_picker').val()
+                $('#reservation_hour_origin').val(date);
+            }
+        }).timepicker("setDate", new Date());
+        $('#hour_arrival_picker').timepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 2,
+            onClose: function() {
+                var dt1 = $('#hour_origin_picker').timepicker('getDate');
+                var dt2 = $('#hour_arrival_picker').timepicker('getDate');
+                if (dt2 <= dt1) {
+                    var minDate = $('#hour_arrival_picker').timepicker('option', 'minDate');
+                    $('#hour_arrival_picker').timepicker('setDate', minDate);
+                }
+                var date = $('#hour_arrival_picker').val()
+                $('#reservation_hour_arrival').val(date);
+            }
+        }).timepicker("setDate", new Date());
+        // Functions by inputs timepicker hour transfers
+
+
+
     } );
 
     $(document).ready(function() {

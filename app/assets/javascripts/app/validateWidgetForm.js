@@ -25,6 +25,12 @@ function validateWidgetForm(id_form) {
       },
       'flight_arrival_picker': {
         required: true
+      },
+      'hour_origin_picker': {
+        required: true
+      },
+      'hour_arrival_picker': {
+        required: true
       }
     },
     messages: {
@@ -37,7 +43,9 @@ function validateWidgetForm(id_form) {
       'origin_location': 'No puede estar en blanco',
       'arrival_location': 'No puede estar en blanco',
       'flight_origin_picker': 'No puede estar en blanco',
-      'flight_arrival_picker': 'No puede estar en blanco'
+      'flight_arrival_picker': 'No puede estar en blanco',
+      'hour_origin_picker': 'No puede estar en blanco',
+      'hour_arrival_picker': 'No puede estar en blanco'
     },
     debug: true,
     errorElement: "label",

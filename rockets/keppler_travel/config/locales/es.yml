@@ -98,6 +98,8 @@ es:
       arrival_location: Coordenadas de Llegada
       flight_origin: Fecha de Vuelo/Recepción de Origen
       flight_arrival: Fecha de Vuelo/Recepción de Llegada
+      hour_origin: Hora de Traslado Ida/Origen
+      hour_arrival: Hora de Traslado Vuelta/Destino
       quantity_adults: Cantidad de Adultos
       quantity_kids: Cantidad de Niños
       quantity_kit: Cantidad de Equipaje
