@@ -10,3 +10,16 @@ $(window).load(function () {
     //$('.responsive-container').css("display", "block")
   }, 1000);
 });
+
+
+/*
+$(window).on("load", function (e) { })
+
+$(window).on("load", function (e) {
+  setTimeout(function () {
+    $('.preloaders').fadeOut(500, function () {
+      $(this).remove();
+    });
+    $('body').css('overflow-y', 'auto');
+  }, 1000);
+});*/

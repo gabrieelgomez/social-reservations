@@ -61,7 +61,7 @@
                   Observación:
                   %span= @reservation.description.blank? ? '-----------' : @reservation.description
             .col-12.col-xl-4
-              %ul.list-group.list-group-flush
+              -#%ul.list-group.list-group-flush
                 %li.list-group-item 
                   %h5.title Cover
                   %img{src: @reservation.reservationable.banner.url, class: 'rounded img-multidestination img-fluid'}  
