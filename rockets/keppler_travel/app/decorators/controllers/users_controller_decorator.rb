@@ -9,7 +9,8 @@ Admin::UsersController.class_eval do
         timetrack: params[:user][:driver][:timetrack],
         bank: params[:user][:driver][:bank],
         account_type: params[:user][:driver][:account_type],
-        account_number: params[:user][:driver][:account_number]
+        account_number: params[:user][:driver][:account_number],
+        email_corporative: params[:user][:driver][:email_corporative]
       )
       @user.driver.vehicle_ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
       @user.driver.destination_id = params[:driver][:destination_id]
@@ -77,14 +78,14 @@ Admin::UsersController.class_eval do
   private
 
   def driver_params
-    params.permit(:timetrack, :bank, :account_type, :account_number, :destination_id, :user_id)
+    params.permit(:timetrack, :bank, :account_type, :account_number, :destination_id, :user_id, :email_corporative)
   end
 
   def user_params
     params.require(:user).permit(
       :name, :email, :phone, :dni, :password, :password_confirmation,
       :role_ids, :encrypted_password, :avatar,
-      driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id]
+      driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id, :email_corporative]
     )
   end
 

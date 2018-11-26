@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
-    get '/gracias', to: 'app/front#invoice', as: :invoice
+    get '/gracias', to: 'app/front#gracias', as: :gracias
+    get '/invoice', to: 'app/front#invoice', as: :invoice
+
 
     get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
     post '/update_order', to: 'app/dashboard/drivers/transfers#update_order', as: :update_order

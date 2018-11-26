@@ -33,6 +33,8 @@ module App
             if @reservation.save!
               create_travellers
               ReservationMailer.circuit_status(@reservation, @user).deliver_now
+              ReservationMailer.to_admin_circuit(@reservation, @user).deliver_now
+
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               redirect_to invoice_path('es', 'cop')
             else

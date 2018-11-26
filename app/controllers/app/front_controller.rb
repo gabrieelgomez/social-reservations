@@ -16,6 +16,9 @@ module App
     end
 
     def index
+      # reservation = KepplerTravel::Reservation.find(21)
+      # user        = User.find(2)
+      # ReservationMailer.circuit_status(reservation, user).deliver_now
       @vehicles = KepplerTravel::Vehicle.all
       @tours    = KepplerTravel::Tour.all
       @circuits = KepplerTravel::Circuit.all
@@ -46,8 +49,25 @@ module App
 
     # Step 4
     def invoice
-      # byebug
+      referencia = params[:referencia]
+      respuesta = params[:respuesta]
+      if respuesta == 'aprobada'
+        invoice = KepplerTravel::Invoice.find_by(token: referencia)
+        reservation = invoice.reservation
+        user = reservation.user
+        type = reservation.reservationable_type.split('::').last.downcase.singularize
+        invoice.update(status: 'approved')
+        ReservationMailer.tour_status(reservation, user).deliver_now if type == 'tour'
+        ReservationMailer.transfer_status(reservation, user).deliver_now if type == 'vehicle'
+        PaymentMailer.to_user(reservation, user).deliver_now
+        PaymentMailer.to_admin(reservation, user).deliver_now
+      end
     end
+
+    # Step 4
+    def gracias
+    end
+
 
     def about
     end

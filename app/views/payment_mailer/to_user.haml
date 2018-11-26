@@ -1,8 +1,8 @@
 !!!
 %html
   %head
-    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     :css
       @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
       @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Poppins:400,500,700');
@@ -255,41 +255,54 @@
       p.center {
         text-align: center;
       }
-    %body
-        %table.email-wrapper{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-        %tr
-            %td{:align => "center"}
-            %table.email-content{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                %tr
-                %td.email-masthead
-                    %a.email-masthead_name{:href => "#"}
-                    %img{:src => "https://preview.ibb.co/iPv4mV/logo.png"}/
-                / Email Body
-                %tr
-                %td.email-body{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                    %table.email-body_inner{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
-                    / Body content
-                    %tr
-                        %td.content-cell
-                        %h1="¡Estimado #{@user.name}!"
-                        %h1 Te has registrado exitosamente en Receptivo Colombia
-                        %p Credenciales de Autenticación a nuestra plataforma
-                        %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                            %tr
-                            %td.attributes_content
-                                %table{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                                %tr
-                                    %td.attributes_item
-                                    %strong Usuario:
-                                    = @user.name
-                                %tr
-                                    %td.attributes_item
-                                    %strong Correo electrónico:
-                                    = @user.email
-                                %tr
-                                    %td.attributes_item
-                                    %strong Contraseña:
-                                    = @user.real_password
+
+      p.item {
+        text-align: left;
+        text-indent: 15;
+      }
+  %body
+    %table.email-wrapper{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td{:align => "center"}
+          %table.email-content{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td.email-masthead
+                %a.email-masthead_name{:href => "#"}
+                  %img{:src => "https://preview.ibb.co/iPv4mV/logo.png"}/
+            / Email Body
+            %tr
+              %td.email-body{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                %table.email-body_inner{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
+                  / Body content
+                  %tr
+                    %td.content-cell
+                      %h1 ¡Gracias por su reservación! Hemos recibido su pago de manera exitosa
+                      %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                        %tr
+                          %td.attributes_content
+                            %table{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                              %tr
+                                %td.attributes_item
+                                  %strong Datos de Facturación
+                                  %p.item= "N° Orden: #{@reservation.id}"
+                                  %p.item= "N° Orden ELP: #{@reservation.invoice.token}"
+                              %tr
+                                %td.attributes_item
+                                  %strong Datos Personales
+                                  %p.item= "Nombre: #{@user.name}"
+                                  %p.item= "Identificación: #{@user.dni}"
+                                  %p.item= "Correo electrónico: #{@user.email}"
+                              %tr
+                                %td.attributes_item
+                                  %strong Datos del Pago
+                                  %p.item= "Moneda: #{@reservation.invoice.currency}"
+                                  %p.item= "Monto: #{@reservation.invoice.amount}"
+                                  %p.item= "Status: #{@reservation.invoice.status}"
+                                  %p.item= "Dirección: #{@reservation.invoice.address}"
+                              -# %tr
+                              -#   %td.attributes_item
+                              -#     %strong Descripción
+                              -#     %p.item Concepto
                       %p
                         Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
                         = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
@@ -302,13 +315,13 @@
                         tener
                         %br/
                         %strong Un cordial saludo - Receptivo Colombia
-                %tr
-                %td
-                    %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
-                    %tr
-                        %td.content-cell{:align => "center"}
-                        %p.sub.align-center Receptivo Colombia © - 2018 | Todos los derechos reservados
-                        %p.sub.align-center
-                            Desarrollado por
-                            %a#company{:href => "http://slicegroup.xyz"}
-                            %strong Slice Group
+            %tr
+              %td
+                %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
+                  %tr
+                    %td.content-cell{:align => "center"}
+                      %p.sub.align-center Receptivo Colombia © - 2018 | Todos los derechos reservados
+                      %p.sub.align-center
+                        Desarrollado por
+                        %a#company{:href => "http://slicegroup.xyz"}
+                          %strong Slice Group

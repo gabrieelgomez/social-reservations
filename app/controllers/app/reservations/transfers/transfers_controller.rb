@@ -35,7 +35,7 @@ module App
             build_invoice
             if @reservation.save!
               create_travellers
-              ReservationMailer.transfer_status(@reservation, @user).deliver_now
+              # ReservationMailer.transfer_status(@reservation, @user).deliver_now
               if @price_total != nil
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               else
