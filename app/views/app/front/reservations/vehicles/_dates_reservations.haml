@@ -89,11 +89,12 @@
               %label{:for => ""}  Hora Traslado Ida/Origen
               -# %input{name: 'reservation[hour_origin]', value: @hour_origin_picker, type: 'hidden'}
               %input.form-control.custom-input{name: 'reservation[hour_origin]', id: 'hour_origin_picker', autocomplete: 'off'}/
-          .col-lg-6
-            .form-group.form-custom#fecha_destino_vuelta
-              %label{:for => ""} Hora Traslado Vuelta/Destino
-              -# %input{name: 'reservation[hour_arrival]', value: @hour_arrival_picker, type: 'hidden'}
-              %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off'}/
+          - if @round_trip == 'true'
+            .col-lg-6
+              .form-group.form-custom#fecha_destino_vuelta
+                %label{:for => ""} Hora Traslado Vuelta/Destino
+                -# %input{name: 'reservation[hour_arrival]', value: @hour_arrival_picker, type: 'hidden'}
+                %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off'}/
         // End -- Inputs Timepicker Hora Traslado Origen (Ida) - Fecha Destino (Vuelta)
 
 
