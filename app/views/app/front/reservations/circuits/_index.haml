@@ -70,7 +70,7 @@
     .container
       //Modal - Privacy Policy
       = render 'app/front/reservations/circuits/modal/privacy_policy'
-  
+
       //Modal - Cancellations Policy
       = render 'app/front/reservations/circuits/modal/cancellations_policy'
 
@@ -80,13 +80,10 @@
       //Modal - Details Hotel
       -#= render 'app/front/reservations/circuits/modal/details_hotel'
 
-
-%link{:href => "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
-%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
-%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
-
 :scss
   label.error-class{color: #e60707 !important;}
+
+%script{:src => '/assets/app/jquery-validate.js'}
 
 
 :javascript
@@ -130,4 +127,3 @@
     dots: true,
     });
   });
-

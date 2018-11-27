@@ -87,13 +87,13 @@
           .col-lg-6
             .form-group.form-custom#fecha_origen_ida
               %label{:for => ""}  Hora Traslado Ida/Origen
-              %input{name: 'reservation[hour_origin]', value: @hour_origin_picker, type: 'hidden'}
-              %input.form-control.custom-input{name: 'hour_origin_picker', id: 'hour_origin_picker', autocomplete: 'off', disabled: 'disabled', value: @hour_origin_picker}/
+              -# %input{name: 'reservation[hour_origin]', value: @hour_origin_picker, type: 'hidden'}
+              %input.form-control.custom-input{name: 'reservation[hour_origin]', id: 'hour_origin_picker', autocomplete: 'off'}/
           .col-lg-6
             .form-group.form-custom#fecha_destino_vuelta
               %label{:for => ""} Hora Traslado Vuelta/Destino
-              %input{name: 'reservation[hour_arrival]', value: @hour_arrival_picker, type: 'hidden'}
-              %input.form-control.custom-input{name: 'hour_arrival_picker', id: 'hour_arrival_picker', autocomplete: 'off', disabled: 'disabled', value: @hour_arrival_picker}/
+              -# %input{name: 'reservation[hour_arrival]', value: @hour_arrival_picker, type: 'hidden'}
+              %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off'}/
         // End -- Inputs Timepicker Hora Traslado Origen (Ida) - Fecha Destino (Vuelta)
 
 
@@ -188,3 +188,67 @@
       $('.al_aero_inputs').hide();
       }
   });
+
+
+:javascript
+    // // Transfers / Vehicles
+    // validateWidgetForm('#search-input');
+    // $('#vuelo_vuelta').addClass('show-input');
+    // $( "#ida_vuelta").prop('checked', true);
+    // $('#round_trip').val(true);
+    // $( '.radio-fecha-vuelos' ).on( 'click', function() {
+    //         if( $('#ida_vuelta').is(':checked') ){
+    //                 $('#round_trip').val(true);
+    //                 console.log($('#round_trip').val());
+    //                 $('#vuelo_vuelta').removeClass('hidden-input');
+    //                 $('#vuelo_vuelta').addClass('show-input');
+    //                 $('#hora_vuelta').removeClass('hidden-input');
+    //                 $('#hora_vuelta').addClass('show-input');
+    //         } else {
+    //                 $('#round_trip').val(false);
+    //                 console.log($('#round_trip').val());
+    //                 $('#vuelo_vuelta').removeClass('show-input');
+    //                 $('#vuelo_vuelta').addClass('hidden-input');
+    //                 $('#hora_vuelta').removeClass('show-input');
+    //                 $('#hora_vuelta').addClass('hidden-input');
+    //         }
+    // });
+
+    $( function() {
+
+        // Functions by inputs timepicker hour transfers
+        function populateEndTime() {
+            var date2 = $('#hour_origin_picker').timepicker('getDate');
+            date2.setDate(date2.getDate() + 1);
+            $('#hour_arrival_picker').timepicker('setDate', date2);
+            $("#hour_arrival_picker").timepicker("option", "minDate", date2);
+        }
+
+        $("#hour_origin_picker").timepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 1,
+            onSelect: function(date) {
+                populateEndTime();
+                var date = $('#hour_origin_picker').val()
+                $('#reservation_hour_origin').val(date);
+            }
+        }).timepicker("setDate", new Date());
+        $('#hour_arrival_picker').timepicker({
+            dateFormat: "dd-mm-yy",
+            minDate: 2,
+            onClose: function() {
+                var dt1 = $('#hour_origin_picker').timepicker('getDate');
+                var dt2 = $('#hour_arrival_picker').timepicker('getDate');
+                if (dt2 <= dt1) {
+                    var minDate = $('#hour_arrival_picker').timepicker('option', 'minDate');
+                    $('#hour_arrival_picker').timepicker('setDate', minDate);
+                }
+                var date = $('#hour_arrival_picker').val()
+                $('#reservation_hour_arrival').val(date);
+            }
+        }).timepicker("setDate", new Date());
+        // Functions by inputs timepicker hour transfers
+
+
+
+    } );
