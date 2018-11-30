@@ -126,15 +126,15 @@
 
     $( function() {
 
-        // Functions by inputs datetimepicker transfers
+        // Functions by inputs datepicker transfers
         function populateEndDate() {
-            var date2 = $('#flight_origin_picker').datetimepicker('getDate');
+            var date2 = $('#flight_origin_picker').datepicker('getDate');
             date2.setDate(date2.getDate() + 1);
-            $('#flight_arrival_picker').datetimepicker('setDate', date2);
-            $("#flight_arrival_picker").datetimepicker("option", "minDate", date2);
+            $('#flight_arrival_picker').datepicker('setDate', date2);
+            $("#flight_arrival_picker").datepicker("option", "minDate", date2);
         }
 
-        $("#flight_origin_picker").datetimepicker({
+        $("#flight_origin_picker").datepicker({
             dateFormat: "dd-mm-yy",
             minDate: 1,
             onSelect: function(date) {
@@ -142,30 +142,30 @@
                 var date = $('#flight_origin_picker').val()
                 $('#reservation_flight_origin').val(date);
             }
-        }).datetimepicker("setDate", new Date());
-        $('#flight_arrival_picker').datetimepicker({
+        }).datepicker("setDate", new Date());
+        $('#flight_arrival_picker').datepicker({
             dateFormat: "dd-mm-yy",
             minDate: 2,
             onClose: function() {
-                var dt1 = $('#flight_origin_picker').datetimepicker('getDate');
-                var dt2 = $('#flight_arrival_picker').datetimepicker('getDate');
+                var dt1 = $('#flight_origin_picker').datepicker('getDate');
+                var dt2 = $('#flight_arrival_picker').datepicker('getDate');
                 if (dt2 <= dt1) {
-                    var minDate = $('#flight_arrival_picker').datetimepicker('option', 'minDate');
-                    $('#flight_arrival_picker').datetimepicker('setDate', minDate);
+                    var minDate = $('#flight_arrival_picker').datepicker('option', 'minDate');
+                    $('#flight_arrival_picker').datepicker('setDate', minDate);
                 }
                 var date = $('#flight_arrival_picker').val()
                 $('#reservation_flight_arrival').val(date);
             }
-        }).datetimepicker("setDate", new Date());
-        // Functions by inputs datetimepicker transfers
+        }).datepicker("setDate", new Date());
+        // Functions by inputs datepicker transfers
 
 
         // Functions by inputs timepicker hour transfers
         // function populateEndTime() {
-        //     var date2 = $('#hour_origin_picker').datetimepicker('getDate');
+        //     var date2 = $('#hour_origin_picker').datepicker('getDate');
         //     date2.setDate(date2.getDate() + 1);
-        //     $('#hour_arrival_picker').datetimepicker('setDate', date2);
-        //     $("#hour_arrival_picker").datetimepicker("option", "minDate", date2);
+        //     $('#hour_arrival_picker').datepicker('setDate', date2);
+        //     $("#hour_arrival_picker").datepicker("option", "minDate", date2);
         // }
         //
         // $("#hour_origin_picker").timepicker({
