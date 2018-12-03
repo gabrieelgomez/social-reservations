@@ -345,6 +345,11 @@
 
                               %tr
                                 %td.attributes_item
+                                  %strong Hora de Traslado de Origen:
+                                  = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
+
+                              %tr
+                                %td.attributes_item
                                   %strong Aerolínea de origen:
                                   = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
 
@@ -357,6 +362,11 @@
                                 %td.attributes_item
                                   %strong Fecha de Vuelo/Recepción de Destino:
                                   = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Hora de Traslado de Destino:
+                                  = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
 
                               %tr
                                 %td.attributes_item

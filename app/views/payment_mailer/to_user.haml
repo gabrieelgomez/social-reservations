@@ -299,10 +299,73 @@
                                   %p.item= "Monto: #{@reservation.invoice.amount}"
                                   %p.item= "Status: #{@reservation.invoice.status}"
                                   %p.item= "Dirección: #{@reservation.invoice.address}"
-                              -# %tr
-                              -#   %td.attributes_item
-                              -#     %strong Descripción
-                              -#     %p.item Concepto
+                              %tr
+                                %td.attributes_item
+                                  %strong Nombre Cotizante
+                                  = @reservation.user.name
+                              %tr
+                                %td.attributes_item
+                                  %strong Origen:
+                                  = @reservation.origin.blank? ? '-----------' : @reservation.origin
+                              %tr
+                                %td.attributes_item
+                                  %strong Destino:
+                                  = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Cantidad de Adultos:
+                                  = @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
+                              %tr
+                                %td.attributes_item
+                                  %strong Cantidad de Niños:
+                                  = @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Observación
+                                  = @reservation.description.blank? ? '-----------' : @reservation.description
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Fecha de Vuelo/Recepción de Origen:
+                                  = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Hora de Traslado de Origen:
+                                  = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Aerolínea de origen:
+                                  = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Número de vuelo de origen:
+                                  = @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Fecha de Vuelo/Recepción de Destino:
+                                  = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Hora de Traslado de Destino:
+                                  = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Aerolínea de destino:
+                                  = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Número de vuelo de Destino:
+                                  = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
+
                       %p
                         Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
                         = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
