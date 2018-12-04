@@ -12,12 +12,12 @@
               .col-lg-12.js-hotel
                 .row
                   .box_hotel.row-flex
-                    .icon-checked{style: "background-image: url(/assets/img/checked.svg)"}
+                    -#.icon-checked{style: "background-image: url(/assets/img/checked.svg)"}
                     .col-xs-12.col-md-6.col-lg-4
                       %label.btn.btn-hotel
                         %center
                           .icon-hotel{style: "background-image: url(/assets/img/hotel.svg)"}
-                            %input.room.js-hotelRoom{name: "lodgment_multidestinationable", type: "radio", value: multidestinationable.lodgment_id}/
+                            %input.room.js-hotelRoom{name: "lodgment_multidestinationable", type: "checkbox", value: multidestinationable.lodgment_id}/
                     .col-xs-12.col-md-6.col-lg-8
                       %p.title-hotel= multidestinationable.lodgment.title[@lang]
                       -# %p
@@ -29,10 +29,10 @@
       .box-type-room
         %h4 Seleccione el tipo y cantidad de habitaciones
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_single', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab1.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_single', type: "checkbox"}/
           %p Habitación
           %p Simple
           %p.price#room_single
@@ -44,10 +44,10 @@
                   %option{ value: i+1}= i+1
             %input.js-square#single{type: 'hidden', name: "square_multidestination[][single]", type: "number", min: 1, placeholder:'1'}/
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_doubles', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab2.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_doubles', type: "checkbox"}/
           %p Habitación
           %p Doble
           %p.price#room_doubles
@@ -59,10 +59,10 @@
                   %option{ value: i+1}= i+1
             %input.js-square#doubles{type: 'hidden', name: "square_multidestination[][doubles]", type: "number", min: 1, placeholder:'1'}/
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_triples', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab3.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_triples', type: "checkbox"}/
           %p Habitación
           %p Triple
           %p.price#room_triples
@@ -74,10 +74,10 @@
                   %option{ value: i+1}= i+1
             %input.js-square#triples{type: 'hidden', name: "square_multidestination[][triples]", type: "number", min: 1, placeholder:'1'}/
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_quadruples', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab4.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_quadruples', type: "checkbox"}/
           %p Habitación
           %p Cuadruple
           %p.price#room_quadruples
@@ -89,10 +89,10 @@
                   %option{ value: i+1}= i+1
             %input.js-square#quadruples{type: 'hidden', name: "square_multidestination[][quadruples]", type: "number", min: 1, placeholder:'1'}/
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_quintuples', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab5.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_quintuples', type: "checkbox"}/
           %p Habitación
           %p Quintuple
           %p.price#room_quintuples
@@ -104,10 +104,10 @@
                   %option{ value: i+1}= i+1
             %input.js-square#quintuples{type: 'hidden', name: "square_multidestination[][quintuples]", type: "number", min: 1, placeholder:'1'}/
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_sextuples', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab6.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_sextuples', type: "checkbox"}/
           %p Habitación
           %p Sextuple
           %p.price#room_sextuples
@@ -120,10 +120,10 @@
             %input.js-square#sextuples{type: 'hidden', name: "square_multidestination[][sextuples]", type: "number", min: 1, placeholder:'1'}/
 
     .col{style: 'visibility: hidden;'}
-      %label.btn.btn-room.js-boxRoom
+      %label.btn.btn-room
         %center
-          %input.type-room.js-typeRoom{name: 'room_children', type: "checkbox"}/
           .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
+            %input.type-room.js-typeRoom{name: 'room_children', type: "checkbox"}/
           %p Habitación
           %p Niño
           %p.price#room_children
@@ -133,14 +133,14 @@
 
 
 //Solution to failure of hotel selection - User Experience (Bad)
-:javascript
-  
+-#:javascript
+
   //Hide the check icon
   $('.icon-checked').css('visibility', 'hidden');
-  
+
   //Hotel selection by click
   $(".jshotelbox").click( 'change', function() {
-    $(this).find('.js-hotelRoom').prop( "checked", true );    
+    $(this).find('.js-hotelRoom').prop( "checked", true );
     $('.box_hotel').removeClass('bg-active');
     $('.icon-checked').css('visibility', 'hidden');
       if( $(this).find('.js-hotelRoom').is(':checked') ) {
@@ -158,19 +158,16 @@
          $(this).find('.box_hotel').removeClass('bg-active');
       }
   });
-  
-  //Hide input hidden
-  $('.js-square').hide();
-  
+
   //Rooms selection by click
-  $(".js-boxRoom").click( 'change', function() {
-      if( $(this).find('.js-typeRoom').is(':checked') ) {
-        $(this).find('.js-typeRoom').parents('label').addClass('bg-active');
-        $(this).find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
+  $('.js-typeRoom').on('click', function () {
+      if ($(this).is(':checked')) {
+          $('.js-square').hide();
+          $(this).addClass('js-room-active');
+          $(this).closest('label').addClass('bg-active');
+          $(this).closest('label').parent().find('.quantity-type-room').removeClass('quantity-disabled').addClass('quantity-active');
       } else {
-        $(this).find('.js-typeRoom').prop( "checked", false );  
-        $(this).find('.js-typeRoom').parents('label').removeClass('bg-active');
-        $(this).find('.quantity-type-room').removeClass('quantity-active').addClass('quantity-disabled');
+
       }
   });
 
@@ -178,12 +175,12 @@
 
 
 
--#:javascript
+:javascript
   var adults = #{raw @adults};
   var kids   = #{raw @kids};
   var currency = "#{raw @currency.upcase}";
   var coin     = "#{raw @currency.downcase}";
   var lodgments_ruby = #{raw @lodgments.to_json};
 
--#%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
--#%script{src: "/assets/js/hotel-room.js"}
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
+%script{src: "/assets/js/hotel-room.js"}

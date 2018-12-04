@@ -22,7 +22,7 @@
         margin-top: 10px;
       }
     }
-    
+
     .reservation-resumen{
       @include respond-to(xs) {
         min-height: unset;
@@ -43,7 +43,7 @@
         }
       }
     }
-   
+
     .form-custom {
       padding-top: 10px;
       @include respond-to(xs) {
@@ -293,7 +293,7 @@
       }
     }
 
- 
+
     .form-reservation {
       margin-bottom: 0 !important;
     }
@@ -343,7 +343,7 @@
 
         center {
 
-          
+
           .icon-room {
             background-size: 55px;
             background-position: center;
@@ -405,7 +405,7 @@
           }
         }
 
- 
+
         p {
           text-align: center;
           color: #00000096;
@@ -461,7 +461,7 @@
       .btn-room {
         max-width: 300px;
         border-radius: 0px;
-        padding: 12px 0 12px 0;
+        padding: 26px 0 10px 0;
         width: 100%;
         margin-top: 10px;
         margin-bottom: 20px;
