@@ -270,7 +270,7 @@
                   / Body content
                   %tr
                     %td.content-cell
-                      %h1="¡Estimado Usuario! Has realizado una Reservación"
+                      %h1="¡Tienes una nueva Reservación de un Circuito!"
                       -#- @reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
                       -# unless attribute.eql?('position') || attribute.eql?('deleted_at')
                       %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
@@ -307,8 +307,19 @@
 
                               %tr
                                 %td.attributes_item
-                                  %strong Nombre Cotizante
+                                  %strong Nombre Cotizante (Cliente)
                                   = @reservation.user.name
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Correo Cliente
+                                  = @reservation.user.email
+
+                              %tr
+                                %td.attributes_item
+                                  %strong Teléfono Cliente
+                                  = @reservation.user.phone
+
                               %tr
                                 %td.attributes_item
                                   %strong Circuito:
