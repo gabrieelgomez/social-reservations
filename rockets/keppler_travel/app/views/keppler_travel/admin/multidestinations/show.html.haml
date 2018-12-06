@@ -59,24 +59,24 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @multidestination.destination_ids.blank? ? '-----------' : @multidestination.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
+                    = @multidestination.destination_ids.blank? ? '-----------' : @multidestination.destinations.collect{|des| des.custom_title['es']}.uniq.join(', ')
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @multidestination.description[I18n.locale.to_s].blank? ? '-----------' : @multidestination.description[I18n.locale.to_s].truncate(50)
+                    = @multidestination.description['es'].blank? ? '-----------' : @multidestination.description['es'].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.include")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @multidestination.include[I18n.locale.to_s].blank? ? '-----------' : @multidestination.include[I18n.locale.to_s].truncate(50)
+                    = @multidestination.include['es'].blank? ? '-----------' : @multidestination.include['es'].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.exclude")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @multidestination.exclude[I18n.locale.to_s].blank? ? '-----------' : @multidestination.exclude[I18n.locale.to_s].truncate(50)
+                    = @multidestination.exclude['es'].blank? ? '-----------' : @multidestination.exclude['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.itinerary")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @multidestination.itinerary[I18n.locale.to_s].blank? ? '-----------' : @multidestination.itinerary[I18n.locale.to_s].truncate(50)
+                    = @multidestination.itinerary['es'].blank? ? '-----------' : @multidestination.itinerary['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.status")
@@ -135,7 +135,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= destination.custom_title['es']
                         %td= lodgment.title['es']
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_usd
@@ -169,7 +169,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= destination.custom_title['es']
                         %td= lodgment.title['es']
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_cop

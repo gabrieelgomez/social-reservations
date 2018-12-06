@@ -54,7 +54,7 @@
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
                                       %input#multidestination_multidestinationables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= ranking.title[I18n.locale.to_s]
+                              %td= ranking.title['es']
 
                               // Circuitable Roms from one Circuitable from Circuit
                               = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|
@@ -86,7 +86,7 @@
                             %tr
                               %td
                                 = circuitable.input :status, as: :boolean, label: false
-                              %td= ranking.title[I18n.locale.to_s]
+                              %td= ranking.title['es']
 
                               // Circuitable Roms from one Circuitable from Circuit
                               = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|

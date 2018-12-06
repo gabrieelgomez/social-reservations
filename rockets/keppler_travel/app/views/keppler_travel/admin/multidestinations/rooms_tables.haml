@@ -52,7 +52,7 @@
                             %tr
                               %td
                                 = multidestinationable.input :status, as: :boolean, label: false
-                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td= destination.custom_title['es']
                               %td= lodgment.title['es']
 
                               // Multidestinationable Roms from one Multidestinationable from Multidestination
@@ -93,7 +93,7 @@
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
                                       %input#multidestination_multidestinationables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td= destination.custom_title['es']
                               %td= lodgment.title['es']
 
                               // Multidestinationable Roms from one Multidestinationable from Multidestination

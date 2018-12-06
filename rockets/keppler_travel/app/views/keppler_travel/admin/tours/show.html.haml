@@ -56,12 +56,12 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.description[I18n.locale.to_s].blank? ? '-----------' : @tour.description[I18n.locale.to_s].truncate(50)
+                    = @tour.description['es'].blank? ? '-----------' : @tour.description['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.task")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.task[I18n.locale.to_s].blank? ? '-----------' : @tour.task[I18n.locale.to_s].truncate(50)
+                    = @tour.task['es'].blank? ? '-----------' : @tour.task['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label Precio Adulto COP
@@ -86,7 +86,7 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @tour.destination_ids.blank? ? '-----------' : @tour.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
+                    = @tour.destination_ids.blank? ? '-----------' : @tour.destinations.collect{|des| des.custom_title['es']}.uniq.join(', ')
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.status")
