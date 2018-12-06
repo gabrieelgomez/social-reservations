@@ -23,6 +23,8 @@ module KepplerTravel
     accepts_nested_attributes_for :multidestinationables
     accepts_nested_attributes_for :multidestinationable_rooms
 
+    validates :banner, presence: true
+
     def class_str
       self.class.to_s.split('::').last
     end

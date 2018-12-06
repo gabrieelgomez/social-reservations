@@ -43,7 +43,7 @@ module KepplerTravel
       def create
         @circuit = Circuit.new(circuit_params)
         # @circuit.destination_ids = params[:circuit][:destination_ids].split(',').map(&:to_i)
-        if @circuit.save!
+        if @circuit.save
           @circuitable = CircuitableService.create(@circuit, params)
           redirect_to admin_travel_circuit_rooms_tables_path(@circuit)
           # redirect(@circuit, params)

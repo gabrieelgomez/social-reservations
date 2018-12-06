@@ -13,7 +13,7 @@ module KepplerTravel
     has_and_belongs_to_many :destinations
     has_many :reservations, as: :reservationable
 
-    validates :title, :description, :task, :price_adults, presence: true
+    validates :title, :description, :task, :price_adults, :banner, presence: true
     validates :title, uniqueness: true
 
     def low_price(currency)

@@ -53,7 +53,7 @@ module KepplerTravel
       def create
         @multidestination = Multidestination.new(multidestination_params)
         @multidestination.destination_ids = params[:multidestination][:destination_ids].split(',').map(&:to_i)
-        if @multidestination.save!
+        if @multidestination.save
           @multidestinationable = MultidestinationableService.create(@multidestination, params)
           redirect_to admin_travel_multidestination_rooms_tables_path(@multidestination)
           # redirect(@multidestination, params)
