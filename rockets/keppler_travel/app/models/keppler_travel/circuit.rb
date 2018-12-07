@@ -21,6 +21,8 @@ module KepplerTravel
     accepts_nested_attributes_for :circuitables
     accepts_nested_attributes_for :circuitable_rooms
 
+    validates :banner, presence: true
+
     def class_str
       self.class.to_s.split('::').last
     end
