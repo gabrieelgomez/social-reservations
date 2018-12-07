@@ -59,24 +59,24 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.destination_ids.blank? ? '-----------' : @circuit.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
+                    = @circuit.destination_ids.blank? ? '-----------' : @circuit.destinations.collect{|des| des.custom_title['es']}.uniq.join(', ')
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.description")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.description[I18n.locale.to_s].blank? ? '-----------' : @circuit.description[I18n.locale.to_s].truncate(50)
+                    = @circuit.description['es'].blank? ? '-----------' : @circuit.description['es'].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.include")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.include[I18n.locale.to_s].blank? ? '-----------' : @circuit.include[I18n.locale.to_s].truncate(50)
+                    = @circuit.include['es'].blank? ? '-----------' : @circuit.include['es'].truncate(50)
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.exclude")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.exclude[I18n.locale.to_s].blank? ? '-----------' : @circuit.exclude[I18n.locale.to_s].truncate(50)
+                    = @circuit.exclude['es'].blank? ? '-----------' : @circuit.exclude['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.itinerary")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @circuit.itinerary[I18n.locale.to_s].blank? ? '-----------' : @circuit.itinerary[I18n.locale.to_s].truncate(50)
+                    = @circuit.itinerary['es'].blank? ? '-----------' : @circuit.itinerary['es'].truncate(50)
 
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.status")

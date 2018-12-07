@@ -45,7 +45,7 @@
                             %tr
                               %td
                                 = vehicleable.input :status, as: :boolean, label: false
-                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td= destination.custom_title['es']
                               %td
                                 = vehicleable.input :price_inner_usd, label: false, input_html: {min: 0}
                               %td
@@ -76,7 +76,7 @@
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
                                       %input#vehicle_vehicleables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= destination.custom_title[I18n.locale.to_s]
+                              %td= destination.custom_title['es']
                               %td
                                 = vehicleable.input :price_inner_cop, label: false, input_html: {min: 0}
                               %td

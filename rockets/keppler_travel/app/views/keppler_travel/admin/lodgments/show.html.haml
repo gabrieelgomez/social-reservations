@@ -68,7 +68,7 @@
               %tr.list-row
                 %th.display-label= t("activerecord.attributes.destinations")
                 %td.display-value.fs-body-1.tc-black-2
-                  = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title[I18n.locale.to_s]
+                  = @lodgment.destination_id.blank? ? '-----------' : @lodgment.destination.custom_title['es']
               %tr.list-row
                 %th.display-label Tipos de Habitaciones
                 %td.display-value.fs-body-1.tc-black-2

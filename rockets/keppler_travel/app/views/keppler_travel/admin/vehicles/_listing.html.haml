@@ -15,7 +15,7 @@
     %td.hidden-xs
       = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
         %span
-          = vehicle.title[I18n.locale.to_s]
+          = vehicle.title['es']
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_vehicle_path(vehicle, search: @query), remote: true, class: 'list-rows' do
         %span
