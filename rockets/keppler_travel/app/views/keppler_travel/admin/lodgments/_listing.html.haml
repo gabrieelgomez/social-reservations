@@ -10,7 +10,7 @@
     %td.hidden-xs
       = link_to admin_travel_lodgment_path(lodgment, search: @query), remote: true, class: 'show-row' do
         %span
-          = lodgment.title[I18n.locale.to_s]
+          = lodgment.title['es']
 
     %td.hidden-xs
       = link_to admin_travel_lodgment_path(lodgment, search: @query), remote: true, class: 'show-row' do
@@ -20,7 +20,7 @@
     %td.hidden-xs
       = link_to admin_travel_lodgment_path(lodgment, search: @query), remote: true, class: 'show-row' do
         %span
-          = lodgment.destination.custom_title[I18n.locale.to_s]
+          = lodgment.destination.custom_title['es']
 
     %td{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{lodgment.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}

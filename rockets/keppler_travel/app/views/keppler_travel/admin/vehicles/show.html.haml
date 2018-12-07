@@ -50,7 +50,7 @@
                 %tr.list-row
                   %th.display-label= t("activerecord.attributes.destinations")
                   %td.display-value.fs-body-1.tc-black-2
-                    = @vehicle.destination_ids.blank? ? '-----------' : @vehicle.destinations.collect{|des| des.custom_title[I18n.locale.to_s]}.uniq.join(', ')
+                    = @vehicle.destination_ids.blank? ? '-----------' : @vehicle.destinations.collect{|des| des.custom_title['es']}.uniq.join(', ')
 
                 %tr.list-row
                   %th.display-label Cantidad máx. de Asientos
@@ -117,7 +117,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= destination.custom_title['es']
                         %td= number_to_currency(vehicleable.price_inner_usd, locale: @locale)
                         %td= number_to_currency(vehicleable.price_outer_usd, locale: @locale)
 
@@ -141,7 +141,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title[I18n.locale.to_s]
+                        %td= destination.custom_title['es']
                         %td= number_to_currency(vehicleable.price_inner_cop, locale: @locale)
                         %td= number_to_currency(vehicleable.price_outer_cop, locale: @locale)
                         -# %td= number_to_currency(vehicleable.price_cop, locale: @locale)

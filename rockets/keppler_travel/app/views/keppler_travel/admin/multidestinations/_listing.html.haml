@@ -17,15 +17,17 @@
     %td.hidden-xs
       = link_to admin_travel_multidestination_path(multidestination, search: @query), remote: true, class: 'show-row' do
         %span
-          = multidestination.title[I18n.locale.to_s]
-    %td.hidden-xs
-      = link_to admin_travel_multidestination_path(multidestination, search: @query), remote: true, class: 'show-row' do
-        %span
-          = multidestination.quantity_days
+          = multidestination.title['es']
+    -# %td.hidden-xs
+    -#   = link_to admin_travel_multidestination_path(multidestination, search: @query), remote: true, class: 'show-row' do
+    -#     %span
+    -#       = multidestination.quantity_days
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_multidestination_rooms_tables_path(multidestination), class: 'show-row' do
         %i.icon-eye
         -# = t('keppler.actions.show')
+
+
     %td{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{multidestination.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical

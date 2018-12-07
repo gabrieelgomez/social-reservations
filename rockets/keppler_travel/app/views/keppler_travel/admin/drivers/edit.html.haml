@@ -63,13 +63,13 @@
                           %br.hidden-md
                             %select.selectpicker{"data-style" => "btn-primary", id: 'drivers_vehicles', name: 'driver[vehicle_ids]', multiple: "multiple", style:'width: 100%;'}
                               - KepplerTravel::Vehicle.all.each do |vehicle|
-                                %option{selected: @driver.selected_vehicle(vehicle.id), value: vehicle.id}= vehicle.title[I18n.locale.to_s]
+                                %option{selected: @driver.selected_vehicle(vehicle.id), value: vehicle.id}= vehicle.title['es']
                       .col-xs-12.col-lg-6
                         %label Destino
                         %br
                         %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_drivers', name: 'driver[destination_id]'}
                           - KepplerTravel::Destination.all.each do |destination|
-                            %option{ value: destination.id, selected: @driver.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
+                            %option{ value: destination.id, selected: @driver.selected(destination.id)}= destination.custom_title['es']
 
                   .col-xs-12.col-lg-4
                     .row

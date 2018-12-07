@@ -65,7 +65,7 @@
                       %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'rankings_lodgments', name: 'lodgment[ranking_id]'}
                         - KepplerTravel::Ranking.all.each do |ranking|
-                          %option{ value: ranking.id, selected: @lodgment.selected(ranking.id)}= ranking.title[I18n.locale.to_s]
+                          %option{ value: ranking.id, selected: @lodgment.selected(ranking.id)}= ranking.title['es']
                       %br
                       %br
                     .col-xs-12.col-md-6.col-lg-4
@@ -81,7 +81,7 @@
                       %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_lodgments', name: 'lodgment[destination_id]'}
                         - KepplerTravel::Destination.all.each do |destination|
-                          %option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title[I18n.locale.to_s]
+                          %option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title['es']
                       %br
                       %br
                     .col-xs-12.col-lg-12
