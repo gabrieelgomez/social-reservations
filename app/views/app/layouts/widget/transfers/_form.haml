@@ -104,25 +104,43 @@
     // Transfers / Vehicles
     validateWidgetForm('#search-input');
     $('#vuelo_vuelta').addClass('show-input');
-    $( "#ida_vuelta").prop('checked', true);
+    $('#ida_vuelta').prop('checked', true);
     $('#round_trip').val(true);
-    $( '.radio-fecha-vuelos' ).on( 'click', function() {
-            if( $('#ida_vuelta').is(':checked') ){
-                    $('#round_trip').val(true);
-                    console.log($('#round_trip').val());
-                    $('#vuelo_vuelta').removeClass('hidden-input');
-                    $('#vuelo_vuelta').addClass('show-input');
-                    $('#hora_vuelta').removeClass('hidden-input');
-                    $('#hora_vuelta').addClass('show-input');
-            } else {
-                    $('#round_trip').val(false);
-                    console.log($('#round_trip').val());
-                    $('#vuelo_vuelta').removeClass('show-input');
-                    $('#vuelo_vuelta').addClass('hidden-input');
-                    $('#hora_vuelta').removeClass('show-input');
-                    $('#hora_vuelta').addClass('hidden-input');
-            }
+    $('.radio-fecha-vuelos').on( 'click', function() {
+        if( $('#ida_vuelta').is(':checked') ){
+                $('#round_trip').val(true);
+                console.log($('#round_trip').val());
+                $('#vuelo_vuelta').removeClass('hidden-input');
+                $('#vuelo_vuelta').addClass('show-input');
+                $('#hora_vuelta').removeClass('hidden-input');
+                $('#hora_vuelta').addClass('show-input');
+        } else {
+                $('#round_trip').val(false);
+                console.log($('#round_trip').val());
+                $('#vuelo_vuelta').removeClass('show-input');
+                $('#vuelo_vuelta').addClass('hidden-input');
+                $('#hora_vuelta').removeClass('show-input');
+                $('#hora_vuelta').addClass('hidden-input');
+        }
     });
+
+    $(document).ready(function() {
+
+      $('form').keypress(function(e){
+        if(e == 13){
+          return false;
+        }
+      });
+
+      $('input').keypress(function(e){
+        if(e.which == 13){
+          return false;
+        }
+      });
+
+    });
+
+    /*
 
     $( function() {
 
@@ -157,6 +175,10 @@
                 $('#reservation_flight_arrival').val(date);
             }
         }).datepicker("setDate", new Date());
+
+
+
+        */
         // Functions by inputs datepicker transfers
 
 
@@ -195,24 +217,10 @@
 
 
 
-    } );
+    //} );
 
-    $(document).ready(function() {
 
-      $('form').keypress(function(e){
-        if(e == 13){
-          return false;
-        }
-      });
-
-      $('input').keypress(function(e){
-        if(e.which == 13){
-          return false;
-        }
-      });
-
-    });
-
+    
     // $("#origin_name").focusin(function () {
     // 	$(document).keypress(function (e) {
     // 		if (e.which == 13) {

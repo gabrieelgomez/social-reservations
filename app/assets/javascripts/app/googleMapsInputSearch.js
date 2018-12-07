@@ -1,12 +1,12 @@
 $(document).ready(function () {
   var map;
 
-  $("#origin_name").focus(function() {
-     $(this).select();
+  $("#origin_name").focus(function () {
+    $(this).select();
   });
 
-  $("#arrival_name").focus(function() {
-     $(this).select();
+  $("#arrival_name").focus(function () {
+    $(this).select();
   });
 
 
@@ -42,15 +42,15 @@ $(document).ready(function () {
         // For each address administrative_area_level_1 in hash
         for (var i = 0; i < place.address_components.length; i++) {
           var addressType = place.address_components[i].types;
-          if (addressType.includes('administrative_area_level_1')){
+          if (addressType.includes('administrative_area_level_1')) {
             departament = place.address_components[i].long_name;
-            if (id_input == 'origin_name'){
+            if (id_input == 'origin_name') {
               exception = validateExceptions(departament);
               let field = $('#origin_departament').val(exception);
               // departament = exception;
               // $('.origin_name').text(`Desde: Localidad, ${departament}`);
             }
-            else{
+            else {
               exception = validateExceptions(departament);
               let field = $('#arrival_departament').val(exception);
               // departament = exception;
@@ -61,7 +61,7 @@ $(document).ready(function () {
           }
         }
 
-        function validateExceptions(exception){
+        function validateExceptions(exception) {
           switch (exception) {
             case 'Bogotá':
               exception = 'Cundinamarca';
@@ -81,13 +81,13 @@ $(document).ready(function () {
         // For each address locality in hash
         for (var i = 0; i < place.address_components.length; i++) {
           var addressType = place.address_components[i].types;
-          if (addressType.includes('locality')){
+          if (addressType.includes('locality')) {
             locality = place.address_components[i].long_name;
-            if (id_input == 'origin_name'){
+            if (id_input == 'origin_name') {
               let field = $('#origin_locality').val(locality);
               $('.origin_name').text(`Desde: Departamento, ${exception}, Localidad, ${locality}`);
             }
-            else{
+            else {
               let field = $('#arrival_locality').val(locality);
               $('.arrival_name').text(`Hasta: Departamento, ${exception}, Localidad, ${locality}`);
             }
@@ -99,17 +99,17 @@ $(document).ready(function () {
 
 
         // For each address political in hash
-        if (!locality){
+        if (!locality) {
           for (var i = 0; i < place.address_components.length; i++) {
             var addressType = place.address_components[i].types;
-            if (addressType.includes('political')){
+            if (addressType.includes('political')) {
               // debugger;
               locality = place.address_components[i].long_name;
-              if (id_input == 'origin_name'){
+              if (id_input == 'origin_name') {
                 let field = $('#origin_locality').val(locality);
                 $('.origin_name').text(`Desde: Departamento, ${exception}, Localidad, ${locality}`);
               }
-              else{
+              else {
                 let field = $('#arrival_locality').val(locality);
                 $('.arrival_name').text(`Hasta: Departamento, ${exception}, Localidad, ${locality}`);
               }
@@ -120,10 +120,10 @@ $(document).ready(function () {
         // For each address political in hash
 
 
-        if (id_input == 'origin_name'){
+        if (id_input == 'origin_name') {
           let field = $('#origin_location');
           field.val([latitude, latitude]);
-        }else if(id_input == 'arrival_name'){
+        } else if (id_input == 'arrival_name') {
           let field = $('#arrival_location');
           field.val([latitude, latitude]);
         }
