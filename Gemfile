@@ -131,6 +131,7 @@ gem 'recaptcha', '4.8.0', require: 'recaptcha/rails'
 gem 'country_select'
 gem 'city-state', '~> 0.0.13'
 #---- gems frontend----
+#gem 'slick_rails'
 gem 'slick_rails'
 gem 'mixitup_rails'
 gem 'wow-rails'
