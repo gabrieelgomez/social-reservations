@@ -192,32 +192,49 @@
 
 
 :javascript
-    // // Transfers / Vehicles
-    // validateWidgetForm('#search-input');
-    // $('#vuelo_vuelta').addClass('show-input');
-    // $( "#ida_vuelta").prop('checked', true);
-    // $('#round_trip').val(true);
-    // $( '.radio-fecha-vuelos' ).on( 'click', function() {
-    //         if( $('#ida_vuelta').is(':checked') ){
-    //                 $('#round_trip').val(true);
-    //                 console.log($('#round_trip').val());
-    //                 $('#vuelo_vuelta').removeClass('hidden-input');
-    //                 $('#vuelo_vuelta').addClass('show-input');
-    //                 $('#hora_vuelta').removeClass('hidden-input');
-    //                 $('#hora_vuelta').addClass('show-input');
-    //         } else {
-    //                 $('#round_trip').val(false);
-    //                 console.log($('#round_trip').val());
-    //                 $('#vuelo_vuelta').removeClass('show-input');
-    //                 $('#vuelo_vuelta').addClass('hidden-input');
-    //                 $('#hora_vuelta').removeClass('show-input');
-    //                 $('#hora_vuelta').addClass('hidden-input');
-    //         }
-    // });
+   // Transfers / Vehicles
+   validateWidgetForm('#search-input');
+     $('#vuelo_vuelta').addClass('show-input');
+     $( "#ida_vuelta").prop('checked', true);
+     $('#round_trip').val(true);
+     $( '.radio-fecha-vuelos' ).on( 'click', function() {
+    
+             if( $('#ida_vuelta').is(':checked') ){
+    
+                     $('#round_trip').val(true);
+    
+                     console.log($('#round_trip').val());
+    
+                     $('#vuelo_vuelta').removeClass('hidden-input');
+    
+                     $('#vuelo_vuelta').addClass('show-input');
+    
+                     $('#hora_vuelta').removeClass('hidden-input');
+    
+                     $('#hora_vuelta').addClass('show-input');
+    
+             } else {
+    
+                     $('#round_trip').val(false);
+    
+                     console.log($('#round_trip').val());
+    
+                     $('#vuelo_vuelta').removeClass('show-input');
+    
+                     $('#vuelo_vuelta').addClass('hidden-input');
+    
+                     $('#hora_vuelta').removeClass('show-input');
+    
+                     $('#hora_vuelta').addClass('hidden-input');
+    
+             }
+    
+     });
 
     $( function() {
 
-        // Functions by inputs timepicker hour transfers
+        
+         Functions by inputs timepicker hour transfers
         function populateEndTime() {
             var date2 = $('#hour_origin_picker').timepicker('getDate');
             date2.setDate(date2.getDate() + 1);
