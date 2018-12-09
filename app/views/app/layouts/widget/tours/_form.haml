@@ -1,4 +1,4 @@
-= search_form_for @q, url: "/#{@lang}/#{@currency}/tours", html: {class: 'input-group', style:'width: 100%;', id: 'search-input', method: :get } do |f|
+= search_form_for @q, url: "/#{@lang}/#{@currency}/tours", html: {class: 'input-group', style:'width: 100%;', id: 'widget_tours', method: :get } do |f|
 	.box-transfers
 		.row
 			- unless KepplerTravel::Tour.count.positive?
@@ -38,21 +38,53 @@
 							buscar
 
 :javascript
-	// Tours
-	$( function() {
-		function populateEndDate() {
-			var date2 = $('#flight_origin_tour_picker').datetimepicker('getDate');
-			date2.setDate(date2.getDate() + 3);
-		}
-
-		$("#flight_origin_tour_picker").datetimepicker({
-			dateFormat: "dd-mm-yy",
-			minDate: 3,
-			onSelect: function(date) {
-				populateEndDate();
-				var date = $('#flight_origin_tour_picker').val();
-				$('#reservation_flight_origin').val(date);
+	function validateWidgetTour() {
+		$('#widget_tours').validate({
+			event: "blur",
+			errorClass: "error-class",
+			validClass: "valid-class",
+			rules: {
+				'quantity_adults': {
+					required: true,
+					min: 1
+				},
+				'flight_origin_tour_picker': {
+					required: true
+				}
+			},
+			messages: {
+				'quantity_adults': {
+					required: 'No puede estar en blanco',
+					min: 'Introduce un valor mayor que 1'
+				},
+				'flight_origin_tour_picker': 'No puede estar en blanco'
+			},
+			debug: true,
+			errorElement: "label",
+			submitHandler: function (form) {
+				form.submit();
 			}
-		}).datetimepicker("setDate", new Date());
-	} );
-	// End --- Tours
+		});
+	}
+
+	validateWidgetTour();
+
+
+	// // Tours
+	// $( function() {
+	// 	function populateEndDate() {
+	// 		var date2 = $('#flight_origin_tour_picker').datetimepicker('getDate');
+	// 		date2.setDate(date2.getDate() + 3);
+	// 	}
+	//
+	// 	$("#flight_origin_tour_picker").datetimepicker({
+	// 		dateFormat: "dd-mm-yy",
+	// 		minDate: 3,
+	// 		onSelect: function(date) {
+	// 			populateEndDate();
+	// 			var date = $('#flight_origin_tour_picker').val();
+	// 			$('#reservation_flight_origin').val(date);
+	// 		}
+	// 	}).datetimepicker("setDate", new Date());
+	// } );
+	// // End --- Tours
