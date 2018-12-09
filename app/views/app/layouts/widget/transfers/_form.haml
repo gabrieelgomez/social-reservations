@@ -140,114 +140,38 @@
 
     });
 
-    /*
+    $(function () {
 
-    $( function() {
-
-        // Functions by inputs datepicker transfers
-        function populateEndDate() {
-            var date2 = $('#flight_origin_picker').datepicker('getDate');
-            date2.setDate(date2.getDate() + 1);
-            $('#flight_arrival_picker').datepicker('setDate', date2);
-            $("#flight_arrival_picker").datepicker("option", "minDate", date2);
+      $('#flight_origin_picker').datetimepicker({
+        locale: 'es',
+        minDate: moment(),
+        format: "DD-MM-YYYY",
+        widgetPositioning: {
+          horizontal: 'left',
+          vertical: 'bottom'
         }
+      });
 
-        $("#flight_origin_picker").datepicker({
-            dateFormat: "dd-mm-yy",
-            minDate: 1,
-            onSelect: function(date) {
-                populateEndDate();
-                var date = $('#flight_origin_picker').val()
-                $('#reservation_flight_origin').val(date);
-            }
-        }).datepicker("setDate", new Date());
-        $('#flight_arrival_picker').datepicker({
-            dateFormat: "dd-mm-yy",
-            minDate: 2,
-            onClose: function() {
-                var dt1 = $('#flight_origin_picker').datepicker('getDate');
-                var dt2 = $('#flight_arrival_picker').datepicker('getDate');
-                if (dt2 <= dt1) {
-                    var minDate = $('#flight_arrival_picker').datepicker('option', 'minDate');
-                    $('#flight_arrival_picker').datepicker('setDate', minDate);
-                }
-                var date = $('#flight_arrival_picker').val()
-                $('#reservation_flight_arrival').val(date);
-            }
-        }).datepicker("setDate", new Date());
+      $('#flight_arrival_picker').datetimepicker({
+        locale: 'es',
+        minDate: moment().add(1, 'd').toDate(),
+        format: "DD-MM-YYYY",
+        widgetPositioning: {
+          horizontal: 'left',
+          vertical: 'bottom'
+        },
+        useCurrent: false //Important! See issue #1075
+      });
 
+      $("#flight_origin_picker").on("dp.change", function (e) {
+        var date = $('#flight_origin_picker').val()
+        $('#reservation_flight_origin').val(date);
+        $('#flight_arrival_picker').data("DateTimePicker").minDate(e.date.add(15, 'h').toDate());
+      });
+      $("#flight_arrival_picker").on("dp.change", function (e) {
+        var date = $('#flight_arrival_picker').val()
+        $('#reservation_flight_arrival').val(date);
+        $('#flight_origin_picker').data("DateTimePicker").maxDate(e.date);
+      });
 
-
-        */
-        // Functions by inputs datepicker transfers
-
-
-        // Functions by inputs timepicker hour transfers
-        // function populateEndTime() {
-        //     var date2 = $('#hour_origin_picker').datepicker('getDate');
-        //     date2.setDate(date2.getDate() + 1);
-        //     $('#hour_arrival_picker').datepicker('setDate', date2);
-        //     $("#hour_arrival_picker").datepicker("option", "minDate", date2);
-        // }
-        //
-        // $("#hour_origin_picker").timepicker({
-        //     dateFormat: "dd-mm-yy",
-        //     minDate: 1,
-        //     onSelect: function(date) {
-        //         populateEndTime();
-        //         var date = $('#hour_origin_picker').val()
-        //         $('#reservation_hour_origin').val(date);
-        //     }
-        // }).timepicker("setDate", new Date());
-        // $('#hour_arrival_picker').timepicker({
-        //     dateFormat: "dd-mm-yy",
-        //     minDate: 2,
-        //     onClose: function() {
-        //         var dt1 = $('#hour_origin_picker').timepicker('getDate');
-        //         var dt2 = $('#hour_arrival_picker').timepicker('getDate');
-        //         if (dt2 <= dt1) {
-        //             var minDate = $('#hour_arrival_picker').timepicker('option', 'minDate');
-        //             $('#hour_arrival_picker').timepicker('setDate', minDate);
-        //         }
-        //         var date = $('#hour_arrival_picker').val()
-        //         $('#reservation_hour_arrival').val(date);
-        //     }
-        // }).timepicker("setDate", new Date());
-        // Functions by inputs timepicker hour transfers
-
-
-
-    //} );
-
-
-
-    // $("#origin_name").focusin(function () {
-    // 	$(document).keypress(function (e) {
-    // 		if (e.which == 13) {
-    // 			debugger;
-    // 			var firstResult = $(".pac-container .pac-item:first").text();
-    // 			var geocoder = new google.maps.Geocoder();
-    // 			geocoder.geocode({"address":firstResult }, function(results, status) {
-    // 			if (status == google.maps.GeocoderStatus.OK) {
-    // 				var lat = results[0].geometry.location.lat(),
-    // 				lng = results[0].geometry.location.lng(),
-    // 				placeName = results[0].address_components[0].long_name,
-    // 				latlng = new google.maps.LatLng(lat, lng);
-    //
-    // 				$(".pac-container .pac-item:first").addClass("pac-selected");
-    // 				$(".pac-container").css("display","none");
-    // 				$("#searchTextField").val(firstResult);
-    // 				$(".pac-container").css("visibility","hidden");
-    //
-    // 				moveMarker(placeName, latlng);
-    //
-    // 			}
-    // 			});
-    // 		} else {
-    // 			$(".pac-container").css("visibility","visible");
-    // 		}
-    //
-    // 	});
-    // });
-    // $('.pac-container').find('.pac-item').first().attr('selected', true)
-    // End --- Transfers / Vehicles
+    });

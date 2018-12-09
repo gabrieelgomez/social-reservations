@@ -198,75 +198,60 @@
      $( "#ida_vuelta").prop('checked', true);
      $('#round_trip').val(true);
      $( '.radio-fecha-vuelos' ).on( 'click', function() {
-    
+
              if( $('#ida_vuelta').is(':checked') ){
-    
+
                      $('#round_trip').val(true);
-    
+
                      console.log($('#round_trip').val());
-    
+
                      $('#vuelo_vuelta').removeClass('hidden-input');
-    
+
                      $('#vuelo_vuelta').addClass('show-input');
-    
+
                      $('#hora_vuelta').removeClass('hidden-input');
-    
+
                      $('#hora_vuelta').addClass('show-input');
-    
+
              } else {
-    
+
                      $('#round_trip').val(false);
-    
+
                      console.log($('#round_trip').val());
-    
+
                      $('#vuelo_vuelta').removeClass('show-input');
-    
+
                      $('#vuelo_vuelta').addClass('hidden-input');
-    
+
                      $('#hora_vuelta').removeClass('show-input');
-    
+
                      $('#hora_vuelta').addClass('hidden-input');
-    
+
              }
-    
+
      });
 
     $( function() {
 
-        
-         Functions by inputs timepicker hour transfers
-        function populateEndTime() {
-            var date2 = $('#hour_origin_picker').timepicker('getDate');
-            date2.setDate(date2.getDate() + 1);
-            $('#hour_arrival_picker').timepicker('setDate', date2);
-            $("#hour_arrival_picker").timepicker("option", "minDate", date2);
+      $('#hour_origin_picker').datetimepicker({
+        locale: 'es',
+        minDate: moment(),
+        format: 'LT',
+        widgetPositioning: {
+          horizontal: 'left',
+          vertical: 'bottom'
         }
+      });
 
-        $("#hour_origin_picker").timepicker({
-            dateFormat: "dd-mm-yy",
-            minDate: 1,
-            onSelect: function(date) {
-                populateEndTime();
-                var date = $('#hour_origin_picker').val()
-                $('#reservation_hour_origin').val(date);
-            }
-        }).timepicker("setDate", new Date());
-        $('#hour_arrival_picker').timepicker({
-            dateFormat: "dd-mm-yy",
-            minDate: 2,
-            onClose: function() {
-                var dt1 = $('#hour_origin_picker').timepicker('getDate');
-                var dt2 = $('#hour_arrival_picker').timepicker('getDate');
-                if (dt2 <= dt1) {
-                    var minDate = $('#hour_arrival_picker').timepicker('option', 'minDate');
-                    $('#hour_arrival_picker').timepicker('setDate', minDate);
-                }
-                var date = $('#hour_arrival_picker').val()
-                $('#reservation_hour_arrival').val(date);
-            }
-        }).timepicker("setDate", new Date());
-        // Functions by inputs timepicker hour transfers
-
+      $('#hour_arrival_picker').datetimepicker({
+        locale: 'es',
+        format: 'LT',
+        widgetPositioning: {
+          horizontal: 'left',
+          vertical: 'bottom'
+        },
+        useCurrent: false //Important! See issue #1075
+      });
 
 
     } );

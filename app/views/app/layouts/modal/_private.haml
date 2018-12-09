@@ -6,6 +6,6 @@
         %h4.modal-title Política de Privacidad
       .modal-body
         -# %h4 Text in a modal
-        %p= @setting.privacy_policies.html_safe
+        %p= @setting.try("privacy_policies_#{@lang}".to_sym).html_safe
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

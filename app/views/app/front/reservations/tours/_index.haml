@@ -91,3 +91,14 @@
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
   });
+  $(document).ready(function(){
+     $("#js_privacyPolicy").click(function(){
+        $("#modalPrivacyPolicy").modal();
+      });
+      $("#js_termsConditions").click(function(){
+        $("#modalTermsConditions").modal();
+      });
+      $("#js_cancellationsPolicy").click(function(){
+        $("#modalCancellationsPolicy").modal();
+      });
+  });

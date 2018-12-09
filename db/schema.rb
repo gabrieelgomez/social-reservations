@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_171716) do
+ActiveRecord::Schema.define(version: 2018_12_09_151024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 2018_11_25_171716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_keppler_contactus_messages_on_deleted_at"
+  end
+
+  create_table "keppler_contactus_pqrs", force: :cascade do |t|
+    t.string "name"
+    t.string "company"
+    t.string "dni"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.text "body"
+    t.string "options"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "keppler_contactus_requests", force: :cascade do |t|
@@ -503,11 +516,17 @@ ActiveRecord::Schema.define(version: 2018_11_25_171716) do
     t.string "email"
     t.string "logo"
     t.string "favicon"
-    t.text "terms_conditions"
-    t.text "privacy_policies"
-    t.text "cancellations"
+    t.text "terms_conditions_es"
+    t.text "privacy_policies_es"
+    t.text "cancellations_es"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "terms_conditions_en"
+    t.text "terms_conditions_pt"
+    t.text "privacy_policies_en"
+    t.text "privacy_policies_pt"
+    t.text "cancellations_en"
+    t.text "cancellations_pt"
   end
 
   create_table "smtp_settings", force: :cascade do |t|

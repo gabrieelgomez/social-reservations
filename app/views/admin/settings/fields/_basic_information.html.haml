@@ -27,14 +27,36 @@
       = f.input :mobile, input_html: { class: 'form-control' }, required: false, label: t('activerecord.attributes.phone_two'), placeholder: '+582123536869'
       .pull-right
         = f.button :submit, t('keppler.actions.apply'), class: 'btn-primary'
-.col-lg-6
-  = f.input :terms_conditions, label: 'Términos y Condiciones', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+.info-box
+  .nav-tabs-custom
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#spanish"} Español
+      %li
+        %a{"data-toggle" => "tab", :href => "#english"} Inglés
+      %li
+        %a{"data-toggle" => "tab", :href => "#portugues"} Portugués
+    .tab-content{style: 'padding:inherit!important;margin-bottom:10px;'}
+      // ESPAÑOL
+      #spanish.tab-pane.active
+        .col-xs-12
+          = f.input :terms_conditions_es, label: 'Términos y Condiciones - Español', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :privacy_policies_es, label: 'Políticas de Privacidad - Español', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :cancellations_es, label: 'Políticas de Cancelaciones - Español', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
-.col-lg-6
-  = f.input :privacy_policies, label: 'Políticas de Privacidad', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+      // Ingles
+      #english.tab-pane
+        .col-xs-12
+          = f.input :terms_conditions_en, label: 'Términos y Condiciones - Inglés', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :privacy_policies_en, label: 'Políticas de Privacidad - Inglés', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :cancellations_en, label: 'Políticas de Cancelaciones - Inglés', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+      // Portugues
+      #portugues.tab-pane
+        .col-xs-12
+          = f.input :terms_conditions_pt, label: 'Términos y Condiciones - Portugués', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :privacy_policies_pt, label: 'Políticas de Privacidad - Portugués', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
+          = f.input :cancellations_pt, label: 'Políticas de Cancelaciones - Portugués', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
-.col-lg-6
-  = f.input :cancellations, label: 'Políticas de Cancelaciones', as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini'} }
 
 
 :javascript

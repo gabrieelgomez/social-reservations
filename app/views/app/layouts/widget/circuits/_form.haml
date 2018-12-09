@@ -69,21 +69,21 @@
 	validateWidgetCircuit();
 
 
--# 	// Tours
--# 	$( function() {
--# 		function populateEndDate() {
--# 			var date2 = $('#flight_origin_circuit_picker').datetimepicker('getDate');
--# 			date2.setDate(date2.getDate() + 1);
--# 		}
--#
--# 		$("#flight_origin_circuit_picker").datetimepicker({
--# 			dateFormat: "dd-mm-yy",
--# 			minDate: 5,
--# 			onSelect: function(date) {
--# 				populateEndDate();
--# 				var date = $('#flight_origin_circuit_picker').val();
--# 				$('#reservation_flight_origin').val(date);
--# 			}
--# 		}).datetimepicker("setDate", new Date());
--# 	} );
--# 	// End --- Tours
+	// Circuits
+		$(function () {
+			$('#flight_origin_circuit_picker').datetimepicker({
+				locale: 'es',
+				minDate: moment().add(5, 'd').toDate(),
+				format: "DD-MM-YYYY",
+				widgetPositioning: {
+					horizontal: 'left',
+					vertical: 'bottom'
+				},
+				useCurrent: false //Important! See issue #1075
+			});
+			$("#flight_origin_circuit_picker").on("dp.change", function (e) {
+				var date = $('#flight_origin_circuit_picker').val()
+				$('#reservation_flight_origin').val(date);
+			});
+		});
+	// End --- Circuits
