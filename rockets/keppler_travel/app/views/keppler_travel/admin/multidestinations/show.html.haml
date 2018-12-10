@@ -140,7 +140,15 @@
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_usd
                           %td= number_to_currency(cr.price_usd, locale: @locale)
-                          
+
+                      %tr
+                        %td
+                        %td
+                        %td Noche Adicional
+                        - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
+                          %td= number_to_currency(cr.night_price_usd, locale: @locale)
+
+
               // COP
               #cop.tab-pane
 
@@ -172,9 +180,15 @@
                         %td= destination.custom_title['es']
                         %td= lodgment.title['es']
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
-                          -# %td= cr.price_cop
                           %td
                             = number_to_currency(cr.price_cop, locale: @locale)
+
+                      %tr
+                        %td
+                        %td
+                        %td Noche Adicional
+                        - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
+                          %td= number_to_currency(cr.night_price_cop, locale: @locale)
 
 
       .col-md-6

@@ -42,7 +42,7 @@
       .banner-multidestinations--mask
         %h2= @results.title[@lang].titleize
         %p= @results.subtitle[@lang].titleize
-        
+
   .content-multidestinations
     .container
       .row
@@ -179,24 +179,34 @@
                                       - else multidestinationable.lodgment.avaible_room? room
                                         %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
 
+                                  %tr
+                                    %td Noche Adicional
+                                    - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |room|
+                                      - price = room.try("night_price_#{@currency}")
+                                      - room_disabled = lodgment.disabled_room(room)
+                                      - if price.zero? || room === false || room_disabled != false
+                                        %td No Disponible
+                                      - else multidestinationable.lodgment.avaible_room? room
+                                        %td= number_to_currency(room.try("night_price_#{@currency}"), locale: @locale)
+
 :javascript
   // multidestinations
-  $( function() {
-    function populateEndDate() {
-      var date2 = $('#flight_multidestination_data').datetimepicker('getDate');
-      date2.setDate(date2.getDate() + 3);
-    }
-
-    $("#flight_multidestination_data").datetimepicker({
-      dateFormat: "dd-mm-yy",
-      minDate: 3,
-      onSelect: function(date) {
-        populateEndDate();
-        var date = $('#flight_multidestination_data').val();
-        $('#reservation_flight_origin_data').val(date);
-      }
-    }).datetimepicker("setDate", new Date());
-  } );
+  $(function () {
+    $('#flight_multidestination_data').datetimepicker({
+      locale: 'es',
+      minDate: moment().add(5, 'd').toDate(),
+      format: "DD-MM-YYYY",
+      widgetPositioning: {
+        horizontal: 'left',
+        vertical: 'bottom'
+      },
+      useCurrent: false //Important! See issue #1075
+    });
+    $("#flight_multidestination_data").on("dp.change", function (e) {
+      var date = $('#flight_multidestination_data').val()
+      $('#reservation_flight_origin_data').val(date);
+    });
+  });
   // End --- multidestinations
 
   $('#search-metadata').validate({

@@ -4,6 +4,7 @@ class CreateKepplerTravelDrivers < ActiveRecord::Migration[5.2]
       t.string :timetrack
       t.integer :position
       t.datetime :deleted_at
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

@@ -61,6 +61,15 @@
                                 %td
                                   = cr.input :price_cop, label: false, input_html: {min: 0}
 
+                            %tr
+                              %td
+                              %td Noche Adicional
+
+                              // Circuitable Roms from one Circuitable from Circuit
+                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|
+                                %td
+                                  = cr.input :night_price_cop, label: false, input_html: {min: 0}
+
                 // USD
                 #usd.tab-pane.active
                   .col-12
@@ -93,6 +102,14 @@
                                 %td
                                   = cr.input :price_usd, label: false, input_html: {min: 0}
 
+                            %tr
+                              %td
+                              %td Noche Adicional
+
+                              // Circuitable Roms from one Circuitable from Circuit
+                              = f.simple_fields_for :circuitable_rooms, circuitable.object.circuitable_rooms.sort_by{|room| room.id } do |cr|
+                                %td
+                                  = cr.input :night_price_usd, label: false, input_html: {min: 0}
 
 
 

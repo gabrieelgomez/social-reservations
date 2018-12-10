@@ -57,10 +57,20 @@
 
                               // Multidestinationable Roms from one Multidestinationable from Multidestination
                               = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms.sort_by{|room| room.id } do |cr|
-                                -# %td
-                                  = cr.input :price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
                                 %td
                                   = cr.input :price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+
+                            %tr
+                              %td
+                              %td
+                              %td Noche Adicional
+
+                              // Multidestinationable Roms from one Multidestinationable from Multidestination
+                              = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms.sort_by{|room| room.id } do |cr|
+                                %td
+                                  = cr.input :night_price_usd, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
+
+
                 // COP
                 #cop.tab-pane
                   .col-12
@@ -98,12 +108,18 @@
 
                               // Multidestinationable Roms from one Multidestinationable from Multidestination
                               = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms.sort_by{|room| room.id } do |cr|
-                                -# %td
-                                  = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
                                 %td
                                   = cr.input :price_cop, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
 
+                            %tr
+                              %td
+                              %td
+                              %td Noche Adicional
 
+                              // Multidestinationable Roms from one Multidestinationable from Multidestination
+                              = f.simple_fields_for :multidestinationable_rooms, multidestinationable.object.multidestinationable_rooms.sort_by{|room| room.id } do |cr|
+                                %td
+                                  = cr.input :night_price_cop, label: false, disabled: lodgment.disabled_room(cr.object), input_html: {min: 0}
 
             .form-padding
               .col-xs-12

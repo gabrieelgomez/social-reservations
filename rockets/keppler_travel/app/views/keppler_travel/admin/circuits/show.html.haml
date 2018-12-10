@@ -134,9 +134,15 @@
                             %i.icon-close
                         %td= ranking.title['es']
                         - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
-                          -# %td= cr.price_cop
                           %td= number_to_currency(cr.price_cop, locale: @locale)
-              // COP
+
+                      %tr
+                        %td
+                        %td Noche Adicional
+                        - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
+                          %td= number_to_currency(cr.night_price_cop, locale: @locale)
+
+              // USD
               #usd.tab-pane.active
 
                 .box-body
@@ -164,8 +170,14 @@
                             %i.icon-close
                         %td= ranking.title['es']
                         - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
-                          -# %td= cr.price_usd
                           %td= number_to_currency(cr.price_usd, locale: @locale)
+
+                      %tr
+                        %td
+                        %td Noche Adicional
+                        - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |cr|
+                          %td= number_to_currency(cr.night_price_usd, locale: @locale)
+
 
 
       .col-md-6
