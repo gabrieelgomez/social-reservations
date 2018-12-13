@@ -22,6 +22,7 @@ var budget = {
 
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
+  debugger;
   ranking_id_radio = $(this).val();
   // Passing JSON methods
   var filtered_json = find_in_object(JSON.parse(rankings_json), {

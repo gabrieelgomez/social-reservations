@@ -5,6 +5,7 @@ var budget = { single: 0, doubles: 0, triples: 0, quadruples: 0, quintuples: 0, 
 
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
+  debugger;
   lodgment_id_radio = $(this).val();
   // Passing JSON methods
   var filtered_json = find_in_object(JSON.parse(lodgments_json), {
