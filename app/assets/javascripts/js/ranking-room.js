@@ -22,13 +22,19 @@ var budget = {
 
 // Funcion para clickear o no el cuadro de 3/4/5 Estrellas
 $('.js-hotelRoom').not('.disabled-content').on('click', function () {
-  debugger;
   ranking_id_radio = $(this).val();
   // Passing JSON methods
   var filtered_json = find_in_object(JSON.parse(rankings_json), {
     ranking_id: ranking_id_radio
   });
-  if ((filtered_json[6][`price_${coin}`] == 0) && (kids != 0)) {
+
+  find_room_children = JSON.stringify(filtered_json);
+
+  var refilter = find_in_object(JSON.parse(find_room_children), {
+    room_id: 7
+  });
+
+  if ((refilter[0][`price_${coin}`] == 0) && (kids != 0)) {
     swal({
       type: 'error',
       title: '¡Disculpe!',
