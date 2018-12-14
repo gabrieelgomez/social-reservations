@@ -36,9 +36,9 @@
                   %small.text-muted#price_quintuples -Hab. quintuples (0) x $ 0.0 = $ 0.0
                 %li
                 %small.text-muted#price_sextuples -Hab. sextuples (0)  x $ 0.0 = $ 0.0
-              - if @kids.positive?
-                %li
-                  %small.text-muted#price_children= "-Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
+                - if @kids.positive?
+                  %li
+                    %small.text-muted#price_children= "-Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
                 %li
                   %small.text-muted= "-Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
