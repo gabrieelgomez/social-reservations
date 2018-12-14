@@ -75,6 +75,7 @@
         color: #4e4e56;
         font-weight: 500;
         font-size: 13px;
+        transition: .5s;
 
         &:hover {
           color: #fff !important;
@@ -83,7 +84,7 @@
             0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           background: #47c1f5;
           border: 1px solid #47c1f5;
-          margin-top: -3px;
+          transform: translateY(-3px);
         }
       }
     }
