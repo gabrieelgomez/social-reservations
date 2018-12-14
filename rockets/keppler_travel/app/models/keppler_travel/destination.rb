@@ -17,7 +17,7 @@ module KepplerTravel
     has_and_belongs_to_many :tours
     has_and_belongs_to_many :vehicles
     validates :title, :latitude, :longitude, :custom_title, uniqueness: true, presence: true
-    validates :cover, presence: true
+    # validates :cover, presence: true
 
     # Fields for the search form in the navbar
     def self.search_field
