@@ -9,7 +9,7 @@ module App
           session[:user]        = params[:user]
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
-          session[:reservationable]  = {type:'multidestination', id:params[:reservationable_id]}
+          session[:reservationable]  = {type:'multidestination', id:params[:reservationable_id], total_kids_per: params[:total_kids_per], total_rooms_per: params[:total_rooms_per]}
           session[:square_multidestination]   = params[:square_multidestination].first.select{|_, value| !value.empty?}
           redirect_to checkout_path(params[:lang], params[:currency])
         end
@@ -63,9 +63,10 @@ module App
 
         def calculate_price
           multidestinationable = @reservation.reservationable.multidestinationables.find_by(lodgment_id: session[:square_multidestination]['lodgment_id'])
-
-          table = multidestinationable.price_table(session[:square_multidestination], session[:invoice].first['currency'])
-          @price_total = table.last[:total_price_table]
+          # table = multidestinationable.price_table(session[:square_multidestination], session[:invoice].first['currency'])
+          # @price_total = table.last[:total_price_table]
+          total = session[:reservationable]['total_rooms_per'].to_f + session[:reservationable]['total_kids_per'].to_f
+          @price_total = total
         end
 
       end

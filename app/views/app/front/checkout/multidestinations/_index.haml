@@ -107,11 +107,19 @@
                                       %td= number_to_currency(room[:price], locale: @locale)
                                       %td= room[:quantity]
                                       %td= number_to_currency(room[:total_room], locale: @locale)
+
                                 %tr
+                                  %td{style:'text-align:left!important;'}= "Cant. Adultos"
+                                  %td -----
+                                  %td= adults = reservation['quantity_adults'].to_i
+                                  %td= number_to_currency(session[:reservationable]['total_rooms_per'].to_f, locale: @locale)
+
+                                %tr
+                                  - total = session[:reservationable]['total_rooms_per'].to_f + session[:reservationable]['total_kids_per'].to_f
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'} -----
-                                  %td{style: 'border-top: 2px solid #000;'}= number_to_currency(table.last[:total_price_table], locale: @locale)
+                                  %td{style: 'border-top: 2px solid #000;'}= number_to_currency(total, locale: @locale)
 
                   .row
                     .col-lg-12
