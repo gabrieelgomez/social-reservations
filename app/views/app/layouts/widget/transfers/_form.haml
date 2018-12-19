@@ -43,7 +43,7 @@
                         %input{name: 'origin_location', id: 'origin_location', type: 'hidden'}
                         %input{name: 'origin_locality', id: 'origin_locality', type: 'hidden'}
                         %input{name: 'origin_departament', id: 'origin_departament', type: 'hidden'}
-                        %h2.origin_name Desde...
+                        -#%h2.origin_name Desde...
 
                 .col-lg-4
                     .box-item
@@ -58,16 +58,16 @@
                             %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
 
-                .col-lg-8
+                .col-lg-8{style:'margin-top: 8px;'}
                     .box-item
                         %h2 Destino
                         %input.custom-input.form-control{id: 'arrival_name', name: 'arrival_name'}
                         %input{name: 'arrival_location', id: 'arrival_location', type: 'hidden'}
                         %input{name: 'arrival_locality', id: 'arrival_locality', type: 'hidden'}
                         %input{name: 'arrival_departament', id: 'arrival_departament', type: 'hidden'}
-                        %h2.arrival_name Hasta...
+                        -#%h2.arrival_name Hasta...
 
-                .col-lg-4#vuelo_vuelta
+                .col-lg-4#vuelo_vuelta{style:'margin-top: 8px;'}
                     .box-item
                         %h2 Fecha de Vuelta
                         .form-group
