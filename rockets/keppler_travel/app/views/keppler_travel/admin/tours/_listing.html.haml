@@ -29,7 +29,7 @@
     -#   = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
     -#     %span
     -#       = tour.price
-    %td{ style: 'width: 15px;padding-right:15px;' }
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{tour.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
       %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{tour.id}" }
