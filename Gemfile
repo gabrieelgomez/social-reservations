@@ -31,6 +31,7 @@ gem 'uglifier', '4.1.8'
 # Database
 gem 'pg', '1.0.0'
 # gem 'mysql2', '~> 0.3.18'
+# comment by update
 
 # SEO
 gem 'sitemap_generator', '6.0.1'
