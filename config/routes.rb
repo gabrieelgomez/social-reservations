@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     get '/index', to: 'app/front#index', as: :app_index
   end
   root to: 'app/front#set_locale_lang'
-  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
+  # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
+  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /usd/} do
     get '/', to: 'app/front#index', as: :index_app
 
     get 'vehicles', to: 'app/front#vehicles', as: :vehicles_show
