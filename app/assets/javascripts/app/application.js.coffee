@@ -3,5 +3,4 @@
 #= require bootstrap
 #= require bootstrap-sprockets
 #= require jquery.slick
-#= require mixitup
 #= require_tree .

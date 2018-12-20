@@ -1755,9 +1755,6 @@ label.container .checkmark:after {
     letter-spacing: 1px;
 }
 
-.mix-target {
-    display: none;
-}
 
 .items-orders th {
     text-align: center !important;

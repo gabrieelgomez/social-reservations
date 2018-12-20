@@ -134,7 +134,7 @@ gem 'city-state', '~> 0.0.13'
 #---- gems frontend----
 gem 'jquery-slick-rails', '~> 1.9'
 #gem 'slick_rails'
-gem 'mixitup_rails'
+#gem 'mixitup_rails'
 gem 'wow-rails'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'hover-rails'
