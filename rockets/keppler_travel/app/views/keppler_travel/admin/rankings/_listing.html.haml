@@ -11,7 +11,7 @@
       = link_to admin_travel_ranking_path(ranking, search: @query), remote: true, class: 'show-row' do
         %span
           = ranking.title
-    %td{ style: 'width: 15px;padding-right:15px;' }
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{ranking.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
       %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{ranking.id}" }

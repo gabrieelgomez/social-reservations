@@ -25,7 +25,7 @@
       = link_to admin_travel_circuit_rooms_tables_path(circuit), class: 'show-row' do
         %i.icon-eye
         -# = t('keppler.actions.show')
-    %td{ style: 'width: 15px;padding-right:15px;' }
+    %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{circuit.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical
       %ul.actions.dropdown-menu{"aria-labelledby" => "menu-#{circuit.id}" }
