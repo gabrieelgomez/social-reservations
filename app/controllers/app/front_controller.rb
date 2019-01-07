@@ -44,6 +44,19 @@ module App
       @results = KepplerTravel::Multidestination.find(params[:multidestination_id])
     end
 
+
+    def multidestinations_all
+      @multidestinations = KepplerTravel::Multidestination.all
+    end
+
+    def tours_all
+      @tours = KepplerTravel::Tour.all
+    end
+
+    def circuits_all
+      @circuits = KepplerTravel::Circuit.all
+    end
+
     def errors
     end
 

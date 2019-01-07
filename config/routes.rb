@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     get 'contact_us', to: 'app/front#contact_us'
     get 'pqrs', to: 'app/front#pqrs', as: :pqrs
 
+    get 'multidestinations_all',to: 'app/front#multidestinations_all'
+    get 'tours_all',to: 'app/front#tours_all'
+    get 'circuits_all',to: 'app/front#circuits_all'
+
+
+
+    
     get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
 
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
