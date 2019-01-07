@@ -1,0 +1,142 @@
+.circuits_all {
+    padding: 90px 0 45px 0;
+    .jb-bg-tours {
+      height: 400px;
+      background: black;
+      color: white;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .title-main {
+      color: #565a5c;
+      font-size: 30px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+    .box-info {
+      h2 {
+        position: relative;
+        color: #565a5c;
+        font-size: 30px;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+      }
+      p {
+        position: relative;
+        color: #aaa;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+      }
+    }
+    .cards-top-tours {
+      margin: 45px 0;
+      .box-card {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        -webkit-transition: .5s;
+        -o-transition: .5s;
+        transition: .5s;
+        min-height: 470px;
+        position: relative;
+        .box-image {
+          height: 300px;
+          width: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .box-information {
+          padding: 0 25px;
+          h3 {
+            position: relative;
+            font-size: 20px;
+            color: #565a5c;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px 0 15px 0;
+          }
+          span.price {
+            color: #43b7e8;
+            font-size: 16px;
+            font-weight: 700;
+          }
+          h3 span {
+            color: #777777;
+          }
+          .more-information {
+            padding: 30px 0 0 0;
+            p {
+              font-size: 14px;
+              color: #aaa;
+              font-family: 'Poppins', sans-serif;
+              margin-bottom: 15px;
+              text-align: left;
+              span {
+                display: inline-block;
+              }
+              i {
+                color: #ffdf00;
+                font-size: 16px;
+              }
+            }
+          }
+          .btn-hotel {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background: #00d8ff;
+            border: 1px solid #00d8ff;
+            width: 200px;
+            height: 60px;
+            white-space: nowrap;
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 5px 20px rgba(14, 15, 18, 0.2);
+            box-shadow: 0 5px 20px rgba(14, 15, 18, 0.2);
+            -webkit-transition: 0.5s ease-in-out;
+            -o-transition: 0.5s ease-in-out;
+            transition: 0.5s ease-in-out;
+          }
+          .btn-services {
+            width: 110px;
+            height: 35px;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+            -webkit-transition: .5s;
+            -o-transition: .5s;
+            transition: .5s;
+            a {
+              text-decoration: none;
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+          .about-btn{
+            a{
+              button{
+                text-decoration: none;
+                position: absolute;
+                bottom: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
