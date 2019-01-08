@@ -6,26 +6,24 @@
       %ul.nav.nav-tabs
         %li.active
           -#%a{"data-toggle" => "tab", :href => "#1"} Sign in
-          = link_to 'Sign in','#1', data: { toggle: 'tab'}
+          = link_to 'Iniciar Sesión','#1', data: { toggle: 'tab'}
         %li
           -#%a{"data-toggle" => "tab", :href => "#2"} Register
-          = link_to 'Register','#2', data: { toggle: 'tab'}
+          = link_to 'Registrar','#2', data: { toggle: 'tab'}
         %li
           -#%a{"data-toggle" => "tab", :href => "#3"} Recovery
-          = link_to 'Recovery','#3', data: { toggle: 'tab'}
+          = link_to 'Recuperar Contraseña','#3', data: { toggle: 'tab'}
       .tab-content
         #1.tab-pane.active
           = render 'devise/sessions/sign_in'#, resource: resource, resource_name: resource_name
         #2.tab-pane
           = render 'devise/registrations/sign_up'
         #3.tab-pane
-          -# = render 'app/front/login/recovery'
+          = render 'devise/passwords/new'
         .copyright-login
           .go-back-home
             = link_to root_path do
               %span
                 %i.icon-home.icons
-              Go to Home
+              Ir a la página principal
           %p.text-center Receptivo Colombia © | 2018
-
-

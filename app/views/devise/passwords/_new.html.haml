@@ -1,0 +1,19 @@
+-# .container
+-#   .devise-horizontal
+-#     .devise-vertical
+-#       .devise-box.card
+-#         .devise-box-header
+-#           .devise-box-title Keppler
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f|
+  .devise-box-body.row
+    .col.s12
+      %h5 ¿Haz olvidado tu contraseña?
+      %p Envianos tu email para darle las instrucciones a seguir.
+    .form-label-group
+      = f.email_field :email, :autofocus => true, class: "validate #{'invalid' unless resource.errors.messages.empty?}", :placeholder => "Password"
+    .devise-errors.col.s12.center-align
+      - resource.errors.each do |name, msg|
+        = msg.capitalize
+  .devise-box-footer.row
+    .col.s12
+      = f.submit 'Enviar', :class => 'right btn '
