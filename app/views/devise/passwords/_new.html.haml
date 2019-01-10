@@ -4,10 +4,10 @@
 -#       .devise-box.card
 -#         .devise-box-header
 -#           .devise-box-title Keppler
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f|
+-#= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f|
   .devise-box-body.row
     .col.s12
-      %h5 ¿Haz olvidado tu contraseña?
+      %h5 ¿Haz olvidado tu contraseña?0
       %p Envianos tu email para darle las instrucciones a seguir.
     .form-label-group
       = f.email_field :email, :autofocus => true, class: "validate #{'invalid' unless resource.errors.messages.empty?}", :placeholder => "Password"
@@ -17,3 +17,15 @@
   .devise-box-footer.row
     .col.s12
       = f.submit 'Enviar', :class => 'right btn '
+
+
+
+-#= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f|
+  = devise_error_messages!
+  %h5 Indícanos tu correo electrónico para recuperar la contraseña
+  .form-label-group
+    = f.email_field :email, :autofocus => true, class: "validate #{'invalid' unless resource.errors.messages.empty?} form-control", label: false, :placeholder => "E-mail"
+  .box-login-btn
+    = f.submit 'Recuperar Cuenta', :class => 'btn btn-lg btn-primary btn-block btn-login'
+
