@@ -84,17 +84,28 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default charset: 'utf-8'
 
+  # config.action_mailer.smtp_settings = {
+  #   address:              Rails.application.secrets.address,
+  #   port:                 Rails.application.secrets.port,
+  #   domain:               Rails.application.secrets.domain,
+  #   user_name:            Rails.application.secrets.email,
+  #   password:             Rails.application.secrets.password,
+  #   authentication:       :plain,
+  #   enable_starttls_auto: true,
+  #   openssl_verify_mode:  'none',
+  #   ssl:                   true,
+  #   tls:                   true
+  # }
+
   config.action_mailer.smtp_settings = {
     address:              Rails.application.secrets.address,
     port:                 Rails.application.secrets.port,
     domain:               Rails.application.secrets.domain,
     user_name:            Rails.application.secrets.email,
     password:             Rails.application.secrets.password,
-    authentication:       :plain,
+    authentication:   'plain',
     enable_starttls_auto: true,
-    openssl_verify_mode:  'none',
-    ssl:                   true,
-    tls:                   true
+    ssl: false
   }
 
   # Disable automatic flushing of the log to improve performance.
