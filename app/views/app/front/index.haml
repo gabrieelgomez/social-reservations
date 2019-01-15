@@ -11,8 +11,10 @@
 
     // Widget
 
-    %section#home.about-us.visible-lg
-      .content_video
+    %section#home.about-us
+      .content_image.hidden-lg{:style => "background-image: url(/assets/img/poster/receptivo-colombia.jpg)"}
+        .mask
+      .content_video.visible-lg
         %video.myvideo#my-video{:autoplay => "false", :loop => "true", :muted => "true", :poster => "/assets/img/poster/receptivo-colombia.jpg" }
           %source{:src => "/assets/img/receptivo.mp4", :type => "video/mp4"}
             -#%source{:src => "/assets/img/receptivo.webm", :type => "video/webm"}
@@ -22,9 +24,8 @@
           .row
             = render 'app/layouts/widget'
 
-    %section#home.about-us.hidden-lg
-      .content_image{:style => "background-image: url(/assets/img/poster/receptivo-colombia.jpg)"}
-        .mask
+    -#%section#home.about-us.hidden-l0g
+
       %section.travel-box.widget.p-widget
         .container
           .row
