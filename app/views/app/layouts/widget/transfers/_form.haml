@@ -6,7 +6,7 @@
                     %h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran traslados disponible.
             - else
                 %input#round_trip{name: 'round_trip', type: 'hidden'}
-                .col-lg-12.hidden-xs
+                .col-lg-12
                     .trip-circle
                         .single-trip-circle
                             %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
@@ -20,7 +20,7 @@
                                 %span.round-boarder>
                                     %span.round-boarder1
                                 Solo ida
-                .col-xs-12.visible-xs
+                -#.col-xs-12.visible-xs
                     .trip-circle.row{style:'display: block !important;'}
                         .col-xs-6
                             .single-trip-circle
