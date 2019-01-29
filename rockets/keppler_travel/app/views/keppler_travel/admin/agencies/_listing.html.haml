@@ -10,7 +10,7 @@
     %td
       = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
         %span
-          =  image_tag agency.user.try(:avatar).try(:url), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
+          = image_tag (agency.user.avatar.url || 'admin/avatar_keppler.svg'), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
     %td
       = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
         %span
