@@ -6,48 +6,29 @@ Rails.application.routes.draw do
   # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
   scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /usd/} do
     get '/', to: 'app/front#index', as: :index_app
-
     get 'vehicles', to: 'app/front#vehicles', as: :vehicles_show
     get 'tours', to: 'app/front#tours', as: :tours_show
     get 'circuits', to: 'app/front#circuits', as: :circuits_show
     get 'multidestinations/', to: 'app/front#multidestinations', as: :multidestinations_show
-
-
     get 'about', to: 'app/front#about'
     get 'contact_us', to: 'app/front#contact_us'
     get 'pqrs', to: 'app/front#pqrs', as: :pqrs
-
     get 'multidestinations_all',to: 'app/front#multidestinations_all'
     get 'tours_all',to: 'app/front#tours_all'
-    get 'circuits_all',to: 'app/front#circuits_all'
-
-
-
-    
+    get 'circuits_all',to: 'app/front#circuits_all'    
     get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
-
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
     get '/gracias', to: 'app/front#gracias', as: :gracias
     get '/invoice', to: 'app/front#invoice', as: :invoice
-
-
     get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
     post '/update_order', to: 'app/dashboard/drivers/transfers#update_order', as: :update_order
-
-
     get '/dashboard/drivers/transfers', to: 'app/dashboard/dashboard#drivers', as: :drivers_transfers
     get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
     post '/dashboard/user/edit', to: 'app/dashboard/users/users#update', as: :user_update
-
-    #new routes template dashboard
     get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
     get '/dashboard/order/:module/:reservation_id', to: 'app/dashboard/dashboard#order_details', as: :order_details
-    #get '/dashboard/template_user', to: 'app/dashboard/dashboard#template_user', as: :template_user
-    #get '/dashboard/template_order', to: 'app/dashboard/dashboard#template_order', as: :template_order
-
     get 'errors', to: 'app/front#errors', as: :errors_checkout
   end
-
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#index', as: :filter_by_role
 
@@ -63,13 +44,10 @@ Rails.application.routes.draw do
   # Reservations Multidestinations
   post '/session_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#session_reservation_multidestination'
   post '/create_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#create_reservation_multidestination'
-
-
   get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations/reservations#transaction_payment', as: :checkout_elp_redirect
 
   namespace :admin do
     root to: 'admin#root'
-
     resources :roles do
       get '(page/:page)', action: :index, on: :collection, as: ''
       get '/clone', action: 'clone'
