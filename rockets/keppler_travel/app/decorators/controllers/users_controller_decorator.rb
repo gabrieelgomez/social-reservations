@@ -72,7 +72,7 @@ Admin::UsersController.class_eval do
 
   def update_password
     return if user_params[:password].blank?
-    @user .format_accessable_passwd(user_params[:password])
+    @user.format_accessable_passwd(user_params[:password])
   end
 
   private
