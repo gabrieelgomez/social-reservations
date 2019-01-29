@@ -7,5 +7,10 @@ module KepplerTravel
       @user = user
       @objects = objects
     end
+
+    def update_user?
+      true
+    end
+
   end
 end

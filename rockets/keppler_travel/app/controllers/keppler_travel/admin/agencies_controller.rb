@@ -4,7 +4,7 @@ module KepplerTravel
     # AgenciesController
     class AgenciesController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_agency, only: [:show, :edit, :update, :destroy]
+      before_action :set_agency, only: [:show, :edit, :destroy]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -37,6 +37,7 @@ module KepplerTravel
       # GET /agencies/new
       def new
         @agency = Agency.new
+        @user   = User.new
       end
 
       # GET /agencies/1/edit
@@ -45,19 +46,42 @@ module KepplerTravel
 
       # POST /agencies
       def create
-        @agency = Agency.new(agency_params)
-
-        if @agency.save
-          redirect(@agency, params)
+        @user = User.new(user_params)
+        password = Devise.friendly_token.first(8)
+        @user.password = password
+        @user.password_confirmation = password
+        if @user.save
+          @user.add_role :agency
+          @user.format_accessable_passwd(password)
+          ReservationMailer.send_password(@user).deliver_now
+          @user.build_agency(
+            comission_percentage: params[:user][:agency][:comission_percentage],
+            lending_percentage: params[:user][:agency][:lending_percentage]
+          )
+          @user.save
+          redirect(@user.agency, params)
         else
           render :new
         end
       end
 
+      def update_password
+        return if user_params[:password].blank?
+        @user.format_accessable_passwd(user_params[:password])
+      end
+
       # PATCH/PUT /agencies/1
-      def update
-        if @agency.update(agency_params)
-          redirect(@agency, params)
+      def update_user
+        update_attributes = user_params.delete_if do |_, value|
+          value.blank?
+        end
+        @user = User.find_by(email: params[:user][:email])
+        if @user.update_attributes(update_attributes)
+          cp = params[:user][:agency][:comission_percentage]
+          lp = params[:user][:agency][:lending_percentage]
+          @user.agency.update(comission_percentage: cp) if cp
+          @user.agency.update(lending_percentage: lp) if lp
+          redirect(@user.agency, params)
         else
           render :edit
         end
@@ -132,11 +156,21 @@ module KepplerTravel
       # Use callbacks to share common setup or constraints between actions.
       def set_agency
         @agency = Agency.find(params[:id])
+        @user = @agency.user
       end
 
       # Only allow a trusted parameter "white list" through.
       def agency_params
-        params.require(:agency).permit(:unique_code, :comission_percentage, :lending_percentage, :user_id, :position, :deleted_at)
+        params.require(:agency).permit(:unique_code, :comission_percentage,
+          :lending_percentage, :user_id, :position, :deleted_at)
+      end
+
+      def user_params
+        params.require(:user).permit(
+          :name, :email, :phone, :dni, :password, :password_confirmation,
+          :role_ids, :encrypted_password, :avatar,
+          agency_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at]
+        )
       end
 
       def show_history

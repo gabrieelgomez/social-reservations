@@ -10,6 +10,9 @@ module KepplerTravel
     has_many :agents
     has_many :orders
     has_many :reservations, through: :orders
+    accepts_nested_attributes_for :user
+    
+    validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
 
     # Fields for the search form in the navbar
     def self.search_field

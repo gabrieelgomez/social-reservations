@@ -37,10 +37,3 @@ menu:
     url_path: /admin/travel/agencies
     icon: layers
     model: KepplerTravel::Agency
-
-  keppler_travel_agent:
-    name: agents
-    current: ["admin/travel/agents"]
-    url_path: /admin/travel/agents
-    icon: layers
-    model: KepplerTravel::Agent

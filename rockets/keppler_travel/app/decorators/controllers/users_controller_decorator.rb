@@ -45,31 +45,6 @@ Admin::UsersController.class_eval do
     # -----
   end
 
-  # def update
-  #   update_attributes = user_params.delete_if do |_, value|
-  #     value.blank?
-  #   end
-  #   if params[:user][:driver]
-  #     # -----
-  #     if @user.driver.update(timetrack: params[:user][:driver][:timetrack])
-  #       ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
-  #       @user.driver.update(vehicle_ids: ids)
-  #       update_password
-  #       redirect_to travel.admin_travel_driver_path(@user.driver)
-  #     else
-  #       # redirect_to travel.new_admin_travel_driver_path
-  #     end
-  #     # -----
-  #   else
-  #     if @user.update_attributes(update_attributes)
-  #       update_password
-  #       redirect(@user, params)
-  #     else
-  #       render action: 'edit'
-  #     end
-  #   end
-  # end
-
   def update_password
     return if user_params[:password].blank?
     @user.format_accessable_passwd(user_params[:password])

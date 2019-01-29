@@ -8,10 +8,16 @@
 
   .show-section
     .row
-      .col-lg-12
+      .col-lg-3
+        .box.slice-box
+          .box-body.box-profile
+            = image_tag (@user.avatar.url || 'admin/avatar_keppler.svg'), class: 'profile-user-img img-circle img-responsive', alt: @user.name
+            %h3.profile-username.text-center= @user.name
+            %p.text-muted.text-center= @user.rol.humanize
+      .col-lg-9
         .box.slice-box
           .box-header.with-border
-            %h3.box-title= t("keppler.modules.#{controller_path.underscore}")
+            %h3.box-title= @user.name || 'User'
             .box-tools.pull-right
               - if can?(KepplerTravel::Agency).update?
                 = link_to edit_admin_travel_agency_path(@agency), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
@@ -22,12 +28,19 @@
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
-                - @agency.as_json(only: ["unique_code", "comission_percentage", "lending_percentage", "user", "position", "deleted_at"]).each do |attribute, value|
-                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                    %tr.list-row
-                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                      %td.display-value.fs-body-1.tc-black-2
-                        - if @attachments.include?(attribute)
-                          = image_tag value.url unless value.url.blank?
-                        - else
-                          = value.blank? ? '-----------' : value
+                - @user.as_json(only: %i[id name phone dni email]).each do |attribute, value|
+                  %tr.list-row
+                    %th.display-label= t("activerecord.attributes.#{attribute}")
+                    %td.display-value.fs-body-1.tc-black-2= value
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.unique_code")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.unique_code
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.comission_percentage")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.comission_percentage
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.lending_percentage")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.lending_percentage
