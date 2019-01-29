@@ -28,6 +28,7 @@ KepplerTravel::Engine.routes.draw do
           post '/sort', action: :sort, on: :collection
           post '/upload', action: 'upload', as: 'upload'
           get '/download', action: 'download', as: 'download'
+          post '/update_user', action: :update_user
           get(
             '/reload',
             action: :reload,

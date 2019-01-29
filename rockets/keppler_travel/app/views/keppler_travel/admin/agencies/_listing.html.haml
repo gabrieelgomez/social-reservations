@@ -33,7 +33,7 @@
           = agency.lending_percentage
 
     %td.hidden-xs.hidden-sm
-      = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
+      = link_to admin_travel_agency_agents_path(agency, search: @query), remote: true, class: 'show-row' do
         %i.icon-plus Agregar
 
     %td{ style: 'width: 15px;padding-right:15px;' }

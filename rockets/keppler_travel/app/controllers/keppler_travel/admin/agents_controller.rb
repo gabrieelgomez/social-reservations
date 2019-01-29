@@ -4,7 +4,7 @@ module KepplerTravel
     # AgentsController
     class AgentsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_agent, only: [:show, :edit, :update, :destroy]
+      before_action :set_agent, only: [:show, :edit, :destroy]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -15,8 +15,9 @@ module KepplerTravel
 
       # GET /agents
       def index
+        @agency = Agency.find(params[:agency_id])
         @q = Agent.ransack(params[:q])
-        agents = @q.result(distinct: true)
+        agents = @q.result(distinct: true).where(agency_id: @agency)
         @objects = agents.page(@current_page).order(position: :asc)
         @total = agents.size
         @agents = @objects.all
@@ -36,7 +37,9 @@ module KepplerTravel
 
       # GET /agents/new
       def new
-        @agent = Agent.new
+        @user   = User.new
+        @agent  = Agent.new
+        @agency = Agency.find(params[:agency_id])
       end
 
       # GET /agents/1/edit
@@ -45,19 +48,35 @@ module KepplerTravel
 
       # POST /agents
       def create
-        @agent = Agent.new(agent_params)
-
-        if @agent.save
-          redirect(@agent, params)
+        @user = User.new(user_params)
+        password = Devise.friendly_token.first(8)
+        @user.password = password
+        @user.password_confirmation = password
+        if @user.save
+          @user.add_role :agent
+          @user.format_accessable_passwd(password)
+          # ReservationMailer.send_password(@user).deliver_now
+          @agent = @user.build_agent(agency_id: params[:agency_id])
+          @user.save
+          redirect(@user.agent, params)
         else
           render :new
         end
       end
 
+      def update_password
+        return if user_params[:password].blank?
+        @user.format_accessable_passwd(user_params[:password])
+      end
+
       # PATCH/PUT /agents/1
-      def update
-        if @agent.update(agent_params)
-          redirect(@agent, params)
+      def update_user
+        update_attributes = user_params.delete_if do |_, value|
+          value.blank?
+        end
+        @user = User.find_by(email: params[:user][:email])
+        if @user.update_attributes(update_attributes)
+          redirect(@user.agent, params)
         else
           render :edit
         end
@@ -67,7 +86,7 @@ module KepplerTravel
         @agent = Agent.clone_record params[:agent_id]
 
         if @agent.save
-          redirect_to admin_travel_agents_path
+          redirect_to admin_travel_agency_agents_path
         else
           render :new
         end
@@ -76,13 +95,13 @@ module KepplerTravel
       # DELETE /agents/1
       def destroy
         @agent.destroy
-        redirect_to admin_travel_agents_path, notice: actions_messages(@agent)
+        redirect_to admin_travel_agency_agents_path, notice: actions_messages(@agent)
       end
 
       def destroy_multiple
         Agent.destroy redefine_ids(params[:multiple_ids])
         redirect_to(
-          admin_travel_agents_path(page: @current_page, search: @query),
+          admin_travel_agency_agents_path(page: @current_page, search: @query),
           notice: actions_messages(Agent.new)
         )
       end
@@ -131,12 +150,22 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_agent
-        @agent = Agent.find(params[:id])
+        @agent  = Agent.find(params[:id])
+        @agency = Agency.find(params[:agency_id])
+        @user = @agent.user
       end
 
       # Only allow a trusted parameter "white list" through.
       def agent_params
         params.require(:agent).permit(:unique_code, :comission_percentage, :lending_percentage, :user_id, :agency_id, :position, :deleted_at)
+      end
+
+      def user_params
+        params.require(:user).permit(
+          :name, :email, :phone, :dni, :password, :password_confirmation,
+          :role_ids, :encrypted_password, :avatar,
+          agent_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at]
+        )
       end
 
       def show_history
@@ -152,10 +181,10 @@ module KepplerTravel
       # Get submit key to redirect, only [:create, :update]
       def redirect(object, commit)
         if commit.key?('_save')
-          redirect_to([:admin, :travel, object], notice: actions_messages(object))
+          redirect_to([:admin, :travel, Agency.find(commit[:agency_id]), object], notice: actions_messages(object))
         elsif commit.key?('_add_other')
           redirect_to(
-            send("new_admin_travel_#{object.model_name.element}_path"),
+            send("new_admin_travel_agency_#{object.model_name.element}_path"),
             notice: actions_messages(object)
           )
         end

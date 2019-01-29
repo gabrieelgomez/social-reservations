@@ -49,7 +49,8 @@ es:
       keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
       keppler_travel/admin/drivers: 'KepplerTravel → Conductores'
       keppler_travel/admin/agencies: 'KepplerTravel → Agencias'
-      keppler_travel/admin/agents: 'KepplerTravel → Representates'
+      keppler_travel/admin/agents: "KepplerTravel → Agencia: %{agency} - Representantes"
+      show_agents: "%{agency}   Representante"
     settings:
     actions:
       confirm_transfer: Confirmar Traslado
@@ -123,6 +124,7 @@ es:
       unique_code: Código Único 6 hex
       comission_percentage: Porcentaje de comisión
       lending_percentage: Porcentaje de prestación
+      agency: Agencia
       id: Identificador
       title: Título
       subtitle: Subtítulo
