@@ -55,7 +55,7 @@ module KepplerTravel
         if @user.save
           @user.add_role :agent
           @user.format_accessable_passwd(password)
-          # ReservationMailer.send_password(@user).deliver_now
+          ReservationMailer.send_password(@user).deliver_now
           @agent = @user.build_agent(agency_id: params[:agency_id])
           @user.save
           redirect(@user.agent, params)
