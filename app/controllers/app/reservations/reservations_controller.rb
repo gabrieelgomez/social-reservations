@@ -60,6 +60,8 @@ module App
           when 'vehicle'
             @vehicle      = @KT::Vehicle.find params[:reservationable_id]
             @kit_quantity = @vehicle.kit['quantity']
+            @price_total  = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
+            set_price_agency
           when 'tour'
             @tour = @KT::Tour.find params[:reservationable_id]
             set_price_tour
@@ -80,7 +82,7 @@ module App
       def set_price_tour
         @total_adults    = @tour.price_adults[@currency].to_f * @adults.to_f
         @total_kids      = @tour.calculate_kids(@kids, @currency).to_f * @kids.to_f
-        @total_price     = @total_adults + @total_kids
+        @price_total     = @total_adults + @total_kids
       end
 
       # Set by Step 2 Vehicle
@@ -92,6 +94,7 @@ module App
         @round_trip      = session[:reservation]['round_trip']
         @vehicle         = @reservationable
         @price_total     = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
+        set_price_agency
       end
 
       # Set by Step 2 Tour
@@ -110,6 +113,17 @@ module App
       def set_multidestination_checkout
         @render          = 'multidestinations'
         @reservationable = @KT::Multidestination.find(@reservationable['id'])
+      end
+
+      def set_price_agency
+        if current_user.has_role? :agency
+          @agency    = current_user.agency
+          @comission = @agency.comission_percentage
+          @lending   = @agency.lending_percentage
+          @price_comission = @price_total * (@comission/100)
+          @price_lending   = @price_total * (@lending/100)
+          @price_total_agency = @price_total - @price_comission - @price_lending
+        end
       end
 
       def set_module

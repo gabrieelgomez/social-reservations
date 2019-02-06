@@ -62,6 +62,8 @@ module App
             @cotization  = true
             @price_total = nil
           end
+
+          set_price_agency
         end
 
       end

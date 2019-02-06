@@ -28,13 +28,15 @@
 
 :javascript
   //loader
-  $(window).load(function () {
-  setTimeout(function () {
-    $('.loader').fadeOut(500, function () {
-      $(this).remove();
-    });
-    $('body').css('overflow-y', 'auto');
-  }, 1000);
+  $(window).on('load', function(){
+
+    setTimeout(function () {
+      $('.loader').fadeOut(500, function () {
+        $(this).remove();
+      });
+      $('body').css('overflow-y', 'auto');
+    }, 1000);
+
   });
 
   // Form submit function.
