@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     get 'circuits', to: 'app/front#circuits', as: :circuits_show
     get 'multidestinations/', to: 'app/front#multidestinations', as: :multidestinations_show
     get 'about', to: 'app/front#about'
-    get 'contact_us', to: 'app/front#contact_us'
+    get 'contact_us', to: 'app/front#contact_us', as: :contact_us
     get 'pqrs', to: 'app/front#pqrs', as: :pqrs
     get 'multidestinations_all',to: 'app/front#multidestinations_all'
     get 'tours_all',to: 'app/front#tours_all'
-    get 'circuits_all',to: 'app/front#circuits_all'    
+    get 'circuits_all',to: 'app/front#circuits_all'
     get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
     get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
     get '/gracias', to: 'app/front#gracias', as: :gracias

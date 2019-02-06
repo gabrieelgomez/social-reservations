@@ -92,6 +92,7 @@ module App
     end
 
     def contact_us
+      @message = KepplerContactus::Message.new
     end
 
     def pqrs

@@ -135,10 +135,21 @@
        'request[email]': {required: 'No puede estar en blanco', email: 'Email inválido'},
        'request[body]': 'No puede estar en blanco',
        'request[options]': 'Selecciona una opción',
-       'reservation[phone]': 'No puede estar en blanco'
+       'request[phone]': 'No puede estar en blanco'
        },
      debug: true,errorElement: "label",
      submitHandler: function(form){
+
+      swal({
+        type: 'warning',
+        title: 'Tu solicitud está siendo procesada...',
+        text: 'Espere un momento...',
+        timer: 300000,
+        onOpen: () => {
+          swal.showLoading()
+        }
+      });
+
       form.submit();
      }
     });
