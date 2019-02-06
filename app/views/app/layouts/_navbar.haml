@@ -141,19 +141,14 @@
       .navbar-separator.hidden-xs
       %ul.nav.navbar-nav.navbar-right.items-separator.effect-items
         %li.item-link
-          -#%a.link-navbar{"data-easing" => "linear", :href => "#"} Quiénes Somos
-          -#= link_to new_user_session_path, class:"pull-right" 
-          = link_to "Quiénes Somos", '', :"data-easing" => "linear", class:"link-navbar"
+          = link_to "Quiénes Somos", about_path , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link{style:'display: none;'}
           %a.link-navbar{"data-easing" => "linear", :href => "#vehicles"} Traslados
         %li.item-link
-          -#%a.link-navbar{"data-easing" => "linear", :href => "#top-tours"} Tours
           = link_to "Tours", tours_all_path , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          -#%a.link-navbar{"data-easing" => "linear", :href => "#"} Circuitos
           = link_to "Circuitos", circuits_all_path , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          -#%a.link-navbar{"data-easing" => "linear", :href => "#"} Multidestinos
           = link_to "Multidestinos", multidestinations_all_path , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          %a.link-navbar{"data-easing" => "linear", :href => "#footer"} Contacto
+          = link_to "Contacto", contact_us_path , :"data-easing" => "linear", class:"link-navbar"

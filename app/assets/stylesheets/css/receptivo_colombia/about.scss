@@ -3,9 +3,7 @@
 
   .banner-aboutus {
     height: 280px;
-    background: #756f6f;
     width: 100%;
-    margin: 0 0 25px 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -40,33 +38,80 @@
         font-family: $font-primary;
         font-size: 20px;
         font-weight: bold;
-
       }
     }
   }
 
   .box-aboutus {
-    padding: 45px 0;
+    padding: 80px 0;
 
     .info-aboutus {
       padding: 15px 0;
 
       h2 {
         color: $color-gray;
-        font-weight: bold;
-        text-align: left;
+        font-weight: 900;
+        text-align: center;
+        display: inline-block;
+        padding-bottom: 8px;
         margin-bottom: 25px;
+        font-size: 38px;
+        font-family: $font-primary;
+        box-shadow: 0px 3px 0px $color-blue;
+      }
+
+      h4 {
+        color: $color-gray;
+        font-weight: 900;
+        text-align: center;
+        display: inline-block;
+        padding-bottom: 8px;
+        margin-bottom: 25px;
+        font-size: 25px;
+        font-family: $font-primary;
+        box-shadow: 0px 3px 0px $color-orange;
       }
 
       p {
-        color: #4e4e56;
-        line-height: 2;
-        font-family: "Poppins",
-          sans-serif;
-        font-weight: 500;
+        color: $color-gray;
+        line-height: 32px;
+        font-family: "Poppins", sans-serif;
+        text-align: left;
+        font-size: 16px;
+      }
+      .cover-about {
+        height: 800px;
 
+        width: 100%;
+        border-radius: 5px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+          0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+          0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+        transition: 0.5s ease all;
+        cursor: pointer;
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+            0px 20px 31px 3px rgba(0, 0, 0, 0.14),
+            0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+        }
+
+        @include respond-to(xs) {
+          margin-top: 50px;
+          height: 400px;
+        }
+
+        @include respond-to(sm) {
+          margin-top: 50px;
+          height: 600px;
+        }
+      }
+      .items--info {
+        padding-top: 30px;
       }
     }
-
   }
 }
