@@ -33,10 +33,12 @@ module App
             @currency = session[:invoice].first['currency']
             set_price
             build_invoice
+            @reservation.build_order(details: 'user', status: 'pending')
             if @reservation.save!
               create_travellers
               ReservationMailer.transfer_status(@reservation, @user).deliver_now
               if current_user.try(:has_role?, :agency)
+                @reservation.order.update(details: 'agency')
                 redirect_to invoice_path('es', 'usd')
               elsif @price_total != nil
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)

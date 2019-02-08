@@ -10,8 +10,8 @@ module KepplerTravel
     # Relationships
     belongs_to :user
     belongs_to :reservationable, -> { with_deleted }, polymorphic: true
-    has_one    :invoice, dependent: :destroy
-    has_one    :order, dependent: :destroy
+    has_one    :invoice
+    has_one    :order
     has_one    :driver, through: :order
     has_many   :square, as: :squareable
     has_many   :travellers

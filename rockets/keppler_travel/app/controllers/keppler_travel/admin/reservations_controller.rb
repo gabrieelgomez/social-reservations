@@ -23,7 +23,7 @@ module KepplerTravel
             redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
           end
         else
-          @order = @reservation.build_order(status: 'pending', driver_id: params[:driver_id])
+          @order = @reservation.build_order(details: 'driver', status: 'pending', driver_id: params[:driver_id])
           if @order.save
             DriverMailer.transfer_driver(@reservation).deliver_now
             DriverMailer.transfer_user(@reservation).deliver_now
