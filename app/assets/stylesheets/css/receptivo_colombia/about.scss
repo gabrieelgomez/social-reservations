@@ -54,8 +54,8 @@
         text-align: center;
         display: inline-block;
         padding-bottom: 8px;
-        margin-bottom: 25px;
-        font-size: 38px;
+        margin-bottom: 35px;
+        font-size: 30px;
         font-family: $font-primary;
         box-shadow: 0px 3px 0px $color-blue;
       }
@@ -72,16 +72,25 @@
         box-shadow: 0px 3px 0px $color-orange;
       }
 
+      .title {
+        color: $color-gray;
+        font-weight: 900;
+        text-align: center;
+        display: inline-block;
+        padding-bottom: 8px;
+        margin-bottom: 18px;
+        font-size: 30px;
+        font-family: $font-primary;
+        box-shadow: 0px 3px 0px $color-blue;
+      }
       p {
         color: $color-gray;
         line-height: 32px;
         font-family: "Poppins", sans-serif;
-        text-align: left;
         font-size: 16px;
       }
       .cover-about {
         height: 800px;
-
         width: 100%;
         border-radius: 5px;
         background-size: cover;
@@ -112,6 +121,50 @@
       .items--info {
         padding-top: 30px;
       }
+    }
+    .box__image {
+      height: 350px;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top center;
+      @include respond-to(xs) {
+        margin: 20px 0;
+      }
+    }
+
+    .separator {
+      margin-bottom: 65px;
+      @include respond-to(xs) {
+        margin: 10px 0;
+      }
+    }
+    .box__card {
+      text-align: center;
+      background: #fff;
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      padding: 50px;
+      width: 100%;
+      margin-bottom: 65px;
+    }
+    .box__info {
+      margin-bottom: 65px;
+      p {
+        text-align: center;
+      }
+    }
+    .item_general {
+      box-shadow: 0px 3px 0px $color-orange !important;
+    }
+    .item_mision {
+      box-shadow: 0px 3px 0px $color-yellow !important;
+    }
+    .item_vision {
+      box-shadow: 0px 3px 0px $color-red !important;
+    }
+    .box-btn-cta {
+      padding: 10px 0;
     }
   }
 }

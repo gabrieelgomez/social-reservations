@@ -3,7 +3,7 @@
   %head
     = render 'app/layouts/head'
 
-  %body{style:"padding-top:120px;"}
+  %body.body-settings
     %header
       = render 'app/layouts/navbar'
       .loader
@@ -15,23 +15,48 @@
           %h2 Sobre Nosotros
           %p Somos una Agencia Operadora de Turismo en Colombia
       .box-aboutus
-        .info-aboutus
+        .info-aboutus 
           .container
             .row
-              .col-xs-12.col-md-8
-                %center
-                  %h2.text-center Receptivo Colombia
-                %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional. A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes.
-                .items--info
-                  %h4 Nuestra misión
+              .col-md-12
+                .box__info
+                  %center
+                    %h2.item_general Receptivo Colombia
+                  %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes. 
+                  %p Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
+                -#.box__card
+              .col-md-4.hidden-xs
+                .box__image{style: "background-image: url(/assets/img/mision.png)"} 
+              .col-md-8.hidden-xs
+                %h2.item_mision Nuestra misión
                 %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
-                .items--info
-                  %h4 Nuestra visión
-                %p Queremos establecernos en el año 2021 como referentes de calidad, costos, excelencia en servicios turísticos para nuestro nicho de mercado nacional e internacional. Haciendo que la calidad en el servicio integral que ofrecemos al cliente, sea la fortaleza y credibilidad, para fidelizarlos por la satisfacción de la compra realizada a través nuestra empresa Receptivo Colombia S.A.S
-              .col-xs-12.col-md-4
-                .cover-about{style: "background-image: url(/assets/img/about.jpg)"} 
-              
-            
+              .col-xs-12.hidden-xs
+                .separator
+              .col-md-8.hidden-xs
+                %h2.item_vision Nuestra visión
+                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+              .col-md-4.hidden-xs
+                .box__image{style: "background-image: url(/assets/img/vision.png)"}                 
+
+
+              .col-xs-12.visible-xs
+                .box__image{style: "background-image: url(/assets/img/mision.png)"} 
+              .col-xs-12.visible-xs
+                %h2 Nuestra misión
+                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+              .col-xs-12.visible-xs
+                .separator
+              .col-xs-12.visible-xs
+                .box__image{style: "background-image: url(/assets/img/vision.png)"}  
+              .col-xs-12.visible-xs
+                %h2 Nuestra visión
+                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+              .col-xs-12.col-md-12
+                .box-btn-cta
+                  .about-btn.travel-mrt-0
+                    %button.about-view.travel-btn.btn-reser CTA
+
+
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
