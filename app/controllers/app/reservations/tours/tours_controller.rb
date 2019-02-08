@@ -15,7 +15,7 @@ module App
 
         def create_reservation_tour
           if session[:reservation].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
             find_or_create_user

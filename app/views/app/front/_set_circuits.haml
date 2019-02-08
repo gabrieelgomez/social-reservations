@@ -19,17 +19,6 @@
                   = @currency.upcase
                   = number_to_currency(circuit.low_price(@currency), locale: @locale)
                 .more-information
-                  -# %p
-                  -#   %span
-                  -#     10 dias 5 noches
-                  -#%span= raw circuit.description[@lang].truncate(100)
-
-                  -#%p
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
                 .about-btn
                   = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'link-card' do
                     %button.about-view.packages-btn

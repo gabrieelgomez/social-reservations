@@ -23,7 +23,7 @@ module App
 
         def create_reservation_transfer
           if session[:reservation].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
             find_or_create_user
@@ -35,11 +35,13 @@ module App
             build_invoice
             if @reservation.save!
               create_travellers
-              # ReservationMailer.transfer_status(@reservation, @user).deliver_now
-              if @price_total != nil
+              ReservationMailer.transfer_status(@reservation, @user).deliver_now
+              if current_user.try(:has_role?, :agency)
+                redirect_to invoice_path('es', 'usd')
+              elsif @price_total != nil
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               else
-                redirect_to invoice_path('es', 'cop')
+                redirect_to invoice_path('es', 'usd')
               end
             else
               render :new

@@ -3,32 +3,31 @@
     .col-12.col-xl-8
       .card
         .card-header
-          %h4.card-title Detalles de la Reservación 
-          -#%p.card-category Lorem ipsum dolor sit amet consectetur
+          %h4.card-title Detalles de la Reservación
         .card-body
           .row
             .col-12.col-xl-8
               .row
                 %ul.list-group.list-group-flush
-                  %li.list-group-item 
+                  %li.list-group-item
                     Orden:
                     %span= @reservation.id
-                  %li.list-group-item 
+                  %li.list-group-item
                     Factura:
                     %span= @reservation.invoice.token
-                  %li.list-group-item 
+                  %li.list-group-item
                     Moneda:
                     %span= @reservation.invoice.currency.upcase
-                  %li.list-group-item 
+                  %li.list-group-item
                     Costo:
                     - if @reservation.invoice.amount.nil?
                       %span Por cotizar
                     - else
                       = number_to_currency(@reservation.invoice.amount, locale: @locale)
-                  %li.list-group-item 
+                  %li.list-group-item
                     Estatus:
                     %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
-                  %li.list-group-item 
+                  %li.list-group-item
                     Pago:
                     - if @reservation.invoice.amount.nil?
                       %span Por cotizar
@@ -40,33 +39,29 @@
                           Pagar
                     - else
                       %span Pagado
-                  %li.list-group-item 
+                  %li.list-group-item
                     Usuario:
                     %span= @reservation.user.email
-                  %li.list-group-item 
+                  %li.list-group-item
                     Cotizante:
                     %span= @reservation.travellers.first.name
                   %li.list-group-item
                     Circuito:
                     %span= truncate(@reservation.origin, :length => 25)
-                  %li.list-group-item 
+                  %li.list-group-item
                     Fecha Reservación:
                     %span= @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
-                  %li.list-group-item 
+                  %li.list-group-item
                     Cantidad Adultos:
                     %span= @reservation.quantity_adults
-                  %li.list-group-item 
+                  %li.list-group-item
                     Cantidad Niños:
                     %span= @reservation.quantity_kids
-                  %li.list-group-item 
+                  %li.list-group-item
                     Observación:
                     %span= @reservation.description.blank? ? '-----------' : @reservation.description
             .col-12.col-xl-4
               .row
-                -#%ul.list-group.list-group-flush
-                  %li.list-group-item 
-                    %h5.title Cover
-                    %img{src: @reservation.reservationable.banner.url, class: 'rounded img-circuit img-fluid'}   
         .card-footer
 
 :scss
@@ -76,4 +71,3 @@
     object-fit: cover;
     object-position: center;
   }
-

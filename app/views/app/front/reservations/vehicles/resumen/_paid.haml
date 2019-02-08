@@ -1,4 +1,4 @@
-- if current_user.has_role? :agency
+- if current_user.try(:has_role?, :agency)
   %li.list-group-item.d-flex.justify-content-between
     %div
       %h6.my-0 Sub-total
@@ -41,6 +41,15 @@
         = @currency.upcase
         = number_to_currency(@price_total, locale: @locale)
 
+  .box-btn-payment
+    %br/
+    %span
+      %p.text-center.title-reser Confirma tu reserva!
+    %br/
+    %center
+      .about-btn.travel-mrt-0
+        %button.about-view.travel-btn.btn-reser Siguiente
+
 - else
 
   %li.list-group-item.d-flex.justify-content-between
@@ -62,11 +71,11 @@
         = number_to_currency(@price_total, locale: @locale)
 
 
-.box-btn-payment
-  %br/
-  %span
-    %p.text-center.title-reser ¡Paga tu reserva!
-  %br/
-  %center
-    .about-btn.travel-mrt-0
-      %button.about-view.travel-btn.btn-reser Confirmar
+  .box-btn-payment
+    %br/
+    %span
+      %p.text-center.title-reser ¡Paga tu reserva!
+    %br/
+    %center
+      .about-btn.travel-mrt-0
+        %button.about-view.travel-btn.btn-reser Confirmar

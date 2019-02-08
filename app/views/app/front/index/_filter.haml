@@ -33,17 +33,6 @@
                     = @currency.upcase
                     = number_to_currency(tour.price_adults[@currency], locale: @locale)
                   .more-information
-                    -# %p
-                    -#   %span
-                    -#     10 dias 5 noches
-                    -#%span= raw tour.description[@lang].truncate(100)
-
-                    -#%p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
                   .about-btn
                     = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'link-card' do
                       %button.about-view.packages-btn

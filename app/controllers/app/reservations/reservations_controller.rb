@@ -2,7 +2,6 @@ module App
   module Reservations
     class ReservationsController < FrontController
       # layout 'app/layouts/application'
-      before_action :set_module
       before_action :set_search, only: :reservations
       before_action :set_params_widget, only: :reservations
       before_action :set_reservationable, only: :reservations
@@ -46,7 +45,7 @@ module App
         @user                = @reservation.try(:user)
         @reservationable     = @reservation.try(:reservationable)
         if @reservation.nil?
-          redirect_to errors_checkout_path('cop')
+          redirect_to errors_checkout_path('usd')
         else
           redirect_to root_path if @invoice.status_pay? :approved
         end
@@ -116,7 +115,7 @@ module App
       end
 
       def set_price_agency
-        if current_user.has_role? :agency
+        if current_user.try(:has_role?, :agency)
           @agency    = current_user.agency
           @comission = @agency.comission_percentage
           @lending   = @agency.lending_percentage
@@ -124,10 +123,6 @@ module App
           @price_lending   = @price_total * (@lending/100)
           @price_total_agency = @price_total - @price_comission - @price_lending
         end
-      end
-
-      def set_module
-        @KT = KepplerTravel
       end
 
     end

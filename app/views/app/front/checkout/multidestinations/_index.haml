@@ -27,14 +27,11 @@
                     .col-lg-1
                     .col-lg-3
                       %h3.pull-right N° de Orden
-                      -# %h3.pull-right= @invoice['token']
-                      -# %h3.pull-right= SecureRandom.random_number(1000..9999)
                       %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        -# dates billing
                         %strong Datos Personales
                         %br/
                         = @user['name']

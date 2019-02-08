@@ -81,7 +81,6 @@
                 .col-lg-12
                   .form-group
                     %label Descripción
-                    -# %input{name: 'request[options]', type: 'hidden', value: 'ninguno'}/
                     %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5"}
                 .col-lg-12
                   .items
@@ -105,12 +104,10 @@
 :javascript
   $('font').on('click', function () {
     $(`input[name='request[options]']`).val($(this).text());
-    // debugger;
   });
 
   $(`input[name='request[options]']`).on('click', function () {
     $(`input[name='request[options]']`).val($(this).attr('id'));
-    // debugger;
   });
 
     $('#new_request').validate({

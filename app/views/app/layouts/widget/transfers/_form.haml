@@ -20,22 +20,6 @@
                                 %span.round-boarder>
                                     %span.round-boarder1
                                 Solo ida
-                -#.col-xs-12.visible-xs
-                    .trip-circle.row{style:'display: block !important;'}
-                        .col-xs-6
-                            .single-trip-circle
-                                %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-                                %label.ida_vuelta{:for => "ida_vuelta"}
-                                    %span.round-boarder
-                                        %span.round-boarder1
-                                    Ida y vuelta
-                        .col-xs-6
-                            .single-trip-circle
-                                %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
-                                %label.solo_ida{:for => "solo_ida"}
-                                    %span.round-boarder>
-                                        %span.round-boarder1
-                                    Solo ida
                 .col-lg-8
                     .box-item
                         %h2 Origen
@@ -50,13 +34,6 @@
                         %h2 Fecha de Ida
                         .form-group
                             %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off'}/
-
-                -#.col-xs-6.col-lg-2
-                    .box-item
-                        %h2 Adultos
-                        .form-group
-                            %input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
-
 
                 .col-lg-8{style:'margin-top: 8px;'}
                     .box-item
@@ -73,34 +50,10 @@
                         .form-group
                             %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
 
-                -#.col-xs-6.col-lg-2
-                    .box-item
-                        %h2 Niños
-                        .form-group
-                            %input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
-
-
                 .col-xs-12.col-lg-12{style:'margin-top: 8px;'}
                     .row
                         .col-lg-9
                             .row
-                                -#.col-lg-3#vuelo_vuelta
-                                    .box-item
-                                        %h2 Fecha de Vuelta
-                                        .form-group
-                                            %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off'}/
-
-                                -# .col-lg-3
-                                -#     .box-item
-                                -#         %h2 Hora de Traslado (Ida)
-                                -#         .form-group
-                                -#             %input.form-control.custom-input{name: 'hour_origin_picker', id: 'hour_origin_picker', autocomplete: 'off'}/
-                                -# .col-lg-3#hora_vuelta
-                                -#     .box-item
-                                -#         %h2 Hora de Traslado (Vuelta)
-                                -#         .form-group
-                                -#             %input.form-control.custom-input{name: 'hour_arrival_picker', id: 'hour_arrival_picker', autocomplete: 'off'}/
-
                                 .col-xs-6.col-lg-2
                                     .box-item
                                         %h2 Adultos

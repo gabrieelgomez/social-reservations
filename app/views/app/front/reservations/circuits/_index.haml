@@ -7,15 +7,11 @@
             %p
               %h5 Su búsqueda
               %p="Destino: #{@circuit.title[@lang].titleize.truncate(100)}"
-              -#%p="Hasta: #{@arrival_name.truncate(100)}"
-              -#%p="Desde #{@locality[0]} > Hasta #{@locality[1]}"
           .col-lg-3
             %p
               %span
                 %a.pull-right.link-widget
                   Volver a relizar la búsqueda
-
-
 
   .container.js-widget.js-hide-widget.widget-results
     .row
@@ -77,9 +73,6 @@
       //Modal - Terms & Conditions
       = render 'app/front/reservations/circuits/modal/terms_conditions'
 
-      //Modal - Details Hotel
-      -#= render 'app/front/reservations/circuits/modal/details_hotel'
-
 :scss
   label.error-class{color: #e60707 !important;}
 
@@ -94,8 +87,6 @@
       $('.js-widget').removeClass('js-hide-widget');
       $('.js-widget').addClass('js-show-widget');
   });
-
-
 
   $(document).ready(function(){
       $("#js_privacyPolicy").click(function(){

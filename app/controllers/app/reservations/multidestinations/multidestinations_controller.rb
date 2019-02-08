@@ -16,7 +16,7 @@ module App
 
         def create_reservation_multidestination
           if session[:reservation].nil? || session[:square_multidestination].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
 
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
@@ -35,7 +35,7 @@ module App
               ReservationMailer.multidestination_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_multidestination(@reservation, @user).deliver_now
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              redirect_to invoice_path('es', 'cop')
+              redirect_to invoice_path('es', 'usd')
             else
               render :new
             end

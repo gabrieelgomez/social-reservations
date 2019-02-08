@@ -24,7 +24,7 @@
                 %td.text-center= @multiple
                 %td.text-center= number_to_currency(@price_total, locale: @locale)
 
-- if current_user.has_role? :agency
+- if current_user.try(:has_role?, :agency)
 
   .row
     .col-md-12
@@ -70,9 +70,14 @@
                   %td.text-center -----
                   %td.text-center= number_to_currency(@price_total_agency, locale: @locale)
 
+  .row
+    .col-lg-12
+      .invoice-transfers__box--payment
+        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Confirmar"}/
 
+- else
 
-.row
-  .col-lg-12
-    .invoice-transfers__box--payment
-      %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+  .row
+    .col-lg-12
+      .invoice-transfers__box--payment
+        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/

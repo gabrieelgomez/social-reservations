@@ -50,23 +50,6 @@
             %label.solo_ida_form{:for => "solo_ida_form"}
               %font{:style => "vertical-align: inherit;"}
                 %font{:style => "vertical-align: inherit;"} Ida
-          -#%input{name: 'reservation[round_trip]', value: @round_trip, type: 'hidden'}
-          -#.trip-circle
-            .single-trip-circle
-              %input#ida_vuelta_form{:name => "radio", :type => "radio"}/
-              %label.ida_vuelta_form{:for => "ida_vuelta_form"}
-                %span.round-boarder
-                  %span.round-boarder1
-                Ida y Vuelta
-
-            -#.single-trip-circle
-              %input#solo_ida_form{:name => "radio", :type => "radio"}/
-              %label.solo_ida_form{:for => "solo_ida_form"}
-                %span.round-boarder
-                  %span.round-boarder1
-                Ida
-      // End -- Radio Buttons Ida - Vuelta
-      // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
       .col-lg-12
         .row
           .col-lg-6
@@ -87,13 +70,11 @@
           .col-lg-6
             .form-group.form-custom#fecha_origen_ida
               %label{:for => ""}  Hora Traslado Ida/Origen
-              -# %input{name: 'reservation[hour_origin]', value: @hour_origin_picker, type: 'hidden'}
               %input.form-control.custom-input{name: 'reservation[hour_origin]', id: 'hour_origin_picker', autocomplete: 'off'}/
           - if @round_trip == 'true'
             .col-lg-6
               .form-group.form-custom#fecha_destino_vuelta
                 %label{:for => ""} Hora Traslado Vuelta/Destino
-                -# %input{name: 'reservation[hour_arrival]', value: @hour_arrival_picker, type: 'hidden'}
                 %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off'}/
         // End -- Inputs Timepicker Hora Traslado Origen (Ida) - Fecha Destino (Vuelta)
 
@@ -104,9 +85,6 @@
       .col-lg-12
         .row
           .col-lg-12.desde_el_aero
-            -#.checkbox
-              %label
-                %input.check_vehicle#vehicle_origin{name: 'vehicle_origin', :type => "checkbox", :value => ''} ¿Traslado desde el aeropuerto?
             .form-group.form-custom
               .checkbox.checkbox-blue.checkbox-inline
                 %input.check_vehicle#vehicle_origin.styled{name: 'vehicle_origin', :type => "checkbox", :value => "agree"}/
@@ -125,9 +103,6 @@
               %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
 
           .col-lg-12.al_aero
-            -#.checkbox
-              %label
-                %input.check_vehicle#vehicle_arrival{name: 'vehicle_arrival', :type => "checkbox", :value => ''} ¿Traslado al aeropuerto?
             .form-group.form-custom
               .checkbox.checkbox-blue.checkbox-inline
                 %input.check_vehicle#vehicle_arrival.styled{name: 'vehicle_arrival', :type => "checkbox", :value => ""}/
@@ -143,13 +118,6 @@
             .form-group
               %label{:for => ""}  N° de Vuelo
               %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_arrival]', id: 'flight_number', autocomplete: 'off'}/
-
-      -#.col-lg-12
-        .row
-          .col-lg-12
-            .form-group
-              %label{:for => ""}  Detalles del Traslados (Observaciones)
-              %textarea{placeholder: 'Introduce tus observaciones del traslado y más detalles que nos quieras acotar', :id => "", :name => "reservation[description]", :rows => "4", style:"width: 100%;"}
         // End --- Inputs informacion de vuelo aeropuerto
 
 :javascript
@@ -167,7 +135,6 @@
   else{
     $("#ida_vuelta_form").prop('checked', true);
     $("#solo_ida_form").prop('disabled', 'disabled');
-    // $(".desde_el_aero").hide();
     $(".solo_ida_form").css('text-decoration','line-through')
   }
 
@@ -203,8 +170,6 @@
 
                      $('#round_trip').val(true);
 
-                     console.log($('#round_trip').val());
-
                      $('#vuelo_vuelta').removeClass('hidden-input');
 
                      $('#vuelo_vuelta').addClass('show-input');
@@ -216,8 +181,6 @@
              } else {
 
                      $('#round_trip').val(false);
-
-                     console.log($('#round_trip').val());
 
                      $('#vuelo_vuelta').removeClass('show-input');
 
