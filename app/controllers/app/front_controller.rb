@@ -30,7 +30,7 @@ module App
       @cotization  = true if @departament[0] != @departament[1]
 
       respond_to do |format|
-        format.json { render json: @results, status: 200 }
+        format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, status: 200 }
         format.html
       end
     end

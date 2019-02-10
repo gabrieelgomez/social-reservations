@@ -33,6 +33,15 @@ gem 'pg', '1.0.0'
 # gem 'mysql2', '~> 0.3.18'
 # comment by update
 
+# Resource by API
+gem 'active_model_serializers', '0.10.0'
+gem 'rack-cors'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'has_secure_token', '~> 1.0'
+# Action Cable in production
+#gem 'redis', '~> 4.0'
+
 # SEO
 gem 'sitemap_generator', '6.0.1'
 
