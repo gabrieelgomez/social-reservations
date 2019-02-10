@@ -28,6 +28,11 @@ module App
       @destination = @KT::Destination.ransack(title_cont: @locality[0]).result.first
       @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
       @cotization  = true if @departament[0] != @departament[1]
+
+      respond_to do |format|
+        format.json { render json: @results, status: 200 }
+        format.html
+      end
     end
 
     def tours
