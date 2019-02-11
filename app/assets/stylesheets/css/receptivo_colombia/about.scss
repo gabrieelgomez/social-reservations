@@ -129,14 +129,26 @@
       background-repeat: no-repeat;
       background-position: top center;
       @include respond-to(xs) {
-        margin: 20px 0;
+        margin: 35px 0;
+      }
+      @include respond-to(sm) {
+        margin: 35px 0;
+      }
+      @include respond-to(md) {
+        margin: 35px 0;
       }
     }
 
     .separator {
       margin-bottom: 65px;
       @include respond-to(xs) {
-        margin: 10px 0;
+        margin: 0;
+      }
+      @include respond-to(sm) {
+        margin: 0;
+      }
+      @include respond-to(md) {
+        margin: 0;
       }
     }
     .box__card {
@@ -150,6 +162,15 @@
     }
     .box__info {
       margin-bottom: 65px;
+      @include respond-to(xs) {
+        margin-bottom: 0;
+      }
+      @include respond-to(sm) {
+        margin-bottom: 0;
+      }
+      @include respond-to(md) {
+        margin-bottom: 0;
+      }
       p {
         text-align: center;
       }

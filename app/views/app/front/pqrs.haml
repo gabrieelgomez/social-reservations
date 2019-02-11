@@ -29,35 +29,35 @@
           .row
             .col-lg-12
               .reservation-pqrs
-                %ul.list-inline
+                %ul.list-inline.item--list
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#pregunta{:name => "request[options]", :type => "radio"}/
                         %label{:for => "pregunta"}
-                          %font{:style => "vertical-align: inherit;"}
-                            %font{:style => "vertical-align: inherit;"} Pregunta
+                          %font
+                            %font Pregunta
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#queja{:name => "request[options]", value: 'Queja', :type => "radio"}/
                         %label{:for => "queja"}
-                          %font{value: 'Queja', :style => "vertical-align: inherit;"}
-                            %font{value: 'Queja', :style => "vertical-align: inherit;"} Queja
+                          %font{value: 'Queja'}
+                            %font{value: 'Queja'} Queja
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#reclamo{:name => "request[options]", value: 'Reclamo', :type => "radio"}/
                         %label{:for => "reclamo"}
-                          %font{value: 'Reclamo', :style => "vertical-align: inherit;"}
-                            %font{value: 'Reclamo', :style => "vertical-align: inherit;"} Reclamo
+                          %font{value: 'Reclamo'}
+                            %font{value: 'Reclamo'} Reclamo
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#sugerencia{:name => "request[options]", value: 'Sugerencia', :type => "radio"}/
                         %label{:for => "sugerencia"}
-                          %font{value: 'Sugerencia', :style => "vertical-align: inherit;"}
-                            %font{value: 'Sugerencia', :style => "vertical-align: inherit;"} Sugerencia
+                          %font{value: 'Sugerencia'}
+                            %font{value: 'Sugerencia'} Sugerencia
                 .col-lg-6
                   .form-group
                     %label Nombre
@@ -96,6 +96,15 @@
 %script{:src => "/assets/js/jquery-validate.js"}
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{:src => "https://www.google.com/recaptcha/api.js"}
+:scss
+  .radio{
+    label{
+      &:after{
+      top: 3px !important;
+      }
+    }
+  }
+    
 
 :javascript
   $('.navigation-front').removeClass('background-hide');
@@ -161,3 +170,4 @@
     text: '¡Ha ocurrido un error, intente de nuevo!'
    })
   }
+

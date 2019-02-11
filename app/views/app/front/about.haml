@@ -17,44 +17,60 @@
       .box-aboutus
         .info-aboutus 
           .container
-            .row
+            -# desktop
+            .row.visible-lg
               .col-md-12
                 .box__info
                   %center
                     %h2.item_general Receptivo Colombia
                   %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes. 
                   %p Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
-                -#.box__card
-              .col-md-4.hidden-xs
+              .col-md-4
                 .box__image{style: "background-image: url(/assets/img/mision.png)"} 
-              .col-md-8.hidden-xs
+              .col-md-8
                 %h2.item_mision Nuestra misión
                 %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
-              .col-xs-12.hidden-xs
+              .col-md-12
                 .separator
-              .col-md-8.hidden-xs
+              .col-md-8
                 %h2.item_vision Nuestra visión
                 %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
-              .col-md-4.hidden-xs
-                .box__image{style: "background-image: url(/assets/img/vision.png)"}                 
-
-
-              .col-xs-12.visible-xs
+              .col-md-4
+                .box__image{style: "background-image: url(/assets/img/vision.png)"}                             
+              .col-md-12
+                %center
+                  .box-btn-cta
+                    .about-btn.travel-mrt-0{style:'margin-top: 10px'}
+                      = link_to tours_all_path do
+                        %button.about-view.travel-btn.btn-reser Conócenos
+            
+            -# mobile
+            .row.hidden-lg
+              .col-xs-12
+                .box__info
+                  %center
+                    %h2.item_general Receptivo Colombia
+                  %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes. 
+                  %p Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
+              .col-xs-12
                 .box__image{style: "background-image: url(/assets/img/mision.png)"} 
-              .col-xs-12.visible-xs
+              .col-xs-12
                 %h2 Nuestra misión
                 %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
-              .col-xs-12.visible-xs
+              .col-xs-12
                 .separator
-              .col-xs-12.visible-xs
+              .col-xs-12
                 .box__image{style: "background-image: url(/assets/img/vision.png)"}  
-              .col-xs-12.visible-xs
+              .col-xs-12
                 %h2 Nuestra visión
                 %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
-              .col-xs-12.col-md-12
-                .box-btn-cta
-                  .about-btn.travel-mrt-0
-                    %button.about-view.travel-btn.btn-reser CTA
+              .col-xs-12
+                %center
+                  .box-btn-cta
+                    .about-btn.travel-mrt-0{style:'margin: 30px 0'}
+                      = link_to tours_all_path do
+                        %button.about-view.travel-btn.btn-reser Conócenos
+
 
 
 

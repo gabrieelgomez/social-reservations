@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get '/gracias', to: 'app/front#gracias', as: :gracias
     get '/invoice', to: 'app/front#invoice', as: :invoice
     get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
+    get '/dashboard/checkout', to: 'app/dashboard/dashboard#checkout'
     post '/update_order', to: 'app/dashboard/drivers/transfers#update_order', as: :update_order
     get '/dashboard/drivers/transfers', to: 'app/dashboard/dashboard#drivers', as: :drivers_transfers
     get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
