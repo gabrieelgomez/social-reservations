@@ -10,41 +10,43 @@
 					%h2 Site Map
 					.single-footer-txt
 						%p
-							%a{href: "#"} Quiénes Somos
-						%p
+							= link_to "Quiénes Somos", about_path, class:""
+						-#%p
 							%a{href: "#"} Traslados
 						%p
-							%a{href: "#"} Circuitos
+							= link_to "Circuitos", circuits_all_path, class:""
 						%p
-							%a{href: "#"} Tours
+							= link_to "Tours", tours_all_path, class:""
 						%p
-							%a{href: "#"} Multidestinos
+							= link_to "Multidestinos", multidestinations_all_path , class:""
 						%p
-							%a{:href => "#"} Contacto
+							= link_to "Contacto", contact_us_path, class:""
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
 					%h2 Destinos Destacados
 					.single-footer-txt
 						%p
-							%a{href: "#"} Cartagena
+							%span Cartagena
 						%p
-							%a{href: "#"} Bucaramanga
+							%span Bucaramanga
 						%p
-							%a{href: "#"} Barranquilla
+							%span Barranquilla
 						%p
-							%a{href: "#"} Neiva
+							%span Neiva
 						%p
-							%a{:href => "#"} Guajira
+							%span Guajira
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
 					%h2 Contáctanos
 					.single-footer-txt
-						%p +57 317 3632119
-						%p RNT: 32133
-						%p{style:'text-transform: lowercase;'} info@receptivocolombia.com
-						-#%p Colombia
+						%p
+							%span +57 317 3632119
+						%p 
+							%span RNT: 32133
+						%p
+							%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
 						%ul
 							%li
 								= link_to pqrs_path , class: '', id: '', type: 'button' do

@@ -12,7 +12,7 @@
     }
 
     .single-footer-item {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       text-transform: capitalize;
       height: 285px;
 
@@ -38,11 +38,25 @@
           a {
             color: #565a5c;
             font-size: 16px;
-            -webkit-transition: .1s ease-in-out;
-            -moz-transition: .1s ease-in-out;
-            -ms-transition: .1s ease-in-out;
-            -o-transition: .1s ease-in-out;
-            transition: .1s ease-in-out;
+            -webkit-transition: 0.1s ease-in-out;
+            -moz-transition: 0.1s ease-in-out;
+            -ms-transition: 0.1s ease-in-out;
+            -o-transition: 0.1s ease-in-out;
+            transition: 0.1s ease-in-out;
+
+            &:hover {
+              color: #43b7e8;
+              font-weight: 500;
+            }
+          }
+          span {
+            color: #565a5c;
+            font-size: 16px;
+            -webkit-transition: 0.1s ease-in-out;
+            -moz-transition: 0.1s ease-in-out;
+            -ms-transition: 0.1s ease-in-out;
+            -o-transition: 0.1s ease-in-out;
+            transition: 0.1s ease-in-out;
 
             &:hover {
               color: #43b7e8;
@@ -56,10 +70,18 @@
             margin: 8px 0;
 
             a {
-              span {
-                color: #666666;
-                font-size: 14px;
-                text-transform: initial;
+              color: #565a5c;
+              font-size: 16px;
+              -webkit-transition: 0.1s ease-in-out;
+              -moz-transition: 0.1s ease-in-out;
+              -ms-transition: 0.1s ease-in-out;
+              -o-transition: 0.1s ease-in-out;
+              transition: 0.1s ease-in-out;
+              text-transform: none;
+
+              &:hover {
+                color: #43b7e8;
+                font-weight: 500;
               }
             }
           }
@@ -147,7 +169,11 @@
           &:nth-child(3) {
             a {
               background: #8938ae;
-              background: -webkit-linear-gradient(right, #8938ae 0%, #c13181 100%);
+              background: -webkit-linear-gradient(
+                right,
+                #8938ae 0%,
+                #c13181 100%
+              );
               background: -o-linear-gradient(right, #8938ae 0%, #c13181 100%);
               background: linear-gradient(to right, #8938ae 0%, #c13181 100%);
             }
@@ -163,16 +189,16 @@
 
   .copyright {
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 
     .slice-group {
       color: #4e4e56;
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      -webkit-transition: all .5s ease;
-      -o-transition: all .5s ease;
-      transition: all .5s ease;
+      -webkit-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
     }
 
     .keppler-admin {
@@ -181,16 +207,16 @@
       }
 
       &:hover .svg-keppler {
-        fill: #DA291C;
+        fill: #da291c;
       }
 
       .keppler-logo {
         height: 20px;
-        transition: .5s all;
+        transition: 0.5s all;
         margin-left: -5px;
-        -webkit-transition: all .5s ease;
-        -o-transition: all .5s ease;
-        transition: all .5s ease;
+        -webkit-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
         vertical-align: middle;
       }
 
@@ -198,6 +224,5 @@
         fill: #4e4e56;
       }
     }
-
   }
 }

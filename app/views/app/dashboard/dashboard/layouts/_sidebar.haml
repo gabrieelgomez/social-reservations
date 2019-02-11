@@ -35,7 +35,15 @@
         = link_to orders_path(@lang, @currency, 'multidestinations'), class:"nav-link" do
           %i.nc-icon.nc-send
           %p Multidestinos
-
+      %li
+        = link_to dashboard_checkout_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-send
+          %p Checkout
+    - if current_user.has_role? :driver
+      %li
+        = link_to drivers_transfers_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-delivery-fast
+          %p Traslados Asignados
     %li
       = link_to users_details_path(@lang, @currency), class:"nav-link" do
         %i.nc-icon.nc-single-02
