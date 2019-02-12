@@ -40,7 +40,13 @@ module KepplerTravel
 
       # GET /reservations
       def index
-        @types = Reservation.where(reservationable_type: "KepplerTravel::#{@model}")
+        if @type_search
+          ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
+          @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
+        else
+          ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
+          @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
+        end
         @q = @types.ransack(params[:q])
         reservations = @q.result(distinct: true)
         @objects = reservations.page(@current_page).order(id: :desc)
@@ -79,7 +85,10 @@ module KepplerTravel
       # PATCH/PUT /reservations/1
       def update
         if @reservation.update(reservation_params)
-          redirect(@reservation, params)
+          @reservation.invoice.update(status: reservation_params[:status])
+          ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
+          ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
+          redirect_to admin_travel_reservations_path(page: 1, model_name: 'vehicle', type_search: 'agency')
         else
           render :edit
         end
@@ -87,9 +96,8 @@ module KepplerTravel
 
       def clone
         @reservation = Reservation.clone_record params[:reservation_id]
-
         if @reservation.save
-          redirect(@reservation, params)
+          redirect_to reservations_path(page: @current_page.to_i.pred, search: @query)
         else
           render :new
         end
@@ -151,6 +159,7 @@ module KepplerTravel
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
         @model = params[:model_name].try(:capitalize)
+        @type_search = params[:type_search]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -162,7 +171,7 @@ module KepplerTravel
       def reservation_params
         params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
         :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
-        :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
+        :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :status,
         :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
         travellers_attributes: [:name, :dni])
       end

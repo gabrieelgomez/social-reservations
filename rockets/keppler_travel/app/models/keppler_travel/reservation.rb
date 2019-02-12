@@ -17,6 +17,8 @@ module KepplerTravel
     has_many   :travellers
     accepts_nested_attributes_for :travellers
     accepts_nested_attributes_for :square
+    accepts_nested_attributes_for :order
+    validates_inclusion_of :status, :in => %w(pending cancelled approved)
 
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'

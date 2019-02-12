@@ -2,6 +2,7 @@ es:
   keppler:
     sidebar-menu:
       reservations: Reservaciones
+      reservations_agencies: Reservaciones de Agencia
       destinations: Destinos
       lodgments: Alojamientos
       multidestinations: Multidestinos
@@ -12,6 +13,11 @@ es:
       agencies: Agencias
       agents: Representates
       reservations-submenu:
+        multidestinations: Multidestinos
+        circuits: Circuitos
+        tours: Tours
+        vehicles: Traslados
+      reservations_agencies-submenu:
         multidestinations: Multidestinos
         circuits: Circuitos
         tours: Tours

@@ -2,7 +2,6 @@
 %html{:lang => "en"}
   %head
     = render 'app/dashboard/dashboard/layouts/head'
-    -#= render 'app/layouts/head'
   %body
     %header
       .loader
@@ -21,8 +20,7 @@
                 .col-12.col-xl-8
                   .card
                     .card-header
-                      %h4.card-title Facturación de la Reservación 
-                      -#%p.card-category Lorem ipsum dolor sit amet consectetur
+                      %h4.card-title Facturación de la Reservación
                     .card-body
                       .row
                         .col-12
@@ -30,7 +28,6 @@
                             .container
                               .col-md-12
                                 .invoice-checkout__box
-                                  -#= simple_form_for KepplerTravel::Reservation.new, url: '/create_reservation_transfer', method: :post do |f|
                                   .row
                                     .col-md-12
                                       .row
@@ -47,18 +44,14 @@
                                       .row
                                         .col-md-12
                                           %address
-                                            -# dates billing
                                             %strong Datos Personales
                                             %br/
-                                            -#= @user['name']
                                             Leonard J. Ávila S.
                                             %br/
                                             12345678-A
                                             %br/
-                                            -#= @user['email']
                                             info@slicegroup.co
                                             %br/
-                                            -#= @invoice['address']
                                             Colombia
                                       .row
                                         .col-md-6
@@ -66,17 +59,12 @@
                                             %strong Método de Pago
                                             %br/
                                             Pĺataforma: EnLineaPagos
-                                            -# %br/
-                                            -# MasterCard terminada **** 4242
                                             %br/
-                                            -#= @user['name']
                                             %br/
-                                            -#= @user['email']
                                         .col-md-6.text-right
                                           %address
                                             %strong N°. Orden ELP
                                             %br/
-                                            -#= @invoice['token']
                                             10000523
                                             %br/
                                             %br/
@@ -88,17 +76,14 @@
                                           %address
                                             %strong Origen
                                             %br/
-                                            -#= @reservation['origin']
                                             Colombia
                                             %br/
                                             %strong Destino
                                             %br/
-                                            -#= @reservation['arrival']
                                             Falcon
                                             %br/
                                             %strong Aerolinea
                                             %br/
-                                            -#= @reservation['airline_origin'].blank? ? '-----------' : @reservation['airline_origin']
                                             Copa Airline
                                             %br/
                                         .col-md-4
@@ -109,29 +94,24 @@
                                             %br/
                                             %strong Adultos/Niños
                                             %br/
-                                            -#%br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
                                             5
                                             %br/
                                             %strong N° de Vuelo
                                             %br/
                                             1000523
-                                            -#= @reservation['flight_number_origin'].blank? ? '-----------' : @reservation['flight_number_origin']
                                             %br/
                                         .col-md-4
                                           %address
                                             %strong Fecha/Hora de Ida
                                             %br/
-                                            -#= @reservation['flight_origin']
                                             10:00 am
                                             %br/
                                             %strong Fecha/Hora de Vuelta
                                             %br/
-                                            -#= @reservation['flight_arrival']
                                             5:00 pm
                                             %br
                                             %strong Hora Traslado Ida
                                             %br/
-                                            -#= @reservation['hour_origin']
                                             5:00pm
                                             %br/
                                       .row
@@ -145,11 +125,11 @@
                                                   %tr
                                                     %th
                                                       %strong Concepto
-                                                    %th 
+                                                    %th
                                                       %strong Precio
-                                                    %th 
+                                                    %th
                                                       %strong Cantidad
-                                                    %th 
+                                                    %th
                                                       %strong Total
                                                 %tbody
                                                   %tr
@@ -165,143 +145,3 @@
                                               Pagar
                                         .card-footer
     = render 'app/dashboard/dashboard/layouts/scripts'
-
-
--#!!!
--#%html{:lang => "en"}
-  %head
-    = render 'app/dashboard/dashboard/layouts/head'
-    -#= render 'app/layouts/head'
-  %body
-    %header
-      .loader
-        = render 'app/front/loader/loader'
-    #js-mobile
-      .notifications
-        %span{:mode => "in-out"}
-      .wrapper
-        .sidebar{style: "background-image: url(/assets/img/sidebar_dashboard.png)"}
-          = render 'app/dashboard/dashboard/layouts/sidebar'
-        .main-panel
-          = render 'app/dashboard/dashboard/layouts/main'
-          .content
-            -#%section.invoice-transfers#invoice-transfers
-              .container
-                .gallary-header.text-center
-                  %h2
-                    Facturación
-                  %p
-                    Recuerde verificar la información antes de pagar su reserva
-                .container
-                  .row
-                    .col-lg-2
-                    .col-lg-8
-                      .invoice-transfers__box
-                        -#= simple_form_for KepplerTravel::Reservation.new, url: '/create_reservation_transfer', method: :post do |f|
-                        .row
-                          .col-xs-12
-                            .row
-                              .col-lg-2
-                                %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
-                              .col-lg-6
-
-                                %h2 Receptivo Colombia
-                                %p Operador turístico - Bogotá, Colombia
-                              .col-lg-1
-                              .col-lg-3
-                                %h3.pull-right N° de Orden
-                                -# %h3.pull-right= @invoice['token']
-                                -# %h3.pull-right= SecureRandom.random_number(1000..9999)
-                                -#%h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
-                            %hr/
-                            .row
-                              .col-xs-12
-                                %address
-                                  -# dates billing
-                                  %strong Datos Personales
-                                  %br/
-                                  -#= @user['name']
-                                  -# %br/
-                                  -# 12345678-A
-                                  %br/
-                                  -#= @user['phone']
-                                  %br/
-                                  -#= @user['email']
-                                  %br/
-                                  -#= @invoice['address']
-                            .row
-                              .col-xs-6
-                                %address
-                                  %strong Método de Pago
-                                  %br/
-                                  Pĺataforma: EnLineaPagos
-                                  -# %br/
-                                  -# MasterCard terminada **** 4242
-                                  %br/
-                                  -#= @user['name']
-                                  %br/
-                                  -#= @user['email']
-                              .col-xs-6.text-right
-                                %address
-                                  %strong N°. Orden ELP
-                                  %br/
-                                  -#= @invoice['token']
-                                  %br/
-                                  %br/
-                            .row
-                              .col-xs-12
-                                %h5.text-center Información del Traslado
-                                %br/
-                              .col-xs-4
-                                %address
-                                  %strong Origen
-                                  %br/
-                                  -#= @reservation['origin']
-                                  %br/
-                                  %strong Destino
-                                  %br/
-                                  -#= @reservation['arrival']
-                                  %br/
-                                  %strong Aerolinea
-                                  %br/
-                                  -#= @reservation['airline_origin'].blank? ? '-----------' : @reservation['airline_origin']
-                                  %br/
-                              .col-xs-4
-                                %address
-                                  %strong Tipo de Traslado
-                                  %br/
-                                  Ida/Vuelta
-                                  %br/
-                                  %strong Adultos/Niños
-                                  -#%br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
-                                  %br/
-                                  %strong N° de Vuelo
-                                  %br/
-                                  -#= @reservation['flight_number_origin'].blank? ? '-----------' : @reservation['flight_number_origin']
-                                  %br/
-                              .col-xs-4
-                                %address
-                                  %strong Fecha/Hora de Ida
-                                  %br/
-                                  -#= @reservation['flight_origin']
-                                  %br/
-                                  %strong Fecha/Hora de Vuelta
-                                  %br/
-                                  -#= @reservation['flight_arrival']
-                                  %br
-                                  %strong Hora Traslado Ida
-                                  %br/
-                                  -#= @reservation['hour_origin']
-                                  %br/
-                                  %strong Hora Traslado Vuelta
-                                  %br/
-                                  -#= @reservation['hour_arrival']
-                                  %br
-                                  %strong Equipaje
-                                  %br/
-                                  -#= @reservation['quantity_kit']
-                                  piezas
-          = render 'app/dashboard/dashboard/layouts/scripts'
-
-
-
