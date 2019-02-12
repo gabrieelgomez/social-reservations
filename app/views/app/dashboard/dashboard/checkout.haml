@@ -18,7 +18,7 @@
           .content
             .container-fluid
               .row
-                .col-12.col-xl-8
+                .col-12.col-lg-12.col-xl-8
                   .card
                     .card-header
                       %h4.card-title Facturación de la Reservación 
@@ -33,19 +33,32 @@
                                   -#= simple_form_for KepplerTravel::Reservation.new, url: '/create_reservation_transfer', method: :post do |f|
                                   .row
                                     .col-md-12
-                                      .row
-                                        .col-3.col-md-1
+                                      
+                                      
+                                      .row.d-none.d-lg-flex.d-xl-flex
+                                        .col-md-2
                                           %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
-                                        .col-7.col-md-7
+                                        .col-md-6
                                           %h2{style:'margin:0;'} Receptivo Colombia
                                           %p Operador turístico - Bogotá, Colombia
-                                        .col-12.col-md-4
-                                          %h3.text-right N° de Orden
+                                        .col-md-4
+                                          %h3.text-right{style:'margin:0;'} N° de Orden
                                           %h3.text-right 10000523
+
+                                      .row.d-lg-none.d-xl-none
+                                        .col-3.col-sm-2
+                                          %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
+                                        .col-9.col-sm-7
+                                          %h4.text-center{style:'margin:0;'} Receptivo Colombia
+                                          %p.text-center Operador turístico - Bogotá, Colombia
+                                        .col-12.col-sm-3
+                                          %h5.text-right N° de Orden
+                                          %h5.text-right 10000523
+
 
                                       %hr/
                                       .row
-                                        .col-md-12
+                                        .col-12.col-md-12
                                           %address
                                             -# dates billing
                                             %strong Datos Personales
@@ -61,7 +74,7 @@
                                             -#= @invoice['address']
                                             Colombia
                                       .row
-                                        .col-md-6
+                                        .col-12.col-md-6
                                           %address
                                             %strong Método de Pago
                                             %br/
@@ -72,7 +85,7 @@
                                             -#= @user['name']
                                             %br/
                                             -#= @user['email']
-                                        .col-md-6.text-right
+                                        .col-md-6
                                           %address
                                             %strong N°. Orden ELP
                                             %br/
@@ -81,10 +94,10 @@
                                             %br/
                                             %br/
                                       .row
-                                        .col-md-12
+                                        .col-12.col-md-12
                                           %h5.text-center Información del Traslado
                                           %br/
-                                        .col-md-4
+                                        .col-12.col-md-4
                                           %address
                                             %strong Origen
                                             %br/
@@ -101,7 +114,7 @@
                                             -#= @reservation['airline_origin'].blank? ? '-----------' : @reservation['airline_origin']
                                             Copa Airline
                                             %br/
-                                        .col-md-4
+                                        .col-12.col-md-4
                                           %address
                                             %strong Tipo de Traslado
                                             %br/
@@ -117,7 +130,7 @@
                                             1000523
                                             -#= @reservation['flight_number_origin'].blank? ? '-----------' : @reservation['flight_number_origin']
                                             %br/
-                                        .col-md-4
+                                        .col-12.col-md-4
                                           %address
                                             %strong Fecha/Hora de Ida
                                             %br/
@@ -135,12 +148,12 @@
                                             5:00pm
                                             %br/
                                       .row
-                                        .col-md-12
+                                        .col-12.col-md-12
                                           .card
                                             .card-header.text-center
                                               %strong Descripción
                                             .card-body
-                                              %table.table
+                                              %table.table.table-responsive
                                                 %thead
                                                   %tr
                                                     %th
@@ -159,7 +172,7 @@
                                                     %td $ 5000 USD
                                             .card-footer
                                       .row
-                                        .col-md-12.d-flex.justify-content-center
+                                        .col-12.col-md-12.d-flex.justify-content-center
                                           %a{target: '_blank'}
                                             %button.btn.btn-primary.btn-lg{:type => "button"}
                                               Pagar
