@@ -19,7 +19,7 @@ module KepplerContactus
       def index
         @q = Message.ransack(params[:q])
         messages = @q.result(distinct: true)
-        @objects = messages.page(@current_page).order(position: :asc)
+        @objects = messages.page(@current_page).order(position: :desc)
         @total = messages.size
         @messages = @objects.all
         if !@objects.first_page? && @objects.size.zero?
@@ -45,11 +45,11 @@ module KepplerContactus
       def create
         @message = Message.new(message_params)
         if verify_recaptcha(model: @message) && @message.save
-          # ContactMailer.admin_contact(@message).deliver_now
-          # ContactMailer.client_contact(@message).deliver_now
-          redirect_to main_app.root_path('#contact_us'), notice: 'saved'
+          # ContactMailerMessage.to_admin(@message).deliver_now
+          # ContactMailerMessage.to_user(@message).deliver_now
+          redirect_to main_app.contact_us_path('usd'), notice: 'saved'
         else
-          redirect_to main_app.root_path('#contact_us'), notice: 'not_saved'
+          redirect_to main_app.contact_us_path('usd'), notice: 'not_saved'
         end
       end
 
@@ -135,7 +135,7 @@ module KepplerContactus
 
       # Only allow a trusted parameter "white list" through.
       def message_params
-        params.require(:message).permit(:name, :email, :message, :subject, :read, :position, :deleted_at)
+        params.require(:message).permit(:name, :email, :content, :subject, :read, :position, :deleted_at)
       end
 
       def show_history

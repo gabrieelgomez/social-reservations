@@ -3,49 +3,147 @@ Rails.application.routes.draw do
     get '/index', to: 'app/front#index', as: :app_index
   end
   root to: 'app/front#set_locale_lang'
-  # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
-  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /usd/} do
-    get '/', to: 'app/front#index', as: :index_app
-    get 'vehicles', to: 'app/front#vehicles', as: :vehicles_show
-    get 'tours', to: 'app/front#tours', as: :tours_show
-    get 'circuits', to: 'app/front#circuits', as: :circuits_show
-    get 'multidestinations/', to: 'app/front#multidestinations', as: :multidestinations_show
-    get 'about', to: 'app/front#about'
-    get 'contact_us', to: 'app/front#contact_us'
-    get 'pqrs', to: 'app/front#pqrs', as: :pqrs
-    get 'multidestinations_all',to: 'app/front#multidestinations_all'
-    get 'tours_all',to: 'app/front#tours_all'
-    get 'circuits_all',to: 'app/front#circuits_all'    
-    get '/reservations/:reservationable_type/:reservationable_id', to: 'app/reservations/reservations#reservations', as: :reservations
-    get '/checkout', to: 'app/reservations/reservations#checkout', as: :checkout
-    get '/gracias', to: 'app/front#gracias', as: :gracias
-    get '/invoice', to: 'app/front#invoice', as: :invoice
-    get '/dashboard/orders/:module', to: 'app/dashboard/dashboard#orders', as: :orders
-    get '/dashboard/checkout', to: 'app/dashboard/dashboard#checkout'
-    post '/update_order', to: 'app/dashboard/drivers/transfers#update_order', as: :update_order
-    get '/dashboard/drivers/transfers', to: 'app/dashboard/dashboard#drivers', as: :drivers_transfers
-    get '/dashboard/user', to: 'app/dashboard/dashboard#users', as: :users_details
-    post '/dashboard/user/edit', to: 'app/dashboard/users/users#update', as: :user_update
-    get '/dashboard/template', to: 'app/dashboard/dashboard#template', as: :template
-    get '/dashboard/order/:module/:reservation_id', to: 'app/dashboard/dashboard#order_details', as: :order_details
-    get 'errors', to: 'app/front#errors', as: :errors_checkout
-  end
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#index', as: :filter_by_role
 
+  # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
+  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /usd/} do
+
+    get '/', to: 'app/front#index', as: :index_app
+    get 'about', to: 'app/front#about'
+
+    # Vehicles / Transfers
+      get 'vehicles',
+        to: 'app/front#vehicles',
+        as: :vehicles_show
+    # Vehicles / Transfers
+
+    # Tours
+      get 'tours',
+        to: 'app/front#tours',
+        as: :tours_show
+
+      get 'tours_all',
+        to: 'app/front#tours_all',
+        as: :tours_all
+    # Tours
+
+    # Circuits
+      get 'circuits',
+        to: 'app/front#circuits',
+        as: :circuits_show
+
+      get 'circuits_all',
+        to: 'app/front#circuits_all',
+        as: :circuits_all
+    # Circuits
+
+    # Multidestinations
+      get 'multidestinations/',
+        to: 'app/front#multidestinations',
+        as: :multidestinations_show
+
+      get 'multidestinations_all',
+        to: 'app/front#multidestinations_all',
+        as: :multidestinations_all
+    # Multidestinations
+
+    # Messages / ContactUs / PQRS
+      get 'contact_us',
+        to: 'app/front#contact_us',
+        as: :contact_us
+
+      get 'pqrs',
+        to: 'app/front#pqrs',
+        as: :pqrs
+    # Messages / ContactUs / PQRS
+
+    # Reservations -> Checkout -> Invoice / Errors
+      get '/reservations/:reservationable_type/:reservationable_id',
+        to: 'app/reservations/reservations#reservations',
+        as: :reservations
+
+      get '/checkout',
+        to: 'app/reservations/reservations#checkout',
+        as: :checkout
+
+      get '/invoice',
+        to: 'app/front#invoice',
+        as: :invoice
+
+      get 'errors',
+        to: 'app/front#errors',
+        as: :errors_checkout
+    # Reservations -> Checkout -> Invoice / Errors
+
+
+    # Dashboard Frontend / Index
+      get '/dashboard/orders/:module',
+        to: 'app/dashboard/dashboard#orders',
+        as: :orders
+
+      post '/update_order',
+        to: 'app/dashboard/drivers/transfers#update_order',
+        as: :update_order
+
+      get '/dashboard/drivers/transfers',
+        to: 'app/dashboard/dashboard#drivers',
+        as: :drivers_transfers
+
+      get '/dashboard/user',
+        to: 'app/dashboard/dashboard#users',
+        as: :users_details
+
+      post '/dashboard/user/edit',
+        to: 'app/dashboard/users/users#update',
+        as: :user_update
+
+      get '/dashboard/template',
+        to: 'app/dashboard/dashboard#template',
+        as: :template
+
+      get '/dashboard/order/:module/:reservation_id',
+        to: 'app/dashboard/dashboard#order_details',
+        as: :order_details
+    # Dashboard Frontend / Index
+
+  end
+
+
   # Reservations Transfers / Vehicles
-  post '/session_reservation_transfer', to: 'app/reservations/transfers/transfers#session_reservation_transfer'
-  post '/create_reservation_transfer', to: 'app/reservations/transfers/transfers#create_reservation_transfer'
+    post '/session_reservation_transfer',
+      to: 'app/reservations/transfers/transfers#session_reservation_transfer'
+
+    post '/create_reservation_transfer',
+      to: 'app/reservations/transfers/transfers#create_reservation_transfer'
+
+
   # Reservations Tours
-  post '/session_reservation_tour', to: 'app/reservations/tours/tours#session_reservation_tour'
-  post '/create_reservation_tour', to: 'app/reservations/tours/tours#create_reservation_tour'
+    post '/session_reservation_tour',
+      to: 'app/reservations/tours/tours#session_reservation_tour'
+
+    post '/create_reservation_tour',
+      to: 'app/reservations/tours/tours#create_reservation_tour'
+
+
   # Reservations Circuits
-  post '/session_reservation_circuit', to: 'app/reservations/circuits/circuits#session_reservation_circuit'
-  post '/create_reservation_circuit', to: 'app/reservations/circuits/circuits#create_reservation_circuit'
+    post '/session_reservation_circuit',
+      to: 'app/reservations/circuits/circuits#session_reservation_circuit'
+
+    post '/create_reservation_circuit',
+      to: 'app/reservations/circuits/circuits#create_reservation_circuit'
+
+
   # Reservations Multidestinations
-  post '/session_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#session_reservation_multidestination'
-  post '/create_reservation_multidestination', to: 'app/reservations/multidestinations/multidestinations#create_reservation_multidestination'
-  get  '/checkout/transaction_payment/:reservation_id/:invoice_id', to: 'app/reservations/reservations#transaction_payment', as: :checkout_elp_redirect
+    post '/session_reservation_multidestination',
+      to: 'app/reservations/multidestinations/multidestinations#session_reservation_multidestination'
+
+    post '/create_reservation_multidestination',
+      to: 'app/reservations/multidestinations/multidestinations#create_reservation_multidestination'
+
+    get  '/checkout/transaction_payment/:reservation_id/:invoice_id',
+      to: 'app/reservations/reservations#transaction_payment',
+      as: :checkout_elp_redirect
 
   namespace :admin do
     root to: 'admin#root'
@@ -70,17 +168,6 @@ Rails.application.routes.draw do
         on: :collection,
         as: :destroy_multiple
       )
-      # post '/show_description/:module/:action_name', action: 'show_description', as: :show_description
-      # get(
-      #   '/add_permissions',
-      #   action: 'add_permissions',
-      #   as: :add_permissions
-      # )
-      # post(
-      #   '/create_permissions',
-      #   action: 'create_permissions',
-      #   as: :create_permissions
-      # )
     end
 
     scope :roles do

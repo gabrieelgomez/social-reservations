@@ -3,7 +3,7 @@
 - seats  = adults.to_i + kids.to_i
 - @total_adults    = @reservationable.price_adults[@currency].to_f * adults
 - @total_kids      = @reservationable.calculate_kids(kids, @currency) * kids
-- @total_price     = @total_adults + @total_kids
+- @price_total     = @total_adults + @total_kids
 %section.invoice-transfers#invoice-transfers
   .container
     .gallary-header.text-center
@@ -29,14 +29,11 @@
                     .col-lg-1
                     .col-lg-3
                       %h3.pull-right N° de Orden
-                      -# %h3.pull-right= @invoice['token']
-                      -# %h3.pull-right= SecureRandom.random_number(1000..9999)
                       %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        -# dates billing
                         %strong Datos Personales
                         %br/
                         = @user['name']
@@ -63,7 +60,6 @@
                         %strong N°. Orden ELP
                         %br/
                         = @invoice['token']
-                        -# = SecureRandom.random_number(1000..9999)
                         %br/
                         %br/
                   .row
@@ -112,7 +108,7 @@
                                     Niños
                                     = number_to_currency(@reservationable.calculate_kids(kids, @currency), locale: @locale)
                                   %td.text-center= seats
-                                  %td.text-right= number_to_currency(@total_price, locale: @locale)
+                                  %td.text-right= number_to_currency(@price_total, locale: @locale)
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment

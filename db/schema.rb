@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_165433) do
+ActiveRecord::Schema.define(version: 2019_01_29_143811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,34 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "keppler_travel_agencies", force: :cascade do |t|
+    t.string "unique_code", default: "EA464C"
+    t.float "comission_percentage", default: 0.0
+    t.float "lending_percentage", default: 0.0
+    t.bigint "user_id"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_agencies_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_agencies_on_user_id"
+  end
+
+  create_table "keppler_travel_agents", force: :cascade do |t|
+    t.string "unique_code", default: "058790"
+    t.float "comission_percentage", default: 0.0
+    t.float "lending_percentage", default: 0.0
+    t.bigint "user_id"
+    t.bigint "agency_id"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_keppler_travel_agents_on_agency_id"
+    t.index ["deleted_at"], name: "index_keppler_travel_agents_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_agents_on_user_id"
   end
 
   create_table "keppler_travel_car_descriptions", force: :cascade do |t|

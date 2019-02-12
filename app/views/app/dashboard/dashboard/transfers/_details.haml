@@ -1,114 +1,167 @@
+.container-fluid
+  .row
+    .col-12.col-lg-12.col-xl-8
+      .card
+        .card-header
+          %h4.card-title Facturación de la Reservación 
+        .card-body
+          .row
+            .col-12
+              %section.invoice-checkout#invoice-checkout
+                .container
+                  .col-md-12
+                    .invoice-checkout__box
+                      .row
+                        .col-md-12
+                          .row.d-none.d-lg-flex.d-xl-flex
+                            .col-md-2
+                              %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
+                            .col-md-6
+                              %h2{style:'margin:0;'} Receptivo Colombia
+                              %p Operador turístico - Bogotá, Colombia
+                            .col-md-4
+                              %h3.text-right{style:'margin:0;'} N° de Orden
+                              %h3.text-right= @reservation.id
+                          .row.d-lg-none.d-xl-none
+                            .col-3.col-sm-2
+                              %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
+                            .col-9.col-sm-7
+                              %h4.text-center{style:'margin:0;'} Receptivo Colombia
+                              %p.text-center Operador turístico - Bogotá, Colombia
+                            .col-12.col-sm-3
+                              %h5.text-right N° de Orden
+                              %h5.text-right= @reservation.id
+                          %hr/
+                          .row
+                            .col-12.col-md-3
+                              %address
+                                %strong Cotizante
+                                %br/
+                                = @reservation.user.name
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong E-mail
+                                %br/
+                                = @reservation.user.email
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong Tipo de Moneda
+                                %br/
+                                = @reservation.invoice.currency.upcase
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong N°. Factura
+                                %br/
+                                = @reservation.invoice.token
+                                %br/
+                          .row
+                            .col-12.col-md-4
+                              %address
+                                %strong Tipo de Moneda
+                                %br/
+                                = @reservation.invoice.currency.upcase
+                                %br/
+                            .col-12.col-md-4
+                              %address
+                                %strong Método de Pago
+                                %br/
+                                Pĺataforma: EnLineaPagos
+                                %br/
+                            .col-12.col-md-4
+                              %address
+                                %strong Estatus
+                                %br/
+                                %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
+                                %br/
+                          .row
+                            .col-12.col-md-12
+                              %h5.text-center Información del Multidestino
+                              %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong Multidestino
+                                %br/
+                                = truncate(@reservation.origin, :length => 25)
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong Fecha de Reservación
+                                %br/
+                                = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong Pasajeros
+                                %br/
+                                = @reservation.travellers.count
+                                %br/
+                            .col-12.col-md-3
+                              %address
+                                %strong Adultos/Niños
+                                %br/
+                                = "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
+                                %br/
+                            .col-12.col-md-12
+                              %address
+                                %strong Observación
+                                %br/
+                                = @reservation.description.blank? ? '-----------' : @reservation.description
+                                %br/
+                            .col-12.col-md-4
+                              %strong Viajeros
+                              %ul.list-group.list-group-flush
+                                - @reservation.travellers.each do |traveller|
+                                  %li.list-group-item
+                                    %span="* #{traveller.name} -- #{traveller.dni}"                                
+                          .row
+                            .col-12.col-md-12
+                              .card
+                                .card-header.text-center
+                                  %strong Descripción
+                                .card-body
+                                  %table.table.table-hover.table-striped
+                                    %thead
+                                      %tr
+                                        %th
+                                          %strong Concepto
+                                        %th 
+                                          %strong Precio
+                                        %th 
+                                          %strong Cantidad (Adultos/Niños)
+                                        %th 
+                                          %strong Total
+                                    %tbody
+                                      %tr
+                                        %td= truncate(@reservation.origin, :length => 25)
+                                        %td $ 1000 USD
+                                        %td= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
+                                        %td $ 5000 USD
+                                .card-footer
+                          .row
+                            .col-12.col-md-12.d-flex.justify-content-center
+                              - if @reservation.invoice.amount.nil?
+                                %a
+                                  %button.btn.btn-warning.btn-lg{:type => "button"}
+                                    Por cotizar
+                              - elsif @reservation.invoice.status_pay? :pending
+                                %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
+                                  %button.btn.btn-primary.btn-lg{:type => "button"}
+                                    Pagar
+                              - else
+                                %a
+                                  %button.btn.btn-success.btn-lg{:disabled => "disabled", :type => "button"} Primary button
+                                  Pagado
+                            .card-footer
+
 -#.container-fluid
   .row
     .col-12.col-xl-8
       .card
         .card-header
           %h4.card-title Detalles de la Reservación
-          -#%p.card-category Lorem ipsum dolor sit amet consectetur
-        .card-body
-          .row
-            .col-12.col-xl-12
-              .card
-                .card-header
-                  .row
-                    .col-1
-                      %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
-                    .col-6
-                      %h2.mb-0.mt-0 Receptivo Colombia
-                      %p Operador turístico - Bogotá, Colombia
-                    .col-4
-                      %span.float-right
-                        %strong N° de Orden:
-                        %span= @reservation.id
-                .card-body
-                  .row.mb-4
-                    .col-sm-6
-                      %h6.mb-3 From:
-                      %div
-                        %strong Webz Poland
-                      %div Madalinskiego 8
-                      %div 71-101 Szczecin, Poland
-                      %div Email: info@webz.com.pl
-                      %div Phone: +48 444 666 3333
-                    .col-sm-6
-                      %h6.mb-3 To:
-                      %div
-                        %strong Bob Mart
-                      %div Attn: Daniel Marek
-                      %div 43-190 Mikolow, Poland
-                      %div Email: marek@daniel.com
-                      %div Phone: +48 123 456 789
-                  .table-responsive-sm
-                    %table.table.table-striped
-                      %thead
-                        %tr
-                          %th.center #
-                          %th Item
-                          %th Description
-                          %th.right Unit Cost
-                          %th.center Qty
-                          %th.right Total
-                      %tbody
-                        %tr
-                          %td.center 1
-                          %td.left.strong Origin License
-                          %td.left Extended License
-                          %td.right $999,00
-                          %td.center 1
-                          %td.right $999,00
-                        %tr
-                          %td.center 2
-                          %td.left Custom Services
-                          %td.left Instalation and Customization (cost per hour)
-                          %td.right $150,00
-                          %td.center 20
-                          %td.right $3.000,00
-                        %tr
-                          %td.center 3
-                          %td.left Hosting
-                          %td.left 1 year subcription
-                          %td.right $499,00
-                          %td.center 1
-                          %td.right $499,00
-                        %tr
-                          %td.center 4
-                          %td.left Platinum Support
-                          %td.left 1 year subcription 24/7
-                          %td.right $3.999,00
-                          %td.center 1
-                          %td.right $3.999,00
-                  .row
-                    .col-lg-4.col-sm-5
-                    .col-lg-4.col-sm-5.ml-auto
-                      %table.table.table-clear
-                        %tbody
-                          %tr
-                            %td.left
-                              %strong Subtotal
-                            %td.right $8.497,00
-                          %tr
-                            %td.left
-                              %strong Discount (20%)
-                            %td.right $1,699,40
-                          %tr
-                            %td.left
-                              %strong VAT (10%)
-                            %td.right $679,76
-                          %tr
-                            %td.left
-                              %strong Total
-                            %td.right
-                              %strong $7.477,36
-
-
-
-.container-fluid
-  .row
-    .col-12.col-xl-8
-      .card
-        .card-header
-          %h4.card-title Detalles de la Reservación
-          -#%p.card-category Lorem ipsum dolor sit amet consectetur
         .card-body
           .row
             .col-12.col-xl-8
@@ -226,18 +279,6 @@
                   - @reservation.travellers.each do |traveller|
                     %li.list-group-item
                       %span="#{traveller.name} -- #{traveller.dni}"
-
-                -#%ul.list-group.list-group-flush
-                  %li.list-group-item
-                    %h5.title Vehículo
-                    %img{src: @reservation.reservationable.cover.url, class: 'rounded img-vehicle img-fluid'}
         .card-footer
 
 
--#:scss
-  .img-vehicle{
-    width: 250px;
-    height: 250px;
-    object-fit: contain;
-    object-position: center;
-  }

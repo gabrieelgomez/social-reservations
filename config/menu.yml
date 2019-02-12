@@ -17,12 +17,6 @@ menu:
     icon: graph
     model: MetaTag
     url_path: /admin/meta_tags
-  # keppler_travel:
-  #   name: vehicles
-  #   current: ['admin/travel/vehicle']
-  #   url_path: /admin/travel/vehicle
-  #   icon: layers
-  #   model: KepplerTravel::Vehicle
   user:
     name: users
     icon: user
@@ -37,17 +31,9 @@ menu:
           name: roles
           url_path: /admin/roles
           current: ['admin/roles']
-  # customize:
-  #   name: keppler design
-  #   icon: pencil
-  #   current: ['admin/customizes', 'settings/appearance']
-  #   model: Customize
-  #   submenu:
-  #     - customize:
-  #         name: frontend templates
-  #         url_path: /admin/customizes
-  #         current: ['admin/customizes']
-  #     - appearance:
-  #         name: admin appearance
-  #         url_path: /admin/settings/appearance
-  #         current: ['appearance']
+  keppler_travel_agency:
+    name: agencies
+    current: ["admin/travel/agencies"]
+    url_path: /admin/travel/agencies
+    icon: layers
+    model: KepplerTravel::Agency

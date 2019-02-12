@@ -23,7 +23,6 @@
           %li.list-group-item.d-flex.justify-content-between
             %div
               %h6.my-0 Sub-total
-              -# %small.text-muted 2 x $ 1.000,00 = $ 2.000,00
               %small.text-muted
                 // Precio de Adultos
                 = number_to_currency(@tour.price_adults[@currency], locale: @locale)
@@ -50,7 +49,7 @@
                 Precio Total
               %strong{style:"float: right;"}
                 = @currency.upcase
-                = number_to_currency(@total_price, locale: @locale)
+                = number_to_currency(@price_total, locale: @locale)
         .box-btn-payment
           %br/
           %span

@@ -27,14 +27,11 @@
                     .col-lg-1
                     .col-lg-3
                       %h3.pull-right N° de Orden
-                      -# %h3.pull-right= @invoice['token']
-                      -# %h3.pull-right= SecureRandom.random_number(1000..9999)
                       %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        -# dates billing
                         %strong Datos Personales
                         %br/
                         = @user['name']
@@ -112,8 +109,6 @@
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'} -----
                                   %td{style: 'border-top: 2px solid #000;'}= number_to_currency(table.last[:total_price_table], locale: @locale)
-                                  -# %td{style: 'border-top: 2px solid #000;'}= table.last[:total_price_table]
-
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment

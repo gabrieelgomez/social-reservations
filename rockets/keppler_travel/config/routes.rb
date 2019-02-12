@@ -4,6 +4,47 @@ KepplerTravel::Engine.routes.draw do
   namespace :admin do
     scope :travel, as: :travel do
 
+      resources :agencies do
+        get '(page/:page)', action: :index, on: :collection, as: ''
+        get '/clone', action: 'clone'
+        post '/sort', action: :sort, on: :collection
+        post '/upload', action: 'upload', as: 'upload'
+        get '/download', action: 'download', as: 'download'
+        get(
+          '/reload',
+          action: :reload,
+          on: :collection,
+        )
+        delete(
+          '/destroy_multiple',
+          action: :destroy_multiple,
+          on: :collection,
+          as: :destroy_multiple
+        )
+
+        resources :agents do
+          get '(page/:page)', action: :index, on: :collection, as: ''
+          get '/clone', action: 'clone'
+          post '/sort', action: :sort, on: :collection
+          post '/upload', action: 'upload', as: 'upload'
+          get '/download', action: 'download', as: 'download'
+          post '/update_user', action: :update_user
+          get(
+            '/reload',
+            action: :reload,
+            on: :collection,
+          )
+          delete(
+            '/destroy_multiple',
+            action: :destroy_multiple,
+            on: :collection,
+            as: :destroy_multiple
+          )
+        end
+
+      end
+
+
       namespace :destinations do
         post 'filter_by_destination', action: :index, as: :filter_destination
       end
@@ -11,6 +52,10 @@ KepplerTravel::Engine.routes.draw do
       namespace :drivers do
         post '/update_user', action: :update_user
         post 'filter_by_destination', action: :index, as: :filter_destination
+      end
+
+      namespace :agencies do
+        post '/update_user', action: :update_user
       end
 
       namespace :lodgments do

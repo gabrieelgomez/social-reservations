@@ -1,0 +1,48 @@
+.container
+  .row
+    .col-lg-2
+      = link_to admin_travel_agency_agents_path(@agency), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        .arrow-back.btn.btn-default
+          %i.fa.fa-angle-left
+          = t('keppler.actions.back')
+
+  .show-section
+    .row
+      .col-lg-3
+
+        .box.slice-box
+          .box-body.box-profile
+            %h3.box-title.text-center= t("keppler.modules.show_agents", agency: @agency.user.name)
+            = image_tag (@user.avatar.url || 'admin/avatar_keppler.svg'), class: 'profile-user-img img-circle img-responsive', alt: @user.name
+            %h3.profile-username.text-center= @user.name
+            %p.text-muted.text-center= @user.rol.humanize
+      .col-lg-9
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= @user.name || 'User'
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Agent).update?
+                = link_to edit_admin_travel_agency_agent_path(@agency, @agent), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                  %i.icon-pencil
+              - if can?(KepplerTravel::Agent).destroy?
+                = link_to admin_travel_agency_agent_path(@agency, @agent), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                  %i.icon-trash
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                - @user.as_json(only: %i[id name phone dni email]).each do |attribute, value|
+                  %tr.list-row
+                    %th.display-label= t("activerecord.attributes.#{attribute}")
+                    %td.display-value.fs-body-1.tc-black-2= value
+
+                -# %tr.list-row
+                -#   %th.display-label= t("activerecord.attributes.unique_code")
+                -#   %td.display-value.fs-body-1.tc-black-2= @agent.unique_code
+                -#
+                -# %tr.list-row
+                -#   %th.display-label= t("activerecord.attributes.comission_percentage")
+                -#   %td.display-value.fs-body-1.tc-black-2= @agent.comission_percentage
+                -#
+                -# %tr.list-row
+                -#   %th.display-label= t("activerecord.attributes.lending_percentage")
+                -#   %td.display-value.fs-body-1.tc-black-2= @agent.lending_percentage

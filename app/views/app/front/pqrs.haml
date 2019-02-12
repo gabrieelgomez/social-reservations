@@ -81,7 +81,6 @@
                 .col-lg-12
                   .form-group
                     %label Descripción
-                    -# %input{name: 'request[options]', type: 'hidden', value: 'ninguno'}/
                     %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5"}
                 .col-lg-12
                   .items
@@ -114,12 +113,10 @@
 :javascript
   $('font').on('click', function () {
     $(`input[name='request[options]']`).val($(this).text());
-    // debugger;
   });
 
   $(`input[name='request[options]']`).on('click', function () {
     $(`input[name='request[options]']`).val($(this).attr('id'));
-    // debugger;
   });
 
     $('#new_request').validate({
@@ -144,10 +141,21 @@
        'request[email]': {required: 'No puede estar en blanco', email: 'Email inválido'},
        'request[body]': 'No puede estar en blanco',
        'request[options]': 'Selecciona una opción',
-       'reservation[phone]': 'No puede estar en blanco'
+       'request[phone]': 'No puede estar en blanco'
        },
      debug: true,errorElement: "label",
      submitHandler: function(form){
+
+      swal({
+        type: 'warning',
+        title: 'Tu solicitud está siendo procesada...',
+        text: 'Espere un momento...',
+        timer: 300000,
+        onOpen: () => {
+          swal.showLoading()
+        }
+      });
+
       form.submit();
      }
     });

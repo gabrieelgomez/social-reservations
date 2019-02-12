@@ -34,25 +34,34 @@ Rails.application.configure do
   # config.action_mailer.smtp_settings = {
   #   address:              Rails.application.secrets.address,
   #   port:                 Rails.application.secrets.port,
-  #   domain:               Rails.application.secrets.domain,
+  #   domain:               'receptivocolombia.com',
   #   user_name:            Rails.application.secrets.email,
   #   password:             Rails.application.secrets.password,
-  #   authentication:       :plain,
+  #   authentication:   'plain',
   #   enable_starttls_auto: true,
-  #   openssl_verify_mode:  'none',
-  #   ssl:                   true,
-  #   tls:                   true
+  #   ssl: false,
   # }
 
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: Rails.application.secrets.domain,
-    authentication: 'plain',
+    address:              Rails.application.secrets.address,
+    port:                 Rails.application.secrets.port,
+    domain:               Rails.application.secrets.domain,
+    user_name:            Rails.application.secrets.email,
+    password:             Rails.application.secrets.password,
+    authentication:   'plain',
     enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email,
-    password: Rails.application.secrets.password
+    ssl: false
   }
+
+  # config.action_mailer.smtp_settings = {
+  #   address: 'smtp.gmail.com',
+  #   port: 587,
+  #   domain: 'receptivocolombia.com',
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true,
+  #   user_name: Rails.application.secrets.email,
+  #   password: Rails.application.secrets.password
+  # }
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { host: 'localhost:3000' }

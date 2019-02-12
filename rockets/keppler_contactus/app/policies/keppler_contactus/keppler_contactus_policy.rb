@@ -13,7 +13,7 @@ module KepplerContactus
     end
 
     def admin?
-      user.rol.eql?('admin')
+      true
     end
 
   end

@@ -13,6 +13,17 @@ module App::Reservations
       )
     end
 
+    def set_price_agency
+      if @user.has_role? :agency
+        @agency    = @user.agency
+        @comission = @agency.comission_percentage
+        @lending   = @agency.lending_percentage
+        @price_comission = @price_total * (@comission/100)
+        @price_lending   = @price_total * (@lending/100)
+        @price_total     = @price_total - @price_comission - @price_lending
+      end
+    end
+
     def find_or_create_user
       # if user not loggeding
       unless current_user

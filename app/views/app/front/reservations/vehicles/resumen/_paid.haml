@@ -1,25 +1,81 @@
-%li.list-group-item.d-flex.justify-content-between
-  %div
-    %h6.my-0 Sub-total
-    %small.text-muted
-      - multiple = @round_trip == 'true' ? '2' : '1'
-      - price    = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
-      = "#{multiple} x "
-      = number_to_currency(@vehicle.set_price_destination(@locality, @currency).to_f, locale: @locale)
-      = "="
-      = number_to_currency(price, locale: @locale)
-%li.list-group-item.d-flex.justify-content-between
-  %div
+- if current_user.try(:has_role?, :agency)
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %h6.my-0 Sub-total
+      %small.text-muted
+        - multiple = @round_trip == 'true' ? '2' : '1'
+        = "#{multiple} x "
+        = number_to_currency(@vehicle.set_price_destination(@locality, @currency).to_f, locale: @locale)
+        = "="
+        = number_to_currency(@price_total, locale: @locale)
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %span
+        Porcentaje de Comisión
+      %strong{style:"float: right;"}
+        = "#{@comission}% = "
+        = number_to_currency(@price_comission, locale: @locale)
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %span
+        Porcentaje de Prestación
+      %strong{style:"float: right;"}
+        = "#{@lending}% = "
+        = number_to_currency(@price_lending, locale: @locale)
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %span
+        Precio Total Agencia
+      %strong{style:"float: right;"}
+        = @currency.upcase
+        = number_to_currency(@price_total_agency, locale: @locale)
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %span
+        Precio Total PAX
+      %strong{style:"float: right;"}
+        = @currency.upcase
+        = number_to_currency(@price_total, locale: @locale)
+
+  .box-btn-payment
+    %br/
     %span
-      Precio Total
-    %strong{style:"float: right;"}
-      = @currency.upcase
-      = number_to_currency(price, locale: @locale)
-.box-btn-payment
-  %br/
-  %span
-    %p.text-center.title-reser ¡Paga tu reserva!
-  %br/
-  %center
-    .about-btn.travel-mrt-0
-      %button.about-view.travel-btn.btn-reser Confirmar
+      %p.text-center.title-reser Confirma tu reserva!
+    %br/
+    %center
+      .about-btn.travel-mrt-0
+        %button.about-view.travel-btn.btn-reser Siguiente
+
+- else
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %h6.my-0 Sub-total
+      %small.text-muted
+        - multiple = @round_trip == 'true' ? '2' : '1'
+        = "#{multiple} x "
+        = number_to_currency(@vehicle.set_price_destination(@locality, @currency).to_f, locale: @locale)
+        = "="
+        = number_to_currency(@price_total, locale: @locale)
+
+  %li.list-group-item.d-flex.justify-content-between
+    %div
+      %span
+        Precio Total
+      %strong{style:"float: right;"}
+        = @currency.upcase
+        = number_to_currency(@price_total, locale: @locale)
+
+
+  .box-btn-payment
+    %br/
+    %span
+      %p.text-center.title-reser ¡Paga tu reserva!
+    %br/
+    %center
+      .about-btn.travel-mrt-0
+        %button.about-view.travel-btn.btn-reser Confirmar

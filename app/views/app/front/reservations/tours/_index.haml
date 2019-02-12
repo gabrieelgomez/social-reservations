@@ -7,14 +7,11 @@
             %p
               %h5 Su búsqueda
               %p="Destino: #{@tour.title[@lang].titleize.truncate(100)}"
-              -#%p="Hasta: #{@arrival_name.truncate(100)}"
-              -#%p="Desde #{@locality[0]} > Hasta #{@locality[1]}"
           .col-lg-3
             %p
               %span
                 %a.pull-right.link-widget
                   Volver a relizar la búsqueda
-
 
   .container.js-widget.js-hide-widget.widget-results
     .row
@@ -80,7 +77,6 @@
 :scss
   label.error-class{color: #e60707 !important;}
 
--# %script{:src => "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"}
 %script{:src => '/assets/app/jquery-validate.js'}
 
 :javascript

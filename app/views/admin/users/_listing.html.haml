@@ -26,16 +26,16 @@
         - else
           %span= user.rol.humanize
 
-    - unless (user.has_role? :driver) || (user.has_role? :keppler_admin) || (user.has_role? :admin)
-      %td.visible-lg.visible-md
-        - if user.has_role? :partner
-          = link_to admin_user_assign_partner_path(user, partner: true), class: 'show-row' do
-            %i.icon-check{style:'color:mediumturquoise'}
-        - else
-          = link_to admin_user_assign_partner_path(user, partner: false), class: 'show-row' do
-            %i.icon-minus
-    - else
-      %td No Disponible
+    -# - unless (user.has_role? :driver) || (user.has_role? :keppler_admin) || (user.has_role? :admin)
+    -#   %td.visible-lg.visible-md
+    -#     - if user.has_role? :partner
+    -#       = link_to admin_user_assign_partner_path(user, partner: true), class: 'show-row' do
+    -#         %i.icon-check{style:'color:mediumturquoise'}
+    -#     - else
+    -#       = link_to admin_user_assign_partner_path(user, partner: false), class: 'show-row' do
+    -#         %i.icon-minus
+    -# - else
+    -#   %td No Disponible
 
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{user.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}

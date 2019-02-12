@@ -19,17 +19,6 @@
                   = @currency.upcase
                   = number_to_currency(multidestination.low_price(@currency), locale: @locale)
                 .more-information
-                  -# %p
-                  -#   %span
-                  -#     10 dias 5 noches
-                  -#%span= raw multidestination.description[@lang].truncate(100)
-
-                  -#%p
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
-                    %i.fa.fa-star.fa-star-custom
                 .about-btn
                   = link_to multidestinations_show_path(multidestination: multidestination.title['es'].parameterize, multidestination_id: multidestination.id), class:'link-card' do
                     %button.about-view.packages-btn
