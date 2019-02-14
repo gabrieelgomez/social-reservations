@@ -18,13 +18,13 @@
             .toolbar-item
               = link_to reload_admin_travel_agencies_path, class: "tool-btn", remote: true do
                 %i.icon-reload
-            - if can?(KepplerTravel::Agency).destroy_multiple?
-              .toolbar-item
-                .checkbox
-                  %label{ for: 'checkbox-all' }
-                    %input{ type: 'checkbox', id: 'checkbox-all', ':disabled' => 'checkItems ? disabled : ""', '@click' => 'selectAll()' }
-                    %span.cr
-                      %i.cr-icon.glyphicon.glyphicon-ok
+            -# - if can?(KepplerTravel::Agency).destroy_multiple?
+            -#   .toolbar-item
+            -#     .checkbox
+            -#       %label{ for: 'checkbox-all' }
+            -#         %input{ type: 'checkbox', id: 'checkbox-all', ':disabled' => 'checkItems ? disabled : ""', '@click' => 'selectAll()' }
+            -#         %span.cr
+            -#           %i.cr-icon.glyphicon.glyphicon-ok
             .toolbar-item
               %a.tool-btn{"data-confirm" => "¿Estás seguro?", "data-method" => "delete", "v-bind:href" => "link", :rel => "nofollow", ":class" => "{disabled: !checks}" }
                 %i.icon-trash
@@ -48,7 +48,7 @@
                       %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.agencies"))
                 - else
                   %tr
-                    %th
+                    -# %th
                     %th.hidden-xs= t('activerecord.attributes.avatar')
                     %th.hidden-xs= t('activerecord.attributes.name')
                     %th.hidden-xs= t('activerecord.attributes.email')
