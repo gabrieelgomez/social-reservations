@@ -20,7 +20,10 @@ module App::Reservations
         @lending   = @agency.lending_percentage
         @price_comission = @price_total * (@comission/100)
         @price_lending   = @price_total * (@lending/100)
+        @price_total_pax = @price_total
         @price_total     = @price_total - @price_comission - @price_lending
+        @price_total_agency = @price_total
+
       end
     end
 

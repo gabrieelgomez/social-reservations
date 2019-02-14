@@ -86,6 +86,7 @@ module KepplerTravel
       def update
         if @reservation.update(reservation_params)
           @reservation.invoice.update(status: reservation_params[:status])
+          @reservation.order.update(status: reservation_params[:status])
           ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
           ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
           redirect_to admin_travel_reservations_path(page: 1, model_name: 'vehicle', type_search: 'agency')

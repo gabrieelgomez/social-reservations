@@ -23,17 +23,7 @@ menu:
           url_path: /admin/travel/reservations?model_name=multidestination
           current: ["admin/travel/reservations"]
 
-  keppler_travel_reservation_agencies:
-    name: reservations_agencies
-    current: ["admin/travel/agency/reservations"]
-    url_path: /admin/travel/agency/reservations
-    icon: layers
-    model: KepplerTravel::Reservation
-    submenu:
-      - vehicles:
-          name: vehicles
-          url_path: /admin/travel/reservations?model_name=vehicle&type_search=agency
-          current: ["admin/travel/reservations"]
+
       # - tours:
       #     name: tours
       #     url_path: /admin/travel/agency/reservations?model_name=tour

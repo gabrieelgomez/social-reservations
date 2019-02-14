@@ -24,7 +24,7 @@
                       %label.control-label.radio_buttons.optional Status
                       %input{name: "reservation[status]", type: "hidden", value: ""}/
                       %span.radio
-                        %strike Pendiente
+                        %span Pendiente
                         %i.icon-check
 
                       %span.radio
@@ -34,11 +34,10 @@
                             %input#reservation_status_1.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "cancelled"}>/
                             Cancelada
                         - elsif @reservation.position == 2
-                          %strike Cancelada
+                          %span Cancelada
                           %i.icon-check
                           %span.radio
                             %strike Aprobada
-                            %i.icon-close
 
                       %span.radio
                         - if @reservation.position <= 1
@@ -47,13 +46,10 @@
                             %input#reservation_status_2.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "approved"}>/
                             Aprobada
                         - elsif @reservation.position == 3
-                          %strike Aprobada
+                          %span Aprobada
                           %i.icon-check
                           %span.radio
                             %strike Cancelada
-                            %i.icon-close
-
-
 
                   .col-xs-12
                     .pull-right

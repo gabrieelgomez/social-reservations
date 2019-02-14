@@ -37,3 +37,13 @@ menu:
     url_path: /admin/travel/agencies
     icon: layers
     model: KepplerTravel::Agency
+    submenu:
+      - create:
+          name: create
+          url_path: /admin/travel/agencies
+          current: ["admin/travel/agencies"]
+
+      - vehicles:
+          name: vehicles
+          url_path: /admin/travel/reservations?model_name=vehicle&type_search=agency
+          current: ["admin/travel/reservations"]

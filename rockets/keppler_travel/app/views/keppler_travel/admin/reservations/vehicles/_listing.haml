@@ -39,11 +39,16 @@
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
           = reservation.quantity_adults
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = reservation.user.email
-
+    - if params[:type_search] == 'agency'
+      %td.hidden-xs.hidden-sm
+        = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+          %span
+            = reservation.agency.user.name
+    - else
+      %td.hidden-xs.hidden-sm
+        = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+          %span
+            = reservation.user.email
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
