@@ -1,12 +1,12 @@
 - objects.each do |agent|
   %tr{ id: "row-#{agent.id}" }
-    %td.item-check{ style: 'width: 10%' }
-      - if can?(KepplerTravel::Agent).destroy_multiple?
-        .checkbox
-          %label{ for: "checkbox-#{agent.id}" }
-            %input{ type:"checkbox", id: "checkbox-#{agent.id}", 'checklist-model' => 'check', 'checklist-value' => "#{agent.id}", '@click' => "listDelete(#{agent.id})"}
-            %span.cr
-              %i.cr-icon.glyphicon.glyphicon-ok
+    -# %td.item-check{ style: 'width: 10%' }
+    -#   - if can?(KepplerTravel::Agent).destroy_multiple?
+    -#     .checkbox
+    -#       %label{ for: "checkbox-#{agent.id}" }
+    -#         %input{ type:"checkbox", id: "checkbox-#{agent.id}", 'checklist-model' => 'check', 'checklist-value' => "#{agent.id}", '@click' => "listDelete(#{agent.id})"}
+    -#         %span.cr
+    -#           %i.cr-icon.glyphicon.glyphicon-ok
     %td
       = link_to admin_travel_agency_agent_path(@agency, agent, search: @query), remote: true, class: 'show-row' do
         %span
