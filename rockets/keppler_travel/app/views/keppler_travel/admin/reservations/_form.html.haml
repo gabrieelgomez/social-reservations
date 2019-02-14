@@ -28,24 +28,24 @@
                         %i.icon-check
 
                       %span.radio
-                        - if @reservation.position <= 1
+                        - if @reservation.position_status <= 1
                           %label{for: "reservation_status_1"}
-                            = f.input :position, input_html: {value: 2}, as: :hidden
+                            = f.input :position_status, input_html: {value: 2}, as: :hidden
                             %input#reservation_status_1.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "cancelled"}>/
                             Cancelada
-                        - elsif @reservation.position == 2
+                        - elsif @reservation.position_status == 2
                           %span Cancelada
                           %i.icon-check
                           %span.radio
                             %strike Aprobada
 
                       %span.radio
-                        - if @reservation.position <= 1
+                        - if @reservation.position_status <= 1
                           %label{for: "reservation_status_2"}
-                            = f.input :position, input_html: {value: 3}, as: :hidden
+                            = f.input :position_status, input_html: {value: 3}, as: :hidden
                             %input#reservation_status_2.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "approved"}>/
                             Aprobada
-                        - elsif @reservation.position == 3
+                        - elsif @reservation.position_status == 3
                           %span Aprobada
                           %i.icon-check
                           %span.radio

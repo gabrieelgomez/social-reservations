@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_143456) do
+ActiveRecord::Schema.define(version: 2019_02_14_163319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -388,6 +388,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_143456) do
     t.datetime "updated_at", null: false
     t.string "hour_origin"
     t.string "hour_arrival"
+    t.integer "position_status", default: 1
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"
