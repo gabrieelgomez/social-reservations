@@ -31,7 +31,6 @@ gem 'uglifier', '4.1.8'
 # Database
 gem 'pg', '1.0.0'
 # gem 'mysql2', '~> 0.3.18'
-# comment by update
 
 # Resource by API
 gem 'active_model_serializers', '0.10.0'
