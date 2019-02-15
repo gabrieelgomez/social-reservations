@@ -133,22 +133,22 @@
 
 :javascript
   // tours
-  $( function() {
-    function populateEndDate() {
-      var date2 = $('#flight_tour_data').datetimepicker('getDate');
-      date2.setDate(date2.getDate() + 3);
-    }
-
-    $("#flight_tour_data").datetimepicker({
-      dateFormat: "dd-mm-yy",
-      minDate: 3,
-      onSelect: function(date) {
-        populateEndDate();
-        var date = $('#flight_tour_data').val();
-        $('#reservation_flight_origin_data').val(date);
-      }
-    }).datetimepicker("setDate", new Date());
-  } );
+  $(function () {
+    $('#flight_tour_data').datetimepicker({
+      locale: 'es',
+      minDate: moment().add(3, 'd').toDate(),
+      format: "DD-MM-YYYY",
+      widgetPositioning: {
+        horizontal: 'left',
+        vertical: 'bottom'
+      },
+      useCurrent: false //Important! See issue #1075
+    });
+    $("#flight_tour_data").on("dp.change", function (e) {
+      var date = $('#flight_tour_data').val()
+      $('#reservation_flight_origin_data').val(date);
+    });
+  });
   // End --- tours
 
   $('#search-metadata').validate({
