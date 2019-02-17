@@ -14,6 +14,7 @@ module KepplerTravel
     has_one    :order, dependent: :destroy
     has_one    :driver, through: :order
     has_one    :agency, through: :order
+    has_one    :agent, through: :order
     has_many   :square, as: :squareable
     has_many   :travellers
     accepts_nested_attributes_for :travellers

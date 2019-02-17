@@ -37,10 +37,11 @@ module App
             if @reservation.save!
               create_travellers
               ReservationMailer.transfer_status(@reservation, @user).deliver_now
-              if current_user.try(:has_role?, :agency)
+              if current_user.try(:has_role_agentable?)
                 @reservation.order.update(
                   details: 'agency',
                   agency: @agency,
+                  agent: @agent,
                   comission: @comission,
                   lending: @lending,
                   price_comission: @price_comission,
@@ -56,7 +57,7 @@ module App
                 redirect_to invoice_path('es', 'usd')
               end
             else
-              render :new
+              redirect_to errors_checkout_path('usd')
             end
           end
         end

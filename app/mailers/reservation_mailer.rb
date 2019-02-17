@@ -31,6 +31,16 @@ class ReservationMailer < ApplicationMailer
     )
   end
 
+  def to_admin_tour(reservation, user)
+    @reservation = reservation
+    @user = user
+    mail(
+      from: Rails.application.secrets.email,
+      to: 'reservas@receptivocolombia.com',
+      subject: 'Receptivo Colombia - Reservación de Tour'
+    )
+  end
+
   def circuit_status(reservation, user)
     @reservation = reservation
     @user = user

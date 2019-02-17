@@ -1,4 +1,4 @@
-- if current_user.try(:has_role?, :agency)
+- if current_user.try(:has_role_agentable?)
   %li.list-group-item.d-flex.justify-content-between
     %div
       %h6.my-0 Sub-total
@@ -44,7 +44,7 @@
   .box-btn-payment
     %br/
     %span
-      %p.text-center.title-reser Confirma tu reserva!
+      %p.text-center.title-reser ¡Confirma tu reserva!
     %br/
     %center
       .about-btn.travel-mrt-0

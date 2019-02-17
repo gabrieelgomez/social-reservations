@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_163319) do
+ActiveRecord::Schema.define(version: 2019_02_17_182253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,6 +349,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_163319) do
     t.float "price_total_agency", default: 0.0
     t.float "price_total_pax", default: 0.0
     t.float "price_vehicle", default: 0.0
+    t.integer "agent_id"
     t.index ["driver_id"], name: "index_keppler_travel_orders_on_driver_id"
     t.index ["reservation_id"], name: "index_keppler_travel_orders_on_reservation_id"
   end

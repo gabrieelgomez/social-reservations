@@ -14,8 +14,14 @@ module App::Reservations
     end
 
     def set_price_agency
-      if @user.has_role? :agency
-        @agency    = @user.agency
+      if @user.try(:has_role_agentable?)
+        if @user.agency
+          @agency = @user.agency
+          @agent  = nil
+        elsif @user.agent
+          @agency = @user.agent.agency
+          @agent  = @user.agent
+        end
         @comission = @agency.comission_percentage
         @lending   = @agency.lending_percentage
         @price_comission = @price_total * (@comission/100)

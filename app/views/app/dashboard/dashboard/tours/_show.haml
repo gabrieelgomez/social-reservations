@@ -39,7 +39,10 @@
                       %td
                         %span.badge.badge-pill{class: reservation.invoice.status_class?}= reservation.invoice.status.capitalize
                       %td
-                        - if reservation.invoice.amount.nil?
+                        - if reservation.order.try(:details) == 'agency'
+                          Por cotizar
+                        - elsif reservation.invoice.amount.nil?
+                          Por cotizar
                           Por cotizar
                         - elsif reservation.invoice.status_pay? :pending
                           %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}

@@ -24,7 +24,7 @@
                 %td.text-center= @multiple
                 %td.text-center= number_to_currency(@price_total, locale: @locale)
 
-- if current_user.try(:has_role?, :agency)
+- if current_user.try(:has_role_agentable?)
 
   .row
     .col-md-12

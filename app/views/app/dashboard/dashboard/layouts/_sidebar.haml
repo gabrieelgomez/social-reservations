@@ -12,11 +12,15 @@
           %i.nc-icon.nc-delivery-fast
           %p Traslados Asignados
 
-    - if current_user.has_role? :agency
+    - if current_user.try(:has_role_agentable?)
       %li
         = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
           %i.nc-icon.nc-delivery-fast
           %p Traslados
+      %li
+        = link_to orders_path(@lang, @currency, 'tours'), class:"nav-link" do
+          %i.nc-icon.nc-map-big
+          %p Tours
 
     - else
       %li

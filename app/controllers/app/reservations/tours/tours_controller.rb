@@ -28,12 +28,36 @@ module App
             # Calculate Price
 
             build_invoice
+            @reservation.build_order(details: 'user', status: 'pending')
             if @reservation.save!
               create_travellers
-              # ReservationMailer.tour_status(@reservation, @user).deliver_now
-              redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              if current_user.try(:has_role_agentable?)
+
+                if @reservation.order.update(
+                  details: 'agency',
+                  agency: @agency,
+                  agent: @agent,
+                  comission: @comission,
+                  lending: @lending,
+                  price_comission: @price_comission,
+                  price_lending: @price_lending,
+                  price_total_agency: @price_total_agency,
+                  price_total_pax: @price_total_pax,
+                  price_vehicle: @price_vehicle
+                )
+
+                  ReservationMailer.tour_status(@reservation, current_user).deliver_now
+                  ReservationMailer.to_admin_tour(@reservation, current_user).deliver_now
+                  redirect_to invoice_path('es', 'usd')
+                else
+                  redirect_to errors_checkout_path('usd')
+                end
+              else
+                # ReservationMailer.tour_status(@reservation, @user).deliver_now
+                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              end
             else
-              render :new
+              redirect_to errors_checkout_path('usd')
             end
           end
         end
@@ -47,6 +71,7 @@ module App
           @total_adults    = @reservation.reservationable.price_adults[currency].to_f * adults
           @total_kids      = @reservation.reservationable.calculate_kids(kids, currency) * kids
           @price_total     = @total_adults + @total_kids
+          set_price_agency
         end
 
       end
