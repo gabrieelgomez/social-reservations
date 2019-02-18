@@ -7,6 +7,9 @@
   %th.hidden-xs Fecha de Reserva
   %th.hidden-xs.hidden-sm Cant. Adultos
   %th.hidden-xs.hidden-sm Cant. Niños
-  %th.hidden-xs.hidden-sm Usuario
+  - if params[:type_search] == 'agency'
+    %th.hidden-xs.hidden-sm Agencia
+  - else
+    %th.hidden-xs.hidden-sm Usuario
   %th.center Menu
   %th

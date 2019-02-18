@@ -47,3 +47,8 @@ menu:
           name: vehicles
           url_path: /admin/travel/reservations?model_name=vehicle&type_search=agency
           current: ["admin/travel/reservations"]
+
+      - tours:
+          name: tours
+          url_path: /admin/travel/reservations?model_name=tour&type_search=agency
+          current: ["admin/travel/reservations"]

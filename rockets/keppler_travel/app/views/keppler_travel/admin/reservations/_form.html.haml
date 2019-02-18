@@ -1,8 +1,10 @@
 = simple_form_for [:admin, :travel, @reservation] do |f|
+
+  %input{name: 'model_name', value: params[:model_name], hidden: ''}
   .container
     .row
       .col-lg-2
-        = link_to admin_travel_reservations_path(model_name: 'vehicle', type_search: 'agency'), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        = link_to admin_travel_reservations_path(model_name: params[:model_name], type_search: 'agency'), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
           .arrow-back.btn.btn-default
             %i.fa.fa-angle-left
             = t('keppler.actions.back')

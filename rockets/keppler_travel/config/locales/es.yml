@@ -20,7 +20,7 @@ es:
       agencies-submenu:
         multidestinations: Multidestinos
         circuits: Circuitos
-        tours: Tours
+        tours: Reservaciones de Tours
         vehicles: Reservaciones de Traslados
         create: Crear Agencia
     models:

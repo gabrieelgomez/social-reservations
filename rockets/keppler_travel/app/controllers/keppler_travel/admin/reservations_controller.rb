@@ -42,11 +42,10 @@ module KepplerTravel
       def index
         if @type_search
           ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
-          @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         else
           ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
-          @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         end
+        @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         @q = @types.ransack(params[:q])
         reservations = @q.result(distinct: true)
         @objects = reservations.page(@current_page).order(id: :desc)
@@ -89,7 +88,7 @@ module KepplerTravel
           @reservation.order.update(status: reservation_params[:status])
           ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
           ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
-          redirect_to admin_travel_reservations_path(page: 1, model_name: 'vehicle', type_search: 'agency')
+          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: 'agency')
         else
           render :edit
         end

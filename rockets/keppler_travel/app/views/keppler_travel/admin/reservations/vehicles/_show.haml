@@ -61,7 +61,7 @@
                   %th.display-label N° de Factura
                   %td.display-value.fs-body-1.tc-black-2= invoice.token
 
-                - if @reservation.agency
+                - if @reservation&.agency || @reservation&.agent
 
                   %tr.list-row
                     %th.display-label Total PAX

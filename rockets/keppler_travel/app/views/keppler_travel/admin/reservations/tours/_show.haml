@@ -1,5 +1,6 @@
 - reservationable = @reservation.reservationable
 - invoice = @reservation.invoice
+- order = @reservation.order
 
 .container
   .row
@@ -55,13 +56,25 @@
                   %th.display-label N° de Factura
                   %td.display-value.fs-body-1.tc-black-2= invoice.token
 
-                %tr.list-row
-                  %th.display-label Moneda
-                  %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+                - if @reservation&.agency || @reservation&.agent
 
-                %tr.list-row
-                  %th.display-label Costo de la Reserva
-                  %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
+                  %tr.list-row
+                    %th.display-label Total PAX
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(order.price_total_pax, locale: @locale)
+
+                  %tr.list-row
+                    %th.display-label Total Agencia
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(order.price_total_agency, locale: @locale)
+
+                - else
+
+                  %tr.list-row
+                    %th.display-label Tipo de Moneda
+                    %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+
+                  %tr.list-row
+                    %th.display-label Costo de la Reserva
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
 
                 %tr.list-row
                   %th.display-label Estatus de la Reserva
