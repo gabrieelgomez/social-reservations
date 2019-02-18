@@ -1,0 +1,59 @@
+.container-fluid
+  = simple_form_for @user, url: update_agent_path, method: :post do |f|
+    %input{name: 'agent_id', value: params[:agent_id], hidden: ''}
+    .row
+      .col-md-8
+        .card
+          .card-header
+            %h4.card-title.text-capitalize Editar Representante
+          .card-body
+            .row
+              .col-md-6
+                .form-group
+                  %label.control-label
+                    Nombre
+                  = f.input :name, :autofocus => true, class: '', label: false
+              .col-md-6
+                .form-group
+                  %label.control-label
+                    Identificación
+                  = f.input :dni, :autofocus => true, class: '', label: false
+            .row
+              .col-md-6
+                .form-group
+                  %label.control-label
+                    Correo electrónico
+                  = f.input :email, :autofocus => true, class: '', label: false
+              .col-md-6
+                .form-group
+                  %label.control-label
+                    Teléfono
+                  = f.input :phone, :autofocus => true, class: '', label: false
+            .text-center
+              %button.btn.btn-info.btn-fill.float-right{:type => ""}
+                Guardar
+            .clearfix
+      .col-md-4
+        .card.card-user
+          .card-image
+            %img{:alt => "...", :src => "/assets/img/bg-3.jpg"}/
+          .card-body
+            .author
+              %a{:href => "#"}
+                %img.avatar.border-gray.img-fluid{alt: "", src: @user.avatar.url.nil? ? "/assets/img/user.png" : @user.avatar.url}
+                %h4.title{:style => 'font-family: "Poppins", sans-serif;'}="#{@user.name}"
+                %br
+        .row
+          .col-md-12
+            %center
+            = f.input :avatar, as: :keppler_file, label: false
+
+= render 'app/dashboard/dashboard/layouts/scripts'
+
+:scss
+  .help-block{
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #9A9A9A;
+  }

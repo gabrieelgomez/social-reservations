@@ -43,11 +43,13 @@
         = link_to dashboard_checkout_path(@lang, @currency), class:"nav-link" do
           %i.nc-icon.nc-send
           %p Checkout
-    - if current_user.has_role? :driver
+
+    - if current_user.has_role? :agency
       %li
-        = link_to drivers_transfers_path(@lang, @currency), class:"nav-link" do
-          %i.nc-icon.nc-delivery-fast
-          %p Traslados Asignados
+        = link_to agents_listing_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-single-02
+          %p Mis Representantes
+
     %li
       = link_to users_details_path(@lang, @currency), class:"nav-link" do
         %i.nc-icon.nc-single-02

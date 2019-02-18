@@ -90,6 +90,26 @@ Rails.application.routes.draw do
         to: 'app/dashboard/dashboard#drivers',
         as: :drivers_transfers
 
+      get '/dashboard/agency/agents',
+        to: 'app/dashboard/agencies/agencies#agencies',
+        as: :agents_listing
+
+      get '/dashboard/agency/agents/new',
+        to: 'app/dashboard/agencies/agencies#new_agent',
+        as: :new_agents
+
+      post '/dashboard/agency/agents/create',
+        to: 'app/dashboard/agencies/agencies#create_agent',
+        as: :create_agent
+
+      get '/dashboard/agency/agents/:agent_id/edit',
+        to: 'app/dashboard/agencies/agencies#edit_agent',
+        as: :edit_agent
+
+      post '/dashboard/agency/agents/update',
+        to: 'app/dashboard/agencies/agencies#update_agent',
+        as: :update_agent
+
       get '/dashboard/user',
         to: 'app/dashboard/dashboard#users',
         as: :users_details
