@@ -4,7 +4,7 @@ module KepplerTravel
     # AgentsController
     class AgentsController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_agent, only: [:show, :edit, :destroy]
+      before_action :set_agent, only: [:show, :edit, :destroy, :update_user]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -74,7 +74,7 @@ module KepplerTravel
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
         end
-        @user = User.find_by(email: params[:user][:email])
+        # @user = User.find_by(email: params[:user][:email])
         if @user.update_attributes(update_attributes)
           redirect(@user.agent, params)
         else
@@ -150,7 +150,7 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_agent
-        @agent  = Agent.find(params[:id])
+        @agent  = Agent.where(id: params[:id]).first || Agent.where(id: params[:agent_id]).first
         @agency = Agency.find(params[:agency_id])
         @user = @agent.user
       end
