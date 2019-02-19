@@ -25,7 +25,7 @@
                   %i.icon-trash
 
               - if @type_search == 'agency'
-                = link_to edit_admin_travel_reservation_path(@reservation), class: 'new-menu', title: t('keppler.actions.edit') do
+                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: 'agency'), class: 'new-menu', title: t('keppler.actions.edit') do
                   %i.icon-pencil
                   = t('keppler.actions.edit')
 
