@@ -10,6 +10,7 @@ KepplerTravel::Engine.routes.draw do
         post '/sort', action: :sort, on: :collection
         post '/upload', action: 'upload', as: 'upload'
         get '/download', action: 'download', as: 'download'
+        post '/update_user', action: :update_user
         get(
           '/reload',
           action: :reload,
@@ -50,12 +51,7 @@ KepplerTravel::Engine.routes.draw do
       end
 
       namespace :drivers do
-        post '/update_user', action: :update_user
         post 'filter_by_destination', action: :index, as: :filter_destination
-      end
-
-      namespace :agencies do
-        post '/update_user', action: :update_user
       end
 
       namespace :lodgments do
@@ -86,6 +82,7 @@ KepplerTravel::Engine.routes.draw do
         post '/sort', action: :sort, on: :collection
         post '/upload', action: 'upload', as: 'upload'
         get '/download', action: 'download', as: 'download'
+        post '/update_user', action: :update_user
         get(
           '/reload',
           action: :reload,

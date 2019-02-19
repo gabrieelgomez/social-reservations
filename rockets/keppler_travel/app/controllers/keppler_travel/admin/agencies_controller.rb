@@ -4,7 +4,7 @@ module KepplerTravel
     # AgenciesController
     class AgenciesController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_agency, only: [:show, :edit, :destroy]
+      before_action :set_agency, only: [:show, :edit, :destroy, :update_user]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -50,15 +50,14 @@ module KepplerTravel
         password = Devise.friendly_token.first(8)
         @user.password = password
         @user.password_confirmation = password
+        @user.format_accessable_passwd(password)
+        @agency = @user.build_agency(
+                    comission_percentage: params[:user][:agency][:comission_percentage],
+                    lending_percentage: params[:user][:agency][:lending_percentage]
+                  )
         if @user.save
           @user.add_role :agency
-          @user.format_accessable_passwd(password)
           ReservationMailer.send_password(@user).deliver_now
-          @user.build_agency(
-            comission_percentage: params[:user][:agency][:comission_percentage],
-            lending_percentage: params[:user][:agency][:lending_percentage]
-          )
-          @user.save
           redirect(@user.agency, params)
         else
           render :new
@@ -75,7 +74,6 @@ module KepplerTravel
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
         end
-        @user = User.find_by(email: params[:user][:email])
         if @user.update_attributes(update_attributes)
           cp = params[:user][:agency][:comission_percentage]
           lp = params[:user][:agency][:lending_percentage]
@@ -155,7 +153,7 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_agency
-        @agency = Agency.find(params[:id])
+        @agency  = Agency.where(id: (params[:id] || params[:agency_id])).first
         @user = @agency.user
       end
 
@@ -194,7 +192,7 @@ module KepplerTravel
           )
         end
       end
-      
+
     end
   end
 end

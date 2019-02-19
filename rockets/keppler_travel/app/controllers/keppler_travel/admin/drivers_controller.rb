@@ -4,7 +4,7 @@ module KepplerTravel
     # DriversController
     class DriversController < ApplicationController
       layout 'keppler_travel/admin/layouts/application'
-      before_action :set_driver, only: [:show, :edit, :update, :destroy, :description_tables]
+      before_action :set_driver, only: [:show, :edit, :update, :destroy, :description_tables, :update_user]
       before_action :show_history, only: [:index]
       before_action :set_attachments
       before_action :authorization
@@ -48,15 +48,34 @@ module KepplerTravel
 
       # GET /drivers/1/edit
       def edit
-        @user = @driver.user
       end
 
       # POST /drivers
       def create
-        @driver = Driver.new(driver_params)
+        @user = User.new(user_params)
+        @user.build_driver(
+          timetrack: params[:user][:driver][:timetrack],
+          bank: params[:user][:driver][:bank],
+          account_type: params[:user][:driver][:account_type],
+          account_number: params[:user][:driver][:account_number],
+          email_corporative: params[:user][:driver][:email_corporative]
+        )
+        @driver = @user.driver
+        @driver.vehicle_ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
+        @driver.destination_id = params[:driver][:destination_id]
 
-        if @driver.save
-          redirect(@driver, params)
+        if @user.save
+          @user.add_role :driver
+          update_password if params[:user][:driver]
+          ReservationMailer.send_password(@user).deliver_now
+          @user.driver.vehicles.each do |vehicle|
+            KepplerTravel::CarDescription.create(
+              license: '',
+              color: '',
+              driver: @user.driver,
+              vehicle: vehicle)
+          end
+          redirect_to admin_travel_driver_description_tables_path(@user.driver)
         else
           render :new
         end
@@ -90,7 +109,7 @@ module KepplerTravel
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
         end
-        @user = User.find_by(email: params[:user][:last_email])
+        @driver = @user.driver
         # -----
         if @user.update_attributes(update_attributes)
           ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
@@ -107,9 +126,9 @@ module KepplerTravel
           @user.driver.update(email_corporative: email_corporative) if email_corporative
 
           update_password
-          redirect_to travel.admin_travel_driver_path(@user.driver)
+          redirect_to admin_travel_driver_path(@user.driver)
         else
-          redirect_to travel.new_admin_travel_driver_path
+          render :edit
         end
         # -----
       end
@@ -187,13 +206,21 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_driver
-        # @driver = Driver.find(params[:id])
-        @driver = Driver.find(params[:id]) rescue Driver.find(params[:driver_id])
+        @driver  = Driver.where(id: (params[:id] || params[:driver_id])).first
+        @user = @driver.user
       end
 
       # Only allow a trusted parameter "white list" through.
       def driver_params
         params.require(:driver).permit(:bank, :account_type, :destination_id, :email_corporative, :account_number, :timetrack, :user_id, :position, :deleted_at, car_descriptions_attributes: [:id, :_destroy, licenses_attributes: [:id, :matricula, :color, :_destroy] ], licenses_attributes: [:id, :matricula, :color, :_destroy])
+      end
+
+      def user_params
+        params.require(:user).permit(
+          :name, :email, :phone, :dni, :password, :password_confirmation,
+          :encrypted_password, :avatar,
+          driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id, :email_corporative]
+        )
       end
 
       def show_history
@@ -204,15 +231,6 @@ module KepplerTravel
         @activities = PublicActivity::Activity.where(
           trackable_type: model.to_s
         ).order('created_at desc').limit(50)
-      end
-
-      def user_params
-        params.require(:user).permit(
-          :name, :email, :phone, :dni, :password, :password_confirmation,
-          :destination_id,
-          :role_ids, :encrypted_password, :avatar,
-          driver_attributes: [:id, :timetrack, :bank, :account_type, :account_number, :destination_id, :email_corporative]
-        )
       end
 
       # Get submit key to redirect, only [:create, :update]

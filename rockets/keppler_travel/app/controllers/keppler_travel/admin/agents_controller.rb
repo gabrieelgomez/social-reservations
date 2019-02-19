@@ -52,12 +52,12 @@ module KepplerTravel
         password = Devise.friendly_token.first(8)
         @user.password = password
         @user.password_confirmation = password
+        @user.format_accessable_passwd(password)
+        @agent  = @user.build_agent(agency_id: params[:agency_id])
+        @agency = Agency.find(params[:agency_id])
         if @user.save
           @user.add_role :agent
-          @user.format_accessable_passwd(password)
           ReservationMailer.send_password(@user).deliver_now
-          @agent = @user.build_agent(agency_id: params[:agency_id])
-          @user.save
           redirect(@user.agent, params)
         else
           render :new
@@ -74,7 +74,6 @@ module KepplerTravel
         update_attributes = user_params.delete_if do |_, value|
           value.blank?
         end
-        # @user = User.find_by(email: params[:user][:email])
         if @user.update_attributes(update_attributes)
           redirect(@user.agent, params)
         else
@@ -150,9 +149,9 @@ module KepplerTravel
 
       # Use callbacks to share common setup or constraints between actions.
       def set_agent
-        @agent  = Agent.where(id: params[:id]).first || Agent.where(id: params[:agent_id]).first
+        @agent  = Agent.where(id: (params[:id] || params[:agent_id])).first
         @agency = Agency.find(params[:agency_id])
-        @user = @agent.user
+        @user   = @agent.user
       end
 
       # Only allow a trusted parameter "white list" through.
