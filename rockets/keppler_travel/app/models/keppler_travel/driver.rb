@@ -5,8 +5,9 @@ module KepplerTravel
     include CloneRecord
     require 'csv'
     acts_as_list
+    acts_as_paranoid
 
-    belongs_to :user, dependent: :destroy
+    belongs_to :user
     belongs_to :destination
     has_many :orders
     has_many :reservations, through: :orders

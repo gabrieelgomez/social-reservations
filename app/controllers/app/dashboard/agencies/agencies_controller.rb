@@ -23,12 +23,12 @@ module App
           password = Devise.friendly_token.first(8)
           @user.password = password
           @user.password_confirmation = password
+          @user.format_accessable_passwd(password)
+          @agent  = @user.build_agent(agency_id: params[:agency_id])
+          @agency = Agency.find(params[:agency_id])
           if @user.save
             @user.add_role :agent
-            @user.format_accessable_passwd(password)
             ReservationMailer.send_password(@user).deliver_now
-            @agent = @user.build_agent(agency_id: current_user.agency.id)
-            @user.save
             redirect_to agents_listing_path(@lang, @currency)
           else
             render :new_agent

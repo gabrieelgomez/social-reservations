@@ -31,6 +31,11 @@ module App
             build_invoice
             build_square
             if @reservation.save!
+              @reservation.order.update(
+                details: 'multidestination',
+                price_total_pax: @price_total,
+                user_referer: @user.email,
+              )
               create_travellers
               ReservationMailer.multidestination_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_multidestination(@reservation, @user).deliver_now

@@ -31,6 +31,11 @@ module App
             build_invoice
             build_square
             if @reservation.save!
+              @reservation.order.update(
+                details: 'circuit',
+                price_total_pax: @price_total,
+                user_referer: @user.email,
+              )
               create_travellers
               ReservationMailer.circuit_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_circuit(@reservation, @user).deliver_now
