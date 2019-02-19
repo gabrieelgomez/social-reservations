@@ -60,7 +60,7 @@ module App
 
         # DELETE /agents/1
         def destroy
-          @agent.user.really_destroy!
+          @agent.user.destroy
           redirect_to admin_travel_agency_agents_path, notice: actions_messages(@agent)
         end
 

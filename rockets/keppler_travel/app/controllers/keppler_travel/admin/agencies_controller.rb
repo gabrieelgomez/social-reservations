@@ -97,7 +97,7 @@ module KepplerTravel
 
       # DELETE /agencies/1
       def destroy
-        @agency.user.really_destroy!
+        @agency.user.destroy
         redirect_to admin_travel_agencies_path, notice: actions_messages(@agency)
       end
 
