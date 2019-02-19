@@ -22,7 +22,7 @@
       .container#mix-wrapper
         .row
           - @tours.each do |tour|
-            .col-xs-12.col-md-4.col-sm-6.js_filterTours
+            .col-xs-12.col-md-4.col-sm-6.js_filterTours.mix-target
               .box-card
                 = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
                   .box-image{:style => "background-image: url(#{tour.banner.url})"}
@@ -33,24 +33,13 @@
                     = @currency.upcase
                     = number_to_currency(tour.price_adults[@currency], locale: @locale)
                   .more-information
-                    -# %p
-                    -#   %span
-                    -#     10 dias 5 noches
-                    -#%span= raw tour.description[@lang].truncate(100)
-
-                    -#%p
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
-                      %i.fa.fa-star.fa-star-custom
                   .about-btn
                     = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'link-card' do
                       %button.about-view.packages-btn
                         ver más
 
           - @circuits.each do |circuit|
-            .col-xs-12.col-md-4.col-sm-6.js_filterCircuits
+            .col-xs-12.col-md-4.col-sm-6.js_filterCircuits.mix-target
               .box-card
                 = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'' do
                   .box-image{:style => "background-image: url(#{circuit.banner.url})"}
@@ -79,7 +68,7 @@
                         ver más
 
           - @multidestinations.each do |multidestination|
-            .col-xs-12.col-md-4.col-sm-6.js_filterMultidestines
+            .col-xs-12.col-md-4.col-sm-6.js_filterMultidestines.mix-target
               .box-card
                 = link_to multidestinations_show_path(multidestination: multidestination.title['es'].parameterize, multidestination_id: multidestination.id), class:'' do
                   .box-image{:style => "background-image: url(#{multidestination.banner.url})"}

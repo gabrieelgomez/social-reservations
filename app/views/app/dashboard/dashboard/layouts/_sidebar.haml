@@ -1,46 +1,28 @@
 .sidebar-wrapper
   .logo
-    -#%a.simple-text{:href => "#", :style => ''}
     = link_to root_path(@lang, @currency), style:'font-family: "Poppins", sans-serif;font-weight: bold;text-transform: capitalize;font-size: 14px;', class:'simple-text' do
       .logo-img
         %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg"}/
       Receptivo Colombia
-  -#%ul.nav.nav-mobile-menu
-    -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
-      %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-        %span.notification 5 Notifications
-      .dropdown-menu
-        %a.dropdown-item{:href => "#"} Notification 1
-        %a.dropdown-item{:href => "#"} Notification 2
-        %a.dropdown-item{:href => "#"} Notification 3
-        %a.dropdown-item{:href => "#"} Notification 4
-        %a.dropdown-item{:href => "#"} Another notification
-    -#%li.nav-item
-      %a.nav-link{:href => "#"}
-        %i.nc-icon.nc-zoom-split.hidden-lg-up
-        %span.d-lg-none Search
-    -#%li.dropdown.nav-item{"aria-haspopup" => "true"}
-      %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-        %i
-        %span.no-icon Dropdown
-        %b.caret
-      .dropdown-menu{:style => "display: none;"}
-        %a.dropdown-item{:href => "#"} Action
-        %a.dropdown-item{:href => "#"} Another action
-        %a.dropdown-item{:href => "#"} Something
-        %a.dropdown-item{:href => "#"} Something else here
-        .divider
-        %a.dropdown-item{:href => "#"} Separated link
-    %li.nav-item
-      %a.nav-link{:href => "#pablo"}
-        %span.no-icon Log out
   %ul.nav
-    -#%li
-      %label.nav-link{:href => "#"}
-        %i.nc-icon.nc-chart-pie-35
-        %p Mi Tablero
-    -# Order of Items: 1.Traslados 2.Tours 3.Circuitos 4.Multidestinos
-    - unless current_user.has_role? :driver
+
+    - if current_user.has_role? :driver
+      %li
+        = link_to drivers_transfers_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-delivery-fast
+          %p Traslados Asignados
+
+    - if current_user.try(:has_role_agentable?)
+      %li
+        = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
+          %i.nc-icon.nc-delivery-fast
+          %p Traslados
+      %li
+        = link_to orders_path(@lang, @currency, 'tours'), class:"nav-link" do
+          %i.nc-icon.nc-map-big
+          %p Tours
+
+    - else
       %li
         = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
           %i.nc-icon.nc-delivery-fast
@@ -57,11 +39,17 @@
         = link_to orders_path(@lang, @currency, 'multidestinations'), class:"nav-link" do
           %i.nc-icon.nc-send
           %p Multidestinos
-    - if current_user.has_role? :driver
+      -#%li
+        = link_to dashboard_checkout_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-send
+          %p Checkout
+
+    - if current_user.has_role? :agency
       %li
-        = link_to drivers_transfers_path(@lang, @currency), class:"nav-link" do
-          %i.nc-icon.nc-delivery-fast
-          %p Traslados Asignados
+        = link_to agents_listing_path(@lang, @currency), class:"nav-link" do
+          %i.nc-icon.nc-single-02
+          %p Mis Representantes
+
     %li
       = link_to users_details_path(@lang, @currency), class:"nav-link" do
         %i.nc-icon.nc-single-02

@@ -23,6 +23,20 @@ menu:
           url_path: /admin/travel/reservations?model_name=multidestination
           current: ["admin/travel/reservations"]
 
+
+      # - tours:
+      #     name: tours
+      #     url_path: /admin/travel/agency/reservations?model_name=tour
+      #     current: ["admin/travel/agency/reservations"]
+      # - circuits:
+      #     name: circuits
+      #     url_path: /admin/travel/agency/reservations?model_name=circuit
+      #     current: ["admin/travel/agency/reservations"]
+      # - multidestinations:
+      #     name: multidestinations
+      #     url_path: /admin/travel/agency/reservations?model_name=multidestination
+      #     current: ["admin/travel/agency/reservations"]
+
   keppler_travel_driver:
     name: drivers
     current: ["admin/travel/drivers"]

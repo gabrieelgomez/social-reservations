@@ -1,0 +1,161 @@
+!!!
+%html{:lang => "en"}
+  %head
+    = render 'app/dashboard/dashboard/layouts/head'
+  %body
+    %header
+      .loader
+        = render 'app/front/loader/loader'
+    #js-mobile
+      .notifications
+        %span{:mode => "in-out"}
+      .wrapper
+        .sidebar{style: "background-image: url(/assets/img/sidebar_dashboard.png)"}
+          = render 'app/dashboard/dashboard/layouts/sidebar'
+        .main-panel
+          = render 'app/dashboard/dashboard/layouts/main'
+          .content
+            .container-fluid
+              .row
+                .col-12.col-lg-12.col-xl-8
+                  .card
+                    .card-header
+                      %h4.card-title Facturación de la Reservación
+                    .card-body
+                      .row
+                        .col-12
+                          %section.invoice-checkout#invoice-checkout
+                            .container
+                              .col-md-12
+                                .invoice-checkout__box
+                                  .row
+                                    .col-md-12
+
+
+                                      .row.d-none.d-lg-flex.d-xl-flex
+                                        .col-md-2
+                                          %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
+                                        .col-md-6
+                                          %h2{style:'margin:0;'} Receptivo Colombia
+                                          %p Operador turístico - Bogotá, Colombia
+                                        .col-md-4
+                                          %h3.text-right{style:'margin:0;'} N° de Orden
+                                          %h3.text-right 10000523
+
+                                      .row.d-lg-none.d-xl-none
+                                        .col-3.col-sm-2
+                                          %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
+                                        .col-9.col-sm-7
+                                          %h4.text-center{style:'margin:0;'} Receptivo Colombia
+                                          %p.text-center Operador turístico - Bogotá, Colombia
+                                        .col-12.col-sm-3
+                                          %h5.text-right N° de Orden
+                                          %h5.text-right 10000523
+
+
+                                      %hr/
+                                      .row
+                                        .col-12.col-md-12
+                                          %address
+                                            %strong Datos Personales
+                                            %br/
+                                            Leonard J. Ávila S.
+                                            %br/
+                                            12345678-A
+                                            %br/
+                                            info@slicegroup.co
+                                            %br/
+                                            Colombia
+                                      .row
+                                        .col-12.col-md-6
+                                          %address
+                                            %strong Método de Pago
+                                            %br/
+                                            Pĺataforma: EnLineaPagos
+                                            %br/
+                                            %br/
+                                            -#= @user['email']
+                                        .col-md-6
+                                          %address
+                                            %strong N°. Orden ELP
+                                            %br/
+                                            10000523
+                                            %br/
+                                            %br/
+                                      .row
+                                        .col-12.col-md-12
+                                          %h5.text-center Información del Traslado
+                                          %br/
+                                        .col-12.col-md-4
+                                          %address
+                                            %strong Origen
+                                            %br/
+                                            Colombia
+                                            %br/
+                                            %strong Destino
+                                            %br/
+                                            Falcon
+                                            %br/
+                                            %strong Aerolinea
+                                            %br/
+                                            Copa Airline
+                                            %br/
+                                        .col-12.col-md-4
+                                          %address
+                                            %strong Tipo de Traslado
+                                            %br/
+                                            Ida/Vuelta
+                                            %br/
+                                            %strong Adultos/Niños
+                                            %br/
+                                            5
+                                            %br/
+                                            %strong N° de Vuelo
+                                            %br/
+                                            1000523
+                                            %br/
+                                        .col-12.col-md-4
+                                          %address
+                                            %strong Fecha/Hora de Ida
+                                            %br/
+                                            10:00 am
+                                            %br/
+                                            %strong Fecha/Hora de Vuelta
+                                            %br/
+                                            5:00 pm
+                                            %br
+                                            %strong Hora Traslado Ida
+                                            %br/
+                                            5:00pm
+                                            %br/
+                                      .row
+                                        .col-12.col-md-12
+                                          .card
+                                            .card-header.text-center
+                                              %strong Descripción
+                                            .card-body
+                                              %table.table.table-responsive
+                                                %thead
+                                                  %tr
+                                                    %th
+                                                      %strong Concepto
+                                                    %th
+                                                      %strong Precio
+                                                    %th
+                                                      %strong Cantidad
+                                                    %th
+                                                      %strong Total
+                                                %tbody
+                                                  %tr
+                                                    %td Tours Colombia
+                                                    %td $ 1000 USD
+                                                    %td 5
+                                                    %td $ 5000 USD
+                                            .card-footer
+                                      .row
+                                        .col-12.col-md-12.d-flex.justify-content-center
+                                          %a{target: '_blank'}
+                                            %button.btn.btn-primary.btn-lg{:type => "button"}
+                                              Pagar
+                                        .card-footer
+    = render 'app/dashboard/dashboard/layouts/scripts'

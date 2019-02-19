@@ -1,4 +1,20 @@
 modules:
+ agents:
+    name: Agent
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
+ agencies:
+    name: Agency
+    actions: [
+      'index', 'create', 'update',
+      'destroy', 'download', 'upload',
+      'clone'
+    ]
+  
  drivers:
     name: Driver
     actions: [
@@ -6,7 +22,7 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  
+
  circuits:
     name: Circuit
     actions: [
@@ -14,7 +30,7 @@ modules:
       'destroy', 'download', 'upload',
       'clone'
     ]
-  
+
  rankings:
     name: Ranking
     actions: [

@@ -1,0 +1,24 @@
+%section#multidestinations_all.multidestinations_all
+  .container
+    .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
+      %h2 Multidestinos
+  .cards-top-tours
+    .container
+      .row
+        - @multidestinations.each do |multidestination|
+          .col-xs-12.col-md-4.col-sm-6.js_filterMultidestines.mix-target
+            .box-card
+              = link_to multidestinations_show_path(multidestination: multidestination.title['es'].parameterize, multidestination_id: multidestination.id), class:'' do
+                .box-image{:style => "background-image: url(#{multidestination.banner.url})"}
+              .box-information
+                = link_to multidestinations_show_path(multidestination: multidestination.title['es'].parameterize, multidestination_id: multidestination.id), class:'' do
+                  %h3= multidestination.title[@lang].titleize
+                %span.pull-left.price
+                  Desde
+                  = @currency.upcase
+                  = number_to_currency(multidestination.low_price(@currency), locale: @locale)
+                .more-information
+                .about-btn
+                  = link_to multidestinations_show_path(multidestination: multidestination.title['es'].parameterize, multidestination_id: multidestination.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más

@@ -3,7 +3,7 @@
   %head
     = render 'app/layouts/head'
 
-  %body{style:"padding-top:120px;"}
+  %body.body-settings
     %header
       = render 'app/layouts/navbar'
       .loader
@@ -12,81 +12,130 @@
     %section#contact-us.contact-us
       .banner-contact-us{style: "background-image: url(/assets/img/banner.jpg)"}
         .banner-contact-us--mask
-          %h2 Contáctanos
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti incidunt.
+          %h2 Contacto
       .box-contact-us
         .container
           .gallary-header.text-center
-            %h2 Contáctanos
-            %p Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        .info-contact-us
-          .container
-            .row
-              .box-contact-us--form
-                .col-lg-8
+            %h2 Comunícate con Nosotros
+            %p  Nos complace poder atenderte
+        = simple_form_for @message, url: '/admin/contactus/messages', method: :post do |f|
+          .info-contact-us
+            .container
+              .row
+                .col-lg-12
                   .row
-                    .col-lg-6
-                      .form-group
-                        %label{:for => "name"} Nombre
-                        %input#name.form-control{:type => "text"}/
-                    .col-lg-6
-                      .form-group
-                        %label{:for => "email"} Correo electrónico
-                        %input#email.form-control{:type => "email"}/
-                    .col-lg-6
-                      .form-group
-                        %label{:for => "phone"} Teléfono
-                        %input#phone.form-control{:type => "text"}/
-                    .col-lg-6
-                      .form-group
-                        %label{:for => "subject"} Asunto
-                        %input#subject.form-control{:type => "text"}/
-                    .col-lg-12
-                      .form-group
-                        %label{:for => "message"} Mensaje
-                        %textarea#message.form-control{:rows => "4"}
-                    .col-lg-12
-                      .items
-                        .g-recaptcha.pull-left{"data-sitekey" => "6LcrvnUUAAAAAMnLtpxb6pG5b2RXRB5aFlkmI55E"}
-                        .box-btn-payment.pull-right
-                          .about-btn.travel-mrt-0
-                            %button.about-view.travel-btn.btn-reser enviar 
-                   
-              .box-contact-us--maps
-                .col-lg-4
-                  %ul
-                    -#%li 
-                      %address
-                        %strong Ubicación
-                        %br/
-                        Lorem ipsum dolor, sit amet consectetur 
-                        %br/
-                        Colombia
-                    -#%li 
-                      %address
-                        %strong Teléfonos
-                        %br/
-                        +57 317 3632119
-                        %br/
-                    -#%li
-                      %address
-                        %strong Correo electrónico
-                        %br/
-                        %a{:href => "mailto:#"} info@receptivocolombia.com
-                    %li
-                      %address
-                        %strong Localízanos
-                        %br/
-                        %br/
-                        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "350", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39281033058!2d-74.24789184262298!3d4.648625933149298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2sBogot%C3%A1%2C+Bogota%2C+Colombia!5e0!3m2!1sen!2sve!4v1540828282456", :style => "border:0", :width => "600"}
+                    .box-contact-us--form
+                      .col-xs-12.col-sm-12.col-md-6.col-lg-7
+                        .row
+                          .col-lg-6
+                            .form-group
+                              %label Nombre
+                              = f.input :name, label: false, class: 'form-control', type: 'text'
+                          .col-lg-6
+                            .form-group
+                              %label Correo Electronico
+                              = f.input :email, label: false, class: 'form-control', type: 'text'
+                          .col-lg-6
+                            .form-group
+                              %label Teléfono
+                              = f.input :position, label: false, class: 'form-control', type: 'text'
+                          .col-lg-6
+                            .form-group
+                              %label Asunto
+                              = f.input :subject, label: false, class: 'form-control', type: 'text'
+                          .col-lg-12
+                            .form-group
+                              %label{ :for => "message"} Mensaje
+                              %textarea#message.form-control{name: 'message[content]', :rows => "4"}
+                          .col-lg-12
+                            .items
+                              = raw recaptcha_tags
+                              .box-btn-payment.pull-right
+                                .about-btn.travel-mrt-0
+                                  %button.about-view.travel-btn.btn-reser enviar
+                    .box-contact-us--info
+                      .col-xs-12.col-sm-12.col-md-6.col-lg-5
+                        .row
+                          .col-lg-12
+                            %ul.list-group
+                              %li.list-group-item
+                                %h4
+                                  %span
+                                    %i.fa.fa-envelope
+                                  Correo electrónico
+                                %p info@receptivocolombia.com
+                              %li.list-group-item
+                                %h4
+                                  %span
+                                    %i.fa.fa-phone
+                                  Teléfonos
+                                %p +57 317 3632119
+
 
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
 %script{:src => "/assets/js/loader.js"}
+%script{:src => "/assets/js/jquery-validate.js"}
+%script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 %script{:src => "https://www.google.com/recaptcha/api.js"}
 
 :javascript
   $('.navigation-front').removeClass('background-hide');
   $('.navigation-front').addClass('background-show');
 
+:javascript
+
+    $('#new_message').validate({
+     event: "blur",
+     errorClass: "error-class",
+     validClass: "valid-class",
+     rules: {
+       'message[name]': { required: true},
+       'message[subject]': { required: true},
+       'message[email]': { required: true, email: true},
+       'message[content]': { required: true},
+       'message[position]': { required: true}
+       },
+     messages: {
+       'message[name]': 'No puede estar en blanco',
+       'message[subject]': 'No puede estar en blanco',
+       'message[email]': {required: 'No puede estar en blanco', email: 'Email inválido'},
+       'message[content]': 'No puede estar en blanco',
+       'message[position]': 'No puede estar en blanco'
+       },
+     debug: true,errorElement: "label",
+     submitHandler: function(form){
+
+      swal({
+        type: 'warning',
+        title: 'Tu solicitud está siendo procesada...',
+        text: 'Espere un momento...',
+        timer: 300000,
+        onOpen: () => {
+          swal.showLoading()
+        }
+      });
+
+      form.submit();
+     }
+    });
+
+:javascript
+  var notice = "#{notice}";
+
+  if (notice == 'saved'){
+   swal({
+    type: 'success',
+    title: '¡Listo!',
+    text: '¡Su solicitud ha sido enviada exitosamente!'
+   })
+  }
+
+  else if (notice == 'not_saved'){
+   swal({
+    type: 'error',
+    title: '¡Upps..!!',
+    text: '¡Ha ocurrido un error, intente de nuevo!'
+   })
+  }

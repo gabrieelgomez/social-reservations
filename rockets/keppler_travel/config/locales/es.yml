@@ -2,6 +2,7 @@ es:
   keppler:
     sidebar-menu:
       reservations: Reservaciones
+      reservations_agencies: Reservaciones de Agencia
       destinations: Destinos
       lodgments: Alojamientos
       multidestinations: Multidestinos
@@ -9,11 +10,19 @@ es:
       tours: Tours
       vehicles: Vehículos
       drivers: Conductores
+      agencies: Agencias
+      agents: Representates
       reservations-submenu:
         multidestinations: Multidestinos
         circuits: Circuitos
         tours: Tours
         vehicles: Traslados
+      agencies-submenu:
+        multidestinations: Multidestinos
+        circuits: Circuitos
+        tours: Reservaciones de Tours
+        vehicles: Reservaciones de Traslados
+        create: Crear Agencia
     models:
       singularize:
         keppler_travel/reservation: reservación
@@ -24,6 +33,8 @@ es:
         keppler_travel/circuit: circuito
         keppler_travel/vehicle: vehículo
         keppler_travel/driver: conductor
+        keppler_travel/agency: agencia
+        keppler_travel/agent: representante
       pluralize:
         reservations: reservaciones
         destinations: destinos
@@ -33,6 +44,8 @@ es:
         circuits: circuitos
         vehicles: vehículos
         drivers: conductores
+        agencies: agencias
+        agents: representates
     modules:
       keppler_travel/admin/reservations: "KepplerTravel → Reservaciones %{model}"
       keppler_travel/admin/destinations: 'KepplerTravel → Destinos'
@@ -42,6 +55,9 @@ es:
       keppler_travel/admin/circuits: 'KepplerTravel → Circuitos'
       keppler_travel/admin/vehicles: 'KepplerTravel → Vehículos'
       keppler_travel/admin/drivers: 'KepplerTravel → Conductores'
+      keppler_travel/admin/agencies: 'KepplerTravel → Agencias'
+      keppler_travel/admin/agents: "KepplerTravel → Agencia: %{agency} - Representantes"
+      show_agents: "%{agency}   Representante"
     settings:
     actions:
       confirm_transfer: Confirmar Traslado
@@ -112,6 +128,10 @@ es:
       seat_max: Asientos máx. Permitidos
       price_cop: Precio COP
       price_usd: Precio USD
+      unique_code: Código Único 6 hex
+      comission_percentage: Porcentaje de comisión
+      lending_percentage: Porcentaje de prestación
+      agency: Agencia
       id: Identificador
       title: Título
       subtitle: Subtítulo

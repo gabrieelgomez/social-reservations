@@ -4,7 +4,6 @@
       .card
         .card-header
           %h4.card-title Órdenes de Reserva
-          -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
         .card-body
           .table-responsive
             %table.table.table-hover.table-striped
@@ -38,18 +37,6 @@
                             %span
                               %i.icon-credit-card.icons
                             Detalles
-                      -#%td= reservation.id
-                      -#%td= reservation.invoice.token
-                      -#%td{style:"text-align: center;"}
-                        %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                      -#%td= reservation.reservationable.title[@lang]
-                      -#%td= truncate(reservation.origin, length: 25)
-                      -#%td= truncate(reservation.arrival, length: 25)
-                      -#%td= reservation.user.name.titleize
-                      -#%td= reservation.travellers.count
-                      -#%td= reservation.quantity_adults
-                      -#%td= reservation.quantity_kids
- 
 
 %script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript

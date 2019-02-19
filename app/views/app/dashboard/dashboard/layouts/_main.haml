@@ -8,41 +8,9 @@
       %span.navbar-toggler-bar.burger-lines
     .collapse.navbar-collapse.justify-content-end
       %ul.nav.navbar-nav.mr-auto
-        -#%li.nav-item
-          %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
-            %i.nc-icon.nc-palette
-        /
-          <li  aria-haspopup="true" class="dropdown nav-item">
-          <a  data-toggle="dropdown" class="nav-link dropdown-toggle">
-          <i  class="nc-icon nc-planet"></i>
-          <b  class="caret"></b>
-          <span  class="notification">5</span>
-          </a>
-          <div  class="dropdown-menu" style="display: none;">
-          <a  href="#" class="dropdown-item">Notification 1</a>
-          <a  href="#" class="dropdown-item">Notification 2</a>
-          <a  href="#" class="dropdown-item">Notification 3</a>
-          <a  href="#" class="dropdown-item">Notification 4</a>
-          <a  href="#" class="dropdown-item">Another notification</a>
-          </div>
-          </li>
-        /
-          <li class="nav-item">
-          <a href="#" class="nav-link">
-          <i class="nc-icon nc-zoom-split"></i>
-          <span class="d-lg-block">&nbsp;Search</span>
-          </a>
-          </li>
       %ul.navbar-nav.ml-auto
-        /
-          <li class="nav-item">
-          <a href="#" class="nav-link">
-          Account
-          </a>
-          </li>
         %li.dropdown.nav-item{"aria-haspopup" => "true"}
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
-            -#%i.nc-icon.nc-circle-09.ico-profile
             .perfil
               = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '25px', width: '', class: 'img-fluid rounded-circle'
             %span.no-icon.drop-link{style:''} Mi cuenta
@@ -58,14 +26,10 @@
             = link_to users_details_path(@lang, @currency), class:'dropdown-item'  do
               %i.nc-icon.nc-single-02
               Mi Perfil
+
             = link_to destroy_session_path(current_user), class:'dropdown-item'  do
               %i.nc-icon.nc-button-power
               Cerrar Sesión
-        -#%li
-          = link_to destroy_session_path(current_user), class:''  do
-            %i.nc-icon.nc-button-power
-            Cerrar Sesión
-          -#%span.no-icon
 :scss
   .ico-profile{
     font-weight: 700;

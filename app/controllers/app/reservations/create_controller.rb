@@ -13,6 +13,26 @@ module App::Reservations
       )
     end
 
+    def set_price_agency
+      if @user.try(:has_role_agentable?)
+        if @user.agency
+          @agency = @user.agency
+          @agent  = nil
+        elsif @user.agent
+          @agency = @user.agent.agency
+          @agent  = @user.agent
+        end
+        @comission = @agency.comission_percentage
+        @lending   = @agency.lending_percentage
+        @price_comission = @price_total * (@comission/100)
+        @price_lending   = @price_total * (@lending/100)
+        @price_total_pax = @price_total
+        @price_total     = @price_total - @price_comission - @price_lending
+        @price_total_agency = @price_total
+
+      end
+    end
+
     def find_or_create_user
       # if user not loggeding
       unless current_user

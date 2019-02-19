@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_165433) do
+ActiveRecord::Schema.define(version: 2019_02_19_171544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,34 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keppler_travel_agencies", force: :cascade do |t|
+    t.string "unique_code", default: "8A0DB5"
+    t.float "comission_percentage", default: 0.0
+    t.float "lending_percentage", default: 0.0
+    t.bigint "user_id"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_keppler_travel_agencies_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_agencies_on_user_id"
+  end
+
+  create_table "keppler_travel_agents", force: :cascade do |t|
+    t.string "unique_code", default: "2427FD"
+    t.float "comission_percentage", default: 0.0
+    t.float "lending_percentage", default: 0.0
+    t.bigint "user_id"
+    t.bigint "agency_id"
+    t.integer "position"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_keppler_travel_agents_on_agency_id"
+    t.index ["deleted_at"], name: "index_keppler_travel_agents_on_deleted_at"
+    t.index ["user_id"], name: "index_keppler_travel_agents_on_user_id"
+  end
+
   create_table "keppler_travel_car_descriptions", force: :cascade do |t|
     t.string "license"
     t.string "color"
@@ -94,6 +122,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["driver_id"], name: "index_keppler_travel_car_descriptions_on_driver_id"
     t.index ["vehicle_id"], name: "index_keppler_travel_car_descriptions_on_vehicle_id"
   end
@@ -232,6 +261,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.bigint "car_description_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["car_description_id"], name: "index_keppler_travel_licenses_on_car_description_id"
   end
 
@@ -313,6 +343,20 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.bigint "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "agency_id"
+    t.float "comission", default: 0.0
+    t.float "lending", default: 0.0
+    t.float "price_comission", default: 0.0
+    t.float "price_lending", default: 0.0
+    t.float "price_total_agency", default: 0.0
+    t.float "price_total_pax", default: 0.0
+    t.float "price_vehicle", default: 0.0
+    t.integer "agent_id"
+    t.datetime "deleted_at"
+    t.string "user_referer"
+    t.integer "driver_referer"
+    t.integer "agency_referer"
+    t.integer "agent_referer"
     t.index ["driver_id"], name: "index_keppler_travel_orders_on_driver_id"
     t.index ["reservation_id"], name: "index_keppler_travel_orders_on_reservation_id"
   end
@@ -352,6 +396,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_165433) do
     t.datetime "updated_at", null: false
     t.string "hour_origin"
     t.string "hour_arrival"
+    t.integer "position_status", default: 1
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"

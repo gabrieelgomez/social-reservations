@@ -1,4 +1,3 @@
--#conditioned snippet - variable in the controller
 .container-fluid
   .row
     - if current_user.reservations_where('circuit').blank?
@@ -8,7 +7,6 @@
             %center
               .image-ico
                 %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
-              -#%i.icon-directions.icons
           .col-12
             .error
               %center
@@ -19,7 +17,6 @@
         .card
           .card-header
             %h4.card-title Órdenes de Circuitos
-            -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
           .card-body
             .table-responsive
               %table.table.table-hover.table-striped
@@ -42,28 +39,9 @@
                       %td= reservation.travellers.first.name.titleize
                       %td
                         %span.badge.badge-pill{class: reservation.invoice.status_class?}= reservation.invoice.status.capitalize
-                      -#%td
-                        - if reservation.invoice.amount.nil?
-                          Por cotizar
-                        - elsif reservation.invoice.status_pay? :pending
-                          %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
-                            %button.btn.btn-primary.btn-xs{:type => "button"}
-                              %span
-                                %i.icon-credit-card.icons
-                              Pagar
-                        - else
-                          %h6 Pagado
                       %td
                         %a{href: order_details_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons
                             Detalles
-                      -#%td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                      -#%td{style:"text-align: center;"}
-                        %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                      -#%td= reservation.travellers.first.try(:name)
-                      -#%td= truncate(reservation.origin, :length => 25)
-                      -#%td= reservation.flight_origin
-                      -#%td= reservation.quantity_adults
-                      -#%td= reservation.quantity_kids

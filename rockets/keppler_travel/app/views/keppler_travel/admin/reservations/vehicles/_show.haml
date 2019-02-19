@@ -1,10 +1,11 @@
 - reservationable = @reservation.reservationable
 - invoice = @reservation.invoice
+- order = @reservation.order
 
 .container
   .row
     .col-lg-2
-      = link_to admin_travel_reservations_path(model_name: @model.downcase), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+      = link_to admin_travel_reservations_path(model_name: @model.downcase, type_search: params[:type_search]), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
         .arrow-back.btn.btn-default
           %i.fa.fa-angle-left
           = t('keppler.actions.back')
@@ -22,6 +23,12 @@
               - if can?(KepplerTravel::Reservation).destroy?
                 = link_to admin_travel_reservation_path(@reservation), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
                   %i.icon-trash
+
+              - if @type_search == 'agency'
+                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: 'agency'), class: 'new-menu', title: t('keppler.actions.edit') do
+                  %i.icon-pencil
+                  = t('keppler.actions.edit')
+
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
@@ -54,13 +61,25 @@
                   %th.display-label N° de Factura
                   %td.display-value.fs-body-1.tc-black-2= invoice.token
 
-                %tr.list-row
-                  %th.display-label Tipo de Moneda
-                  %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+                - if @reservation&.agency || @reservation&.agent
 
-                %tr.list-row
-                  %th.display-label Costo de la Reserva
-                  %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
+                  %tr.list-row
+                    %th.display-label Total PAX
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(order.price_total_pax, locale: @locale)
+
+                  %tr.list-row
+                    %th.display-label Total Agencia
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(order.price_total_agency, locale: @locale)
+
+                - else
+
+                  %tr.list-row
+                    %th.display-label Tipo de Moneda
+                    %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+
+                  %tr.list-row
+                    %th.display-label Costo de la Reserva
+                    %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
 
                 %tr.list-row
                   %th.display-label Estatus de la Reserva

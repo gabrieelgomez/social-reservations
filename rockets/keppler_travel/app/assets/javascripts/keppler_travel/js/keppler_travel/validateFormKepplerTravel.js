@@ -266,3 +266,63 @@ function validateDriver2(id_form){
    }
   });
 }
+
+
+function validateAgency(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'user[name]': { required: true},
+     'user[email]': { required: true, email:true},
+     'user[phone]': { required: true},
+     'user[dni]': { required: true},
+     'user[password]': { required: true},
+     'user[password_confirmation]': { required: true, equalTo: "#user_password"}
+     },
+   messages: {
+     'user[name]': 'No puede estar en blanco',
+     'user[phone]': 'No puede estar en blanco',
+     'user[dni]': 'No puede estar en blanco',
+     'user[password]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+     var avatar = $('#user_avatar').val();
+     if (avatar == ""){
+       alert('Agregue una imagen');
+     }
+     else{
+       form.submit();
+     }
+   }
+  });
+}
+
+
+function validateAgency2(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'user[name]': { required: true},
+     'user[email]': { required: true, email:true},
+     'user[phone]': { required: true},
+     'user[dni]': { required: true},
+     'user[password]': { required: true},
+     'user[password_confirmation]': { required: true, equalTo: "#user_password"}
+     },
+   messages: {
+     'user[name]': 'No puede estar en blanco',
+     'user[phone]': 'No puede estar en blanco',
+     'user[dni]': 'No puede estar en blanco',
+     'user[password]': 'No puede estar en blanco'
+     },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+     form.submit();
+   }
+  });
+}

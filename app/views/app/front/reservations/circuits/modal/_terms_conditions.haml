@@ -5,7 +5,6 @@
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h4.modal-title Términos y Condiciones
       .modal-body
-        -# %h4 Text in a modal
         %p= @setting.try("terms_conditions_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
