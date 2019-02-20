@@ -16,7 +16,7 @@
                 %img{:alt => "icon-phone", :src => "/assets/img/whatsapp-logo.svg"}/
                 %span +57 317 3632119
         .col-md-6.col-lg-6.nav-padding
-          .col-md-3.col-lg-4.nav-padding
+          .col-md-3.col-lg-2.nav-padding
             .item-contact.idioma
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
@@ -29,18 +29,18 @@
                     = url_lang('en', @currency, request, 'Inglés')
                   %li
                     = url_lang('pt', @currency, request, 'Portugués')
-          .col-md-3.col-lg-4.nav-padding
+          .col-md-3.col-lg-3.nav-padding
             .item-contact.money
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
                   Moneda
                   %span.caret
                 %ul.dropdown-menu
-                  -# %li
-                  -#   = url_lang(@lang, 'cop', request, 'COP')
+                  -#%li
+                    = url_lang(@lang, 'cop', request, 'COP')
                   %li
                     = url_lang(@lang, 'usd', request, 'USD')
-          .col-md-6.col-lg-4
+          .col-md-6.col-lg-7
             .item-contact.login
               - if user_signed_in?
                 .dropdown.pull-right

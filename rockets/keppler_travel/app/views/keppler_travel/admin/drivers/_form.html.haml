@@ -37,9 +37,9 @@
                         = f.input :password, label: t('simple_form.labels.defaults.password'), placeholder: 'Password', input_html: {class: 'form-control'}, required: true
                       .col-xs-12.col-lg-6
                         = f.input :password_confirmation, label: t('simple_form.labels.defaults.password_confirmation'), placeholder: 'Password Confirmation', input_html: {class: 'form-control'}, required: true
-                      .col-xs-12.col-lg-12
+                      .col-xs-12.col-lg-12{style:'padding:0'}
                         = f.simple_fields_for [:admin, :travel, @driver] do |x|
-                          = x.input :timetrack, input_html: {type: 'hidden', value: 'Driver TimeTrack'}, label: false
+                          = x.input :timetrack, input_html: {type: 'hidden', value: 'Driver TimeTrack', style:'margin:0'}, label: false
                           .col-xs-12.col-lg-6
                             = x.input :bank
                           .col-xs-12.col-lg-6

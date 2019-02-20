@@ -39,8 +39,6 @@
 				%li
 					%a.fix{"data-toggle" => "tab", :href => "#multidestinations"}
 						%i.fa.fa-plane{style:'font-size: 15px;'}
-
-
 		.tab-content
 			// Transfers
 			#transfers.tab-pane.fade.in.active.test
@@ -67,3 +65,10 @@
 	}
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6Fm4Tge8PJpUNhByW314XyvQGJRpDFc&sensor=false&libraries=places", :type => "text/javascript"}
+-#:javascript
+	-# $(document).ready(function(){
+	-# 	$("#myTabs a").click(function(){
+	-# 		e.preventDefault()
+	-# 		$(this).tab('show');
+	-# 	});
+	-# });

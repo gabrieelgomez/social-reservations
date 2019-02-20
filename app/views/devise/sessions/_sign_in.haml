@@ -1,10 +1,11 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
   .form-label-group
-    -#= f.label :email
     = f.email_field :email, :autofocus => true, class: "form-control validate", :placeholder => "E-mail"
   .form-label-group
-    -#= f.label :password
     = f.password_field :password, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Password"
+  .form-label-group.input-agency.hide-input
+    %input#pwd.form-control{:type => "password", :placeholder => "Agency Code"}/
+    -#= f.password_field :password_agency, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Agency Code"
   .form-group.has-feedback
     .devise-errors.center-align
       - flash.each do |name, msg|
@@ -15,3 +16,4 @@
   -#   - if devise_mapping.recoverable?
   -#     = link_to "#tab3", class: "recoverable" do
   -#       = t("devise.sessions.forgot_password")
+
