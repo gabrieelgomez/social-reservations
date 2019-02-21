@@ -15,6 +15,11 @@ module KepplerTravel
 
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
 
+    def country_name
+      iso = ISO3166::Country["#{self.country}"]
+      country_message = iso.translations[I18n.locale.to_s] || iso.name
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["unique_code", "comission_percentage", "lending_percentage", "user_id", "position", "deleted_at"]

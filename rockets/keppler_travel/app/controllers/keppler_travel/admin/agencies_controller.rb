@@ -53,7 +53,11 @@ module KepplerTravel
         @user.format_accessable_passwd(password)
         @agency = @user.build_agency(
                     comission_percentage: params[:user][:agency][:comission_percentage],
-                    lending_percentage: params[:user][:agency][:lending_percentage]
+                    lending_percentage: params[:user][:agency][:lending_percentage],
+                    address: params[:user][:agency][:address],
+                    nit: params[:user][:agency][:nit],
+                    rnt: params[:user][:agency][:rnt],
+                    country: params[:user][:agency][:country]
                   )
         if @user.save
           @user.add_role :agency
@@ -77,8 +81,16 @@ module KepplerTravel
         if @user.update_attributes(update_attributes)
           cp = params[:user][:agency][:comission_percentage]
           lp = params[:user][:agency][:lending_percentage]
+          address = params[:user][:agency][:address]
+          nit = params[:user][:agency][:nit]
+          rnt = params[:user][:agency][:rnt]
+          country = params[:user][:agency][:country]
           @user.agency.update(comission_percentage: cp) if cp
           @user.agency.update(lending_percentage: lp) if lp
+          @user.agency.update(address: address) if address
+          @user.agency.update(nit: nit) if nit
+          @user.agency.update(rnt: rnt) if rnt
+          @user.agency.update(country: country) if country
           redirect(@user.agency, params)
         else
           render :edit
@@ -160,14 +172,15 @@ module KepplerTravel
       # Only allow a trusted parameter "white list" through.
       def agency_params
         params.require(:agency).permit(:unique_code, :comission_percentage,
-          :lending_percentage, :user_id, :position, :deleted_at)
+          :lending_percentage, :user_id, :position, :deleted_at, :address, :nit,
+          :rnt, :country)
       end
 
       def user_params
         params.require(:user).permit(
           :name, :email, :phone, :dni, :password, :password_confirmation,
           :role_ids, :encrypted_password, :avatar,
-          agency_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at]
+          agency_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at, :address, :nit, :rnt, :country]
         )
       end
 

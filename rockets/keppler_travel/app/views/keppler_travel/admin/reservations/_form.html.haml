@@ -23,37 +23,134 @@
                 .form-padding
                   .col-xs-12
                     .form-group.radio_buttons.optional.reservation_status
-                      %label.control-label.radio_buttons.optional Status
-                      %input{name: "reservation[status]", type: "hidden", value: ""}/
-                      %span.radio
-                        %span Pendiente
-                        %i.icon-check
+                      %label.control-label.radio_buttons.optional Estatus de la reservación
+
+                      - if @reservation.status == 'pending'
+                        %span.radio
+                          %span Pendiente
+                          %i.icon-check
+                      - else
+                        %span.radio
+                          -# %strike Pendiente
 
                       %span.radio
-                        - if @reservation.position_status <= 1
-                          %label{for: "reservation_status_1"}
-                            = f.input :position_status, input_html: {value: 2}, as: :hidden
-                            %input#reservation_status_1.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "cancelled"}>/
+                        - if @reservation.status == 'pending'
+                          %label{id: 'cancelled', for: "reservation_status_2"}
+                            -# = f.input :position_status, input_html: {value: 2}, as: :hidden
+                            %input#reservation_status_2.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "cancelled"}>/
                             Cancelada
-                        - elsif @reservation.position_status == 2
+                        - elsif @reservation.status == 'cancelled'
                           %span Cancelada
                           %i.icon-check
-                          %span.radio
-                            %strike Aprobada
+                          -# %span.radio
+                          -#   %strike Credito Agencia
+                          -#   %br
+                          -#   %strike Link de Cobro
 
                       %span.radio
-                        - if @reservation.position_status <= 1
-                          %label{for: "reservation_status_2"}
-                            = f.input :position_status, input_html: {value: 3}, as: :hidden
-                            %input#reservation_status_2.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "approved"}>/
-                            Aprobada
-                        - elsif @reservation.position_status == 3
-                          %span Aprobada
+                        - if @reservation.status == 'pending'
+                          %label{id: 'credit_agency', for: "reservation_status_3"}
+                            -# = f.input :position_status, input_html: {value: 3}, as: :hidden
+                            %input#reservation_status_3.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "credit_agency"}>/
+                            Credito Agencia
+                        - elsif @reservation.status == 'credit_agency'
+                          %span Credito Agencia
                           %i.icon-check
+                          -# %span.radio
+                          -#   %strike Cancelada
+                          -#   %br
+                          -#   %strike Link de Cobro
+
+                      %span.radio
+                        - if @reservation.status == 'pending'
+                          %label{id: 'payment_link', for: "reservation_status_4"}
+                            -# = f.input :position_status, input_html: {value: 4}, as: :hidden
+                            %input#reservation_status_4.radio_buttons.optional{name: "reservation[status]", type: "radio", value: "payment_link"}>/
+                            Link de Cobro
+                          %br
+                            .col-lg-12
+                              .col-lg-6
+                                = f.input :url_payment, label: 'Link de cobro'
+                        - elsif @reservation.status == 'payment_link'
+                          %span Link de Cobro
+                          %i.icon-check
+                          %br
+                          %a{href: @reservation.url_payment, target: '_blank'} Ir a URL
+                          %br
+                          %span= @reservation.url_payment
+
+                          -# %span.radio
+                          -#   %strike Cancelada
+                          -#   %br
+                          -#   %strike Crédito Agencia
+
+                  .col-xs-12#status_payment
+                    .form-group.radio_buttons.optional.reservation_status_pay
+                      %label.control-label.radio_buttons.optional Estatus del pago
+                      - if @reservation.status_pay == 'pending'
+                        %span.radio
+                          %label{for: "reservation_status_pay_1"}
+                            -# = f.input :position_status_pay, input_html: {value: 2}, as: :hidden
+                            %input#reservation_status_pay_1.radio_buttons.optional{checked: 'checked', name: "reservation[status_pay]", type: "radio", value: "pending"}>/
+                            Pago Pendiente
+                        %br
+                        %span.radio
+                          %label{for: "reservation_status_pay_2"}
+                            -# = f.input :position_status_pay, input_html: {value: 2}, as: :hidden
+                            %input#reservation_status_pay_2.radio_buttons.optional{name: "reservation[status_pay]", type: "radio", value: "approved"}>/
+                            Pago Aprobado
+
+                      - if @reservation.status_pay == 'pending' && @reservation.status == 'payment_link'
+                        %span.radio
+                          %label{for: "reservation_status_pay_1"}
+                            -# = f.input :position_status_pay, input_html: {value: 2}, as: :hidden
+                            %input#reservation_status_pay_1.radio_buttons.optional{checked: 'checked', name: "reservation[status_pay]", type: "radio", value: "pending"}>/
+                            Pago Pendiente
+                        %br
+                        %span.radio
+                          %label{for: "reservation_status_pay_2"}
+                            -# = f.input :position_status_pay, input_html: {value: 2}, as: :hidden
+                            %input#reservation_status_pay_2.radio_buttons.optional{name: "reservation[status_pay]", type: "radio", value: "approved"}>/
+                            Pago Aprobado
+
+                      - elsif @reservation.status_pay == 'pending'
+                        .col-xs-12
+
                           %span.radio
-                            %strike Cancelada
+                            %span Pago Pendiente
+                            %i.icon-check
+
+                      - if @reservation.status_pay == 'approved'
+                        .col-xs-12
+                          %span.radio
+                            %span Pago Aprobado
+                            %i.icon-check
+                          %br
 
                   .col-xs-12
                     .pull-right
                       = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary', data: { confirm: '¿Estás seguro?, esta acción es irreversible' }
                       -# = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+:javascript
+  var reservation_id = #{raw @reservation.id};
+  validateReservationStatus(`#edit_reservation_${reservation_id}`);
+
+:javascript
+  var reservation_id = #{raw @reservation.id};
+  $('.reservation_url_payment').hide();
+  $('#status_payment').hide();
+
+  $('#payment_link').click(function(){
+    $('.reservation_url_payment').show();
+    $('#status_payment').show();
+  });
+
+  $('#cancelled').click(function(){
+    $('.reservation_url_payment').hide();
+    $('#status_payment').hide();
+  });
+
+  $('#credit_agency').click(function(){
+    $('.reservation_url_payment').hide();
+    $('#status_payment').show();
+  });

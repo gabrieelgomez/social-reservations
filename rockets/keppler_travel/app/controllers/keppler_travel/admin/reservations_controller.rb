@@ -85,9 +85,17 @@ module KepplerTravel
       def update
         if @reservation.update(reservation_params)
           @reservation.invoice.update(status: reservation_params[:status])
-          @reservation.order.update(status: reservation_params[:status])
-          ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
-          ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
+          @reservation.invoice.update(status: reservation_params[:status])
+
+          @reservation.order.update(status_pay: reservation_params[:status_pay])
+          @reservation.order.update(status_pay: reservation_params[:status_pay])
+
+          @reservation.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+          @reservation.invoice.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+          @reservation.order.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+
+          # ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
+          # ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
           redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: 'agency')
         else
           render :edit
@@ -173,6 +181,7 @@ module KepplerTravel
         :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
         :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :status,
         :quantity_kit, :round_trip, :airport_origin, :position_status, :deleted_at,
+        :url_payment, :position_status_pay, :status_pay,
         travellers_attributes: [:name, :dni])
       end
 

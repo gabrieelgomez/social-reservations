@@ -131,6 +131,10 @@ es:
       unique_code: Código Único 6 hex
       comission_percentage: Porcentaje de comisión
       lending_percentage: Porcentaje de prestación
+      country: País
+      address_agency: Dirección
+      rnt: RNT
+      nit: NIT
       agency: Agencia
       id: Identificador
       title: Título
