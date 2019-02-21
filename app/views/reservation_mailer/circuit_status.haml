@@ -271,8 +271,6 @@
                   %tr
                     %td.content-cell
                       %h1="¡Estimado Usuario! Has realizado una Reservación"
-                      -#- @reservation.as_json(only: ["origin", "arrival", 'flight_origin', 'flight_arrival', 'quantity_adults', 'quantity_kids', 'airline_origin', 'airline_arrival', 'flight_number_origin', 'flight_number_arrival', 'description']).each do |attribute, value|
-                      -# unless attribute.eql?('position') || attribute.eql?('deleted_at')
                       %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
                         %tr
                           %td.attributes_content
@@ -332,34 +330,28 @@
                                 %td.attributes_item
                                   %strong Fecha de Reserva:
                                   = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+
                       %p
                         Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
                         = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
                           %span +573173632119
+                      %p
                         If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
                         = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
                           %span +573173632119
                       %p
-                        Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
-                        tener
-                        %br/
+                        -#Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
+                        -#tener
+                        -#%br/
                         %strong Un cordial saludo - Receptivo Colombia
             %tr
               %td
                 %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
                   %tr
                     %td.content-cell{:align => "center"}
-                      %p.sub.align-center Receptivo Colombia © - 2018 | Todos los derechos reservados
+                      %p.sub.align-center Receptivo Colombia © - 2019 | Todos los derechos reservados
                       %p.sub.align-center
                         Desarrollado por
                         %a#company{:href => "http://slicegroup.xyz"}
                           %strong Slice Group
 
--#%table.table.table-striped
-  %tbody
-    - @reservation.as_json(only: ["origin", 'origin_location', 'flight_origin', 'quantity_adults', 'quantity_kids', 'description', 'user']).each do |attribute, value|
-      - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-        %tr.list-row
-          %th.display-label= t("activerecord.attributes.#{attribute}")
-          %td.display-value.fs-body-1.tc-black-2
-            = value.blank? ? '-----------' : value

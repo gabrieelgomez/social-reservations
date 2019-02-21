@@ -17,7 +17,13 @@
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span= reservation.invoice.status
+        %span.badge.btn-warning= reservation.invoice.status 
+
+      -#Status / Color
+        Green / Approved  ---- .btn-success
+        Red  / Canceled   ---- .btn-danger
+        Yellow / Pending  ---- .btn-warning    
+
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
@@ -41,7 +47,7 @@
         = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
           %span
             = reservation.user.email
-    %td.hidden-xs.hidden-sm
+    -#%td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
           = reservation.driver.nil? ? 'No Asignado' : reservation.driver.user.name
