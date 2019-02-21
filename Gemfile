@@ -83,6 +83,9 @@ gem 'rolify', '5.2.0'
 # Search
 gem 'ransack', '1.8.8'
 
+# Countries
+gem 'country_select'
+
 # Route translation
 gem 'route_translator', '5.6.2'
 

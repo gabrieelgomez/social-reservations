@@ -326,3 +326,24 @@ function validateAgency2(id_form){
    }
   });
 }
+
+
+function validateReservationStatus(id_form){
+  $(id_form).validate({
+   event: "blur",
+   errorClass: "error-class",
+   validClass: "valid-class",
+   rules: {
+     'reservation[status]': { required: true},
+     'reservation[status_pay]': { required: true}
+     },
+     messages: {}
+       'reservation[status]': 'Selecciona una opción',
+       'reservation[status_pay]': 'Selecciona una opción'
+       },
+   debug: true,errorElement: "label",
+   submitHandler: function(form){
+     form.submit();
+   }
+  });
+}

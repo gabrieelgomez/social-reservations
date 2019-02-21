@@ -20,7 +20,15 @@ module KepplerTravel
     accepts_nested_attributes_for :travellers
     accepts_nested_attributes_for :square
     accepts_nested_attributes_for :order
-    validates_inclusion_of :status, :in => %w(pending cancelled approved)
+
+    # position_status
+    # 1 = pending
+    # 2 = cancelled
+    # 3 = credit_agency
+    # 4 = payment_link
+
+    validates_inclusion_of :status, :in => %w(pending cancelled credit_agency payment_link)
+    validates_inclusion_of :status_pay, :in => %w(pending approved)
 
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'

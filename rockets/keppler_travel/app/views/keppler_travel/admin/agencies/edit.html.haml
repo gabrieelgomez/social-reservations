@@ -36,6 +36,14 @@
                           = x.input :comission_percentage, input_html: { min: 0 }, label: 'Porcentaje de comisión'
                         .col-xs-12.col-lg-6
                           = x.input :lending_percentage, input_html: { min: 0 }, label: 'Porcentaje de prestación'
+                        .col-xs-12.col-lg-6
+                          = x.input :nit, input_html: { min: 0 }, label: 'NIT'
+                          = x.input :country, input_html: { min: 0 }, label: 'Pais'
+                        .col-xs-12.col-lg-6
+                          = x.input :rnt, input_html: { min: 0 }, label: 'RNT'
+                        .col-xs-12.col-lg-6
+                          = x.input :address, input_html: { min: 0 }, label: 'Dirección'
+
                         .col-xs-12
                           = x.input :position, as: :hidden
                         .col-xs-12
@@ -53,6 +61,6 @@
                       = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 
 
-:javascript
-  var user_id = #{raw @user.id};
-  validateAgency2(`#edit_user_${user_id}`);
+// :javascript
+//   var user_id = #{raw @user.id};
+//   validateAgency2(`#edit_user_${user_id}`);
