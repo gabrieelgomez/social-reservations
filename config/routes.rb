@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/filter', to: 'admin/users#index', as: :filter_by_role
 
   # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
-  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /usd/} do
+  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
 
     get '/', to: 'app/front#index', as: :index_app
     get 'about', to: 'app/front#about'

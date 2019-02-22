@@ -30,7 +30,7 @@ module App
       @cotization  = true if @departament[0] != @departament[1]
 
       respond_to do |format|
-        format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, status: 200 }
+        format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, currency: @currency, status: 200 }
         format.html
       end
     end
@@ -85,6 +85,9 @@ module App
     def set_lang_currency
       @currency = params[:currency]
       @lang     = params[:locale]
+      unless current_user.nil?
+        @currency = 'cop' if current_user.has_role?(:agency) || current_user.has_role?(:agent)
+      end
     end
 
   end

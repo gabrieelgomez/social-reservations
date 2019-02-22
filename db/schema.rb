@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_013709) do
+ActiveRecord::Schema.define(version: 2019_02_22_175538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_013709) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
-    t.string "unique_code", default: "A64F7B"
+    t.string "unique_code", default: "8A0DB5"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -99,12 +99,13 @@ ActiveRecord::Schema.define(version: 2019_02_21_013709) do
     t.string "nit", default: ""
     t.string "rnt", default: ""
     t.string "country", default: ""
+    t.string "owner", default: ""
     t.index ["deleted_at"], name: "index_keppler_travel_agencies_on_deleted_at"
     t.index ["user_id"], name: "index_keppler_travel_agencies_on_user_id"
   end
 
   create_table "keppler_travel_agents", force: :cascade do |t|
-    t.string "unique_code", default: "478B9D"
+    t.string "unique_code", default: "2427FD"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
