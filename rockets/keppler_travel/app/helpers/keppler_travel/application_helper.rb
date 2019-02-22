@@ -1,5 +1,12 @@
 module KepplerTravel
   module ApplicationHelper
+
+    def field(field)
+      return '-------' if field.blank?
+
+      field
+    end
+
     def files_exist(type, files, input_name)
       class_images = 'product_images_files'
       url = request.protocol + request.host_with_port + '/'

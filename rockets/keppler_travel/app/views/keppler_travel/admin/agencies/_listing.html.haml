@@ -31,11 +31,11 @@
       = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
         %span
           = agency.lending_percentage
-
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_agency_agents_path(agency, search: @query), class: 'show-row' do
-        %i.icon-plus Agregar
-
+        %span
+          %i.icon-plus 
+          Agregar
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{agency.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
         %i.icon-options-vertical

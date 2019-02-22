@@ -49,6 +49,14 @@
               - @destinations.each do |destination|
                 %option{ name: 'destination', value: destination.custom_title['es'], selected: (@selected if destination.custom_title['es'] == @selected) }= destination.custom_title['es']
 
+          -#%br
+          -#%label.control-label.string.required{ for: 'user_name' } Filtrar por Conductores
+          -#%br
+          -#%select#js-search-multiple{:multiple => "multiple", :style => ""}
+            %option{:value => "Gabriel"} Gabriel
+            %option{:value => "Estrella"} Estrella
+            %option{:value => "Yibely"} Yibely
+
         .box.slice-box
           .box-body.no-padding
 
@@ -60,8 +68,7 @@
                       %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.drivers"))
                 - else
                   %tr
-                    %th
-                    -# %th Estatus
+                    %th Avatar
                     %th Perfil
                     %th Destino
                     %th.hidden-xs Nombre
@@ -70,8 +77,8 @@
                     %th.hidden-xs Identificación
                     %th.hidden-xs Teléfono
                     %th Vehículos
-                    %th.center Menu
-                    %th
+                    -#%th.center Menu
+                    -#%th
               %tbody#objects-container
                 = render 'admin/layouts/listing_preloader'
                 = render 'listing', objects: @objects
@@ -109,8 +116,26 @@
      background-color: #d9534f;
   }
 
+  .select2-selection {
+    border-radius: 0 !important; 
+  }    
+  .select2-container--default.select2-container--focus .select2-selection--multiple {
+      border: solid #f44336 1px !important; 
+      outline: 0;
+  }
+
 
 :javascript
+
+
+  $(document).ready(function(){
+    $("#js-search-multiple").select2({
+      placeholder: "Search drivers",
+      allowClear: true,
+      width: '100%'
+    });
+  });
+
   $(document).ready(function(){
     $('#driver').click(function() {
       $('#upload_file_driver').click()
