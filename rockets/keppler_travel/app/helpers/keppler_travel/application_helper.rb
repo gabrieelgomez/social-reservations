@@ -3,7 +3,6 @@ module KepplerTravel
 
     def field(field)
       return '-------' if field.blank?
-
       field
     end
 

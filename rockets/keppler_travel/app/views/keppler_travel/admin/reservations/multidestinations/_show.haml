@@ -27,79 +27,194 @@
               - if can?(KepplerTravel::Reservation).destroy?
                 = link_to admin_travel_reservation_path(@reservation), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
                   %i.icon-trash
-          .box-body.box-body-no-padding
-            %table.table.table-striped
-              %tbody
-                - @reservation.as_json(only: ["origin", 'flight_origin', 'quantity_adults', 'quantity_kids', 'description', 'user']).each do |attribute, value|
-                  - unless attribute.eql?('position') || attribute.eql?('deleted_at')
-                    %tr.list-row
-                      %th.display-label= t("activerecord.attributes.#{attribute}")
-                      %td.display-value.fs-body-1.tc-black-2
-                        - if @attachments.include?(attribute)
-                          = image_tag value.url unless value.url.blank?
-                        - else
-                          = value.blank? ? '-----------' : value
 
+      .col-lg-8
+        .box-body.box-body-no-padding
+          .invoice-transfers__box 
+            .row
+              .col-xs-12
+                .row
+                  .col-lg-2
+                    %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "120px"}/
+                  .col-lg-6
+                    %h2 Receptivo Colombia
+                    %p Operador turístico - Bogotá, Colombia
+                  .col-lg-1
+                  .col-lg-3
+                    %h3.pull-right="N° de Orden #{invoice.id}"
+                %hr/
+                .row
+                  .col-xs-12
+                    %address
+                      %strong Datos del Cotizante
+                      %br/
+                      = @reservation.user.name
+                      %br/
+                      = @reservation.user.phone.blank? ? '-----------' : @reservation.user.phone
+                      %br/
+                      = @reservation.user.email
+                      %br/
+                      = invoice.address.blank? ? '-----------' : invoice.address
+                .row
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Método de Pago
+                      %br/
+                      Pĺataforma: EnLineaPagos
+                      %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Tipo de Moneda
+                      %br/
+                      = invoice.currency.upcase
+                      %br/
+                      %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Estatus Reserva
+                      %br/
+                      %span.badge.btn-warning= invoice.status
+                      -#Status / Color
+                        Green / Approved  ---- .btn-success
+                        Red  / Canceled   ---- .btn-danger
+                        Yellow / Pending  ---- .btn-warning   
+                      %br/
+                      %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong N°. Orden ELP
+                      %br/
+                      = invoice.token
+                      %br/
+                      %br/
+                .row
+                  .col-xs-12.col-lg-12
+                    %h4.text-center Información del Multidestino
+                    %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Origen
+                      %br/
+                      = @reservation.origin.blank? ? '-----------' : @reservation.origin
+                      %br/                    
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Fecha de Ida
+                      %br/
+                      = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+                      %br/                      
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Adultos/Niños
+                      %br/
+                      = "#{@reservation.quantity_adults.to_i} / #{@reservation.quantity_kids.to_i}"
+                      %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Tipo de Alojamiento
+                      %br/
+                      = "Tipo de Alojamiento"
+                      %br/
+                  .col-xs-12.col-lg-12
+                    %address
+                      %strong Observaciones
+                      %br/ 
+                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br
+                  .col-xs-12
+                    %strong Datos de los Viajeros
+                    %br/
+                    %table.table.table-striped#travellers
+                      -#%thead
+                        %tr
+                          %th 
+                      %tbody
+                        - @reservation.travellers.each_with_index do |traveller, index|                     
+                          %tr.list-row{style:'background-color: transparent !important;'}
+                            %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
+                            = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+                .row
+                  .col-xs-12.col-lg-12
+                    .panel.panel-default
+                      .panel-heading
+                        %h3.panel-title
+                          %strong Descripción
+                      .panel-body
+                        .table-responsive
+                          %table.table.table-condensed
+                            %thead
+                              %tr
+                                %td.text-center
+                                  %strong Concepto
+                                %td.text-center
+                                  %strong Precio
+                                %td.text-center
+                                  %strong Cantidad
+                                %td.text-center
+                                  %strong Total                             
+                            %tbody
+                              %tr
+                                %td.text-center= "Tipo de Hotel"
+                                %td.text-center= "Precio"
+                                %td.text-center= "Cantidad"
+                                %td.text-center= "Total"
+                              %tr
+                                %td.text-center= "Cantidad de Niños"
+                                %td.text-center= "Precio"
+                                %td.text-center= "Cantidad"
+                                %td.text-center= "Total"
 
-  .show-section
-    .row
-      .col-lg-12
-        .box.slice-box
-          .box-header.with-border
-            %h3.box-title Datos de Orden/Factura
-            .box-tools.pull-right
-          .box-body.box-body-no-padding
-            %table.table.table-striped
-              %tbody
+                              %tr
+                                %td.text-center= "Cantidad de Adultos"
+                                %td.text-center= "Precio"
+                                %td.text-center= "Cantidad"
+                                %td.text-center= "Total"
 
-                %tr.list-row
-                  %th.display-label N° de Orden
-                  %td.display-value.fs-body-1.tc-black-2= invoice.id
+                  - if @type_search == 'agency'
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading
+                          %h3.panel-title
+                            %strong Porcentajes de Agencia
+                        .panel-body
+                          .table-responsive
+                            %table.table.table-condensed
+                              %thead
+                                %tr
+                                  %td.text-center
+                                    %strong Concepto
+                                  %td.text-center
+                                    %strong Valor
+                                  %td.text-center
+                                    %strong Subtotal
+                                  %td.text-center
+                                    %strong Total
+                              %tbody
+                                %tr
+                                  %td.text-center Comisión
+                                  %td.text-center= "#{@reservation.order.comission} %"
+                                  %td.text-center= number_to_currency(@reservation.order.price_comission, locale: @locale)
+                                  %td.text-center -----
 
-                %tr.list-row
-                  %th.display-label N° de Factura
-                  %td.display-value.fs-body-1.tc-black-2= invoice.token
+                                %tr
+                                  %td.text-center Prestación
+                                  %td.text-center= "#{@reservation.order.lending} %"
+                                  %td.text-center= number_to_currency(@reservation.order.price_lending, locale: @locale)
+                                  %td.text-center -----
 
-                %tr.list-row
-                  %th.display-label Moneda
-                  %td.display-value.fs-body-1.tc-black-2= invoice.currency.upcase
+                                %tr
+                                  %td.text-center Total PAX
+                                  %td.text-center -----
+                                  %td.text-center -----
+                                  %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
 
-                %tr.list-row
-                  %th.display-label Costo de la Reserva
-                  %td.display-value.fs-body-1.tc-black-2= number_to_currency(invoice.amount, locale: @locale)
-
-                %tr.list-row
-                  %th.display-label Estatus de la Reserva
-                  %td.display-value.fs-body-1.tc-black-2= invoice.status
-
-                %tr.list-row
-                  %th.display-label Nombre del Cotizante
-                  %td.display-value.fs-body-1.tc-black-2= @reservation.travellers.first.name
-
-                %tr.list-row
-                  %th.display-label Dirección de Facturación
-                  %td.display-value.fs-body-1.tc-black-2= invoice.address
-
-  .show-section
-    .row
-      .col-lg-5
-        .box.slice-box
-          .box-header.with-border
-            %h3.box-title Cover
-            .box-tools.pull-right
-          .box-body.box-body-no-padding
-            = image_tag reservationable.files.first.url, class: 'img-show'
-      .col-lg-7
-        .box.slice-box
-          .box-header.with-border
-            %h3.box-title Datos del Circuito
-          .box-body.box-body-no-padding
-            %table.table.table-striped
-              %tbody
-                %tr.list-row
-                  %th.display-label= t("activerecord.attributes.title")
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= reservationable.title.blank? ? '-----------' : reservationable.title['es']
-
-                %tr.list-row
-                  %th.display-label= t("activerecord.attributes.quantity_days")
-                  %td.display-value.fs-body-1.tc-black-2.text-overflow= reservationable.quantity_days.blank? ? '-----------' : reservationable.quantity_days
+                                %tr
+                                  %td.text-center Total Agencia
+                                  %td.text-center -----
+                                  %td.text-center -----
+                                  %td.text-center= number_to_currency(@reservation.order.price_total_agency, locale: @locale)
+          %br
+          %br
+          %br
+          %br
+          %br

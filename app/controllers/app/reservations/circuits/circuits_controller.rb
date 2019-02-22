@@ -30,6 +30,7 @@ module App
             # Calculate Price
             build_invoice
             build_square
+            @reservation.build_order(details: 'user', status: 'pending')
             if @reservation.save!
               @reservation.order.update(
                 details: 'circuit',

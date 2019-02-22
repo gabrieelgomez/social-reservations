@@ -71,7 +71,11 @@
                     %address
                       %strong Estatus Reserva
                       %br/
-                      = invoice.status
+                      %span.badge.btn-warning= invoice.status
+                      -#Status / Color
+                        Green / Approved  ---- .btn-success
+                        Red  / Canceled   ---- .btn-danger
+                        Yellow / Pending  ---- .btn-warning   
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
@@ -85,7 +89,7 @@
                   .col-xs-12
                     %h4.text-center Información del Traslado
                     %br/
-                  .col-xs-4
+                  .col-xs-12.col-lg-4
                     %address
                       %strong Origen
                       %br/
@@ -104,7 +108,7 @@
                       %br/
                       = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
                       %br/                      
-                  .col-xs-4
+                  .col-xs-12.col-lg-4
                     %address
                       %strong Tipo de Traslado
                       %br/
@@ -125,7 +129,7 @@
                       %br/
                       = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
                       %br/                      
-                  .col-xs-4
+                  .col-xs-12.col-lg-4
                     %address
                       %strong Fecha/Hora de Ida
                       %br/
@@ -147,32 +151,13 @@
                       %br/
                       = @reservation.quantity_kit
                       piezas
-                  .col-xs-12
-                    %strong Observaciones
-                    %br/ 
-                    = @reservation.description.blank? ? '-----------' : @reservation.description          
-                    %br
-                    %br
-                  .col-xs-12
-                    %strong Datos del Vehiculo
-                    %br/
-                    %table.table.table-striped
-                      %tbody
-                        %tr.list-row
-                          %th.display-label= t("activerecord.attributes.title")
-                          %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.title.blank? ? '-----------' : @reservation.reservationable.title['es']
-                        %tr.list-row
-                          %th.display-label= t("activerecord.attributes.kit_weight")
-                          %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.kit['weight'].blank? ? '-----------' : @reservation.reservationable.kit['weight']
-                        %tr.list-row
-                          %th.display-label= t("activerecord.attributes.kit_quantity")
-                          %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.kit['quantity'].blank? ? '-----------' : @reservation.reservationable.kit['quantity']
-
-                        %tr.list-row
-                          %th.display-label= t("activerecord.attributes.seat_max")
-                          %td.display-value.fs-body-1.tc-black-2.text-overflow= @reservation.reservationable.seat.blank? ? '-----------' : @reservation.reservationable.seat
-
-                  .col-xs-12
+                  .col-xs-12.col-lg-12
+                    %address
+                      %strong Observaciones
+                      %br/ 
+                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br
+                  .col-xs-12.col-lg-12
                     %strong Datos de los Viajeros
                     %br/
                     %table.table.table-striped#travellers
@@ -181,16 +166,36 @@
                           %th 
                       %tbody
                         - @reservation.travellers.each_with_index do |traveller, index|                     
-                          %tr.list-row
-                            %td.display-value.fs-body-1.tc-black-2
-                              = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
-
-
-
-
-
+                          %tr.list-row{style:'background-color: transparent !important;'}
+                            %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
+                            = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
                 .row
-                  .col-md-12
+                  .col-xs-12.col-lg-12
+                    .panel.panel-default
+                      .panel-heading
+                        %h3.panel-title
+                          %strong Información del Vehiculo
+                      .panel-body
+                        .table-responsive
+                          %table.table.table-condensed
+                            %thead
+                              %tr
+                                %td.text-center
+                                  %strong= t("activerecord.attributes.title")
+                                %td.text-center
+                                  %strong= t("activerecord.attributes.kit_weight")
+                                %td.text-center
+                                  %strong= t("activerecord.attributes.kit_quantity")
+                                %td.text-center
+                                  %strong= t("activerecord.attributes.seat_max")
+                            %tbody
+                              %tr
+                                %td.text-center= @reservation.reservationable.title.blank? ? '-----------' : @reservation.reservationable.title['es']
+                                %td.text-center= @reservation.reservationable.kit['weight'].blank? ? '-----------' : @reservation.reservationable.kit['weight']
+                                %td.text-center= @reservation.reservationable.kit['quantity'].blank? ? '-----------' : @reservation.reservationable.kit['quantity']
+                                %td.text-center= @reservation.reservationable.seat.blank? ? '-----------' : @reservation.reservationable.seat
+                  %br
+                  .col-xs-12.col-lg-12
                     .panel.panel-default
                       .panel-heading
                         %h3.panel-title
@@ -215,7 +220,7 @@
                                 %td.text-center= "@reservation.multiple"
                                 %td.text-center= "@price_total"
                   - if @type_search == 'agency'
-                    .col-md-12
+                    .col-xs-12.col-lg-12
                       .panel.panel-default
                         .panel-heading
                           %h3.panel-title
@@ -262,7 +267,7 @@
           %br
           %br
           %br
-      .col-lg-4
+      .col-xs-12.col-lg-4
         .box.slice-box
           .box-header.with-border
             %h3.box-title Conductor Asignado
