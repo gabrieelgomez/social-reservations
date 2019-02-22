@@ -79,7 +79,7 @@ module App
             @price_total     = @round_trip == 'true' ? @price_vehicle*2 : @price_vehicle
           else
             @cotization  = true
-            @price_total = nil
+            @price_total = 0
           end
 
           set_price_agency
