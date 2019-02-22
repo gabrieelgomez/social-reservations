@@ -134,6 +134,7 @@ es:
       country: País
       address_agency: Dirección
       rnt: RNT
+      owner: Responsable
       nit: NIT
       agency: Agencia
       id: Identificador

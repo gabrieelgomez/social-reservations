@@ -34,6 +34,10 @@
                     %td.display-value.fs-body-1.tc-black-2= value
 
                 %tr.list-row
+                  %th.display-label= t("activerecord.attributes.owner")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.owner
+
+                %tr.list-row
                   %th.display-label= t("activerecord.attributes.unique_code")
                   %td.display-value.fs-body-1.tc-black-2= @agency.unique_code
 

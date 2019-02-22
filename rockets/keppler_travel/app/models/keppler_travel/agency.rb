@@ -16,6 +16,7 @@ module KepplerTravel
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
 
     def country_name
+      return '' if country.blank?
       iso = ISO3166::Country["#{self.country}"]
       country_message = iso.translations[I18n.locale.to_s] || iso.name
     end

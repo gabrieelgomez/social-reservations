@@ -4,7 +4,7 @@
   .form-label-group
     = f.password_field :password, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Password"
   .form-label-group.input-agency.hide-input
-    %input#pwd.form-control{:type => "password", :placeholder => "Agency Code"}/
+    %input#pwd.form-control{name: 'agency_code', :type => "password", :placeholder => "Código de Agencia"}/
     -#= f.password_field :password_agency, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Agency Code"
   .form-group.has-feedback
     .devise-errors.center-align
@@ -16,4 +16,3 @@
   -#   - if devise_mapping.recoverable?
   -#     = link_to "#tab3", class: "recoverable" do
   -#       = t("devise.sessions.forgot_password")
-

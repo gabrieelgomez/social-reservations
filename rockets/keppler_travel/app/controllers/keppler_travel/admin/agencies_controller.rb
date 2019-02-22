@@ -57,6 +57,7 @@ module KepplerTravel
                     address: params[:user][:agency][:address],
                     nit: params[:user][:agency][:nit],
                     rnt: params[:user][:agency][:rnt],
+                    owner: params[:user][:agency][:owner],
                     country: params[:user][:agency][:country]
                   )
         if @user.save
@@ -85,12 +86,14 @@ module KepplerTravel
           nit = params[:user][:agency][:nit]
           rnt = params[:user][:agency][:rnt]
           country = params[:user][:agency][:country]
+          owner = params[:user][:agency][:owner]
           @user.agency.update(comission_percentage: cp) if cp
           @user.agency.update(lending_percentage: lp) if lp
           @user.agency.update(address: address) if address
           @user.agency.update(nit: nit) if nit
           @user.agency.update(rnt: rnt) if rnt
           @user.agency.update(country: country) if country
+          @user.agency.update(owner: owner) if owner
           redirect(@user.agency, params)
         else
           render :edit
@@ -173,14 +176,14 @@ module KepplerTravel
       def agency_params
         params.require(:agency).permit(:unique_code, :comission_percentage,
           :lending_percentage, :user_id, :position, :deleted_at, :address, :nit,
-          :rnt, :country)
+          :rnt, :country, :owner)
       end
 
       def user_params
         params.require(:user).permit(
           :name, :email, :phone, :dni, :password, :password_confirmation,
           :role_ids, :encrypted_password, :avatar,
-          agency_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at, :address, :nit, :rnt, :country]
+          agency_attributes: [:id, :unique_code, :comission_percentage, :lending_percentage, :position, :deleted_at, :address, :nit, :rnt, :country, :owner]
         )
       end
 
