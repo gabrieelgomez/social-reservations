@@ -57,7 +57,7 @@ module App
                   agent_referer: @agent&.id
                 )
                 redirect_to invoice_path('es', 'usd')
-              elsif @price_total != nil
+              elsif @price_total.zero?
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               else
                 redirect_to invoice_path('es', 'usd')

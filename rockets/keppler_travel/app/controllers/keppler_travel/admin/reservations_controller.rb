@@ -7,7 +7,6 @@ module KepplerTravel
       before_action :authenticate_user!, except: [:create]
       before_action :set_reservation, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
-      before_action :set_subject, only: [:update]
       before_action :set_attachments
       before_action :authorization
       include KepplerTravel::Concerns::Commons
@@ -41,7 +40,7 @@ module KepplerTravel
 
       # GET /reservations
       def index
-        if @type_search
+        if @type_search == 'agency'
           ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
         else
           ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
@@ -85,20 +84,33 @@ module KepplerTravel
       # PATCH/PUT /reservations/1
       def update
         if @reservation.update(reservation_params)
-          @reservation.invoice.update(status: reservation_params[:status])
-          @reservation.invoice.update(status: reservation_params[:status])
+          @reservation.invoice.update(status: @reservation.status)
+          @reservation.order.update(status: @reservation.status)
 
-          @reservation.order.update(status_pay: reservation_params[:status_pay])
-          @reservation.order.update(status_pay: reservation_params[:status_pay])
+          @reservation.order.update(status_pay: @reservation.status_pay)
+          @reservation.invoice.update(status_pay: @reservation.status_pay)
 
-          @reservation.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
-          @reservation.invoice.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
-          @reservation.order.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+          @reservation.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.invoice.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.order.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+
+          case @reservation.status
+            when 'pending'
+              @subject = "Receptivo Colombia - Su reservación está en estado pendiente"
+            when 'credit_agency'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'payment_link'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'cancelled'
+              @subject = "Receptivo Colombia - Su reservación ha sido cancelada"
+          end
+
+
           ReservationMailer.reservation_status(@reservation, @reservation.user, @subject).deliver_now
 
           # ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
           # ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
-          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: 'agency')
+          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: params[:type_search])
         else
           render :edit
         end
@@ -175,19 +187,6 @@ module KepplerTravel
       # Use callbacks to share common setup or constraints between actions.
       def set_reservation
         @reservation = Reservation.find(params[:id])
-      end
-
-      def set_subject
-        case reservation_params[:status]
-          when 'pending'
-            @subject = "Receptivo Colombia - Su reservación está en estado pendiente"
-          when 'credit_agency'
-            @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
-          when 'payment_link'
-            @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
-          when 'cancelled'
-            @subject = "Receptivo Colombia - Su reservación ha sido cancelada"
-        end
       end
 
       # Only allow a trusted parameter "white list" through.

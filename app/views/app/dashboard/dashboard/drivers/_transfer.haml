@@ -8,10 +8,10 @@
           .table-responsive
             %table.table.table-hover.table-striped
               %thead
-                %th Orden
-                %th Factura
+                %th N° Orden
+                %th N° Factura
                 %th Cotizante
-                %th Estatus
+                %th Estatus Reserva
                 %th Detalles
               %tbody
                 - if @orders
@@ -30,7 +30,7 @@
                               %span.slider.round
                       - else
                         %td
-                          %span.status.available Completado
+                          %span.badge.badge-success Completado
                       %td
                         %a{href: order_info_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}

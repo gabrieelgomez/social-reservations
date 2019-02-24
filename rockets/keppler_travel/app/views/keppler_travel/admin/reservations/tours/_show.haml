@@ -1,7 +1,3 @@
-- reservationable = @reservation.reservationable
-- invoice = @reservation.invoice
-- order = @reservation.order
-
 .container
   .row
     .col-lg-2
@@ -26,7 +22,7 @@
                   %i.icon-trash
 
               - if @type_search == 'agency'
-                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: 'agency'), class: 'new-menu', title: t('keppler.actions.edit') do
+                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: params[:model_name]), class: 'new-menu', title: t('keppler.actions.edit') do
                   %i.icon-pencil
                     = t('keppler.actions.edit')
       .col-lg-8
@@ -42,7 +38,7 @@
                     %p Operador turístico - Bogotá, Colombia
                   .col-lg-1
                   .col-lg-3
-                    %h3.pull-right="N° de Orden #{invoice.id}"
+                    %h3.pull-right="N° de Orden #{@reservation.invoice.id}"
                 %hr/
                 .row
                   .col-xs-12
@@ -55,7 +51,7 @@
                       %br/
                       = @reservation.user.email
                       %br/
-                      = invoice.address.blank? ? '-----------' : invoice.address
+                      = @reservation.invoice.address.blank? ? '-----------' : @reservation.invoice.address
                 .row
                   .col-xs-12.col-lg-3
                     %address
@@ -67,25 +63,34 @@
                     %address
                       %strong Tipo de Moneda
                       %br/
-                      = invoice.currency.upcase
+                      = @reservation.invoice.currency.upcase
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Estatus Reserva
                       %br/
-                      %span.badge.btn-warning= t("keppler.messages.#{order.status}")
+                      %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
                       -#Status / Color
                         Green / Approved  ---- .btn-success
                         Red  / Canceled   ---- .btn-danger
                         Yellow / Pending  ---- .btn-warning
                       %br/
                       %br/
+
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Estatus Pago
+                      %br/
+                      %span.badge.badge-pill{class: @reservation.order.status_pay_class?}= t("keppler.messages.#{@reservation.order.status_pay}")
+                      %br/
+                      %br/
+
                   .col-xs-12.col-lg-3
                     %address
                       %strong N°. Orden ELP
                       %br/
-                      = invoice.token
+                      = @reservation.invoice.token
                       %br/
                       %br/
                 .row
@@ -149,17 +154,17 @@
                                   %strong Total
                             %tbody
                               %tr
-                                %td= reservationable.title['es']
+                                %td= @reservation.reservationable.title['es']
                                 %td.text-center
                                   Adultos
                                   = "(#{@reservation.quantity_adults})"
-                                  = number_to_currency(reservationable.price_adults[invoice.currency], locale: @locale)
+                                  = number_to_currency(@reservation.reservationable.price_adults[@reservation.invoice.currency], locale: @locale)
                                   = "/"
                                   Niños
                                   = "(#{@reservation.quantity_kids})"
-                                  = number_to_currency(reservationable.calculate_kids(invoice.currency), locale: @locale)
+                                  = number_to_currency(@reservation.reservationable.calculate_kids(@reservation.invoice.currency), locale: @locale)
                                 %td.text-center= @reservation.quantity_kids.to_i + @reservation.quantity_adults.to_i
-                                %td.text-right= number_to_currency(order.price_total_pax.to_f, locale: @locale)
+                                %td.text-right= number_to_currency(@reservation.order.price_total_pax.to_f, locale: @locale)
                   - if @type_search == 'agency'
                     .col-md-12
                       .panel.panel-default

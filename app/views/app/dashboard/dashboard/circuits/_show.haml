@@ -21,24 +21,36 @@
             .table-responsive
               %table.table.table-hover.table-striped
                 %thead
-                  %th Orden
-                  %th Factura
-                  %th Monto
-                  %th Cotizante
-                  %th Estatus
+                  %th N° Orden
+                  %th N° Factura
+                  %th Costo Cotización
+                  %th Estatus Reserva
+                  %th Estatus Pago
+                  %th Circuito
+                  %th Fecha
                   %th Detalles
                 %tbody
-                  - current_user.reservations_where('circuit').reverse.each do |reservation|
+                  - current_user.reservations_where('circuit').sort.reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
-                      - if reservation.invoice.amount.nil?
+                      - if reservation.invoice.amount.to_f.zero?
                         %td Por cotizar
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                      %td= reservation.travellers.first.name.titleize
                       %td
                         %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
+                      %td
+                        - if reservation.invoice.amount.to_f.zero?
+                          %span.badge.badge-info Por Cotizar
+                        - elsif reservation.order.status_pay? :pending
+                          %span.badge.badge-warning Pendiente
+                        - elsif reservation.order.status_pay? :cancelled
+                          %span.badge.badge-danger Cancelado
+                        - else
+                          %span.badge.badge-success Aprobado
+                      %td= reservation.origin.truncate(20)
+                      %td= reservation.flight_origin
                       %td
                         %a{href: order_details_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}

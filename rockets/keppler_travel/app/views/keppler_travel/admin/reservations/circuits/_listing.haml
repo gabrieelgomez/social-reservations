@@ -1,13 +1,5 @@
 - objects.each do |reservation|
   %tr{ id: "row-#{reservation.id}" }
-    -# %td.item-check{ style: 'width: 10%' }
-    -#   - if can?(KepplerTravel::Reservation).destroy_multiple?
-    -#     .checkbox
-    -#       %label{ for: "checkbox-#{reservation.id}" }
-    -#         %input{ type:"checkbox", id: "checkbox-#{reservation.id}", 'checklist-model' => 'check', 'checklist-value' => "#{reservation.id}", '@click' => "listDelete(#{reservation.id})"}
-    -#         %span.cr
-    -#           %i.cr-icon.glyphicon.glyphicon-ok
-
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
@@ -25,20 +17,11 @@
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}") 
-      -#Status / Color
-        Green / Approved  ---- .btn-success
-        Red  / Canceled   ---- .btn-danger
-        Yellow / Pending  ---- .btn-warning    
-    %td.hidden-xs.hidden-sm
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = reservation.travellers.first.name
+        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}")
 
-    %td.hidden-xs.hidden-sm
+    %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          = reservation.user.email
+        %span.badge.badge-pill{class: reservation.order.status_pay_class?}= t("keppler.messages.#{reservation.order.status_pay}")
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
@@ -50,15 +33,15 @@
         %span
           = reservation.flight_origin
 
-    %td.hidden-xs
-      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span
-          -# = reservation.try(:arrival).try(:truncate, 20) || "No disponible"
-          = reservation.quantity_adults
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
-          = reservation.quantity_kids
+          = reservation.travellers.first.name
+
+    %td.hidden-xs.hidden-sm
+      = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
+        %span
+          = reservation.user.email
 
     %td.dropdown{ style: 'width: 15px;padding-right:15px;' }
       %a.action-btn.pull-right{:id => "menu-#{reservation.id}", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
@@ -69,11 +52,11 @@
             = link_to admin_travel_reservation_path(reservation, model_name: @model.downcase), class: 'new-menu', title: t('keppler.actions.show') do
               %i.icon-eye
               = t('keppler.actions.show')
-        -# - if can?(KepplerTravel::Reservation).update?
-        -#   %li
-        -#     = link_to edit_admin_travel_reservation_path(reservation), class: 'new-menu', title: t('keppler.actions.edit') do
-        -#       %i.icon-pencil
-        -#       = t('keppler.actions.edit')
+        - if can?(KepplerTravel::Reservation).update?
+          %li
+            = link_to edit_admin_travel_reservation_path(reservation, model_name: @model.downcase, type_search: params[:type_search]), class: 'new-menu', title: t('keppler.actions.delete') do
+              %i.icon-pencil
+              = t('keppler.actions.edit')
         -# - if can?(KepplerTravel::Reservation).clone?
         -#   %li
         -#     = link_to admin_travel_reservation_clone_path(reservation), class: 'new-menu', title: t('keppler.actions.clone') do

@@ -21,36 +21,41 @@
             .table-responsive
               %table.table.table-hover.table-striped
                 %thead
-                  %th Orden
-                  %th Factura
-                  %th Monto
-                  %th Estatus
-                  %th ¿Pagado?
+                  %th N° Orden
+                  %th N° Factura
+                  %th Costo Cotización
+                  %th Estatus Reserva
+                  %th Estatus Pago
+                  %th Origen
+                  %th Destino
                   %th Detalles
                 %tbody
-                  - current_user.reservations_where('vehicle').reverse.each do |reservation|
+                  - current_user.reservations_where('vehicle').sort.reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
-                      - if reservation.invoice.amount.nil?
+                      - if reservation.invoice.amount.to_f.zero?
                         %td Por cotizar
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
                         %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
                       %td
-                        - if reservation.order.try(:details) == 'agency'
-                          Por cotizar
-                        - elsif reservation.invoice.amount.nil?
-                          Por cotizar
+                        - if reservation.invoice.amount.to_f.zero?
+                          %span.badge.badge-info Por Cotizar
                         - elsif reservation.order.status_pay? :pending
                           %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
                             %button.btn.btn-primary.btn-xs{:type => "button"}
                               %span
                                 %i.icon-credit-card.icons
                               Pagar
+
+                        - elsif reservation.order.status_pay? :cancelled
+                          %span.badge.badge-danger Cancelado
                         - else
-                          %h6 Pagado
+                          %span.badge.badge-success Aprobado
+                      %td= reservation.origin.truncate(25)
+                      %td= reservation.arrival.truncate(25)
                       %td
                         %a{href: order_details_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}

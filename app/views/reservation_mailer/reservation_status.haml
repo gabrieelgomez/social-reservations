@@ -260,6 +260,12 @@
         %tr
           %th{:style => "text-align:left;"}
             %span= "Estimado usuario, su solicitud se encuentra en el estado #{t("keppler.messages.#{@reservation.order.status}")} "
+        - if @reservation.order.status == 'payment_link' && @reservation.order.status_pay == 'pending'
+          %tr
+            %th{:style => "text-align:left;"}
+              %span= "Debe dirigirse al siguiente link para completar el proceso de pago:"
+              %br
+              %a{href: @reservation.url_payment, target: '_blank'} Ir a URL de cobro
       %tbody
         %tr
           %td{:style => "height:35px;"}
@@ -269,10 +275,10 @@
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Factura
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Orden
-              = field(@reservation.id)
+              = @reservation.id.blank? ? '-----------' : @reservation.id
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Factura
-              = field(@reservation.invoice.token)
+              = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Tipo de Moneda
               = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase

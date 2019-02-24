@@ -310,7 +310,7 @@
               = @reservation.user.email
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"} Costo de Reserva
-              - if @reservation.invoice.amount != nil
+              - unless @reservation.invoice.amount.to_f.zero?
                 = number_to_currency(@reservation.invoice.amount, locale: @locale)
               - else
                 Por cotizar
@@ -640,7 +640,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Costo Reserva
-                                  - if @reservation.invoice.amount != nil
+                                  - unless @reservation.invoice.amount.to_f.zero?
                                     = number_to_currency(@reservation.invoice.amount, locale: @locale)
                                   - else
                                     Por cotizar

@@ -293,7 +293,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Costo Reserva
-                                  - if @reservation.invoice.amount != nil
+                                  - unless @reservation.invoice.amount.to_f.zero?
                                     = number_to_currency(@reservation.invoice.amount, locale: @locale)
                                   - else
                                     Por cotizar
