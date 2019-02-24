@@ -84,6 +84,11 @@ es:
       keppler_ga_dashboard/dashboard: 'Dashboard'
       keppler_contact_us/message_settings: 'Configuración de mensajes'
     messages:
+      pending: Pendiente
+      cancelled: Cancelada
+      credit_agency: Aprobada - Crédito Agencia
+      payment_link: Aprobada - URL de cobro
+      approved: Aprobada
       not_authorized_page: Usted no tiene autorización para acceder a esta página
       not_authorized_action: Usted no tiene autorización para realizar esta acción
       not_found_records: "No se han encontrado %{model}"

@@ -301,7 +301,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Estatus Reserva
-                                  = @reservation.invoice.status.blank? ? '-----------' : @reservation.invoice.status
+                                  = t("keppler.messages.#{@reservation.order.status}")
 
                               %tr
                                 %td.attributes_item
@@ -354,4 +354,3 @@
                         Desarrollado por
                         %a#company{:href => "http://slicegroup.xyz"}
                           %strong Slice Group
-

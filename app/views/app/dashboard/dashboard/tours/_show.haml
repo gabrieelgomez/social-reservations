@@ -37,14 +37,14 @@
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
-                        %span.badge.badge-pill{class: reservation.invoice.status_class?}= reservation.invoice.status.capitalize
+                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
                       %td
                         - if reservation.order.try(:details) == 'agency'
                           Por cotizar
                         - elsif reservation.invoice.amount.nil?
                           Por cotizar
                           Por cotizar
-                        - elsif reservation.invoice.status_pay? :pending
+                        - elsif reservation.order.status_pay? :pending
                           %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
                             %button.btn.btn-primary.btn-xs{:type => "button"}
                               %span

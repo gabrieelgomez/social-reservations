@@ -7,6 +7,7 @@ module KepplerTravel
       before_action :authenticate_user!, except: [:create]
       before_action :set_reservation, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
+      before_action :set_subject, only: [:update]
       before_action :set_attachments
       before_action :authorization
       include KepplerTravel::Concerns::Commons
@@ -93,6 +94,7 @@ module KepplerTravel
           @reservation.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
           @reservation.invoice.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
           @reservation.order.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+          ReservationMailer.reservation_status(@reservation, @reservation.user, @subject).deliver_now
 
           # ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
           # ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
@@ -173,6 +175,19 @@ module KepplerTravel
       # Use callbacks to share common setup or constraints between actions.
       def set_reservation
         @reservation = Reservation.find(params[:id])
+      end
+
+      def set_subject
+        case reservation_params[:status]
+          when 'pending'
+            @subject = "Receptivo Colombia - Su reservación está en estado pendiente"
+          when 'credit_agency'
+            @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+          when 'payment_link'
+            @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+          when 'cancelled'
+            @subject = "Receptivo Colombia - Su reservación ha sido cancelada"
+        end
       end
 
       # Only allow a trusted parameter "white list" through.

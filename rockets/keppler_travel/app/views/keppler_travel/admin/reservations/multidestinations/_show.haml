@@ -1,5 +1,6 @@
 - reservationable = @reservation.reservationable
 - invoice = @reservation.invoice
+- order = @reservation.order
 
 .container
   .row
@@ -73,7 +74,7 @@
                     %address
                       %strong Estatus Reserva
                       %br/
-                      %span.badge.btn-warning= invoice.status
+                      %span.badge.btn-warning= t("keppler.messages.#{order.status}")
                       -#Status / Color
                         Green / Approved  ---- .btn-success
                         Red  / Canceled   ---- .btn-danger

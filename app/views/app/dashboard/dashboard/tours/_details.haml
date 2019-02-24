@@ -74,7 +74,7 @@
                               %address
                                 %strong Estatus
                                 %br/
-                                %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
+                                %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
                                 %br/
                           .row
                             .col-12.col-md-12
@@ -147,7 +147,7 @@
                                 %a
                                   %button.btn.btn-warning.btn-lg{:type => "button"}
                                     Por cotizar
-                              - elsif @reservation.invoice.status_pay? :pending
+                              - elsif @reservation.order.status_pay? :pending
                                 %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
                                   %button.btn.btn-primary.btn-lg{:type => "button"}
                                     Pagar
@@ -237,7 +237,7 @@
 
                   %li.list-group-item
                     Estatus:
-                    %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
+                    %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
 
 
 
@@ -245,7 +245,7 @@
                     Pago:
                     - if @reservation.invoice.amount.nil?
                       %span Por cotizar
-                    - elsif @reservation.invoice.status_pay? :pending
+                    - elsif @reservation.order.status_pay? :pending
                       %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
                         %button.btn.btn-primary.btn-xs{:type => "button"}
                           %span

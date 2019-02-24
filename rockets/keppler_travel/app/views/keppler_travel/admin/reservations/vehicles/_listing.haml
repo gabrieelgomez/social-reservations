@@ -17,12 +17,12 @@
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span.badge.btn-warning= reservation.invoice.status 
+        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}")
 
       -#Status / Color
         Green / Approved  ---- .btn-success
         Red  / Canceled   ---- .btn-danger
-        Yellow / Pending  ---- .btn-warning    
+        Yellow / Pending  ---- .btn-warning
 
 
     %td.hidden-xs
