@@ -23,7 +23,7 @@ module KepplerTravel
             redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
           end
         else
-          @order = @reservation.build_order(details: 'driver', status: 'pending', driver_id: params[:driver_id])
+          @order = @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
           if @order.save
             DriverMailer.transfer_driver(@reservation).deliver_now
             DriverMailer.transfer_user(@reservation).deliver_now
@@ -34,7 +34,8 @@ module KepplerTravel
 
       def unassign
         @reservation = Reservation.find(params[:reservation_id])
-        @reservation.order.destroy
+        @driver = @reservation.order.driver = nil
+        @reservation.order.save!
         redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
