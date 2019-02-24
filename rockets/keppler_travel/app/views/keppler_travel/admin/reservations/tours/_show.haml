@@ -31,7 +31,7 @@
                     = t('keppler.actions.edit')
       .col-lg-8
         .box-body.box-body-no-padding
-          .invoice-transfers__box 
+          .invoice-transfers__box
             .row
               .col-xs-12
                 .row
@@ -78,7 +78,7 @@
                       -#Status / Color
                         Green / Approved  ---- .btn-success
                         Red  / Canceled   ---- .btn-danger
-                        Yellow / Pending  ---- .btn-warning  
+                        Yellow / Pending  ---- .btn-warning
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
@@ -97,13 +97,13 @@
                       %strong Origen
                       %br/
                       = @reservation.origin.blank? ? '-----------' : @reservation.origin
-                      %br/                    
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Fecha de Ida
                       %br/
                       = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
-                      %br/         
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Adultos/Niños
@@ -113,8 +113,8 @@
                   .col-xs-12.col-lg-12
                     %address
                       %strong Observaciones
-                      %br/ 
-                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br/
+                      = @reservation.description.blank? ? '-----------' : @reservation.description
                       %br
                   .col-xs-12
                     %strong Datos de los Viajeros
@@ -122,9 +122,9 @@
                     %table.table.table-striped#travellers
                       -#%thead
                         %tr
-                          %th 
+                          %th
                       %tbody
-                        - @reservation.travellers.each_with_index do |traveller, index|                     
+                        - @reservation.travellers.each_with_index do |traveller, index|
                           %tr.list-row{style:'background-color: transparent !important;'}
                             %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
                             = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
@@ -149,20 +149,17 @@
                                   %strong Total
                             %tbody
                               %tr
-                                %td.text-center= "Tours"
-                                %td.text-center= "Precio"
-                                %td.text-center= "Cantidad"
-                                %td.text-center= "Total"
-                              %tr
-                                %td.text-center= "Cantidad de Niños"
-                                %td.text-center= "Precio"
-                                %td.text-center= "Cantidad"
-                                %td.text-center= "Total"
-                              %tr
-                                %td.text-center= "Cantidad de Adultos"
-                                %td.text-center= "Precio"
-                                %td.text-center= "Cantidad"
-                                %td.text-center= "Total"
+                                %td= reservationable.title['es']
+                                %td.text-center
+                                  Adultos
+                                  = "(#{@reservation.quantity_adults})"
+                                  = number_to_currency(reservationable.price_adults[invoice.currency], locale: @locale)
+                                  = "/"
+                                  Niños
+                                  = "(#{@reservation.quantity_kids})"
+                                  = number_to_currency(reservationable.calculate_kids(invoice.currency), locale: @locale)
+                                %td.text-center= @reservation.quantity_kids.to_i + @reservation.quantity_adults.to_i
+                                %td.text-right= number_to_currency(order.price_total_pax.to_f, locale: @locale)
                   - if @type_search == 'agency'
                     .col-md-12
                       .panel.panel-default

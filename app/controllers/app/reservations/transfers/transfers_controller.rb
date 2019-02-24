@@ -33,7 +33,13 @@ module App
             @currency = session[:invoice].first['currency']
             set_price
             build_invoice
-            @reservation.build_order(details: 'user', status: 'pending')
+            @reservation.build_order(
+              details: 'user',
+              status: 'pending',
+              price_reservationable: @price_reservationable,
+              price_total_pax: @price_total_pax,
+              user_referer: @user.email
+            )
             if @reservation.save!
               create_travellers
               ReservationMailer.transfer_status(@reservation, @user).deliver_now
@@ -47,9 +53,6 @@ module App
                   price_comission: @price_comission,
                   price_lending: @price_lending,
                   price_total_agency: @price_total_agency,
-                  price_total_pax: @price_total_pax,
-                  price_vehicle: @price_vehicle,
-                  user_referer: @user.email,
                   agency_referer: @agency.id,
                   agent_referer: @agent&.id
                 )
@@ -71,12 +74,12 @@ module App
         def set_price
           @round_trip = session[:reservation]['round_trip']
           @vehicle    = @reservation.reservationable
-          # departament = [session[:reservationable]['origin_departament'], session[:reservationable]['arrival_departament']]
           @locality = [session[:reservationable]['origin_locality'], session[:reservationable]['arrival_locality']]
           @cotization = session[:reservationable]['cotization']
           unless @cotization == 'true'
-            @price_vehicle   = @vehicle.set_price_destination(@locality, @currency).to_f
-            @price_total     = @round_trip == 'true' ? @price_vehicle*2 : @price_vehicle
+            @price_reservationable   = @vehicle.set_price_destination(@locality, @currency).to_f
+            @price_total             = @round_trip == 'true' ? @price_reservationable*2 : @price_reservationable
+            @price_total_pax         = @price_total
           else
             @cotization  = true
             @price_total = 0

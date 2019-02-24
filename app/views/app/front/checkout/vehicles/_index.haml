@@ -76,7 +76,10 @@
                       %address
                         %strong Tipo de Traslado
                         %br/
-                        Ida/Vuelta
+                        - if @reservation['round_trip'] == 'true'
+                          Ida/Vuelta
+                        -else
+                          Ida
                         %br/
                         %strong Adultos/Niños
                         %br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"

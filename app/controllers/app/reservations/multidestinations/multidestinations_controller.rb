@@ -9,8 +9,14 @@ module App
           session[:user]        = params[:user]
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
-          session[:reservationable]  = {type:'multidestination', id:params[:reservationable_id], total_kids_per: params[:total_kids_per], total_rooms_per: params[:total_rooms_per]}
-          session[:square_multidestination]   = params[:square_multidestination].first.select{|_, value| !value.empty?}
+          session[:reservationable]  = {
+            type:'multidestination',
+            id:params[:reservationable_id],
+            total_kids_per: params[:total_kids_per],
+            total_rooms_per: params[:total_rooms_per]
+          }
+          session[:square_multidestination]  = params[:square_multidestination].first.select{|_, value| !value.empty?}
+
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 
@@ -34,6 +40,7 @@ module App
             if @reservation.save!
               @reservation.order.update(
                 details: 'multidestination',
+                table_reservationable: session[:table_reservationable],
                 price_total_pax: @price_total,
                 user_referer: @user.email,
               )

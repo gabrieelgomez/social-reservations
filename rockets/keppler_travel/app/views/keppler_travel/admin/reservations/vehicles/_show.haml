@@ -28,7 +28,7 @@
                   = t('keppler.actions.edit')
       .col-lg-8
         .box-body.box-body-no-padding
-          .invoice-transfers__box 
+          .invoice-transfers__box
             .row
               .col-xs-12
                 .row
@@ -75,7 +75,7 @@
                       -#Status / Color
                         Green / Approved  ---- .btn-success
                         Red  / Canceled   ---- .btn-danger
-                        Yellow / Pending  ---- .btn-warning   
+                        Yellow / Pending  ---- .btn-warning
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
@@ -107,14 +107,14 @@
                       %strong Aerolinea - Vuelta
                       %br/
                       = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
-                      %br/                      
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Tipo de Traslado
                       %br/
-                      - if @reservation.round_trip = 'true'
+                      - if @reservation.round_trip == 'true'
                         Ida/Vuelta
-                      -else 
+                      -else
                         Ida
                       %br/
                       %strong Adultos/Niños
@@ -128,7 +128,7 @@
                       %strong N° de Vuelo - Vuelta
                       %br/
                       = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
-                      %br/                      
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Fecha/Hora de Ida
@@ -154,8 +154,8 @@
                   .col-xs-12.col-lg-12
                     %address
                       %strong Observaciones
-                      %br/ 
-                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br/
+                      = @reservation.description.blank? ? '-----------' : @reservation.description
                       %br
                   .col-xs-12.col-lg-12
                     %strong Datos de los Viajeros
@@ -163,9 +163,9 @@
                     %table.table.table-striped#travellers
                       -#%thead
                         %tr
-                          %th 
+                          %th
                       %tbody
-                        - @reservation.travellers.each_with_index do |traveller, index|                     
+                        - @reservation.travellers.each_with_index do |traveller, index|
                           %tr.list-row{style:'background-color: transparent !important;'}
                             %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
                             = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
@@ -216,9 +216,9 @@
                             %tbody
                               %tr
                                 %td.text-center= @reservation.reservationable.title['es']
-                                %td.text-center= number_to_currency(@reservation.reservationable.set_price_destination([@reservation.origin, @reservation.arrival], @currency).to_f, locale: @locale)
-                                %td.text-center= "@reservation.multiple"
-                                %td.text-center= "@price_total"
+                                %td.text-center= number_to_currency(order.price_reservationable, locale: @locale)
+                                %td.text-center= @reservation.multiple
+                                %td.text-center= number_to_currency(order.price_total_pax, locale: @locale)
                   - if @type_search == 'agency'
                     .col-xs-12.col-lg-12
                       .panel.panel-default
@@ -328,10 +328,10 @@
   }
 
   .select2-selection {
-    border-radius: 0 !important; 
-  }    
+    border-radius: 0 !important;
+  }
   .select2-container--default.select2-container--focus .select2-selection--multiple {
-      border: solid #f44336 1px !important; 
+      border: solid #f44336 1px !important;
       outline: 0;
   }
 

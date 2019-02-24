@@ -28,7 +28,13 @@ module App
             # Calculate Price
 
             build_invoice
-            @reservation.build_order(details: 'user', status: 'pending')
+            @reservation.build_order(
+              details: 'user',
+              price_reservationable: @price_reservationable,
+              price_total_pax: @price_total_pax,
+              user_referer: @user.email,
+              status: 'pending'
+            )
             if @reservation.save!
               create_travellers
               if current_user.try(:has_role_agentable?)
@@ -43,8 +49,6 @@ module App
                   price_lending: @price_lending,
                   price_total_agency: @price_total_agency,
                   price_total_pax: @price_total_pax,
-                  price_vehicle: @price_vehicle,
-                  user_referer: @user.email,
                   agency_referer: @agency.id,
                   agent_referer: @agent&.id
                 )
@@ -71,9 +75,13 @@ module App
           adults = session[:reservation]['quantity_adults']
           kids   = session[:reservation]['quantity_kids']
           currency = session[:invoice].first['currency']
-          @total_adults    = @reservation.reservationable.price_adults[currency].to_f * adults
-          @total_kids      = @reservation.reservationable.calculate_kids(kids, currency) * kids
-          @price_total     = @total_adults + @total_kids
+          @price_adults = @reservation.reservationable.price_adults[currency].to_f
+          @price_kids   = @reservation.reservationable.calculate_kids(currency).to_f
+          @total_adults = @price_adults * adults
+          @total_kids   = @price_kids   * kids
+          @price_total  = @total_adults + @total_kids
+          @price_reservationable = @price_adults
+          @price_total_pax = @price_total
           set_price_agency
         end
 

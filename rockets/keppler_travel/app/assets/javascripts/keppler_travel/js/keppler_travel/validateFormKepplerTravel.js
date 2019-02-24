@@ -337,7 +337,7 @@ function validateReservationStatus(id_form){
      'reservation[status]': { required: true},
      'reservation[status_pay]': { required: true}
      },
-     messages: {}
+     messages: {
        'reservation[status]': 'Selecciona una opción',
        'reservation[status_pay]': 'Selecciona una opción'
        },

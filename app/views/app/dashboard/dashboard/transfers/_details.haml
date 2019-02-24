@@ -138,7 +138,7 @@
                                       %tbody
                                         %tr
                                           %td.text-center= @reservation.reservationable['title'][@lang]
-                                          %td.text-center= number_to_currency(@reservation.order.price_vehicle.to_f, locale: @locale)
+                                          %td.text-center= number_to_currency(@reservation.order.price_reservationable.to_f, locale: @locale)
                                           %td.text-center= KepplerTravel::Reservation.multiple(@reservation)
                                           %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
 

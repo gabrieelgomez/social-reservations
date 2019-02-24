@@ -34,6 +34,10 @@ module KepplerTravel
       object['round_trip'] == 'true' ? '2' : '1'
     end
 
+    def multiple
+      round_trip == 'true' ? '2' : '1'
+    end
+
     def self.price_total(locality, object, objectable, currency)
       if locality[0] == locality[1]
         price = objectable.inner_price[currency]

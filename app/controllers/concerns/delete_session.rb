@@ -9,6 +9,7 @@ module DeleteSession
     session.delete(:invoice)
     session.delete(:travellers)
     session.delete(:reservationable)
+    session.delete(:table_reservationable)
   end
 
 end
