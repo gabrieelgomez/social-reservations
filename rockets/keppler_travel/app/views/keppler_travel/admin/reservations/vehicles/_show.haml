@@ -277,14 +277,6 @@
         .box.slice-box
           .box-header.with-border
             %h3.box-title Conductor Asignado
-            .box-tools.pull-right
-            %select#js-search-drive{:multiple => "multiple", :style => ""}
-              %option{:value => "Gabriel"} Gabriel
-              %option{:value => "Estrella"} Estrella
-              %option{:value => "Yibely"} Yibely
-        .box.slice-box
-          .box-header.with-border
-            %h3.box-title Conductor Asignado
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
@@ -318,11 +310,15 @@
                 %table.table.table-striped
                   %tbody
                     %tr.list-row
-                      %th.display-label Lista de Conductores Disponibles
-                      %td.display-value.fs-body-1.tc-black-2
-                        %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                      -# %th.display-label Lista de Conductores Disponibles
+                      -# %td.display-value.fs-body-1.tc-black-2
+                      -#   %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                      -#     - @reservation.reservationable.drivers.each do |driver|
+                      -#       %option{ value: driver.id}= driver.user.name
+                      %th
+                        %select#js-search-drive{name: 'driver_id', :multiple => "multiple", :style => ""}
                           - @reservation.reservationable.drivers.each do |driver|
-                            %option{ value: driver.id}= driver.user.name
+                            %option{ value: driver.id}="#{driver.user.name} -  DNI #{driver.user.dni}"
                     %tr.list-row
                       %th.display-label= f.button :submit, t('keppler.actions.assignment'), name: '_save', class: 'btn-primary'
 
@@ -348,9 +344,11 @@
     color: #fff !important;
   }
 
+%script{src: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"}
 :javascript
   $(document).ready(function(){
     $("#js-search-drive").select2({
+      language: "es",
       placeholder: "Buscar Conductor",
       allowClear: true,
       width: '100%',

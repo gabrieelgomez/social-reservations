@@ -16,20 +16,10 @@ module KepplerTravel
 
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
-        if @reservation.order
-          if @order = @reservation.order.update(driver_id: params[:driver_id])
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        else
-          @order = @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
-          if @order.save
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        end
+        @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
+        DriverMailer.transfer_driver(@reservation).deliver_now
+        DriverMailer.transfer_user(@reservation).deliver_now
+        redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
       def unassign
