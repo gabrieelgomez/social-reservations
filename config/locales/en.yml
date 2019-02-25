@@ -12,16 +12,16 @@ en:
         clients: Clients
         admins: Admins
       setting: Settings
-      keppler-design: 'Keppler Design'
-      development: 'Development'
+      keppler-design: "Keppler Design"
+      development: "Development"
       setting-submenu:
         basic-information: Basic Information
-        email-setting-smtp: 'Email setup (SMTP)'
-        social-accounts: 'Social accounts'
-        google-analytics: 'Google Analytics'
+        email-setting-smtp: "Email setup (SMTP)"
+        social-accounts: "Social accounts"
+        google-analytics: "Google Analytics"
         appearance: Appearance
       meta_tags: Meta tags
-      google-analytics-tracks: 'Scripts'
+      google-analytics-tracks: "Scripts"
       keppler-messages: Messages
       keppler-blog: Blog
       keppler-blog-submenu:
@@ -63,17 +63,17 @@ en:
     modules:
       admin/roles: Roles
       admin/customizes: Customizes
-      admin/meta_tags: 'Meta tags'
-      admin/scripts: 'Scripts'
-      admin/scaffolds: 'Scaffolds'
-      admin/settings: 'Settings'
-      keppler_ga_dashboard/dashboard: 'Dashboard'
-      admin/users: 'Users'
+      admin/meta_tags: "Meta tags"
+      admin/scripts: "Scripts"
+      admin/scaffolds: "Scaffolds"
+      admin/settings: "Settings"
+      keppler_ga_dashboard/dashboard: "Dashboard"
+      admin/users: "Users"
     messages:
       pending: Pendiente
       cancelled: Cancelada
-      credit_agency: Aprobada - Crédito Agencia
-      payment_link: Aprobada - URL de cobro
+      credit_agency: Aprobada
+      payment_link: Aprobada
       approved: Aprobada
       not_authorized_page: You have no authorization to access this page
       not_authorized_action: You have no authorization to perform this action
@@ -141,17 +141,17 @@ en:
       subtitle: Subtitle
       tags: Etiquetas
       name: Name
-      first_name: 'First Name'
-      last_name: 'Last Name'
-      full_name: 'Full Name'
+      first_name: "First Name"
+      last_name: "Last Name"
+      full_name: "Full Name"
       email: Email
       role: Role
       phone: Phone
-      phone_number: 'Phone Number'
-      phone_code: 'Phone Code'
-      area_code: 'Phone Code'
-      phone_one: 'Phone One'
-      phone_two: 'Phone Two'
+      phone_number: "Phone Number"
+      phone_code: "Phone Code"
+      area_code: "Phone Code"
+      phone_one: "Phone One"
+      phone_two: "Phone Two"
       age: Age
       image: Image
       photo: Photo
@@ -159,7 +159,7 @@ en:
       pdf: PDF
       avatar: Avatar
       icon: Icon
-      image_background: 'Background Image'
+      image_background: "Background Image"
       brand: Brand
       country: Country
       state: State
@@ -179,18 +179,18 @@ en:
       size: Size
       distance: Distance
       description: Description
-      short_description: 'Short Description'
-      long_description: 'Long Description'
+      short_description: "Short Description"
+      long_description: "Long Description"
       details: Details
       message: Message
       content: Content
       date: Date
-      date_begin: 'Date Begin'
-      date_end: 'Date End'
+      date_begin: "Date Begin"
+      date_end: "Date End"
       begin: Inicio
       end: Fin
-      check_in: 'Check In'
-      check_out: 'Check Out'
+      check_in: "Check In"
+      check_out: "Check Out"
       google_analytics_setting:
         ga_account_id: Account id
         ga_tracking_id: Tracking id
@@ -204,57 +204,57 @@ en:
           has_many: "Cannot delete record because dependent %{record} exist"
   date:
     abbr_day_names:
-    - Sun
-    - Mon
-    - Tue
-    - Wed
-    - Thu
-    - Fri
-    - Sat
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
-    -
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - May
-    - Jun
-    - Jul
-    - Aug
-    - Sep
-    - Oct
-    - Nov
-    - Dec
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-    - Sunday
-    - Monday
-    - Tuesday
-    - Wednesday
-    - Thursday
-    - Friday
-    - Saturday
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"
     month_names:
-    -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
+      -
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   datetime:
     distance_in_words:
       about_x_hours:
@@ -335,7 +335,7 @@ en:
         other: is the wrong length (should be %{count} characters)
       other_than: must be other than %{count}
     template:
-      body: 'There were problems with the following fields:'
+      body: "There were problems with the following fields:"
       header:
         one: 1 error prohibited this %{model} from being saved
         other: "%{count} errors prohibited this %{model} from being saved"
@@ -371,9 +371,9 @@ en:
           quadrillion: Quadrillion
           thousand: Thousand
           trillion: Trillion
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -389,11 +389,11 @@ en:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: ", and "

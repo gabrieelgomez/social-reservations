@@ -256,7 +256,7 @@
         %tr
           %th{:style => "text-align:left;"}
             %img{:alt => "receptivo colombia", :src => "https://i.ibb.co/wgcHVTt/receptivo-colombia.png", :style => "max-width: 150px;"}/
-          %th{:style => "text-align:right;font-weight:400;"} 22/02/2019
+          %th{:style => "text-align:right;font-weight:400;"}= Date.today
       %tbody
         %tr
           %td{:style => "height:35px;"}
@@ -280,7 +280,7 @@
               %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
               %b{:style => "color:green;font-weight:normal;margin:0"}= t("keppler.messages.#{@reservation.order.status}")
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} ¿Pagada?   
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus del Pago  
               - if @reservation.order.status_pay? :pending
                 %b{:style => "color:green;font-weight:normal;margin:0"}= t("keppler.messages.#{@reservation.order.status}")
               -else
@@ -312,6 +312,7 @@
               %span{:style => "display:block;font-weight:bold;font-size:13px;"} Costo de Reserva
               - unless @reservation.invoice.amount.to_f.zero?
                 = number_to_currency(@reservation.invoice.amount, locale: @locale)
+                -#USD $ 1000,00
               - else
                 Por cotizar
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
