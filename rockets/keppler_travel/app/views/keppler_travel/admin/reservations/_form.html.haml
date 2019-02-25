@@ -1,10 +1,12 @@
--# = simple_form_for [:admin, :travel, @reservation] do |f|
+= simple_form_for [:admin, :travel, @reservation] do |f|
 
   %input{name: 'model_name', value: params[:model_name], hidden: ''}
+  %input{name: 'type_search', value: params[:type_search], hidden: ''}
+
   .container
     .row
       .col-lg-2
-        = link_to admin_travel_reservations_path(model_name: params[:model_name], type_search: 'agency'), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        = link_to admin_travel_reservations_path(model_name: params[:model_name], type_search: params[:type_search]), class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
           .arrow-back.btn.btn-default
             %i.fa.fa-angle-left
             = t('keppler.actions.back')
@@ -70,7 +72,7 @@
                           %br
                             .col-lg-12
                               .col-lg-6
-                                = f.input :url_payment, label: 'Link de cobro'
+                                = f.input :url_payment, label: 'URL'
                         - elsif @reservation.status == 'payment_link'
                           %span Link de Cobro
                           %i.icon-check
@@ -84,10 +86,11 @@
                           -#   %br
                           -#   %strike Crédito Agencia
 
+                  -# - if @reservation.status != 'pending'
                   .col-xs-12#status_payment
                     .form-group.radio_buttons.optional.reservation_status_pay
                       %label.control-label.radio_buttons.optional Estatus del pago
-                      - if @reservation.status_pay == 'pending'
+                      - if @reservation.status_pay == 'pending' && @reservation.status != 'payment_link'
                         %span.radio
                           %label{for: "reservation_status_pay_1"}
                             -# = f.input :position_status_pay, input_html: {value: 2}, as: :hidden
@@ -127,22 +130,34 @@
                             %i.icon-check
                           %br
 
-                  .col-xs-12
-                    .pull-right
-                      = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary', data: { confirm: '¿Estás seguro?, esta acción es irreversible' }
-                      -# = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+                  - if @reservation.status_pay == 'pending'
+                    .col-xs-12
+                      .pull-right
+                        = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary', data: { confirm: '¿Estás seguro?, esta acción es irreversible' }
+                        -# = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 :javascript
   var reservation_id = #{raw @reservation.id};
   validateReservationStatus(`#edit_reservation_${reservation_id}`);
 
 :javascript
-  var reservation_id = #{raw @reservation.id};
+  var status = "#{raw @reservation.status}";
+  var status_pay = "#{raw @reservation.status_pay}";
+
   $('.reservation_url_payment').hide();
   $('#status_payment').hide();
 
+  if (status == 'payment_link' && status_pay == 'pending'){
+    $('#status_payment').show();
+  }
+
+  if (status == 'credit_agency' && status_pay == 'pending'){
+    $('#status_payment').show();
+  }
+
   $('#payment_link').click(function(){
     $('.reservation_url_payment').show();
-    $('#status_payment').show();
+    $('#status_payment').hide();
   });
 
   $('#cancelled').click(function(){

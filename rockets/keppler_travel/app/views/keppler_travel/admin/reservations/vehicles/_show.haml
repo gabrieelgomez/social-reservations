@@ -1,6 +1,3 @@
-- reservationable = @reservation.reservationable
-- invoice = @reservation.invoice
-- order = @reservation.order
 .container
   .row
     .col-lg-2
@@ -23,12 +20,12 @@
                   %i.icon-trash
 
               - if @type_search == 'agency'
-                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: 'agency'), class: 'new-menu', title: t('keppler.actions.edit') do
+                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: params[:model_name]), class: 'new-menu', title: t('keppler.actions.edit') do
                   %i.icon-pencil
                   = t('keppler.actions.edit')
       .col-lg-8
         .box-body.box-body-no-padding
-          .invoice-transfers__box 
+          .invoice-transfers__box
             .row
               .col-xs-12
                 .row
@@ -39,7 +36,7 @@
                     %p Operador turístico - Bogotá, Colombia
                   .col-lg-1
                   .col-lg-3
-                    %h3.pull-right="N° de Orden #{invoice.id}"
+                    %h3.pull-right="N° de Orden #{@reservation.invoice.id}"
                 %hr/
                 .row
                   .col-xs-12
@@ -52,7 +49,7 @@
                       %br/
                       = @reservation.user.email
                       %br/
-                      = invoice.address.blank? ? '-----------' : invoice.address
+                      = @reservation.invoice.address.blank? ? '-----------' : @reservation.invoice.address
                 .row
                   .col-xs-12.col-lg-3
                     %address
@@ -64,25 +61,34 @@
                     %address
                       %strong Tipo de Moneda
                       %br/
-                      = invoice.currency.upcase
+                      = @reservation.invoice.currency.upcase
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Estatus Reserva
                       %br/
-                      %span.badge.btn-warning= invoice.status
+                      %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
                       -#Status / Color
                         Green / Approved  ---- .btn-success
                         Red  / Canceled   ---- .btn-danger
-                        Yellow / Pending  ---- .btn-warning   
+                        Yellow / Pending  ---- .btn-warning
                       %br/
                       %br/
+
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Estatus Pago
+                      %br/
+                      %span.badge.badge-pill{class: @reservation.order.status_pay_class?}= t("keppler.messages.#{@reservation.order.status_pay}")
+                      %br/
+                      %br/
+
                   .col-xs-12.col-lg-3
                     %address
                       %strong N°. Orden ELP
                       %br/
-                      = invoice.token
+                      = @reservation.invoice.token
                       %br/
                       %br/
                 .row
@@ -107,14 +113,14 @@
                       %strong Aerolinea - Vuelta
                       %br/
                       = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
-                      %br/                      
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Tipo de Traslado
                       %br/
-                      - if @reservation.round_trip = 'true'
+                      - if @reservation.round_trip == 'true'
                         Ida/Vuelta
-                      -else 
+                      -else
                         Ida
                       %br/
                       %strong Adultos/Niños
@@ -128,7 +134,7 @@
                       %strong N° de Vuelo - Vuelta
                       %br/
                       = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
-                      %br/                      
+                      %br/
                   .col-xs-12.col-lg-4
                     %address
                       %strong Fecha/Hora de Ida
@@ -154,8 +160,8 @@
                   .col-xs-12.col-lg-12
                     %address
                       %strong Observaciones
-                      %br/ 
-                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br/
+                      = @reservation.description.blank? ? '-----------' : @reservation.description
                       %br
                   .col-xs-12.col-lg-12
                     %strong Datos de los Viajeros
@@ -163,9 +169,9 @@
                     %table.table.table-striped#travellers
                       -#%thead
                         %tr
-                          %th 
+                          %th
                       %tbody
-                        - @reservation.travellers.each_with_index do |traveller, index|                     
+                        - @reservation.travellers.each_with_index do |traveller, index|
                           %tr.list-row{style:'background-color: transparent !important;'}
                             %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
                             = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
@@ -216,9 +222,9 @@
                             %tbody
                               %tr
                                 %td.text-center= @reservation.reservationable.title['es']
-                                %td.text-center= number_to_currency(@reservation.reservationable.set_price_destination([@reservation.origin, @reservation.arrival], @currency).to_f, locale: @locale)
-                                %td.text-center= "@reservation.multiple"
-                                %td.text-center= "@price_total"
+                                %td.text-center= number_to_currency(@reservation.order.price_reservationable, locale: @locale)
+                                %td.text-center= @reservation.multiple
+                                %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
                   - if @type_search == 'agency'
                     .col-xs-12.col-lg-12
                       .panel.panel-default
@@ -271,14 +277,6 @@
         .box.slice-box
           .box-header.with-border
             %h3.box-title Conductor Asignado
-            .box-tools.pull-right
-            %select#js-search-drive{:multiple => "multiple", :style => ""}
-              %option{:value => "Gabriel"} Gabriel
-              %option{:value => "Estrella"} Estrella
-              %option{:value => "Yibely"} Yibely
-        .box.slice-box
-          .box-header.with-border
-            %h3.box-title Conductor Asignado
           .box-body.box-body-no-padding
             %table.table.table-striped
               %tbody
@@ -312,11 +310,15 @@
                 %table.table.table-striped
                   %tbody
                     %tr.list-row
-                      %th.display-label Lista de Conductores Disponibles
-                      %td.display-value.fs-body-1.tc-black-2
-                        %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                      -# %th.display-label Lista de Conductores Disponibles
+                      -# %td.display-value.fs-body-1.tc-black-2
+                      -#   %select.form-control{name: 'driver_id', style:'border-radius: 0 !important;'}
+                      -#     - @reservation.reservationable.drivers.each do |driver|
+                      -#       %option{ value: driver.id}= driver.user.name
+                      %th
+                        %select#js-search-drive{name: 'driver_id', :multiple => "multiple", :style => ""}
                           - @reservation.reservationable.drivers.each do |driver|
-                            %option{ value: driver.id}= driver.user.name
+                            %option{ value: driver.id}="#{driver.user.name} -  DNI #{driver.user.dni}"
                     %tr.list-row
                       %th.display-label= f.button :submit, t('keppler.actions.assignment'), name: '_save', class: 'btn-primary'
 
@@ -328,10 +330,10 @@
   }
 
   .select2-selection {
-    border-radius: 0 !important; 
-  }    
+    border-radius: 0 !important;
+  }
   .select2-container--default.select2-container--focus .select2-selection--multiple {
-      border: solid #f44336 1px !important; 
+      border: solid #f44336 1px !important;
       outline: 0;
   }
 
@@ -342,9 +344,11 @@
     color: #fff !important;
   }
 
+%script{src: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"}
 :javascript
   $(document).ready(function(){
     $("#js-search-drive").select2({
+      language: "es",
       placeholder: "Buscar Conductor",
       allowClear: true,
       width: '100%',

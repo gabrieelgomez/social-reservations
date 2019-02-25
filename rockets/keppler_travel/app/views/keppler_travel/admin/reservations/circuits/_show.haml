@@ -1,5 +1,3 @@
-- reservationable = @reservation.reservationable
-- invoice = @reservation.invoice
 .container
   .row
     .col-lg-2
@@ -20,7 +18,7 @@
               #{@reservation.id}
             .box-tools.pull-right
               - if can?(KepplerTravel::Reservation).update?
-                = link_to edit_admin_travel_reservation_path(@reservation), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                = link_to edit_admin_travel_reservation_path(@reservation, model_name: params[:model_name], type_search: params[:model_name]), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
                   %i.icon-pencil
 
               - if can?(KepplerTravel::Reservation).destroy?
@@ -28,7 +26,7 @@
                   %i.icon-trash
       .col-lg-8
         .box-body.box-body-no-padding
-          .invoice-transfers__box 
+          .invoice-transfers__box
             .row
               .col-xs-12
                 .row
@@ -39,7 +37,7 @@
                     %p Operador turístico - Bogotá, Colombia
                   .col-lg-1
                   .col-lg-3
-                    %h3.pull-right="N° de Orden #{invoice.id}"
+                    %h3.pull-right="N° de Orden #{@reservation.invoice.id}"
                 %hr/
                 .row
                   .col-xs-12
@@ -52,37 +50,40 @@
                       %br/
                       = @reservation.user.email
                       %br/
-                      = invoice.address.blank? ? '-----------' : invoice.address
+                      = @reservation.invoice.address.blank? ? '-----------' : @reservation.invoice.address
                 .row
                   .col-xs-12.col-lg-3
                     %address
-                      %strong Método de Pago
+                      %strong Pago Total
                       %br/
-                      Pĺataforma: EnLineaPagos
+                      = number_to_currency(@reservation.invoice.amount, locale: @locale)
                       %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Tipo de Moneda
                       %br/
-                      = invoice.currency.upcase
+                      = @reservation.invoice.currency.upcase
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Estatus Reserva
                       %br/
-                      %span.badge.btn-warning= invoice.status
-                      -#Status / Color
-                        Green / Approved  ---- .btn-success
-                        Red  / Canceled   ---- .btn-danger
-                        Yellow / Pending  ---- .btn-warning   
+                      %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
+                      %br/
+                      %br/
+                  .col-xs-12.col-lg-3
+                    %address
+                      %strong Estatus Pago
+                      %br/
+                      %span.badge.badge-pill{class: @reservation.order.status_pay_class?}= t("keppler.messages.#{@reservation.order.status_pay}")
                       %br/
                       %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong N°. Orden ELP
                       %br/
-                      = invoice.token
+                      = @reservation.invoice.token
                       %br/
                       %br/
                 .row
@@ -94,13 +95,13 @@
                       %strong Origen
                       %br/
                       = @reservation.origin.blank? ? '-----------' : @reservation.origin
-                      %br/                    
+                      %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Fecha de Ida
                       %br/
                       = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
-                      %br/                      
+                      %br/
                   .col-xs-12.col-lg-3
                     %address
                       %strong Adultos/Niños
@@ -116,8 +117,8 @@
                   .col-xs-12.col-lg-12
                     %address
                       %strong Observaciones
-                      %br/ 
-                      = @reservation.description.blank? ? '-----------' : @reservation.description          
+                      %br/
+                      = @reservation.description.blank? ? '-----------' : @reservation.description
                       %br
                   .col-xs-12
                     %strong Datos de los Viajeros
@@ -125,37 +126,48 @@
                     %table.table.table-striped#travellers
                       -#%thead
                         %tr
-                          %th 
+                          %th
                       %tbody
-                        - @reservation.travellers.each_with_index do |traveller, index|                     
+                        - @reservation.travellers.each_with_index do |traveller, index|
                           %tr.list-row{style:'background-color: transparent !important;'}
                             %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
                             = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
                 .row
-                  .col-xs-12.col-lg-12
-                    .panel.panel-default
-                      .panel-heading
-                        %h3.panel-title
-                          %strong Descripción
-                      .panel-body
-                        .table-responsive
-                          %table.table.table-condensed
-                            %thead
-                              %tr
-                                %td.text-center
-                                  %strong Concepto
-                                %td.text-center
-                                  %strong Precio
-                                %td.text-center
-                                  %strong Cantidad
-                                %td.text-center
-                                  %strong Total
-                            %tbody
-                              %tr
-                                %td.text-center= "Tipo de Habitación"
-                                %td.text-center= "Precio"
-                                %td.text-center= "Cantidad"
-                                %td.text-center= "Total"
+                  - if @reservation.order.table_reservationable
+                    .col-xs-12.col-lg-12
+                      .panel.panel-default
+                        .panel-heading
+                          %h3.panel-title
+                            %strong Descripción
+                        .panel-body
+                          .table-responsive
+                            %table.table.table-condensed
+                              %thead
+                                %tr
+                                  %td.text-center
+                                    %strong Concepto
+                                  %td.text-center
+                                    %strong Precio
+                                  %td.text-center
+                                    %strong Cantidad
+                                  %td.text-center
+                                    %strong Total
+                              %tbody
+                                - @reservation.order.table_reservationable['pricing_table'].each do |room|
+                                  -# - unless room.keys.include?(:total_price_table)
+                                  %tr
+                                    - if room['type'] == 'children'
+                                      %td{style:'text-align:left!important;'}= "Cant. Niños"
+                                    - else
+                                      %td{style:'text-align:left!important;'}= "Habitación #{room['type']}"
+                                    %td= number_to_currency(room['price'], locale: @locale)
+                                    %td= room['quantity']
+                                    %td= number_to_currency(room['total_room'], locale: @locale)
+                                %tr
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'} -----
+                                  %td{style: 'border-top: 2px solid #000;'}= number_to_currency(@reservation.order.table_reservationable['total_price_table'], locale: @locale)
 
                   - if @type_search == 'agency'
                     .col-md-12

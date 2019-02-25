@@ -16,31 +16,22 @@ module KepplerTravel
 
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
-        if @reservation.order
-          if @order = @reservation.order.update(driver_id: params[:driver_id])
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        else
-          @order = @reservation.build_order(details: 'driver', status: 'pending', driver_id: params[:driver_id])
-          if @order.save
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        end
+        @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
+        DriverMailer.transfer_driver(@reservation).deliver_now
+        DriverMailer.transfer_user(@reservation).deliver_now
+        redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
       def unassign
         @reservation = Reservation.find(params[:reservation_id])
-        @reservation.order.destroy
+        @driver = @reservation.order.driver = nil
+        @reservation.order.save!
         redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
       # GET /reservations
       def index
-        if @type_search
+        if @type_search == 'agency'
           ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
         else
           ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
@@ -84,19 +75,33 @@ module KepplerTravel
       # PATCH/PUT /reservations/1
       def update
         if @reservation.update(reservation_params)
-          @reservation.invoice.update(status: reservation_params[:status])
-          @reservation.invoice.update(status: reservation_params[:status])
+          @reservation.invoice.update(status: @reservation.status)
+          @reservation.order.update(status: @reservation.status)
 
-          @reservation.order.update(status_pay: reservation_params[:status_pay])
-          @reservation.order.update(status_pay: reservation_params[:status_pay])
+          @reservation.order.update(status_pay: @reservation.status_pay)
+          @reservation.invoice.update(status_pay: @reservation.status_pay)
 
-          @reservation.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
-          @reservation.invoice.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
-          @reservation.order.update(status_pay: 'cancelled') if reservation_params[:status] == 'cancelled'
+          @reservation.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.invoice.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.order.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+
+          case @reservation.status
+            when 'pending'
+              @subject = "Receptivo Colombia - Su reservación está en estado pendiente"
+            when 'credit_agency'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'payment_link'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'cancelled'
+              @subject = "Receptivo Colombia - Su reservación ha sido cancelada"
+          end
+
+
+          ReservationMailer.reservation_status(@reservation, @reservation.user, @subject).deliver_now
 
           # ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
           # ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
-          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: 'agency')
+          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: params[:type_search])
         else
           render :edit
         end

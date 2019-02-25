@@ -24,7 +24,7 @@ module KepplerTravel
       self.class.to_s.split('::').last
     end
 
-    def calculate_kids(kids, currency)
+    def calculate_kids(currency)
       case self.price_kids[currency].to_f.positive?
         when true
           self.price_kids[currency].to_f

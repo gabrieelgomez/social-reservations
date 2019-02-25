@@ -295,7 +295,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Costo Reserva
-                                  - if @reservation.invoice.amount != nil
+                                  - unless @reservation.invoice.amount.to_f.zero?
                                     = number_to_currency(@reservation.invoice.amount, locale: @locale)
                                   - else
                                     Por cotizar
@@ -303,7 +303,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Estatus Reserva
-                                  = @reservation.invoice.status.blank? ? '-----------' : @reservation.invoice.status
+                                  = t("keppler.messages.#{@reservation.order.status}")
 
                               %tr
                                 %td.attributes_item

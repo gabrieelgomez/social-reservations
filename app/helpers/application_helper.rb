@@ -7,6 +7,11 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def field(field)
+    return '-------' if field.blank?
+    field
+  end
+
   # Meta Descriotion dinamic in all keppler
   def meta_description(page_description)
     content_for(:description) { page_description }

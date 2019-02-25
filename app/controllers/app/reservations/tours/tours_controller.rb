@@ -28,7 +28,13 @@ module App
             # Calculate Price
 
             build_invoice
-            @reservation.build_order(details: 'user', status: 'pending')
+            @reservation.build_order(
+              details: 'user',
+              price_reservationable: @price_reservationable,
+              price_total_pax: @price_total_pax,
+              user_referer: @user.email,
+              status: 'pending'
+            )
             if @reservation.save!
               create_travellers
               if current_user.try(:has_role_agentable?)
@@ -43,8 +49,6 @@ module App
                   price_lending: @price_lending,
                   price_total_agency: @price_total_agency,
                   price_total_pax: @price_total_pax,
-                  price_vehicle: @price_vehicle,
-                  user_referer: @user.email,
                   agency_referer: @agency.id,
                   agent_referer: @agent&.id
                 )

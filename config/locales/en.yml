@@ -70,6 +70,11 @@ en:
       keppler_ga_dashboard/dashboard: 'Dashboard'
       admin/users: 'Users'
     messages:
+      pending: Pendiente
+      cancelled: Cancelada
+      credit_agency: Aprobada - Crédito Agencia
+      payment_link: Aprobada - URL de cobro
+      approved: Aprobada
       not_authorized_page: You have no authorization to access this page
       not_authorized_action: You have no authorization to perform this action
       not_found_records: "No %{model} found"

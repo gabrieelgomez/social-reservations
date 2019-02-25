@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_175538) do
+ActiveRecord::Schema.define(version: 2019_02_23_211253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -356,7 +356,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_175538) do
     t.float "price_lending", default: 0.0
     t.float "price_total_agency", default: 0.0
     t.float "price_total_pax", default: 0.0
-    t.float "price_vehicle", default: 0.0
+    t.float "price_reservationable", default: 0.0
     t.integer "agent_id"
     t.datetime "deleted_at"
     t.string "user_referer"
@@ -365,6 +365,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_175538) do
     t.integer "agent_referer"
     t.string "status_pay", default: "pending"
     t.string "url_payment", default: ""
+    t.jsonb "table_reservationable", default: {}
     t.index ["driver_id"], name: "index_keppler_travel_orders_on_driver_id"
     t.index ["reservation_id"], name: "index_keppler_travel_orders_on_reservation_id"
   end

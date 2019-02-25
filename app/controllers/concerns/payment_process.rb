@@ -8,7 +8,7 @@ module PaymentProcess
     respuesta = params[:respuesta]
     if respuesta == 'aprobada'
       invoice = @KT::Invoice.find_by(token: referencia)
-      reservation = invoice.reservation
+      reservation = @reservation.invoice.reservation
       user = reservation.user
       type = reservation.reservationable_type.split('::').last.downcase.singularize
       invoice.update(status: 'approved')

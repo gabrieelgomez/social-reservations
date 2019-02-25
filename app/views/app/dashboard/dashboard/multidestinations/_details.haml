@@ -3,7 +3,7 @@
     .col-12.col-lg-12.col-xl-8
       .card
         .card-header
-          %h4.card-title Facturación de la Reservación 
+          %h4.card-title Facturación de la Reservación
         .card-body
           .row
             .col-12
@@ -32,192 +32,193 @@
                               %h5.text-right N° de Orden
                               %h5.text-right= @reservation.id
                           %hr/
+
                           .row
-                            .col-12.col-md-3
+                            .col-xs-12.col-lg-12
                               %address
-                                %strong Cotizante
+                                %strong Datos del Cotizante
                                 %br/
                                 = @reservation.user.name
                                 %br/
-                            .col-12.col-md-3
-                              %address
-                                %strong E-mail
+                                = @reservation.user.phone.blank? ? '-----------' : @reservation.user.phone
                                 %br/
                                 = @reservation.user.email
                                 %br/
-                            .col-12.col-md-3
+                                = @reservation.invoice.address.blank? ? '-----------' : @reservation.invoice.address
+                          .row
+                            .col-xs-12.col-lg-3
+                              %address
+                                %strong Pago Total
+                                %br/
+                                = number_to_currency(@reservation.invoice.amount, locale: @locale)
+                                %br/
+                            .col-xs-12.col-lg-3
                               %address
                                 %strong Tipo de Moneda
                                 %br/
                                 = @reservation.invoice.currency.upcase
                                 %br/
-                            .col-12.col-md-3
+                                %br/
+                            .col-xs-12.col-lg-3
                               %address
-                                %strong N°. Factura
+                                %strong Estatus Reserva
+                                %br/
+                                %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
+                                -#Status / Color
+                                  Green / Approved  ---- .btn-success
+                                  Red  / Canceled   ---- .btn-danger
+                                  Yellow / Pending  ---- .btn-warning
+                                %br/
+                                %br/
+                            .col-xs-12.col-lg-3
+                              %address
+                                %strong Estatus Pago
+                                %br/
+                                %span.badge.badge-pill{class: @reservation.order.status_pay_class?}= t("keppler.messages.#{@reservation.order.status_pay}")
+                                %br/
+                                %br/
+
+                            .col-xs-12.col-lg-3
+                              %address
+                                %strong N°. Orden ELP
                                 %br/
                                 = @reservation.invoice.token
                                 %br/
-                          .row
-                            .col-12.col-md-4
-                              %address
-                                %strong Tipo de Moneda
-                                %br/
-                                = @reservation.invoice.currency.upcase
-                                %br/
-                            .col-12.col-md-4
-                              %address
-                                %strong Método de Pago
-                                %br/
-                                Pĺataforma: EnLineaPagos
-                                %br/
-                            .col-12.col-md-4
-                              %address
-                                %strong Estatus
-                                %br/
-                                %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
                                 %br/
                           .row
-                            .col-12.col-md-12
-                              %h5.text-center Información del Multidestino
+                            .col-xs-12.col-lg-12
+                              %h4.text-center Información del Multidestino
                               %br/
-                            .col-12.col-md-3
+                            .col-xs-12.col-lg-3
                               %address
-                                %strong Multidestino
+                                %strong Origen
                                 %br/
-                                = truncate(@reservation.origin, :length => 25)
+                                = @reservation.origin.blank? ? '-----------' : @reservation.origin
                                 %br/
-                            .col-12.col-md-3
+                            .col-xs-12.col-lg-3
                               %address
-                                %strong Fecha de Reservación
+                                %strong Fecha de Ida
                                 %br/
                                 = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
                                 %br/
-                            .col-12.col-md-3
-                              %address
-                                %strong Pasajeros
-                                %br/
-                                = @reservation.travellers.count
-                                %br/
-                            .col-12.col-md-3
+                            .col-xs-12.col-lg-3
                               %address
                                 %strong Adultos/Niños
                                 %br/
-                                = "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
+                                = "#{@reservation.quantity_adults.to_i} / #{@reservation.quantity_kids.to_i}"
                                 %br/
-                            .col-12.col-md-12
+                            .col-xs-12.col-lg-3
                               %address
-                                %strong Observación
+                                %strong Tipo de Alojamiento
+                                %br/
+                                = "Tipo de Alojamiento"
+                                %br/
+                            .col-xs-12.col-lg-12
+                              %address
+                                %strong Observaciones
                                 %br/
                                 = @reservation.description.blank? ? '-----------' : @reservation.description
-                                %br/
-                            .col-12.col-md-4
-                              %strong Viajeros
-                              %ul.list-group.list-group-flush
-                                - @reservation.travellers.each do |traveller|
-                                  %li.list-group-item
-                                    %span="* #{traveller.name} -- #{traveller.dni}"                                
+                                %br
+                            .col-xs-12.col-lg-12
+                              %strong Datos de los Viajeros
+                              %br/
+                              %table.table.table-striped#travellers
+                                -#%thead
+                                  %tr
+                                    %th
+                                %tbody
+                                  - @reservation.travellers.each_with_index do |traveller, index|
+                                    %tr.list-row{style:'background-color: transparent !important;'}
+                                      %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
+                                      = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
                           .row
-                            .col-12.col-md-12
-                              .card
-                                .card-header.text-center
-                                  %strong Descripción
-                                .card-body
-                                  %table.table.table-hover.table-striped
-                                    %thead
-                                      %tr
-                                        %th
-                                          %strong Concepto
-                                        %th 
-                                          %strong Precio
-                                        %th 
-                                          %strong Cantidad (Adultos/Niños)
-                                        %th 
-                                          %strong Total
-                                    %tbody
-                                      %tr
-                                        %td= truncate(@reservation.origin, :length => 25)
-                                        %td $ 1000 USD
-                                        %td= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
-                                        %td $ 5000 USD
-                                .card-footer
-                          .row
-                            .col-12.col-md-12.d-flex.justify-content-center
-                              - if @reservation.invoice.amount.nil?
-                                %a
-                                  %button.btn.btn-warning.btn-lg{:type => "button"}
-                                    Por cotizar
-                              - elsif @reservation.invoice.status_pay? :pending
-                                %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
-                                  %button.btn.btn-primary.btn-lg{:type => "button"}
-                                    Pagar
-                              - else
-                                %a
-                                  %button.btn.btn-success.btn-lg{:disabled => "disabled", :type => "button"} Primary button
-                                  Pagado
-                            .card-footer
--#.container-fluid
-  .row
-    .col-12.col-xl-8
-      .card
-        .card-header
-          %h4.card-title Detalles de la Reservación
-        .card-body
-          .row
-            .col-12.col-xl-8
-              %ul.list-group.list-group-flush
-                %li.list-group-item
-                  Orden:
-                  %span= @reservation.id
-                %li.list-group-item
-                  Factura:
-                  %span= @reservation.invoice.token
-                %li.list-group-item
-                  Moneda:
-                  %span= @reservation.invoice.currency.upcase
-                %li.list-group-item
-                  Costo:
-                  - if @reservation.invoice.amount.nil?
-                    %span Por cotizar
-                  - else
-                    = number_to_currency(@reservation.invoice.amount, locale: @locale)
-                %li.list-group-item
-                  Estatus:
-                  %span.badge.badge-pill{class: @reservation.invoice.status_class?}= @reservation.invoice.status
-                %li.list-group-item
-                  Pago:
-                  - if @reservation.invoice.amount.nil?
-                    %span Por cotizar
-                  - elsif @reservation.invoice.status_pay? :pending
-                    %a{href: checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id), target: '_blank'}
-                      %button.btn.btn-primary.btn-xs{:type => "button"}
-                        %span
-                          %i.icon-credit-card.icons
-                        Pagar
-                  - else
-                    %span Pagado
-                %li.list-group-item
-                  Usuario:
-                  %span= @reservation.user.email
-                %li.list-group-item
-                  Cotizante:
-                  %span= @reservation.travellers.first.name
-                %li.list-group-item
-                  Multidestino:
-                  %span= truncate(@reservation.origin, :length => 25)
-                %li.list-group-item
-                  Fecha Reservación:
-                  %span= @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
-                %li.list-group-item
-                  Cantidad Adultos:
-                  %span= @reservation.quantity_adults
-                %li.list-group-item
-                  Cantidad Niños:
-                  %span= @reservation.quantity_kids
-                %li.list-group-item
-                  Observación:
-                  %span= @reservation.description.blank? ? '-----------' : @reservation.description
-            .col-12.col-xl-4
-        .card-footer
+                            - if @reservation.order.table_reservationable
+                              .col-xs-12.col-lg-12
+                                .panel.panel-default
+                                  .panel-heading
+                                    %h3.panel-title
+                                      %strong Descripción
+                                  .panel-body
+                                    .table-responsive
+                                      %table.table.table-condensed
+                                        %thead
+                                          %tr
+                                            %td.text-center
+                                              %strong Concepto
+                                            %td.text-center
+                                              %strong Precio
+                                            %td.text-center
+                                              %strong Cantidad
+                                            %td.text-center
+                                              %strong Total
+                                        %tbody
+                                          - @reservation.order.table_reservationable['pricing_table'].each do |room|
+                                            -# - unless room.keys.include?(:total_price_table)
+                                            %tr
+                                              - if room['type'] == 'children'
+                                                %td{style:'text-align:left!important;'}= "Cant. Niños"
+                                              - else
+                                                %td{style:'text-align:left!important;'}= "Habitación #{room['type']}"
+                                              %td= number_to_currency(room['price'], locale: @locale)
+                                              %td= room['quantity']
+                                              %td= number_to_currency(room['total_room'], locale: @locale)
+
+                                          %tr
+                                            %td{style:'text-align:left!important;'}= "Cant. Adultos"
+                                            %td -----
+                                            %td= @reservation['quantity_adults']
+                                            %td= number_to_currency(@reservation.order.table_reservationable['total_rooms_per'], locale: @locale)
+
+                                          %tr
+                                            %td{style: 'border-top: 2px solid #000;'} -----
+                                            %td{style: 'border-top: 2px solid #000;'} -----
+                                            %td{style: 'border-top: 2px solid #000;'} -----
+                                            %td{style: 'border-top: 2px solid #000;'}= number_to_currency(@reservation.order.table_reservationable['total_price_table'], locale: @locale)
+
+                            - if @type_search == 'agency'
+                              .col-md-12
+                                .panel.panel-default
+                                  .panel-heading
+                                    %h3.panel-title
+                                      %strong Porcentajes de Agencia
+                                  .panel-body
+                                    .table-responsive
+                                      %table.table.table-condensed
+                                        %thead
+                                          %tr
+                                            %td.text-center
+                                              %strong Concepto
+                                            %td.text-center
+                                              %strong Valor
+                                            %td.text-center
+                                              %strong Subtotal
+                                            %td.text-center
+                                              %strong Total
+                                        %tbody
+                                          %tr
+                                            %td.text-center Comisión
+                                            %td.text-center= "#{@reservation.order.comission} %"
+                                            %td.text-center= number_to_currency(@reservation.order.price_comission, locale: @locale)
+                                            %td.text-center -----
+
+                                          %tr
+                                            %td.text-center Prestación
+                                            %td.text-center= "#{@reservation.order.lending} %"
+                                            %td.text-center= number_to_currency(@reservation.order.price_lending, locale: @locale)
+                                            %td.text-center -----
+
+                                          %tr
+                                            %td.text-center Total PAX
+                                            %td.text-center -----
+                                            %td.text-center -----
+                                            %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
+
+                                          %tr
+                                            %td.text-center Total Agencia
+                                            %td.text-center -----
+                                            %td.text-center -----
+                                            %td.text-center= number_to_currency(@reservation.order.price_total_agency, locale: @locale)
+
 :scss
   .img-multidestination{
     width: 250px;

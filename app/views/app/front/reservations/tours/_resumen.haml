@@ -35,7 +35,7 @@
                   %br
                   %small.text-muted
                     // Precio de Niños
-                    = number_to_currency(@tour.calculate_kids(@kids, @currency), locale: @locale)
+                    = number_to_currency(@tour.calculate_kids(@currency), locale: @locale)
                     (Niños) x
                     = @kids
                     = "="
@@ -102,7 +102,7 @@
                   %br
                   %small.text-muted
                     // Precio de Niños
-                    = number_to_currency(@tour.calculate_kids(@kids, @currency), locale: @locale)
+                    = number_to_currency(@tour.calculate_kids(@currency), locale: @locale)
                     (Niños) x
                     = @kids
                     = "="

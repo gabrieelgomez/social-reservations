@@ -289,7 +289,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Estatus Reserva
-                                  = @reservation.invoice.status.blank? ? '-----------' : @reservation.invoice.status
+                                  = t("keppler.messages.#{@reservation.order.status}")
                               %tr
                                 %td.attributes_item
                                   %strong Nombre Cotizante
@@ -427,7 +427,7 @@
 
             %tr.list-row
               %th.display-label Estatus de la Reserva
-              %td.display-value.fs-body-1.tc-black-2= @reservation.invoice.status
+              %td.display-value.fs-body-1.tc-black-2= t("keppler.messages.#{@reservation.order.status}")
 
             %tr.list-row
               %th.display-label Nombre del Cotizante

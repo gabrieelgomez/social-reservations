@@ -28,10 +28,14 @@ module KepplerTravel
     # 4 = payment_link
 
     validates_inclusion_of :status, :in => %w(pending cancelled credit_agency payment_link)
-    validates_inclusion_of :status_pay, :in => %w(pending approved)
+    validates_inclusion_of :status_pay, :in => %w(pending cancelled approved)
 
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'
+    end
+
+    def multiple
+      round_trip == 'true' ? '2' : '1'
     end
 
     def self.price_total(locality, object, objectable, currency)

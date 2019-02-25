@@ -34,6 +34,7 @@ module App
             if @reservation.save!
               @reservation.order.update(
                 details: 'circuit',
+                table_reservationable: session[:table_reservationable],
                 price_total_pax: @price_total,
                 user_referer: @user.email,
               )
@@ -72,7 +73,7 @@ module App
           circuitable = @reservation.reservationable.circuitables.find_by(ranking_id: session[:square_circuit]['ranking_id'])
 
           table = circuitable.price_table(session[:square_circuit], session[:invoice].first['currency'])
-          @price_total = table.last[:total_price_table]
+          @price_total = table[:total_price_table]
         end
 
       end

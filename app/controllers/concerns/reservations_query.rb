@@ -35,7 +35,7 @@ module ReservationsQuery
 
   def set_price_tour
     @total_adults    = @tour.price_adults[@currency].to_f * @adults.to_f
-    @total_kids      = @tour.calculate_kids(@kids, @currency).to_f * @kids.to_f
+    @total_kids      = @tour.calculate_kids(@currency).to_f * @kids.to_f
     @price_total     = @total_adults + @total_kids
     set_price_agency
   end
@@ -67,14 +67,20 @@ module ReservationsQuery
 
   # Set by Step 2 Circuit
   def set_circuit_checkout
-    @render          = 'circuits'
-    @reservationable = @KT::Circuit.find(@reservationable['id'])
+    @render                = 'circuits'
+    @reservationable       = @KT::Circuit.find(@reservationable['id'])
+    @square                = session[:square_circuit]
+    @circuitable           = @reservationable.circuitables.find_by(ranking_id: @square['ranking_id'])
+    @table_reservationable = session[:table_reservationable] = @circuitable.price_table(@square, @currency)
   end
 
   # Set by Step 2 Multidestination
   def set_multidestination_checkout
     @render          = 'multidestinations'
     @reservationable = @KT::Multidestination.find(@reservationable['id'])
+    @square = session[:square_multidestination]
+    @multidestinationable = @reservationable.multidestinationables.find_by(lodgment_id: @square['lodgment_id'])
+    @table_reservationable = session[:table_reservationable] = @multidestinationable.price_table(@square, @currency, @reservation['quantity_adults'])
   end
 
   def set_price_agency

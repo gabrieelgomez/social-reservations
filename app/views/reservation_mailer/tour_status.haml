@@ -278,11 +278,11 @@
               EnLineaPagos ELP
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
-              %b{:style => "color:green;font-weight:normal;margin:0"}= @reservation.invoice.status.blank? ? '-----------' : @reservation.invoice.status
+              %b{:style => "color:green;font-weight:normal;margin:0"}= t("keppler.messages.#{@reservation.order.status}").blank? ? '-----------' : @reservation.order.status
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} ¿Pagada?   
-              - if @reservation.invoice.status_pay? :pending
-                %b{:style => "color:green;font-weight:normal;margin:0"}= @reservation.invoice.status
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} ¿Pagada?
+              - if @reservation.order.status_pay? :pending
+                %b{:style => "color:green;font-weight:normal;margin:0"}= t("keppler.messages.#{@reservation.order.status}")
               -else
                 ¡Pagada!
         %tr
@@ -310,7 +310,7 @@
               = @reservation.user.email
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"} Costo de Reserva
-              - if @reservation.invoice.amount != nil
+              - unless @reservation.invoice.amount.to_f.zero?
                 = number_to_currency(@reservation.invoice.amount, locale: @locale)
               - else
                 Por cotizar
@@ -641,7 +641,7 @@
                               %tr
                                 %td.attributes_item
                                   %strong Costo Reserva
-                                  - if @reservation.invoice.amount != nil
+                                  - unless @reservation.invoice.amount.to_f.zero?
                                     = number_to_currency(@reservation.invoice.amount, locale: @locale)
                                   - else
                                     Por cotizar
@@ -649,13 +649,13 @@
                               %tr
                                 %td.attributes_item
                                   %strong Estatus Reserva
-                                  = @reservation.invoice.status.blank? ? '-----------' : @reservation.invoice.status
+                                  = t("keppler.messages.#{@reservation.order.status}").blank? ? '-----------' : @reservation.order.status
 
                               %tr
                                 %td.attributes_item
                                   %strong ¿Pagada?
-                                  - if @reservation.invoice.status_pay? :pending
-                                    = @reservation.invoice.status
+                                  - if @reservation.order.status_pay? :pending
+                                    = t("keppler.messages.#{@reservation.order.status}")
                                   -else
                                     ¡Pagada!
                               %tr

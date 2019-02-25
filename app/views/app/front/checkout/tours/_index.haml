@@ -102,7 +102,7 @@
                                     = "/"
                                     Niños
                                     = "(#{@kids.to_i})"
-                                    = number_to_currency(@reservationable.calculate_kids(@kids, @currency), locale: @locale)
+                                    = number_to_currency(@reservationable.calculate_kids(@currency), locale: @locale)
                                   %td.text-center= @seats
                                   %td.text-right= number_to_currency(@price_total, locale: @locale)
 

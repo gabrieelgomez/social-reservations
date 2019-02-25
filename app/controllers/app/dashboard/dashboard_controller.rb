@@ -26,7 +26,6 @@ module App
 
 
       def orders
-        redirect_to drivers_transfers_path('es', 'cop') if current_user.has_role?(:agency)|| current_user.has_role?(:agent)
         redirect_to drivers_transfers_path('es', 'usd') if current_user.has_role? :driver
       end
 
