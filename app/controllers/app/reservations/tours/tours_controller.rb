@@ -56,7 +56,7 @@ module App
                   redirect_to errors_checkout_path('usd')
                 end
               else
-                # ReservationMailer.tour_status(@reservation, @user).deliver_now
+                ReservationMailer.tour_status(@reservation, @user).deliver_now
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               end
             else
@@ -72,7 +72,7 @@ module App
           kids   = session[:reservation]['quantity_kids']
           currency = session[:invoice].first['currency']
           @total_adults    = @reservation.reservationable.price_adults[currency].to_f * adults
-          @total_kids      = @reservation.reservationable.calculate_kids(kids, currency) * kids
+          @total_kids      = @reservation.reservationable.calculate_kids(kids, currency).to_f * kids
           @price_total     = @total_adults + @total_kids
           set_price_agency
         end
