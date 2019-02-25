@@ -58,9 +58,9 @@ module App
                 )
                 redirect_to invoice_path('es', 'usd')
               elsif @price_total.zero?
-                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              else
                 redirect_to invoice_path('es', 'usd')
+              else
+                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               end
             else
               redirect_to errors_checkout_path('usd')
