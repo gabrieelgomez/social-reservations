@@ -60,7 +60,7 @@ module ReservationsQuery
     @kids            = session[:reservation]['quantity_kids']
     @seats           = @adults.to_i + @kids.to_i
     @total_adults    = @reservationable.price_adults[@currency].to_f * @adults
-    @total_kids      = @reservationable.calculate_kids(@currency) * @kids
+    @total_kids      = @reservationable.calculate_kids(@currency).to_f * @kids
     @price_total     = @total_adults + @total_kids
     set_price_agency
   end

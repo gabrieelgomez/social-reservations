@@ -4,399 +4,368 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     :css
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
-      @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Poppins:400,500,700');
-        * {
-          margin: 0;
-          padding: 0;
-          border: 0;
-        }
+      @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+      @import url("https://fonts.googleapis.com/css?family=Noto+Sans|Poppins:400,500,700");
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
 
-        *:not(br):not(tr):not(html) {
-          font-family: 'Noto Sans', sans-serif;
-          box-sizing: border-box;
-        }
+      *:not(br):not(tr):not(html) {
+        font-family: "Noto Sans", sans-serif;
+        box-sizing: border-box;
+      }
 
-        body {
-          width: 100% !important;
-          height: 100%;
-          margin: 0;
-          line-height: 1.4;
-          background-color: #F2F4F6;
-          color: #74787E;
-          -webkit-text-size-adjust: none;
-          font-family: 'Poppins', sans-serif;
-        }
+      body {
+        width: 100% !important;
+        height: 100%;
+        margin: 0;
+        line-height: 1.4;
+        background-color: #f2f4f6;
+        color: #74787e;
+        -webkit-text-size-adjust: none;
+        font-family: "Poppins", sans-serif;
+      }
 
-        p,
-        ul,
-        ol,
-        blockquote {
-          line-height: 1.4;
-          text-align: left;
-        }
+      p,
+      ul,
+      ol,
+      blockquote {
+        line-height: 1.4;
+        text-align: left;
+      }
 
-        a {
-          color: #3869D4;
-        }
+      a {
+        color: #3869d4;
+      }
 
-        a img {
-          border: none;
-        }
+      a img {
+        border: none;
+      }
 
-        td {
-          word-break: break-word;
-        }
+      td {
+        word-break: break-word;
+      }
 
-        /* Layout ------------------------------ */
-        .email-wrapper {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          -premailer-width: 100%;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-          background-color: #585858;
-        }
+      /* Layout ------------------------------ */
+      .email-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        -premailer-width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        background-color: #585858;
+      }
 
-        .email-content {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          -premailer-width: 100%;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-        }
+      .email-content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        -premailer-width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+      }
 
-        /* Masthead ----------------------- */
-        .email-masthead {
-          padding: 25px 0;
-          text-align: center;
-          background-color: #4e4e56;
-        }
+      /* Masthead ----------------------- */
+      .email-masthead {
+        padding: 25px 0;
+        text-align: center;
+        background-color: #4e4e56;
+      }
 
-        .email-masthead img {
-          height: 25%;
-        }
+      .email-masthead img {
+        height: 25%;
+      }
 
-        .email-masthead_logo {
-          width: 94px;
-        }
+      .email-masthead_logo {
+        width: 94px;
+      }
 
-        .email-masthead_name {
-          font-size: 16px;
-          font-weight: bold;
-          color: #bbbfc3;
-          text-decoration: none;
-          text-shadow: 0 1px 0 white;
-        }
+      .email-masthead_name {
+        font-size: 16px;
+        font-weight: bold;
+        color: #bbbfc3;
+        text-decoration: none;
+        text-shadow: 0 1px 0 white;
+      }
 
-        /* Body ------------------------------ */
-        .email-body {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          -premailer-width: 100%;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-          border-top: 1px solid #EDEFF2;
-          border-bottom: 1px solid #EDEFF2;
-          background-color: #FFFFFF;
-        }
+      /* Body ------------------------------ */
+      .email-body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        -premailer-width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        border-top: 1px solid #edeff2;
+        border-bottom: 1px solid #edeff2;
+        background-color: #ffffff;
+      }
 
-        .email-body_inner {
-          width: 600px;
-          margin: 0 auto;
-          padding: 0;
-          -premailer-width: 570px;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-          background-color: #FFFFFF;
-        }
+      .email-body_inner {
+        width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        -premailer-width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        background-color: #ffffff;
+      }
 
+      .email-footer {
+        width: 570px;
+        margin: 0 auto;
+        padding: 0;
+        -premailer-width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        text-align: center;
+      }
+
+      .email-footer p {
+        color: #fff;
+      }
+
+      .body-action {
+        width: 100%;
+        margin: 30px auto;
+        padding: 0;
+        -premailer-width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        text-align: center;
+      }
+
+      .body-sub {
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #edeff2;
+      }
+
+      .content-cell {
+        padding: 35px;
+      }
+
+      /* Attribute list ------------------------------ */
+      .attributes {
+        margin: 0 0 21px;
+      }
+
+      .attributes_content {
+        background-color: #fff;
+        padding: 16px;
+      }
+
+      .attributes_item {
+        padding: 0;
+        line-height: 28px;
+      }
+
+      .attributes_item strong {
+        color: #2f3133;
+      }
+
+      .attributes_item img {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      #company {
+        color: white;
+        text-decoration: none !important;
+      }
+
+      /* Utilities ------------------------------ */
+      .align-right {
+        text-align: right;
+      }
+
+      .align-left {
+        text-align: left;
+      }
+
+      .align-center {
+        text-align: center;
+      }
+
+      /*Media Queries ------------------------------ */
+      @media only screen and (max-width: 600px) {
+        .email-body_inner,
         .email-footer {
-          width: 570px;
-          margin: 0 auto;
-          padding: 0;
-          -premailer-width: 570px;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-          text-align: center;
+          width: 100% !important;
         }
+      }
 
-        .email-footer p {
-          color: #fff;
+      @media only screen and (max-width: 500px) {
+        .button {
+          width: 100% !important;
         }
+      }
 
-        .body-action {
-          width: 100%;
-          margin: 30px auto;
-          padding: 0;
-          -premailer-width: 100%;
-          -premailer-cellpadding: 0;
-          -premailer-cellspacing: 0;
-          text-align: center;
+      @media only screen and (max-width: 767px) {
+        .email-masthead img {
+          width: 30%;
         }
+      }
 
-        .body-sub {
-          margin-top: 25px;
-          padding-top: 25px;
-          border-top: 1px solid #EDEFF2;
-        }
+      /* Type ------------------------------ */
+      h1 {
+        margin-top: 0;
+        color: #43b7e8;
+        font-size: 19px;
+        font-weight: bold;
+        text-align: center;
+      }
 
-        .content-cell {
-          padding: 35px;
-        }
+      h2 {
+        margin-top: 0;
+        color: #2f3133;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+      }
 
-        /* Attribute list ------------------------------ */
-        .attributes {
-          margin: 0 0 21px;
-        }
+      h3 {
+        margin-top: 0;
+        color: #2f3133;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+      }
 
-        .attributes_content {
-          background-color: #fff;
-          padding: 16px;
-        }
+      p {
+        margin-top: 0;
+        color: #74787e;
+        font-size: 16px;
+        line-height: 1.5em;
+        text-align: center;
+      }
 
-        .attributes_item {
-          padding: 0;
-          line-height: 28px;
-        }
+      p.sub {
+        font-size: 13px;
+      }
 
-        .attributes_item strong {
-          color: #2F3133;
-        }
+      p.center {
+        text-align: center;
+      }
+  %body{:style => "background-color:#fff;"}
+    %table{:style => "max-width:670px;margin:50px auto 10px;background-color:#8080800f;padding:50px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); border-top: solid 10px #43b7e8;border-bottom: solid 10px #43b7e8;box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);"}
+      %thead
+        %tr
+          %th{:style => "text-align:left;"}
+            %img{:alt => "receptivo colombia", :src => "https://i.ibb.co/wgcHVTt/receptivo-colombia.png", :style => "max-width: 150px;"}/
+          %th{:style => "text-align:right;font-weight:400;"}= Date.today
+      %tbody
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Reservación de Traslado
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Orden
+              = @reservation.id.blank? ? '-----------' : @reservation.id
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Factura
+              = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Tipo de Moneda
+              = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Plataforma de Pago
+              EnLineaPagos ELP
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
+              %b{:style => "margin:0;color: yellow; background-color: gray;padding: 4px; border-radius: 5px;font-weight: bold;"}= t("keppler.messages.#{@reservation.order.status}").blank? ? '-----------' : t("keppler.messages.#{@reservation.order.status}").capitalize
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus del Pago
+              - if @reservation.order.status_pay? :pending
+                %b{:style => "margin:0;color: yellow; background-color: gray;padding: 4px; border-radius: 5px;font-weight: bold;"}= t("keppler.messages.#{@reservation.order.status}").capitalize
+              -else
+                ¡Pagada!
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Nombre del Cotizante
+              = @reservation.user.name
 
-        .attributes_item img {
-          margin-top: 20px;
-          width: 100%;
-        }
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Costo de Reserva
+              - unless @reservation.invoice.amount.to_f.zero?
+                ="#{@reservation.invoice.currency.upcase} #{number_to_currency(@reservation.invoice.amount, locale: @locale) }"
+              - else
+                Por cotizar
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Origen
+              = @reservation.origin.blank? ? '-----------' : @reservation.origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Cantidad de Adultos
+              = @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Fecha de Vuelo - Origen
+              = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Hora - Origen
+              = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px"} Aerolínea - Origen
+              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Número de Vuelo - Origen
+              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
 
-        #company {
-          color: white;
-          text-decoration: none !important;
-        }
-
-        /* Utilities ------------------------------ */
-        .align-right {
-          text-align: right;
-        }
-
-        .align-left {
-          text-align: left;
-        }
-
-        .align-center {
-          text-align: center;
-        }
-
-        /*Media Queries ------------------------------ */
-        @media only screen and (max-width:600px) {
-
-          .email-body_inner,
-          .email-footer {
-            width: 100% !important;
-          }
-
-        }
-
-        @media only screen and (max-width:500px) {
-          .button {
-            width: 100% !important;
-          }
-
-        }
-
-        @media only screen and (max-width:767px) {
-          .email-masthead img {
-            width: 30%;
-          }
-
-        }
-
-        /* Type ------------------------------ */
-        h1 {
-          margin-top: 0;
-          color: #43b7e8;
-          font-size: 19px;
-          font-weight: bold;
-          text-align: center;
-        }
-
-        h2 {
-          margin-top: 0;
-          color: #2F3133;
-          font-size: 16px;
-          font-weight: bold;
-          text-align: center;
-        }
-
-        h3 {
-          margin-top: 0;
-          color: #2F3133;
-          font-size: 14px;
-          font-weight: bold;
-          text-align: center;
-        }
-
-        p {
-          margin-top: 0;
-          color: #74787E;
-          font-size: 16px;
-          line-height: 1.5em;
-          text-align: center;
-        }
-
-        p.sub {
-          font-size: 13px;
-        }
-
-        p.center {
-          text-align: center;
-        }
-  %body
-    %table.email-wrapper{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-      %tr
-        %td{:align => "center"}
-          %table.email-content{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-            %tr
-              %td.email-masthead
-                %a.email-masthead_name{:href => "#"}
-                  %img{:src => "https://preview.ibb.co/iPv4mV/logo.png"}/
-            / Email Body
-            %tr
-              %td.email-body{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                %table.email-body_inner{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
-                  / Body content
-                  %tr
-                    %td.content-cell
-                      %h1="¡Estimado Usuario! Has realizado una Reservación de un Traslado"
-                      %table.attributes{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                        %tr
-                          %td.attributes_content
-                            %table{:cellpadding => "0", :cellspacing => "0", :width => "100%"}
-
-                              %tr
-                                %td.attributes_item
-                                  %strong N° Orden
-                                  = @reservation.id.blank? ? '-----------' : @reservation.id
-
-                              %tr
-                                %td.attributes_item
-                                  %strong N° Factura
-                                  = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Moneda
-                                  = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Costo Reserva
-                                  - unless @reservation.invoice.amount.to_f.zero?
-                                    = number_to_currency(@reservation.invoice.amount, locale: @locale)
-                                  - else
-                                    Por cotizar
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Estatus Reserva
-                                  = t("keppler.messages.#{@reservation.order.status}")
-
-                              %tr
-                                %td.attributes_item
-                                  %strong ¿Pagada?
-                                  - if @reservation.order.status_pay? :pending
-                                    = t("keppler.messages.#{@reservation.order.status}")
-                                  -else
-                                    ¡Pagada!
-                              %tr
-                                %td.attributes_item
-                                  %strong Nombre Cotizante
-                                  = @reservation.user.name
-                              %tr
-                                %td.attributes_item
-                                  %strong Origen:
-                                  = @reservation.origin.blank? ? '-----------' : @reservation.origin
-                              %tr
-                                %td.attributes_item
-                                  %strong Destino:
-                                  = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Cantidad de Adultos:
-                                  = @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
-                              %tr
-                                %td.attributes_item
-                                  %strong Cantidad de Niños:
-                                  = @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Observación
-                                  = @reservation.description.blank? ? '-----------' : @reservation.description
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Fecha de Vuelo/Recepción de Origen:
-                                  = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Hora de Traslado de Origen:
-                                  = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Aerolínea de origen:
-                                  = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Número de vuelo de origen:
-                                  = @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Fecha de Vuelo/Recepción de Destino:
-                                  = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Hora de Traslado de Destino:
-                                  = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Aerolínea de destino:
-                                  = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
-
-                              %tr
-                                %td.attributes_item
-                                  %strong Número de vuelo de Destino:
-                                  = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
-
-                      %p
-                        Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
-                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
-                          %span +573173632119
-                        If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
-                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
-                          %span +573173632119
-                      %p
-                        Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
-                        tener
-                        %br/
-                        %strong Un cordial saludo - Receptivo Colombia
-            %tr
-              %td
-                %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
-                  %tr
-                    %td.content-cell{:align => "center"}
-                      %p.sub.align-center Receptivo Colombia © - 2018 | Todos los derechos reservados
-                      %p.sub.align-center
-                        Desarrollado por
-                        %a#company{:href => "http://slicegroup.xyz"}
-                          %strong Slice Group
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Observaciones
+              = @reservation.description.blank? ? '-----------' : @reservation.description
+          %td{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Correo Electrónico
+              = @reservation.user.email
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Fecha de Reserva
+              = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Destino
+              = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Cantidad de Niños
+              = @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Fecha de Vuelo - Destino
+              = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Hora - Destino
+              = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival 
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Aerolínea - Destino
+              = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Número de Vuelo - Destino
+              = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
+      %tfooter
+        %tr
+          %td{:colspan => "2", :style => "font-size:12px;padding:10px 15px 0 15px;"}
+            %p
+              Si tiene alguna pregunta o modificación sobre su servicio,
+              comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o
+              vía whatsapp al If you have any questions or modifications on your
+              services, contact us 24/7 at reservas@receptivocolombia.com or via
+              whatsapp at
+            %br/
+            %p{:style => "font-size:12px"}
+              %strong Un cordial saludo - Receptivo Colombia
+        %tr
+          %td{:colspan => "2", :style => ""}
+            %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
+              %tr
+                %td.content-cell{:align => "center"}
+                  %p.sub.align-center{:style => "color: #4e4e56"}
+                    Receptivo Colombia © - 2019 | Todos los derechos reservados
+                  %p.sub.align-center{:style => "color: #4e4e56"}
+                    Desarrollado por
+                    %a#company{:href => "http://slicegroup.xyz"}
+                      %strong{:style => "color: #4e4e56"} Slice Group
