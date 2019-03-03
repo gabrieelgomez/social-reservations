@@ -20,20 +20,20 @@
             .item-contact.idioma
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
-                  Idioma
+                  =t('receptivo.pre_navbar.language')
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    = url_lang('es', @currency, request, 'Español')
+                    = url_lang('es', @currency, request, t('receptivo.pre_navbar.spanish'))
                   %li
-                    = url_lang('en', @currency, request, 'Inglés')
+                    = url_lang('en', @currency, request, t('receptivo.pre_navbar.english'))
                   %li
-                    = url_lang('pt', @currency, request, 'Portugués')
+                    = url_lang('pt', @currency, request, t('receptivo.pre_navbar.portuguese'))
           .col-md-3.col-lg-3.nav-padding
             .item-contact.money
               .dropdown.pull-right
                 %button.btn.dropdown-toggle.btn-dropdown-custom{"data-toggle" => "dropdown", :type => "button"}
-                  Moneda
+                  =t('receptivo.pre_navbar.currency')
                   %span.caret
                 %ul.dropdown-menu
                   -#%li
@@ -52,24 +52,21 @@
                     %li
                       = link_to orders_path(@lang, @currency, 'transfers'), class:'' do
                         %span
-                          %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }
-                          Mi Tablero
+                          %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }=t('receptivo.pre_navbar.dashboard')
                     %li
                       = link_to users_details_path(@lang, @currency), class:'' do
                         %span
-                          %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}
-                          Mi Perfil
+                          %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}=t('receptivo.pre_navbar.profile')
                     %li
                       = link_to destroy_session_path(current_user), class:''  do
                         %span
-                          %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }
-                          Cerrar Sesión
+                          %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }=t('receptivo.pre_navbar.sign_out')
 
               - else
                 = link_to new_user_session_path, class:"pull-right" do
                   %p
                     %img{:alt => "icon-login", :src => "/assets/img/user.svg", :width => "18px"}/
-                    %span Ingresa
+                    %span=t('receptivo.pre_navbar.sign_in')
 
   .container
     .navbar-header
@@ -107,14 +104,14 @@
       .navbar-separator.hidden-xs
       %ul.nav.navbar-nav.navbar-right.items-separator.effect-items
         %li.item-link
-          = link_to "Quiénes Somos", about_path , :"data-easing" => "linear", class:"link-navbar"
+          = link_to t('receptivo.navbar.about'), about_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link{style:'display: none;'}
-          %a.link-navbar{"data-easing" => "linear", :href => "#vehicles"} Traslados
+          %a.link-navbar{"data-easing" => "linear", :href => "#vehicles"}= t('receptivo.widget.transfers')
         %li.item-link
-          = link_to "Tours", tours_all_path , :"data-easing" => "linear", class:"link-navbar"
+          = link_to t('receptivo.navbar.tours'), tours_all_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          = link_to "Circuitos", circuits_all_path , :"data-easing" => "linear", class:"link-navbar"
+          = link_to t('receptivo.navbar.circuits'), circuits_all_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          = link_to "Multidestinos", multidestinations_all_path , :"data-easing" => "linear", class:"link-navbar"
+          = link_to t('receptivo.navbar.multidestinations'), multidestinations_all_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
-          = link_to "Contacto", contact_us_path , :"data-easing" => "linear", class:"link-navbar"
+          = link_to t('receptivo.navbar.contact_us'), contact_us_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"

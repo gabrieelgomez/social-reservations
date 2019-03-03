@@ -9,25 +9,25 @@
                 .items-search
                   .col-lg-12
                     %span
-                      Su búsqueda:
+                      = t('receptivo.widget.your_search')
                   .col-lg-4
                     %span
-                      ="Destino: #{@results.title[@lang]}".titleize
+                      ="#{t('receptivo.widget.origin')}: #{@results.title[@lang]}".titleize
                   .col-lg-4
                     %span
-                      ="Fecha: #{@flight_origin_circuit_picker}"
+                      ="#{t('receptivo.widget.date')}: #{@flight_origin_circuit_picker}"
                   .col-lg-2
                     %span
-                      ="Adultos: #{@adults}"
+                      ="#{t('receptivo.widget.adults')}: #{@adults}"
                   .col-lg-2
                     %span
-                      ="Niños: #{@kids}"
+                      ="#{t('receptivo.widget.children')}: #{@kids}"
 
             .col-lg-3
               %p
                 %span
                   %a.pull-right.link-widget
-                    Volver a relizar la búsqueda
+                    = t('receptivo.widget.redo_search')
 
   .container.js-widget.js-hide-widget.widget-results
     .row
@@ -53,14 +53,14 @@
                 = image_tag '/assets/img/loupe.svg'
               .gallary-header.text-center
                 %h2
-                  ¡Lo sentimos! No hemos encontrado ningún resultado.
+                  = t('receptivo.widget.not_found')
                 %p
                   = link_to root_path do
-                    Volver a relizar la búsqueda
+                    = t('receptivo.widget.redo_search')
         - else
           .col-xs-12.col-sm-12.col-md-6.col-lg-7
             .content-circuits__description
-              %h3 Descripción
+              %h3= t('receptivo.messages.description')
               .content-circuits__description--summary
                 %p= raw @results.description[@lang]
 
@@ -69,9 +69,9 @@
                 .col-lg-12
                   %center
                     %span.price
-                      Costo por persona:
+                      = t('receptivo.messages.cost_per_person')
                       %h3.price
-                        Desde
+                        = t('receptivo.messages.from')
                         = number_to_currency(@results.low_price(@currency), locale: @locale)
                 -# User click from a Cards - Condition
                 - unless @flight_origin_circuit_picker
@@ -84,26 +84,26 @@
                               %input.form-control{name: 'flight_circuit_data', id: 'flight_circuit_data', autocomplete: 'off', style:'border-radius: 6px;'}/
                           .col-lg-3
                             .form-group
-                              %input.form-control{name: 'quantity_adults', :type => "number", min: 1, value: 2, :placeholder => "Adultos", style:'border-radius: 6px;' }/
+                              %input.form-control{name: 'quantity_adults', :type => "number", min: 1, value: 2, :placeholder => "#{t('receptivo.widget.adults')}", style:'border-radius: 6px;' }/
                           .col-lg-3
                             .form-group
-                              %input.form-control{name: 'quantity_kids', :type => "number", min: 0, :placeholder => "Niños", style:'border-radius: 6px;'}/
+                              %input.form-control{name: 'quantity_kids', :type => "number", min: 0, :placeholder => "#{t('receptivo.widget.children')}", style:'border-radius: 6px;'}/
                       .col-lg-12
                         %br
                         %center
                           %button.about-view.packages-btn.btn-reservation{style: 'width: 165px;height: 48px;font-size: 14px;', type: 'submit'}
-                            solicitar
+                            = t('receptivo.messages.request')
                             %br/
-                            reservación
+                            = t('receptivo.messages.reservation')
                 - else
                   %br
                   .col-lg-12
                     %center
                       = link_to reservations_path(@lang, @currency, 'circuit', @results, circuit: @results.title['es'], quantity_adults: @adults, quantity_kids: @kids, flight_origin_circuit_picker: @flight_origin_circuit_picker) do
                         %button.about-view.packages-btn.btn-reservation
-                          solicitar
+                          = t('receptivo.messages.request')
                           %br/
-                          reservación
+                          = t('receptivo.messages.reservation')
 
           .col-xs-12.col-sm-12.col-md-6.col-lg-5
             .content-.visible-xs.visible-sm
@@ -120,52 +120,52 @@
               .content-circuits__tab--box
                 %ul.nav.nav-tabs.nav-item-circuits
                   %li.active
-                    %a{"data-toggle" => "tab", :href => "#information"} Información
+                    %a{"data-toggle" => "tab", :href => "#information"}= t('receptivo.messages.tab.information')
                   %li
-                    %a{"data-toggle" => "tab", :href => "#includes"} Incluye
+                    %a{"data-toggle" => "tab", :href => "#includes"}= t('receptivo.messages.tab.includes')
                   %li
-                    %a{"data-toggle" => "tab", :href => "#excludes"} No Incluye
+                    %a{"data-toggle" => "tab", :href => "#excludes"}= t('receptivo.messages.tab.excludes')
                   %li
-                    %a{"data-toggle" => "tab", :href => "#itinerary"} Itinerario
+                    %a{"data-toggle" => "tab", :href => "#itinerary"}= t('receptivo.messages.tab.itinerary')
                   %li
-                    %a{"data-toggle" => "tab", :href => "#rooms_prices"} Habitaciones
+                    %a{"data-toggle" => "tab", :href => "#rooms_prices"}= t('receptivo.messages.tab.rooms')
                 .tab-content
                   #information.tab-pane.active
                     .box-information
-                      %h4 Información
+                      %h4= t('receptivo.messages.tab.information')
                       %p= raw @results.description[@lang]
 
                   #includes.tab-pane
                     .box-includes
-                      %h4 Incluye
+                      %h4= t('receptivo.messages.tab.includes')
                       %p= raw @results.include[@lang]
 
                   #excludes.tab-pane
                     .box-excludes
-                      %h4 No Incluye
+                      %h4= t('receptivo.messages.tab.excludes')
                       %p= raw @results.exclude[@lang]
 
                   #itinerary.tab-pane
                     .box-description
-                      %h4 Itinerario
+                      %h4= t('receptivo.messages.tab.itinerary')
                       %p= raw @results.itinerary[@lang]
 
                   #rooms_prices.tab-pane
                     .box-rooms_prices
-                      %h4.text-center Habitaciones
+                      %h4.text-center= t('receptivo.messages.tab.rooms')
                       .row
                         .col-lg-12
                           %table.table.table-hover.table-room
                             %thead
                               %tr
-                                %th Categoría
-                                %th Simple
-                                %th Doble
-                                %th Triple
-                                %th Cuádruple
-                                %th Quíntuple
-                                %th Sextuple
-                                %th Precio por niño
+                                %th= t('receptivo.messages.table.category')
+                                %th= t('receptivo.messages.table.single')
+                                %th= t('receptivo.messages.table.double')
+                                %th= t('receptivo.messages.table.triple')
+                                %th= t('receptivo.messages.table.quadruple')
+                                %th= t('receptivo.messages.table.quintuple')
+                                %th= t('receptivo.messages.table.sextuple')
+                                %th= t('receptivo.messages.table.price_per_child')
                             %tbody
                               - @results.circuitables.each do |circuitable|
                                 - if circuitable.status
@@ -174,15 +174,15 @@
                                     - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |room|
                                       - price = room.try("price_#{@currency}")
                                       - if price.zero? || room === false
-                                        %td No Disponible
+                                        %td= t('receptivo.messages.table.not_avaible')
                                       - else
                                         %td= number_to_currency(room.try("price_#{@currency}"), locale: @locale)
                                   %tr
-                                    %td Noche Adicional
+                                    %td= t('receptivo.messages.table.additional_night')
                                     - circuitable.circuitable_rooms.sort_by{|room| room.id }.each do |room|
                                       - price = room.try("night_price_#{@currency}")
                                       - if price.zero? || room === false
-                                        %td No Disponible
+                                        %td= t('receptivo.messages.table.not_avaible')
                                       - else
                                         %td= number_to_currency(room.try("night_price_#{@currency}"), locale: @locale)
 

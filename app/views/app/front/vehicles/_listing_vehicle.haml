@@ -13,7 +13,7 @@
               %p
                 %span
                   %a.pull-right.link-widget
-                    Volver a relizar la búsqueda
+                    = t('receptivo.widget.your_search')
 
   .container.js-widget.js-hide-widget.widget-results
     .row
@@ -36,10 +36,10 @@
                 = image_tag '/assets/img/loupe.svg'
               .gallary-header.text-center
                 %h2
-                  ¡Lo sentimos! No hemos encontrado ningún resultado.
+                  = t('receptivo.widget.not_found')
                 %p
                   = link_to root_path do
-                    Volver a relizar la búsqueda
+                    = t('receptivo.widget.redo_search')
 
         - else
           - @results.each do |vehicle|

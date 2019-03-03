@@ -3,8 +3,8 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Términos y Condiciones
+        %h4.modal-title= t('receptivo.footer.terms_conditions')
       .modal-body
         %p= @setting.try("terms_conditions_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= t('receptivo.footer.close')

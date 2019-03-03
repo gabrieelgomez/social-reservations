@@ -7,20 +7,16 @@
 			%ul.nav.nav-tabs.widget__search--items.hidden-xs
 				%li.active
 					%a{"data-toggle" => "tab", :href => "#transfers"}
-						%i.fa.fa-car
-						Traslados
+						%i.fa.fa-car= t('receptivo.widget.transfers')
 				%li
 					%a{"data-toggle" => "tab", :href => "#tours"}
-						%i.fa.fa-map-o
-						Tours
+						%i.fa.fa-map-o= t('receptivo.widget.tours')
 				%li
 					%a{"data-toggle" => "tab", :href => "#circuits"}
-						%i.fa.fa-train
-						Circuitos
+						%i.fa.fa-train= t('receptivo.widget.circuits')
 				%li
 					%a.fix{"data-toggle" => "tab", :href => "#multidestinations"}
-						%i.fa.fa-plane
-						Multidestinos
+						%i.fa.fa-plane= t('receptivo.widget.multidestinations')
 		-#Mobile version
 		.visible-xs
 			%ul.nav.nav-tabs.widget__search--items

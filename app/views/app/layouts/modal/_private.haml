@@ -3,8 +3,8 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Política de Privacidad
+        %h4.modal-title= t('receptivo.footer.terms_privacy')
       .modal-body
         %p= @setting.try("privacy_policies_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= t('receptivo.footer.close')

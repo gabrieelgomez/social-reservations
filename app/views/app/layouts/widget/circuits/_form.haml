@@ -3,39 +3,38 @@
 		.row
 			- unless KepplerTravel::Circuit.count.positive?
 				.col-lg-12
-					%h5.text-center{style:"color: #4e4e56 !important"} ¡Disculpe! No se encuentran circuitos disponible.
+					%h5.text-center{style:"color: #4e4e56 !important"}= t('receptivo.widget.not_found')
 			- else
 				.col-lg-12{style:'margin-top: 31px;'}
 				.col-lg-5
 					.box-item
 						.form-group
-							%h2 Circuitos
+							%h2= t('receptivo.widget.circuits')
 							%select#sel1.form-control{name: 'circuit_id', style:'border-radius: 6px !important;'}
 								- KepplerTravel::Circuit.all.each do |circuit|
 									%option{ value: circuit.id}= circuit.title[@lang].titleize
 				.col-lg-3
 					.box-item
-						%h2 Fecha
+						%h2= t('receptivo.widget.date')
 						.form-group
 							%input.form-control.custom-input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off'}/
 
 				.col-xs-6.col-lg-2
 					.box-item
-						%h2 Adultos
+						%h2= t('receptivo.widget.adults')
 						.form-group
 							%input#adults.custom-input.form-control{min: 1, name: 'quantity_adults', value: 2, :type => "number"}/
 
 				.col-xs-6.col-lg-2
 					.box-item
-						%h2 Niños
+						%h2= t('receptivo.widget.children')
 						.form-group
 							%input#kids.custom-input.form-control{min: 0, name: 'quantity_kids', :type => "number"}/
 
 				.col-xs-12.col-lg-12{style:'margin-top: 21px;'}
 					#errors
 					.about-btn.travel-mrt-0.pull-right.box-btn
-						%button.about-view.travel-btn{type: 'submit'}
-							buscar
+						%button.about-view.travel-btn{type: 'submit'}= t('receptivo.widget.search')
 :javascript
 	function validateWidgetCircuit() {
 		$('#widget_circuits').validate({

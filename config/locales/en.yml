@@ -1,4 +1,91 @@
 en:
+  receptivo:
+    pre_navbar:
+      language: Language
+      currency: Currency
+      dashboard: Dashboard
+      profile: Profile
+      sign_out: Sign Out
+      sign_in: Login
+      spanish: Spanish
+      english: English
+      portuguese: Portuguese
+    navbar:
+      about: About Us
+      tours: Tours
+      circuits: Circuits
+      multidestinations: Multidestinations
+      contact_us: Contact Us
+    widget:
+      transfers: Transfers
+      tours: Tours
+      circuits: Circuits
+      multidestinations: Multidestinations
+      round_trip: Round Trip
+      one_way: One Way
+      origin: To
+      date_origin: Date of Arrival
+      arrival: From
+      date_arrival: Date of Return
+      adults: Adults
+      children: Children
+      search: Search
+      not_found: Sorry! No results available.
+      date: Date
+      input_location: Enter a location
+      all: All
+      your_search: Results
+      redo_search: Redo the search
+    index:
+      services_colombia: Tours All Over Colombia
+      see_more: See More
+      from: From
+      about_1: Experts in executive transfers
+      about_2: And receptive tourism
+      know_more: Know More
+      services_tours: Featured Tours
+      for_you: This is our tour selection for you
+      why_us:
+        title: Why Choose us?
+        transfers: We welcome and transport you
+        dreams: Dream destinations
+        atentions: Specialized Atenttion
+        experts: Tourism experts
+      about_go: We take you to every corner of Colombia
+    messages:
+      description: Description
+      cost_per_person: Cost per person
+      cost_per_person_adults: Cost per adult
+      from: From
+      request: Request
+      reservation: Reservation
+      tab:
+        activities: Activities
+        description: Description
+        includes: Includes
+        excludes: Excludes
+        rooms: Rooms
+        information: Information
+        itinerary: Itinerary
+      table:
+        category: Category
+        single: Single
+        double: Double
+        triple: Triple
+        quadruple: Quadruple
+        quintuple: Quintuple
+        sextuple: Sextuple
+        price_per_child: Price per child
+        additional_night: Additional Night
+        not_avaible: Not Avaible
+    footer:
+      featured_destinations: Featured Destinations
+      contact_us: Contact Us
+      pqrs: Questions, Claims & Suggestions
+      terms_cancelations: Cancelation Policy
+      terms_privacy: Privacy Policy
+      terms_conditions: Terms and Conditions
+      close: Close
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

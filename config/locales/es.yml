@@ -1,4 +1,91 @@
 es:
+  receptivo:
+    pre_navbar:
+      language: Idioma
+      currency: Moneda
+      dashboard: Mi Tablero
+      profile: Mi Perfil
+      sign_out: Cerrar Sesión
+      sign_in: Iniciar Sesión
+      spanish: Español
+      english: Inglés
+      portuguese: Portugués
+    navbar:
+      about: Quiénes Somos
+      tours: Tours
+      circuits: Circuitos
+      multidestinations: Multidestinos
+      contact_us: Contacto
+    widget:
+      transfers: Traslados
+      tours: Tours
+      circuits: Circuitos
+      multidestinations: Multidestinos
+      round_trip: Ida y Vuelta
+      one_way: Sólo Ida
+      origin: Origen
+      date_origin: Fecha de Ida
+      arrival: Destino
+      date_arrival: Fecha de Vuelta
+      adults: Adultos
+      children: Niños
+      search: Buscar
+      not_found: ¡Disculpe! No se encuentran resultados disponible.
+      date: Fecha
+      input_location: Introduce una ubicación
+      all: Todos
+      your_search: Su búsqueda
+      redo_search: Volver a realizar su búsqueda
+    index:
+      services_colombia: Planes para toda Colombia
+      see_more: Ver Más
+      from: Desde
+      about_1: Expertos en traslados ejecutivos
+      about_2: Y turismo receptivo
+      know_more: Conocer Más
+      services_tours: Tours Destacados
+      for_you: Esta es la selección de planes solo para ti
+      why_us:
+        title: ¿Por qué escogernos?
+        transfers: Te recibimos y trasladamos
+        dreams: Destinos de ensueño
+        atentions: Atención especializada
+        experts: Expertos en turismo
+      about_go: Te llevamos a todos los rincones de Colombia
+    messages:
+      description: Descripción
+      cost_per_person: Costo por persona
+      cost_per_person_adults: Costo por Adulto
+      from: Desde
+      request: Solicitar
+      reservation: Reservación
+      tab:
+        activities: Actividades
+        description: Descripción
+        includes: Incluye
+        not_includes: No Incluye
+        rooms: Habitaciones
+        information: Información
+        itinerary: Itinerario
+      table:
+        category: Categoría
+        single: Simple
+        double: Doble
+        triple: Triple
+        quadruple: Cuádruple
+        quintuple: Quintuple
+        sextuple: Sextuple
+        price_per_child: Precio por niño
+        additional_night: Noche Adicional
+        not_avaible: No Disponible
+    footer:
+      featured_destinations: Destinos Destacados
+      contact_us: Contáctanos
+      pqrs: PQRS
+      terms_cancelations: Política de Cancelaciones
+      terms_privacy: Política de Privacidad
+      terms_conditions: Términos y Condiciones
+      close: Cerrar
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por
