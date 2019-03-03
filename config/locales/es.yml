@@ -59,6 +59,13 @@ es:
       from: Desde
       request: Solicitar
       reservation: Reservación
+      select_vehicle: Seleccione el tipo de vehículo que desea
+      max_seats: Max. Asientos
+      people: Personas
+      max_suitcases: Max. Maletas
+      pieces: Piezas
+      price_cotization: Precio a cotizar
+      select: Seleccionar
       tab:
         activities: Actividades
         description: Descripción
