@@ -63,13 +63,15 @@
                                   %span
                                     %i.fa.fa-envelope
                                   Correo electrónico
-                                %p info@receptivocolombia.com
+                                %a{href: "mailto:info@receptivocolombia.com"}
+                                  %p info@receptivocolombia.com
                               %li.list-group-item
                                 %h4
                                   %span
                                     %i.fa.fa-phone
                                   Teléfonos
-                                %p +57 317 3632119
+                                = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+                                  %p +57 317 3632119
 
 
 

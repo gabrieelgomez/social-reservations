@@ -6,15 +6,18 @@
       .row
         .col-md-6.col-lg-6.nav-padding
           .col-md-8.col-lg-6
-            .item-contact.email
-              %p.pull-left
-                %img{:alt => "icon-email", :src => "/assets/img/mail.svg"}/
-                %span info@receptivocolombia.com
+            %a{href: "mailto:info@receptivocolombia.com"}
+              .item-contact.email
+                %p.pull-left
+                  %img{:alt => "icon-email", :src => "/assets/img/mail.svg"}/
+                  %span info@receptivocolombia.com
           .col-md-4.col-lg-6
-            .item-contact.phone
-              %p.pull-left
-                %img{:alt => "icon-phone", :src => "/assets/img/whatsapp-logo.svg"}/
-                %span +57 317 3632119
+            = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+              .item-contact.phone
+                %p.pull-left
+                  %img{:alt => "icon-phone", :src => "/assets/img/whatsapp-logo.svg"}/
+                  %span +57 317 3632119
+
         .col-md-6.col-lg-6.nav-padding
           .col-md-3.col-lg-2.nav-padding
             .item-contact.idioma

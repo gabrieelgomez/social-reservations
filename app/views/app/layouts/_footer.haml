@@ -41,12 +41,14 @@
 				.single-footer-item
 					%h2= t('receptivo.footer.contact_us')
 					.single-footer-txt
-						%p
-							%span +57 317 3632119
+						= link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+							%p
+								%span +57 317 3632119
 						%p
 							%span RNT: 32133
 						%p
-							%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
+							%a{href: "mailto:info@receptivocolombia.com"}
+								%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
 						%ul
 							%li
 								= link_to pqrs_path , class: '', id: '', type: 'button' do
@@ -67,8 +69,8 @@
 							%a.foot-icon-bg-1{href: @social.facebook, target: "_blank"}
 								%i.fa.fa-facebook
 						%li
-							%a.foot-icon-bg-2{href: @social.facebook, target: "_blank"}
-								%i.fa.fa-twitter
+							%a.foot-icon-bg-2{href: 'https://api.whatsapp.com/send?phone=573173632119', target: "_blank"}
+								%i.fa.fa-whatsapp
 						%li
 							%a.foot-icon-bg-3{href: @social.instagram, target: "_blank"}
 								%i.fa.fa-instagram

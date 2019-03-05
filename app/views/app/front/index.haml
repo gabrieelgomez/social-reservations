@@ -33,7 +33,8 @@
                   = t('receptivo.index.about_1')
                   %br
                   = t('receptivo.index.about_2')
-                %button.about-view.discount-offer-btn= t('receptivo.index.know_more')
+                %a{href: about_path(@lang, @currency)}
+                  %button.about-view.discount-offer-btn= t('receptivo.index.know_more')
 
     // Featured / Prominent Tours or Plains
     = render 'app/front/index/plains_featured'
