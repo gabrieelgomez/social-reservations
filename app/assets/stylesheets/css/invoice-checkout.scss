@@ -1,0 +1,46 @@
+.invoice-checkout {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  padding: 50px 30px 50px 30px;
+  margin: 40px 0 80px 0;
+  &__box {
+    h2 {
+      margin: 0;
+      // color: $color-gray;
+    }
+
+    h4 {
+      margin: 0 !important;
+      // color: $color-gray;
+    }
+
+    h3 {
+      // color: $color-gray;
+    }
+
+    &--payment {
+      height: 50px;
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.invoice-title h2,
+.invoice-title h3 {
+  display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+  border-top: none;
+}
+
+.table > thead > tr > .no-line {
+  border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+  border-top: 2px solid;
+}

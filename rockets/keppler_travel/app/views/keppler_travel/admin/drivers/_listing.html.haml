@@ -1,6 +1,6 @@
 - objects.each do |driver|
   %tr{ id: "row-#{driver.id}" }
-    %td.item-check{ style: 'width: 10%' }
+    -#%td.item-check{ style: 'width: 10%' }
     -#   - if can?(KepplerTravel::Driver).destroy_multiple?
     -#     .checkbox
     -#       %label{ for: "checkbox-#{driver.id}" }
@@ -15,15 +15,15 @@
     -#     - else
     -#       %span.status.available Disponible
 
-    %td
-      = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
-        %span
-          =  image_tag driver.user.try(:avatar).try(:url), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
-
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
         %span
           = driver.destination.custom_title['es']
+
+    %td
+      = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do
+        %span
+          = image_tag (driver.user.avatar.url || 'admin/avatar_keppler.svg'), width: 50, height: 50, style: 'object-fit: cover;', class:'img-circle'
 
     %td.hidden-xs
       = link_to admin_travel_driver_path(driver, search: @query), remote: true, class: 'show-row' do

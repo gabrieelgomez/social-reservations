@@ -23,7 +23,7 @@ module App
 
         def create_reservation_transfer
           if session[:reservation].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
             find_or_create_user
@@ -33,16 +33,37 @@ module App
             @currency = session[:invoice].first['currency']
             set_price
             build_invoice
+            @reservation.build_order(
+              details: 'user',
+              status: 'pending',
+              price_reservationable: @price_reservationable,
+              price_total_pax: @price_total_pax,
+              user_referer: @user.email
+            )
             if @reservation.save!
               create_travellers
-              # ReservationMailer.transfer_status(@reservation, @user).deliver_now
-              if @price_total != nil
-                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
+              ReservationMailer.transfer_status(@reservation, @user).deliver_now
+              if current_user.try(:has_role_agentable?)
+                @reservation.order.update(
+                  details: 'agency',
+                  agency: @agency,
+                  agent: @agent,
+                  comission: @comission,
+                  lending: @lending,
+                  price_comission: @price_comission,
+                  price_lending: @price_lending,
+                  price_total_agency: @price_total_agency,
+                  agency_referer: @agency.id,
+                  agent_referer: @agent&.id
+                )
+                redirect_to invoice_path('es', 'usd')
+              elsif @price_total.zero?
+                redirect_to invoice_path('es', 'usd')
               else
-                redirect_to invoice_path('es', 'cop')
+                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               end
             else
-              render :new
+              redirect_to errors_checkout_path('usd')
             end
           end
         end
@@ -53,15 +74,18 @@ module App
         def set_price
           @round_trip = session[:reservation]['round_trip']
           @vehicle    = @reservation.reservationable
-          # departament = [session[:reservationable]['origin_departament'], session[:reservationable]['arrival_departament']]
           @locality = [session[:reservationable]['origin_locality'], session[:reservationable]['arrival_locality']]
           @cotization = session[:reservationable]['cotization']
           unless @cotization == 'true'
-            @price_total     = @round_trip == 'true' ? @vehicle.set_price_destination(@locality, @currency).to_f*2 : @vehicle.set_price_destination(@locality, @currency).to_f
+            @price_reservationable   = @vehicle.set_price_destination(@locality, @currency).to_f
+            @price_total             = @round_trip == 'true' ? @price_reservationable*2 : @price_reservationable
+            @price_total_pax         = @price_total
           else
             @cotization  = true
-            @price_total = nil
+            @price_total = 0
           end
+
+          set_price_agency
         end
 
       end

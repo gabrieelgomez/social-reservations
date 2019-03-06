@@ -9,13 +9,11 @@
                 %h5 Su búsqueda
                 %p="Desde: #{@origin_name.truncate(100)}"
                 %p="Hasta: #{@arrival_name.truncate(100)}"
-                -#%p="Desde #{@locality[0]} > Hasta #{@locality[1]}"
             .col-lg-3
               %p
                 %span
                   %a.pull-right.link-widget
                     Volver a relizar la búsqueda
-
 
   .container.js-widget.js-hide-widget.widget-results
     .row
@@ -28,8 +26,6 @@
       .gallary-header.text-center
         %h2
           Seleccione el tipo de vehículo que desea
-        -#%p
-          Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
   .content-vehicles
     .container
       .row
@@ -44,7 +40,6 @@
                 %p
                   = link_to root_path do
                     Volver a relizar la búsqueda
-
 
         - else
           - @results.each do |vehicle|
@@ -67,14 +62,6 @@
                       = vehicle.kit['quantity']
                       Piezas
                       (#{vehicle.kit['weight']}kg)
-                  -# %p.date-time
-                  -#   %span
-                  -#     %i.icon-calendar.icons
-                  -#     Fecha: 12/02/2018
-                  -# %p.date-time
-                  -#   %span
-                  -#     %i.icon-clock.icons
-                  -#     Hora: 12:00pm
                   .box-items
                     .box-price
                       - if @cotization

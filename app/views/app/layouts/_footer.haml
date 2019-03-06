@@ -10,41 +10,43 @@
 					%h2 Site Map
 					.single-footer-txt
 						%p
-							%a{href: "#"} Quiénes Somos
-						%p
+							= link_to "Quiénes Somos", about_path, class:""
+						-#%p
 							%a{href: "#"} Traslados
 						%p
-							%a{href: "#"} Circuitos
+							= link_to "Circuitos", circuits_all_path, class:""
 						%p
-							%a{href: "#"} Tours
+							= link_to "Tours", tours_all_path, class:""
 						%p
-							%a{href: "#"} Multidestinos
+							= link_to "Multidestinos", multidestinations_all_path , class:""
 						%p
-							%a{:href => "#"} Contacto
+							= link_to "Contacto", contact_us_path, class:""
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
 					%h2 Destinos Destacados
 					.single-footer-txt
 						%p
-							%a{href: "#"} Cartagena
+							%span Cartagena
 						%p
-							%a{href: "#"} Bucaramanga
+							%span Bucaramanga
 						%p
-							%a{href: "#"} Barranquilla
+							%span Barranquilla
 						%p
-							%a{href: "#"} Neiva
+							%span Neiva
 						%p
-							%a{:href => "#"} Guajira
+							%span Guajira
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
 					%h2 Contáctanos
 					.single-footer-txt
-						%p +57 317 3632119
-						%p RNT: 32133
-						%p{style:'text-transform: lowercase;'} info@receptivocolombia.com
-						-#%p Colombia
+						%p
+							%span +57 317 3632119
+						%p 
+							%span RNT: 32133
+						%p
+							%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
 						%ul
 							%li
 								= link_to pqrs_path , class: '', id: '', type: 'button' do
@@ -66,13 +68,13 @@
 				.foot-icons
 					%ul.footer-social-links.list-inline.list-unstyled
 						%li
-							%a.foot-icon-bg-1{href: "#", target: "_blank"}
+							%a.foot-icon-bg-1{href: @social.facebook, target: "_blank"}
 								%i.fa.fa-facebook
 						%li
-							%a.foot-icon-bg-2{href: "#", target: "_blank"}
+							%a.foot-icon-bg-2{href: @social.facebook, target: "_blank"}
 								%i.fa.fa-twitter
 						%li
-							%a.foot-icon-bg-3{href: "#", target: "_blank"}
+							%a.foot-icon-bg-3{href: @social.instagram, target: "_blank"}
 								%i.fa.fa-instagram
 	%hr/
 	.container
@@ -121,3 +123,16 @@
 			$("#modalTerms").modal();
 		});
 	});
+
+
+/ Start of Tawk.to Script
+:javascript
+	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+	(function(){
+	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+	s1.async=true;
+	s1.src='https://embed.tawk.to/5c1bf3ed7a79fc1bddf1bb78/default';
+	s1.charset='UTF-8';
+	s1.setAttribute('crossorigin','*');
+	s0.parentNode.insertBefore(s1,s0);
+	})();

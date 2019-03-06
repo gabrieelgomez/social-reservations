@@ -13,13 +13,29 @@ module KepplerTravel
     has_one    :invoice, dependent: :destroy
     has_one    :order, dependent: :destroy
     has_one    :driver, through: :order
+    has_one    :agency, through: :order
+    has_one    :agent, through: :order
     has_many   :square, as: :squareable
     has_many   :travellers
     accepts_nested_attributes_for :travellers
     accepts_nested_attributes_for :square
+    accepts_nested_attributes_for :order
+
+    # position_status
+    # 1 = pending
+    # 2 = cancelled
+    # 3 = credit_agency
+    # 4 = payment_link
+
+    validates_inclusion_of :status, :in => %w(pending cancelled credit_agency payment_link)
+    validates_inclusion_of :status_pay, :in => %w(pending cancelled approved)
 
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'
+    end
+
+    def multiple
+      round_trip == 'true' ? '2' : '1'
     end
 
     def self.price_total(locality, object, objectable, currency)

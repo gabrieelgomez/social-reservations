@@ -9,47 +9,32 @@
       .loader
         = render 'app/front/loader/loader'
 
-    // Widget
-    
-    %section#home.about-us.visible-lg
-      .content_video
+    %section#home.about-us
+      .content_image.hidden-lg{:style => "background-image: url(/assets/img/poster/receptivo-colombia.jpg)"}
+        .mask
+      .content_video.visible-lg
         %video.myvideo#my-video{:autoplay => "false", :loop => "true", :muted => "true", :poster => "/assets/img/poster/receptivo-colombia.jpg" }
           %source{:src => "/assets/img/receptivo.mp4", :type => "video/mp4"}
-            -#%source{:src => "/assets/img/receptivo.webm", :type => "video/webm"}
-          -#%source{:src => "/assets/img/receptivo.mp4", :type => "video/ogg"}
       %section.travel-box.widget.p-widget
         .container
           .row
             = render 'app/layouts/widget'
-
-    %section#home.about-us.hidden-lg
-      .content_image{:style => "background-image: url(/assets/img/poster/receptivo-colombia.jpg)"}
-        .mask
-      %section.travel-box.widget.p-widget
-        .container
-          .row
-            = render 'app/layouts/widget'
-
 
     // Filter by Buttons Todos/Tours/Circuitos/Multidestinos
     = render 'app/front/index/filter'
 
     %section#transferss.transfers
-      .jumbotron.jumbotron-fluid.jb-bg-transfers{:style => "background-image: url(/assets/img/businessexecutivecar.jpg)"}
+      .jumbotron.jumbotron-fluid.jb-bg-transfers{:style => "background-image: url(/assets/img/businessexecutivecar2.jpg)"}
         .mask-transfers
           .container
             .box-transfers
               .info-transfers
-                %h3.display-4.text-center 
+                %h3.display-4.text-center
                   Expertos en traslados ejecutivos
                   %br
                   Y turismo receptivo
-                -#.about-btn
                 %button.about-view.discount-offer-btn
                   Conocer más
-  
-
-
 
     // Featured / Prominent Tours or Plains
     = render 'app/front/index/plains_featured'
@@ -59,9 +44,7 @@
         .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
           %h2 ¿Por qué escogernos?
           %p Te llevamos a todos los rincones de Colombia
-      .box-tips 
-        
-        -#wow.fadeInRight.animated{"data-wow-delay" => "0.2s", :style => "visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;width: 100% !important;"}
+      .box-tips
         .container
           .row
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
@@ -70,28 +53,24 @@
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/car.svg", :width => "60px"}/
                 %h2 Te recibimos y trasladamos
-                -#%p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-green
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/airplane.svg", :width => "50px"}/
                 %h2 Destinos de ensueño
-                -#%p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-orange
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/face.svg", :width => "40px"}/
                 %h2 Atención especializada
-                -#%p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-red
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/palm.svg", :width => "40px"}/
                 %h2 Expertos en turismo
-                -#%p Lorem ipsum dolor sit amet, consectetur adipisicing elit distinctio.
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'
@@ -129,21 +108,17 @@
         }
       }
     %script{:src => "/assets/js/loader.js"}
-    -#%script{:src => "/assets/js/navbar.js"}
-    -#%script{:src => "/assets/js/mixitup-setting.js"}
-    -#%script{:src => "/assets/js/wow-settings.js"}
+    %script{:src => "/assets/js/mixitup-setting.js"}
 
     :javascript
-      $(document).ready(function(){
-        //document.getElementById("my-video").play();
-      });
+
       var screen = window.matchMedia('(max-width: 991px)');
       screen.addListener(mediaQuery);
       function mediaQuery() {
         if (screen.matches) {
             $('.navigation-front').removeClass('background-hide');
             $('.navigation-front').addClass('background-show');
-          
+
         } else {
           $(window).on("scroll", function () {
               var scrollTop = $(window).scrollTop();

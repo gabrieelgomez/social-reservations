@@ -1,0 +1,24 @@
+%section#circuits_all.circuits_all
+  .container
+    .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
+      %h2 Circuitos
+  .cards-top-tours
+    .container
+      .row
+        - @circuits.each do |circuit|
+          .col-xs-12.col-md-4.col-sm-6.js_filterCircuits.mix-target
+            .box-card
+              = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'' do
+                .box-image{:style => "background-image: url(#{circuit.banner.url})"}
+              .box-information
+                = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'' do
+                  %h3= circuit.title[@lang].titleize
+                %span.pull-left.price
+                  Desde
+                  = @currency.upcase
+                  = number_to_currency(circuit.low_price(@currency), locale: @locale)
+                .more-information
+                .about-btn
+                  = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más

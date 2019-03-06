@@ -1,0 +1,69 @@
+= simple_form_for @user, url: "/admin/travel/agencies/#{@agency.id}/update_user", method: :post do |f|
+  .container
+    .row
+      .col-lg-2
+        = link_to admin_travel_agencies_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+          .arrow-back.btn.btn-default
+            %i.fa.fa-angle-left
+            = t('keppler.actions.back')
+
+    .row
+      .col-lg-12
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= t("keppler.modules.#{action_name.underscore}")
+            .box-tools.pull-right
+              %a.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+                %i.fa.fa-minus
+          .box-body
+            %table.table.table-bordered
+              %tbody
+                .form-padding
+                  .col-xs-12.col-lg-8
+                    .row
+
+                      .col-xs-12.col-lg-6
+                        = f.input :name, label: t('simple_form.labels.defaults.name'), placeholder: 'Nombre', input_html: {class: 'form-control'}, required: true
+                      .col-xs-12.col-lg-6
+                        = f.input :email, label: t('simple_form.labels.defaults.email'), placeholder: 'Correo', input_html: {class: 'form-control'}, required: true
+
+                      .col-xs-12.col-lg-6
+                        = f.input :phone, label: t('simple_form.labels.defaults.phone'), placeholder: 'Teléfono', input_html: {class: 'form-control'}, required: true
+                      .col-xs-12.col-lg-6
+                        = f.input :dni, label: t('simple_form.labels.defaults.dni'), placeholder: 'Identificación', input_html: {class: 'form-control'}, required: true
+                      = f.simple_fields_for [:admin, :travel, @agency] do |x|
+                        .col-xs-12.col-lg-6
+                          = x.input :comission_percentage, input_html: { min: 0 }, label: 'Porcentaje de comisión'
+                        .col-xs-12.col-lg-6
+                          = x.input :lending_percentage, input_html: { min: 0 }, label: 'Porcentaje de prestación'
+                        .col-xs-12.col-lg-6
+                          = x.input :nit, input_html: { min: 0 }, label: 'NIT'
+                          = x.input :country, input_html: { min: 0 }, label: 'Pais'
+                        .col-xs-12.col-lg-6
+                          = x.input :rnt, input_html: { min: 0 }, label: 'RNT'
+                        .col-xs-12.col-lg-6
+                          = x.input :address, input_html: { min: 0 }, label: 'Dirección'
+
+                        .col-xs-12.col-lg-6
+                          = x.input :owner, label: 'Responsable'
+
+                        .col-xs-12
+                          = x.input :position, as: :hidden
+                        .col-xs-12
+                          = x.input :deleted_at, as: :hidden
+
+                  .col-xs-12.col-lg-4
+                    .row
+                      .col-lg-12
+                        %label Imagen de Perfil
+                        = f.input :avatar, as: :keppler_file, label: false
+
+                  .col-xs-12
+                    .pull-right
+                      = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary'
+                      = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+
+// :javascript
+//   var user_id = #{raw @user.id};
+//   validateAgency2(`#edit_user_${user_id}`);

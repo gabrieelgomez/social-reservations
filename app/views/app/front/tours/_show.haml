@@ -71,7 +71,7 @@
                       Costo por Adulto:
                       %h3.price
                         = number_to_currency(@results.price_adults[@currency], locale: @locale)
-                -# User click from a Cards - Condition 
+                -# User click from a Cards - Condition
                 - unless @flight_origin_tour_picker
                   .col-lg-offset-2.col-lg-8
                     = search_form_for @q, url: "/#{@lang}/#{@currency}/reservations/tour/#{@results.id}", html: {class: 'input-group', style:'width: 100%;', id: 'search-metadata', method: :get } do |f|
@@ -102,8 +102,6 @@
                           %br/
                           reservación
 
-
-
           .col-xs-12.col-sm-12.col-md-6.col-lg-5
             .content-.visible-xs.visible-sm
               %h3 Galería de Imágenes
@@ -113,7 +111,7 @@
                   - @results.files.each_with_index do |image|
                     .galery__item
                       %img{:alt => "", :src => image.url, :class => "img-responsive"}/
-            
+
           .col-xs-12.col-sm-12-col-md-12.col-lg-12
             .content-tours__tab
               .col-lg-12
@@ -135,22 +133,22 @@
 
 :javascript
   // tours
-  $( function() {
-    function populateEndDate() {
-      var date2 = $('#flight_tour_data').datetimepicker('getDate');
-      date2.setDate(date2.getDate() + 3);
-    }
-
-    $("#flight_tour_data").datetimepicker({
-      dateFormat: "dd-mm-yy",
-      minDate: 3,
-      onSelect: function(date) {
-        populateEndDate();
-        var date = $('#flight_tour_data').val();
-        $('#reservation_flight_origin_data').val(date);
-      }
-    }).datetimepicker("setDate", new Date());
-  } );
+  $(function () {
+    $('#flight_tour_data').datetimepicker({
+      locale: 'es',
+      minDate: moment().add(3, 'd').toDate(),
+      format: "DD-MM-YYYY",
+      widgetPositioning: {
+        horizontal: 'left',
+        vertical: 'bottom'
+      },
+      useCurrent: false //Important! See issue #1075
+    });
+    $("#flight_tour_data").on("dp.change", function (e) {
+      var date = $('#flight_tour_data').val()
+      $('#reservation_flight_origin_data').val(date);
+    });
+  });
   // End --- tours
 
   $('#search-metadata').validate({

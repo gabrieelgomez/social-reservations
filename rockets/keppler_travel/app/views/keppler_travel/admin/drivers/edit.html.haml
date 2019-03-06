@@ -1,6 +1,4 @@
--# = simple_form_for @user, url: main_app.admin_users_path, method: :post do |f|
--# = simple_form_for [:admin, :travel, @user] do |f|
-= simple_form_for @user, url: '/admin/travel/drivers/update_user', method: :post do |f|
+= simple_form_for @user, url: "/admin/travel/drivers/#{@driver.id}/update_user", method: :post do |f|
   .container
     .row
       .col-lg-2
@@ -35,8 +33,6 @@
                       .col-xs-12.col-lg-6
                         = f.input :dni, label: t('simple_form.labels.defaults.dni'), placeholder: 'Identificación', input_html: {class: 'form-control'}, required: true
                       -# .col-xs-12.col-lg-12
-                      %input{name: 'user[role_ids]', value: '5', type: 'hidden'}
-                      %input{name: 'user[last_email]', value: @user.email, type: 'hidden'}
                         -# = f.input :role_ids, collection: [['Driver', 5]], label: 'Rol', include_blank: false
                       - unless action_name == 'edit'
                         .col-xs-12.col-lg-6
@@ -86,10 +82,6 @@
 %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css", :rel => "stylesheet"}/
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"}
 
-- if action_name == 'new'
-  :javascript
-    validateDriver('#new_user');
-- else
-  :javascript
-    var user_id = #{raw @user.id};
-    validateDriver2(`#edit_user_${user_id}`);
+:javascript
+  var user_id = #{raw @user.id};
+  validateDriver2(`#edit_user_${user_id}`);

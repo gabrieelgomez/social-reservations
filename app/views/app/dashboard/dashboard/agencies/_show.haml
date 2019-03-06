@@ -1,0 +1,53 @@
+.container-fluid
+  .row
+    - if @agents.empty?
+      .col-12
+        .empty-states
+          .col-12
+            %center
+              .image-ico
+                %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
+          .col-12
+            .error
+              %center
+                %p ¡Lo sentimos!
+                %p No hemos encontrado representantes.
+    - else
+      .col-12
+        .card
+          .card-header
+            .col-lg-6.pull-left
+              %h4.card-title Representantes
+            .col-lg-6.pull-right
+              %h4.card-title= "Comisión #{@agency.comission_percentage}% || Prestación #{@agency.lending_percentage}%"
+
+          .card-body
+            .table-responsive
+              %table.table.table-hover.table-striped
+                %thead
+                  %th Avatar
+                  %th Nombre
+                  %th Correo
+                  %th Teléfono
+                  %th DNI
+                  %th
+
+                %tbody
+                  - @agents.each do |agent|
+                    - user = agent.user
+                    %tr
+                      %td
+                        = image_tag user.avatar.url.nil? ? "/assets/img/user.png" : user.avatar.url, alt: 'profile', height: '25px', width: '25px', class: 'img-fluid rounded-circle'
+                      %td= user.name
+                      %td= user.email
+                      %td= user.phone
+                      %td= user.dni
+                      %td
+                        %a{href: edit_agent_path(@lang, @currency, agent.id)}
+                          %button.btn.btn-primary.btn-xs{:type => "button"}
+                            %span
+                              %i.icon-credit-card.icons
+                            Editar
+        .text-center
+          %a.btn.btn-info.btn-fill.float-right{href: new_agents_path(@lang, @currency)}
+            Agregar

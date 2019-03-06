@@ -32,6 +32,15 @@ gem 'uglifier', '4.1.8'
 gem 'pg', '1.0.0'
 # gem 'mysql2', '~> 0.3.18'
 
+# Resource by API
+gem 'active_model_serializers', '0.10.0'
+gem 'rack-cors'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'has_secure_token', '~> 1.0'
+# Action Cable in production
+#gem 'redis', '~> 4.0'
+
 # SEO
 gem 'sitemap_generator', '6.0.1'
 
@@ -73,6 +82,9 @@ gem 'rolify', '5.2.0'
 
 # Search
 gem 'ransack', '1.8.8'
+
+# Countries
+gem 'country_select'
 
 # Route translation
 gem 'route_translator', '5.6.2'
@@ -133,7 +145,7 @@ gem 'city-state', '~> 0.0.13'
 #---- gems frontend----
 gem 'jquery-slick-rails', '~> 1.9'
 #gem 'slick_rails'
-gem 'mixitup_rails'
+#gem 'mixitup_rails'
 gem 'wow-rails'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'hover-rails'

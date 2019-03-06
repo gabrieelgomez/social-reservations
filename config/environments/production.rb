@@ -97,6 +97,17 @@ Rails.application.configure do
     tls:                   true
   }
 
+  # config.action_mailer.smtp_settings = {
+  #   address:              Rails.application.secrets.address,
+  #   port:                 Rails.application.secrets.port,
+  #   domain:               Rails.application.secrets.domain,
+  #   user_name:            Rails.application.secrets.email,
+  #   password:             Rails.application.secrets.password,
+  #   authentication:   'plain',
+  #   enable_starttls_auto: true,
+  #   ssl: false
+  # }
+
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 

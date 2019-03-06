@@ -1,0 +1,66 @@
+.container
+  .row
+    .col-lg-2
+      = link_to admin_travel_agencies_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+        .arrow-back.btn.btn-default
+          %i.fa.fa-angle-left
+          = t('keppler.actions.back')
+
+  .show-section
+    .row
+      .col-lg-3
+        .box.slice-box
+          .box-body.box-profile
+            = image_tag (@user.avatar.url || 'admin/avatar_keppler.svg'), class: 'profile-user-img img-circle img-responsive', alt: @user.name
+            %h3.profile-username.text-center= @user.name
+            %p.text-muted.text-center= @user.rol.humanize
+      .col-lg-9
+        .box.slice-box
+          .box-header.with-border
+            %h3.box-title= @user.name || 'User'
+            .box-tools.pull-right
+              - if can?(KepplerTravel::Agency).update?
+                = link_to edit_admin_travel_agency_path(@agency), class: "btn btn-box-tool", title: "#{t('keppler.actions.edit') }" do
+                  %i.icon-pencil
+              - if can?(KepplerTravel::Agency).destroy?
+                = link_to admin_travel_agency_path(@agency), class: "btn btn-box-tool", title: "#{t('keppler.actions.delete')}", method: :delete, data: { confirm: t("keppler.messages.data_confirm") } do
+                  %i.icon-trash
+          .box-body.box-body-no-padding
+            %table.table.table-striped
+              %tbody
+                - @user.as_json(only: %i[id name phone dni email]).each do |attribute, value|
+                  %tr.list-row
+                    %th.display-label= t("activerecord.attributes.#{attribute}")
+                    %td.display-value.fs-body-1.tc-black-2= value
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.owner")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.owner
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.unique_code")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.unique_code
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.comission_percentage")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.comission_percentage
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.lending_percentage")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.lending_percentage
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.address_agency")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.address
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.nit")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.nit
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.rnt")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.rnt
+
+                %tr.list-row
+                  %th.display-label= t("activerecord.attributes.country")
+                  %td.display-value.fs-body-1.tc-black-2= @agency.country_name

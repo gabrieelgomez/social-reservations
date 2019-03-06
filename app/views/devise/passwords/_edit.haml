@@ -1,0 +1,11 @@
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+    %h5.text-center Ya puedes cambiar tu contraseña.
+    %h5 Recuerda agregar una contraseña suficientemente segura
+    = f.hidden_field :reset_password_token
+    .form-label-group
+        -#= f.input :name, :autofocus => true, class: 'form-control', label: false, :placeholder => "Nombre"
+        = f.password_field :password, autofocus: true, autocomplete: 'off', class: "validate #{'invalid' if resource.errors.messages[:password]} form-control", label: false, :placeholder => "Contraseña"
+    .form-label-group
+        = f.password_field :password_confirmation, autocomplete: 'off', class: "validate #{'invalid' if resource.errors.messages[:password_confirmation]} form-control", label: false, :placeholder => "Confirmar contraseña"
+    .box-login-btn
+        = f.submit 'Recuperar Contraseña', :class => 'btn btn-lg btn-primary btn-block btn-login'

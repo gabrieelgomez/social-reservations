@@ -1,4 +1,3 @@
--# conditioned snippet - variable in the controller
 .container-fluid
   .row
     - if current_user.reservations_where('tour').blank?
@@ -8,7 +7,6 @@
             %center
               .image-ico
                 %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
-              -#%i.icon-directions.icons
           .col-12
             .error
               %center
@@ -19,60 +17,48 @@
         .card
           .card-header
             %h4.card-title Órdenes de Tours
-            -#%p.card-category Lorem ipsum dolor sit amet consectetur adipisicing elit.
           .card-body
             .table-responsive
               %table.table.table-hover.table-striped
                 %thead
-                  %th Orden
-                  %th Factura
-                  %th Monto
-                  %th Estatus
-                  %th ¿Pagado?
+                  %th N° Orden
+                  %th N° Factura
+                  %th Costo Cotización
+                  %th Estatus Reserva
+                  %th Estatus Pago
+                  %th Tour
+                  %th Fecha
                   %th Detalles
                 %tbody
-                  - current_user.reservations_where('tour').reverse.each do |reservation|
+                  - current_user.reservations_where('tour').sort.reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
-                      - if reservation.invoice.amount.nil?
+                      - if reservation.invoice.amount.to_f.zero?
                         %td Por cotizar
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
-                        %span.badge.badge-pill{class: reservation.invoice.status_class?}= reservation.invoice.status.capitalize
+                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
                       %td
-                        - if reservation.invoice.amount.nil?
-                          Por cotizar
-                        - elsif reservation.invoice.status_pay? :pending
+                        - if reservation.invoice.amount.to_f.zero?
+                          %span.badge.badge-info Por Cotizar
+                        - elsif reservation.order.status_pay? :pending
                           %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
                             %button.btn.btn-primary.btn-xs{:type => "button"}
                               %span
                                 %i.icon-credit-card.icons
                               Pagar
+
+                        - elsif reservation.order.status_pay? :cancelled
+                          %span.badge.badge-danger Cancelado
                         - else
-                          %h6 Pagado
+                          %span.badge.badge-success Aprobado
+                      %td= reservation.origin.truncate(20)
+                      %td= reservation.flight_origin
                       %td
                         %a{href: order_details_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons
                             Detalles
-
-                    -#%td= reservation.invoice.currency.upcase
-                    -#%td= number_to_currency(reservation.invoice.amount, locale: @locale)
-                    -#%td{style:"text-align: center;"}
-                      %span.label{class: reservation.invoice.status_class?}= reservation.invoice.status
-                    -#%td{style:"text-align: center;"}
-                      - if reservation.invoice.status_pay? :pending
-                        %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
-                          %button.btn.btn-primary.btn-xs{:type => "button"}
-                            %span
-                              %i.icon-credit-card.icons
-                            Pagar
-                      - else
-                        %h6 Pagado
-                    -#%td= reservation.reservationable.title[@lang]
-                    -#%td= reservation.travellers.count
-                    -#%td= reservation.quantity_adults
-                    -#%td= reservation.quantity_kids

@@ -16,31 +16,27 @@ module KepplerTravel
 
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
-        if @reservation.order
-          if @order = @reservation.order.update(driver_id: params[:driver_id])
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        else
-          @order = @reservation.build_order(status: 'pending', driver_id: params[:driver_id])
-          if @order.save
-            DriverMailer.transfer_driver(@reservation).deliver_now
-            DriverMailer.transfer_user(@reservation).deliver_now
-            redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
-          end
-        end
+        @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
+        DriverMailer.transfer_driver(@reservation).deliver_now
+        DriverMailer.transfer_user(@reservation).deliver_now
+        redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
       def unassign
         @reservation = Reservation.find(params[:reservation_id])
-        @reservation.order.destroy
+        @driver = @reservation.order.driver = nil
+        @reservation.order.save!
         redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
 
       # GET /reservations
       def index
-        @types = Reservation.where(reservationable_type: "KepplerTravel::#{@model}")
+        if @type_search == 'agency'
+          ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
+        else
+          ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
+        end
+        @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         @q = @types.ransack(params[:q])
         reservations = @q.result(distinct: true)
         @objects = reservations.page(@current_page).order(id: :desc)
@@ -79,7 +75,33 @@ module KepplerTravel
       # PATCH/PUT /reservations/1
       def update
         if @reservation.update(reservation_params)
-          redirect(@reservation, params)
+          @reservation.invoice.update(status: @reservation.status)
+          @reservation.order.update(status: @reservation.status)
+
+          @reservation.order.update(status_pay: @reservation.status_pay)
+          @reservation.invoice.update(status_pay: @reservation.status_pay)
+
+          @reservation.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.invoice.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+          @reservation.order.update(status_pay: 'cancelled') if @reservation.status == 'cancelled'
+
+          case @reservation.status
+            when 'pending'
+              @subject = "Receptivo Colombia - Su reservación está en estado pendiente"
+            when 'credit_agency'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'payment_link'
+              @subject = "Receptivo Colombia - Su reservación ha sido aprobada"
+            when 'cancelled'
+              @subject = "Receptivo Colombia - Su reservación ha sido cancelada"
+          end
+
+
+          ReservationMailer.reservation_status(@reservation, @reservation.user, @subject).deliver_now
+
+          # ReservationMailer.transfer_status(@reservation, @reservation.user).deliver_now
+          # ReservationMailer.to_admin_transfer(@reservation, @reservation.user).deliver_now
+          redirect_to admin_travel_reservations_path(page: 1, model_name: params[:model_name], type_search: params[:type_search])
         else
           render :edit
         end
@@ -87,9 +109,8 @@ module KepplerTravel
 
       def clone
         @reservation = Reservation.clone_record params[:reservation_id]
-
         if @reservation.save
-          redirect(@reservation, params)
+          redirect_to reservations_path(page: @current_page.to_i.pred, search: @query)
         else
           render :new
         end
@@ -151,6 +172,7 @@ module KepplerTravel
         @attachments = ['logo', 'brand', 'photo', 'avatar', 'cover', 'image',
                         'picture', 'banner', 'attachment', 'pic', 'file']
         @model = params[:model_name].try(:capitalize)
+        @type_search = params[:type_search]
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -162,8 +184,9 @@ module KepplerTravel
       def reservation_params
         params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
         :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival,
-        :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids,
-        :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at,
+        :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :status,
+        :quantity_kit, :round_trip, :airport_origin, :position_status, :deleted_at,
+        :url_payment, :position_status_pay, :status_pay,
         travellers_attributes: [:name, :dni])
       end
 

@@ -16,7 +16,7 @@ module App
 
         def create_reservation_circuit
           if session[:reservation].nil? || session[:square_circuit].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
 
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
@@ -30,13 +30,20 @@ module App
             # Calculate Price
             build_invoice
             build_square
+            @reservation.build_order(details: 'user', status: 'pending')
             if @reservation.save!
+              @reservation.order.update(
+                details: 'circuit',
+                table_reservationable: session[:table_reservationable],
+                price_total_pax: @price_total,
+                user_referer: @user.email,
+              )
               create_travellers
               ReservationMailer.circuit_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_circuit(@reservation, @user).deliver_now
 
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              redirect_to invoice_path('es', 'cop')
+              redirect_to invoice_path('es', 'usd')
             else
               render :new
             end
@@ -66,7 +73,7 @@ module App
           circuitable = @reservation.reservationable.circuitables.find_by(ranking_id: session[:square_circuit]['ranking_id'])
 
           table = circuitable.price_table(session[:square_circuit], session[:invoice].first['currency'])
-          @price_total = table.last[:total_price_table]
+          @price_total = table[:total_price_table]
         end
 
       end

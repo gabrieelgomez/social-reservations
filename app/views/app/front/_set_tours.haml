@@ -1,0 +1,24 @@
+%section#tours_all.tours_all
+  .container
+    .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
+      %h2 Tours
+      -#%p
+  .cards-top-tours
+    .container
+      .row
+        - @tours.each do |tour|
+          .col-xs-12.col-md-4.col-sm-6.js_filterTours.mix-target
+            .box-card
+              = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
+                .box-image{:style => "background-image: url(#{tour.banner.url})"}
+              .box-information
+                = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
+                  %h3= tour.title[@lang].titleize
+                %span.pull-left.price
+                  = @currency.upcase
+                  = number_to_currency(tour.price_adults[@currency], locale: @locale)
+                .more-information
+                .about-btn
+                  = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'link-card' do
+                    %button.about-view.packages-btn
+                      ver más

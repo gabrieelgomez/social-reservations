@@ -9,14 +9,20 @@ module App
           session[:user]        = params[:user]
           session[:invoice]     = params[:invoice]
           session[:travellers]  = params[:travellers]
-          session[:reservationable]  = {type:'multidestination', id:params[:reservationable_id], total_kids_per: params[:total_kids_per], total_rooms_per: params[:total_rooms_per]}
-          session[:square_multidestination]   = params[:square_multidestination].first.select{|_, value| !value.empty?}
+          session[:reservationable]  = {
+            type:'multidestination',
+            id:params[:reservationable_id],
+            total_kids_per: params[:total_kids_per],
+            total_rooms_per: params[:total_rooms_per]
+          }
+          session[:square_multidestination]  = params[:square_multidestination].first.select{|_, value| !value.empty?}
+
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 
         def create_reservation_multidestination
           if session[:reservation].nil? || session[:square_multidestination].nil?
-            redirect_to errors_checkout_path('cop')
+            redirect_to errors_checkout_path('usd')
           else
 
             @reservation = KepplerTravel::Reservation.new(session[:reservation])
@@ -30,12 +36,19 @@ module App
             # Calculate Price
             build_invoice
             build_square
+            @reservation.build_order(details: 'user', status: 'pending')
             if @reservation.save!
+              @reservation.order.update(
+                details: 'multidestination',
+                table_reservationable: session[:table_reservationable],
+                price_total_pax: @price_total,
+                user_referer: @user.email,
+              )
               create_travellers
               ReservationMailer.multidestination_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_multidestination(@reservation, @user).deliver_now
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              redirect_to invoice_path('es', 'cop')
+              redirect_to invoice_path('es', 'usd')
             else
               render :new
             end

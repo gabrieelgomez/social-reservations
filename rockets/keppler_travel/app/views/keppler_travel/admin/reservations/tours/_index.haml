@@ -3,10 +3,12 @@
   %th.hidden-xs.hidden-sm N° Factura
   %th.hidden-xs Costo Cotización
   %th.hidden-xs Estatus Reserva
+  %th.hidden-xs Estatus Pago
   %th.hidden-xs Tour
   %th.hidden-xs Fecha de Reserva
-  %th.hidden-xs.hidden-sm Cant. Adultos
-  %th.hidden-xs.hidden-sm Cant. Niños
-  %th.hidden-xs.hidden-sm Usuario
+  - if params[:type_search] == 'agency'
+    %th.hidden-xs.hidden-sm Agencia
+  - else
+    %th.hidden-xs.hidden-sm Usuario
   %th.center Menu
   %th

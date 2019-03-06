@@ -23,19 +23,14 @@
                     .col-lg-1
                     .col-lg-3
                       %h3.pull-right N° de Orden
-                      -# %h3.pull-right= @invoice['token']
-                      -# %h3.pull-right= SecureRandom.random_number(1000..9999)
                       %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        -# dates billing
                         %strong Datos Personales
                         %br/
                         = @user['name']
-                        -# %br/
-                        -# 12345678-A
                         %br/
                         = @user['phone']
                         %br/
@@ -48,8 +43,6 @@
                         %strong Método de Pago
                         %br/
                         Pĺataforma: EnLineaPagos
-                        -# %br/
-                        -# MasterCard terminada **** 4242
                         %br/
                         = @user['name']
                         %br/
@@ -83,7 +76,10 @@
                       %address
                         %strong Tipo de Traslado
                         %br/
-                        Ida/Vuelta
+                        - if @reservation['round_trip'] == 'true'
+                          Ida/Vuelta
+                        -else
+                          Ida
                         %br/
                         %strong Adultos/Niños
                         %br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"

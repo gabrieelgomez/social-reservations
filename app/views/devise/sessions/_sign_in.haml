@@ -1,18 +1,18 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
   .form-label-group
-    -#= f.label :email
     = f.email_field :email, :autofocus => true, class: "form-control validate", :placeholder => "E-mail"
   .form-label-group
-    -#= f.label :password
     = f.password_field :password, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Password"
+  .form-label-group.input-agency.hide-input
+    %input#pwd.form-control{name: 'agency_code', :type => "password", :placeholder => "Código de Agencia"}/
+    -#= f.password_field :password_agency, :autofocus => true, class: "form-control validate #{'invalid' if flash[:alert]}", :placeholder => "Agency Code"
   .form-group.has-feedback
     .devise-errors.center-align
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
   .box-login-btn
-    = f.submit t("devise.sessions.log_in"), class: 'btn btn-lg btn-primary btn-block btn-login'
-  .box-link-recovery
-    - if devise_mapping.recoverable?
-      = link_to "#tab3", class: "recoverable" do
-        = t("devise.sessions.forgot_password")
-      
+    = f.submit 'Iniciar Sesión', class: 'btn btn-lg btn-primary btn-block btn-login'
+  -# .box-link-recovery
+  -#   - if devise_mapping.recoverable?
+  -#     = link_to "#tab3", class: "recoverable" do
+  -#       = t("devise.sessions.forgot_password")

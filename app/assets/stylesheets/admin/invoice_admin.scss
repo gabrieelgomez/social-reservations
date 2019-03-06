@@ -1,0 +1,45 @@
+.invoice-transfers {
+  padding: 90px 0;
+
+  &__box {
+    background: #ffffff;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 50px 30px;
+    box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07),
+      0 2px 9px 0 rgba(62, 57, 107, 0.06);
+
+    h2 {
+      color: #4e4e56;
+    }
+
+    h3 {
+      color: #4e4e56;
+    }
+
+    &--payment {
+      height: 50px;
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.invoice-title h2,
+.invoice-title h3 {
+  display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+  border-top: none;
+}
+
+.table > thead > tr > .no-line {
+  border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+  border-top: 2px solid;
+}
