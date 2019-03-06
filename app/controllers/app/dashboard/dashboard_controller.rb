@@ -26,7 +26,7 @@ module App
 
 
       def orders
-        redirect_to drivers_transfers_path('es', 'usd') if current_user.has_role? :driver
+        redirect_to drivers_transfers_path('en', 'usd') if current_user.has_role? :driver
       end
 
       def checkout

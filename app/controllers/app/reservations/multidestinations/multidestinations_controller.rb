@@ -48,7 +48,7 @@ module App
               ReservationMailer.multidestination_status(@reservation, @user).deliver_now
               ReservationMailer.to_admin_multidestination(@reservation, @user).deliver_now
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              redirect_to invoice_path('es', 'usd')
+              redirect_to invoice_path('en', 'usd')
             else
               render :new
             end

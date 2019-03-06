@@ -13,7 +13,7 @@ module App
           if params[:admin] == 'true'
             redirect_to admin_travel_reservation_path(@order.reservation, model_name: 'vehicle')
           else
-            redirect_to drivers_transfers_path('es', 'usd'), notice: 'success'
+            redirect_to drivers_transfers_path('en', 'usd'), notice: 'success'
           end
         end
 

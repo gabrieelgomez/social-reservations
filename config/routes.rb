@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#index', as: :filter_by_role
 
-  # scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
-  scope '/:locale/:currency', defaults: { locale: 'es' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
+  # scope '/:locale/:currency', defaults: { locale: 'en' }, constraints: { locale: /en|en|pt/, currency: /cop|usd/} do
+  scope '/:locale/:currency', defaults: { locale: 'en' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
 
     get '/', to: 'app/front#index', as: :index_app
     get 'about', to: 'app/front#about'
