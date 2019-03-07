@@ -55,7 +55,7 @@ module App
 
                   ReservationMailer.tour_status(@reservation, current_user).deliver_now
                   ReservationMailer.to_admin_tour(@reservation, current_user).deliver_now
-                  redirect_to invoice_path('es', 'usd')
+                  redirect_to invoice_path('en', 'usd')
                 else
                   redirect_to errors_checkout_path('usd')
                 end

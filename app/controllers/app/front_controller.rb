@@ -19,7 +19,7 @@ module App
     include Widget
 
     def set_locale_lang
-      @locale = request.protocol + request.host_with_port + '/es'
+      @locale = request.protocol + request.host_with_port + '/en'
     end
 
     def index; end

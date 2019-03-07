@@ -14,6 +14,7 @@ module KepplerTravel
     accepts_nested_attributes_for :user
 
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
+    validates :unique_code, uniqueness: true
 
     def country_name
       return '' if country.blank?

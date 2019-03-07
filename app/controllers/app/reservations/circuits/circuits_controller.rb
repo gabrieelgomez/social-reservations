@@ -43,7 +43,7 @@ module App
               ReservationMailer.to_admin_circuit(@reservation, @user).deliver_now
 
               # redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
-              redirect_to invoice_path('es', 'usd')
+              redirect_to invoice_path('en', 'usd')
             else
               render :new
             end
