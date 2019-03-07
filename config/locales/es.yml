@@ -23,9 +23,9 @@ es:
       multidestinations: Multidestinos
       round_trip: Ida y Vuelta
       one_way: Sólo Ida
-      origin: Origen
+      origin: Desde
       date_origin: Fecha de Ida
-      arrival: Destino
+      arrival: Hasta
       date_arrival: Fecha de Vuelta
       adults: Adultos
       children: Niños
@@ -124,13 +124,70 @@ es:
       option_complain: Queja
       option_suggestion: Sugerencia
       input_name: Nombre completo
-      input_id: Identificación
+      input_id: Número de Identificación
       input_company: Compañia
       input_phone: Teléfono
       input_country: País
       input_email: Correo electrónico 
-      input_description: Descripción
+      input_message: Mensaje
       button_send: Enviar
+    reservation_transfers:
+      title_main_reservation: Reservación de Traslado 
+      subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
+      title_dates_reservation: Datos de Reserva
+      title_dates_traveler: Datos de Viajeros
+      title_dates_requests: Solicitudes/Observaciones
+      title_date_billing: Datos de Facturación
+      title_privacy_policy: Política de Privacidad 
+      title_cancellation_policy: Política de Cancelación
+      title_terms_and_conditions: Términos y Condiciones
+      title_summary: Resumen
+      origin: Origen
+      destination: Destino
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
+      baggage_amount: Candidad Equipaje
+      type_transfer: Tipo de Traslado
+      round_trip: Ida/Vuelta
+      one_way: Ida
+      origin_date: Fecha Origen
+      destination_date: Fecha Destino
+      origin_time: Hora Origen
+      destination_time: Hora Destino
+      from_airport: ¿Traslado desde el aeropuerto?
+      airline: Aerolínea
+      flight_number: Número de Vuelo
+      airport_transfer: ¿Traslado al aeropuerto?
+      input_name: Nombre
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
+      input_phone: Número de teléfono
+      input_email: Correo electrónico
+      input_address: Dirección Facturación
+      notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
+      observations: Observaciones
+      i_agree: Acepto
+      privacy_policy: Política de Privacidad 
+      cancellation_policy: Política de Cancelación
+      terms_and_conditions: Terms and Conditions
+      modal_privacy_policy: Privacy Policy
+      modal_cancellation_policy: Cancellation Policy
+      modal_terms_and_conditions: Términos y Condiciones
+      baggage_maximum: Equipaje Máximo
+      pieces: Piezas
+      subtotal: Sub-total
+      total_price: Precio Total
+      pay_reservation: ¡Paga tu reserva!
+      confirm: Confirmar
+      next: Siguiente
+      confirm_reservation: ¡Confirma tu reserva!
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      commission_percentage: Porcentaje comisión
+      for_quote: ¡Para cotizar!
+      request_reservation: ¡Solicita tu reserva!
+      quote: Cotizar
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

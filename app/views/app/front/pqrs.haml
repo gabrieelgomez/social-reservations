@@ -59,27 +59,27 @@
                 .col-lg-6
                   .form-group
                     %label= t('receptivo.form_pqrs.input_name')
-                    = f.input :name, label: false, class: 'form-control', type: 'text'
+                    = f.input :name, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_name')
                   .form-group
                     %label= t('receptivo.form_pqrs.input_id')
-                    = f.input :dni, label: false, class: 'form-control', type: 'text'
+                    = f.input :dni, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_id')
                   .form-group
                     %label= t('receptivo.form_pqrs.input_phone')
-                    = f.input :phone, label: false, class: 'form-control', type: 'text'
+                    = f.input :phone, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_phone')
                 .col-lg-6
                   .form-group
                     %label= t('receptivo.form_pqrs.input_company')
-                    = f.input :company, label: false, class: 'form-control', type: 'text'
+                    = f.input :company, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_company')
                   .form-group
                     %label= t('receptivo.form_pqrs.input_country')
-                    = f.input :country, label: false, class: 'form-control', type: 'text'
+                    = f.input :country, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_country')
                   .form-group
                     %label= t('receptivo.form_pqrs.input_email')
-                    = f.input :email, label: false, class: 'form-control', type: 'text'
+                    = f.input :email, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_email')
                 .col-lg-12
                   .form-group
-                    %label= t('receptivo.form_pqrs.input_description')
-                    %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5"}
+                    %label= t('receptivo.form_pqrs.input_message')
+                    %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5", placeholder: t('receptivo.form_pqrs.input_message')}
                 .col-lg-12
                   .items
                     = raw recaptcha_tags

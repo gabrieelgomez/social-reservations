@@ -30,23 +30,23 @@
                           .col-lg-6
                             .form-group
                               %label= t('receptivo.contact_us.input_name')
-                              = f.input :name, label: false, class: 'form-control', type: 'text', placeholder: false
+                              = f.input :name, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_name')
                           .col-lg-6
                             .form-group
                               %label= t('receptivo.contact_us.input_email')
-                              = f.input :email, label: false, class: 'form-control', type: 'text' , placeholder: false
+                              = f.input :email, label: false, class: 'form-control', type: 'text' , placeholder: t('receptivo.form_pqrs.input_email')
                           .col-lg-6
                             .form-group
                               %label= t('receptivo.contact_us.input_phone')
-                              = f.input :position, label: false, class: 'form-control', type: 'text' , placeholder: false
+                              = f.input :position, label: false, class: 'form-control', type: 'text' , placeholder: t('receptivo.form_pqrs.input_phone')
                           .col-lg-6
                             .form-group
                               %label= t('receptivo.contact_us.input_subject')
-                              = f.input :subject, label: false, class: 'form-control', type: 'text' , placeholder: false
+                              = f.input :subject, label: false, class: 'form-control', type: 'text' , placeholder: t('receptivo.contact_us.input_subject')
                           .col-lg-12
                             .form-group
                               %label{ :for => "message"}= t('receptivo.contact_us.input_message')
-                              %textarea#message.form-control{name: 'message[content]', :rows => "4" , placeholder: false } 
+                              %textarea#message.form-control{name: 'message[content]', :rows => "4" , placeholder: t('receptivo.form_pqrs.input_message')} 
                           .col-lg-12
                             .items
                               = raw recaptcha_tags

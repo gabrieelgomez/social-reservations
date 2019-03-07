@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Términos y Condiciones
+        %h4.modal-title= t('receptivo.reservation_transfers.modal_terms_and_conditions')
       .modal-body
         %p= @setting.try("terms_conditions_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
