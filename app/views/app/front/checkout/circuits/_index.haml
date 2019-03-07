@@ -19,7 +19,7 @@
                     .col-lg-6
 
                       %h2 Receptivo Colombia
-                      %p Operador turístico - Bogotá, Colombia
+                      %p= t('receptivo.dashboard.table.tourism')
                     .col-lg-1
                     .col-lg-3
                       %h3.pull-right N° de Orden
@@ -64,7 +64,7 @@
                         %br/
                     .col-xs-4
                       %address
-                        %strong Fecha/Hora de Ida
+                        %strong= t('receptivo.dashboard.table.date_origin')
                         %br/
                         = @reservation['flight_origin']
                         %br/
@@ -74,18 +74,18 @@
                       .panel.panel-default
                         .panel-heading
                           %h3.panel-title
-                            %strong Descripción
+                            %strong= t('receptivo.dashboard.table.description')
                         .panel-body
                           .table-responsive
                             %table.table.table-condensed
                               %thead
                                 %tr
                                   %td
-                                    %strong Concepto
+                                    %strong= t('receptivo.dashboard.table.concept')
                                   %td.text-center
-                                    %strong Precio
+                                    %strong= t('receptivo.dashboard.table.price')
                                   %td.text-center
-                                    %strong Cantidad
+                                    %strong= t('receptivo.dashboard.table.quantity')
                                   %td.text-center
                                     %strong Total
                               %tbody
@@ -93,9 +93,9 @@
                                   -# - unless room.keys.include?(:total_price_table)
                                   %tr
                                     - if room[:type] == 'children'
-                                      %td{style:'text-align:left!important;'}= "Cant. Niños"
+                                      %td{style:'text-align:left!important;'}= t('receptivo.dashboard.table.quantity_kids_short')
                                     - else
-                                      %td{style:'text-align:left!important;'}= "Habitación #{room[:type]}"
+                                      %td{style:'text-align:left!important;'}= "#{t('receptivo.dashboard.table.room')} #{room[:type]}"
                                     %td= number_to_currency(room[:price], locale: @locale)
                                     %td= room[:quantity]
                                     %td= number_to_currency(room[:total_room], locale: @locale)
