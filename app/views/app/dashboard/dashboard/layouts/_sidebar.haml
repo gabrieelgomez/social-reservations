@@ -10,35 +10,35 @@
       %li
         = link_to drivers_transfers_path(@lang, @currency), class:"nav-link" do
           %i.nc-icon.nc-delivery-fast
-          %p Traslados Asignados
+          %p= t('receptivo.dashboard.sidebar.transfers_assign')
 
     - if current_user.try(:has_role_agentable?)
       %li
         = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
           %i.nc-icon.nc-delivery-fast
-          %p Traslados
+          %p= t('receptivo.dashboard.sidebar.transfers')
       %li
         = link_to orders_path(@lang, @currency, 'tours'), class:"nav-link" do
           %i.nc-icon.nc-map-big
-          %p Tours
+          %p= t('receptivo.dashboard.sidebar.tours')
 
     - else
       %li
         = link_to orders_path(@lang, @currency, 'transfers'), class:"nav-link" do
           %i.nc-icon.nc-delivery-fast
-          %p Traslados
+          %p= t('receptivo.dashboard.sidebar.transfers')
       %li
         = link_to orders_path(@lang, @currency, 'tours'), class:"nav-link" do
           %i.nc-icon.nc-map-big
-          %p Tours
+          %p= t('receptivo.dashboard.sidebar.tours')
       %li
         = link_to orders_path(@lang, @currency, 'circuits'), class:"nav-link" do
           %i.nc-icon.nc-bus-front-12
-          %p Circuitos
+          %p= t('receptivo.dashboard.sidebar.circuits')
       %li
         = link_to orders_path(@lang, @currency, 'multidestinations'), class:"nav-link" do
           %i.nc-icon.nc-send
-          %p Multidestinos
+          %p= t('receptivo.dashboard.sidebar.multidestinations')
       -#%li
         = link_to dashboard_checkout_path(@lang, @currency), class:"nav-link" do
           %i.nc-icon.nc-send
@@ -48,13 +48,13 @@
       %li
         = link_to agents_listing_path(@lang, @currency), class:"nav-link" do
           %i.nc-icon.nc-single-02
-          %p Mis Representantes
+          %p= t('receptivo.dashboard.messages.my_agents')
 
     %li
       = link_to users_details_path(@lang, @currency), class:"nav-link" do
         %i.nc-icon.nc-single-02
-        %p Mi Perfil
+        %p= t('receptivo.dashboard.messages.my_profile')
     %li.d-block.d-md-none
       = link_to destroy_session_path(current_user), class:'nav-link'  do
         %i.nc-icon.nc-button-power
-        %p Cerrar Sesión
+        %p= t('receptivo.dashboard.sidebar.messages.sign_out')

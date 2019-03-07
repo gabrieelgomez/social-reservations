@@ -1,4 +1,3 @@
--#conditioned snippet - variable in the controller
 .container-fluid
   .row
     - if current_user.reservations_where('multidestination').blank?
@@ -8,51 +7,49 @@
             %center
               .image-ico
                 %img{:alt => "", :src => "/assets/img/orders.svg", :class => "img-responsive"}/
-              -#%i.icon-directions.icons
           .col-12
             .error
               %center
-                %p ¡Lo sentimos!
-                %p No hemos encontrado órdenes de multidestinos.
+                %p= t('receptivo.widget.not_found')
     - else
       .col-12
         .card
           .card-header
-            %h4.card-title Órdenes de Multidestinos
+            %h4.card-title= t('receptivo.dashboard.table.multidestinations_orders')
           .card-body
             .row
               .col-12.col-xl-4
             .table-responsive
               %table.table.table-hover.table-striped
                 %thead
-                  %th N° Orden
-                  %th N° Factura
-                  %th Costo Cotización
-                  %th Estatus Reserva
-                  %th Estatus Pago
-                  %th Multidestino
-                  %th Fecha
-                  %th Detalles
+                  %th= t('receptivo.dashboard.table.order')
+                  %th= t('receptivo.dashboard.table.invoice')
+                  %th= t('receptivo.dashboard.table.cost_cotization')
+                  %th= t('receptivo.dashboard.table.status_reservations')
+                  %th= t('receptivo.dashboard.table.status_pay')
+                  %th= t('receptivo.dashboard.table.multidestination')
+                  %th= t('receptivo.dashboard.table.date')
+                  %th= t('receptivo.dashboard.table.details')
                 %tbody
                   - current_user.reservations_where('multidestination').reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
                       - if reservation.invoice.amount.to_f.zero?
-                        %td Por cotizar
+                        %td= t('receptivo.dashboard.table.to_cotization')
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
-                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
+                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("receptivo.dashboard.table.#{reservation.order.status}")
                       %td
                         - if reservation.invoice.amount.to_f.zero?
-                          %span.badge.badge-info Por Cotizar
+                          %span.badge.badge-info= t('receptivo.dashboard.table.to_cotization')
                         - elsif reservation.order.status_pay? :pending
-                          %span.badge.badge-warning Pendiente
+                          %span.badge.badge-warning= t('receptivo.dashboard.table.pending')
                         - elsif reservation.order.status_pay? :cancelled
-                          %span.badge.badge-danger Cancelado
+                          %span.badge.badge-danger= t('receptivo.dashboard.table.cancelled')
                         - else
-                          %span.badge.badge-success Aprobado
+                          %span.badge.badge-success= t('receptivo.dashboard.table.approved')
                       %td= reservation.origin.truncate(20)
                       %td= reservation.flight_origin
                       %td
@@ -60,4 +57,4 @@
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons
-                            Detalles
+                            = t('receptivo.dashboard.table.details')

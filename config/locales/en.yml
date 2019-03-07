@@ -93,6 +93,58 @@ en:
       terms_privacy: Privacy Policy
       terms_conditions: Terms and Conditions
       close: Close
+    dashboard:
+      sidebar:
+        transfers_assign: Assigned Transfers
+        transfers: Transfers
+        tours: Tours
+        circuits: Circuits
+        multidestinations: Multidestinations
+      messages:
+        welcome: Welcome
+        sorry: ¡Sorry!
+        sign_out: Logout
+        my_agents: My Agents
+        my_profile: Profile
+        my_account: My Account
+        new_agent: Create Agent
+        edit_agent: Update Agent
+        not_found_agents: We have not found agents.
+        agents: Agents
+        edit: Edit
+        add: New
+        save: Save
+      table:
+        name: Name
+        email: E-mail
+        phone: Phone
+        order: N° Order
+        invoice: N° Invoice
+        cost_cotization: Cost Cotization
+        status_reservations: Reservation Status
+        status_pay: Pay Status
+        date: Date
+        origin: Origin
+        arrival: Arrival
+        to_cotization: To Cotization
+        to_pay: Pay
+        pending: Pending
+        cancelled: Cancelled
+        approved: Approved
+        credit_agency: Credit Agency
+        payment_link: URL Payment
+        details: Details
+        citcuit: Circuit
+        transfer: Transfer
+        tour: Tour
+        multidestination: Multidestination
+        circuits_orders: Circuits Orders
+        multidestinations_orders: Multidestinations Orders
+        tours_orders: Tours Orders
+        transfers_orders: Transfers Orders
+        cotizante: User
+      users:
+
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:
@@ -164,11 +216,11 @@ en:
       keppler_ga_dashboard/dashboard: "Dashboard"
       admin/users: "Users"
     messages:
-      pending: Pendiente
-      cancelled: Cancelada
-      credit_agency: Aprobada
-      payment_link: Aprobada
-      approved: Aprobada
+      pending: Pending
+      cancelled: Cancelled
+      credit_agency: Credit Agency
+      payment_link: URL Payment
+      approved: Approved
       not_authorized_page: You have no authorization to access this page
       not_authorized_action: You have no authorization to perform this action
       not_found_records: "No %{model} found"

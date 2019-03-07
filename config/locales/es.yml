@@ -30,7 +30,7 @@ es:
       adults: Adultos
       children: Niños
       search: Buscar
-      not_found: ¡Disculpe! No se encuentran resultados disponible.
+      not_found: ¡Disculpe! No se encuentran resultados disponibles.
       date: Fecha
       input_location: Introduce una ubicación
       all: Todos
@@ -93,6 +93,60 @@ es:
       terms_privacy: Política de Privacidad
       terms_conditions: Términos y Condiciones
       close: Cerrar
+    dashboard:
+      sidebar:
+        transfers_assign: Traslados Asignados
+        transfers: Traslados
+        tours: Tours
+        circuits: Circuitos
+        multidestinations: Multidestinos
+      messages:
+        welcome: Bienvenido
+        sorry: ¡Lo sentimos!
+        sign_out: Cerrar Sesión
+        my_agents: Mis Agentes
+        my_profile: Mi Perfil
+        my_account: Mi Cuenta
+        new_agent: Crear Representante
+        edit_agent: Editar Representante
+        not_found_agents: No hemos encontrado representantes.
+        agents: Representantes
+        edit: Editar
+        add: Agregar
+        save: Guardar
+      table:
+        name: Nombre
+        email: E-mail
+        phone: Teléfono
+        order: N° Orden
+        invoice: N° Factura
+        cost_cotization: Costo Cotización
+        status_reservations: Estatus Reserva
+        status_pay: Estatus Pago
+        date: Fecha
+        origin: Origen
+        arrival: Destino
+        to_cotization: Por Cotizar
+        to_pay: Pagar
+        pending: Pendiente
+        cancelled: Cancelado
+        approved: Aprobado
+        credit_agency: Crédito Agencia
+        payment_link: Link de Cobro
+        details: Detalles
+        citcuit: Circuito
+        transfer: Traslado
+        tour: Tour
+        multidestination: Multidestino
+        circuits_orders: Órdenes de Circuitos
+        multidestinations_orders: Órdenes de Multidestinos
+        tours_orders: Órdenes de Tours
+        transfers_orders: Órdenes de Traslados
+        cotizante: Cotizante
+        password: Contraseña
+        confirm_password: Confirmar Contraseña
+      users:
+        edit_profile: Editar Perfil
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

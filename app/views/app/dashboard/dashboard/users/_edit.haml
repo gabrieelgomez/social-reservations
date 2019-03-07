@@ -4,45 +4,38 @@
       .col-md-8
         .card
           .card-header
-            %h4.card-title.text-capitalize Editar perfil
+            %h4.card-title.text-capitalize= t('receptivo.dashboard.users.edit_profile')
           .card-body
             = simple_form_for @user, url: user_update_path, method: :post do |f|
               .row
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Nombre
+                    %label.control-label= t('receptivo.dashboard.table.name')
                     = f.input :name, :autofocus => true, class: '', label: false
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Identificación
+                    %label.control-label DNI
                     = f.input :dni, :autofocus => true, class: '', label: false, disabled: true
               .row
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Correo electrónico
+                    %label.control-label= t('receptivo.dashboard.table.email')
                     = f.input :email, :autofocus => true, class: '', label: false
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Teléfono
+                    %label.control-label= t('receptivo.dashboard.table.phone')
                     = f.input :phone, :autofocus => true, class: '', label: false
               .row
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Contraseña
+                    %label.control-label= t('receptivo.dashboard.table.password')
                     = f.input :password, :autocomplete => 'off', class: '', label: false
                 .col-md-6
                   .form-group
-                    %label.control-label
-                      Confirmar contraseña
+                    %label.control-label= t('receptivo.dashboard.table.confirm_password')
                     = f.input :password_confirmation, class: 'form-control', label: false
               .text-center
-                %button.btn.btn-info.btn-fill.float-right{:type => "submit"}
-                  Guardar
+                %button.btn.btn-info.btn-fill.float-right{:type => "submit"}= t('receptivo.dashboard.messages.save')
               .clearfix
       .col-md-4
         .card.card-user

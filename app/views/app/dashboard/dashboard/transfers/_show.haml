@@ -21,39 +21,39 @@
             .table-responsive
               %table.table.table-hover.table-striped
                 %thead
-                  %th N° Orden
-                  %th N° Factura
-                  %th Costo Cotización
-                  %th Estatus Reserva
-                  %th Estatus Pago
-                  %th Origen
-                  %th Destino
-                  %th Detalles
+                  %th= t('receptivo.dashboard.table.order')
+                  %th= t('receptivo.dashboard.table.invoice')
+                  %th= t('receptivo.dashboard.table.cost_cotization')
+                  %th= t('receptivo.dashboard.table.status_reservations')
+                  %th= t('receptivo.dashboard.table.status_pay')
+                  %th= t('receptivo.dashboard.table.origin')
+                  %th= t('receptivo.dashboard.table.arrival')
+                  %th= t('receptivo.dashboard.table.details')
                 %tbody
                   - current_user.reservations_where('vehicle').sort.reverse.each do |reservation|
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
                       - if reservation.invoice.amount.to_f.zero?
-                        %td Por cotizar
+                        %td= t('receptivo.dashboard.table.to_cotization')
                       - else
                         %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
-                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}").capitalize
+                        %span.badge.badge-pill{class: reservation.order.status_class?}= t("receptivo.dashboard.table.#{reservation.order.status}")
                       %td
                         - if reservation.invoice.amount.to_f.zero?
-                          %span.badge.badge-info Por Cotizar
+                          %span.badge.badge-info= t('receptivo.dashboard.table.to_cotization')
                         - elsif reservation.order.status_pay? :pending
                           %a{href: checkout_elp_redirect_path(reservation.id, reservation.invoice.id), target: '_blank'}
                             %button.btn.btn-primary.btn-xs{:type => "button"}
                               %span
                                 %i.icon-credit-card.icons
-                              Pagar
+                              = t('receptivo.dashboard.table.to_pay')
 
                         - elsif reservation.order.status_pay? :cancelled
-                          %span.badge.badge-danger Cancelado
+                          %span.badge.badge-danger= t('receptivo.dashboard.table.cancelled')
                         - else
-                          %span.badge.badge-success Aprobado
+                          %span.badge.badge-success= t('receptivo.dashboard.table.approved')
                       %td= reservation.origin.truncate(25)
                       %td= reservation.arrival.truncate(25)
                       %td
@@ -61,4 +61,4 @@
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons
-                            Detalles
+                            = t('receptivo.dashboard.table.details')

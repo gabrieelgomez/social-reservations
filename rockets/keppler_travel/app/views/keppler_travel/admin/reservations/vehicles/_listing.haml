@@ -17,7 +17,7 @@
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
-        %span.badge.badge-pill{class: reservation.order.status_class?}= t("keppler.messages.#{reservation.order.status}")
+        %span.badge.badge-pill{class: reservation.order.status_class?}= t("receptivo.dashboard.table.#{reservation.order.status}")
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
