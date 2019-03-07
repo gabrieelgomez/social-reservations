@@ -1,4 +1,136 @@
 es:
+  receptivo:
+    pre_navbar:
+      language: Idioma
+      currency: Moneda
+      dashboard: Mi Tablero
+      profile: Mi Perfil
+      sign_out: Cerrar Sesión
+      sign_in: Iniciar Sesión
+      spanish: Español
+      english: Inglés
+      portuguese: Portugués
+    navbar:
+      about: Quiénes Somos
+      tours: Tours
+      circuits: Circuitos
+      multidestinations: Multidestinos
+      contact_us: Contacto
+    widget:
+      transfers: Traslados
+      tours: Tours
+      circuits: Circuitos
+      multidestinations: Multidestinos
+      round_trip: Ida y Vuelta
+      one_way: Sólo Ida
+      origin: Origen
+      date_origin: Fecha de Ida
+      arrival: Destino
+      date_arrival: Fecha de Vuelta
+      adults: Adultos
+      children: Niños
+      search: Buscar
+      not_found: ¡Disculpe! No se encuentran resultados disponible.
+      date: Fecha
+      input_location: Introduce una ubicación
+      all: Todos
+      your_search: Su búsqueda
+      redo_search: Volver a realizar su búsqueda
+    index:
+      services_colombia: Planes para toda Colombia
+      see_more: Ver Más
+      from: Desde
+      about_1: Expertos en traslados ejecutivos
+      about_2: Y turismo receptivo
+      know_more: Conocer Más
+      services_tours: Tours Destacados
+      for_you: Esta es la selección de planes solo para ti
+      why_us:
+        title: ¿Por qué escogernos?
+        transfers: Te recibimos y trasladamos
+        dreams: Destinos de ensueño
+        atentions: Atención especializada
+        experts: Expertos en turismo
+      about_go: Te llevamos a todos los rincones de Colombia
+    messages:
+      description: Descripción
+      cost_per_person: Costo por persona
+      cost_per_person_adults: Costo por Adulto
+      from: Desde
+      request: Solicitar
+      reservation: Reservación
+      select_vehicle: Seleccione el tipo de vehículo que desea
+      max_seats: Max. Asientos
+      people: Personas
+      max_suitcases: Max. Maletas
+      pieces: Piezas
+      price_cotization: Precio a cotizar
+      select: Seleccionar
+      tab:
+        activities: Actividades
+        description: Descripción
+        includes: Incluye
+        not_includes: No Incluye
+        rooms: Habitaciones
+        information: Información
+        itinerary: Itinerario
+      table:
+        category: Categoría
+        single: Simple
+        double: Doble
+        triple: Triple
+        quadruple: Cuádruple
+        quintuple: Quintuple
+        sextuple: Sextuple
+        price_per_child: Precio por niño
+        additional_night: Noche Adicional
+        not_avaible: No Disponible
+    footer:
+      featured_destinations: Destinos Destacados
+      contact_us: Contáctanos
+      pqrs: PQRS
+      terms_cancelations: Política de Cancelaciones
+      terms_privacy: Política de Privacidad
+      terms_conditions: Términos y Condiciones
+      close: Cerrar
+    about:
+      title_primary_banner: Sobre Nosotros
+      title_secondary_banner: Somos un operador turístico colombiano
+      receptivo_colombia_one: Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes.
+      receptivo_colombia_two: Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
+      title_mission: Nuestra misión
+      title_vision: Nuestra visión
+      mission: Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+      vision: Trabajamos para ser reconocidos como referencias de calidad, costos justos y excelencia en los servicios turísticos para nuestros turistas nacionales e internacionales. Hacer la calidad en el servicio integral que ofrecemos al cliente, ser nuestra fortaleza y fuente de credibilidad, para generar lealtad a partir de la satisfacción de haber disfrutado de los servicios de nuestra empresa Receptivo Colombia.
+      CTA: Encuentra tu viaje
+    contact_us:
+      title_primary_banner: Contáctenos
+      title_primary_contact_us: Comunicarse con nosotros
+      title_secondary_contact_us: Estamos encantados de atenderte
+      input_name: Nombre completo
+      input_email: Correo electrónico 
+      input_phone: Teléfono
+      input_subject: Asunto
+      input_message: Mensaje
+      button_send: Enviar
+      item_email: Correo electrónico 
+      item_phone: Teléfono
+    form_pqrs:
+      title_primary_form_pqrs: Formulario PQRS
+      subtitle_one_form_pqrs: Por favor, indique en el siguiente formulario cualquier pregunta, queja, reclamo y / o sugerencia para mejorar nuestros servicios
+      subtitle_two_form_pqrs: para mejorar nuestros servicios.
+      option_question: Pregunta 
+      option_claim: Reclamo
+      option_complain: Queja
+      option_suggestion: Sugerencia
+      input_name: Nombre completo
+      input_id: Identificación
+      input_company: Compañia
+      input_phone: Teléfono
+      input_country: País
+      input_email: Correo electrónico 
+      input_description: Descripción
+      button_send: Enviar
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

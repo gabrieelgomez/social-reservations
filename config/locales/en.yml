@@ -1,4 +1,136 @@
 en:
+  receptivo:
+    pre_navbar:
+      language: Language
+      currency: Currency
+      dashboard: Dashboard
+      profile: Profile
+      sign_out: Sign Out
+      sign_in: Login
+      spanish: Spanish
+      english: English
+      portuguese: Portuguese
+    navbar:
+      about: About Us
+      tours: Tours
+      circuits: Circuits
+      multidestinations: Multidestinations
+      contact_us: Contact Us
+    widget:
+      transfers: Transfers
+      tours: Tours
+      circuits: Circuits
+      multidestinations: Multidestinations
+      round_trip: Round Trip
+      one_way: One Way
+      origin: To
+      date_origin: Date of Arrival
+      arrival: From
+      date_arrival: Date of Return
+      adults: Adults
+      children: Children
+      search: Search
+      not_found: Sorry! No results available.
+      date: Date
+      input_location: Enter a location
+      all: All
+      your_search: Results
+      redo_search: Redo the search
+    index:
+      services_colombia: Tours All Over Colombia
+      see_more: See More
+      from: From
+      about_1: Experts in executive transfers
+      about_2: And receptive tourism
+      know_more: Know More
+      services_tours: Featured Tours
+      for_you: This is our tour selection for you
+      why_us:
+        title: Why Choose us?
+        transfers: We welcome and transport you
+        dreams: Dream destinations
+        atentions: Specialized Atenttion
+        experts: Tourism experts
+      about_go: We take you to every corner of Colombia
+    messages:
+      description: Description
+      cost_per_person: Cost per person
+      cost_per_person_adults: Cost per adult
+      from: From
+      request: Request
+      reservation: Reservation
+      select_vehicle: Select the type of vehicle you want
+      max_seats: Max. Seats
+      people: People
+      max_suitcases: Max. Suitcases
+      pieces: Pieces
+      price_cotization: Price to cotization
+      select: Select
+      tab:
+        activities: Activities
+        description: Description
+        includes: Includes
+        excludes: Excludes
+        rooms: Rooms
+        information: Information
+        itinerary: Itinerary
+      table:
+        category: Category
+        single: Single
+        double: Double
+        triple: Triple
+        quadruple: Quadruple
+        quintuple: Quintuple
+        sextuple: Sextuple
+        price_per_child: Price per child
+        additional_night: Additional Night
+        not_avaible: Not Avaible
+    footer:
+      featured_destinations: Featured Destinations
+      contact_us: Contact Us
+      pqrs: Questions, Claims & Suggestions
+      terms_cancelations: Cancelation Policy
+      terms_privacy: Privacy Policy
+      terms_conditions: Terms and Conditions
+      close: Close
+    about:
+      title_primary_banner: About Us
+      title_secondary_banner: We are a Colombian Tour Operator
+      receptivo_colombia_one: We are a company that operates within the legal frameworks established by Colombian law. We are focused on providing excellent tourist services for the international and national market. From the reception of each of our passengers, we look forward to providing the best service, and to find the excellence of the product within our portfolio, in order to satisfy the needs of our customers.
+      receptivo_colombia_two: Among the services we offer, we provide transfers, hotels, tours, medical assistance cards, car rentals, etc., to any place you can imagine within our country Colombia.
+      title_mission: Our Mission
+      title_vision: Our Vision
+      mission: Receptivo Colombia is a company that operates within the legal framework established by law. Our mission is to provide the best tourist services for the national and international market, in order to exceed the expectations of our customers, always looking forward to providing the best service in transportation, hotels, medical assistance, car rental, among others, in order to meet the needs of our customers.
+      vision:  We work in order to be recognized as references for quality, fair costs, excellence in tourism services for our national and international tourists. Making the quality in the integral service we offer to the client, be our strength and source of credibility, to build loyalty from the satisfaction of having enjoyed the services of our company Receptivo Colombia.
+      CTA: Find your tour
+    contact_us:
+      title_primary_banner: Contact us
+      title_primary_contact_us: Communicate with us
+      title_secondary_contact_us: We are pleased to assist you
+      input_name: Full name
+      input_email: E-mail
+      input_phone: Phone number
+      input_subject: Subject
+      input_message: Message
+      button_send: Send
+      item_email: E-mail
+      item_phone: Phone
+    form_pqrs:
+      title_primary_form_pqrs: Form PQRS
+      subtitle_one_form_pqrs: Please, indicate in the following form any question, complaint, claims and/or suggestions
+      subtitle_two_form_pqrs: in order to improve our services
+      option_question: Question
+      option_claim: Claim
+      option_complain: Complain
+      option_suggestion: Suggestion
+      input_name: Full name
+      input_id: Identification
+      input_company: Company
+      input_phone: Phone 
+      input_country: Country
+      input_email: E-mail
+      input_description: Description
+      button_send: Send
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

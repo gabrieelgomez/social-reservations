@@ -1,8 +1,8 @@
 %section#top-tours.top-tours
   .container
     .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
-      %h2 Tours destacados
-      %p Esta es la selección de planes solo para ti
+      %h2= t('receptivo.index.services_tours')
+      %p= t('receptivo.index.for_you')
   .cards-top-tours
     .container
       .row
@@ -10,16 +10,15 @@
           - if tour.featured
             .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
               .box-card
-                = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
+                = link_to tours_show_path(@lang, @currency, tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
                   .box-image{:style => "background-image: url(#{tour.banner.url})"}
                 .box-information
-                  = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
+                  = link_to tours_show_path(@lang, @currency, tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
                     %h3= tour.title[@lang].titleize
                   %span.pull-left.price
                     = @currency.upcase
                     = number_to_currency(tour.price_adults[@currency], locale: @locale)
                   .more-information
                   .about-btn
-                    = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
-                      %button.about-view.packages-btn
-                        ver más
+                    = link_to tours_show_path(@lang, @currency, tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
+                      %button.about-view.packages-btn= t('receptivo.index.see_more')

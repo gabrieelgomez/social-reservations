@@ -10,21 +10,21 @@
 					%h2 Site Map
 					.single-footer-txt
 						%p
-							= link_to "Quiénes Somos", about_path, class:""
+							= link_to t('receptivo.navbar.about'), about_path, class:""
 						-#%p
 							%a{href: "#"} Traslados
 						%p
-							= link_to "Circuitos", circuits_all_path, class:""
+							= link_to t('receptivo.navbar.circuits'), circuits_all_path, class:""
 						%p
-							= link_to "Tours", tours_all_path, class:""
+							= link_to t('receptivo.navbar.tours'), tours_all_path, class:""
 						%p
-							= link_to "Multidestinos", multidestinations_all_path , class:""
+							= link_to t('receptivo.navbar.multidestinations'), multidestinations_all_path , class:""
 						%p
-							= link_to "Contacto", contact_us_path, class:""
+							= link_to t('receptivo.navbar.contact_us'), contact_us_path, class:""
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
-					%h2 Destinos Destacados
+					%h2= t('receptivo.footer.featured_destinations')
 					.single-footer-txt
 						%p
 							%span Cartagena
@@ -39,31 +39,29 @@
 
 			.col-xs-12.col-sm-4.col-md-4.col-lg-3
 				.single-footer-item
-					%h2 Contáctanos
+					%h2= t('receptivo.footer.contact_us')
 					.single-footer-txt
+						= link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
+							%p
+								%span +57 317 3632119
 						%p
-							%span +57 317 3632119
-						%p 
 							%span RNT: 32133
 						%p
-							%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
+							%a{href: "mailto:info@receptivocolombia.com"}
+								%span{style:'text-transform: lowercase;'} info@receptivocolombia.com
 						%ul
 							%li
 								= link_to pqrs_path , class: '', id: '', type: 'button' do
-									%span
-										PQRS
+									%span= t('receptivo.footer.pqrs')
 							%li
 								= link_to '#' , class: '', id: 'js_cancellations_footer', type: 'button' do
-									%span
-										Política de Cancelaciones
+									%span= t('receptivo.footer.terms_cancelations')
 							%li
 								= link_to '#' , class: '', id: 'js_private_footer', type: 'button' do
-									%span
-										Política de Privacidad
+									%span= t('receptivo.footer.terms_privacy')
 							%li
 								= link_to '#' , class: '', id: 'js_terms_footer', type: 'button' do
-									%span
-										Términos y Condiciones
+									%span= t('receptivo.footer.terms_conditions')
 
 				.foot-icons
 					%ul.footer-social-links.list-inline.list-unstyled
@@ -71,8 +69,8 @@
 							%a.foot-icon-bg-1{href: @social.facebook, target: "_blank"}
 								%i.fa.fa-facebook
 						%li
-							%a.foot-icon-bg-2{href: @social.facebook, target: "_blank"}
-								%i.fa.fa-twitter
+							%a.foot-icon-bg-2{href: 'https://api.whatsapp.com/send?phone=573173632119', target: "_blank"}
+								%i.fa.fa-whatsapp
 						%li
 							%a.foot-icon-bg-3{href: @social.instagram, target: "_blank"}
 								%i.fa.fa-instagram

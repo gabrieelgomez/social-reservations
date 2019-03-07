@@ -30,11 +30,11 @@
             .box-transfers
               .info-transfers
                 %h3.display-4.text-center
-                  Expertos en traslados ejecutivos
+                  = t('receptivo.index.about_1')
                   %br
-                  Y turismo receptivo
-                %button.about-view.discount-offer-btn
-                  Conocer más
+                  = t('receptivo.index.about_2')
+                %a{href: about_path(@lang, @currency)}
+                  %button.about-view.discount-offer-btn= t('receptivo.index.know_more')
 
     // Featured / Prominent Tours or Plains
     = render 'app/front/index/plains_featured'
@@ -42,8 +42,8 @@
     %section#tips-services.tips-services
       .container
         .gallary-header.text-center.wow.fadeInUp.animated{"data-wow-duration" => "2s", :style => "visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;"}
-          %h2 ¿Por qué escogernos?
-          %p Te llevamos a todos los rincones de Colombia
+          %h2= t('receptivo.index.why_us.title')
+          %p= t('receptivo.index.about_go')
       .box-tips
         .container
           .row
@@ -52,25 +52,25 @@
                 .box-circle.circle-yellow
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/car.svg", :width => "60px"}/
-                %h2 Te recibimos y trasladamos
+                %h2= t('receptivo.index.why_us.transfers')
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-green
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/airplane.svg", :width => "50px"}/
-                %h2 Destinos de ensueño
+                %h2= t('receptivo.index.why_us.dreams')
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-orange
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/face.svg", :width => "40px"}/
-                %h2 Atención especializada
+                %h2= t('receptivo.index.why_us.atentions')
             .col-xs-12.col-sm-6.col-md-3.col-lg-3
               .tips
                 .box-circle.circle-red
                   .circle-border
                     %img{:alt => "", :src => "/assets/img/palm.svg", :width => "40px"}/
-                %h2 Expertos en turismo
+                %h2= t('receptivo.index.why_us.experts')
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'

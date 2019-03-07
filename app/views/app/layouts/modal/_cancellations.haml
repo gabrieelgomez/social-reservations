@@ -3,8 +3,8 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Política de Cancelaciones
+        %h4.modal-title= t('receptivo.footer.terms_cancelations')
       .modal-body
         %p= @setting.try("cancellations_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= t('receptivo.footer.close')
