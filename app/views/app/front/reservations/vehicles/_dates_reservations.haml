@@ -1,15 +1,15 @@
-%h3 Datos de Reserva
+%h3= t('receptivo.reservation_transfers.title_dates_reservation')
 .row
   // Inputs datos de reservas desactivados
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "origin_name_booking"} Seleccione Origen
+      %label{:for => "origin_name_booking"}= t('receptivo.reservation_transfers.origin')
       %input{name: 'reservation[origin]', value: @origin_name, type: 'hidden'}
       %input{name: 'reservation[origin_location]', value: @origin_location, type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: @origin_name}
   .col-lg-6
     .form-group.form-custom
-      %label{:for => "arrival_name_booking"} Seleccione Destino
+      %label{:for => "arrival_name_booking"}= t('receptivo.reservation_transfers.destination')
       %input{name: 'reservation[arrival]', value: @arrival_name, type: 'hidden'}
       %input{name: 'reservation[arrival_location]', value: @arrival_location, type: 'hidden'}
       %input.google-input.form-control{disabled: 'disabled', value: @arrival_name}
@@ -17,18 +17,18 @@
     .row
       .col-lg-4
         .form-group
-          %label{:for => "adults"} Cantidad adultos
+          %label{:for => "adults"}= t('receptivo.reservation_transfers.adult_amount')
           %input{name: 'reservation[quantity_adults]', value: @adults, type: 'hidden'}
           %input.form-control{value: @adults, disabled: 'disabled'}
       .col-lg-4
         .form-group
-          %label{:for => "kids"} Cantidad niños
+          %label{:for => "kids"}= t('receptivo.reservation_transfers.children_amount')
           %input{name: 'reservation[quantity_kids]', value: @kids, type: 'hidden'}
           %input.form-control{value: @kids, disabled: 'disabled'}
       .col-lg-4
         .form-group
-          %label{:for => "kids"} Cantidad de Equipaje
-          = f.input :quantity_kit, label: false, placeholder: 'Equipaje', input_html: { min: 1, max: @vehicle.kit['quantity'].to_i }
+          %label{:for => "kids"}= t('receptivo.reservation_transfers.baggage_amount')
+          = f.input :quantity_kit, label: false, placeholder: t('receptivo.reservation_transfers.baggage_amount') , input_html: { min: 1, max: @vehicle.kit['quantity'].to_i }
   // End --- Inputs datos de reservas desactivados
 
 
@@ -37,29 +37,29 @@
     .row
       .col-lg-12
         .form-group.form-reservation
-          %label Tipo de Traslado
+          %label= t('receptivo.reservation_transfers.type_transfer')
           .radio.radio-blue.radio-inline
             %input{name: 'reservation[round_trip]', value: @round_trip, type: 'hidden'}
             %input#ida_vuelta_form{:name => "radio", :type => "radio"}/
             %label.ida_vuelta_form{:for => "ida_vuelta_form"}
               %font{:style => "vertical-align: inherit;"}
-                %font{:style => "vertical-align: inherit;"} Ida y Vuelta
+                %font{:style => "vertical-align: inherit;"}= t('receptivo.reservation_transfers.round_trip')
 
           .radio.radio-blue.radio-inline
             %input#solo_ida_form{:name => "radio", :type => "radio"}/
             %label.solo_ida_form{:for => "solo_ida_form"}
               %font{:style => "vertical-align: inherit;"}
-                %font{:style => "vertical-align: inherit;"} Ida
+                %font{:style => "vertical-align: inherit;"}= t('receptivo.reservation_transfers.one_way')
       .col-lg-12
         .row
           .col-lg-6
             .form-group.form-custom#fecha_origen_ida
-              %label{:for => ""}  Fecha Origen
+              %label{:for => ""}= t('receptivo.reservation_transfers.origin_date')
               %input{name: 'reservation[flight_origin]', value: @flight_origin_picker, type: 'hidden'}
               %input.form-control.custom-input{name: 'flight_origin_picker', id: 'flight_origin_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_picker}/
           .col-lg-6
             .form-group.form-custom#fecha_destino_vuelta
-              %label{:for => ""} Fecha Destino
+              %label{:for => ""}= t('receptivo.reservation_transfers.destination_date')
               %input{name: 'reservation[flight_arrival]', value: @flight_arrival_picker, type: 'hidden'}
               %input.form-control.custom-input{name: 'flight_arrival_picker', id: 'flight_arrival_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_arrival_picker}/
         // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
@@ -69,13 +69,13 @@
         .row
           .col-lg-6
             .form-group.form-custom#fecha_origen_ida
-              %label{:for => ""}  Hora Traslado Ida/Origen
-              %input.form-control.custom-input{name: 'reservation[hour_origin]', id: 'hour_origin_picker', autocomplete: 'off'}/
+              %label{:for => ""}= t('receptivo.reservation_transfers.origin_time')
+              %input.form-control.custom-input{name: 'reservation[hour_origin]', id: 'hour_origin_picker', autocomplete: 'off', placeholder:'00:00'}/
           - if @round_trip == 'true'
             .col-lg-6
               .form-group.form-custom#fecha_destino_vuelta
-                %label{:for => ""} Hora Traslado Vuelta/Destino
-                %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off'}/
+                %label{:for => ""}= t('receptivo.reservation_transfers.destination_time')
+                %input.form-control.custom-input{name: 'reservation[hour_arrival]', id: 'hour_arrival_picker', autocomplete: 'off', placeholder:'00:00'}/
         // End -- Inputs Timepicker Hora Traslado Origen (Ida) - Fecha Destino (Vuelta)
 
 
@@ -89,35 +89,34 @@
               .checkbox.checkbox-blue.checkbox-inline
                 %input.check_vehicle#vehicle_origin.styled{name: 'vehicle_origin', :type => "checkbox", :value => "agree"}/
                 %label.check{:for => "vehicle_origin"}
-                  ¿Traslado desde el aeropuerto
+                  = t('receptivo.reservation_transfers.from_airport')
             // End --- Checkbox Traslado al/desde Aeropuerto
             // Inputs informacion de vuelo aeropuerto
           .col-lg-6.desde_aero_inputs
             .form-group
-              %label{:for => ""}  Nombre de la Aerolinea
-              %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
+              %label{:for => ""}= t('receptivo.reservation_transfers.airline')
+              %input.form-control.custom-input{placeholder: t('receptivo.reservation_transfers.airline'), name: 'reservation[airline_origin]', id: 'flight_origin', autocomplete: 'off'}
 
           .col-lg-6.desde_aero_inputs
             .form-group
-              %label{:for => ""}  N° de Vuelo
-              %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
+              %label{:for => ""}= t('receptivo.reservation_transfers.flight_number')
+              %input.form-control.custom-input{placeholder: t('receptivo.reservation_transfers.flight_number'), name: 'reservation[flight_number_origin]', id: 'flight_number', autocomplete: 'off'}/
 
           .col-lg-12.al_aero
             .form-group.form-custom
               .checkbox.checkbox-blue.checkbox-inline
                 %input.check_vehicle#vehicle_arrival.styled{name: 'vehicle_arrival', :type => "checkbox", :value => ""}/
                 %label.check{:for => "vehicle_arrival"}
-                  ¿Traslado al aeropuerto?
+                  = t('receptivo.reservation_transfers.airport_transfer')
+          .col-lg-6.al_aero_inputs
+            .form-group
+              %label{:for => ""}= t('receptivo.reservation_transfers.airline')
+              %input.form-control.custom-input{placeholder: t('receptivo.reservation_transfers.airline'), name: 'reservation[airline_arrival]', id: 'flight_origin', autocomplete: 'off'}
 
           .col-lg-6.al_aero_inputs
             .form-group
-              %label{:for => ""}  Nombre de la Aerolinea
-              %input.form-control.custom-input{placeholder: 'Aerolínea', name: 'reservation[airline_arrival]', id: 'flight_origin', autocomplete: 'off'}
-
-          .col-lg-6.al_aero_inputs
-            .form-group
-              %label{:for => ""}  N° de Vuelo
-              %input.form-control.custom-input{placeholder: 'N° Vuelo', name: 'reservation[flight_number_arrival]', id: 'flight_number', autocomplete: 'off'}/
+              %label{:for => ""}= t('receptivo.reservation_transfers.flight_number')
+              %input.form-control.custom-input{placeholder: t('receptivo.reservation_transfers.flight_number'), name: 'reservation[flight_number_arrival]', id: 'flight_number', autocomplete: 'off'}/
         // End --- Inputs informacion de vuelo aeropuerto
 
 :javascript

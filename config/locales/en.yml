@@ -23,9 +23,9 @@ en:
       multidestinations: Multidestinations
       round_trip: Round Trip
       one_way: One Way
-      origin: To
+      origin: From
       date_origin: Date of Arrival
-      arrival: From
+      arrival: To
       date_arrival: Date of Return
       adults: Adults
       children: Children
@@ -37,7 +37,7 @@ en:
       your_search: Results
       redo_search: Redo the search
     index:
-      services_colombia: Tours All Over Colombia
+      services_colombia: Tours all over Colombia
       see_more: See More
       from: From
       about_1: Experts in executive transfers
@@ -186,6 +186,101 @@ en:
         pieces: pieces
       users:
         edit_profile: Edit Profile
+    about:
+      title_primary_banner: About Us
+      title_secondary_banner: We are a Colombian Tour Operator
+      receptivo_colombia_one: We are a company that operates within the legal frameworks established by Colombian law. We are focused on providing excellent tourist services for the international and national market. From the reception of each of our passengers, we look forward to providing the best service, and to find the excellence of the product within our portfolio, in order to satisfy the needs of our customers.
+      receptivo_colombia_two: Among the services we offer, we provide transfers, hotels, tours, medical assistance cards, car rentals, etc., to any place you can imagine within our country Colombia.
+      title_mission: Our Mission
+      title_vision: Our Vision
+      mission: Receptivo Colombia is a company that operates within the legal framework established by law. Our mission is to provide the best tourist services for the national and international market, in order to exceed the expectations of our customers, always looking forward to providing the best service in transportation, hotels, medical assistance, car rental, among others, in order to meet the needs of our customers.
+      vision:  We work in order to be recognized as references for quality, fair costs, excellence in tourism services for our national and international tourists. Making the quality in the integral service we offer to the client, be our strength and source of credibility, to build loyalty from the satisfaction of having enjoyed the services of our company Receptivo Colombia.
+      CTA: Find your tour
+    contact_us:
+      title_primary_banner: Contact us
+      title_primary_contact_us: Communicate with us
+      title_secondary_contact_us: We are pleased to assist you
+      input_name: Full name
+      input_email: E-mail
+      input_phone: Phone number
+      input_subject: Subject
+      input_message: Message
+      button_send: Send
+      item_email: E-mail
+      item_phone: Phone
+    form_pqrs:
+      title_primary_form_pqrs: Form PQRS
+      subtitle_one_form_pqrs: Please, indicate in the following form any question, complaint, claims and/or suggestions
+      subtitle_two_form_pqrs: in order to improve our services
+      option_question: Question
+      option_claim: Claim
+      option_complain: Complain
+      option_suggestion: Suggestion
+      input_name: Full name
+      input_id: ID Number
+      input_company: Company
+      input_phone: Phone number
+      input_country: Country
+      input_email: E-mail
+      input_message: Message
+      button_send: Send
+    reservation_transfers:
+      title_main_reservation: Transfer Reservation
+      subtitle_main_reservation: Complete all the data to confirm and pay your reservation
+      title_dates_reservation: Reservation data
+      title_dates_traveler: Travelers data
+      title_dates_requests: Requests / Observations
+      title_date_billing: Billing data
+      title_privacy_policy: Privacy Policy
+      title_cancellation_policy: Cancellation Policy
+      title_terms_and_conditions: Terms and Conditions
+      title_summary: Summary
+      origin: Origin
+      destination: Destination
+      adult_amount: Adults amount
+      children_amount: Children amount
+      baggage_amount: Baggage amount
+      type_transfer: Type of transfer
+      round_trip: Round Trip
+      one_way: One Way
+      origin_date: Origin date
+      destination_date: Destination date
+      origin_time: Origin time
+      destination_time: Destination time
+      from_airport: Transfer from the airport?
+      airline: Airline
+      flight_number: Flight number
+      airport_transfer: Airport transfer?
+      input_name: Name
+      input_id: ID Number
+      input_requests: Requests / Observations
+      input_phone: Phone number
+      input_email: E-mail
+      input_address: Billing address
+      notification_billing: Dear User, when you enter the following data, the Receptivo Colombia system will create a user with the following information and we will send you an email with the information that I detail below
+      observations: Observations
+      i_agree: I agree
+      privacy_policy: Privacy Policy
+      cancellation_policy: Cancellation Policy
+      terms_and_conditions: Terms and Conditions
+      modal_privacy_policy: Privacy Policy
+      modal_cancellation_policy: Cancellation Policy
+      modal_terms_and_conditions: Terms and Conditions
+      baggage_maximum: Baggage maximum
+      pieces: Pieces
+      subtotal: Subtotal
+      total_price: Total price
+      pay_reservation: Pay your reservation!
+      confirm: Confirm
+      next: Next
+      confirm_reservation: Confirm your reservation!
+      total_price_pax: Total price PAX
+      total_price_agency: Total price Agency
+      benefit_percentage: Benefit percentage
+      commission_percentage: Commission percentage
+      for_quote: For quote!
+      request_reservation: Request your reservation!
+      quote: Quote
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

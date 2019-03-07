@@ -150,3 +150,5 @@ gem 'wow-rails'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'hover-rails'
 gem 'awesome-bootstrap-checkbox', '~> 1.0'
+
+gem 'factory_bot', '~> 4.11', '>= 4.11.1'

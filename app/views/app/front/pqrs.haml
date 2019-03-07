@@ -16,13 +16,11 @@
     %section.pqrs#pqrs
       .container
         .gallary-header.text-center
-          %h2
-            Sistema PQRS
+          %h2= t('receptivo.form_pqrs.title_primary_form_pqrs')
           %p
-            Por favor, indíquenos en siguiente formulario cualquier pregunta, queja, reclamos y/o sugerencias
+            = t('receptivo.form_pqrs.subtitle_one_form_pqrs')
             %br/
-            con el fin mejorar nuestros servicios
-
+            = t('receptivo.form_pqrs.subtitle_two_form_pqrs')
     = simple_form_for @message, url: '/admin/contactus/requests', method: :post do |f|
       .box-pqrs
         .container
@@ -35,59 +33,59 @@
                       .radio.radio-blue.radio-inline
                         %input#pregunta{:name => "request[options]", :type => "radio"}/
                         %label{:for => "pregunta"}
-                          %font
-                            %font Pregunta
-                  %li
-                    .form-group
-                      .radio.radio-blue.radio-inline
-                        %input#queja{:name => "request[options]", value: 'Queja', :type => "radio"}/
-                        %label{:for => "queja"}
-                          %font{value: 'Queja'}
-                            %font{value: 'Queja'} Queja
+                          %font{value: 'Pregunta'}
+                            %font{value: 'Pregunta'}= t('receptivo.form_pqrs.option_question')
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#reclamo{:name => "request[options]", value: 'Reclamo', :type => "radio"}/
                         %label{:for => "reclamo"}
                           %font{value: 'Reclamo'}
-                            %font{value: 'Reclamo'} Reclamo
+                            %font{value: 'Reclamo'}= t('receptivo.form_pqrs.option_claim')
+                  %li
+                    .form-group
+                      .radio.radio-blue.radio-inline
+                        %input#queja{:name => "request[options]", value: 'Queja', :type => "radio"}/
+                        %label{:for => "queja"}
+                          %font{value: 'Queja'}
+                            %font{value: 'Queja'}= t('receptivo.form_pqrs.option_complain')
                   %li
                     .form-group
                       .radio.radio-blue.radio-inline
                         %input#sugerencia{:name => "request[options]", value: 'Sugerencia', :type => "radio"}/
                         %label{:for => "sugerencia"}
                           %font{value: 'Sugerencia'}
-                            %font{value: 'Sugerencia'} Sugerencia
+                            %font{value: 'Sugerencia'}= t('receptivo.form_pqrs.option_suggestion')
                 .col-lg-6
                   .form-group
-                    %label Nombre
-                    = f.input :name, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_name')
+                    = f.input :name, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_name')
                   .form-group
-                    %label Identificación
-                    = f.input :dni, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_id')
+                    = f.input :dni, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_id')
                   .form-group
-                    %label Teléfono
-                    = f.input :phone, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_phone')
+                    = f.input :phone, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_phone')
                 .col-lg-6
                   .form-group
-                    %label{name: ''} Compañia
-                    = f.input :company, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_company')
+                    = f.input :company, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_company')
                   .form-group
-                    %label País
-                    = f.input :country, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_country')
+                    = f.input :country, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_country')
                   .form-group
-                    %label Correo Electronico
-                    = f.input :email, label: false, class: 'form-control', type: 'text'
+                    %label= t('receptivo.form_pqrs.input_email')
+                    = f.input :email, label: false, class: 'form-control', type: 'text', placeholder: t('receptivo.form_pqrs.input_email')
                 .col-lg-12
                   .form-group
-                    %label Descripción
-                    %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5"}
+                    %label= t('receptivo.form_pqrs.input_message')
+                    %textarea#comment.form-control{name: 'request[body]', id: 'request_name', :rows => "5", placeholder: t('receptivo.form_pqrs.input_message')}
                 .col-lg-12
                   .items
                     = raw recaptcha_tags
                     .box-btn-payment.pull-right
                       .about-btn.travel-mrt-0
-                        %button.about-view.travel-btn.btn-reser enviar
+                        %button.about-view.travel-btn.btn-reser= t('receptivo.form_pqrs.button_send')
 
     %footer#footer.footer.footer-copyright
       = render 'app/layouts/footer'

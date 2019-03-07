@@ -23,10 +23,8 @@
 %section.reservation-vehicles#reservation-vehicles
   .container
     .gallary-header.text-center
-      %h2
-        Reserva de Traslado
-      %p
-        Completa todos los datos para confirmar y pagar tu reserva.
+      %h2= t('receptivo.reservation_transfers.title_main_reservation')
+      %p= t('receptivo.reservation_transfers.subtitle_main_reservation')   
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post, style:'width: 100%;' do |f|

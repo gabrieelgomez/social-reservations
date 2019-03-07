@@ -1,15 +1,16 @@
 
 %li.list-group-item.d-flex.justify-content-between
   %div
-    %span
-      Precio Total
-    %strong{style:"float: right;"}
-      ¡Por cotización!
+    %span= t('receptivo.reservation_transfers.total_price')
+    %strong{style:"float: right;"}= t('receptivo.reservation_transfers.for_quote')
 .box-btn-payment
   %br/
   %span
-    %p.text-center.title-reser ¡Solicita tu reserva!
+    %p.text-center.title-reser= t('receptivo.reservation_transfers.request_reservation')
   %br/
   %center
     .about-btn.travel-mrt-0
-      %button.about-view.travel-btn.btn-reser Cotizar
+      %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_transfers.quote')
+
+
+        

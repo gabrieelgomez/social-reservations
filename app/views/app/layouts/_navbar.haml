@@ -30,7 +30,7 @@
                     = url_lang('es', @currency, request, t('receptivo.pre_navbar.spanish'))
                   %li
                     = url_lang('en', @currency, request, t('receptivo.pre_navbar.english'))
-                  %li
+                  -#%li
                     = url_lang('pt', @currency, request, t('receptivo.pre_navbar.portuguese'))
           .col-md-3.col-lg-3.nav-padding
             .item-contact.money
@@ -55,15 +55,18 @@
                     %li
                       = link_to orders_path(@lang, @currency, 'transfers'), class:'' do
                         %span
-                          %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }=t('receptivo.pre_navbar.dashboard')
+                          %i.nc-icon.nc-palette{style:'font-weight: 700; margin-right: 2px;' }
+                          = t('receptivo.pre_navbar.dashboard')
                     %li
                       = link_to users_details_path(@lang, @currency), class:'' do
                         %span
-                          %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}=t('receptivo.pre_navbar.profile')
+                          %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}
+                          = t('receptivo.pre_navbar.profile')
                     %li
                       = link_to destroy_session_path(current_user), class:''  do
                         %span
-                          %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }=t('receptivo.pre_navbar.sign_out')
+                          %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }
+                          = t('receptivo.pre_navbar.sign_out')
 
               - else
                 = link_to new_user_session_path, class:"pull-right" do

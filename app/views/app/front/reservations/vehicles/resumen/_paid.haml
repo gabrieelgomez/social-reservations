@@ -1,7 +1,7 @@
 - if current_user.try(:has_role_agentable?)
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %h6.my-0 Sub-total
+      %h6.my-0= t('receptivo.reservation_transfers.subtotal')
       %small.text-muted
         - multiple = @round_trip == 'true' ? '2' : '1'
         = "#{multiple} x "
@@ -11,32 +11,28 @@
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %span
-        Porcentaje de Comisión
+      %span= t('receptivo.reservation_transfers.commission_percentage')
       %strong{style:"float: right;"}
         = "#{@comission}% = "
         = number_to_currency(@price_comission, locale: @locale)
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %span
-        Porcentaje de Prestación
+      %span= t('receptivo.reservation_transfers.benefit_percentage')
       %strong{style:"float: right;"}
         = "#{@lending}% = "
         = number_to_currency(@price_lending, locale: @locale)
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %span
-        Precio Total Agencia
+      %span= t('receptivo.reservation_transfers.total_price_agency')
       %strong{style:"float: right;"}
         = @currency.upcase
         = number_to_currency(@price_total_agency, locale: @locale)
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %span
-        Precio Total PAX
+      %span= t('receptivo.reservation_transfers.total_price_pax')
       %strong{style:"float: right;"}
         = @currency.upcase
         = number_to_currency(@price_total, locale: @locale)
@@ -44,17 +40,17 @@
   .box-btn-payment
     %br/
     %span
-      %p.text-center.title-reser ¡Confirma tu reserva!
+      %p.text-center.title-reser= t('receptivo.reservation_transfers.confirm_reservation')
     %br/
     %center
       .about-btn.travel-mrt-0
-        %button.about-view.travel-btn.btn-reser Siguiente
+        %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_transfers.next')
 
 - else
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %h6.my-0 Sub-total
+      %h6.my-0= t('receptivo.reservation_transfers.subtotal')
       %small.text-muted
         - multiple = @round_trip == 'true' ? '2' : '1'
         = "#{multiple} x "
@@ -64,18 +60,16 @@
 
   %li.list-group-item.d-flex.justify-content-between
     %div
-      %span
-        Precio Total
+      %span= t('receptivo.reservation_transfers.total_price')
       %strong{style:"float: right;"}
         = @currency.upcase
         = number_to_currency(@price_total, locale: @locale)
 
-
   .box-btn-payment
     %br/
     %span
-      %p.text-center.title-reser ¡Paga tu reserva!
+      %p.text-center.title-reser= t('receptivo.reservation_transfers.pay_reservation')
     %br/
     %center
       .about-btn.travel-mrt-0
-        %button.about-view.travel-btn.btn-reser Confirmar
+        %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_transfers.confirm')

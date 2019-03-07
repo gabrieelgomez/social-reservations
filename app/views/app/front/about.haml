@@ -12,8 +12,8 @@
     %section#aboutus.aboutus
       .banner-aboutus{style: "background-image: url(/assets/img/banner.jpg)"}
         .banner-aboutus--mask
-          %h2 Sobre Nosotros
-          %p Somos una Agencia Operadora de Turismo en Colombia
+          %h2= t('receptivo.about.title_primary_banner')
+          %p= t('receptivo.about.title_secondary_banner')
       .box-aboutus
         .info-aboutus 
           .container
@@ -23,26 +23,26 @@
                 .box__info
                   %center
                     %h2.item_general Receptivo Colombia
-                  %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes. 
-                  %p Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
+                  %p= t('receptivo.about.receptivo_colombia_one')
+                  %p= t('receptivo.about.receptivo_colombia_two')
               .col-md-4
                 .box__image{style: "background-image: url(/assets/img/mision.png)"} 
               .col-md-8
-                %h2.item_mision Nuestra misión
-                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+                %h2.item_mision= t('receptivo.about.title_mission')
+                %p= t('receptivo.about.mission')
               .col-md-12
                 .separator
               .col-md-8
-                %h2.item_vision Nuestra visión
-                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+                %h2.item_vision= t('receptivo.about.title_vision')
+                %p= t('receptivo.about.vision')
               .col-md-4
                 .box__image{style: "background-image: url(/assets/img/vision.png)"}                             
               .col-md-12
                 %center
                   .box-btn-cta
                     .about-btn.travel-mrt-0{style:'margin-top: 10px'}
-                      = link_to tours_all_path do
-                        %button.about-view.travel-btn.btn-reser Conócenos
+                      = link_to tours_all_path(@lang, @currency) do
+                        %button.about-view.travel-btn.btn-reser= t('receptivo.about.CTA')
             
             -# mobile
             .row.hidden-lg
@@ -50,26 +50,26 @@
                 .box__info
                   %center
                     %h2.item_general Receptivo Colombia
-                  %p Somos una empresa constituida dentro de los marcos legales establecidos por la ley colombiana. Enfocados en brindar excelentes servicios turísticos para el mercado internacional y nacional.A partir de la recepción de cada uno de nuestros pasajeros, buscamos el mejor recurso del servicio, para encontrar la excelencia del producto dentro de nuestro portafolio, con el fin de satisfacer las necesidades de nuestros clientes. 
-                  %p Dentro de los servicios que ofrecemos, podemos brindarle ayuda, entre otros, en transportes, hoteles, tours, tarjetas de asistencia médica, alquiler de vehículos, etc., en cualquier lugar que usted se imagine, engrandeciendo nuestro destino Colombia.
+                    %p= t('receptivo.about.receptivo_colombia_one')
+                    %p= t('receptivo.about.receptivo_colombia_two')                    
               .col-xs-12
                 .box__image{style: "background-image: url(/assets/img/mision.png)"} 
               .col-xs-12
-                %h2 Nuestra misión
-                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+                %h2= t('receptivo.about.title_mission')
+                %p= t('receptivo.about.mission')
               .col-xs-12
                 .separator
               .col-xs-12
                 .box__image{style: "background-image: url(/assets/img/vision.png)"}  
               .col-xs-12
-                %h2 Nuestra visión
-                %p Receptivo Colombia S.A.S. es una empresa constituida dentro del marco legal establecido por la ley, cuya misión es brindar los mejores servicios turísticos para el mercado nacional e internacional, con el fin de superar las expectativas de nuestros clientes, buscando siempre el mejor recurso del servicio en transportes, hoteles, asistencias médicas, alquiler de vehículos, entre otros con los cuales se quiere satisfacer las necesidades de los clientes.
+                %h2= t('receptivo.about.title_vision')
+                %p= t('receptivo.about.vision')
               .col-xs-12
                 %center
                   .box-btn-cta
                     .about-btn.travel-mrt-0{style:'margin: 30px 0'}
-                      = link_to tours_all_path do
-                        %button.about-view.travel-btn.btn-reser Conócenos
+                      = link_to tours_all_path(@lang, @currency) do
+                        %button.about-view.travel-btn.btn-reser= t('receptivo.about.CTA')
 
 
 

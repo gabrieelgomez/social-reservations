@@ -40,7 +40,7 @@
         border: 1px solid #47c1f5;
         border-radius: 5px;
         padding: 8px 0px;
-        width: 140px;
+        min-width: 140px;
         text-align: center;
         margin: 0px 2px;
         transition: .5s;
@@ -62,7 +62,7 @@
         a {
           text-decoration: none;
           color: transparent;
-
+          padding: 5px;
           span {
             font-size: 14px;
             color: #5d5a5a;

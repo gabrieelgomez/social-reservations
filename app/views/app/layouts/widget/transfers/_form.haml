@@ -12,12 +12,14 @@
                             %input#ida_vuelta.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
                             %label.ida_vuelta{:for => "ida_vuelta"}
                                 %span.round-boarder
-                                    %span.round-boarder1= t('receptivo.widget.round_trip')
+                                    %span.round-boarder1{style:'margin: -11px 0px 0 0px; !important'}
+                                = t('receptivo.widget.round_trip')
                         .single-trip-circle
                             %input#solo_ida.radio-fecha-vuelos{:name => "ida_o_vuelta", :type => "radio"}/
                             %label.solo_ida{:for => "solo_ida"}
-                                %span.round-boarder>
-                                    %span.round-boarder1= t('receptivo.widget.one_way')
+                                %span.round-boarder
+                                    %span.round-boarder1{style:'margin: -11px 0px 0 0px; !important'}
+                                = t('receptivo.widget.one_way')
                 .col-lg-8
                     .box-item
                         %h2= t('receptivo.widget.origin')

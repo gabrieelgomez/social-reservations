@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Políticas de Privacidad
+        %h4.modal-title= t('receptivo.reservation_transfers.modal_privacy_policy')
       .modal-body
         %p= @setting.try("privacy_policies_#{@lang}".to_sym).try(:html_safe)
       .modal-footer
