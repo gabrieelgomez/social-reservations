@@ -281,6 +281,19 @@ es:
       for_quote: ¡Para cotizar!
       request_reservation: ¡Solicita tu reserva!
       quote: Cotizar
+    checkout:
+      details_person: Datos Personales
+      billing: Facturación
+      billing_details: Recuerde verificar la información antes de pagar su reserva
+      payment_method: Método de Pagos
+      confirm: Confirmar
+      pay_reservation: Pagar Reservación
+      type_lodgment: Tipo de Alojamiento
+      cotization: Cotizar
+      airline: Aerolinea
+      number_flight: N° de Vuelo
+      request_reservation: Solictar Reserva
+      details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

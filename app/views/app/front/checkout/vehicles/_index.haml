@@ -2,9 +2,9 @@
   .container
     .gallary-header.text-center
       %h2
-        Facturación
+        = t('receptivo.checkout.billing')
       %p
-        Recuerde verificar la información antes de pagar su reserva
+        = t('receptivo.checkout.billing_details')
     .container
       .row
         .col-lg-2
@@ -22,13 +22,14 @@
                       %p= t('receptivo.dashboard.table.tourism')
                     .col-lg-1
                     .col-lg-3
-                      %h3.pull-right N° de Orden
-                      %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
+                      %h3.pull-right
+                        =  t('receptivo.dashboard.table.order')
+                        %span= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        %strong Datos Personales
+                        %strong= t('receptivo.dashboard.checkout.details_person')
                         %br/
                         = @user['name']
                         %br/
@@ -40,9 +41,7 @@
                   .row
                     .col-xs-6
                       %address
-                        %strong Método de Pago
-                        %br/
-                        Pĺataforma: EnLineaPagos
+                        %strong= t('receptivo.checkout.payment_method')
                         %br/
                         = @user['name']
                         %br/
@@ -56,7 +55,7 @@
                         %br/
                   .row
                     .col-xs-12
-                      %h5.text-center Información del Traslado
+                      %h5.text-center= t('receptivo.dashboard.table.transfer_information')
                       %br/
                     .col-xs-4
                       %address
@@ -68,7 +67,7 @@
                         %br/
                         = @reservation['arrival']
                         %br/
-                        %strong Aerolinea
+                        %strong= t('receptivo.checkout.airline')
                         %br/
                         = @reservation['airline_origin'].blank? ? '-----------' : @reservation['airline_origin']
                         %br/
@@ -84,7 +83,7 @@
                         %strong= t('receptivo.dashboard.table.adults_kids')
                         %br= "#{@reservation['quantity_adults'].to_i} / #{@reservation['quantity_kids'].to_i}"
                         %br/
-                        %strong N° de Vuelo
+                        %strong= t('receptivo.checkout.number_flight')
                         %br/
                         = @reservation['flight_number_origin'].blank? ? '-----------' : @reservation['flight_number_origin']
                         %br/

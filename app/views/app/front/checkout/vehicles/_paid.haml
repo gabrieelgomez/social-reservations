@@ -73,11 +73,11 @@
   .row
     .col-lg-12
       .invoice-transfers__box--payment
-        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Confirmar"}/
+        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => t('receptivo.checkout.confirm')}/
 
 - else
 
   .row
     .col-lg-12
       .invoice-transfers__box--payment
-        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => t('receptivo.checkout.pay_reservation')}/

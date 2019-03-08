@@ -2,9 +2,9 @@
   .container
     .gallary-header.text-center
       %h2
-        Facturación
+        = t('receptivo.checkout.billing')
       %p
-        Recuerde verificar la información antes de pagar su reserva
+        = t('receptivo.checkout.billing_details')
     .container
       .row
         .col-lg-2
@@ -22,13 +22,14 @@
                       %p= t('receptivo.dashboard.table.tourism')
                     .col-lg-1
                     .col-lg-3
-                      %h3.pull-right N° de Orden
-                      %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
+                      %h3.pull-right
+                        =  t('receptivo.dashboard.table.order')
+                        %span= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        %strong Datos Personales
+                        %strong= t('receptivo.dashboard.checkout.details_person')
                         %br/
                         = @user['name']
                         %br/
@@ -42,23 +43,23 @@
                         %br/
                         = @reservation['description']
                         %br/
-                        = "Adultos (#{@reservation['quantity_adults']})"
+                        = "#{t('receptivo.widget.adults')} (#{@reservation['quantity_adults']})"
                         %br/
-                        = "Niños (#{@reservation['quantity_kids']})"
+                        = "#{t('receptivo.widget.children')} (#{@reservation['quantity_kids']})"
 
                   .row
                     .col-xs-12
-                      %h5.text-center Información del Circuito
+                      %h5.text-center= t('receptivo.dashboard.table.circuit_information')
                       %br/
                     .col-xs-4
                       %address
-                        %strong Circuito
+                        %strong= t('receptivo.dashboard.table.circuit')
                         %br/
                         = @reservation['origin']
                         %br/
                     .col-xs-4
                       %address
-                        %strong Tipo de Alojamiento
+                        %strong= t('receptivo.checkout.type_lodgment')
                         %br/
                         = @circuitable.ranking.title[@lang]
                         %br/
@@ -107,7 +108,7 @@
                   .row
                     .col-lg-12
                       .invoice-transfers__box--payment
-                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Cotizar"}/
+                        %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => t('receptivo.checkout.cotization')}/
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript
