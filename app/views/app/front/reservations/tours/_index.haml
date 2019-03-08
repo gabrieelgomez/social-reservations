@@ -21,10 +21,8 @@
 %section.reservation-tours#reservation-tours
   .container
     .gallary-header.text-center
-      %h2
-        Reserva de Tours
-      %p
-        Completa todos los datos para confirmar y pagar tu reserva.
+      %h2= t('receptivo.reservation_tours.title_main_reservation')
+      %p= t('receptivo.reservation_tours.subtitle_main_reservation')
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_tour', method: :post do |f|
@@ -53,7 +51,7 @@
               = render 'app/front/reservations/tours/dates_privacy_policy'
 
               //Cancellations Policy
-              = render 'app/front/reservations/tours/dates_cancellations_policy'
+              -#= render 'app/front/reservations/tours/dates_cancellations_policy'
 
               //Terms & Conditions
               = render 'app/front/reservations/tours/dates_terms_conditions'
