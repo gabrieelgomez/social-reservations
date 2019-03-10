@@ -184,6 +184,13 @@ en:
         hour_arrival: Return Hour
         luggage: Luggage
         pieces: pieces
+        drivers_details: Driver Details
+        driver_name: Name
+        driver_phone: Phone
+        driver_vehicle: Vehicle
+        driver_seats: Seats
+        driver_licenses: Licenses
+        driver_not_avaible: Driver Not Avaible
       users:
         edit_profile: Edit Profile
     about:

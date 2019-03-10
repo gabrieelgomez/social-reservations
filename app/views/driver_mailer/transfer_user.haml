@@ -299,8 +299,13 @@
                                 %td.attributes_item
                                   %strong Placas:
                                   - @reservation.driver.car_descriptions.each_with_index do |description, index|
-                                    %ul{:style => "list-style: none !important;"}
-                                      %li= description.license.blank? ? '-----------' : "#{description.license} - #{description.color}"
+                                    - if description.licenses.nil?
+                                      %ul{:style => "list-style: none !important;"}
+                                        %li= '-----------'
+                                    - else
+                                      - description.licenses.each do |license|
+                                        %ul{:style => "list-style: none !important;"}
+                                          %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
 
                               %tr
                                 %td.attributes_item

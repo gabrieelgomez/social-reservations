@@ -184,6 +184,13 @@ es:
         hour_arrival: Hora Vuelta
         luggage: Equipaje
         pieces: piezas
+        drivers_details: Información del Conductor
+        driver_name: Nombre
+        driver_phone: Teléfono
+        driver_vehicle: Vehículo
+        driver_seats: Asientos
+        driver_licenses: Placas
+        driver_not_avaible: Conductor no disponible
       users:
         edit_profile: Editar Perfil
     about:
