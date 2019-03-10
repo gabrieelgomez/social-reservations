@@ -16,6 +16,7 @@
               %tbody
                 - if @orders
                   - @orders.try(:reverse).map(&:reservation).each do |reservation|
+                    - next if reservation.invoice.nil?
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token

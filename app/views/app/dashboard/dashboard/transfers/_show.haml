@@ -31,6 +31,7 @@
                   %th= t('receptivo.dashboard.table.details')
                 %tbody
                   - current_user.reservations_where('vehicle').sort.reverse.each do |reservation|
+                    - next if reservation.invoice.nil?
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
