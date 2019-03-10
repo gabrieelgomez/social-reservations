@@ -119,7 +119,7 @@ es:
         email: E-mail
         phone: Teléfono
         order: N° Orden
-        invoice: N° Factura
+        invoice: Código de Reserva
         cost_cotization: Costo Cotización
         status_reservations: Estatus Reserva
         status_pay: Estatus Pago

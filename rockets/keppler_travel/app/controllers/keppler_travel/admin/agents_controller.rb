@@ -55,6 +55,7 @@ module KepplerTravel
         @user.format_accessable_passwd(password)
         @agent  = @user.build_agent(agency_id: params[:agency_id])
         @agency = Agency.find(params[:agency_id])
+        @agent.unique_code = @agency.unique_code
         if @user.save
           @user.add_role :agent
           ReservationMailer.send_password(@user).deliver_now
