@@ -6,14 +6,16 @@
         .row.row-flex
           .col-lg-9
             %p
-              %h5 Su búsqueda
-              %p="Desde: #{@origin_name.truncate(100)}"
-              %p="Hasta: #{@arrival_name.truncate(100)}"
+              %h5= t('receptivo.widget-banner.your_search')
+              %p="#{t('receptivo.widget-banner.from')}: #{@arrival_name.truncate(100)}"
+              %p="#{t('receptivo.widget-banner.to')}: #{@arrival_name.truncate(100)}"
           .col-lg-3
             %p
               %span
                 %a.pull-right.link-widget
-                  = t('receptivo.widget.your_search')
+                  = t('receptivo.widget-banner.your_search')
+
+
 
   .container.js-widget.js-hide-widget.widget-results
     .row

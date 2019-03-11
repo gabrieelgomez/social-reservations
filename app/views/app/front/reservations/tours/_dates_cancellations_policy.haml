@@ -1,10 +1,11 @@
-%h3 Política de Cancelaciones
+%h3= t('receptivo.reservation_transfers.cancellation_policy')
 .row
   .col-lg-12
+    .separator__mobile.hidden-lg
     .form-group.form-custom
       .checkbox.checkbox-blue.checkbox-inline
         %input#cancellations_policy.styled{name: 'cancellations_policy', :type => "checkbox", :value => "agree"}/
         %label.check{:for => "cancellations_policy"} 
-          Acepto
+          = t('receptivo.reservation_transfers.i_agree')
           = succeed "." do
-            = link_to 'Política de Cancelaciones', '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'
+            = link_to t('receptivo.reservation_transfers.cancellation_policy') , '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'

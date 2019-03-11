@@ -1,11 +1,11 @@
-%h3#travellers_form Datos del Viajero
+%h3#travellers_form= t('receptivo.reservation_tours.title_dates_traveler')
 - @seats.times do |i|
   .row
     .col-lg-6
       .form-group.form-custom
-        %label{for: "name"} Nombre
-        %input#name.form-control{name: 'travellers[][name]', type: "text", placeholder: "Ingrese nombre"}/
+        %label{for: "name"}= t('receptivo.reservation_tours.input_name')
+        %input#name.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: t('receptivo.reservation_tours.input_name')}/
     .col-lg-6
       .form-group.form-custom
-        %label{for: "dni"} Identificación
-        %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: "Ingrese identificación"}/
+        %label{for: "dni"}= t('receptivo.reservation_tours.input_id')
+        %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_tours.input_id')}/

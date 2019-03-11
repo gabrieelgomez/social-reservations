@@ -14,8 +14,8 @@
             .image-ico
               %img{:alt => "", :src => "/assets/img/thanks.svg", :class => "img-responsive"}/
           .col-lg-12
-            %p Tu reserva se ha realizado con éxito.
-            %p ¡Gracias por confiar en nosotros!
+            %p= t('receptivo.invoice.title_main_invoice')
+            %p= t('receptivo.invoice.subtitle_main_invoice')
           .col-lg-12
             %br/
             %br/
@@ -23,6 +23,6 @@
               .back-home
                 %i.icon-home.icons
                 = link_to root_path do
-                  %span Regresar
+                  %span= t('receptivo.invoice.to_return')
 
     %script{:src => "/assets/js/loader.js"}

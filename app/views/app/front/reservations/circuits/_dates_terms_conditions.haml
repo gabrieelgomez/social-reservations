@@ -1,11 +1,11 @@
-%h3 Términos y Condiciones
+%h3= t('receptivo.reservation_circuits.title_terms_and_conditions')
 .row
   .col-lg-12
-    .form-custom
-    .form-group
+    .separator__mobile.hidden-lg
+    .form-group.form-custom
       .checkbox.checkbox-blue.checkbox-inline
         %input#terms_conditions.styled{name: 'terms_conditions', :type => "checkbox", :value => "agree"}/
-        %label.check{:for => "terms_conditions"}
-          Acepto
+        %label.check{:for => "terms_conditions"} 
+          = t('receptivo.reservation_circuits.i_agree')
           = succeed "." do
-            = link_to 'Términos y Condiciones', '#' , :class => '', :id => 'js_termsConditions', :type => 'button'
+            = link_to t('receptivo.reservation_circuits.terms_and_conditions') , '#' , :class => '', :id => 'js_termsConditions', :type => 'button'

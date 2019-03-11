@@ -1,44 +1,44 @@
-%h3 Datos de Facturación
+%h3= t('receptivo.reservation_tours.title_date_billing')
 %br
 %br
-%span Estimado usuario/a, al momento de ingresar los siguientes datos el sistema de Receptivo Colombia, creará un usuario con los siguientes datos y le enviaremos un correo con la información que detalle a continuación:
+%p= t('receptivo.reservation_tours.notification_billing')
 - if user_signed_in?
   .row
     .col-lg-6
       .form-group.form-custom
-        %label{for: "name"} Nombre
-        %input#name_user.form-control{disabled: 'disabled', value: current_user.name}/
+        %label{for: "name"}= t('receptivo.reservation_tours.input_name')
+        %input#name_user.form-control{disabled: 'disabled', value: current_user.name, placeholder: t('receptivo.reservation_tours.input_name')}/
       .form-group
-        %label{for: "phone"} Teléfono
-        %input#phone_user.form-control{disabled: 'disabled', value: current_user.phone}/
+        %label{for: "phone"}= t('receptivo.reservation_tours.input_phone')
+        %input#phone_user.form-control{disabled: 'disabled', value: current_user.phone, placeholder: t('receptivo.reservation_tours.input_phone')}/
     .col-lg-6
       .form-group.form-custom
-        %label{for: "dni"} Identificación
-        %input#dni_user.form-control{disabled: 'disabled', value: current_user.dni}/
+        %label{for: "dni"}= t('receptivo.reservation_tours.input_id')
+        %input#dni_user.form-control{disabled: 'disabled', value: current_user.dni, placeholder: t('receptivo.reservation_tours.input_id')}/
       .form-group
-        %label{for: "email"} Correo electrónico
+        %label.title{for: "email"}= t('receptivo.reservation_tours.input_email')
         %input#email_user.form-control{disabled: 'disabled', value: current_user.email}/
     .col-lg-12
       .form-group
-        %label{for: ""}  Dirección de Facturación
-        %textarea{placeholder: 'Ingrese dirección de facturación', id: "", name: "invoice[][address]", rows: "4", style:"width: 100%;"}
+        %label{for: ""}= t('receptivo.reservation_tours.input_address')
+        %textarea{placeholder: t('receptivo.reservation_tours.input_address'), id: "", class:"form-control", name: "invoice[][address]", rows: "4", style:"width: 100%;"}
 - else
   .row
     .col-lg-6
       .form-group.form-custom
-        %label{for: "name"} Nombre
-        %input#name_user.form-control{name: 'user[][name]', type: "text", placeholder: "Ingrese nombre"}/
+        %label{for: "name"}= t('receptivo.reservation_tours.input_name')
+        %input#name_user.form-control{name: 'user[][name]', type: "text", placeholder: t('receptivo.reservation_tours.input_name')}/
       .form-group
-        %label{for: "phone"} Teléfono
-        %input#phone_user.form-control{name: 'user[][phone]', type: "text", placeholder: "Ingrese teléfono"}/
+        %label{for: "phone"}= t('receptivo.reservation_tours.input_phone')
+        %input#phone_user.form-control{name: 'user[][phone]', type: "text", placeholder: t('receptivo.reservation_tours.input_phone')}/
     .col-lg-6
       .form-group.form-custom
-        %label{for: "dni"} Identificación
-        %input#dni_user.form-control{name: 'user[][dni]', type: "text", placeholder: "Ingrese identificación"}/
+        %label{for: "dni"}= t('receptivo.reservation_tours.input_id')
+        %input#dni_user.form-control{name: 'user[][dni]', type: "text", placeholder: t('receptivo.reservation_tours.input_id')}/
       .form-group
-        %label{for: "email"} Correo electrónico
-        %input#email_user.form-control{name: 'user[][email]', type: "email", placeholder: "Ingrese correo electrónico"}/
+        %label{for: "email"}= t('receptivo.reservation_tours.input_email')
+        %input#email_user.form-control{name: 'user[][email]', type: "email", placeholder: t('receptivo.reservation_tours.input_email')}/
     .col-lg-12
       .form-group
-        %label.title{for: "address"}  Dirección de Facturación
-        %textarea.form-control{placeholder: 'Ingrese dirección de facturación', id: "", name: "invoice[][address]", rows: "4", style:"width: 100%;"}
+        %label{for: "address"}= t('receptivo.reservation_tours.input_address')
+        %textarea.form-control{placeholder: t('receptivo.reservation_tours.input_address'), id: "", class:"form-control", name: "invoice[][address]", rows: "4", style:"width: 100%;"}
