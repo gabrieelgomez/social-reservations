@@ -169,9 +169,9 @@ es:
       i_agree: Acepto
       privacy_policy: Política de Privacidad 
       cancellation_policy: Política de Cancelación
-      terms_and_conditions: Terms and Conditions
-      modal_privacy_policy: Privacy Policy
-      modal_cancellation_policy: Cancellation Policy
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad 
+      modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       baggage_maximum: Equipaje Máximo
       pieces: Piezas
@@ -200,59 +200,89 @@ es:
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
       tours: Tours
-      tours_date: Fecha de Reserva
-      adult_amount: Cant. Adultos
-      children_amount: Cant. Niños
+      tours_date: Fecha Reserva
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
       input_name: Nombre
       input_id: Número de Identificación 
       input_requests: Solicitudes/Observaciones  
       input_phone: Número de teléfono
       input_email: Correo electrónico
       input_address: Dirección Facturación
-      
-      origin: Origen
-      destination: Destino
-
-      baggage_amount: Candidad Equipaje
-      type_transfer: Tipo de Traslado
-      round_trip: Ida/Vuelta
-      one_way: Ida
-      origin_date: Fecha Origen
-      destination_date: Fecha Destino
-      origin_time: Hora Origen
-      destination_time: Hora Destino
-
-      airline: Aerolínea
-      flight_number: Número de Vuelo
-  
-
-      
-
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
       privacy_policy: Política de Privacidad 
       cancellation_policy: Política de Cancelación
-      terms_and_conditions: Terms and Conditions
-      modal_privacy_policy: Privacy Policy
-      modal_cancellation_policy: Cancellation Policy
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad 
+      modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
-      baggage_maximum: Equipaje Máximo
-      pieces: Piezas
+      total: total
+      person: persona
       subtotal: Sub-total
       total_price: Precio Total
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      next: Siguiente
       pay_reservation: ¡Paga tu reserva!
       confirm: Confirmar
-      next: Siguiente
       confirm_reservation: ¡Confirma tu reserva!
+      next: Siguiente
       commission_percentage: Porcentaje comisión
       for_quote: ¡Para cotizar!
       request_reservation: ¡Solicita tu reserva!
-      quote: Cotizar
-
-
-
-      
+      pay_reservation: ¡Paga tu reserva!
+    reservation_circuits:
+      title_main_reservation: Reserva de Circuitos 
+      subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
+      title_dates_reservation: Datos de Reserva
+      title_dates_traveler: Datos de Viajeros
+      title_dates_requests: Solicitudes/Observaciones
+      title_date_billing: Datos de Facturación
+      title_privacy_policy: Política de Privacidad 
+      title_cancellation_policy: Política de Cancelación
+      title_terms_and_conditions: Términos y Condiciones
+      title_summary: Resumen
+      circuits: Circuitos
+      name: Nombre del Cotizante
+      origin_date: Fecha Viaje
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
+      select_type_hotel: Seleccione el tipo de hotel
+      lodging: Alojamiento
+      input_name: Nombre
+      input_id: Número de Identificación 
+      input_requests: Solicitudes/Observaciones  
+      input_phone: Número de teléfono
+      input_email: Correo electrónico
+      input_address: Dirección Facturación
+      notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
+      observations: Observaciones
+      i_agree: Acepto
+      privacy_policy: Política de Privacidad 
+      cancellation_policy: Política de Cancelación
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad 
+      modal_cancellation_policy: Política de Cancelación
+      modal_terms_and_conditions: Términos y Condiciones
+      total: total
+      person: persona
+      subtotal: Sub-total
+      total_price: Precio Total
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      next: Siguiente
+      pay_reservation: ¡Paga tu reserva!
+      confirm: Confirmar
+      confirm_reservation: ¡Confirma tu reserva!
+      next: Siguiente
+      commission_percentage: Porcentaje comisión
+      for_quote: ¡Para cotizar!
+      request_reservation: ¡Solicita tu reserva!
+      pay_reservation: ¡Paga tu reserva!
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

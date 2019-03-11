@@ -188,6 +188,128 @@ en:
       for_quote: For quote!
       request_reservation: Request your reservation!
       quote: Quote
+    reservation_tours:
+      title_main_reservation: Tours Reservation 
+      subtitle_main_reservation: Complete all the data to confirm and pay your reservation
+      title_dates_reservation: Reservation data
+      title_dates_traveler: Travelers data
+      title_dates_requests: Requests / Observations
+      title_date_billing: Billing data
+      title_privacy_policy: Privacy Policy
+      title_cancellation_policy: Cancellation Policy
+      title_terms_and_conditions: Terms and Conditions
+      title_summary: Summary
+      origin: Origin
+      destination: Destination
+      adult_amount: Adults amount
+      children_amount: Children amount
+      baggage_amount: Baggage amount
+      type_transfer: Type of transfer
+      round_trip: Round Trip
+      one_way: One Way
+      origin_date: Origin date
+      destination_date: Destination date
+      origin_time: Origin time
+      destination_time: Destination time
+      from_airport: Transfer from the airport?
+      airline: Airline
+      flight_number: Flight number
+      airport_transfer: Airport transfer?
+      input_name: Name
+      input_id: ID Number
+      input_requests: Requests / Observations
+      input_phone: Phone number
+      input_email: E-mail
+      input_address: Billing address
+      notification_billing: Dear User, when you enter the following data, the Receptivo Colombia system will create a user with the following information and we will send you an email with the information that I detail below
+      observations: Observations
+      i_agree: I agree
+      privacy_policy: Privacy Policy
+      cancellation_policy: Cancellation Policy
+      terms_and_conditions: Terms and Conditions
+      modal_privacy_policy: Privacy Policy
+      modal_cancellation_policy: Cancellation Policy
+      modal_terms_and_conditions: Terms and Conditions
+      baggage_maximum: Baggage maximum
+      pieces: Pieces
+      subtotal: Subtotal
+      total_price: Total price
+      pay_reservation: Pay your reservation!
+      confirm: Confirm
+      next: Next
+      confirm_reservation: Confirm your reservation!
+      total_price_pax: Total price PAX
+      total_price_agency: Total price Agency
+      benefit_percentage: Benefit percentage
+      commission_percentage: Commission percentage
+      for_quote: For quote!
+      request_reservation: Request your reservation!
+      quote: Quote
+      total: total
+      person: persons
+    reservation_circuits:
+      title_main_reservation: Circuits Reservation 
+      subtitle_main_reservation: Complete all the data to confirm and pay your reservation
+      title_dates_reservation: Reservation data
+      title_dates_traveler: Travelers data
+      title_dates_requests: Requests / Observations
+      title_date_billing: Billing data
+      title_privacy_policy: Privacy Policy
+      title_cancellation_policy: Cancellation Policy
+      title_terms_and_conditions: Terms and Conditions
+      title_summary: Summary
+      origin: Origin
+      name: Name
+      destination: Destination
+      adult_amount: Adults amount
+      children_amount: Children amount
+      baggage_amount: Baggage amount
+      type_transfer: Type of transfer
+      round_trip: Round Trip
+      one_way: One Way
+      origin_date: Origin date
+      destination_date: Destination date
+      origin_time: Origin time
+      destination_time: Destination time
+      from_airport: Transfer from the airport?
+      airline: Airline
+      flight_number: Flight number
+      airport_transfer: Airport transfer?
+      input_name: Name
+      input_id: ID Number
+      input_requests: Requests / Observations
+      input_phone: Phone number
+      input_email: E-mail
+      input_address: Billing address
+      notification_billing: Dear User, when you enter the following data, the Receptivo Colombia system will create a user with the following information and we will send you an email with the information that I detail below
+      observations: Observations
+      i_agree: I agree
+      privacy_policy: Privacy Policy
+      cancellation_policy: Cancellation Policy
+      terms_and_conditions: Terms and Conditions
+      modal_privacy_policy: Privacy Policy
+      modal_cancellation_policy: Cancellation Policy
+      modal_terms_and_conditions: Terms and Conditions
+      baggage_maximum: Baggage maximum
+      pieces: Pieces
+      subtotal: Subtotal
+      total_price: Total price
+      pay_reservation: Pay your reservation!
+      confirm: Confirm
+      next: Next
+      confirm_reservation: Confirm your reservation!
+      total_price_pax: Total price PAX
+      total_price_agency: Total price Agency
+      benefit_percentage: Benefit percentage
+      commission_percentage: Commission percentage
+      for_quote: For quote!
+      request_reservation: Request your reservation!
+      quote: Quote
+      total: total
+      person: persons
+
+
+
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

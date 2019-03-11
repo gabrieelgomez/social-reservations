@@ -1,7 +1,6 @@
-%h3 Solicitudes/Observaciones
+%h3= t('receptivo.reservation_circuits.title_dates_requests')
 .row
   .col-lg-12
     .form-group.form-custom{style:"margin-bottom: 0px;"}
-      %label{:for => ""} Observaciones
-      %textarea.custom_input.form-control{placeholder: 'Solicitudes/Observaciones', id: "", name: "reservation[description]", rows: "4", style:"width: 100%;"}
-
+      %label{:for => ""}= t('receptivo.reservation_circuits.observations')
+      %textarea.custom_input.form-control{placeholder: t('receptivo.reservation_circuits.input_requests'), id: "", name: "reservation[description]", rows: "4", style:"width: 100%;"}

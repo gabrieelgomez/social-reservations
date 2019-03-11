@@ -2,28 +2,34 @@
   .col-lg-12
     .reservation-resumen
       .sticky
-        %h3  Resumen
+        %h3= t('receptivo.reservation_tours.title_summary')
         %br/
         %br/
         %ul.list-group.list-summary.mb-3
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Tour
+              %h6.my-0= t('receptivo.reservation_tours.tours')
               %small.text-muted= @tour.title[@lang].titleize
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Fecha de Reserva
+              %h6.my-0= t('receptivo.reservation_tours.tours_date')
               %small.text-muted= @flight_origin_tour_picker
 
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Adultos - Niños
-              %small.text-muted= "#{@adults} - #{@kids}"
+              %h6.my-0= t('receptivo.reservation_tours.adult_amount')
+              %small.text-muted= @adults
+
+          %li.list-group-item.d-flex.justify-content-between.lh-condensed
+            %div
+              %h6.my-0= t('receptivo.reservation_tours.children_amount')
+              %small.text-muted= @kids
+
 
           - if current_user.try(:has_role_agentable?)
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %h6.my-0 Sub-total
+                %h6.my-0= t('receptivo.reservation_tours.subtotal')
                 %small.text-muted
                   = number_to_currency(@tour.price_adults[@currency], locale: @locale)
                   (Adultos) x
@@ -42,36 +48,32 @@
                     = number_to_currency(@total_kids, locale: @locale)
 
                   %br
-                  %small.text-muted= "Total #{@seats} personas"
+                  %small.text-muted= " #{t('receptivo.reservation_tours.total')} #{@seats} #{t('receptivo.reservation_tours.person')}"
 
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %span
-                  Porcentaje de Comisión
+                %span= t('receptivo.reservation_tours.commission_percentage')
                 %strong{style:"float: right;"}
                   = "#{@comission}% = "
                   = number_to_currency(@price_comission, locale: @locale)
 
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %span
-                  Porcentaje de Prestación
+                %span= t('receptivo.reservation_tours.benefit_percentage')
                 %strong{style:"float: right;"}
                   = "#{@lending}% = "
                   = number_to_currency(@price_lending, locale: @locale)
 
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %span
-                  Precio Total Agencia
+                %span= t('receptivo.reservation_tours.total_price_agency')
                 %strong{style:"float: right;"}
                   = @currency.upcase
                   = number_to_currency(@price_total_agency, locale: @locale)
 
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %span
-                  Precio Total PAX
+                %span= t('receptivo.reservation_tours.total_price_pax')
                 %strong{style:"float: right;"}
                   = @currency.upcase
                   = number_to_currency(@price_total, locale: @locale)
@@ -79,17 +81,17 @@
             .box-btn-payment
               %br/
               %span
-                %p.text-center.title-reser ¡Confirma tu reserva!
+                %p.text-center.title-reser= t('receptivo.reservation_tours.confirm_reservation')
               %br/
               %center
                 .about-btn.travel-mrt-0
-                  %button.about-view.travel-btn.btn-reser Siguiente
+                  %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_tours.next')
 
           - else
 
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %h6.my-0 Sub-total
+                %h6.my-0= t('receptivo.reservation_tours.subtotal')
                 %small.text-muted
                   // Precio de Adultos
                   = number_to_currency(@tour.price_adults[@currency], locale: @locale)
@@ -109,19 +111,18 @@
                     = number_to_currency(@total_kids, locale: @locale)
 
                   %br
-                  %small.text-muted= "Total #{@seats} personas"
+                  %small.text-muted= " #{t('receptivo.reservation_tours.total')} #{@seats} #{t('receptivo.reservation_tours.person')}"
             %li.list-group-item.d-flex.justify-content-between
               %div
-                %span
-                  Precio Total
+                %span= t('receptivo.reservation_tours.total_price')
                 %strong{style:"float: right;"}
                   = @currency.upcase
                   = number_to_currency(@price_total, locale: @locale)
             .box-btn-payment
               %br/
               %span
-                %p.text-center.title-reser ¡Paga tu reserva!
+                %p.text-center.title-reser= t('receptivo.reservation_tours.pay_reservation')
               %br/
               %center
                 .about-btn.travel-mrt-0
-                  %button.about-view.travel-btn.btn-reser Confirmar
+                  %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_tours.confirm')

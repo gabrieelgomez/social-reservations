@@ -21,10 +21,8 @@
 %section.reservation-circuits#reservation-circuits
   .container
     .gallary-header.text-center
-      %h2
-        Reserva de Circuito
-      %p
-        Completa todos los datos para confirmar y pagar tu reserva.
+      %h2= t('receptivo.reservation_circuits.title_main_reservation')
+      %p= t('receptivo.reservation_circuits.subtitle_main_reservation')
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_circuit', method: :post do |f|
