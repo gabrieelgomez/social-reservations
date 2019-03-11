@@ -497,7 +497,47 @@ en:
       to_return: To return
 
 
-
+    reservation_mailer:
+      title_reservation_circuit: Circuit Reservation 
+      title_reservation_multidestination: Multidestino Reservation
+      title_reservation_tour: Tour Reservation
+      title_reservation_transfer: Transfer Reservation
+      order_number: Nº Order
+      bill_number: Nº Bill
+      type_money: Type of currency
+      payment_platform: Payment Platform
+      order_status: Order Status
+      payment_status: Payment Status
+      paid: Paid!
+      cottant_name: Cottant Name
+      circuit: Circuit
+      tour: Tour
+      multidestination: Multidestination
+      transfer: Transfer
+      date_reservation: Reservation date
+      quantity_adults: Number of Adults
+      quantity_kids: Number of children
+      email: Email
+      observations: Observations
+      greeting: Cordial greetings - Receptivo Colombia
+      firm: Receptivo Colombia © - 2019 | All rights reserved
+      developed_by: Developed by
+      reservation_cost: Reservation cost
+      to_quote: To quote
+      notification: If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
+      origin: Origin
+      destination: Destination
+      date_flight_origin: Date of Travel - Origin
+      date_flight_destination: Date of Travel - Destination
+      flight_time_origin: Travel Time - Origin
+      flight_time_destination: Travel Time - Destination
+      airline_origin: Airline - Origin
+      airline_destination: Airline - Destination
+      flight_number_origin: Flight number - Origin
+      flight_number_destination: Flight number - Destination
+      user_notification: Dear user! Your request is in the state
+      payment_link: Payment Link
+      go_to_link: Go to payment link
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

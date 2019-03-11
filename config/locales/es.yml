@@ -462,6 +462,47 @@ es:
       destination: Destino
       from: Desde
       to: Hasta
+    reservation_mailer:
+      title_reservation_circuit: Reservación de Circuito 
+      title_reservation_multidestination: Reservación de Multidestino
+      title_reservation_tour: Reservación de Tour
+      title_reservation_transfer: Reservación de Traslados
+      order_number: Nº de Orden
+      bill_number: Nº de Factura
+      type_money: Tipo de Moneda
+      payment_platform: Plataforma de Pago
+      order_status: Estatus de Orden
+      payment_status: Estatus de Pago
+      paid: ¡Pagada!
+      cottant_name: Nombre del Cotizante
+      circuit: Circuito
+      tour: Tour
+      multidestination: Multidestino
+      transfer: Traslado
+      date_reservation: Fecha de Reservación
+      quantity_adults: Cantidad de Adultos
+      quantity_kids: Cantidad de Niños
+      email: Correo Electrónico
+      observations: Observaciones
+      greeting: Un cordial saludo - Receptivo Colombia
+      firm: Receptivo Colombia © - 2019 | Todos los derechos reservados
+      developed_by: Desarrollado por
+      reservation_cost: Costo Reservación
+      to_quote: Por cotizar
+      notification: Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp
+      origin: Origen 
+      destination: Destino
+      date_flight_origin: Fecha de Viaje - Origen
+      date_flight_destination: Fecha de Viaje - Destino
+      flight_time_origin: Hora de Viaje - Origen
+      flight_time_destination: Hora de Viaje - Destino
+      airline_origin: Aerolínea - Origen
+      airline_destination: Aerolínea - Destino
+      flight_number_origin: Número de Vuelo - Origen
+      flight_number_destination: Número de Vuelo - Destino
+      user_notification: ¡Estimado Usuario! Su solicitud se encuentra en el estado
+      payment_link: Link de Pago
+      go_to_link: Ir a link de pago
 
 
   keppler:
