@@ -2,64 +2,61 @@
   .col-lg-12
     .reservation-resumen
       .sticky
-        %h3  Resumen
+        %h3= t('receptivo.reservation_multidestinations.title_summary')
         %br/
         %br/
         %ul.list-group.list-summary.mb-3
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Multidestino
+              %h6.my-0= t('receptivo.reservation_multidestinations.name')
               %small.text-muted= @multidestination.title[@lang].titleize
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Fecha de Viaje
-              %small.text-muted= @flight_origin_multidestination_picker
+              %h6.my-0= t('receptivo.reservation_multidestinations.travel_date')
+              %small.text-muted= @flight_origin_circuit_picker
 
           %li.list-group-item.d-flex.justify-content-between.lh-condensed
             %div
-              %h6.my-0 Adultos - Niños
-              %small.text-muted= "#{@adults} - #{@kids}"
+              %h6.my-0= t('receptivo.reservation_multidestinations.adult_amount')
+              %small.text-muted= @adults
+
+          %li.list-group-item.d-flex.justify-content-between.lh-condensed
+            %div
+              %h6.my-0= t('receptivo.reservation_multidestinations.children_amount')
+              %small.text-muted= @kids
 
           %li.list-group-item.d-flex.justify-content-between
             %div
-              %h6.my-0 Sub-total
+              %h6.my-0= t('receptivo.reservation_multidestinations.subtotal')
               %ul.list_price
                 %li
-                  %small.text-muted#price_single -Hab. single (0)     x $ 0.0 = $ 0.0
+                  %small.text-muted#price_single -Hab. single (0) x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_doubles -Hab. doubles (0)    x $ 0.0 = $ 0.0
+                  %small.text-muted#price_doubles -Hab. doubles (0) x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_triples -Hab. triples (0)    x $ 0.0 = $ 0.0
+                  %small.text-muted#price_triples -Hab. triples (0)  x $ 0.0 = $ 0.0
                 %li
                   %small.text-muted#price_quadruples -Hab. quadruples (0) x $ 0.0 = $ 0.0
                 %li
                   %small.text-muted#price_quintuples -Hab. quintuples (0) x $ 0.0 = $ 0.0
                 %li
-                  %small.text-muted#price_sextuples -Hab. sextuples (0)  x $ 0.0 = $ 0.0
-                %li
-                  %small.text-muted= "-Total Cant. Personas Adultas= #{@adults}"
-                %li
-                  %small.text-muted= "-Total Cant. Personas Niños= #{@kids}"
-                %li
-                  %small.text-muted ----------------------------------------------
+                %small.text-muted#price_sextuples -Hab. sextuples (0)  x $ 0.0 = $ 0.0
                 - if @kids.positive?
                   %li
-                    %small.text-muted#price_children= "-Precio Total Niños (#{@kids}) x $ 0.0 = $ 0.0"
+                    %small.text-muted#price_children= "-Cant. Niños (#{@kids}) x $ 0.0 = $ 0.0"
                 %li
-                  %small.text-muted#total_hab_perso= "-Precio Total Habitaciones = #{@currency.upcase} $ 0"
-
+                  %small.text-muted= "-Total #{@seats} personas"
           %li.list-group-item.d-flex.justify-content-between
             %div
-              %span
-                Precio Total
+              %span= t('receptivo.reservation_multidestinations.total_price')
               %strong#price_total{style:"float: right; color:#4e4e56;"}
                 = @currency.upcase
                 = number_to_currency(0, locale: @locale)
         .box-btn-payment
           %br/
           %span
-            %p.text-center.title-reser ¡Cotiza tu reserva!
+            %p.text-center.title-reser= t('receptivo.reservation_multidestinations.quote_your_reservation')
           %br/
           %center
             .about-btn.travel-mrt-0
-              %button.about-view.travel-btn.btn-reser Cotizar
+              %button.about-view.travel-btn.btn-reser= t('receptivo.reservation_multidestinations.quote')

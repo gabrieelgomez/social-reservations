@@ -23,7 +23,7 @@ en:
       multidestinations: Multidestinations
       round_trip: Round Trip
       one_way: One Way
-      origin: From 
+      origin: From
       date_origin: Date of Arrival
       arrival: To
       date_arrival: Date of Return
@@ -93,6 +93,106 @@ en:
       terms_privacy: Privacy Policy
       terms_conditions: Terms and Conditions
       close: Close
+    dashboard:
+      sidebar:
+        transfers_assign: Assigned Transfers
+        transfers: Transfers
+        tours: Tours
+        circuits: Circuits
+        multidestinations: Multidestinations
+      messages:
+        welcome: Welcome
+        sorry: ¡Sorry!
+        sign_out: Logout
+        my_agents: My Agents
+        my_profile: Profile
+        my_account: My Account
+        new_agent: Create Agent
+        edit_agent: Update Agent
+        not_found_agents: We have not found agents.
+        agents: Agents
+        edit: Edit
+        add: New
+        save: Save
+      table:
+        name: Name
+        email: E-mail
+        phone: Phone
+        order: N° Order
+        invoice: Reservation Code
+        cost_cotization: Cost Cotization
+        status_reservations: Reservation Status
+        status_pay: Pay Status
+        date: Date
+        origin: Origin
+        arrival: Arrival
+        to_cotization: To Cotization
+        to_pay: Pay
+        pending: Pending
+        cancelled: Cancelled
+        approved: Approved
+        credit_agency: Credit Agency
+        payment_link: URL Payment
+        details: Details
+        citcuit: Circuit
+        transfer: Transfer
+        tour: Tour
+        multidestination: Multidestination
+        circuits_orders: Circuits Orders
+        multidestinations_orders: Multidestinations Orders
+        tours_orders: Tours Orders
+        transfers_orders: Transfers Orders
+        cotizante: User
+        password: Contraseña
+        confirm_password: Confirmar Contraseña
+        tourism: Tourist Operator - Bogota, Colombia
+        dates_cotizante: User Details
+        total_pay: Total Pay
+        type_currency: Type Currency
+        circuit_information: Circuit Details
+        transfer_information: Transfer Details
+        tour_information: Tour Details
+        multidestination_information: Multidestination Details
+        vehicle_information: Vehicle Details
+        date_origin: Date Origin
+        date_arrival: Date Return
+        adults_kids: Adults/Kids
+        observations: Observations
+        details_travellers: Travellers Details
+        description: Description
+        concept: Concept
+        price: Price
+        quantity: Quantity
+        quantity_kids_short: Quantity Children
+        quantity_adults_short: Quantity Adults
+        room: Room
+        agency_percentages: Agency Percentages
+        value: Value
+        commission: Commission
+        lending: Lending
+        total_pax: Total Pax
+        total_agency: Total Agency
+        billing: Billing of the Reservation
+        airline_origin: Airline Origin
+        airline_arrival: Airline Arrival
+        type_transfer: Type Transfer
+        round_trip: Roun Trip
+        one_way: One Way
+        flight_origin: N° Flight - Origin
+        flight_arrival: N° Flight - Return
+        hour_origin: Origin Hour
+        hour_arrival: Return Hour
+        luggage: Luggage
+        pieces: pieces
+        drivers_details: Driver Details
+        driver_name: Name
+        driver_phone: Phone
+        driver_vehicle: Vehicle
+        driver_seats: Seats
+        driver_licenses: Licenses
+        driver_not_avaible: Driver Not Avaible
+      users:
+        edit_profile: Edit Profile
     about:
       title_primary_banner: About Us
       title_secondary_banner: We are a Colombian Tour Operator
@@ -124,7 +224,7 @@ en:
       option_complain: Complain
       option_suggestion: Suggestion
       input_name: Full name
-      input_id: ID Number 
+      input_id: ID Number
       input_company: Company
       input_phone: Phone number
       input_country: Country
@@ -132,7 +232,7 @@ en:
       input_message: Message
       button_send: Send
     reservation_transfers:
-      title_main_reservation: Transfer Reservation 
+      title_main_reservation: Transfer Reservation
       subtitle_main_reservation: Complete all the data to confirm and pay your reservation
       title_dates_reservation: Reservation data
       title_dates_traveler: Travelers data
@@ -268,6 +368,7 @@ en:
       round_trip: Round Trip
       one_way: One Way
       origin_date: Origin date
+      travel_date: Travel date
       destination_date: Destination date
       origin_time: Origin time
       destination_time: Destination time
@@ -305,8 +406,95 @@ en:
       for_quote: For quote!
       request_reservation: Request your reservation!
       quote: Quote
-      total: total
+      total: Total
+      circuits: Circuits
       person: persons
+      room: Room
+      simple: Simple
+      double: Double
+      triple: Triple
+      quadruple: Quadruple
+      quintuple: Quintuple
+      sextuple: Sextuple
+      children: Children
+      type_and_quantity_rooms: Select the type and number of rooms
+      quote_your_reservation: Quote your reservation!
+    reservation_multidestinations:
+      title_main_reservation: Multidestinations Reservation 
+      subtitle_main_reservation: Complete all the data to confirm and pay your reservation
+      title_dates_reservation: Reservation data
+      title_dates_traveler: Travelers data
+      title_dates_requests: Requests / Observations
+      title_date_billing: Billing data
+      title_privacy_policy: Privacy Policy
+      title_cancellation_policy: Cancellation Policy
+      title_terms_and_conditions: Terms and Conditions
+      title_summary: Summary
+      origin: Origin
+      name: Name
+      destination: Destination
+      adult_amount: Adults amount
+      children_amount: Children amount
+      baggage_amount: Baggage amount
+      type_transfer: Type of transfer
+      round_trip: Round Trip
+      one_way: One Way
+      origin_date: Origin date
+      travel_date: Travel date
+      destination_date: Destination date
+      origin_time: Origin time
+      destination_time: Destination time
+      from_airport: Transfer from the airport?
+      airline: Airline
+      flight_number: Flight number
+      airport_transfer: Airport transfer?
+      input_name: Name
+      input_id: ID Number
+      input_requests: Requests / Observations
+      input_phone: Phone number
+      input_email: E-mail
+      input_address: Billing address
+      notification_billing: Dear User, when you enter the following data, the Receptivo Colombia system will create a user with the following information and we will send you an email with the information that I detail below
+      observations: Observations
+      i_agree: I agree
+      privacy_policy: Privacy Policy
+      cancellation_policy: Cancellation Policy
+      terms_and_conditions: Terms and Conditions
+      modal_privacy_policy: Privacy Policy
+      modal_cancellation_policy: Cancellation Policy
+      modal_terms_and_conditions: Terms and Conditions
+      baggage_maximum: Baggage maximum
+      pieces: Pieces
+      subtotal: Subtotal
+      total_price: Total price
+      pay_reservation: Pay your reservation!
+      confirm: Confirm
+      next: Next
+      confirm_reservation: Confirm your reservation!
+      total_price_pax: Total price PAX
+      total_price_agency: Total price Agency
+      benefit_percentage: Benefit percentage
+      commission_percentage: Commission percentage
+      for_quote: For quote!
+      request_reservation: Request your reservation!
+      quote: Quote
+      total: Total
+      multidestinations: Multidestinations
+      person: persons
+      room: Room
+      simple: Simple
+      double: Double
+      triple: Triple
+      quadruple: Quadruple
+      quintuple: Quintuple
+      sextuple: Sextuple
+      children: Children
+      type_and_quantity_rooms: Select the type and number of rooms
+      quote_your_reservation: Quote your reservation!
+    invoice:
+      title_main_invoice: Your reservation has been made successfully.
+      subtitle_main_invoice: Thanks for trusting us!
+      to_return: To return
 
 
 
@@ -381,11 +569,11 @@ en:
       keppler_ga_dashboard/dashboard: "Dashboard"
       admin/users: "Users"
     messages:
-      pending: Pendiente
-      cancelled: Cancelada
-      credit_agency: Aprobada
-      payment_link: Aprobada
-      approved: Aprobada
+      pending: Pending
+      cancelled: Cancelled
+      credit_agency: Credit Agency
+      payment_link: URL Payment
+      approved: Approved
       not_authorized_page: You have no authorization to access this page
       not_authorized_action: You have no authorization to perform this action
       not_found_records: "No %{model} found"
@@ -446,6 +634,9 @@ en:
       apply: Apply
   activerecord:
     attributes:
+      kit_weight: Vehicle Luggage (weight)
+      kit_quantity: Vehicle Luggage (Quantity Passengers)
+      seat_max: Maximum Sets
       public: Public
       id: Id
       title: Title

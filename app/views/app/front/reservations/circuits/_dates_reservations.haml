@@ -1,4 +1,4 @@
-%h3 Datos de Reserva
+%h3= t('receptivo.reservation_circuits.title_dates_reservation')
 .row
   .col-lg-6
     .form-group.form-custom
@@ -12,7 +12,7 @@
   .col-lg-4
     // Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)
     .form-group.form-custom#fecha_origen_ida
-      %label{:for => ""}= t('receptivo.reservation_circuits.origin_date')
+      %label{:for => ""}= t('receptivo.reservation_circuits.travel_date')
       %input{name: 'reservation[flight_origin]', value: @flight_origin_circuit_picker, type: 'hidden'}
       %input.form-control.custom-input.custom_input{name: 'flight_origin_circuit_picker', id: 'flight_origin_circuit_picker', autocomplete: 'off', disabled: 'disabled', value: @flight_origin_circuit_picker}/
     // End -- Inputs Datepicker Fecha Origen (Ida) - Fecha Destino (Vuelta)

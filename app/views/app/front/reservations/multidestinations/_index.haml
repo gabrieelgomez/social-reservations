@@ -5,13 +5,14 @@
         .row.row-flex
           .col-lg-9
             %p
-              %h5 Su búsqueda
-              %p="Destino: #{@multidestination.title[@lang].titleize.truncate(100)}"
+              %h5= t('receptivo.widget-banner.your_search')
+              %p="#{t('receptivo.widget-banner.destination')}: #{@multidestination.title[@lang].titleize.truncate(100)} "
           .col-lg-3
             %p
               %span
                 %a.pull-right.link-widget
-                  = t('receptivo.widget.your_search')
+                  = t('receptivo.widget-banner.your_search')
+
 
 
   .container.js-widget.js-hide-widget.widget-results
@@ -22,10 +23,8 @@
 %section.reservation-multidestinations#reservation-multidestinations
   .container
     .gallary-header.text-center
-      %h2
-        Reserva de Multidestino
-      %p
-        Completa todos los datos para confirmar y pagar tu reserva.
+      %h2= t('receptivo.reservation_multidestinations.title_main_reservation')
+      %p= t('receptivo.reservation_multidestinations.subtitle_main_reservation')
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_multidestination', method: :post do |f|

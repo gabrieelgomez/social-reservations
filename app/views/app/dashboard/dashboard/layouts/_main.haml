@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg
   .container-fluid
     = link_to root_path(@lang, @currency), class:'navbar-brand' do
-      ="Mi tablero - ¡Bienvenido #{current_user.name}!"
+      ="Dashboard - ¡#{t('receptivo.dashboard.messages.welcome')} #{current_user.name}!"
     %button.navbar-toggler.navbar-toggler-right#js-menu-mobile{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", :type => "button"}
       %span.navbar-toggler-bar.burger-lines
       %span.navbar-toggler-bar.burger-lines
@@ -13,7 +13,7 @@
           %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown"}
             .perfil
               = image_tag current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url, alt: 'profile', height: '25px', width: '', class: 'img-fluid rounded-circle'
-            %span.no-icon.drop-link{style:''} Mi cuenta
+            %span.no-icon.drop-link{style:''}= t('receptivo.dashboard.messages.my_account')
             %b.caret
           .dropdown-menu.dropdown-menu-right
             .card-profile{style:'padding:10px 0;'}
@@ -24,12 +24,10 @@
               %h6.dropdown-header= current_user.rol
             .dropdown-divider
             = link_to users_details_path(@lang, @currency), class:'dropdown-item'  do
-              %i.nc-icon.nc-single-02
-              Mi Perfil
+              %i.nc-icon.nc-single-02= t('receptivo.dashboard.messages.my_profile')
 
             = link_to destroy_session_path(current_user), class:'dropdown-item'  do
-              %i.nc-icon.nc-button-power
-              Cerrar Sesión
+              %i.nc-icon.nc-button-power= t('receptivo.dashboard.messages.sign_out')
 :scss
   .ico-profile{
     font-weight: 700;

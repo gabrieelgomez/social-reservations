@@ -19,18 +19,19 @@
                     .col-xs-12.col-md-6.col-lg-6
                       %p.title-hotel= circuitable.ranking.title[@lang]
 
+
 .box_type_rooms.room-hidden.room-disabled
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
       .box-type-room
-        %h4 Seleccione el tipo y cantidad de habitaciones
+        %h4= t('receptivo.reservation_circuits.type_and_quantity_rooms')
     .col-xs-4.col-sm-3.col-md-4.col-lg-2
       %label.btn.btn-room
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab1.svg)"}
             %input.type-room.js-typeRoom{name: 'room_single', type: "checkbox"}/
-          %p Habitación
-          %p Simple
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.simple')
           %p.price#room_single
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -44,8 +45,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab2.svg)"}
             %input.type-room.js-typeRoom{name: 'room_doubles', type: "checkbox"}/
-          %p Habitación
-          %p Doble
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.double')
           %p.price#room_doubles
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -59,8 +60,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab3.svg)"}
             %input.type-room.js-typeRoom{name: 'room_triples', type: "checkbox"}/
-          %p Habitación
-          %p Triple
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.triple')
           %p.price#room_triples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -74,8 +75,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab4.svg)"}
             %input.type-room.js-typeRoom{name: 'room_quadruples', type: "checkbox"}/
-          %p Habitación
-          %p Cuadruple
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.quadruple')
           %p.price#room_quadruples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -89,8 +90,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab5.svg)"}
             %input.type-room.js-typeRoom{name: 'room_quintuples', type: "checkbox"}/
-          %p Habitación
-          %p Quintuple
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.quintuple')
           %p.price#room_quintuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -104,8 +105,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/hab6.svg)"}
             %input.type-room.js-typeRoom{name: 'room_sextuples', type: "checkbox"}/
-          %p Habitación
-          %p Sextuple
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.sextuple')
           %p.price#room_sextuples
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room{style: 'background: transparent;'}
@@ -120,8 +121,8 @@
         %center
           .icon-room{style: "background-image: url(/assets/img/type-rooms/room_children.svg)"}
             %input.type-room.js-typeRoom{name: 'room_children', type: "checkbox"}/
-          %p Habitación
-          %p Niño
+          %p= t('receptivo.reservation_circuits.room')
+          %p= t('receptivo.reservation_circuits.children')
           %p.price#room_children
         .quantity-type-room.js-quantityRoom.quantity-disabled
           .quantity-room

@@ -299,13 +299,67 @@
                                 %td.attributes_item
                                   %strong Placas:
                                   - @reservation.driver.car_descriptions.each_with_index do |description, index|
-                                    %ul{:style => "list-style: none !important;"}
-                                      %li= description.license.blank? ? '-----------' : "#{description.license} - #{description.color}"
+                                    - if description.licenses.nil?
+                                      %ul{:style => "list-style: none !important;"}
+                                        %li= '-----------'
+                                    - else
+                                      - description.licenses.each do |license|
+                                        %ul{:style => "list-style: none !important;"}
+                                          %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
 
                               %tr
                                 %td.attributes_item
                                   %strong{middle: "", "style:" => ""} Imagen del Vehiculo:
                                   = image_tag attachments[@logo].url, style: "height: 80px; width: 80px; vertical-align: middle;border-radius: 50%;"
+
+
+                              %tr
+                                %td{:style => "height:35px;"}
+                              %tr
+                                %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= "¡Estimado Usuario! Su solicitud se encuentra en el estado #{t("keppler.messages.#{@reservation.order.status}").downcase} "
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Nombre del Cotizante
+                                    = @reservation.user.name
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Orden
+                                    = @reservation.id.blank? ? '-----------' : @reservation.id
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Código de Reserva
+                                    = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Tipo de Moneda
+                                    = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Plataforma de Pago
+                                    EnLineaPagos ELP
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
+                                    - if @reservation.order.status == 'payment_link'
+                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
+
+                                    - elsif @reservation.order.status == 'credit_agency'
+                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
+
+                                    - elsif @reservation.order.status == 'cancelled'
+                                      %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
+                                  - if @reservation.order.status == 'payment_link' && @reservation.order.status_pay == 'pending'
+                                    %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                      %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Link de Pago
+                                      %a{href: @reservation.url_payment, target: '_blank'} Ir a link de pago
+                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                                    %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus del Pago
+                                    - if @reservation.order.status_pay == 'pending'
+                                      %b{:style => "margin:0;color: white;background-color:#f39c12;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+
+                                    - elsif @reservation.order.status_pay == 'approved'
+                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+
+                                    - elsif @reservation.order.status_pay == 'cancelled'
+                                      %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+
+
                       %p
                         Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
                         = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
