@@ -3,7 +3,7 @@
     .col-md-12.col-lg-12.col-xl-8
       .card
         .card-header
-          %h4.card-title Facturación de la Reservación
+          %h4.card-title= t('receptivo.dashboard.table.billing')
         .card-body
           .row
             .col-lg-12
@@ -20,16 +20,16 @@
                                 %img{:alt => "", :src => "/assets/img/isotipo-receptivo-colombia-invoice.svg", :width => "60px"}/
                               .col-md-6
                                 %h2{style:'margin:0;'} Receptivo Colombia
-                                %p Operador turístico - Bogotá, Colombia
+                                %p= t('receptivo.dashboard.table.tourism')
                               .col-md-4
-                                %h3.text-right{style:'margin:0;'} N° de Orden
+                                %h3.text-right{style:'margin:0;'}= t('receptivo.dashboard.table.order')
                                 %h3.text-right= @reservation.id
                             .row.d-lg-none.d-xl-noneyy
                             %hr/
                             .row
                               .col-xs-12.col-lg-12
                                 %address
-                                  %strong Datos del Cotizante
+                                  %strong= t('receptivo.dashboard.table.dates_cotizante')
                                   %br/
                                   = @reservation.user.name
                                   %br/
@@ -41,20 +41,14 @@
                             .row
                               .col-xs-12.col-lg-3
                                 %address
-                                  %strong Método de Pago
-                                  %br/
-                                  Pĺataforma: EnLineaPagos
-                                  %br/
-                              .col-xs-12.col-lg-3
-                                %address
-                                  %strong Tipo de Moneda
+                                  %strong= t('receptivo.dashboard.table.type_currency')
                                   %br/
                                   = @reservation.invoice.currency.upcase
                                   %br/
                                   %br/
                               .col-xs-12.col-lg-3
                                 %address
-                                  %strong Estatus Reserva
+                                  %strong= t('receptivo.dashboard.table.status_reservations')
                                   %br/
                                   %span.badge.badge-pill{class: @reservation.order.status_class?}= t("keppler.messages.#{@reservation.order.status}")
                                   -#Status / Color
@@ -66,7 +60,7 @@
 
                               .col-xs-12.col-lg-3
                                 %address
-                                  %strong Estatus Pago
+                                  %strong= t('receptivo.dashboard.table.status_pay')
                                   %br/
                                   %span.badge.badge-pill{class: @reservation.order.status_pay_class?}= t("keppler.messages.#{@reservation.order.status_pay}")
                                   %br/
@@ -74,85 +68,85 @@
 
                               .col-xs-12.col-lg-3
                                 %address
-                                  %strong N°. Orden ELP
+                                  %strong= t('receptivo.dashboard.table.invoice')
                                   %br/
                                   = @reservation.invoice.token
                                   %br/
                                   %br/
                             .row
                               .col-xs-12.col-lg-12
-                                %h4.text-center Información del Traslado
+                                %h4.text-center= t('receptivo.dashboard.table.transfer_information')
                                 %br/
                               .col-xs-12.col-lg-4
                                 %address
-                                  %strong Origen
+                                  %strong= t('receptivo.dashboard.table.origin')
                                   %br/
                                   -#= field(@reservation.origin)
                                   = @reservation.origin.blank? ? '-----------' : @reservation.origin
                                   %br/
-                                  %strong Destino
+                                  %strong= t('receptivo.dashboard.table.arrival')
                                   %br/
                                   = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
                                   %br/
-                                  %strong Aerolinea - Ida
+                                  %strong= t('receptivo.dashboard.table.airline_origin')
                                   %br/
                                   = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
                                   %br/
-                                  %strong Aerolinea - Vuelta
+                                  %strong= t('receptivo.dashboard.table.airline_arrival')
                                   %br/
                                   = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
                                   %br/
                               .col-xs-12.col-lg-4
                                 %address
-                                  %strong Tipo de Traslado
+                                  %strong= t('receptivo.dashboard.table.type_transfer')
                                   %br/
                                   - if @reservation.round_trip == 'true'
-                                    Ida/Vuelta
+                                    = t('receptivo.dashboard.table.round_trip')
                                   -else
-                                    Ida
+                                    = t('receptivo.dashboard.table.one_way')
                                   %br/
-                                  %strong Adultos/Niños
+                                  %strong= t('receptivo.dashboard.table.adults_kids')
                                   %br
                                   = "#{@reservation.quantity_adults.to_i} / #{@reservation.quantity_kids.to_i}"
                                   %br/
-                                  %strong N° de Vuelo - Ida
+                                  %strong= t('receptivo.dashboard.table.flight_origin')
                                   %br/
                                   = @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
                                   %br/
-                                  %strong N° de Vuelo - Vuelta
+                                  %strong= t('receptivo.dashboard.table.flight_arrival')
                                   %br/
                                   = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
                                   %br/
                               .col-xs-12.col-lg-4
                                 %address
-                                  %strong Fecha/Hora de Ida
+                                  %strong= t('receptivo.dashboard.table.date_origin')
                                   %br/
                                   = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
                                   %br/
-                                  %strong Fecha/Hora de Vuelta
+                                  %strong= t('receptivo.dashboard.table.date_arrival')
                                   %br/
                                   = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
                                   %br
-                                  %strong Hora Traslado Ida
+                                  %strong= t('receptivo.dashboard.table.hour_origin')
                                   %br/
                                   = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
                                   %br/
-                                  %strong Hora Traslado Vuelta
+                                  %strong= t('receptivo.dashboard.table.hour_arrival')
                                   %br/
                                   = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
                                   %br
-                                  %strong Equipaje
+                                  %strong= t('receptivo.dashboard.table.luggage')
                                   %br/
                                   = @reservation.quantity_kit
-                                  piezas
+                                  = t('receptivo.dashboard.table.pieces')
                               .col-xs-12.col-lg-12
                                 %address
-                                  %strong Observaciones
+                                  %strong= t('receptivo.dashboard.table.observations')
                                   %br/
                                   = @reservation.description.blank? ? '-----------' : @reservation.description
                                   %br
                               .col-xs-12.col-lg-12
-                                %strong Datos de los Viajeros
+                                %strong= t('receptivo.dashboard.table.details_travellers')
                                 %br/
                                 %table.table.table-striped#travellers
                                   -#%thead
@@ -168,7 +162,7 @@
                                 .panel.panel-default
                                   .panel-heading
                                     %h3.panel-title
-                                      %strong Información del Vehiculo
+                                      %strong= t('receptivo.dashboard.table.vehicle_information')
                                   .panel-body
                                     .table-responsive
                                       %table.table.table-condensed
@@ -184,7 +178,7 @@
                                               %strong= t("activerecord.attributes.seat_max")
                                         %tbody
                                           %tr
-                                            %td.text-center= @reservation.reservationable.title.blank? ? '-----------' : @reservation.reservationable.title['es']
+                                            %td.text-center= @reservation.reservationable.title.blank? ? '-----------' : @reservation.reservationable.title[@lang]
                                             %td.text-center= @reservation.reservationable.kit['weight'].blank? ? '-----------' : @reservation.reservationable.kit['weight']
                                             %td.text-center= @reservation.reservationable.kit['quantity'].blank? ? '-----------' : @reservation.reservationable.kit['quantity']
                                             %td.text-center= @reservation.reservationable.seat.blank? ? '-----------' : @reservation.reservationable.seat
@@ -193,18 +187,18 @@
                                 .panel.panel-default
                                   .panel-heading
                                     %h3.panel-title
-                                      %strong Descripción
+                                      %strong= t('receptivo.dashboard.table.description')
                                   .panel-body
                                     .table-responsive
                                       %table.table.table-condensed
                                         %thead
                                           %tr
                                             %td.text-center
-                                              %strong Concepto
+                                              %strong= t('receptivo.dashboard.table.concept')
                                             %td.text-center
-                                              %strong Precio
+                                              %strong= t('receptivo.dashboard.table.price')
                                             %td.text-center
-                                              %strong Cantidad
+                                              %strong= t('receptivo.dashboard.table.quantity')
                                             %td.text-center
                                               %strong Total
                                         %tbody
@@ -213,34 +207,84 @@
                                             %td.text-center= number_to_currency(@reservation.order.price_reservationable, locale: @locale)
                                             %td.text-center= @reservation.multiple
                                             %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
+
+
+                              %br
+                              .col-xs-12.col-lg-12
+                                .panel.panel-default
+                                  .panel-heading
+                                    %h3.panel-title
+                                      %strong= t('receptivo.dashboard.table.drivers_details')
+                                  .panel-body
+                                    .table-responsive
+                                      %table.table.table-condensed
+                                        %thead
+                                          %tr
+                                            %td.text-center
+                                              %strong= t('receptivo.dashboard.table.driver_name')
+                                            %td.text-center
+                                              %strong= t('receptivo.dashboard.table.driver_phone')
+                                            %td.text-center
+                                              %strong= t('receptivo.dashboard.table.driver_vehicle')
+                                            %td.text-center
+                                              %strong= t('receptivo.dashboard.table.driver_seats')
+
+                                        %tbody
+                                          - if @reservation.driver.nil?
+                                            %tr
+                                              %td= t('receptivo.dashboard.table.driver_not_avaible')
+                                              %td= t('receptivo.dashboard.table.driver_not_avaible')
+                                              %td= t('receptivo.dashboard.table.driver_not_avaible')
+                                              %td= t('receptivo.dashboard.table.driver_not_avaible')
+
+                                          - else
+
+                                            %tr
+                                              %td.text-center= @reservation.driver.nil? ? '-----------' : @reservation.driver.user.name
+                                              %td.text-center= @reservation.driver.nil? ? '-----------' : @reservation.driver.user.phone
+                                              %td.text-center= @reservation.driver.nil? ? '-----------' : @reservation.reservationable.title[@lang]
+                                              %td.text-center= @reservation.driver.nil? ? '-----------' : @reservation.reservationable.seat
+                                            %tr
+                                              %td
+                                              %strong= t('receptivo.dashboard.table.driver_licenses')
+                                              - @reservation.driver.car_descriptions.each_with_index do |description, index|
+                                                - if description.licenses.nil?
+                                                  %ul{:style => "list-style: none !important;"}
+                                                    %li= '-----------'
+                                                - else
+                                                  - description.licenses.each do |license|
+                                                    %ul{:style => "list-style: none !important;"}
+                                                      %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
+
+
                               - if @type_search == 'agency'
                                 .col-xs-12.col-lg-12
                                   .panel.panel-default
                                     .panel-heading
                                       %h3.panel-title
-                                        %strong Porcentajes de Agencia
+                                        %strong= t('receptivo.dashboard.table.agency_percentages')
                                     .panel-body
                                       .table-responsive
                                         %table.table.table-condensed
                                           %thead
                                             %tr
                                               %td.text-center
-                                                %strong Concepto
+                                                %strong= t('receptivo.dashboard.table.concept')
                                               %td.text-center
-                                                %strong Valor
+                                                %strong= t('receptivo.dashboard.table.value')
                                               %td.text-center
                                                 %strong Subtotal
                                               %td.text-center
                                                 %strong Total
                                           %tbody
                                             %tr
-                                              %td.text-center Comisión
+                                              %td.text-center= t('receptivo.dashboard.table.comission')
                                               %td.text-center= "#{@reservation.order.comission} %"
                                               %td.text-center= number_to_currency(@reservation.order.price_comission, locale: @locale)
                                               %td.text-center -----
 
                                             %tr
-                                              %td.text-center Prestación
+                                              %td.text-center= t('receptivo.dashboard.table.lending')
                                               %td.text-center= "#{@reservation.order.lending} %"
                                               %td.text-center= number_to_currency(@reservation.order.price_lending, locale: @locale)
                                               %td.text-center -----
@@ -252,7 +296,7 @@
                                               %td.text-center= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
 
                                             %tr
-                                              %td.text-center Total Agencia
+                                              %td.text-center= t('receptivo.dashboard.table.total_agency')
                                               %td.text-center -----
                                               %td.text-center -----
                                               %td.text-center= number_to_currency(@reservation.order.price_total_agency, locale: @locale)

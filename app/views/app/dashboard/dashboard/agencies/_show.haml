@@ -10,14 +10,14 @@
           .col-12
             .error
               %center
-                %p ¡Lo sentimos!
-                %p No hemos encontrado representantes.
+                %p= t('receptivo.dashboard.messages.sorry')
+                %p= t('receptivo.dashboard.messages.not_found_agents')
     - else
       .col-12
         .card
           .card-header
             .col-lg-6.pull-left
-              %h4.card-title Representantes
+              %h4.card-title= t('receptivo.dashboard.messages.agents')
             .col-lg-6.pull-right
               %h4.card-title= "Comisión #{@agency.comission_percentage}% || Prestación #{@agency.lending_percentage}%"
 
@@ -26,9 +26,9 @@
               %table.table.table-hover.table-striped
                 %thead
                   %th Avatar
-                  %th Nombre
-                  %th Correo
-                  %th Teléfono
+                  %th= t('receptivo.dashboard.table.name')
+                  %th= t('receptivo.dashboard.table.email')
+                  %th= t('receptivo.dashboard.table.phone')
                   %th DNI
                   %th
 
@@ -46,10 +46,8 @@
                         %a{href: edit_agent_path(@lang, @currency, agent.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
-                              %i.icon-credit-card.icons
-                            Editar
+                              %i.icon-credit-card.icons= t('receptivo.dashboard.messages.edit')
 
     .col-12
       .text-center
-        %a.btn.btn-info.btn-fill.float-right{href: new_agents_path(@lang, @currency)}
-          Agregar
+        %a.btn.btn-info.btn-fill.float-right{href: new_agents_path(@lang, @currency)}= t('receptivo.dashboard.messages.add')

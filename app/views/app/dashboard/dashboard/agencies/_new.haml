@@ -4,44 +4,30 @@
       .col-md-8
         .card
           .card-header
-            %h4.card-title.text-capitalize Crear Representante
+            %h4.card-title.text-capitalize= t('receptivo.dashboard.messages.new_agent')
           .card-body
             .row
               .col-md-6
                 .form-group
-                  %label.control-label
-                    Nombre
+                  %label.control-label= t('receptivo.dashboard.table.name')
                   = f.input :name, :autofocus => true, class: '', label: false
               .col-md-6
                 .form-group
-                  %label.control-label
-                    Identificación
+                  %label.control-label DNI
                   = f.input :dni, :autofocus => true, class: '', label: false
             .row
               .col-md-6
                 .form-group
-                  %label.control-label
-                    Correo electrónico
+                  %label.control-label= t('receptivo.dashboard.table.email')
                   = f.input :email, :autofocus => true, class: '', label: false
               .col-md-6
                 .form-group
-                  %label.control-label
-                    Teléfono
+                  %label.control-label= t('receptivo.dashboard.table.phone')
                   = f.input :phone, :autofocus => true, class: '', label: false
             .text-center
-              %button.btn.btn-info.btn-fill.float-right{:type => ""}
-                Guardar
+              %button.btn.btn-info.btn-fill.float-right{:type => ""}= t('receptivo.dashboard.messages.save')
             .clearfix
       .col-md-4
-        -# .card.card-user
-        -#   .card-image
-        -#     %img{:alt => "...", :src => "/assets/img/bg-3.jpg"}/
-        -#   .card-body
-        -#     .author
-        -#       %a{:href => "#"}
-        -#         %img.avatar.border-gray.img-fluid{alt: "", src: current_user.avatar.url.nil? ? "/assets/img/user.png" : current_user.avatar.url}
-        -#         %h4.title{:style => 'font-family: "Poppins", sans-serif;'}="#{@user.name}"
-        -#         %br
         .row
           .col-md-12
             %center

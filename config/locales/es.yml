@@ -30,7 +30,7 @@ es:
       adults: Adultos
       children: Niños
       search: Buscar
-      not_found: ¡Disculpe! No se encuentran resultados disponible.
+      not_found: ¡Disculpe! No se encuentran resultados disponibles.
       date: Fecha
       input_location: Introduce una ubicación
       all: Todos
@@ -93,6 +93,106 @@ es:
       terms_privacy: Política de Privacidad
       terms_conditions: Términos y Condiciones
       close: Cerrar
+    dashboard:
+      sidebar:
+        transfers_assign: Traslados Asignados
+        transfers: Traslados
+        tours: Tours
+        circuits: Circuitos
+        multidestinations: Multidestinos
+      messages:
+        welcome: Bienvenido
+        sorry: ¡Lo sentimos!
+        sign_out: Cerrar Sesión
+        my_agents: Mis Agentes
+        my_profile: Mi Perfil
+        my_account: Mi Cuenta
+        new_agent: Crear Representante
+        edit_agent: Editar Representante
+        not_found_agents: No hemos encontrado representantes.
+        agents: Representantes
+        edit: Editar
+        add: Agregar
+        save: Guardar
+      table:
+        name: Nombre
+        email: E-mail
+        phone: Teléfono
+        order: N° Orden
+        invoice: Código de Reserva
+        cost_cotization: Costo Cotización
+        status_reservations: Estatus Reserva
+        status_pay: Estatus Pago
+        date: Fecha
+        origin: Origen
+        arrival: Destino
+        to_cotization: Por Cotizar
+        to_pay: Pagar
+        pending: Pendiente
+        cancelled: Cancelado
+        approved: Aprobado
+        credit_agency: Crédito Agencia
+        payment_link: Link de Cobro
+        details: Detalles
+        citcuit: Circuito
+        transfer: Traslado
+        tour: Tour
+        multidestination: Multidestino
+        circuits_orders: Órdenes de Circuitos
+        multidestinations_orders: Órdenes de Multidestinos
+        tours_orders: Órdenes de Tours
+        transfers_orders: Órdenes de Traslados
+        cotizante: Cotizante
+        password: Contraseña
+        confirm_password: Confirmar Contraseña
+        tourism: Operador turístico - Bogotá, Colombia
+        dates_cotizante: Datos del Cotizante
+        total_pay: Pago Total
+        type_currency: Tipo de Moneda
+        circuit_information: Información del Circuito
+        transfer_information: Información del Traslado
+        tour_information: Información del Tour
+        multidestination_information: Información del Multidestino
+        vehicle_information: Información del Vehículo
+        date_origin: Fecha Ida
+        date_arrival: Fecha Vuelta
+        adults_kids: Adultos/Niños
+        observations: Observaciones
+        details_travellers: Datos de los Viajeros
+        description: Descripción
+        concept: Concepto
+        price: Precio
+        quantity: Cantidad
+        quantity_kids_short: Cant. Niños
+        quantity_adults_short: Cant. Adultos
+        room: Habitación
+        agency_percentages: Porcentajes de Agencia
+        value: Valor
+        commission: Comisión
+        lending: Prestación
+        total_pax: Total Pax
+        total_agency: Total Agencia
+        billing: Facturación de la Reservación
+        airline_origin: Aerolinea - Ida
+        airline_arrival: Aerolinea - Vuelta
+        type_transfer: Tipo de Traslado
+        round_trip: Ida/Vuelta
+        one_way: Sólo Ida
+        flight_origin: N° de Vuelo - Ida
+        flight_arrival: N° de Vuelo - Vuelta
+        hour_origin: Hora Ida
+        hour_arrival: Hora Vuelta
+        luggage: Equipaje
+        pieces: piezas
+        drivers_details: Información del Conductor
+        driver_name: Nombre
+        driver_phone: Teléfono
+        driver_vehicle: Vehículo
+        driver_seats: Asientos
+        driver_licenses: Placas
+        driver_not_avaible: Conductor no disponible
+      users:
+        edit_profile: Editar Perfil
     about:
       title_primary_banner: Sobre Nosotros
       title_secondary_banner: Somos un operador turístico colombiano
@@ -108,18 +208,18 @@ es:
       title_primary_contact_us: Comunicarse con nosotros
       title_secondary_contact_us: Estamos encantados de atenderte
       input_name: Nombre completo
-      input_email: Correo electrónico 
+      input_email: Correo electrónico
       input_phone: Teléfono
       input_subject: Asunto
       input_message: Mensaje
       button_send: Enviar
-      item_email: Correo electrónico 
+      item_email: Correo electrónico
       item_phone: Teléfono
     form_pqrs:
       title_primary_form_pqrs: Formulario PQRS
       subtitle_one_form_pqrs: Por favor, indique en el siguiente formulario cualquier pregunta, queja, reclamo y / o sugerencia para mejorar nuestros servicios
       subtitle_two_form_pqrs: para mejorar nuestros servicios.
-      option_question: Pregunta 
+      option_question: Pregunta
       option_claim: Reclamo
       option_complain: Queja
       option_suggestion: Sugerencia
@@ -128,17 +228,21 @@ es:
       input_company: Compañia
       input_phone: Teléfono
       input_country: País
-      input_email: Correo electrónico 
+      input_email: Correo electrónico
       input_message: Mensaje
       button_send: Enviar
     reservation_transfers:
+<<<<<<< HEAD
       title_main_reservation: Reserva de Traslado 
+=======
+      title_main_reservation: Reservación de Traslado
+>>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
       title_dates_requests: Solicitudes/Observaciones
       title_date_billing: Datos de Facturación
-      title_privacy_policy: Política de Privacidad 
+      title_privacy_policy: Política de Privacidad
       title_cancellation_policy: Política de Cancelación
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
@@ -167,7 +271,7 @@ es:
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
-      privacy_policy: Política de Privacidad 
+      privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
       terms_and_conditions: Terms and Conditions
       modal_privacy_policy: Privacy Policy
@@ -188,6 +292,7 @@ es:
       for_quote: ¡Para cotizar!
       request_reservation: ¡Solicita tu reserva!
       quote: Cotizar
+<<<<<<< HEAD
     reservation_tours:
       title_main_reservation: Reserva de Tours 
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
@@ -253,6 +358,21 @@ es:
 
 
       
+=======
+    checkout:
+      details_person: Datos Personales
+      billing: Facturación
+      billing_details: Recuerde verificar la información antes de pagar su reserva
+      payment_method: Método de Pagos
+      confirm: Confirmar
+      pay_reservation: Pagar Reservación
+      type_lodgment: Tipo de Alojamiento
+      cotization: Cotizar
+      airline: Aerolinea
+      number_flight: N° de Vuelo
+      request_reservation: Solictar Reserva
+      details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
+>>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

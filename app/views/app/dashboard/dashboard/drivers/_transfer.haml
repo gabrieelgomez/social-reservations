@@ -8,14 +8,15 @@
           .table-responsive
             %table.table.table-hover.table-striped
               %thead
-                %th N° Orden
-                %th N° Factura
-                %th Cotizante
-                %th Estatus Reserva
-                %th Detalles
+                %th= t('receptivo.dashboard.table.order')
+                %th= t('receptivo.dashboard.table.invoice')
+                %th= t('receptivo.dashboard.table.cotizante')
+                %th= t('receptivo.dashboard.table.status_reservations')
+                %th= t('receptivo.dashboard.table.details')
               %tbody
                 - if @orders
                   - @orders.try(:reverse).map(&:reservation).each do |reservation|
+                    - next if reservation.invoice.nil?
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
@@ -30,13 +31,13 @@
                               %span.slider.round
                       - else
                         %td
-                          %span.badge.badge-success Completado
+                          %span.badge.badge-success= t('receptivo.dashboard.table.approved')
                       %td
                         %a{href: order_info_path(@lang, @currency, params[:module], reservation.id)}
                           %button.btn.btn-primary.btn-xs{:type => "button"}
                             %span
                               %i.icon-credit-card.icons
-                            Detalles
+                            = t('receptivo.dashboard.table.details')
 
 %script{src: "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript

@@ -6,6 +6,7 @@ module KepplerTravel
     validates_inclusion_of :status, :in => %w(pending cancelled credit_agency payment_link)
     validates_inclusion_of :status_pay, :in => %w(pending cancelled approved)
 
+    validates :token, uniqueness: true
 
     def status_pay? status
       self.status.to_sym.eql?(status)

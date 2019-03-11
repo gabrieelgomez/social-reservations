@@ -288,7 +288,7 @@
                                   %p.item= "N° Orden ELP: #{@reservation.invoice.token}"
                               %tr
                                 %td.attributes_item
-                                  %strong Datos Personales
+                                  %strong= t('receptivo.dashboard.checkout.details_person')
                                   %p.item= "Nombre: #{@user.name}"
                                   %p.item= "Identificación: #{@user.dni}"
                                   %p.item= "Correo electrónico: #{@user.email}"
@@ -305,11 +305,11 @@
                                   = @reservation.user.name
                               %tr
                                 %td.attributes_item
-                                  %strong Origen:
+                                  %strong= t('receptivo.dashboard.table.origin')
                                   = @reservation.origin.blank? ? '-----------' : @reservation.origin
                               %tr
                                 %td.attributes_item
-                                  %strong Destino:
+                                  %strong= t('receptivo.dashboard.table.arrival')
                                   = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
 
                               %tr

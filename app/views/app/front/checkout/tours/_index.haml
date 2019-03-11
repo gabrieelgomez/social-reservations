@@ -2,9 +2,9 @@
   .container
     .gallary-header.text-center
       %h2
-        Facturación
+        = t('receptivo.checkout.billing')
       %p
-        Recuerde verificar la información antes de pagar su reserva
+        = t('receptivo.checkout.billing_details')
     .container
       .row
         .col-lg-2
@@ -19,16 +19,17 @@
                     .col-lg-6
 
                       %h2 Receptivo Colombia
-                      %p Operador turístico - Bogotá, Colombia
+                      %p= t('receptivo.dashboard.table.tourism')
                     .col-lg-1
                     .col-lg-3
-                      %h3.pull-right N° de Orden
-                      %h3.pull-right= KepplerTravel::Invoice.last.try(:id).to_i + 1
+                      %h3.pull-right
+                        =  t('receptivo.dashboard.table.order')
+                        %span= KepplerTravel::Invoice.last.try(:id).to_i + 1
                   %hr/
                   .row
                     .col-xs-12
                       %address
-                        %strong Datos Personales
+                        %strong= t('receptivo.dashboard.checkout.details_person')
                         %br/
                         = @user['name']
                         %br/
@@ -42,23 +43,21 @@
                   .row
                     .col-xs-6
                       %address
-                        %strong Método de Pago
-                        %br/
-                        Pĺataforma: EnLineaPagos
+                        %strong= t('receptivo.checkout.payment_method')
                         %br/
                         = @user['name']
                         %br/
                         = @user['email']
                     .col-xs-6.text-right
                       %address
-                        %strong N°. Orden ELP
+                        %strong= t('receptivo.dashboard.table.invoice')
                         %br/
                         = @invoice['token']
                         %br/
                         %br/
                   .row
                     .col-xs-12
-                      %h5.text-center Información del Tour
+                      %h5.text-center= t('receptivo.dashboard.table.tour_information')
                       %br/
                     .col-xs-4
                       %address
@@ -69,7 +68,7 @@
                     .col-xs-4
                     .col-xs-4
                       %address
-                        %strong Fecha/Hora de Ida
+                        %strong= t('receptivo.dashboard.table.date_origin')
                         %br/
                         = @reservation['flight_origin']
                         %br/
@@ -78,29 +77,29 @@
                       .panel.panel-default
                         .panel-heading
                           %h3.panel-title
-                            %strong Descripción
+                            %strong= t('receptivo.dashboard.table.description')
                         .panel-body
                           .table-responsive
                             %table.table.table-condensed
                               %thead
                                 %tr
                                   %td
-                                    %strong Concepto
+                                    %strong= t('receptivo.dashboard.table.concept')
                                   %td.text-center
-                                    %strong Precio
+                                    %strong= t('receptivo.dashboard.table.price')
                                   %td.text-center
-                                    %strong Cantidad
+                                    %strong= t('receptivo.dashboard.table.quantity')
                                   %td.text-right
                                     %strong Total
                               %tbody
                                 %tr
                                   %td= @reservationable['title'][@lang]
                                   %td.text-center
-                                    Adultos
+                                    = t('receptivo.widget.adults')
                                     = "(#{@adults.to_i})"
                                     = number_to_currency(@reservationable.price_adults[@currency], locale: @locale)
                                     = "/"
-                                    Niños
+                                    = t('receptivo.widget.children')
                                     = "(#{@kids.to_i})"
                                     = number_to_currency(@reservationable.calculate_kids(@currency), locale: @locale)
                                   %td.text-center= @seats
@@ -113,29 +112,29 @@
                         .panel.panel-default
                           .panel-heading
                             %h3.panel-title
-                              %strong Porcentajes de Agencia
+                              %strong= t('receptivo.dashboard.table.agency_percentages')
                           .panel-body
                             .table-responsive
                               %table.table.table-condensed
                                 %thead
                                   %tr
                                     %td.text-center
-                                      %strong Concepto
+                                      %strong= t('receptivo.dashboard.table.concept')
                                     %td.text-center
-                                      %strong Valor
+                                      %strong= t('receptivo.dashboard.table.value')
                                     %td.text-center
                                       %strong Subtotal
                                     %td.text-center
                                       %strong Total
                                 %tbody
                                   %tr
-                                    %td.text-center Comisión
+                                    %td.text-center= t('receptivo.dashboard.table.comission')
                                     %td.text-center= "#{@comission} %"
                                     %td.text-center= number_to_currency(@price_comission, locale: @locale)
                                     %td.text-center -----
 
                                   %tr
-                                    %td.text-center Prestación
+                                    %td.text-center= t('receptivo.dashboard.table.lending')
                                     %td.text-center= "#{@lending} %"
                                     %td.text-center= number_to_currency(@price_lending, locale: @locale)
                                     %td.text-center -----
@@ -147,7 +146,7 @@
                                     %td.text-center= number_to_currency(@price_total, locale: @locale)
 
                                   %tr
-                                    %td.text-center Total Agencia
+                                    %td.text-center= t('receptivo.dashboard.table.total_agency')
                                     %td.text-center -----
                                     %td.text-center -----
                                     %td.text-center= number_to_currency(@price_total_agency, locale: @locale)
@@ -155,14 +154,14 @@
                     .row
                       .col-lg-12
                         .invoice-transfers__box--payment
-                          %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Confirmar"}/
+                          %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => t('receptivo.checkout.confirm')}/
 
                   - else
 
                     .row
                       .col-lg-12
                         .invoice-transfers__box--payment
-                          %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => "Pagar Reserva"}/
+                          %input#button.about-view.travel-btn{:name => "button", :type => "submit", :value => t('receptivo.checkout.pay_reservation')}/
 
 %script{:src => "https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"}
 :javascript
