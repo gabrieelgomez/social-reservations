@@ -495,8 +495,6 @@ en:
       title_main_invoice: Your reservation has been made successfully.
       subtitle_main_invoice: Thanks for trusting us!
       to_return: To return
-
-
     reservation_mailer:
       title_reservation_circuit: Circuit Reservation 
       title_reservation_multidestination: Multidestino Reservation
@@ -538,6 +536,19 @@ en:
       user_notification: Dear user! Your request is in the state
       payment_link: Payment Link
       go_to_link: Go to payment link
+      successfully_payment: You have successfully completed a payment
+      dear_user: Dear user!
+      assigned_transfer: You have been assigned a Transfer
+      travellers: Travellers
+      thanks_reservation: Thanks for your reservation! We have received your payment successfully
+      user: User
+      password: Password
+      agency: Agency
+      code_agency: Agency Code
+      successfully_registered: You have successfully registered at Receptivo Colombia
+      authentication_credentials: Authentication credentials
+      click_here: Click here
+      to_log in_to: To log in to Receptivo Colombia
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

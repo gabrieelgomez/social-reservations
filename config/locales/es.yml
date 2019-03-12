@@ -503,8 +503,19 @@ es:
       user_notification: ¡Estimado Usuario! Su solicitud se encuentra en el estado
       payment_link: Link de Pago
       go_to_link: Ir a link de pago
-
-
+      successfully_payment: Ha completado un pago satisfactoriamente
+      dear_user: ¡Estimado Usuario!
+      assigned_transfer: Te ha sido asignado un Traslado
+      travellers: Viajeros
+      thanks_reservation: ¡Gracias por su reservación! Hemos recibido su pago de manera exitosa
+      user: Usuario
+      password: Contraseña
+      agency: Agencia
+      code_agency: Código Agencia
+      successfully_registered: Te has registrado exitosamente en Receptivo Colombia
+      authentication_credentials: Credenciales de Autenticación
+      click_here: Click aquí
+      to_log in_to: Para iniciar sesión en Receptivo Colombia
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por
