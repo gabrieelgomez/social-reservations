@@ -18,13 +18,12 @@
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          -# = sanitize(tour.description['es']).truncate(300)
-          = raw tour.description['es'].html_safe.truncate(150)
+          = truncate(sanitize(tour.description['es'], tags:[]), length: 50)
 
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span
-          = raw tour.task['es'].html_safe.truncate(150)
+          = truncate(sanitize(tour.task['es'], tags:[]), length: 50)
     -# %td.hidden-xs.hidden-sm
     -#   = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
     -#     %span
