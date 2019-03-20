@@ -45,7 +45,7 @@
                             %tr
                               %td
                                 = vehicleable.input :status, as: :boolean, label: false
-                              %td= destination.custom_title
+                              %td= destination.try(:custom_title)
                               %td
                                 = vehicleable.input :price_inner_usd, label: false, input_html: {min: 0}
                               %td
