@@ -32,9 +32,9 @@ module KepplerTravel
       # GET /reservations
       def index
         if @type_search == 'agency'
-          ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
+          ids    = Order.where(details: 'agency').reject{|order| order.reservation.nil?}.collect{|order| order.reservation.id}
         else
-          ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
+          ids    = Order.where.not(details: 'agency').reject{|order| order.reservation.nil?}.collect{|order| order.reservation.id}
         end
         @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         @q = @types.ransack(params[:q])

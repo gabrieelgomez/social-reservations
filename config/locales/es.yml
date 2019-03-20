@@ -515,7 +515,7 @@ es:
       successfully_registered: Te has registrado exitosamente en Receptivo Colombia
       authentication_credentials: Credenciales de Autenticación
       click_here: Click aquí
-      to_log in_to: Para iniciar sesión en Receptivo Colombia
+      to_log_in_to: Para iniciar sesión en Receptivo Colombia
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

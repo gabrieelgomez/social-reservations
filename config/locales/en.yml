@@ -289,7 +289,7 @@ en:
       request_reservation: Request your reservation!
       quote: Quote
     reservation_tours:
-      title_main_reservation: Tours Reservation 
+      title_main_reservation: Tours Reservation
       subtitle_main_reservation: Complete all the data to confirm and pay your reservation
       title_dates_reservation: Reservation data
       title_dates_traveler: Travelers data
@@ -348,7 +348,7 @@ en:
       total: total
       person: persons
     reservation_circuits:
-      title_main_reservation: Circuits Reservation 
+      title_main_reservation: Circuits Reservation
       subtitle_main_reservation: Complete all the data to confirm and pay your reservation
       title_dates_reservation: Reservation data
       title_dates_traveler: Travelers data
@@ -420,7 +420,7 @@ en:
       type_and_quantity_rooms: Select the type and number of rooms
       quote_your_reservation: Quote your reservation!
     reservation_multidestinations:
-      title_main_reservation: Multidestinations Reservation 
+      title_main_reservation: Multidestinations Reservation
       subtitle_main_reservation: Complete all the data to confirm and pay your reservation
       title_dates_reservation: Reservation data
       title_dates_traveler: Travelers data
@@ -496,7 +496,7 @@ en:
       subtitle_main_invoice: Thanks for trusting us!
       to_return: To return
     reservation_mailer:
-      title_reservation_circuit: Circuit Reservation 
+      title_reservation_circuit: Circuit Reservation
       title_reservation_multidestination: Multidestino Reservation
       title_reservation_tour: Tour Reservation
       title_reservation_transfer: Transfer Reservation
@@ -548,7 +548,7 @@ en:
       successfully_registered: You have successfully registered at Receptivo Colombia
       authentication_credentials: Authentication credentials
       click_here: Click here
-      to_log in_to: To log in to Receptivo Colombia
+      to_log_in_to: To log in to Receptivo Colombia
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:
