@@ -80,7 +80,7 @@
                           %br.hidden-md
                             %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_vehicles', name: 'vehicle[destination_ids]', multiple: "multiple", style:'width: 100%;'}
                               - KepplerTravel::Destination.all.each do |destination|
-                                %option{ value: destination.id, selected: @vehicle.selected(destination.id)}= destination.custom_title['es']
+                                %option{ value: destination.id, selected: @vehicle.selected(destination.id)}= destination.custom_title
 
                   .col-xs-12.col-lg-4
                     .row

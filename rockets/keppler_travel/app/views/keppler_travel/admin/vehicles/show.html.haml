@@ -117,7 +117,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title['es']
+                        %td= destination.custom_title
                         %td= number_to_currency(vehicleable.price_inner_usd, locale: @locale)
                         %td= number_to_currency(vehicleable.price_outer_usd, locale: @locale)
 
@@ -141,7 +141,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title['es']
+                        %td= destination.custom_title
                         %td= number_to_currency(vehicleable.price_inner_cop, locale: @locale)
                         %td= number_to_currency(vehicleable.price_outer_cop, locale: @locale)
                         -# %td= number_to_currency(vehicleable.price_cop, locale: @locale)

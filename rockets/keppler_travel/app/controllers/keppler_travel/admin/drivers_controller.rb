@@ -27,7 +27,7 @@ module KepplerTravel
       end
 
       def filter_destination
-        @destinations = Driver.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title['es']}
+        @destinations = Driver.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title}
         @selected = params[:destination]
         if params[:destination] == 'all'
           @q = Driver.ransack(params[:q])

@@ -81,7 +81,7 @@
                       %br
                       %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_lodgments', name: 'lodgment[destination_id]'}
                         - KepplerTravel::Destination.all.each do |destination|
-                          %option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title['es']
+                          %option{ value: destination.id, selected: @lodgment.selected(destination.id)}= destination.custom_title
                       %br
                       %br
                     .col-xs-12.col-lg-12

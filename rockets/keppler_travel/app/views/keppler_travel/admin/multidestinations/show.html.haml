@@ -135,7 +135,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title['es']
+                        %td= destination.custom_title
                         %td= lodgment.title['es']
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
                           -# %td= cr.price_usd
@@ -177,7 +177,7 @@
                             %i.icon-check
                           - else
                             %i.icon-close
-                        %td= destination.custom_title['es']
+                        %td= destination.custom_title
                         %td= lodgment.title['es']
                         - multidestinationable.multidestinationable_rooms.sort_by{|room| room.id }.each do |cr|
                           %td

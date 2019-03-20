@@ -98,7 +98,7 @@
                       %br.hidden-md
                         %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_multidestinations', name: 'multidestination[destination_ids]', multiple: "multiple", style:'width: 100%;'}
                           - KepplerTravel::Destination.all.select{|destination| destination.lodgments.count.positive? }.each do |destination|
-                            %option{ value: destination.id, selected: @multidestination.selected(destination.id)}= destination.custom_title['es']
+                            %option{ value: destination.id, selected: @multidestination.selected(destination.id)}= destination.custom_title
                       %br
                       %br
                     .col-xs-12.col-md-6
