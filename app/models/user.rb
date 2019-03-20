@@ -16,7 +16,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def rol
-    roles.first.&name
+    roles.first.try(:name)
   end
 
   def permissions?
