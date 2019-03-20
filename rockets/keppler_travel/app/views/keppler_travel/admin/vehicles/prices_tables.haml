@@ -76,7 +76,7 @@
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
                                       %input#vehicle_vehicleables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= destination.custom_title
+                              %td= destination.try(:custom_title)
                               %td
                                 = vehicleable.input :price_inner_cop, label: false, input_html: {min: 0}
                               %td
