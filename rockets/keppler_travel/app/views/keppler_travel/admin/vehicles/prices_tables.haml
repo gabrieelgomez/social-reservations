@@ -41,11 +41,12 @@
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
                             - destination = vehicleable.object.destination
+                            - next if destination.nil?
                             - vehicle = vehicleable.object.vehicle
                             %tr
                               %td
                                 = vehicleable.input :status, as: :boolean, label: false
-                              %td= "#{destination.try(:custom_title)} || #{destination.id}"
+                              %td= destination.custom_title['es']
                               %td
                                 = vehicleable.input :price_inner_usd, label: false, input_html: {min: 0}
                               %td
@@ -68,6 +69,7 @@
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
                             - destination = vehicleable.object.destination
+                            - next if destination.nil?
                             - vehicle = vehicleable.object.vehicle
                             %tr
                               %td
@@ -76,7 +78,7 @@
                                     %input{name: "asd", type: "hidden", value: "0"}/
                                     %label
                                       %input#vehicle_vehicleables_attributes_0_status.boolean.optional{checked: "checked", name: "asd", type: "checkbox", disabled: true}/
-                              %td= "#{destination.try(:custom_title)} || #{destination.id}"
+                              %td= destination.custom_title['es']
                               %td
                                 = vehicleable.input :price_inner_cop, label: false, input_html: {min: 0}
                               %td
