@@ -27,7 +27,7 @@ module KepplerTravel
       end
 
       def filter_destination
-        @destinations = Lodgment.all.map(&:destination).uniq.reject{|dest| dest.nil?}.sort_by {|dest| dest.custom_title}
+        @destinations = Lodgment.all.map(&:destination).reject{|dest| dest.nil?}.uniq.sort_by {|dest| dest.custom_title['es']}
         @selected = params[:destination]
         if params[:destination] == 'all'
           @q = Lodgment.ransack(params[:q])

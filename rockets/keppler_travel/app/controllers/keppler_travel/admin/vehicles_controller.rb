@@ -27,7 +27,7 @@ module KepplerTravel
       end
 
       def filter_destination
-        @destinations = Vehicle.all.map(&:destinations).flatten.uniq.reject{|dest| dest.nil?}.sort_by {|dest| dest.custom_title}
+        @destinations = Vehicle.all.map(&:destinations).reject{|dest| dest.nil?}.flatten.uniq.sort_by {|dest| dest.custom_title['es']}
         @selected = params[:destination]
         if params[:destination] == 'all'
           @q = Vehicle.ransack(params[:q])
