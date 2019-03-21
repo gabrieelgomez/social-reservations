@@ -53,8 +53,8 @@
     %li
       = link_to users_details_path(@lang, @currency), class:"nav-link" do
         %i.nc-icon.nc-single-02
-        %p= t('receptivo.dashboard.messages.my_profile')
+        = t('receptivo.dashboard.messages.my_profile')
     %li.d-block.d-md-none
       = link_to destroy_session_path(current_user), class:'nav-link'  do
         %i.nc-icon.nc-button-power
-        %p= t('receptivo.dashboard.sidebar.messages.sign_out')
+        = t('receptivo.dashboard.sidebar.messages.sign_out')
