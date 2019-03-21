@@ -549,6 +549,19 @@ en:
       authentication_credentials: Authentication credentials
       click_here: Click here
       to_log_in_to: To log in to Receptivo Colombia
+    checkout:
+      details_person: Personal Information
+      billing: Billing
+      billing_details: Remember to check the information before paying your reservation
+      payment_method: Payment Method
+      confirm: Confirm
+      pay_reservation: Pay Reservation
+      type_lodgment: Type Lodgment
+      cotization: To Quote
+      airline: Airline
+      number_flight: N° Flight
+      request_reservation: Request Reservation
+      details_quote: Your price will be quoted by the administrators. You will receive a notification in yout e-mail with all the information of the reservation and payment.
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

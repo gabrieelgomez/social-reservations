@@ -232,7 +232,7 @@ es:
       input_message: Mensaje
       button_send: Enviar
     reservation_transfers:
-      title_main_reservation: Reserva de Traslado 
+      title_main_reservation: Reserva de Traslado
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
@@ -270,7 +270,7 @@ es:
       privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
       terms_and_conditions: Términos y Condiciones
-      modal_privacy_policy: Política de Privacidad 
+      modal_privacy_policy: Política de Privacidad
       modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       baggage_maximum: Equipaje Máximo
@@ -289,13 +289,13 @@ es:
       request_reservation: ¡Solicita tu reserva!
       quote: Cotizar
     reservation_tours:
-      title_main_reservation: Reserva de Tours 
+      title_main_reservation: Reserva de Tours
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
       title_dates_requests: Solicitudes/Observaciones
       title_date_billing: Datos de Facturación
-      title_privacy_policy: Política de Privacidad 
+      title_privacy_policy: Política de Privacidad
       title_cancellation_policy: Política de Cancelación
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
@@ -304,18 +304,18 @@ es:
       adult_amount: Cantidad Adultos
       children_amount: Cantidad Niños
       input_name: Nombre
-      input_id: Número de Identificación 
-      input_requests: Solicitudes/Observaciones  
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
       input_phone: Número de teléfono
       input_email: Correo electrónico
       input_address: Dirección Facturación
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
-      privacy_policy: Política de Privacidad 
+      privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
       terms_and_conditions: Términos y Condiciones
-      modal_privacy_policy: Política de Privacidad 
+      modal_privacy_policy: Política de Privacidad
       modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       total: total
@@ -335,13 +335,13 @@ es:
       request_reservation: ¡Solicita tu reserva!
       pay_reservation: ¡Paga tu reserva!
     reservation_circuits:
-      title_main_reservation: Reserva de Circuitos 
+      title_main_reservation: Reserva de Circuitos
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
       title_dates_requests: Solicitudes/Observaciones
       title_date_billing: Datos de Facturación
-      title_privacy_policy: Política de Privacidad 
+      title_privacy_policy: Política de Privacidad
       title_cancellation_policy: Política de Cancelación
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
@@ -351,18 +351,18 @@ es:
       adult_amount: Cantidad Adultos
       children_amount: Cantidad Niños
       input_name: Nombre
-      input_id: Número de Identificación 
-      input_requests: Solicitudes/Observaciones  
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
       input_phone: Número de teléfono
       input_email: Correo electrónico
       input_address: Dirección Facturación
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
-      privacy_policy: Política de Privacidad 
+      privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
       terms_and_conditions: Términos y Condiciones
-      modal_privacy_policy: Política de Privacidad 
+      modal_privacy_policy: Política de Privacidad
       modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       subtotal: Sub-total
@@ -394,13 +394,13 @@ es:
       type_and_quantity_rooms: Seleccione el tipo y número de habitaciones
       quote_your_reservation: ¡Cotiza tu reserva!
     reservation_multidestinations:
-      title_main_reservation: Reserva de Circuitos 
+      title_main_reservation: Reserva de Circuitos
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
       title_dates_requests: Solicitudes/Observaciones
       title_date_billing: Datos de Facturación
-      title_privacy_policy: Política de Privacidad 
+      title_privacy_policy: Política de Privacidad
       title_cancellation_policy: Política de Cancelación
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
@@ -410,18 +410,18 @@ es:
       adult_amount: Cantidad Adultos
       children_amount: Cantidad Niños
       input_name: Nombre
-      input_id: Número de Identificación 
-      input_requests: Solicitudes/Observaciones  
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
       input_phone: Número de teléfono
       input_email: Correo electrónico
       input_address: Dirección Facturación
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
-      privacy_policy: Política de Privacidad 
+      privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
       terms_and_conditions: Términos y Condiciones
-      modal_privacy_policy: Política de Privacidad 
+      modal_privacy_policy: Política de Privacidad
       modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       subtotal: Sub-total
@@ -463,7 +463,7 @@ es:
       from: Desde
       to: Hasta
     reservation_mailer:
-      title_reservation_circuit: Reservación de Circuito 
+      title_reservation_circuit: Reservación de Circuito
       title_reservation_multidestination: Reservación de Multidestino
       title_reservation_tour: Reservación de Tour
       title_reservation_transfer: Reservación de Traslados
@@ -490,7 +490,7 @@ es:
       reservation_cost: Costo Reservación
       to_quote: Por cotizar
       notification: Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp
-      origin: Origen 
+      origin: Origen
       destination: Destino
       date_flight_origin: Fecha de Viaje - Origen
       date_flight_destination: Fecha de Viaje - Destino
@@ -516,6 +516,19 @@ es:
       authentication_credentials: Credenciales de Autenticación
       click_here: Click aquí
       to_log_in_to: Para iniciar sesión en Receptivo Colombia
+    checkout:
+      details_person: Datos Personales
+      billing: Facturación
+      billing_details: Recuerde verificar la información antes de pagar su reserva
+      payment_method: Método de Pagos
+      confirm: Confirmar
+      pay_reservation: Pagar Reservación
+      type_lodgment: Tipo de Alojamiento
+      cotization: Cotizar
+      airline: Aerolinea
+      number_flight: N° de Vuelo
+      request_reservation: Solictar Reserva
+      details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

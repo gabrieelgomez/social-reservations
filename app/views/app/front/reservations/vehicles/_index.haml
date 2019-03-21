@@ -7,8 +7,8 @@
           .col-lg-9
             %p
               %h5= t('receptivo.widget-banner.your_search')
-              %p="#{t('receptivo.widget-banner.from')}: #{@arrival_name.truncate(100)}"
-              %p="#{t('receptivo.widget-banner.to')}: #{@arrival_name.truncate(100)}"
+              %p="#{t('receptivo.widget.origin')}: #{@arrival_name.truncate(100)}"
+              %p="#{t('receptivo.widget.arrival')}: #{@arrival_name.truncate(100)}"
           .col-lg-3
             %p
               %span
@@ -26,7 +26,7 @@
   .container
     .gallary-header.text-center
       %h2= t('receptivo.reservation_transfers.title_main_reservation')
-      %p= t('receptivo.reservation_transfers.subtitle_main_reservation')   
+      %p= t('receptivo.reservation_transfers.subtitle_main_reservation')
   .box-reservation
     .container
       = simple_form_for @reservation, url: '/session_reservation_transfer', method: :post, style:'width: 100%;' do |f|
@@ -82,7 +82,7 @@
 
 :scss
   label.error-class{color: #e60707 !important;}
-  
+
 %script{:src => '/assets/app/jquery-validate.js'}
 
 :javascript
