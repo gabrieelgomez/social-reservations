@@ -19,7 +19,7 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
         %span
-          = destination.custom_title
+          = destination.custom_title['es']
     %td.hidden-xs
       = link_to admin_travel_destination_path(destination, search: @query), remote: true, class: 'show-row' do
         %span

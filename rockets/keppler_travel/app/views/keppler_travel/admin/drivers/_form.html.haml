@@ -63,7 +63,7 @@
                         %br
                         %select.selectpicker{"data-style" => "btn-primary", id: 'destinations_drivers', name: 'driver[destination_id]'}
                           - KepplerTravel::Destination.all.each do |destination|
-                            %option{ value: destination.id}= destination.custom_title
+                            %option{ value: destination.id}= destination.custom_title['es']
 
                   .col-xs-12.col-lg-4
                     .row
