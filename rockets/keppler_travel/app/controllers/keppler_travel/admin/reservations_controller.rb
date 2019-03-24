@@ -36,7 +36,7 @@ module KepplerTravel
         else
           ids    = Order.where.not(details: 'agency').reject{|order| order.reservation.nil?}.collect{|order| order.reservation.id}
         end
-        @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
+        @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}").reject{|reservation| reservation.invoice.nil?}
         @q = @types.ransack(params[:q])
         reservations = @q.result(distinct: true)
         @objects = reservations.page(@current_page).order(id: :desc)
