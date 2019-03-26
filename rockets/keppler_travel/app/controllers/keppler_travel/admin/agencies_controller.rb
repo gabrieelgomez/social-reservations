@@ -60,6 +60,7 @@ module KepplerTravel
                     owner: params[:user][:agency][:owner],
                     country: params[:user][:agency][:country]
                   )
+        @agency.assign_code
         if @user.save
           @user.add_role :agency
           ReservationMailer.send_password(@user).deliver_now
