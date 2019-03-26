@@ -53,6 +53,7 @@ module KepplerTravel
       # POST /drivers
       def create
         @user = User.new(user_params)
+        @user = User.create_or_restore(@user)
         @user.build_driver(
           timetrack: params[:user][:driver][:timetrack],
           bank: params[:user][:driver][:bank],

@@ -17,7 +17,8 @@ module KepplerTravel
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
         @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
-        DriverMailer.transfer_driver(@reservation).deliver_now
+        # DriverMailer.transfer_driver_user(@reservation).deliver_now
+        DriverMailer.transfer_driver_corporative(@reservation).deliver_now
         DriverMailer.transfer_user(@reservation).deliver_now
         redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end

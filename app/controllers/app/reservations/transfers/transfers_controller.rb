@@ -61,6 +61,7 @@ module App
                 ReservationMailer.transfer_status(@reservation, @user).deliver_now
                 redirect_to invoice_path('en', 'usd')
               else
+                ReservationMailer.transfer_status(@reservation, @user).deliver_now
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               end
             else

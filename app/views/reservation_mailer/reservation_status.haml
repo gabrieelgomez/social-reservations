@@ -263,7 +263,7 @@
         %tr
           %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= " #{= t('receptivo.reservation_mailer.user_notification')} #{t("keppler.messages.#{@reservation.order.status}").downcase} "
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= " #{t('receptivo.reservation_mailer.user_notification')} #{t("keppler.messages.#{@reservation.order.status}").downcase} "
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.cottant_name')
               = @reservation.user.name
@@ -282,10 +282,10 @@
               %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.order_status')
               - if @reservation.order.status == 'payment_link'
                 %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
-             
+
               - elsif @reservation.order.status == 'credit_agency'
                 %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
-             
+
               - elsif @reservation.order.status == 'cancelled'
                 %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
             - if @reservation.order.status == 'payment_link' && @reservation.order.status_pay == 'pending'
@@ -296,10 +296,10 @@
               %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.payment_status')
               - if @reservation.order.status_pay == 'pending'
                 %b{:style => "margin:0;color: white;background-color:#f39c12;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
-             
+
               - elsif @reservation.order.status_pay == 'approved'
                 %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
-             
+
               - elsif @reservation.order.status_pay == 'cancelled'
                 %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
@@ -320,4 +320,3 @@
                       = t('receptivo.reservation_mailer.developed_by')
                       %a#company{:href => "http://slicegroup.xyz"}
                         %strong{:style => "color: #4e4e56"} Slice Group
-                

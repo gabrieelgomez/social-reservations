@@ -60,6 +60,7 @@ module Admin
 
     def create
       @user = User.new(user_params)
+      @user = User.create_or_restore(@user)
       if @user.save
         @user.add_role Role.find(user_params.fetch(:role_ids)).name
         redirect(@user, params)
