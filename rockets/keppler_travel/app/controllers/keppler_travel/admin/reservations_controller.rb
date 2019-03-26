@@ -16,7 +16,7 @@ module KepplerTravel
 
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
-        @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
+        @reservation.order.update(driver_id: params[:driver_id])
         # DriverMailer.transfer_driver_user(@reservation).deliver_now
         DriverMailer.transfer_driver_corporative(@reservation).deliver_now
         DriverMailer.transfer_user(@reservation).deliver_now
