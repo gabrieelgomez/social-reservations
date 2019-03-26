@@ -42,7 +42,6 @@ module App
             )
             if @reservation.save!
               create_travellers
-              ReservationMailer.transfer_status(@reservation, @user).deliver_now
               if current_user.try(:has_role_agentable?)
                 @reservation.order.update(
                   details: 'agency',
@@ -56,8 +55,10 @@ module App
                   agency_referer: @agency.id,
                   agent_referer: @agent&.id
                 )
+                ReservationMailer.transfer_status(@reservation, @user).deliver_now
                 redirect_to invoice_path('en', 'usd')
               elsif @price_total.zero?
+                ReservationMailer.transfer_status(@reservation, @user).deliver_now
                 redirect_to invoice_path('en', 'usd')
               else
                 redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
