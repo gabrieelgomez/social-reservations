@@ -67,7 +67,6 @@ module KepplerTravel
         if @user.save
           @user.add_role :driver
           update_password if params[:user][:driver]
-          ReservationMailer.send_password(@user).deliver_now
           @user.driver.vehicles.each do |vehicle|
             KepplerTravel::CarDescription.create(
               license: '',
@@ -75,6 +74,7 @@ module KepplerTravel
               driver: @user.driver,
               vehicle: vehicle)
           end
+          ReservationMailer.send_password(@user).deliver_now
           redirect_to admin_travel_driver_description_tables_path(@user.driver)
         else
           render :new
