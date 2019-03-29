@@ -16,6 +16,10 @@ module KepplerTravel
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
     validates :unique_code, uniqueness: true
 
+    def user
+      User.with_deleted.find(self.user_id)
+    end
+
     def assign_code
       codes = Agency.pluck(:unique_code)
       unique_code = SecureRandom.hex(3).upcase

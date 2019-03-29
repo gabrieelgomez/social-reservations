@@ -266,7 +266,7 @@
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= " #{t('receptivo.reservation_mailer.user_notification')} #{t("keppler.messages.#{@reservation.order.status}").downcase} "
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.cottant_name')
-              = @reservation.user.name
+              = @reservation.owner
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.order_number')
               = @reservation.id.blank? ? '-----------' : @reservation.id

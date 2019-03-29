@@ -16,6 +16,10 @@ module KepplerTravel
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, :agency_id, presence: true
     # validates :unique_code, uniqueness: true
 
+    def user
+      User.with_deleted.find(self.user_id)
+    end
+
     # Fields for the search form in the navbar
     def self.search_field
       fields = ["unique_code", "comission_percentage", "lending_percentage", "user_id", "agency_id", "position", "deleted_at"]

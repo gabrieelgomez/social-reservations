@@ -23,7 +23,7 @@
             %table.table.table-bordered
               %tbody
                 .form-padding
-                  .col-xs-12
+                  .col-xs-12.col-lg-6
                     .form-group.radio_buttons.optional.reservation_status
                       %label.control-label.radio_buttons.optional Estatus de la reservación
 
@@ -86,6 +86,17 @@
                           -#   %br
                           -#   %strike Crédito Agencia
 
+
+                  .col-xs-12.col-lg-6
+                    = f.simple_fields_for :order, @reservation.order do |order|
+                      .col-xs-12.col-lg-12
+                        = order.input :price_total_pax, label: 'Precio Total Reservación (Total PAX)'
+                        = order.input :price_total_agency, as: :hidden,  label: 'Precio Total Agencia'
+                        = order.input :price_comission, as: :hidden,  label: 'Precio Comisión'
+                        = order.input :price_lending, as: :hidden,  label: 'Precio Prestación'
+
+
+
                   -# - if @reservation.status != 'pending'
                   .col-xs-12#status_payment
                     .form-group.radio_buttons.optional.reservation_status_pay
@@ -131,14 +142,94 @@
                           %br
 
 
-                  - if @reservation.status_pay == 'pending'
-                    .col-xs-12
-                      .pull-right
-                        = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary', data: { confirm: '¿Estás seguro?, esta acción es irreversible' }
-                        -# = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
+
+            - if @reservation.order.details == 'agency'
+              %br
+              %br
+              .col-xs-12.col-lg-12
+                .panel.panel-default
+                  .panel-heading
+                    %h3.panel-title
+                      %strong= t('receptivo.dashboard.table.agency_percentages')
+                  .panel-body
+                    .table-responsive
+                      %table.table.table-condensed
+                        %thead
+                          %tr
+                            %td.text-center
+                              %strong= t('receptivo.dashboard.table.concept')
+                            %td.text-center
+                              %strong= t('receptivo.dashboard.table.value')
+                            %td.text-center
+                              %strong Subtotal
+                            %td.text-center
+                              %strong Total
+                        %tbody
+                          %tr
+                            %td.text-center= t('receptivo.dashboard.table.comission')
+                            %td.text-center= "#{@reservation.order.comission} %"
+                            %td.text-center#subtotal_comission= number_to_currency(@reservation.order.price_comission, locale: @locale)
+                            %td.text-center -----
+
+                          %tr
+                            %td.text-center= t('receptivo.dashboard.table.lending')
+                            %td.text-center= "#{@reservation.order.lending} %"
+                            %td.text-center#subtotal_lending= number_to_currency(@reservation.order.price_lending, locale: @locale)
+                            %td.text-center -----
+
+                          %tr
+                            %td.text-center Total PAX
+                            %td.text-center -----
+                            %td.text-center -----
+                            %td.text-center#total_pax= number_to_currency(@reservation.order.price_total_pax, locale: @locale)
+
+                          %tr
+                            %td.text-center= t('receptivo.dashboard.table.total_agency')
+                            %td.text-center -----
+                            %td.text-center -----
+                            %td.text-center#total_agency= number_to_currency(@reservation.order.price_total_agency, locale: @locale)
+
+            - if @reservation.status_pay == 'pending'
+              .col-xs-12
+                .pull-right
+                  = f.button :submit, t('keppler.actions.save'), name: '_save', class: 'btn-primary', data: { confirm: '¿Estás seguro?, esta acción es irreversible' }
+                  -# = f.button :submit, t('keppler.actions.save_and_add_another'), name: '_add_other'
 :javascript
   var reservation_id = #{raw @reservation.id};
+  var comission      = #{raw @reservation.order.comission};
+  var lending        = #{raw @reservation.order.lending};
   validateReservationStatus(`#edit_reservation_${reservation_id}`);
+
+  $('#reservation_order_attributes_price_total_pax').keyup(function(e){
+
+    current_price = parseFloat(e.target.value)
+    price_comission = current_price * (comission/100)
+    price_lending   = current_price * (lending/100)
+    current_price_pax = current_price
+    current_price_agency = current_price - price_comission - price_lending
+
+    $('#subtotal_comission').text('$' + formatMoney(price_comission));
+    $('#subtotal_lending').text('$' + formatMoney(price_lending));
+    $('#total_pax').text('$' + formatMoney(current_price_pax));
+    $('#total_agency').text('$' + formatMoney(current_price_agency));
+
+
+    $('#reservation_order_attributes_price_total_agency').val(current_price_agency);
+    $('#reservation_order_attributes_price_comission').val(price_comission);
+    $('#reservation_order_attributes_price_lending').val(price_lending);
+  });
+
+  function formatMoney(n, c, d, t) {
+    var c = isNaN(c = Math.abs(c)) ? 2 : c,
+      d = d == undefined ? "," : d,
+      t = t == undefined ? "." : t,
+      s = n < 0 ? "-" : "",
+      i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+      j = (j = i.length) > 3 ? j % 3 : 0;
+
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+  };
+
 
 :javascript
   var status = "#{raw @reservation.status}";

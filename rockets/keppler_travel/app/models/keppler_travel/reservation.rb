@@ -30,6 +30,20 @@ module KepplerTravel
     validates_inclusion_of :status, :in => %w(pending cancelled credit_agency payment_link)
     validates_inclusion_of :status_pay, :in => %w(pending cancelled approved)
 
+    def owner
+      return user.agent.agency.user.name if user.has_role? :agent
+      user.name
+    end
+
+    def owner_email
+      return user.agent.agency.user.email if user.has_role? :agent
+      user.email
+    end
+
+    def user
+      User.with_deleted.find(self.user_id)
+    end
+
     def self.multiple(object)
       object['round_trip'] == 'true' ? '2' : '1'
     end
