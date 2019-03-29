@@ -1,11 +1,13 @@
-%h3 Política de Privacidad
+%h3= t('receptivo.reservation_circuits.title_privacy_policy')
 .row
   .col-lg-12
-    .form-custom
-    .form-group
+    .separator__mobile.hidden-lg
+    .form-group.form-custom
       .checkbox.checkbox-blue.checkbox-inline
         %input#privacy_policy.styled{name: 'privacy_policy', :type => "checkbox", :value => "agree"}/
         %label.check{:for => "privacy_policy"}
-          Acepto
+          = t('receptivo.reservation_circuits.i_agree')
           = succeed "." do
-            = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
+            = link_to t('receptivo.reservation_circuits.privacy_policy') , '#' , :class => '', :id => 'js_privacyPolicy', :type => 'button'
+
+            

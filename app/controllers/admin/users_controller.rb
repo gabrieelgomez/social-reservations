@@ -19,6 +19,7 @@ module Admin
         respond_to_formats(@users)
       else
         @users = User.all.drop(1)
+        @users = @users.reject{|user| user.roles.empty?}
         redirect_to_index(users_path) if nothing_in_first_page?(@objects)
         respond_to_formats(@users)
       end
@@ -59,6 +60,7 @@ module Admin
 
     def create
       @user = User.new(user_params)
+      @user = User.create_or_restore(@user)
       if @user.save
         @user.add_role Role.find(user_params.fetch(:role_ids)).name
         redirect(@user, params)

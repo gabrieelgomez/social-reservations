@@ -90,12 +90,24 @@ Rails.application.configure do
     domain:               Rails.application.secrets.domain,
     user_name:            Rails.application.secrets.email,
     password:             Rails.application.secrets.password,
-    authentication:       :plain,
+    authentication:   'plain',
     enable_starttls_auto: true,
-    openssl_verify_mode:  'none',
-    ssl:                   true,
-    tls:                   true
+    ssl: false
   }
+
+  # ULTIMO ACTUAL
+  # config.action_mailer.smtp_settings = {
+  #   address:              Rails.application.secrets.address,
+  #   port:                 Rails.application.secrets.port,
+  #   domain:               Rails.application.secrets.domain,
+  #   user_name:            Rails.application.secrets.email,
+  #   password:             Rails.application.secrets.password,
+  #   authentication:       :plain,
+  #   enable_starttls_auto: true,
+  #   openssl_verify_mode:  'none',
+  #   ssl:                   true,
+  #   tls:                   true
+  # }
 
   # config.action_mailer.smtp_settings = {
   #   address:              Rails.application.secrets.address,

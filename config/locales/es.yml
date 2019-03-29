@@ -233,10 +233,14 @@ es:
       button_send: Enviar
     reservation_transfers:
 <<<<<<< HEAD
+<<<<<<< HEAD
       title_main_reservation: Reserva de Traslado 
 =======
       title_main_reservation: Reservación de Traslado
 >>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
+=======
+      title_main_reservation: Reserva de Traslado
+>>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
@@ -273,9 +277,9 @@ es:
       i_agree: Acepto
       privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
-      terms_and_conditions: Terms and Conditions
-      modal_privacy_policy: Privacy Policy
-      modal_cancellation_policy: Cancellation Policy
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad
+      modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
       baggage_maximum: Equipaje Máximo
       pieces: Piezas
@@ -293,72 +297,245 @@ es:
       request_reservation: ¡Solicita tu reserva!
       quote: Cotizar
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
     reservation_tours:
-      title_main_reservation: Reserva de Tours 
+      title_main_reservation: Reserva de Tours
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
       title_dates_requests: Solicitudes/Observaciones
       title_date_billing: Datos de Facturación
-      title_privacy_policy: Política de Privacidad 
+      title_privacy_policy: Política de Privacidad
       title_cancellation_policy: Política de Cancelación
       title_terms_and_conditions: Términos y Condiciones
       title_summary: Resumen
       tours: Tours
-      tours_date: Fecha de Reserva
-      adult_amount: Cant. Adultos
-      children_amount: Cant. Niños
+      tours_date: Fecha Reserva
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
       input_name: Nombre
-      input_id: Número de Identificación 
-      input_requests: Solicitudes/Observaciones  
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
       input_phone: Número de teléfono
       input_email: Correo electrónico
       input_address: Dirección Facturación
-      
-      origin: Origen
-      destination: Destino
-
-      baggage_amount: Candidad Equipaje
-      type_transfer: Tipo de Traslado
-      round_trip: Ida/Vuelta
-      one_way: Ida
-      origin_date: Fecha Origen
-      destination_date: Fecha Destino
-      origin_time: Hora Origen
-      destination_time: Hora Destino
-
-      airline: Aerolínea
-      flight_number: Número de Vuelo
-  
-
-      
-
       notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
       observations: Observaciones
       i_agree: Acepto
-      privacy_policy: Política de Privacidad 
+      privacy_policy: Política de Privacidad
       cancellation_policy: Política de Cancelación
-      terms_and_conditions: Terms and Conditions
-      modal_privacy_policy: Privacy Policy
-      modal_cancellation_policy: Cancellation Policy
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad
+      modal_cancellation_policy: Política de Cancelación
       modal_terms_and_conditions: Términos y Condiciones
-      baggage_maximum: Equipaje Máximo
-      pieces: Piezas
+      total: total
+      person: persona
       subtotal: Sub-total
       total_price: Precio Total
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      next: Siguiente
       pay_reservation: ¡Paga tu reserva!
       confirm: Confirmar
-      next: Siguiente
       confirm_reservation: ¡Confirma tu reserva!
+      next: Siguiente
       commission_percentage: Porcentaje comisión
       for_quote: ¡Para cotizar!
       request_reservation: ¡Solicita tu reserva!
+      pay_reservation: ¡Paga tu reserva!
+    reservation_circuits:
+      title_main_reservation: Reserva de Circuitos
+      subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
+      title_dates_reservation: Datos de Reserva
+      title_dates_traveler: Datos de Viajeros
+      title_dates_requests: Solicitudes/Observaciones
+      title_date_billing: Datos de Facturación
+      title_privacy_policy: Política de Privacidad
+      title_cancellation_policy: Política de Cancelación
+      title_terms_and_conditions: Términos y Condiciones
+      title_summary: Resumen
+      name: Nombre del Cotizante
+      circuits: Circuitos
+      tours_date: Fecha Reserva
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
+      input_name: Nombre
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
+      input_phone: Número de teléfono
+      input_email: Correo electrónico
+      input_address: Dirección Facturación
+      notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
+      observations: Observaciones
+      i_agree: Acepto
+      privacy_policy: Política de Privacidad
+      cancellation_policy: Política de Cancelación
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad
+      modal_cancellation_policy: Política de Cancelación
+      modal_terms_and_conditions: Términos y Condiciones
+      subtotal: Sub-total
+      total_price: Precio Total
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      next: Siguiente
+      pay_reservation: ¡Paga tu reserva!
+      confirm: Confirmar
+      confirm_reservation: ¡Confirma tu reserva!
+      next: Siguiente
+      commission_percentage: Porcentaje comisión
+      for_quote: ¡Para cotizar!
+      request_reservation: ¡Solicita tu reserva!
+      pay_reservation: ¡Paga tu reserva!
+      travel_date: Fecha de Viaje
       quote: Cotizar
+<<<<<<< HEAD
 
 
 
       
 =======
+=======
+      total: Total
+      person: Personas
+      room: Habitación
+      simple: Simple
+      double: Doble
+      triple: Triple
+      quadruple: Cuádruple
+      quintuple: Quíntuple
+      sextuple: Sextuple
+      children: Niños
+      type_and_quantity_rooms: Seleccione el tipo y número de habitaciones
+      quote_your_reservation: ¡Cotiza tu reserva!
+    reservation_multidestinations:
+      title_main_reservation: Reserva de Circuitos
+      subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
+      title_dates_reservation: Datos de Reserva
+      title_dates_traveler: Datos de Viajeros
+      title_dates_requests: Solicitudes/Observaciones
+      title_date_billing: Datos de Facturación
+      title_privacy_policy: Política de Privacidad
+      title_cancellation_policy: Política de Cancelación
+      title_terms_and_conditions: Términos y Condiciones
+      title_summary: Resumen
+      name: Nombre del Cotizante
+      circuits: Circuitos
+      tours_date: Fecha Reserva
+      adult_amount: Cantidad Adultos
+      children_amount: Cantidad Niños
+      input_name: Nombre
+      input_id: Número de Identificación
+      input_requests: Solicitudes/Observaciones
+      input_phone: Número de teléfono
+      input_email: Correo electrónico
+      input_address: Dirección Facturación
+      notification_billing: Estimado usuario, cuando ingrese los siguientes datos, el sistema Receptivo Colombia creará un usuario con la siguiente información y le enviaremos un correo electrónico con la información que se detalla a continuación
+      observations: Observaciones
+      i_agree: Acepto
+      privacy_policy: Política de Privacidad
+      cancellation_policy: Política de Cancelación
+      terms_and_conditions: Términos y Condiciones
+      modal_privacy_policy: Política de Privacidad
+      modal_cancellation_policy: Política de Cancelación
+      modal_terms_and_conditions: Términos y Condiciones
+      subtotal: Sub-total
+      total_price: Precio Total
+      total_price_pax: Precio total PAX
+      total_price_agency: Precio total Agencia
+      benefit_percentage: Porcentaje prestación
+      next: Siguiente
+      pay_reservation: ¡Paga tu reserva!
+      confirm: Confirmar
+      confirm_reservation: ¡Confirma tu reserva!
+      next: Siguiente
+      commission_percentage: Porcentaje comisión
+      for_quote: ¡Para cotizar!
+      request_reservation: ¡Solicita tu reserva!
+      pay_reservation: ¡Paga tu reserva!
+      travel_date: Fecha de Viaje
+      quote: Cotizar
+      total: Total
+      multidestinations: Multidestino
+      person: Personas
+      room: Habitación
+      simple: Simple
+      double: Doble
+      triple: Triple
+      quadruple: Cuádruple
+      quintuple: Quíntuple
+      sextuple: Sextuple
+      children: Niños
+      type_and_quantity_rooms: Seleccione el tipo y número de habitaciones
+      quote_your_reservation: ¡Cotiza tu reserva!
+    invoice:
+      title_main_invoice: Tu reserva se ha realizado con éxito.
+      subtitle_main_invoice: ¡Gracias por confiar en nosotros!
+      to_return: Regresar
+    widget-banner:
+      your_search: Su búsqueda
+      destination: Destino
+      from: Desde
+      to: Hasta
+    reservation_mailer:
+      title_reservation_circuit: Reservación de Circuito
+      title_reservation_multidestination: Reservación de Multidestino
+      title_reservation_tour: Reservación de Tour
+      title_reservation_transfer: Reservación de Traslados
+      order_number: Nº de Orden
+      bill_number: Nº de Factura
+      type_money: Tipo de Moneda
+      payment_platform: Plataforma de Pago
+      order_status: Estatus de Orden
+      payment_status: Estatus de Pago
+      paid: ¡Pagada!
+      cottant_name: Nombre del Cotizante
+      circuit: Circuito
+      tour: Tour
+      multidestination: Multidestino
+      transfer: Traslado
+      date_reservation: Fecha de Reservación
+      quantity_adults: Cantidad de Adultos
+      quantity_kids: Cantidad de Niños
+      email: Correo Electrónico
+      observations: Observaciones
+      greeting: Un cordial saludo - Receptivo Colombia
+      firm: Receptivo Colombia © - 2019 | Todos los derechos reservados
+      developed_by: Desarrollado por
+      reservation_cost: Costo Reservación
+      to_quote: Por cotizar
+      notification: Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp
+      origin: Origen
+      destination: Destino
+      date_flight_origin: Fecha de Viaje - Origen
+      date_flight_destination: Fecha de Viaje - Destino
+      flight_time_origin: Hora de Viaje - Origen
+      flight_time_destination: Hora de Viaje - Destino
+      airline_origin: Aerolínea - Origen
+      airline_destination: Aerolínea - Destino
+      flight_number_origin: Número de Vuelo - Origen
+      flight_number_destination: Número de Vuelo - Destino
+      user_notification: ¡Estimado Usuario! Su solicitud se encuentra en el estado
+      payment_link: Link de Pago
+      go_to_link: Ir a link de pago
+      successfully_payment: Ha completado un pago satisfactoriamente
+      dear_user: ¡Estimado Usuario!
+      assigned_transfer: Te ha sido asignado un Traslado
+      travellers: Viajeros
+      thanks_reservation: ¡Gracias por su reservación! Hemos recibido su pago de manera exitosa
+      user: Usuario
+      password: Contraseña
+      agency: Agencia
+      code_agency: Código Agencia
+      successfully_registered: Te has registrado exitosamente en Receptivo Colombia
+      authentication_credentials: Credenciales de Autenticación
+      click_here: Click aquí
+      to_log_in_to: Para iniciar sesión en Receptivo Colombia
+>>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
     checkout:
       details_person: Datos Personales
       billing: Facturación
@@ -372,7 +549,10 @@ es:
       number_flight: N° de Vuelo
       request_reservation: Solictar Reserva
       details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
+<<<<<<< HEAD
 >>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
+=======
+>>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

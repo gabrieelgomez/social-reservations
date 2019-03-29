@@ -16,8 +16,9 @@ module KepplerTravel
 
       def assignment
         @reservation = Reservation.find(params[:reservation_id])
-        @reservation.order.update(details: 'driver', driver_id: params[:driver_id])
-        DriverMailer.transfer_driver(@reservation).deliver_now
+        @reservation.order.update(driver_id: params[:driver_id])
+        # DriverMailer.transfer_driver_user(@reservation).deliver_now
+        DriverMailer.transfer_driver_corporative(@reservation).deliver_now
         DriverMailer.transfer_user(@reservation).deliver_now
         redirect_to admin_travel_reservation_path(@reservation, model_name: 'vehicle')
       end
@@ -32,9 +33,9 @@ module KepplerTravel
       # GET /reservations
       def index
         if @type_search == 'agency'
-          ids    = Order.where(details: 'agency').collect{|order| order.reservation.id}
+          ids    = Order.where(details: 'agency').reject{|order| order.reservation.nil?}.reject{|order| order.reservation.invoice.nil?}.collect{|order| order.reservation.id}
         else
-          ids    = Order.where.not(details: 'agency').collect{|order| order.reservation.id}
+          ids    = Order.where.not(details: 'agency').reject{|order| order.reservation.nil?}.reject{|order| order.reservation.invoice.nil?}.collect{|order| order.reservation.id}
         end
         @types = Reservation.where(id: ids).where(reservationable_type: "KepplerTravel::#{@model}")
         @q = @types.ransack(params[:q])

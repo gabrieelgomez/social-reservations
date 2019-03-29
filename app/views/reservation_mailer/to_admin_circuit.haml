@@ -263,83 +263,75 @@
         %tr
           %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Reservación de Circuito 
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.title_reservation_circuit')
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Orden
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.order_number')
               = @reservation.id.blank? ? '-----------' : @reservation.id
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Factura
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.bill_number')
               = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Tipo de Moneda
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.type_money')
               = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Plataforma de Pago
-              EnLineaPagos ELP
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.payment_platform')
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.order_status')
               %b{:style => "margin:0;color: yellow; background-color: gray;padding: 4px; border-radius: 5px;font-weight: bold;"}= t("keppler.messages.#{@reservation.order.status}").blank? ? '-----------' : t("keppler.messages.#{@reservation.order.status}").capitalize
             %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus del Pago
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.payment_status')
               - if @reservation.order.status_pay? :pending
                 %b{:style => "margin:0;color: yellow; background-color: gray;padding: 4px; border-radius: 5px;font-weight: bold;"}= t("keppler.messages.#{@reservation.order.status}").capitalize
               -else
-                ¡Pagada!
+                = t('receptivo.reservation_mailer.paid')
         %tr
           %td{:style => "height:35px;"}
         %tr
           %td{:style => "width:50%;padding:20px;vertical-align:top"}
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px"} Nombre del Cotizante
+              %span{:style => "display:block;font-weight:bold;font-size:13px"}= t('receptivo.reservation_mailer.cottant_name')
               = @reservation.user.name
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Circuito
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.circuit')
               = @reservation.origin.blank? ? '-----------' : @reservation.origin
 
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Fecha de Reserva
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.date_reservation')
               = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Cantidad de Adultos
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.quantity_adults')
               = @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
-
 
           %td{:style => "width:50%;padding:20px;vertical-align:top"}
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Correo Electrónico
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.email')
               = @reservation.user.email
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Costo de Reserva
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.reservation_cost')
               - unless @reservation.invoice.amount.to_f.zero?
                 ="#{@reservation.invoice.currency.upcase} #{number_to_currency(@reservation.invoice.amount, locale: @locale) }"
               - else
-                Por cotizar
+                = t('receptivo.reservation_mailer.to_quote')
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Cantidad de Niños:
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.quantity_kids')
               = @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
-              %span{:style => "display:block;font-weight:bold;font-size:13px;"} Observaciones
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.observations')
               = @reservation.description.blank? ? '-----------' : @reservation.description
       %tfooter
         %tr
           %td{:colspan => "2", :style => "font-size:12px;padding:10px 15px 0 15px;"}
-            %p
-              Si tiene alguna pregunta o modificación sobre su servicio,
-              comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o
-              vía whatsapp al If you have any questions or modifications on your
-              services, contact us 24/7 at reservas@receptivocolombia.com or via
-              whatsapp at
+            %p= t('receptivo.reservation_mailer.notification')
             %br/
             %p{:style => "font-size:12px"}
-              %strong Un cordial saludo - Receptivo Colombia
+              %strong= t('receptivo.reservation_mailer.greeting')
         %tr
           %td{:colspan => "2", :style => ""}
             %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
               %tr
                 %td.content-cell{:align => "center"}
+                  %p.sub.align-center{:style => "color: #4e4e56"}= t('receptivo.reservation_mailer.firm')
                   %p.sub.align-center{:style => "color: #4e4e56"}
-                    Receptivo Colombia © - 2019 | Todos los derechos reservados
-                  %p.sub.align-center{:style => "color: #4e4e56"}
-                    Desarrollado por
+                    = t('receptivo.reservation_mailer.developed_by')
                     %a#company{:href => "http://slicegroup.xyz"}
                       %strong{:style => "color: #4e4e56"} Slice Group

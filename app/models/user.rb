@@ -15,8 +15,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def self.create_or_restore(user)
+    user_restored = User.with_deleted.where(email: user.email).first
+    return user_restored.restore unless user_restored&.deleted_at.nil?
+    user
+  end
+
   def rol
-    roles.first.name
+    roles.first.try(:name)
   end
 
   def permissions?

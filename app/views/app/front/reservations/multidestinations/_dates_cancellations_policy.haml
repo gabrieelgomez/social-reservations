@@ -1,11 +1,11 @@
-%h3 Política de Cancelaciones
+%h3= t('receptivo.reservation_multidestinations.cancellation_policy')
 .row
   .col-lg-12
-    .form-custom
-    .form-group
+    .separator__mobile.hidden-lg
+    .form-group.form-custom
       .checkbox.checkbox-blue.checkbox-inline
         %input#cancellations_policy.styled{name: 'cancellations_policy', :type => "checkbox", :value => "agree"}/
-        %label.check{:for => "cancellations_policy"}
-          Acepto
+        %label.check{:for => "cancellations_policy"} 
+          = t('receptivo.reservation_multidestinations.i_agree')
           = succeed "." do
-            = link_to 'Política de Privacidad', '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'
+            = link_to t('receptivo.reservation_multidestinations.cancellation_policy') , '#' , :class => '', :id => 'js_cancellationsPolicy', :type => 'button'

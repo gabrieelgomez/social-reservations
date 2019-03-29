@@ -16,6 +16,13 @@ module KepplerTravel
     validates :unique_code, :comission_percentage, :lending_percentage, :user_id, presence: true
     validates :unique_code, uniqueness: true
 
+    def assign_code
+      codes = Agency.pluck(:unique_code)
+      unique_code = SecureRandom.hex(3).upcase
+      self.assign_code if codes.include?(unique_code)
+      self.unique_code = unique_code
+    end
+
     def country_name
       return '' if country.blank?
       iso = ISO3166::Country["#{self.country}"]

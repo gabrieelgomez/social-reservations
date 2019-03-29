@@ -1,12 +1,11 @@
 !!!
 %html
   %head
-    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     :css
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
-      @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Poppins:400,500,700');
-
+      @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+      @import url("https://fonts.googleapis.com/css?family=Noto+Sans|Poppins:400,500,700");
       * {
         margin: 0;
         padding: 0;
@@ -14,7 +13,7 @@
       }
 
       *:not(br):not(tr):not(html) {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: "Noto Sans", sans-serif;
         box-sizing: border-box;
       }
 
@@ -23,10 +22,10 @@
         height: 100%;
         margin: 0;
         line-height: 1.4;
-        background-color: #F2F4F6;
-        color: #74787E;
+        background-color: #f2f4f6;
+        color: #74787e;
         -webkit-text-size-adjust: none;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
       }
 
       p,
@@ -38,7 +37,7 @@
       }
 
       a {
-        color: #3869D4;
+        color: #3869d4;
       }
 
       a img {
@@ -100,9 +99,9 @@
         -premailer-width: 100%;
         -premailer-cellpadding: 0;
         -premailer-cellspacing: 0;
-        border-top: 1px solid #EDEFF2;
-        border-bottom: 1px solid #EDEFF2;
-        background-color: #FFFFFF;
+        border-top: 1px solid #edeff2;
+        border-bottom: 1px solid #edeff2;
+        background-color: #ffffff;
       }
 
       .email-body_inner {
@@ -112,7 +111,7 @@
         -premailer-width: 570px;
         -premailer-cellpadding: 0;
         -premailer-cellspacing: 0;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
 
       .email-footer {
@@ -142,7 +141,7 @@
       .body-sub {
         margin-top: 25px;
         padding-top: 25px;
-        border-top: 1px solid #EDEFF2;
+        border-top: 1px solid #edeff2;
       }
 
       .content-cell {
@@ -165,7 +164,7 @@
       }
 
       .attributes_item strong {
-        color: #2F3133;
+        color: #2f3133;
       }
 
       .attributes_item img {
@@ -192,27 +191,23 @@
       }
 
       /*Media Queries ------------------------------ */
-      @media only screen and (max-width:600px) {
-
+      @media only screen and (max-width: 600px) {
         .email-body_inner,
         .email-footer {
           width: 100% !important;
         }
-
       }
 
-      @media only screen and (max-width:500px) {
+      @media only screen and (max-width: 500px) {
         .button {
           width: 100% !important;
         }
-
       }
 
-      @media only screen and (max-width:767px) {
+      @media only screen and (max-width: 767px) {
         .email-masthead img {
           width: 30%;
         }
-
       }
 
       /* Type ------------------------------ */
@@ -226,7 +221,7 @@
 
       h2 {
         margin-top: 0;
-        color: #2F3133;
+        color: #2f3133;
         font-size: 16px;
         font-weight: bold;
         text-align: center;
@@ -234,7 +229,7 @@
 
       h3 {
         margin-top: 0;
-        color: #2F3133;
+        color: #2f3133;
         font-size: 14px;
         font-weight: bold;
         text-align: center;
@@ -242,7 +237,7 @@
 
       p {
         margin-top: 0;
-        color: #74787E;
+        color: #74787e;
         font-size: 16px;
         line-height: 1.5em;
         text-align: center;
@@ -255,130 +250,126 @@
       p.center {
         text-align: center;
       }
-  %body
-    %table.email-wrapper{cellpadding: "0", cellspacing: "0", width: "100%"}
-      %tr
-        %td{align: "center"}
-          %table.email-content{cellpadding: "0", cellspacing: "0", width: "100%"}
-            %tr
-              %td.email-masthead
-                %a.email-masthead_name{href: "#"}
-                  %img{src: "https://preview.ibb.co/iPv4mV/logo.png"}/
-            / Email Body
-            %tr
-              %td.email-body{cellpadding: "0", cellspacing: "0", width: "100%"}
-                %table.email-body_inner{align: "center", cellpadding: "0", cellspacing: "0", width: "570"}
-                  / Body content
-                  %tr
-                    %td.content-cell
-                      %h1="¡Estimado #{@reservation.user.name}!"
-                      %h1
-                      %p Datos del Conductor/Vehiculo
-                      %table.attributes{cellpadding: "0", cellspacing: "0", width: "100%"}
-                        %tr
-                          %td.attributes_content
-                            %table{cellpadding: "0", cellspacing: "0", width: "100%"}
-                              %tr
-                                %td.attributes_item
-                                  %strong Nombre del Conductor:
-                                  = @driver.name
-                              %tr
-                                %td.attributes_item
-                                  %strong Teléfono del Conductor:
-                                  = @driver.phone
-                              %tr
-                                %td.attributes_item
-                                  %strong Vehiculo:
-                                  = @vehicle.title['es']
-                              %tr
-                                %td.attributes_item
-                                  %strong Cantidad de Asientos:
-                                  = @vehicle.seat
+  %body{:style => "background-color:#fff;"}
+    %table{:style => "max-width:670px;margin:50px auto 10px;background-color:#8080800f;padding:50px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); border-top: solid 10px #43b7e8;border-bottom: solid 10px #43b7e8;box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);"}
+      %thead
+        %tr
+          %th{:style => "text-align:left;"}
+            %img{:alt => "receptivo colombia", :src => "https://i.ibb.co/wgcHVTt/receptivo-colombia.png", :style => "max-width: 150px;"}/
+          %th{:style => "text-align:right;font-weight:400;"}= Date.today
+      %tbody
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= " #{t('receptivo.reservation_mailer.user_notification')} #{t("keppler.messages.#{@reservation.order.status}").downcase} "
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.order_number')
+              = @reservation.id.blank? ? '-----------' : @reservation.id
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.bill_number')
+              = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.type_money')
+              = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.payment_platform')
+            - if @reservation.order.status == 'payment_link' && @reservation.order.status_pay == 'pending'
+              %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+                %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.order_status.payment_link')
+                %a{href: @reservation.url_payment, target: '_blank'}= t('receptivo.reservation_mailer.order_status.go_to_link')
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.order_status')
+              - if @reservation.order.status_pay == 'pending'
+                %b{:style => "margin:0;color: white;background-color:#f39c12;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
-                              %tr
-                                %td.attributes_item
-                                  %strong Placas:
-                                  - @reservation.driver.car_descriptions.each_with_index do |description, index|
-                                    - if description.licenses.nil?
-                                      %ul{:style => "list-style: none !important;"}
-                                        %li= '-----------'
-                                    - else
-                                      - description.licenses.each do |license|
-                                        %ul{:style => "list-style: none !important;"}
-                                          %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
+              - elsif @reservation.order.status_pay == 'approved'
+                %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
-                              %tr
-                                %td.attributes_item
-                                  %strong{middle: "", "style:" => ""} Imagen del Vehiculo:
-                                  = image_tag attachments[@logo].url, style: "height: 80px; width: 80px; vertical-align: middle;border-radius: 50%;"
+              - elsif @reservation.order.status_pay == 'cancelled'
+                %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:150px"}= t('receptivo.reservation_mailer.payment_status')
+              - if @reservation.order.status_pay == 'pending'
+                %b{:style => "margin:0;color: white;background-color:#f39c12;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
+              - elsif @reservation.order.status_pay == 'approved'
+                %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
-                              %tr
-                                %td{:style => "height:35px;"}
-                              %tr
-                                %td{:colspan => "2", :style => "border: solid 1px #ddd; padding:10px 20px;"}
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= "¡Estimado Usuario! Su solicitud se encuentra en el estado #{t("keppler.messages.#{@reservation.order.status}").downcase} "
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Nombre del Cotizante
-                                    = @reservation.user.name
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} N° Orden
-                                    = @reservation.id.blank? ? '-----------' : @reservation.id
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Código de Reserva
-                                    = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Tipo de Moneda
-                                    = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Plataforma de Pago
-                                    EnLineaPagos ELP
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus de la Orden
-                                    - if @reservation.order.status == 'payment_link'
-                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
+              - elsif @reservation.order.status_pay == 'cancelled'
+                %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
 
-                                    - elsif @reservation.order.status == 'credit_agency'
-                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px"}= t('receptivo.reservation_mailer.cottant_name')
+              = @reservation.user.name
 
-                                    - elsif @reservation.order.status == 'cancelled'
-                                      %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status}")
-                                  - if @reservation.order.status == 'payment_link' && @reservation.order.status_pay == 'pending'
-                                    %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                      %span{:style => "font-weight:bold;display:inline-block;min-width:146px"} Link de Pago
-                                      %a{href: @reservation.url_payment, target: '_blank'} Ir a link de pago
-                                  %p{:style => "font-size:14px;margin:0 0 6px 0;"}
-                                    %span{:style => "font-weight:bold;display:inline-block;min-width:150px"} Estatus del Pago
-                                    - if @reservation.order.status_pay == 'pending'
-                                      %b{:style => "margin:0;color: white;background-color:#f39c12;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+          %td{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.email')
+              = @reservation.user.email
 
-                                    - elsif @reservation.order.status_pay == 'approved'
-                                      %b{:style => "margin:0;color: white;background-color:green;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
-
-                                    - elsif @reservation.order.status_pay == 'cancelled'
-                                      %b{:style => "margin:0;color: white;background-color:red;padding:4px;border-radius:5px;font-weight:bold;"}= t("keppler.messages.#{@reservation.order.status_pay}")
+      %tfooter
+        %tr
+          %td{:colspan => "2", :style => "font-size:12px;padding:10px 15px 0 15px;"}
+            %p= t('receptivo.reservation_mailer.notification')
+            %br/
+            %p{:style => "font-size:12px"}
+              %strong= t('receptivo.reservation_mailer.greeting')
+        %tr
+          %td{:colspan => "2", :style => ""}
+            %table.email-footer{:align => "center", :cellpadding => "0", :cellspacing => "0", :width => "570"}
+              %tr
+                %td.content-cell{:align => "center"}
+                  %p.sub.align-center{:style => "color: #4e4e56"}= t('receptivo.reservation_mailer.firm')
+                  %p.sub.align-center{:style => "color: #4e4e56"}
+                    = t('receptivo.reservation_mailer.developed_by')
+                    %a#company{:href => "http://slicegroup.xyz"}
+                      %strong{:style => "color: #4e4e56"} Slice Group
 
 
-                      %p
-                        Si tiene alguna pregunta o modificación sobre su servicio, comuníquese con nosotros 24/7 a reservas@receptivocolombia.com o vía whatsapp al
-                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
-                          %span +573173632119
-                        If you have any questions or modifications on your services, contact us 24/7 at reservas@receptivocolombia.com or via whatsapp at
-                        = link_to "https://api.whatsapp.com/send?phone=573173632119", target: "_blank" do
-                          %span +573173632119
-                      %p
-                        Recordándole que estamos a su completa disposición ante cualquier consulta o duda que pueda
-                        tener
-                        %br/
-                        %strong Un cordial saludo - Receptivo Colombia
-            %tr
-              %td
-                %table.email-footer{align: "center", cellpadding: "0", cellspacing: "0", width: "570"}
-                  %tr
-                    %td.content-cell{align: "center"}
-                      %p.sub.align-center Receptivo Colombia © - 2018 | Todos los derechos reservados
-                      %p.sub.align-center
-                        Desarrollado por
-                        %a#company{href: "http://slicegroup.xyz"}
-                          %strong Slice Group
+  -# %td.content-cell
+  -#   %h1="¡Estimado #{@reservation.user.name}!"
+  -#   %h1
+  -#   %p Datos del Conductor/Vehiculo
+  -#   %table.attributes{cellpadding: "0", cellspacing: "0", width: "100%"}
+  -#     %tr
+  -#       %td.attributes_content
+  -#         %table{cellpadding: "0", cellspacing: "0", width: "100%"}
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong Nombre del Conductor:
+  -#               = @driver.name
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong Teléfono del Conductor:
+  -#               = @driver.phone
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong Vehiculo:
+  -#               = @vehicle.title['es']
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong Cantidad de Asientos:
+  -#               = @vehicle.seat
+
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong Placas:
+  -#               - @reservation.driver.car_descriptions.each_with_index do |description, index|
+  -#                 - if description.licenses.nil?
+  -#                   %ul{:style => "list-style: none !important;"}
+  -#                     %li= '-----------'
+  -#                 - else
+  -#                   - description.licenses.each do |license|
+  -#                     %ul{:style => "list-style: none !important;"}
+  -#                       %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
+
+  -#           %tr
+  -#             %td.attributes_item
+  -#               %strong{middle: "", "style:" => ""} Imagen del Vehiculo:
+  -#               = image_tag attachments[@logo].url, style: "height: 80px; width: 80px; vertical-align: middle;border-radius: 50%;"

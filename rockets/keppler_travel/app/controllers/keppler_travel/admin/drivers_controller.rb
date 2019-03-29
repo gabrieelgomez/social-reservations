@@ -27,7 +27,7 @@ module KepplerTravel
       end
 
       def filter_destination
-        @destinations = Driver.all.map(&:destination).uniq.sort_by {|dest| dest.custom_title['es']}
+        @destinations = Driver.all.map(&:destination).reject{|dest| dest.nil?}.uniq.sort_by {|dest| dest.custom_title['es']}
         @selected = params[:destination]
         if params[:destination] == 'all'
           @q = Driver.ransack(params[:q])
@@ -53,6 +53,7 @@ module KepplerTravel
       # POST /drivers
       def create
         @user = User.new(user_params)
+        @user = User.create_or_restore(@user)
         @user.build_driver(
           timetrack: params[:user][:driver][:timetrack],
           bank: params[:user][:driver][:bank],
@@ -67,7 +68,6 @@ module KepplerTravel
         if @user.save
           @user.add_role :driver
           update_password if params[:user][:driver]
-          ReservationMailer.send_password(@user).deliver_now
           @user.driver.vehicles.each do |vehicle|
             KepplerTravel::CarDescription.create(
               license: '',
@@ -75,6 +75,7 @@ module KepplerTravel
               driver: @user.driver,
               vehicle: vehicle)
           end
+          ReservationMailer.send_password(@user).deliver_now
           redirect_to admin_travel_driver_description_tables_path(@user.driver)
         else
           render :new

@@ -41,6 +41,7 @@
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
                             - destination = vehicleable.object.destination
+                            -# - next if destination.nil?
                             - vehicle = vehicleable.object.vehicle
                             %tr
                               %td
@@ -68,6 +69,7 @@
                           // vehicleables from vehicle
                           = f.simple_fields_for :vehicleables, @vehicle.vehicleables.sort_by{|price| price.id } do |vehicleable|
                             - destination = vehicleable.object.destination
+                            -# - next if destination.nil?
                             - vehicle = vehicleable.object.vehicle
                             %tr
                               %td
