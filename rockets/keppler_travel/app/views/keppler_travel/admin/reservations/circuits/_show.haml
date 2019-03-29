@@ -44,11 +44,11 @@
                     %address
                       %strong= t('receptivo.dashboard.table.dates_cotizante')
                       %br/
-                      = @reservation.user.name
+                      = @reservation.owner
                       %br/
                       = @reservation.user.phone.blank? ? '-----------' : @reservation.user.phone
                       %br/
-                      = @reservation.user.email
+                      = @reservation.owner_email
                       %br/
                       = @reservation.invoice.address.blank? ? '-----------' : @reservation.invoice.address
                 .row

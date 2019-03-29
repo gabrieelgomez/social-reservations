@@ -188,7 +188,7 @@ module KepplerTravel
         :flight_origin, :flight_arrival, :quantity_adults, :quantity_kids, :status,
         :quantity_kit, :round_trip, :airport_origin, :position_status, :deleted_at,
         :url_payment, :position_status_pay, :status_pay,
-        travellers_attributes: [:name, :dni])
+        travellers_attributes: [:name, :dni], order_attributes: [:id, :price_total_agency, :price_total_pax, :price_lending, :price_comission])
       end
 
       def show_history
