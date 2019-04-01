@@ -1,5 +1,11 @@
 %hr
-%h3#travellers_form Datos del Viajero
+%h3#travellers_form= t('receptivo.reservation_tours.title_dates_traveler')
+
+-# - if @seats > 10
+-#
+-#   %input#dni.form-control{name: 'travellers_file', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
+-#
+-# - else
 - @seats.times do |i|
   .row
     .col-lg-6
