@@ -6,6 +6,7 @@ module KepplerTravel
     require 'csv'
     acts_as_list
     acts_as_paranoid
+    mount_uploader :file, AttachmentUploader
 
     # Relationships
     belongs_to :user

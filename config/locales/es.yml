@@ -232,15 +232,7 @@ es:
       input_message: Mensaje
       button_send: Enviar
     reservation_transfers:
-<<<<<<< HEAD
-<<<<<<< HEAD
-      title_main_reservation: Reserva de Traslado 
-=======
-      title_main_reservation: Reservación de Traslado
->>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
-=======
       title_main_reservation: Reserva de Traslado
->>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
       title_dates_reservation: Datos de Reserva
       title_dates_traveler: Datos de Viajeros
@@ -296,10 +288,6 @@ es:
       for_quote: ¡Para cotizar!
       request_reservation: ¡Solicita tu reserva!
       quote: Cotizar
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
     reservation_tours:
       title_main_reservation: Reserva de Tours
       subtitle_main_reservation: Completa todos los datos para confirmar y pagar tu reserva
@@ -393,13 +381,6 @@ es:
       pay_reservation: ¡Paga tu reserva!
       travel_date: Fecha de Viaje
       quote: Cotizar
-<<<<<<< HEAD
-
-
-
-      
-=======
-=======
       total: Total
       person: Personas
       room: Habitación
@@ -535,7 +516,6 @@ es:
       authentication_credentials: Credenciales de Autenticación
       click_here: Click aquí
       to_log_in_to: Para iniciar sesión en Receptivo Colombia
->>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
     checkout:
       details_person: Datos Personales
       billing: Facturación
@@ -549,10 +529,6 @@ es:
       number_flight: N° de Vuelo
       request_reservation: Solictar Reserva
       details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
-<<<<<<< HEAD
->>>>>>> aef3dce9fbb36bc5fd99c15d5806cba903c400d1
-=======
->>>>>>> 5215acefa3c70ad5fba07861368ee8132bdc6ab7
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

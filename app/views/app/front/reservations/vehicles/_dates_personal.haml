@@ -1,11 +1,17 @@
 %h3#travellers_form= t('receptivo.reservation_transfers.title_dates_traveler')
-- @seats.times do |i|
-  .row
-    .col-lg-6
-      .form-group.form-custom
-        %label{for: "name"}= t('receptivo.reservation_transfers.input_name')
-        %input#name.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: t('receptivo.reservation_transfers.input_name')}/
-    .col-lg-6
-      .form-group.form-custom
-        %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
-        %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id')}/
+
+- if @seats > 10
+
+  %input#dni.form-control{name: 'travellers_file', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
+
+- else
+  - @seats.times do |i|
+    .row
+      .col-lg-6
+        .form-group.form-custom
+          %label{for: "name"}= t('receptivo.reservation_transfers.input_name')
+          %input#name.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: t('receptivo.reservation_transfers.input_name')}/
+      .col-lg-6
+        .form-group.form-custom
+          %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
+          %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id')}/
