@@ -14,7 +14,7 @@
     %td.hidden-xs.hidden-sm
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do
         %span
-          = number_to_currency(reservation.invoice.amount, locale: @locale)
+          = number_to_currency(reservation.order.price_total_pax, locale: @locale)
 
     %td.hidden-xs
       = link_to admin_travel_reservation_path(reservation, search: @query), remote: true, class: 'show-row' do

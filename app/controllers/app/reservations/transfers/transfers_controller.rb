@@ -40,7 +40,6 @@ module App
               price_total_pax: @price_total_pax,
               user_referer: @user.email
             )
-            byebug
             if @reservation.save!
               create_travellers
               if current_user.try(:has_role_agentable?)
@@ -63,7 +62,7 @@ module App
                 redirect_to invoice_path('en', 'usd')
               else
                 ReservationMailer.transfer_status(@reservation, @user).deliver_now
-                redirect_to checkout_elp_redirect_path('en', 'usd', @reservation.id, @reservation.invoice.id)
+                redirect_to checkout_elp_redirect_path(@reservation.id, @reservation.invoice.id)
               end
             else
               redirect_to errors_checkout_path('en', 'usd')

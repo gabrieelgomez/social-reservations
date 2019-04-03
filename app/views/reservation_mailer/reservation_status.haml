@@ -300,7 +300,13 @@
               %span.item{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.bill_number')
               = @reservation.invoice.token.blank? ? '-----------' : @reservation.invoice.token
             %p.item{:style => "font-size:14px;margin:0 0 6px 0;"}
-              %span.item{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.type_money')
+              %span.item{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.reservation_cost')
+              - unless @reservation.order.price_total_pax.to_f.zero?
+                ="#{@reservation.invoice.currency.upcase} #{number_to_currency(@reservation.order.price_total_pax, locale: @locale) }"
+              - else
+                Por cotizar
+            %p{:style => "font-size:14px;margin:0 0 6px 0;"}
+              %span{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.type_money')
               = @reservation.invoice.currency.upcase.blank? ? '-----------' : @reservation.invoice.currency.upcase
             %p.item{:style => "font-size:14px;margin:0 0 6px 0;"}
               %span.item{:style => "font-weight:bold;display:inline-block;min-width:146px"}= t('receptivo.reservation_mailer.payment_platform')

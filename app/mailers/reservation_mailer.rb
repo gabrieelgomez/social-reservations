@@ -4,11 +4,20 @@ class ReservationMailer < ApplicationMailer
   def reservation_status(reservation, user, subject)
     @reservation = reservation
     @user = user
-    mail(
-      from: Rails.application.secrets.email,
-      to: user.email,
-      subject: subject
-    )
+
+    if user.has_role? :agent
+      mail(
+        from: Rails.application.secrets.email,
+        to: [user.email, user.agent.agency.user.email],
+        subject: subject
+      )
+    else
+      mail(
+        from: Rails.application.secrets.email,
+        to: user.email,
+        subject: subject
+      )
+    end
   end
 
   def transfer_status(reservation, user)
@@ -70,7 +79,6 @@ class ReservationMailer < ApplicationMailer
       subject: 'Receptivo Colombia - Reservación de Circuito'
     )
   end
-
 
   def multidestination_status(reservation, user)
     @reservation = reservation

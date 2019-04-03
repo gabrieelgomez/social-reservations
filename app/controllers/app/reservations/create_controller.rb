@@ -29,7 +29,8 @@ module App::Reservations
         @price_total_pax = @price_total
         @price_total     = @price_total - @price_comission - @price_lending
         @price_total_agency = @price_total
-
+      else
+        @price_total_pax = @price_total
       end
     end
 
