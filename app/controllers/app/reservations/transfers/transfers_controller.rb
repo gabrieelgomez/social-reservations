@@ -40,7 +40,6 @@ module App
               price_total_pax: @price_total_pax,
               user_referer: @user.email
             )
-            byebug
             if @reservation.save!
               create_travellers
               if current_user.try(:has_role_agentable?)

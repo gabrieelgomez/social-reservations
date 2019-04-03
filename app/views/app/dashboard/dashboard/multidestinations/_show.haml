@@ -36,14 +36,14 @@
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
-                      - if reservation.invoice.amount.to_f.zero?
+                      - if reservation.order.price_total_pax.to_f.zero?
                         %td= t('receptivo.dashboard.table.to_cotization')
                       - else
-                        %td= number_to_currency(reservation.invoice.amount, locale: @locale)
+                        %td= number_to_currency(reservation.order.price_total_pax, locale: @locale)
                       %td
                         %span.badge.badge-pill{class: reservation.order.status_class?}= t("receptivo.dashboard.table.#{reservation.order.status}")
                       %td
-                        - if reservation.invoice.amount.to_f.zero?
+                        - if reservation.order.price_total_pax.to_f.zero?
                           %span.badge.badge-info= t('receptivo.dashboard.table.to_cotization')
                         - elsif reservation.order.status_pay? :pending
                           %span.badge.badge-warning= t('receptivo.dashboard.table.pending')
