@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_155255) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
-    t.string "unique_code", default: "8A0DB5"
+    t.string "unique_code", default: "A4C286"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_155255) do
   end
 
   create_table "keppler_travel_agents", force: :cascade do |t|
-    t.string "unique_code", default: "2427FD"
+    t.string "unique_code", default: "D63D7F"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"

@@ -562,6 +562,14 @@ en:
       number_flight: N° Flight
       request_reservation: Request Reservation
       details_quote: Your price will be quoted by the administrators. You will receive a notification in yout e-mail with all the information of the reservation and payment.
+    driver:
+      title_driver: Driver Information
+      driver_name: Name
+      driver_phone: Phone
+      driver_vehicle: Vehicle
+      driver_seats: Seats
+      driver_licenses: License 
+      driver_photo: Photo 
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

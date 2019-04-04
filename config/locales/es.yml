@@ -529,6 +529,14 @@ es:
       number_flight: N° de Vuelo
       request_reservation: Solictar Reserva
       details_quote: Tu precio será cotizado por los administradores. Recibirás una notificación en tu e-mail con toda la información de la reserva y el pago.
+    driver:
+      title_driver: Información del Conductor
+      driver_name: Nombre
+      driver_phone: Teléfono
+      driver_vehicle: Vehículo
+      driver_seats: Asientos
+      driver_licenses: Placas
+      driver_photo: Imagen   
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por
