@@ -5,6 +5,7 @@ module App
       class TransfersController < CreateController
         # POST /reservations
         def session_reservation_transfer
+          document = KepplerTravel::Document.create(file: params[:reservation][:travellers_doc])
           session[:reservation] = KepplerTravel::Reservation.new(reservation_params)
           session[:user]        = params[:user]
           session[:invoice]     = params[:invoice]
@@ -16,8 +17,12 @@ module App
             arrival_locality: params[:arrival_locality],
             origin_departament: params[:origin_departament],
             arrival_departament: params[:arrival_departament],
-            cotization: params[:cotization]
+            cotization: params[:cotization],
+            document_id: document.id
           }
+          logger.debug "---------------------------------------------"
+          logger.debug session[:reservation].travellers_doc.url
+          logger.debug "---------------------------------------------"
           redirect_to checkout_path(params[:lang], params[:currency])
         end
 
@@ -29,6 +34,7 @@ module App
             find_or_create_user
             @reservation.status = :pending
             @reservation.user = @user
+            @reservation.document = KepplerTravel::Document.find session[:reservationable]['document_id']
             @reservation.reservationable = KepplerTravel::Vehicle.find session[:reservationable]['id']
             @currency = session[:invoice].first['currency']
             set_price

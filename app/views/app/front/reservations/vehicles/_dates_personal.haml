@@ -1,8 +1,12 @@
 %h3#travellers_form= t('receptivo.reservation_transfers.title_dates_traveler')
 
 - if @seats > 10
-
-  %input#dni.form-control{name: 'travellers_file', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
+  = f.input :travellers_doc
+  -# -# %input.form-control{name: 'document[][file]', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
+  -# -# = f.input :travellers_doc, as: :keppler_file, label: 'Sube un archivo de pasajeros', id:'customFile', class:'custom-file-input'
+  -# = f.simple_fields_for :documents, @reservation.documents do |x|
+  -#   -# %input.form-control{name: 'documents[][file]', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
+  -#   -# = x.input :file, as: :keppler_file, label: false, max_size: 800
 
 - else
   - @seats.times do |i|

@@ -166,15 +166,20 @@
                   .col-xs-12.col-lg-12
                     %strong= t('receptivo.dashboard.table.details_travellers')
                     %br/
-                    %table.table.table-striped#travellers
-                      -#%thead
-                        %tr
-                          %th
-                      %tbody
-                        - @reservation.travellers.each_with_index do |traveller, index|
-                          %tr.list-row{style:'background-color: transparent !important;'}
-                            %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
-                            = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+                    - if @reservation.document.file.url.present?
+                      %a.btn.btn-default{href: @reservation.document.file.url, target: '_blank'} Descargar Documento de Pasajeros
+                      %br/
+                      %br/
+                    - else
+                      %table.table.table-striped#travellers
+                        -#%thead
+                          %tr
+                            %th
+                        %tbody
+                          - @reservation.travellers.each_with_index do |traveller, index|
+                            %tr.list-row{style:'background-color: transparent !important;'}
+                              %td.display-value.fs-body-1.tc-black-2{style:'border-top: 1px solid transparent !important;'}
+                              = traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
                 .row
                   .col-xs-12.col-lg-12
                     .panel.panel-default

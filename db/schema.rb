@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_114751) do
+ActiveRecord::Schema.define(version: 2019_04_04_155255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,6 +222,14 @@ ActiveRecord::Schema.define(version: 2019_04_01_114751) do
     t.index ["vehicle_id"], name: "vehicle_id"
   end
 
+  create_table "keppler_travel_documents", force: :cascade do |t|
+    t.string "file"
+    t.bigint "reservation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_keppler_travel_documents_on_reservation_id"
+  end
+
   create_table "keppler_travel_drivers", force: :cascade do |t|
     t.string "timetrack"
     t.integer "position"
@@ -409,7 +417,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_114751) do
     t.string "status_pay", default: "pending"
     t.integer "position_status_pay", default: 1
     t.string "url_payment", default: ""
-    t.string "file", default: ""
+    t.string "travellers_doc", default: ""
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"

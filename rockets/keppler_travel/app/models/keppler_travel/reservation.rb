@@ -6,7 +6,7 @@ module KepplerTravel
     require 'csv'
     acts_as_list
     acts_as_paranoid
-    mount_uploader :file, AttachmentUploader
+    mount_uploader :travellers_doc, FileUploader
 
     # Relationships
     belongs_to :user
@@ -18,6 +18,8 @@ module KepplerTravel
     has_one    :agent, through: :order
     has_many   :square, as: :squareable
     has_many   :travellers
+    has_one    :document
+    accepts_nested_attributes_for :document
     accepts_nested_attributes_for :travellers
     accepts_nested_attributes_for :square
     accepts_nested_attributes_for :order
