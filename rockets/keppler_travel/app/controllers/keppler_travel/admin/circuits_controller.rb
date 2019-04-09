@@ -30,8 +30,15 @@ module KepplerTravel
       def bulk_upload; end
 
       def bulk_upload_save
-        byebug
-        # @circuitable = CircuitableService.create(@circuit, params)
+        @objects.each do |circuit|
+          if circuit.valid?
+            if circuit.save
+               CircuitableService.create(circuit, nil)
+            end
+          end
+        end
+
+        redirect_to admin_travel_circuits_path
       end
 
       # GET /circuits/1

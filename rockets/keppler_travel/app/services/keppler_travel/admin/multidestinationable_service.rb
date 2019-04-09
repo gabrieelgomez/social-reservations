@@ -2,8 +2,8 @@ module KepplerTravel
   module Admin
     class MultidestinationableService
 
-      def self.create(multidestination, params)
-        destination_ids = params[:multidestination][:destination_ids].split(',').map(&:to_i)
+      def self.create(multidestination, params = nil, destination_ids=nil)
+        destination_ids = params[:multidestination][:destination_ids].split(',').map(&:to_i) unless params.nil?
         destinations = Destination.where(id: destination_ids)
         destinations.each do |destination|
           destination.lodgments.each do |lodgment|

@@ -10,7 +10,7 @@
           .col-xs-12.col-md-4.col-sm-6.js_filterTours.mix-target
             .box-card
               = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
-                .box-image{:style => "background-image: url(#{tour.banner.url})"}
+                .box-image{:style => "background-image: url(#{tour.banner.url.nil? ? "/assets/img/banner_not_found.jpg" : tour.banner.url})"}
               .box-information
                 = link_to tours_show_path(tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
                   %h3= tour.title[@lang].titleize

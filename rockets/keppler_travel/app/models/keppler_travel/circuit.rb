@@ -68,6 +68,7 @@ module KepplerTravel
             pt: circuit['itinerary_pt']
           },
 
+          quantity_days: circuit['quantity_days'],
           status: circuit['status'] == 'TRUE' ? true : false,
           featured: circuit['featured'] == 'TRUE' ? true : false,
         )

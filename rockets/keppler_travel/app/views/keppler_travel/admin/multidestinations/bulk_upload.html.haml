@@ -58,7 +58,7 @@
   %aside#index-show.control-sidebar
 
   .mixed-btn
-    - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive?# && @objects.size > 0
+    - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive? && @objects.try(:size) > 0
       - if can?(KepplerTravel::Multidestination).create?
         = link_to admin_travel_multidestinations_bulk_upload_save_path, class: "btn-float" do
           %i.icon-check
