@@ -1,0 +1,44 @@
+.col-lg-12
+  = f.simple_fields_for :sheetsu_setting do |f|
+    .box.slice-box
+      .box-header.with-border
+        %h3.box-title
+          = 'Sheetsu Carga en Lote - Configuración'
+        .box-tools.pull-right
+          %a.btn.btn-box-tool{ 'data-widget' => 'collapse', type: 'button' }
+            %i.icon-minus
+      .box-body.pure-input
+        .row
+          .col-lg-12
+            %h3 Tours
+            .col-lg-4
+              = f.input :sheetsu_url_tours
+            .col-lg-4
+              = f.input :sheetsu_code_tours
+            .col-lg-4
+              = f.input :sheetsu_spreadsheet_tours
+
+        %hr
+        .row
+          .col-lg-12
+            %h3 Circuitos
+            .col-lg-4
+              = f.input :sheetsu_url_circuits
+            .col-lg-4
+              = f.input :sheetsu_code_circuits
+            .col-lg-4
+              = f.input :sheetsu_spreadsheet_circuits
+
+        %hr
+        .row
+          .col-lg-12
+            %h3 Multidestinos
+            .col-lg-4
+              = f.input :sheetsu_url_multidestinations
+            .col-lg-4
+              = f.input :sheetsu_code_multidestinations
+            .col-lg-4
+              = f.input :sheetsu_spreadsheet_multidestinations
+
+        .pull-right
+          = f.button :submit, t('keppler.actions.apply'), class: 'btn-primary'

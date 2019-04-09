@@ -6,6 +6,7 @@ module KepplerTravel
       layout 'keppler_travel/admin/layouts/application'
       before_action :set_multidestination, only: [:show, :edit, :update, :destroy, :rooms_tables]
       before_action :show_history, only: [:index]
+      before_action :set_bulk_upload, only: %i[bulk_upload bulk_upload_save]
       before_action :set_attachments
       before_action :authorization
       include KepplerTravel::Concerns::Commons
@@ -34,6 +35,13 @@ module KepplerTravel
         else
           @q = Multidestination.ransack(params[:q]).result.includes(:destinations).ransack(destinations_title_cont: params[:destination])
         end
+      end
+
+      def bulk_upload; end
+
+      def bulk_upload_save
+        byebug
+        # @multidestinationable = MultidestinationableService.create(@multidestination, params)
       end
 
       # GET /multidestinations/1
@@ -137,6 +145,15 @@ module KepplerTravel
 
       def authorization
         authorize Multidestination
+      end
+
+      def set_bulk_upload
+        @setting_sheetsu = Setting.first.sheetsu_setting
+        @objects         = Multidestination.bulk_upload(@setting_sheetsu)
+        @error_connection = true if @objects.eql?('Sheetsu::NotFoundError')
+      rescue SocketError => e
+        logger.info e
+        @error_connection = true
       end
 
       def set_attachments

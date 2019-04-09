@@ -6,6 +6,7 @@ module KepplerTravel
       layout 'keppler_travel/admin/layouts/application'
       before_action :set_tour, only: [:show, :edit, :update, :destroy]
       before_action :show_history, only: [:index]
+      before_action :set_bulk_upload, only: %i[bulk_upload bulk_upload_save]
       before_action :set_attachments
       before_action :authorization
       include KepplerTravel::Concerns::Commons
@@ -24,6 +25,12 @@ module KepplerTravel
           redirect_to tours_path(page: @current_page.to_i.pred, search: @query)
         end
         respond_to_formats(@tours)
+      end
+
+      def bulk_upload; end
+
+      def bulk_upload_save
+        byebug
       end
 
       def filter_destination
@@ -131,6 +138,15 @@ module KepplerTravel
 
       def authorization
         authorize Tour
+      end
+
+      def set_bulk_upload
+        @setting_sheetsu = Setting.first.sheetsu_setting
+        @objects         = Tour.bulk_upload(@setting_sheetsu)
+        @error_connection = true if @objects.eql?('Sheetsu::NotFoundError')
+      rescue SocketError => e
+        logger.info e
+        @error_connection = true
       end
 
       def set_attachments

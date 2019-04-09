@@ -56,6 +56,7 @@ module Admin
         smtp_setting_attributes: smpt_setting_permit_attributes,
         google_analytics_setting_attributes: ga_setting_permit_attributes,
         social_account_attributes: social_account_permit_attributes,
+        sheetsu_setting_attributes: sheetsu_setting_permit_attributes,
         appearance_attributes: apparence_permit_attributes
       )
     end
@@ -74,6 +75,15 @@ module Admin
         tripadvisor pinterest flickr behance
         dribbble tumblr github linkedin
         soundcloud youtube skype vimeo
+      ]
+    end
+
+    def sheetsu_setting_permit_attributes
+      %i[
+        id
+        sheetsu_url_tours sheetsu_code_tours sheetsu_spreadsheet_tours
+        sheetsu_url_circuits sheetsu_code_circuits sheetsu_spreadsheet_circuits
+        sheetsu_url_multidestinations sheetsu_code_multidestinations sheetsu_spreadsheet_multidestinations
       ]
     end
 

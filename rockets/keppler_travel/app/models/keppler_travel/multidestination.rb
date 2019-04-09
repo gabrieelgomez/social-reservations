@@ -9,6 +9,8 @@ module KepplerTravel
     acts_as_list
     acts_as_paranoid
 
+    attr_accessor :skip_banner_validation
+
     # Relationships
     has_and_belongs_to_many :destinations
     # has_and_belongs_to_many :lodgments
@@ -23,7 +25,69 @@ module KepplerTravel
     accepts_nested_attributes_for :multidestinationables
     accepts_nested_attributes_for :multidestinationable_rooms
 
-    validates :banner, presence: true
+    validates :banner, presence: true, unless: :skip_banner_validation
+    validates :destination_ids, presence: true
+
+    def self.bulk_upload(setting_sheetsu)
+      api = Sheetsu::Client.new(setting_sheetsu.sheetsu_code_multidestinations)
+      multidestinations = api.read
+      data = []
+      multidestinations.each do |multidestination|
+
+        ids = multidestination['destination_ids'].try(:split, ',').try(:map, &:to_i)
+
+        destinations  = Destination.where(id: ids)
+
+        object = Multidestination.new(
+          title: {
+            es: multidestination['title_es'],
+            en: multidestination['title_en'],
+            pt: multidestination['title_pt']
+          },
+
+          subtitle: {
+            es: multidestination['subtitle_es'],
+            en: multidestination['subtitle_en'],
+            pt: multidestination['subtitle_pt']
+          },
+
+          description: {
+            es: multidestination['description_es'],
+            en: multidestination['description_en'],
+            pt: multidestination['description_pt']
+          },
+
+          include: {
+            es: multidestination['include_es'],
+            en: multidestination['include_en'],
+            pt: multidestination['include_pt']
+          },
+
+          exclude: {
+            es: multidestination['exclude_es'],
+            en: multidestination['exclude_en'],
+            pt: multidestination['exclude_pt']
+          },
+
+          itinerary: {
+            es: multidestination['itinerary_es'],
+            en: multidestination['itinerary_en'],
+            pt: multidestination['itinerary_pt']
+          },
+
+          destinations: destinations,
+          status: multidestination['status'] == 'TRUE' ? true : false,
+          featured: multidestination['featured'] == 'TRUE' ? true : false,
+        )
+
+        object.skip_banner_validation = true
+        data << object
+      end
+      data
+
+    rescue Sheetsu::NotFoundError => e
+      data = 'Sheetsu::NotFoundError'
+    end
 
     def class_str
       self.class.to_s.split('::').last

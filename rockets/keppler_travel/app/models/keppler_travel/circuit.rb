@@ -9,6 +9,8 @@ module KepplerTravel
     acts_as_list
     acts_as_paranoid
 
+    attr_accessor :skip_banner_validation
+
     # Relationships
     has_and_belongs_to_many :destinations
     has_many :reservations, as: :reservationable
@@ -21,7 +23,63 @@ module KepplerTravel
     accepts_nested_attributes_for :circuitables
     accepts_nested_attributes_for :circuitable_rooms
 
-    validates :banner, presence: true
+    validates :banner, presence: true, unless: :skip_banner_validation
+
+    def self.bulk_upload(setting_sheetsu)
+      api = Sheetsu::Client.new(setting_sheetsu.sheetsu_code_circuits)
+      circuits = api.read
+      data = []
+      circuits.each do |circuit|
+
+        object = Circuit.new(
+          title: {
+            es: circuit['title_es'],
+            en: circuit['title_en'],
+            pt: circuit['title_pt']
+          },
+
+          subtitle: {
+            es: circuit['subtitle_es'],
+            en: circuit['subtitle_en'],
+            pt: circuit['subtitle_pt']
+          },
+
+          description: {
+            es: circuit['description_es'],
+            en: circuit['description_en'],
+            pt: circuit['description_pt']
+          },
+
+          include: {
+            es: circuit['include_es'],
+            en: circuit['include_en'],
+            pt: circuit['include_pt']
+          },
+
+          exclude: {
+            es: circuit['exclude_es'],
+            en: circuit['exclude_en'],
+            pt: circuit['exclude_pt']
+          },
+
+          itinerary: {
+            es: circuit['itinerary_es'],
+            en: circuit['itinerary_en'],
+            pt: circuit['itinerary_pt']
+          },
+
+          status: circuit['status'] == 'TRUE' ? true : false,
+          featured: circuit['featured'] == 'TRUE' ? true : false,
+        )
+
+        object.skip_banner_validation = true
+        data << object
+      end
+      data
+
+    rescue Sheetsu::NotFoundError => e
+      data = 'Sheetsu::NotFoundError'
+    end
 
     def class_str
       self.class.to_s.split('::').last

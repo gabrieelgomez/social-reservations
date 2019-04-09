@@ -1,0 +1,40 @@
+- objects.each do |circuit|
+  %tr{ id: "row-#{circuit}" }
+    %td
+      %span
+        - if circuit.valid?
+          %i.icon-check
+        - else
+          %i.icon-close
+    %td
+      %span
+        = circuit.title['es']
+    %td
+      %span
+        = circuit.subtitle['es']
+    %td
+      %span
+        = circuit.description['es']
+    %td
+      %span
+        = circuit.include['es']
+    %td
+      %span
+        = circuit.exclude['es']
+    %td
+      %span
+        = circuit.itinerary['es']
+    %td
+      %span
+        = circuit.status
+    %td
+      %span
+        = circuit.featured
+    %td
+      %span
+        - if circuit.errors.present?
+          %ul
+            - circuit.errors.messages.each do |error|
+              %li= "#{error[0].to_s}: #{error[1].first}"
+        - else
+          = "------------"

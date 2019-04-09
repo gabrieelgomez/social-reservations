@@ -1,0 +1,48 @@
+- objects.each do |multidestination|
+  %tr{ id: "row-#{multidestination}" }
+    %td
+      %span
+        - if multidestination.valid?
+          %i.icon-check
+        - else
+          %i.icon-close
+    %td
+      %span
+        = multidestination.title['es']
+    %td
+      %span
+        = multidestination.subtitle['es']
+    %td
+      %span
+        = multidestination.description['es']
+    %td
+      %span
+        = multidestination.include['es']
+    %td
+      %span
+        = multidestination.exclude['es']
+    %td
+      %span
+        = multidestination.itinerary['es']
+    %td
+      %span
+        - if multidestination.destinations.present?
+          %ul
+            - multidestination.destinations.each do |destination|
+              %li= destination.custom_title['es']
+        - else
+          = '--------'
+    %td
+      %span
+        = multidestination.status
+    %td
+      %span
+        = multidestination.featured
+    %td
+      %span
+        - if multidestination.errors.present?
+          %ul
+            - multidestination.errors.messages.each do |error|
+              %li= "#{error[0].to_s}: #{error[1].first}"
+        - else
+          = "------------"

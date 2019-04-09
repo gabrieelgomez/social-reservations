@@ -8,5 +8,13 @@ module KepplerTravel
       @objects = objects
     end
 
+    def bulk_upload?
+      true
+    end
+
+    def bulk_upload_save?
+      true
+    end
+
   end
 end

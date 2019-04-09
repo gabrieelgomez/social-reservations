@@ -7,6 +7,9 @@
             = t("keppler.modules.#{controller_path.underscore}")
           = entries(@total, @objects)
           .toolbar
+            .toolbar-item
+              %a.tool-btn{href: admin_travel_circuits_bulk_upload_path, title: 'Ver carga en lote de Google Spreadsheets' }
+                %i.icon-layers#bulk_upload
             - if can?(KepplerTravel::Circuit).download?
               %li.toolbar-item.dropdown
                 %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#', title: t('keppler.actions.download_records') }

@@ -1,0 +1,48 @@
+- objects.each do |tour|
+  %tr{ id: "row-#{tour}" }
+    %td
+      %span
+        - if tour.valid?
+          %i.icon-check
+        - else
+          %i.icon-close
+    %td
+      %span
+        = tour.title['es']
+    %td
+      %span
+        = tour.subtitle['es']
+    %td
+      %span
+        = tour.description['es']
+    %td
+      %span
+        = tour.task['es']
+    %td
+      %span
+        = tour.price_adults['cop']
+    %td
+      %span
+        = tour.price_kids['cop']
+    %td
+      %span
+        - if tour.destinations.present?
+          %ul
+            - tour.destinations.each do |destination|
+              %li= destination.custom_title['es']
+        - else
+          = '--------'
+    %td
+      %span
+        = tour.status
+    %td
+      %span
+        = tour.featured
+    %td
+      %span
+        - if tour.errors.present?
+          %ul
+            - tour.errors.messages.each do |error|
+              %li= "#{error[0].to_s}: #{error[1].first}"
+        - else
+          = "------------"

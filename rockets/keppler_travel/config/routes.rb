@@ -42,9 +42,7 @@ KepplerTravel::Engine.routes.draw do
             as: :destroy_multiple
           )
         end
-
       end
-
 
       namespace :destinations do
         post 'filter_by_destination', action: :index, as: :filter_destination
@@ -58,16 +56,25 @@ KepplerTravel::Engine.routes.draw do
         post 'filter_by_destination', action: :index, as: :filter_destination
       end
 
-      namespace :multidestinations do
-        post 'filter_by_destination', action: :index, as: :filter_destination
-      end
-
       namespace :vehicles do
         post 'filter_by_destination', action: :index, as: :filter_destination
       end
 
+      namespace :multidestinations do
+        post 'filter_by_destination', action: :index, as: :filter_destination
+        get '/bulk_upload', action: 'bulk_upload', as: 'bulk_upload'
+        get '/bulk_upload_save', action: 'bulk_upload_save', as: 'bulk_upload_save'
+      end
+
+      namespace :circuits do
+        get '/bulk_upload', action: 'bulk_upload', as: 'bulk_upload'
+        get '/bulk_upload_save', action: 'bulk_upload_save', as: 'bulk_upload_save'
+      end
+
       namespace :tours do
         post 'filter_by_destination', action: :index, as: :filter_destination
+        get '/bulk_upload', action: 'bulk_upload', as: 'bulk_upload'
+        get '/bulk_upload_save', action: 'bulk_upload_save', as: 'bulk_upload_save'
       end
 
       namespace :reservations do

@@ -9,12 +9,75 @@ module KepplerTravel
     acts_as_list
     acts_as_paranoid
 
+    attr_accessor :skip_banner_validation
+
     # Relationships
     has_and_belongs_to_many :destinations
     has_many :reservations, as: :reservationable
 
-    validates :title, :description, :task, :price_adults, :banner, presence: true
+    validates :title, :description, :task, :price_adults, presence: true
+    validates :banner, presence: true, unless: :skip_banner_validation
     validates :title, uniqueness: true
+    validates :destination_ids, presence: true
+
+    def self.bulk_upload(setting_sheetsu)
+      api = Sheetsu::Client.new(setting_sheetsu.sheetsu_code_tours)
+      tours = api.read
+      data = []
+      tours.each do |tour|
+
+        ids = tour['destination_ids'].try(:split, ',').try(:map, &:to_i)
+
+        destinations  = Destination.where(id: ids)
+
+        object = Tour.new(
+          title: {
+            es: tour['title_es'],
+            en: tour['title_en'],
+            pt: tour['title_pt']
+          },
+
+          subtitle: {
+            es: tour['subtitle_es'],
+            en: tour['subtitle_en'],
+            pt: tour['subtitle_pt']
+          },
+
+          description: {
+            es: tour['description_es'],
+            en: tour['description_en'],
+            pt: tour['description_pt']
+          },
+
+          task: {
+            es: tour['task_es'],
+            en: tour['task_en'],
+            pt: tour['task_pt']
+          },
+
+          price_adults: {
+            cop: tour['price_adults_cop'],
+            usd: tour['price_adults_usd']
+          },
+
+          price_kids: {
+            cop: tour['price_kids_cop'],
+            usd: tour['price_kids_usd']
+          },
+
+          destinations: destinations,
+          status: tour['status'] == 'TRUE' ? true : false,
+          featured: tour['featured'] == 'TRUE' ? true : false,
+        )
+
+        object.skip_banner_validation = true
+        data << object
+      end
+      data
+
+    rescue Sheetsu::NotFoundError => e
+      data = 'Sheetsu::NotFoundError'
+    end
 
     def low_price(currency)
       [self.price_adults[currency], self.price_kids[currency]].min

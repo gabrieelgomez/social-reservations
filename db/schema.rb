@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_155255) do
+ActiveRecord::Schema.define(version: 2019_04_09_124319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_155255) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
-    t.string "unique_code", default: "A4C286"
+    t.string "unique_code", default: "8A0DB5"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_155255) do
   end
 
   create_table "keppler_travel_agents", force: :cascade do |t|
-    t.string "unique_code", default: "D63D7F"
+    t.string "unique_code", default: "2427FD"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -584,6 +584,33 @@ ActiveRecord::Schema.define(version: 2019_04_04_155255) do
     t.text "privacy_policies_pt"
     t.text "cancellations_en"
     t.text "cancellations_pt"
+  end
+
+  create_table "sheetsu_settings", force: :cascade do |t|
+    t.string "sheetsu_url_drivers"
+    t.string "sheetsu_code_drivers"
+    t.string "sheetsu_spreadsheet_drivers"
+    t.string "sheetsu_url_vehicles"
+    t.string "sheetsu_code_vehicles"
+    t.string "sheetsu_spreadsheet_vehicles"
+    t.string "sheetsu_url_tours"
+    t.string "sheetsu_code_tours"
+    t.string "sheetsu_spreadsheet_tours"
+    t.string "sheetsu_url_circuits"
+    t.string "sheetsu_code_circuits"
+    t.string "sheetsu_spreadsheet_circuits"
+    t.string "sheetsu_url_multidestinations"
+    t.string "sheetsu_code_multidestinations"
+    t.string "sheetsu_spreadsheet_multidestinations"
+    t.string "sheetsu_url_destinations"
+    t.string "sheetsu_code_destinations"
+    t.string "sheetsu_spreadsheet_destinations"
+    t.string "sheetsu_url_lodgments"
+    t.string "sheetsu_code_lodgments"
+    t.string "sheetsu_spreadsheet_lodgments"
+    t.integer "setting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "smtp_settings", force: :cascade do |t|

@@ -1,0 +1,61 @@
+#index-container{ :controller => "circuits" }
+  .container
+    .row
+      .listing.col-lg-12.col-xs-12
+        %section.content-header.index-header
+          %h1{ style: 'display: inline-block' }
+            = t("keppler.modules.#{controller_path.underscore}")
+          .toolbar
+            .toolbar-item
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_spreadsheet_circuits, target: '_blank'}
+                %h6 Ir a Google Spreadsheets
+
+            .toolbar-item
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_url_circuits, target: '_blank'}
+                %h6 Ver API URL
+
+          -# .hide
+          -#   = form_tag admin_travel_circuit_upload_path(@objects), id: "upload_form_circuits", multipart: true, method: :post do
+          -#     = file_field_tag :file, id: "upload_file_circuit"
+
+        .box.slice-box
+          .box-body.no-padding
+
+            %table.table
+              %thead
+                - if @objects == 'Sheetsu::NotFoundError'
+                  %tr
+                    %th{style: 'text-align: center;'}
+                      %h3 Credenciales Sheetsu inválidas.
+
+                - elsif @error_connection
+                  %tr
+                    %th{style: 'text-align: center;'}
+                      %h3 Error de conexión a API, por favor recargue.
+                - elsif @objects.size.zero?
+                  %tr
+                    %th{style: 'text-align: center;'}
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.circuits"))
+                - else
+                  %tr
+                    %th
+                    %th Título
+                    %th Subtítulo
+                    %th Descripción
+                    %th Incluye
+                    %th Excluye
+                    %th Itinerario
+                    %th Estatus
+                    %th ¿Destacado?
+                    %th Errores
+              - unless @error_connection
+                %tbody#objects-container
+                  = render 'listing_api', objects: @objects
+
+  %aside#index-show.control-sidebar
+
+  .mixed-btn
+    - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive?# && @objects.size > 0
+      - if can?(KepplerTravel::Circuit).create?
+        = link_to admin_travel_circuits_bulk_upload_save_path, class: "btn-float" do
+          %i.icon-check
