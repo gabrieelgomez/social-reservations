@@ -1,11 +1,11 @@
 - objects.each do |multidestination|
   %tr{ id: "row-#{multidestination}" }
-    %td
+    %td.icon-position
       %span
         - if multidestination.valid?
-          %i.icon-check
+          %i.icon-check.icon-approved
         - else
-          %i.icon-close
+          %i.icon-close.icon-rejected
     %td
       %span
         = multidestination.title['es']
@@ -38,11 +38,32 @@
     %td
       %span
         = multidestination.featured
+
     %td
-      %span
-        - if multidestination.errors.present?
-          %ul
-            - multidestination.errors.messages.each do |error|
-              %li= "#{error[0].to_s}: #{error[1].first}"
-        - else
-          = "------------"
+      - if multidestination.errors.present?
+        %ul{style:'list-style: none !important;padding: 0;'}
+          - multidestination.errors.messages.each do |error|
+            %li
+              %box-error
+                %span{style:'font-weight: bold;'}
+                  = "#{error[0].to_s}:"
+                %span 
+                  = "#{error[1].first}"
+      - else
+        = "------------" 
+
+
+:scss
+  .icon-position{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-approved{
+    color: green !important;
+  }
+  .icon-rejected{
+    color: red !important;
+  }
+
+      

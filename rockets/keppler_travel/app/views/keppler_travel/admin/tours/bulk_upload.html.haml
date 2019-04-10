@@ -2,41 +2,19 @@
   .container
     .row
       .listing.col-lg-12.col-xs-12
-        -#%section.content-header.index-header
-          %h1{ style: 'display: inline-block' }
-            = t("keppler.modules.#{controller_path.underscore}")
-          .toolbar
-            .toolbar-item
-              %a.tool-btn{href: @setting_sheetsu.sheetsu_spreadsheet_tours, target: '_blank'}
-                %h6 Ir a Google Spreadsheets
-
-            .toolbar-item
-              %a.tool-btn{href: @setting_sheetsu.sheetsu_url_tours, target: '_blank'}
-                %h6 Ver API URL
-
-          -# .hide
-          -#   = form_tag admin_travel_tour_upload_path(@objects), id: "upload_form_tours", multipart: true, method: :post do
-          -#     = file_field_tag :file, id: "upload_file_tour"
-
-
-
-
-
-
-
         %section.content-header.index-header
           %h1{:style => "display: inline-block;"}
-            KepplerTravel → Reservaciones vehículos
+            = t("keppler.modules.#{controller_path.underscore}")
           .toolbar
-            %li.toolbar-item.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Descargar registros"}
-                %i.icon-cloud-download
-              %ul.dropdown-menu
-                %li
-                  %a.tool-btn{:href => "/admin/travel/reservations.xls"} Descargar XLS
-            .toolbar-item
-              %a.tool-btn{"data-remote" => "true", :href => "/admin/travel/reservations/reload"}
-                %i.icon-reload
+            %li.toolbar-item
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_spreadsheet_tours, target: '_blank'}
+                %i.icon-link
+                %span Ir a Google Spreadsheets
+            
+            %li.toolbar-item
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_url_tours, target: '_blank'}
+                %i.icon-link
+                %span Ir a API Spreadsheets 
           .hide
             %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0x000055c7f1ec47f8%3E/upload", :enctype => "multipart/form-data", :method => "post"}
               %input{:name => "utf8", :type => "hidden", :value => "✓"}/
@@ -47,22 +25,6 @@
               %a{:href => "#"}
                 %i.icon-directions
                 %span.translation_missing{:title => "translation missing: es.keppler.modules.index"} Index
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         .box.slice-box
           .box-body.no-padding
@@ -107,4 +69,16 @@
     - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive? && @objects.try(:size) > 0
       - if can?(KepplerTravel::Tour).create?
         = link_to admin_travel_tours_bulk_upload_save_path, class: "btn-float" do
-          %i.icon-check.tes
+          %span.check
+            %i.icon-check
+  :scss
+    .check{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
