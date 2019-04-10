@@ -1,11 +1,11 @@
 - objects.each do |tour|
   %tr{ id: "row-#{tour}" }
-    %td
+    %td.icon-position
       %span
         - if tour.valid?
-          %i.icon-check
+          %i.icon-check.icon-approved
         - else
-          %i.icon-close
+          %i.icon-close.icon-rejected
     %td
       %span
         = tour.title['es']
@@ -25,13 +25,12 @@
       %span
         = tour.price_kids['cop']
     %td
-      %span
-        - if tour.destinations.present?
-          %ul
-            - tour.destinations.each do |destination|
-              %li= destination.custom_title['es']
-        - else
-          = '--------'
+      - if tour.destinations.present?
+        %ul{style:'list-style: none !important;padding: 0;'}
+          - tour.destinations.each do |destination|
+            %li= destination.custom_title['es']
+      - else
+        = '--------'
     %td
       %span
         = tour.status
@@ -39,10 +38,29 @@
       %span
         = tour.featured
     %td
-      %span
-        - if tour.errors.present?
-          %ul
-            - tour.errors.messages.each do |error|
-              %li= "#{error[0].to_s}: #{error[1].first}"
-        - else
-          = "------------"
+      - if tour.errors.present?
+        %ul{style:'list-style: none !important;padding: 0;'}
+          - tour.errors.messages.each do |error|
+            %li
+              %box-error
+                %span{style:'font-weight: bold;'}
+                  = "#{error[0].to_s}:"
+                %span 
+                  = "#{error[1].first}"
+                
+      - else
+        = "------------"
+
+
+  :scss
+    .icon-position{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-approved{
+      color: green !important;
+    }
+    .icon-rejected{
+      color: red !important;
+    }

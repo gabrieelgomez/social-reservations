@@ -591,6 +591,7 @@ en:
         social-accounts: "Social accounts"
         google-analytics: "Google Analytics"
         appearance: Appearance
+        load-in-batch: Load in batch
       meta_tags: Meta tags
       google-analytics-tracks: "Scripts"
       keppler-messages: Messages
