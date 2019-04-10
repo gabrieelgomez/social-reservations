@@ -10,7 +10,7 @@
     %td
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'list-rows' do
         %span
-          = image_tag tour.banner.url, width: 100, height: 50, style: 'object-fit: cover;'
+          = image_tag tour.banner.url.nil? ? "/assets/img/banner_not_found.jpg" : tour.banner.url, width: 100, height: 50, style: 'object-fit: cover;'
     %td.hidden-xs
       = link_to admin_travel_tour_path(tour, search: @query), remote: true, class: 'show-row' do
         %span

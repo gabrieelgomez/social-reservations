@@ -30,7 +30,11 @@ module KepplerTravel
       def bulk_upload; end
 
       def bulk_upload_save
-        byebug
+        @objects.each do |tour|
+          tour.save if tour.valid?
+        end
+
+        redirect_to admin_travel_tours_path
       end
 
       def filter_destination

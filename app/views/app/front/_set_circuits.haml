@@ -9,7 +9,7 @@
           .col-xs-12.col-md-4.col-sm-6.js_filterCircuits.mix-target
             .box-card
               = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'' do
-                .box-image{:style => "background-image: url(#{circuit.banner.url})"}
+                .box-image{:style => "background-image: url(#{circuit.banner.url.nil? ? "/assets/img/banner_not_found.jpg" : circuit.banner.url})"}
               .box-information
                 = link_to circuits_show_path(circuit: circuit.title['es'].parameterize, circuit_id: circuit.id), class:'' do
                   %h3= circuit.title[@lang].titleize

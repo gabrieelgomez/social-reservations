@@ -40,8 +40,16 @@ module KepplerTravel
       def bulk_upload; end
 
       def bulk_upload_save
-        byebug
-        # @multidestinationable = MultidestinationableService.create(@multidestination, params)
+        @objects.each do |multidestination|
+          if multidestination.valid?
+            if multidestination.save
+              # params = {:multidestination => {:destination_ids => '1,2,5'}}
+              MultidestinationableService.create(multidestination, nil, destination_ids = multidestination.destination_ids)
+            end
+          end
+        end
+
+        redirect_to admin_travel_multidestinations_path
       end
 
       # GET /multidestinations/1
@@ -62,7 +70,7 @@ module KepplerTravel
         @multidestination = Multidestination.new(multidestination_params)
         @multidestination.destination_ids = params[:multidestination][:destination_ids].split(',').map(&:to_i)
         if @multidestination.save
-          @multidestinationable = MultidestinationableService.create(@multidestination, params)
+          @multidestinationable = MultidestinationableService.create(@multidestination, params, nil)
           redirect_to admin_travel_multidestination_rooms_tables_path(@multidestination)
           # redirect(@multidestination, params)
         else

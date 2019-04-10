@@ -11,7 +11,7 @@
             .col-md-4.col-sm-6.wow.fadeInLeft.animated{"data-wow-delay" => "0.1s", :style => "visibility: visible;-webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"}
               .box-card
                 = link_to tours_show_path(@lang, @currency, tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
-                  .box-image{:style => "background-image: url(#{tour.banner.url})"}
+                  .box-image{:style => "background-image: url(#{tour.banner.url.nil? ? "/assets/img/banner_not_found.jpg" : tour.banner.url})"}
                 .box-information
                   = link_to tours_show_path(@lang, @currency, tour: tour.title['es'].parameterize, tour_id: tour.id), class:'' do
                     %h3= tour.title[@lang].titleize
