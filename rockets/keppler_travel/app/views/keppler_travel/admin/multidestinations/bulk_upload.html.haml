@@ -68,7 +68,7 @@
   .mixed-btn
     - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive? && @objects.try(:size) > 0
       - if can?(KepplerTravel::Tour).create?
-        = link_to admin_travel_multidestination_bulk_upload_save_path, class: "btn-float" do
+        = link_to admin_travel_multidestinations_bulk_upload_save_path, class: "btn-float" do
           %span.check
             %i.icon-check
   :scss
