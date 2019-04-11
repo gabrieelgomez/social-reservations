@@ -7,14 +7,14 @@
             = t("keppler.modules.#{controller_path.underscore}")
           .toolbar
             %li.toolbar-item
-              %a.tool-btn{href: @setting_sheetsu.sheetsu_spreadsheet_tours, target: '_blank'}
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_spreadsheet_multidestination, target: '_blank'}
                 %i.icon-link
                 %span Ir a Google Spreadsheets
-            
+
             %li.toolbar-item
-              %a.tool-btn{href: @setting_sheetsu.sheetsu_url_tours, target: '_blank'}
+              %a.tool-btn{href: @setting_sheetsu.sheetsu_url_multidestination, target: '_blank'}
                 %i.icon-link
-                %span Ir a API Spreadsheets 
+                %span Ir a API Spreadsheets
           .hide
             %form#upload_form_reservations{"accept-charset" => "UTF-8", :action => "/admin/travel/reservations/%23%3CKepplerTravel::Reservation::ActiveRecord_Relation:0x000055c7f1ec47f8%3E/upload", :enctype => "multipart/form-data", :method => "post"}
               %input{:name => "utf8", :type => "hidden", :value => "✓"}/
@@ -45,7 +45,7 @@
                 - elsif @objects.size.zero?
                   %tr
                     %th{style: 'text-align: center;'}
-                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.tours"))
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.multidestination"))
                 - else
                   %tr
                     %th
@@ -68,7 +68,7 @@
   .mixed-btn
     - if KepplerTravel::Destination.count.positive? && KepplerTravel::Lodgment.count.positive? && @objects.try(:size) > 0
       - if can?(KepplerTravel::Tour).create?
-        = link_to admin_travel_tours_bulk_upload_save_path, class: "btn-float" do
+        = link_to admin_travel_multidestination_bulk_upload_save_path, class: "btn-float" do
           %span.check
             %i.icon-check
   :scss
@@ -82,5 +82,3 @@
       top: 0;
       bottom: 0;
     }
-
-
