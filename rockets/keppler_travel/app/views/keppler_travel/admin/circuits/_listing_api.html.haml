@@ -1,11 +1,11 @@
 - objects.each do |circuit|
   %tr{ id: "row-#{circuit}" }
-    %td
+    %td.icon-position
       %span
         - if circuit.valid?
-          %i.icon-check
+          %i.icon-check.icon-approved
         - else
-          %i.icon-close
+          %i.icon-close.icon-rejected
     %td
       %span
         = circuit.title['es']
@@ -26,15 +26,46 @@
         = circuit.itinerary['es']
     %td
       %span
+        - if circuit.destinations.present?
+          %ul
+            - circuit.destinations.each do |destination|
+              %li= destination.custom_title['es']
+        - else
+          = '--------'
+    %td
+      %span
         = circuit.status
     %td
       %span
         = circuit.featured
+
     %td
-      %span
-        - if circuit.errors.present?
-          %ul
-            - circuit.errors.messages.each do |error|
-              %li= "#{error[0].to_s}: #{error[1].first}"
-        - else
-          = "------------"
+      - if circuit.errors.present?
+        %ul{style:'list-style: none !important;padding: 0;'}
+          - circuit.errors.messages.each do |error|
+            %li
+              %box-error
+                %span{style:'font-weight: bold;'}
+                  = "#{error[0].to_s}:"
+                %span 
+                  = "#{error[1].first}"
+      - else
+        = "------------" 
+
+
+:scss
+  .icon-position{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-approved{
+    color: green !important;
+  }
+  .icon-rejected{
+    color: red !important;
+  }
+
+      
+
+
