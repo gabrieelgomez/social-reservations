@@ -44,7 +44,7 @@ module KepplerTravel
     end
 
     def user
-      User.with_deleted.find(self.user_id)
+      User.with_deleted.where(id: self.user_id).first
     end
 
     def self.multiple(object)

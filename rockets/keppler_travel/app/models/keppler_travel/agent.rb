@@ -17,7 +17,7 @@ module KepplerTravel
     # validates :unique_code, uniqueness: true
 
     def user
-      User.with_deleted.find(self.user_id)
+      User.with_deleted.where(id: self.user_id).first
     end
 
     # Fields for the search form in the navbar
