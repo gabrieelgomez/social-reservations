@@ -17,7 +17,7 @@ module KepplerTravel
     accepts_nested_attributes_for :car_descriptions, reject_if: :all_blank, allow_destroy: true
 
     def user
-      User.with_deleted.find(self.user_id)
+      User.with_deleted.where(id: self.user_id).first
     end
 
     def selected_vehicle(vehicle)

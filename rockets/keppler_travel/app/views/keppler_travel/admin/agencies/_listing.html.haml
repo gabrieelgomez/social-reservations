@@ -14,7 +14,7 @@
     %td
       = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
         %span
-          = agency.user.name
+          = agency&.user&.name
     %td.hidden-xs
       = link_to admin_travel_agency_path(agency, search: @query), remote: true, class: 'show-row' do
         %span
