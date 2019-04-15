@@ -216,6 +216,10 @@ Rails.application.routes.draw do
     end
 
 
+    namespace :users do
+      post '/resend_email', action: :resend_email, as: :resend_email
+    end
+
     resources :users do
       get '(page/:page)', action: :index, on: :collection, as: ''
       get '/delete_avatar', action: :delete_avatar

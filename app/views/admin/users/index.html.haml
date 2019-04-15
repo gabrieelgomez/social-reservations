@@ -30,6 +30,15 @@
                 %i.icon-directions
                 = t("keppler.modules.#{action_name.underscore}")
 
+
+          = simple_form_for User.new, url: '/admin/users/resend_email', data: { confirm: t("keppler.messages.data_confirm") }, method: :post do |f|
+            %input{name: 'user_ids', id: 'user_ids', value: 99999, type: 'hidden'}
+            %select{name: 'selects_users', id: 'select_users', :multiple => "multiple", :style => ""}
+              - User.all.each do |user|
+                %option{ value: user.id}="#{user.email}"
+            %tr.list-row
+            %th.display-label#btn-resend= f.button :submit, 'Enviar', name: '_save', class: 'btn-primary'
+
         .form-group
           %label.control-label.string.required{ for: 'user_name' }
             Filtrar usuarios por rol
@@ -76,3 +85,24 @@
 
 :javascript
   $('#role-1').fadeOut()
+
+
+%script{src: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/i18n/es.js"}
+:javascript
+  $(document).ready(function(){
+    $("#select_users").select2({
+      language: "es",
+      placeholder: "Escoge multiples usuarios",
+      allowClear: true,
+      width: '100%',
+      tags: true,
+      tokenSeparators: [',', ' ']
+    });
+
+    $('#select_users').on('select2:select', function (e) {
+      var users = $('#select_users').val();
+      console.log(users);
+      $('#user_ids').val(users);
+    });
+
+  });

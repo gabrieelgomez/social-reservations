@@ -4,10 +4,10 @@ module Admin
   # UsersController
   class UsersController < AdminController
     before_action :set_user, only: %i[show edit update destroy]
-    before_action :set_roles, only: %i[index new edit create update assign_partner]
-    before_action :show_history, only: %i[index assign_partner]
-    before_action :authorization, except: %i[reload filter_by_role assign_partner]
-    before_action :set_users, only: %i[index filter_by_role reload assign_partner]
+    before_action :set_roles, only: %i[index new edit create update assign_partner resend_email]
+    before_action :show_history, only: %i[index assign_partner resend_email]
+    before_action :authorization, except: %i[reload filter_by_role assign_partner resend_email]
+    before_action :set_users, only: %i[index filter_by_role reload assign_partner resend_email]
     skip_before_action :verify_authenticity_token
     include ObjectQuery
 
@@ -35,6 +35,19 @@ module Admin
       user.remove_role :partner if partner.eql?('true')
       # @users = User.filter_by_role(@objects, 'client')
       redirect_to admin_users_path
+    end
+
+    def resend_email
+      user_ids = params[:user_ids].try(:split, ',').try(:map, &:to_i)
+      @users = User.where(id: user_ids)
+      delivery_emails unless @users.blank?
+      redirect_to admin_users_path
+    end
+
+    def delivery_emails
+      @users.each do |user|
+        ReservationMailer.send_password(user).deliver_now
+      end
     end
 
     def new

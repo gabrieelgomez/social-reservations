@@ -12,8 +12,12 @@ class UserPolicy < ControllerPolicy
   def clone?
     false
   end
-  
+
   def assign_partner?
+    true
+  end
+
+  def resend_email?
     true
   end
 
