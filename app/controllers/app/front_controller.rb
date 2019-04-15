@@ -29,6 +29,10 @@ module App
       @results     = @destination.vehicles.ransack(seat_gteq: @seats).result if @destination
       @cotization  = true if @departament[0] != @departament[1]
 
+      unless current_user.nil?
+        @cotization  = true if current_user.has_role?(:agency) || current_user.has_role?(:agent)
+      end
+
       respond_to do |format|
         format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, currency: @currency, status: 200 }
         format.html
