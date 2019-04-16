@@ -109,7 +109,7 @@ module Admin
 
     def set_users
       @q = User.ransack(params[:q])
-      users = @q.result(distinct: true).where('id != ?', User.first.id)
+      users = @q.result.where('id != ?', User.first.id)
       users = users.order(created_at: :desc)
       @objects = users.page(@current_page)
       @total = users.size
