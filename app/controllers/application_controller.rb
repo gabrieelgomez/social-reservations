@@ -2,12 +2,23 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  include ActionController::Serialization
+
+  protect_from_forgery with: :null_session
+
   layout :layout_by_resource
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :appearance
   before_action :set_apparience_colors
   before_action :set_sidebar
   before_action :set_modules
+
+  serialization_scope :view_context
+  before_action :cors_preflight_check
+  after_action :cors_set_access_control_headers
+
   skip_around_action :set_locale_from_url
   include Pundit
   include PublicActivity::StoreController
@@ -86,6 +97,33 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+
+  def cors_set_access_control_headers
+    p "CORS SET ACCESS CONTROL HEADER"
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Access-Token'
+    headers['Access-Control-Max-Age'] = "1728000"
+  end
+
+  def cors_preflight_check
+    if request.method == 'OPTIONS'
+      p "CORS PREFLIGHT CHECK"
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+      headers['Access-Control-Request-Method'] = '*'
+      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token, Content-Type'
+      headers['Access-Control-Max-Age'] = '1728000'
+
+      render text: '', content_type: 'text/plain'
+    end
+  end
+
+  def handle_options_request
+    render :text => '', :content_type => 'text/plain'
+  end
 
   def configure_permitted_parameters
     RUBY_VERSION < "2.2.0" ? devise_old : devise_new

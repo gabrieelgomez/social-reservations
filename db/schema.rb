@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_124319) do
+ActiveRecord::Schema.define(version: 2019_04_16_153440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_124319) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
-    t.string "unique_code", default: "A4C286"
+    t.string "unique_code", default: "8A0DB5"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_124319) do
   end
 
   create_table "keppler_travel_agents", force: :cascade do |t|
-    t.string "unique_code", default: "D63D7F"
+    t.string "unique_code", default: "2427FD"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -667,6 +667,16 @@ ActiveRecord::Schema.define(version: 2019_04_09_124319) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.string "custom_token"
+    t.string "confirmation_token"
+    t.string "unconfirmed_email"
+    t.string "allow_password_change", default: "f"
+    t.datetime "request_change_password"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.json "tokens"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

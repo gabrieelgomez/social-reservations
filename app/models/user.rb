@@ -14,6 +14,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  include DeviseTokenAuth::Concerns::User
+
 
   def self.create_or_restore(user)
     user_restored = User.with_deleted.where(email: user.email).first
