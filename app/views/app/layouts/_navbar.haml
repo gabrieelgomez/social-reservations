@@ -63,7 +63,7 @@
                           %i.nc-icon.nc-single-02{style:'font-weight: 700; margin-right: 2px;'}
                           = t('receptivo.pre_navbar.profile')
                     %li
-                      = link_to destroy_session_path(current_user), class:''  do
+                      = link_to destroy_user_session_path, class:'', method: :delete  do
                         %span
                           %i.nc-icon.nc-button-power{style:'font-weight: 700; margin-right: 2px;' }
                           = t('receptivo.pre_navbar.sign_out')

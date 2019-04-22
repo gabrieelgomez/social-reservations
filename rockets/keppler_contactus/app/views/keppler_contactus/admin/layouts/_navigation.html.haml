@@ -37,7 +37,7 @@
                   = current_user.updated_at.strftime('%d %b %Y')
               .btn-user
                 = link_to 'Profile', "/admin/users/#{current_user.id}", class: 'btn btn-default btn-flat'
-                = link_to t('devise.sign_out'), destroy_session_path(current_user), class: 'btn btn-default btn-flat'
+                = link_to t('devise.sign_out'), main_app.destroy_user_session_path, class: 'btn btn-default btn-flat', method: :delete
         - if listing?
           %li.hidden-xs
             %a{ href: '#', 'data-toggle' => 'control-sidebar' }

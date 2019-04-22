@@ -55,6 +55,6 @@
         %i.nc-icon.nc-single-02
         = t('receptivo.dashboard.messages.my_profile')
     %li.d-block.d-md-none
-      = link_to destroy_session_path(current_user), class:'nav-link'  do
+      = link_to destroy_user_session_path, class:'nav-link', method: :delete  do
         %i.nc-icon.nc-button-power
         = t('receptivo.dashboard.sidebar.messages.sign_out')

@@ -26,7 +26,7 @@
             = link_to users_details_path(@lang, @currency), class:'dropdown-item'  do
               %i.nc-icon.nc-single-02= t('receptivo.dashboard.messages.my_profile')
 
-            = link_to destroy_session_path(current_user), class:'dropdown-item'  do
+            = link_to destroy_user_session_path, class:'dropdown-item', method: :delete  do
               %i.nc-icon.nc-button-power= t('receptivo.dashboard.messages.sign_out')
 :scss
   .ico-profile{
