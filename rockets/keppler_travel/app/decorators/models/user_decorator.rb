@@ -22,7 +22,7 @@ User.class_eval do
   end
 
   def travellers
-    reservations.collect{|reservation| reservation.travellers}.flatten.compact.pluck(:id, :name, :dni).uniq.reject{|array| array[1].blank? || array[2].blank?}.sort
+    reservations.collect{|reservation| reservation.travellers}.flatten.compact.pluck(:id, :name, :dni).uniq{|object| object[1] && object[2]}.reject{|array| array[1].blank? || array[2].blank?}.sort
   end
 
 end

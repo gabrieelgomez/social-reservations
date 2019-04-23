@@ -16,7 +16,7 @@
 
           .form-group.form-custom
             %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
-            %input.form-control{id: "traveller_dni_#{i+1}", name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id'), value: 'nil'}
+            %input.form-control{id: "traveller_dni_#{i+1}", name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id'), value: ''}
             %select{name: "traveller_#{i+1}", id: "traveller_select_#{i+1}", :multiple => "multiple", :style => ""}
               - current_user.travellers.each do |traveller|
                 %option{ value: "#{traveller[1]} && #{traveller[2]}"}="#{traveller[1]} - #{traveller[2]}"
