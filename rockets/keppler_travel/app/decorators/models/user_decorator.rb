@@ -17,4 +17,8 @@ User.class_eval do
     self.try(:has_role?, :agency) or self.try(:has_role?, :agent)
   end
 
+  def is_from_colombia?
+    return true if (self.has_role?(:agency) && self&.agency&.country == 'CO') || (self.has_role?(:agent) && self&.agent&.agency&.country == 'CO')
+  end
+
 end

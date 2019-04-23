@@ -30,7 +30,7 @@ module App
       @cotization  = true if @departament[0] != @departament[1]
 
       unless current_user.nil?
-        @cotization  = true if current_user.has_role?(:agency) || current_user.has_role?(:agent)
+        @cotization  = true if current_user.is_from_colombia?
       end
 
       respond_to do |format|
