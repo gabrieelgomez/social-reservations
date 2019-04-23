@@ -21,4 +21,8 @@ User.class_eval do
     return true if (self.has_role?(:agency) && self&.agency&.country == 'CO') || (self.has_role?(:agent) && self&.agent&.agency&.country == 'CO')
   end
 
+  def travellers
+    reservations.collect{|reservation| reservation.travellers}.flatten.compact.pluck(:id, :name, :dni).uniq.reject{|array| array[1].blank? || array[2].blank?}.sort
+  end
+
 end

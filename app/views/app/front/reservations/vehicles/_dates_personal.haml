@@ -2,20 +2,72 @@
 
 - if @seats > 10
   = f.input :travellers_doc
-  -# -# %input.form-control{name: 'document[][file]', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
-  -# -# = f.input :travellers_doc, as: :keppler_file, label: 'Sube un archivo de pasajeros', id:'customFile', class:'custom-file-input'
-  -# = f.simple_fields_for :documents, @reservation.documents do |x|
-  -#   -# %input.form-control{name: 'documents[][file]', type: 'file', accept: '.xlt, .xlsx, .xlsm, .xlx, .doc, .docx, .otp'}
-  -#   -# = x.input :file, as: :keppler_file, label: false, max_size: 800
 
 - else
   - @seats.times do |i|
     .row
       .col-lg-6
-        .form-group.form-custom
-          %label{for: "name"}= t('receptivo.reservation_transfers.input_name')
-          %input#name.form-control.custom_input{name: 'travellers[][name]', type: "text", placeholder: t('receptivo.reservation_transfers.input_name')}/
+
+        - if current_user.nil?
+          .form-group.form-custom
+            %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
+            %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id')}/
+        - else
+
+          .form-group.form-custom
+            %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
+            %input.form-control{id: "traveller_dni_#{i+1}", name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id'), value: 'nil'}
+            %select{name: "traveller_#{i+1}", id: "traveller_select_#{i+1}", :multiple => "multiple", :style => ""}
+              - current_user.travellers.each do |traveller|
+                %option{ value: "#{traveller[1]} && #{traveller[2]}"}="#{traveller[1]} - #{traveller[2]}"
       .col-lg-6
         .form-group.form-custom
-          %label{for: "dni"}= t('receptivo.reservation_transfers.input_id')
-          %input#dni.form-control{name: 'travellers[][dni]', type: "text", placeholder: t('receptivo.reservation_transfers.input_id')}/
+          %label{for: "name"}= t('receptivo.reservation_transfers.input_name')
+          %input.form-control.custom_input{id: "traveller_name_#{i+1}", name: 'travellers[][name]', type: "text", placeholder: t('receptivo.reservation_transfers.input_name')}/
+
+:scss
+  .select2-selection {
+    border-radius: 0 !important;
+  }
+  .select2-container--default.select2-container--focus .select2-selection--multiple {
+      border: solid #f44336 1px !important;
+      outline: 0;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice{
+    background-color: #f44336 !important;
+    border: 1px solid #fff !important;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff !important;
+   }
+
+%script{src: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"}
+%link{href: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css", rel: "stylesheet"}/
+
+:javascript
+
+  for (var i = 1; i <= 10; i++) {
+    $(`#traveller_select_${i}`).select2({
+      language: "es",
+      placeholder: "Escoge un pasajero",
+      allowClear: true,
+      width: '100%',
+      tags: true,
+      tokenSeparators: [',', ' '],
+      maximumSelectionLength: 1
+    })
+
+    $(`#traveller_select_${i}`).on('select2:select', function (e) {
+      id     = e.target.id.split('_')[2]
+      value  = e.target.value.split('&&')
+      name   = value[0]
+      dni    = parseInt(value[1])
+      // debugger
+      traveller_dni  = $(`#traveller_dni_${id}`).val(dni);
+      traveller_name = $(`#traveller_name_${id}`).val(name);
+
+      console.log(traveller_dni);
+      console.log(traveller_name);
+    });
+
+  }
