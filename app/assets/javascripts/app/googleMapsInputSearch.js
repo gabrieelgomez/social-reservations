@@ -81,7 +81,7 @@ $(document).ready(function () {
         // For each address locality in hash
         for (var i = 0; i < place.address_components.length; i++) {
           var addressType = place.address_components[i].types;
-          if (addressType.includes('locality')) {
+          if (addressType.includes('locality') && (place.address_components[i].long_name != 'Colombia')) {
             locality = place.address_components[i].long_name;
             if (id_input == 'origin_name') {
               let field = $('#origin_locality').val(locality);
@@ -97,12 +97,32 @@ $(document).ready(function () {
         }
         // For each address locality in hash
 
+        // For each administrative_area_level_1 in hash
+        if (!locality) {
+          for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types;
+            if (addressType.includes('administrative_area_level_1') && (place.address_components[i].long_name != 'Colombia')) {
+              // debugger;
+              locality = place.address_components[i].long_name;
+              if (id_input == 'origin_name') {
+                let field = $('#origin_locality').val(locality);
+                $('.origin_name').text(`Desde: Departamento, ${exception}, Localidad, ${locality}`);
+              }
+              else {
+                let field = $('#arrival_locality').val(locality);
+                $('.arrival_name').text(`Hasta: Departamento, ${exception}, Localidad, ${locality}`);
+              }
+              break;
+            }
+          }
+        }
+        // For each administrative_area_level_1 in hash
 
         // For each address political in hash
         if (!locality) {
           for (var i = 0; i < place.address_components.length; i++) {
             var addressType = place.address_components[i].types;
-            if (addressType.includes('political')) {
+            if (addressType.includes('political') && (place.address_components[i].long_name != 'Colombia')) {
               // debugger;
               locality = place.address_components[i].long_name;
               if (id_input == 'origin_name') {
