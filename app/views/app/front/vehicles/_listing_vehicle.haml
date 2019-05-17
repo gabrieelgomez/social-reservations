@@ -68,7 +68,6 @@
                       - else
                         %span.price
                           = @currency.upcase
-                          - byebug
                           = number_to_currency(vehicle.set_price_destination(@locality, @currency), locale: @locale)
                     .box-btn
                       = link_to reservations_path(@lang, @currency, 'vehicle', vehicle, cotization: @cotization, origin_departament: @departament[0], arrival_departament: @departament[1], origin_locality: @locality[0], arrival_locality: @locality[1], origin_name: @origin_name, origin_location: @origin_location, arrival_name: @arrival_name, arrival_location: @arrival_location, quantity_adults: @adults, quantity_kids: @kids, round_trip: @round_trip, flight_origin_picker: @flight_origin_picker, flight_arrival_picker: @flight_arrival_picker, hour_origin_picker: @hour_origin_picker, hour_arrival_picker: @hour_arrival_picker) do
