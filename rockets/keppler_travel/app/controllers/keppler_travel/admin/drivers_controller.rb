@@ -54,14 +54,13 @@ module KepplerTravel
       def create
         @user = User.new(user_params)
         @user = User.create_or_restore(@user)
-        @user.build_driver(
+        @driver = @user.build_driver(
           timetrack: params[:user][:driver][:timetrack],
           bank: params[:user][:driver][:bank],
           account_type: params[:user][:driver][:account_type],
           account_number: params[:user][:driver][:account_number],
           email_corporative: params[:user][:driver][:email_corporative]
         )
-        @driver = @user.driver
         @driver.vehicle_ids = params[:driver][:vehicle_ids].split(',').map(&:to_i)
         @driver.destination_id = params[:driver][:destination_id]
 

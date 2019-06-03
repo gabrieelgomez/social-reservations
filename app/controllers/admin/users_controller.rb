@@ -127,7 +127,7 @@ module Admin
     def user_params
       params.require(:user).permit(
         :name, :email, :phone, :dni, :password, :password_confirmation,
-        :role_ids, :encrypted_password, :avatar,
+        :encrypted_password, :avatar,
         driver_attributes: [:id, :timetrack]
       )
     end

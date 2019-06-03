@@ -78,11 +78,11 @@
 
   .listing-show.hidden-xs
     = render 'description', activities: @activities
-  %aside.control-sidebar.index-show
-  - if can?(User).create?
-    .mixed-btn
-      = link_to new_admin_user_path, class: 'btn-float' do
-        +
+  -# %aside.control-sidebar.index-show
+  -# - if can?(User).create?
+  -#   .mixed-btn
+  -#     = link_to new_admin_user_path, class: 'btn-float' do
+  -#       +
 
 :scss
   .select2-selection {

@@ -7,7 +7,7 @@ module KepplerTravel
     acts_as_list
     acts_as_paranoid
 
-    belongs_to :user
+    belongs_to :user, optional: true
     belongs_to :destination
     has_many :orders
     has_many :reservations, through: :orders
