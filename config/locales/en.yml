@@ -553,7 +553,7 @@ en:
       details_person: Personal Information
       billing: Billing
       billing_details: Remember to check the information before paying your reservation
-      payment_method: Payment Method
+      payment_method: Details
       confirm: Confirm
       pay_reservation: Pay Reservation
       type_lodgment: Type Lodgment
@@ -568,8 +568,8 @@ en:
       driver_phone: Phone
       driver_vehicle: Vehicle
       driver_seats: Seats
-      driver_licenses: License 
-      driver_photo: Photo 
+      driver_licenses: License
+      driver_photo: Photo
   keppler:
     login_message: Sign in to start your session
     sidebar-menu:

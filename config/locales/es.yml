@@ -520,7 +520,7 @@ es:
       details_person: Datos Personales
       billing: Facturación
       billing_details: Recuerde verificar la información antes de pagar su reserva
-      payment_method: Método de Pagos
+      payment_method: Detalles
       confirm: Confirmar
       pay_reservation: Pagar Reservación
       type_lodgment: Tipo de Alojamiento
@@ -536,7 +536,7 @@ es:
       driver_vehicle: Vehículo
       driver_seats: Asientos
       driver_licenses: Placas
-      driver_photo: Imagen   
+      driver_photo: Imagen
   keppler:
     login_message: Ingresa tus datos para entrar
     powered: Desarrollado por

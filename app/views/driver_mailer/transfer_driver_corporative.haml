@@ -318,6 +318,76 @@
                 - description.licenses.each do |license|
                   %ul{:style => "list-style: none !important;"}
                     %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
+
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td.section_one{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.cottant_name')
+              = @reservation.owner
+            -# %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+            -#   %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.reservation_cost')
+            -#   - unless @reservation.order.price_total_pax.to_f.zero?
+            -#     ="#{@reservation.invoice.currency.upcase} #{number_to_currency(@reservation.order.price_total_pax, locale: @locale) }"
+            -#   - else
+            -#     Por cotizar
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.origin')
+              = @reservation.origin.blank? ? '-----------' : @reservation.origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.quantity_adults')
+              = @reservation.quantity_adults.blank? ? '-----------' : @reservation.quantity_adults
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.date_flight_origin')
+              = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_time_origin')
+              = @reservation.hour_origin.blank? ? '-----------' : @reservation.hour_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px"}= t('receptivo.reservation_mailer.airline_origin')
+              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_number_origin')
+              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.observations')
+              = @reservation.description.blank? ? '-----------' : @reservation.description
+          %td.section_two{:style => "width:50%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.email')
+              = @reservation.owner_email
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.date_reservation')
+              = @reservation.flight_origin.blank? ? '-----------' : @reservation.flight_origin
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.destination')
+              = @reservation.arrival.blank? ? '-----------' : @reservation.arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.quantity_kids')
+              = @reservation.quantity_kids.blank? ? '-----------' : @reservation.quantity_kids
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.date_flight_destination')
+              = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_time_destination')
+              = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.airline_destination')
+              = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_number_destination')
+              = @reservation.flight_number_arrival.blank? ? '-----------' : @reservation.flight_number_arrival
+        %tr
+          %td{:style => "height:35px;"}
+        %tr
+          %td{:style => "width:100%;padding:20px;vertical-align:top"}
+            %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
+              %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.travellers')
+              - @travellers.each_with_index do |traveller, index|
+                %ul{:style => "list-style: none !important;"}
+                  %li= traveller.name.blank? ? '-----------' : "#{traveller.name.titleize} - #{traveller.dni}"
+
       %tfooter
         %tr
           %td{:colspan => "2", :style => "font-size:12px;padding:10px 15px 0 15px;"}
@@ -335,4 +405,3 @@
                     = t('receptivo.reservation_mailer.developed_by')
                     %a#company{:href => "http://slicegroup.xyz"}
                       %strong{:style => "color: #4e4e56"} Slice Group
-

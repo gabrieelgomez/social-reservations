@@ -58,8 +58,8 @@
               %i.icon-docs
               = t('keppler.actions.clone')
         - if can?(User).destroy?
-          - unless user.id.eql?(current_user.id)
-            %li
-              = link_to admin_user_path(user), title: t('keppler.actions.delete'), method: :delete, data: { confirm: t('keppler.messages.data_confirm') } do
-                %i.icon-trash
-                = t('keppler.actions.delete')
+          -# - unless user.id.eql?(current_user.id)
+          %li
+            = link_to admin_user_path(user), title: t('keppler.actions.delete'), method: :delete, data: { confirm: t('keppler.messages.data_confirm') } do
+              %i.icon-trash
+              = t('keppler.actions.delete')
