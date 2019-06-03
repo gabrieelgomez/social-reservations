@@ -9,7 +9,6 @@ class DriverMailer < ApplicationMailer
     @vehicle     = reservation.reservationable
     img = @vehicle.cover.url
     @logo = "#{img}"
-    byebug
     attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
     mail(
       from: Rails.application.secrets.email,
@@ -26,7 +25,6 @@ class DriverMailer < ApplicationMailer
     @vehicle     = reservation.reservationable
     img = @vehicle.cover.url
     @logo = "#{img}"
-    byebug
     attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
     mail(
       from: Rails.application.secrets.email,
