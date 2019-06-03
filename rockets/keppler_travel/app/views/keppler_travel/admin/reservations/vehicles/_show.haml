@@ -55,7 +55,7 @@
                     %address
                       %strong= t('receptivo.checkout.payment_method')
                       %br/
-                      Pĺataforma: EnLineaPagos
+                      Receptivo Colombia
                       %br/
                   .col-xs-12.col-lg-3
                     %address
@@ -166,7 +166,7 @@
                   .col-xs-12.col-lg-12
                     %strong= t('receptivo.dashboard.table.details_travellers')
                     %br/
-                    - if @reservation.document.file.url.present?
+                    - if @reservation.document.try(:file).try(:url).try(:present?)
                       %a.btn.btn-default{href: @reservation.document.file.url, target: '_blank'} Descargar Documento de Pasajeros
                       %br/
                       %br/

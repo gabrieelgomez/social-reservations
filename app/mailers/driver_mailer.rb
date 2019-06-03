@@ -1,22 +1,6 @@
 class DriverMailer < ApplicationMailer
   default from: Rails.application.secrets.email
 
-  def transfer_driver_user(reservation)
-    @reservation = reservation
-    @travellers  = reservation.travellers
-    @invoice     = reservation.invoice
-    @driver      = reservation.driver.user
-    @vehicle     = reservation.reservationable
-    img = @vehicle.cover.url
-    @logo = "#{img}"
-    attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
-    mail(
-      from: Rails.application.secrets.email,
-      to: @reservation.driver.user.email,
-      subject: "#{@driver.name.titleize} - Ha sido asignado a un traslado | Receptivo Colombia"
-    )
-  end
-
   def transfer_driver_corporative(reservation)
     @reservation = reservation
     @travellers  = reservation.travellers
@@ -25,6 +9,7 @@ class DriverMailer < ApplicationMailer
     @vehicle     = reservation.reservationable
     img = @vehicle.cover.url
     @logo = "#{img}"
+    byebug
     attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
     mail(
       from: Rails.application.secrets.email,
@@ -41,6 +26,7 @@ class DriverMailer < ApplicationMailer
     @vehicle     = reservation.reservationable
     img = @vehicle.cover.url
     @logo = "#{img}"
+    byebug
     attachments.inline[@logo] = File.read("#{Rails.root}/public#{@logo}")
     mail(
       from: Rails.application.secrets.email,
