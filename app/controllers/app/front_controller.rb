@@ -34,7 +34,12 @@ module App
       end
 
       respond_to do |format|
-        format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, currency: @currency, status: 200 }
+        if @results.nil?
+          format.json { render json: @results, status: 200 }
+        else
+          format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, currency: @currency, status: 200 }
+        end
+
         format.html
       end
     end
