@@ -23,6 +23,10 @@ class ReservationMailer < ApplicationMailer
   def transfer_status(reservation, user)
     @reservation = reservation
     @user = user
+    @travellers  = reservation.travellers
+    document = @reservation.document.try(:file).try(:url)
+    @document = "#{document}"
+    attachments.inline[@document] = File.read("#{Rails.root}/public#{@document}") unless @document.blank?
     mail(
       from: Rails.application.secrets.email,
       to: user.email,
