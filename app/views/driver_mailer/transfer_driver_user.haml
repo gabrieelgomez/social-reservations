@@ -339,7 +339,7 @@
               = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_number_origin')
-              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+              = @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.observations')
               = @reservation.description.blank? ? '-----------' : @reservation.description
