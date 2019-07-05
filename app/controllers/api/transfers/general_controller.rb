@@ -1,5 +1,5 @@
 module Api::Transfers
-  class GeneralController < ::ApiController
+  class GeneralController < ApiController
 
     # skip_before_action :verify_authenticity_token
     # authenticate_user!, except: [:suggestions]
