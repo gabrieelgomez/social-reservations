@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_153440) do
+ActiveRecord::Schema.define(version: 2019_07_10_181103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_153440) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
-    t.string "unique_code", default: "8A0DB5"
+    t.string "unique_code", default: "4E51C2"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_153440) do
   end
 
   create_table "keppler_travel_agents", force: :cascade do |t|
-    t.string "unique_code", default: "2427FD"
+    t.string "unique_code", default: "08E6D1"
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
@@ -418,6 +418,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_153440) do
     t.integer "position_status_pay", default: 1
     t.string "url_payment", default: ""
     t.string "travellers_doc", default: ""
+    t.boolean "reservation_mobile"
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"
