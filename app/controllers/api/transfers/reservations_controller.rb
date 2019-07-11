@@ -68,7 +68,7 @@ module Api
 
       # Only allow a trusted parameter "white list" through.
       def reservation_params
-        params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location,
+        params.require(:reservation).permit(:origin, :arrival, :origin_location, :arrival_location, :reservation_mobile,
                                             :airline_origin, :airline_arrival, :flight_number_origin, :flight_number_arrival, :flight_origin, :flight_arrival, :hour_origin, :hour_arrival, :quantity_adults, :quantity_kids, :description, :quantity_kit, :round_trip, :airport_origin, :position, :deleted_at, :travellers_doc, travellers_attributes: [:name, :dni])
       end
 
