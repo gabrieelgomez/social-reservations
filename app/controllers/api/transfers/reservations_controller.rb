@@ -21,7 +21,7 @@ module Api
          )
          if @reservation.save!
            # create_travellers
-           if current_user.try(:has_role_agentable?)
+           if @user.try(:has_role_agentable?)
              @reservation.order.update(
                details: 'agency',
                agency: @agency,
