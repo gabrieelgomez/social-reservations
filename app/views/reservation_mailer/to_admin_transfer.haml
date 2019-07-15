@@ -340,7 +340,7 @@
               = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_number_origin')
-              = @reservation.airline_origin.blank? ? '-----------' : @reservation.airline_origin
+              = @reservation.flight_number_origin.blank? ? '-----------' : @reservation.flight_number_origin
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.observations')
               = @reservation.description.blank? ? '-----------' : @reservation.description
@@ -362,7 +362,7 @@
               = @reservation.flight_arrival.blank? ? '-----------' : @reservation.flight_arrival
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.flight_time_destination')
-              = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival 
+              = @reservation.hour_arrival.blank? ? '-----------' : @reservation.hour_arrival
             %p{:style => "margin:0 0 10px 0;padding:0;font-size:14px;"}
               %span{:style => "display:block;font-weight:bold;font-size:13px;"}= t('receptivo.reservation_mailer.airline_destination')
               = @reservation.airline_arrival.blank? ? '-----------' : @reservation.airline_arrival

@@ -11,6 +11,16 @@ Rails.application.routes.draw do
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#index', as: :filter_by_role
 
+  namespace :api do
+
+    namespace :transfers do
+      post 'create_reservation', to: 'reservations#create_reservation'
+    end
+
+    get 'get_reservation', to: 'api#get_reservation'
+  end
+
+
   # scope '/:locale/:currency', defaults: { locale: 'en' }, constraints: { locale: /en|en|pt/, currency: /cop|usd/} do
   scope '/:locale/:currency', defaults: { locale: 'en' }, constraints: { locale: /en|es|pt/, currency: /cop|usd/} do
 

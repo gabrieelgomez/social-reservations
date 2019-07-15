@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_153440) do
+ActiveRecord::Schema.define(version: 2019_07_10_181103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -418,6 +418,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_153440) do
     t.integer "position_status_pay", default: 1
     t.string "url_payment", default: ""
     t.string "travellers_doc", default: ""
+    t.boolean "reservation_mobile"
     t.index ["deleted_at"], name: "index_keppler_travel_reservations_on_deleted_at"
     t.index ["reservationable_id"], name: "reservationable_id"
     t.index ["reservationable_type"], name: "reservationable_type"
