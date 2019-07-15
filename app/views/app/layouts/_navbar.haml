@@ -121,3 +121,7 @@
           = link_to t('receptivo.navbar.multidestinations'), multidestinations_all_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
         %li.item-link
           = link_to t('receptivo.navbar.contact_us'), contact_us_path(@lang, @currency) , :"data-easing" => "linear", class:"link-navbar"
+:javascript
+  $('body').click(function () {
+     $('.navbar-collapse.in').toggle();
+  });
