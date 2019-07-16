@@ -87,7 +87,11 @@ ActiveRecord::Schema.define(version: 2019_07_10_181103) do
   end
 
   create_table "keppler_travel_agencies", force: :cascade do |t|
+<<<<<<< HEAD
     t.string "unique_code", default: "C0357B"
+=======
+    t.string "unique_code", default: "4E51C2"
+>>>>>>> 14677109e1b9571fb52f91f8d3cddbca9505f64a
     t.float "comission_percentage", default: 0.0
     t.float "lending_percentage", default: 0.0
     t.bigint "user_id"
