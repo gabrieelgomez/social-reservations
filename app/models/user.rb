@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
 
   def self.create_or_restore(user)
-    user_restored = User.with_deleted.where(email: user.email).first
+    user_restored = User.with_deleted.where(email: user.email.downcase).first
     return user_restored.restore unless user_restored&.deleted_at.nil?
     user
   end

@@ -39,7 +39,7 @@ module App::Reservations
       unless current_user
         # each params user
         @user_session = session[:user].first
-        @user = User.with_deleted.find_by(email: @user_session['email'])
+        @user = User.with_deleted.find_by(email: @user_session['email'].downcase)
 
         # if user.nil?
         unless @user&.deleted_at.nil?

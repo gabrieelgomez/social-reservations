@@ -35,7 +35,7 @@ module Api
       end
 
       def find_or_create_user
-        @user = User.with_deleted.find_by(email: params[:user][:email])
+        @user = User.with_deleted.find_by(email: params[:user][:email].downcase)
 
         if @user.nil?
           password = Devise.friendly_token.first(8)
