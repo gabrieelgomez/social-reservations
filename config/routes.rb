@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :v1 do
-    mount_devise_token_auth_for 'User', at: 'auth'
-  end
-
   localized do
     get '/index', to: 'app/front#index', as: :app_index
   end
   root to: 'app/front#set_locale_lang'
   devise_for :users#, skip: KepplerConfiguration.skip_module_devise
   post '/filter', to: 'admin/users#index', as: :filter_by_role
+
+  namespace :v1 do
+    mount_devise_token_auth_for 'User', at: 'auth'
+  end
 
   namespace :api do
 
