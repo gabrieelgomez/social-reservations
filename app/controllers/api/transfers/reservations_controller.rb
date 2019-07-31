@@ -54,7 +54,7 @@ module Api
 
       def set_price
         @price = params[:reservationable][:price_destination]
-        if @user.is_from_colombia?
+        if @user.is_from_colombia? || 
           @cotization  = true
           @price_total = 0
         else
