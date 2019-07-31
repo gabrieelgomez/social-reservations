@@ -37,7 +37,7 @@ module App
         if @results.nil?
           format.json { render json: @results, status: 200 }
         else
-          format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, locality: @locality, currency: @currency, status: 200 }
+          format.json { render json: @results, each_serializer: KepplerTravel::VehicleSerializer, cotization: @cotization, locality: @locality, currency: @currency, status: 200 }
         end
 
         format.html
