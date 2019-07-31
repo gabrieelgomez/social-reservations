@@ -1765,7 +1765,7 @@ label.container .checkmark:after {
 
 .p-widget {
     position: absolute;
-    top: 490px;
+    bottom: -25%;
     width: 100%;
     z-index: 1000;
 }
