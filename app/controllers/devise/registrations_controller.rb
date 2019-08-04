@@ -15,8 +15,17 @@ class Devise::RegistrationsController < DeviseController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.add_role :client
-    resource.save
+    user = User.with_deleted.find_by email: resource.email
+
+    unless user&.deleted_at.nil?
+      user.restore
+      resource = user
+      ReservationMailer.send_password(user).deliver_now
+    else
+      resource.add_role :client
+      resource.save
+    end
+
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
