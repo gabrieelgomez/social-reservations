@@ -23,6 +23,7 @@
                 %thead
                   %th= t('receptivo.dashboard.table.order')
                   %th= t('receptivo.dashboard.table.invoice')
+                  %th= t('receptivo.dashboard.table.currency')
                   %th= t('receptivo.dashboard.table.cost_cotization')
                   %th= t('receptivo.dashboard.table.status_reservations')
                   %th= t('receptivo.dashboard.table.status_pay')
@@ -35,10 +36,12 @@
                     %tr
                       %td= reservation.id
                       %td= reservation.invoice.token
+                      %td= reservation.invoice.currency.upcase
+
                       - if reservation.order.price_total_pax.to_f.zero?
                         %td= t('receptivo.dashboard.table.to_cotization')
                       - else
-                        %td= number_to_currency(reservation.order.price_total_pax, locale: @locale)
+                        %td= number_to_currency(reservation.invoice.amount, locale: @locale)
                       %td
                         %span.badge.badge-pill{class: reservation.order.status_class?}= t("receptivo.dashboard.table.#{reservation.order.status}")
                       %td

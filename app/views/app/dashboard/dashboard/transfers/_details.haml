@@ -257,7 +257,7 @@
                                                       %li= license.nil? ? '-----------' : "#{license.matricula} - #{license.color}"
 
 
-                              - if @type_search == 'agency'
+                              - if @type_search == 'agency' || current_user&.agency || current_user&.agent
                                 .col-xs-12.col-lg-12
                                   .panel.panel-default
                                     .panel-heading

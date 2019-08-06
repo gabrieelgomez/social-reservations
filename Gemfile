@@ -47,6 +47,8 @@ gem 'sitemap_generator', '6.0.1'
 # History
 gem 'public_activity', '1.5.0'
 
+gem 'httparty'
+
 # AdminLTE
 source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-adminlte'

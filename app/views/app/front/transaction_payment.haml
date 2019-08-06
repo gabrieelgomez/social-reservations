@@ -16,9 +16,9 @@
         %input#baseiva{name: "baseiva", type: "hidden", value: '0'}/
         %input#descripcion{name: "descripcion", type: "hidden", value: "Pago de reservacion #{@reservationable.title['es']}"}/
         - if Rails.env.development?
-          %input#urlback{name: "urlback", type: "hidden", value: "http://receptivocolombia.com/es/usd/thanks"}/
+          %input#urlback{name: "urlback", type: "hidden", value: "https://receptivocolombia.com/es/usd/thanks"}/
         - else
-          %input#urlback{name: "urlback", type: "hidden", value: "http://receptivocolombia.com/es/usd/thanks"}/
+          %input#urlback{name: "urlback", type: "hidden", value: "https://receptivocolombia.com/es/usd/thanks"}/
         %input#documentonumero{name: "documentonumero", type: "hidden", value: @user.dni}/
         %input#nombres{name: "nombres", type: "hidden", value: @user.name.split(' ').first}/
         %input#apellidos{name: "apellidos", type: "hidden", value: @user.name.split(' ').last}/
@@ -41,7 +41,6 @@
 
   // Form submit function.
   function submitform(){
-    console.log('Submit form')
     document.getElementById("form1").submit();
   }
   submitform();

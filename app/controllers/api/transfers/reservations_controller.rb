@@ -34,6 +34,9 @@ module Api
                agency_referer: @agency.id,
                agent_referer: @agent&.id
              )
+             @reservation.invoice.update(
+               amount: @price_total,
+             )
              ReservationMailer.transfer_status(@reservation, @user).deliver_now
              @success = true
            elsif @price_total.zero?
@@ -47,7 +50,7 @@ module Api
            @success = false
          end
 
-        render json: { data: @reservation.as_json(include: %i[invoice order]), status: 200, success: @success }
+        render json: { data: @reservation.as_json(include: %i[invoice order], methods: %i[pay_to]), status: 200, success: @success }
       end
 
       private

@@ -61,6 +61,9 @@ module App
                   agency_referer: @agency.id,
                   agent_referer: @agent&.id
                 )
+                @reservation.invoice.update(
+                  amount: @price_total,
+                )
                 ReservationMailer.transfer_status(@reservation, @user).deliver_now
                 redirect_to invoice_path('en', 'usd')
               elsif @price_total.zero?
