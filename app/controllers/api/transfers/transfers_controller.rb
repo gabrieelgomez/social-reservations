@@ -2,6 +2,12 @@ module Api
   module Transfers
     class TransfersController < ApiController
       respond_to :json
+      before_action :set_user, only: %[get_orders]
+
+      def get_orders
+        @reservations = @user.reservations_where('vehicle').as_json(only: %i[id origin arrival origin_location arrival_location flight_origin flight_arrival quantity_adults quantity_kids round_trip status], methods: [:pay_to], include: [:order, :invoice]).reverse
+        render json: { data: @reservations, status: 200, success: @success }
+      end
 
       def build_invoice
         @reservation.build_invoice(
@@ -69,6 +75,12 @@ module Api
             reservation: @reservation
           )
         end
+      end
+
+      private
+
+      def set_user
+        @user = User.find_by(email: params[:user])
       end
 
     end

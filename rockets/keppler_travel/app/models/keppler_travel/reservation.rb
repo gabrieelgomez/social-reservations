@@ -94,35 +94,36 @@ module KepplerTravel
     end
 
     def pay_to
-      uri = URI.parse("https://www.enlineapagos.com/secure/gangway/index.do")
-      request = Net::HTTP::Post.new(uri)
-      request.set_form_data(
-        "usuario" => "RECEPTIVO",
-        "llavemd5" => "31469c35dfdb7c708d29a1cfe66f6aa9lahs85Xpa12572602401898393042587850772",
-        "iva" => "0",
-        "baseiva" => "0",
-        "valor" => invoice.amount,
-        "moneda" => invoice.currency.upcase,
-        "referencia" => invoice.token,
-        "nombres" => user.name.split(' ').first,
-        "apellidos" => user.name.split(' ').last,
-        "email" => user.email,
-        "documentonumero" => user.dni,
-        "telefono" => user.phone,
-        "descripcion" => "Pago de reservacion #{reservationable.title['es']}",
-        "direccion" => invoice.address,
-        "urlback" => "https://receptivocolombia.com/es/usd/thanks",
-      )
-
-      req_options = {
-        use_ssl: uri.scheme == "https",
-      }
-
-      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-        http.request(request)
-      end
-
-      response.body.gsub(/\"/,'snowdenattack').split('snowdenattack')[3]
+      "https://receptivocolombia.com/checkout/transaction_payment/#{id}/#{invoice.id}?locale=es"
+      # uri = URI.parse("https://www.enlineapagos.com/secure/gangway/index.do")
+      # request = Net::HTTP::Post.new(uri)
+      # request.set_form_data(
+      #   "usuario" => "RECEPTIVO",
+      #   "llavemd5" => "31469c35dfdb7c708d29a1cfe66f6aa9lahs85Xpa12572602401898393042587850772",
+      #   "iva" => "0",
+      #   "baseiva" => "0",
+      #   "valor" => invoice.amount,
+      #   "moneda" => invoice.currency.upcase,
+      #   "referencia" => invoice.token,
+      #   "nombres" => user.name.split(' ').first,
+      #   "apellidos" => user.name.split(' ').last,
+      #   "email" => user.email,
+      #   "documentonumero" => user.dni,
+      #   "telefono" => user.phone,
+      #   "descripcion" => "Pago de reservacion #{reservationable.title['es']}",
+      #   "direccion" => invoice.address,
+      #   "urlback" => "https://receptivocolombia.com/es/usd/thanks",
+      # )
+      #
+      # req_options = {
+      #   use_ssl: uri.scheme == "https",
+      # }
+      #
+      # response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      #   http.request(request)
+      # end
+      #
+      # response.body.gsub(/\"/,'snowdenattack').split('snowdenattack')[3]
     end
 
 

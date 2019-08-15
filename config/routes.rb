@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     namespace :transfers do
       post 'create_reservation', to: 'reservations#create_reservation'
+      get '/orders', to: 'transfers#get_orders'
     end
 
     get 'get_reservation', to: 'api#get_reservation'
