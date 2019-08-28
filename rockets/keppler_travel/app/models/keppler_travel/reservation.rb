@@ -94,7 +94,7 @@ module KepplerTravel
     end
 
     def pay_to
-      "https://receptivocolombia.com/checkout/transaction_payment/#{id}/#{invoice.id}?locale=es"
+      "https://receptivocolombia.com/checkout/transaction_payment/#{id}/#{invoice&.id}?locale=es"
       # uri = URI.parse("https://www.enlineapagos.com/secure/gangway/index.do")
       # request = Net::HTTP::Post.new(uri)
       # request.set_form_data(
