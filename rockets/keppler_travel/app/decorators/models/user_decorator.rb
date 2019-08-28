@@ -10,7 +10,7 @@ User.class_eval do
 
 
   def reservations_where(type)
-    self.reservations.with_deleted.select{|res| res.reservationable.class_str.downcase == type}
+    self.reservations.with_deleted.select{|res| res.reservationable.class_str.downcase == type}.reject{|r| !r.invoice}
   end
 
   def has_role_agentable?
