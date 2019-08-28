@@ -5,7 +5,7 @@ module Api
       before_action :set_user, only: %[get_orders]
 
       def get_orders
-        @reservations = @user.reservations_where('vehicle').as_json(only: %i[id origin arrival origin_location arrival_location flight_origin flight_arrival quantity_adults quantity_kids round_trip status], methods: [:pay_to], include: [:order, :invoice]).reverse
+        @reservations = @user.reservations_where('vehicle').sort.reverse.as_json(only: %i[id origin arrival origin_location arrival_location flight_origin flight_arrival quantity_adults quantity_kids round_trip status], methods: [:pay_to], include: [:order, :invoice])
         render json: { data: @reservations, status: 200, success: @success }
       end
 
