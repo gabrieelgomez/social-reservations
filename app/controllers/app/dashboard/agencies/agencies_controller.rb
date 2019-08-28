@@ -61,6 +61,7 @@ module App
 
         # DELETE /agents/1
         def destroy
+          @agency.user.remove_role :agency
           @agent.user.destroy
           redirect_to admin_travel_agency_agents_path, notice: actions_messages(@agent)
         end

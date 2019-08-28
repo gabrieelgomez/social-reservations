@@ -83,6 +83,7 @@ module Admin
     end
 
     def destroy
+      @user.roles.destroy_all
       @user.destroy
       redirect_to admin_users_path, notice: actions_messages(@user)
     end

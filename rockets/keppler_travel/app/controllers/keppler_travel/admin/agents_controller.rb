@@ -95,6 +95,7 @@ module KepplerTravel
 
       # DELETE /agents/1
       def destroy
+        @agent.user.remove_role :agent
         @agent.user.destroy
         redirect_to admin_travel_agency_agents_path, notice: actions_messages(@agent)
       end
