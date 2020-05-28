@@ -92,7 +92,7 @@ gem 'country_select'
 gem 'route_translator', '5.6.2'
 
 # Pagination
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.2'
 gem 'kaminari-i18n', '0.5.0'
 
 # Reduces boot times through caching; required in config/boot.rb
