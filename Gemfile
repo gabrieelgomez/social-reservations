@@ -10,7 +10,7 @@ gem 'remotipart', '1.3.0'
 gem 'vuejs-rails', '2.5.13' # VueJS library
 
 # Server
-gem 'puma', '~> 3.11', '>= 3.11.3'
+gem 'puma', '~> 5.5'
 # Documentation
 gem 'sdoc', '1.0.0'
 
